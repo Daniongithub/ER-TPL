@@ -38,11 +38,12 @@ footer{
     height: 60px;
 }
 header {
+    font-size: 67%;
     background-color: #333;
-    height: 50px;
-    padding: 0 20px;
+    height: auto;
+    padding: 0px 20px;
     display: flex;
-    align-items: center;
+    align-items: left;
     width: auto;
     border-radius: 10px;
 }
@@ -52,7 +53,7 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    justify-content: left;
 }
   
 nav ul li {
