@@ -34,6 +34,14 @@ body{
 a{
     color: white;
 }
+.imgcrop4terzi {
+    width: 1280px;
+    height: 1024px;
+    overflow: hidden;
+    border: 2px solid;
+    border-style: hidden;
+    border-radius: 10px;
+}
 footer{
     position: absolute;
     bottom: 10px;
