@@ -34,6 +34,29 @@ body{
 a{
     color: white;
 }
+a.gbutton{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 20px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: .1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(0, 160, 0);
+    box-shadow: 0 5px 0 darkgreen;
+}
+.gbutton:active {
+    box-shadow: none;
+    transform: translateY(5px)
+}
 footer{
     position: absolute;
     bottom: 10px;
@@ -46,17 +69,20 @@ header {
     height: auto;
     padding: 0px 20px;
     display: flex;
-    align-items: left;
+    align-items: start;
     width: auto;
     border-radius: 10px;
 }
-  
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: left;
+}
+nav {
+    text-align: center;
+    flex-shrink: 0;
 }
   
 nav ul li {
