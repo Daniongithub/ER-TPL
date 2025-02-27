@@ -23,7 +23,6 @@ body{
     background-color: blue;
     box-shadow: 0 5px 0 darkblue
 }
-
 .button:active {
     box-shadow: none;
     transform: translateY(5px)
@@ -106,6 +105,11 @@ nav ul li a:hover {
 table{
     margin-left: auto;
     margin-right: auto;
+}
+h1.spazio{
+    height: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 h2 {
     font-size: 20px;
