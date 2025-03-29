@@ -38,7 +38,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-03-27</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setaextra.html</loc>
@@ -48,17 +48,17 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setafilobus.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-03-02</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setasub.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-03-07</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setaurbano.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-03-27</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/start.html</loc>
@@ -83,7 +83,12 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-03-29</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/pagenotavailable.html</loc>
+		<priority>0.75</priority>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/ares.html</loc>
@@ -293,7 +298,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/template.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/urbanway.html</loc>
@@ -353,7 +358,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/uw.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-27</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/bredino.html</loc>
@@ -373,7 +378,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/menarinocng.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-27</lastmod>
+		<lastmod>2025-03-29</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/template.html</loc>
