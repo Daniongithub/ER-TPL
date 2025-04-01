@@ -182,3 +182,56 @@ table.image-table img {
         margin-bottom: 10px;
     }
 }
+/*zona lista mezzi*/
+.lista-mezzi{
+    width: 80vw;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: auto;
+    border: 2px solid gray;
+    overflow: hidden;
+}
+.lista-mezzi thead{
+    background-color: #282828;
+    position: sticky;
+    top: 0;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.lista-mezzi th, .lista-mezzi td{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid gray;
+    white-space: nowrap;
+}
+.lista-mezzi thead th{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+.lista-mezzi tbody{
+    display: block;
+    overflow-y: auto;
+}
+.lista-mezzi tbody tr{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.lista-mezzi tbody tr.demolito{
+    background-color: darkred;
+}
+.lista-mezzi tbody tr.sconosciuto{
+    background-color: purple;
+}
+.lista-mezzi tbody tr.fermo{
+    background-color: yellow;
+    color: black;
+}
+.lista-mezzi tbody tr.dismesso{
+    background-color: orangered;
+}
+.lista-mezzi tbody tr.trasferito{
+    background-color: blue;
+}
