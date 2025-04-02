@@ -28,6 +28,10 @@ body{
     box-shadow: none;
     transform: translateY(5px)
 }
+p.listamezzi{
+    border-radius: 5px;
+    display:inline;
+}
 hr.solid {
     border: 3px solid #3d3d3d;
     border-radius: 5px;
