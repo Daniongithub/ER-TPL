@@ -3,7 +3,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2025-04-05</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/isp.html</loc>
@@ -38,12 +38,12 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-04-06</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setaextra.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-04-05</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setafilobus.html</loc>
@@ -83,7 +83,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-03-29</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/pagenotavailable.html</loc>
@@ -93,7 +93,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setastreetview.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-04-06</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/ares.html</loc>
@@ -113,7 +113,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/cwline.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/integro.html</loc>
@@ -128,7 +128,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/irizar.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-03-10</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/lionregio.html</loc>
@@ -143,7 +143,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/filobus/busottongt.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-04-05</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/filobus/neoplan.html</loc>
@@ -153,7 +153,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/filobus/template.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/filobus/trollino.html</loc>
@@ -198,12 +198,12 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/cwlebianco.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-04-05</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/cwlecng.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/cwlelungo.html</loc>
@@ -248,12 +248,12 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/surbinodoppio.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-25</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/surbinole.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/template.html</loc>
@@ -263,7 +263,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/citarocng.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-27</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/citarodiesel.html</loc>
@@ -288,7 +288,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/menarinocng.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-03-07</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/menarinolng.html</loc>
@@ -298,7 +298,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/surbinocng.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-03-29</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/template.html</loc>
@@ -328,7 +328,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/extraurbano/crossway13le.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-27</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/extraurbano/desimon.html</loc>
@@ -343,12 +343,12 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/citelis.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-27</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/citeliseev.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-03-29</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/mana40.html</loc>
@@ -383,7 +383,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/menarinocng.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-03-29</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/template.html</loc>
@@ -413,6 +413,6 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/bredino.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 </urlset>
