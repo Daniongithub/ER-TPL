@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://www.ertpl.pages.dev</loc>
-		<priority>1.00</priority>
-		<lastmod>2025-04-08</lastmod>
-	</url>
-	<url>
 		<loc>https://www.ertpl.pages.dev/isp.html</loc>
 		<priority>1.00</priority>
 		<lastmod>2025-03-29</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev</loc>
+		<priority>0.75</priority>
+		<lastmod>2025-04-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/404.html</loc>
@@ -29,11 +29,6 @@
 		<loc>https://www.ertpl.pages.dev/google20540786677952e8.html</loc>
 		<priority>0.75</priority>
 		<lastmod>2025-01-04</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/maintenance.html</loc>
-		<priority>0.75</priority>
-		<lastmod>2025-03-20</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta.html</loc>
