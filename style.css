@@ -232,6 +232,10 @@ table.image-table img {
     background-color: yellow;
     color: black;
 }
+.lista-mezzi tbody tr.fermo a{
+    background-color: yellow;
+    color: black;
+}
 .lista-mezzi tbody tr.dismesso{
     background-color: orangered;
 }
