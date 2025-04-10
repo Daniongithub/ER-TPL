@@ -13,3 +13,11 @@ function changeUrlToFallback(aid,imgid,path) {
         document.getElementById(aid).href = "http://serverissimo.freeddns.org:30081/apps/files_sharing/publicpreview/ffdqobqRg2ezKXt?file=" + path + "&x=1920&y=1080&a=true";
     } catch {}
 }
+function changeUrlToFallbackNoTrue(aid,imgid,path) {
+    try {
+        document.getElementById(imgid).src = "http://serverissimo.freeddns.org:30081/apps/files_sharing/publicpreview/ffdqobqRg2ezKXt?file=" + path + "&x=1920&y=1080";
+    } catch {}
+    try {
+        document.getElementById(aid).href = "http://serverissimo.freeddns.org:30081/apps/files_sharing/publicpreview/ffdqobqRg2ezKXt?file=" + path + "&x=1920&y=1080";
+    } catch {}
+}
