@@ -1,5 +1,5 @@
 /*
-The function below is used to fall back to the second (not for importance) server if the first is not available
+The function(s) below is used to fall back to the second (not for importance) server if the first is not available
 Swaps both links and images sources
 aid = identifier for the anchor (a tag)
 imgid = identifier for the image (img tag)
