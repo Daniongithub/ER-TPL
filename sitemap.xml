@@ -48,7 +48,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setasub.html</loc>
 		<priority>0.75</priority>
-		<lastmod>2025-04-05</lastmod>
+		<lastmod>2025-04-11</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setafilobus.html</loc>
@@ -89,6 +89,11 @@
 		<loc>https://www.ertpl.pages.dev</loc>
 		<priority>0.75</priority>
 		<lastmod>2025-04-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/bredone.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-04-11</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/bredino.html</loc>
@@ -329,11 +334,6 @@
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/citarogkoln.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-04-05</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/setamodena_bus/suburbano/bredoneavaplus.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-02-03</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/minibus/template.html</loc>
