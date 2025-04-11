@@ -247,18 +247,19 @@ table.image-table img {
     text-decoration: none;
 }
 .product-card {
-    padding: 10px;
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #282828;
-    width: 300px;
+    width: 310px;
+    height: 146px;
+    display: flex;
+    align-items:center;
 }
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
+.product-card a {
+    flex:1;
+    height: 100%;
+    align-items: center;
 }
 
 #bus-container {

@@ -1,8 +1,2270 @@
 [
     {
-        "matricola": "10108",
-        "settore" : "Extraurbano",
-        "modello" : "Scania De Simon IL.3",
-        "link": "https://ertpl.pages.dev/startravenna_bus/extraurbano/desimon.html#10108"
+        "matricola": "113",
+        "settore" : "Urbano",
+        "modello" : "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#113"
+    },
+    {
+        "matricola": "115",
+        "settore" : "Urbano",
+        "modello" : "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#115"
+    },
+    {
+        "matricola": "116",
+        "settore" : "Urbano",
+        "modello" : "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#116"
+    },
+    {
+        "matricola": "117",
+        "settore" : "Urbano",
+        "modello" : "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#117"
+    },
+    {
+        "matricola": "120",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#120"
+    },
+    {
+        "matricola": "121",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#121"
+    },
+    {
+        "matricola": "123",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#123"
+    },
+    {
+        "matricola": "124",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#124"
+    },
+    {
+        "matricola": "125",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#125"
+    },
+    {
+        "matricola": "128",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#128"
+    },
+    {
+        "matricola": "129",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#129"
+    },
+    {
+        "matricola": "130",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#130"
+    },
+    {
+        "matricola": "131",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#131"
+    },
+    {
+        "matricola": "132",
+        "settore": "Urbano",
+        "modello": "Mercedes Citaro O530N Diesel",
+        "link": "/setamodena_bus/urbano/citarodiesel.html#132"
+    },
+    {
+        "matricola": "133",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#133"
+    },
+    {
+        "matricola": "134",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#134"
+    },
+    {
+        "matricola": "135",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#135"
+    },
+    {
+        "matricola": "136",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#136"
+    },
+    {
+        "matricola": "137",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#137"
+    },
+    {
+        "matricola": "138",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#138"
+    },
+    {
+        "matricola": "139",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#139"
+    },
+    {
+        "matricola": "140",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#140"
+    },
+    {
+        "matricola": "141",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#141"
+    },
+    {
+        "matricola": "142",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/cityclassatcm.html#142"
+    },
+    {
+        "matricola": "143",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/citarocng.html#143"
+    },
+    {
+        "matricola": "144",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/citarocng.html#144"
+    },
+    {
+        "matricola": "145",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/citarocng.html#145"
+    },
+    {
+        "matricola": "146",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ATCM",
+        "link": "/setamodena_bus/urbano/citarocng.html#146"
+    },
+    {
+        "matricola": "112",
+        "settore": "Urbano",
+        "modello": "CAM New Busotto",
+        "link": "http://serverissimo.freeddns.org:30081/s/tX6A9iYdHdgNiWr"
+    },
+    {
+        "matricola": "158",
+        "settore": "Urbano",
+        "modello": "Iveco Cityclass CNG",
+        "link": "http://serverissimo.freeddns.org:30081/s/eFgTnLzFyYxiQsD"
+    },
+    {
+        "matricola": "170",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#170"
+    },
+    {
+        "matricola": "171",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#171"
+    },
+    {
+        "matricola": "172",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#172"
+    },
+    {
+        "matricola": "173",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#173"
+    },
+    {
+        "matricola": "174",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#174"
+    },
+    {
+        "matricola": "175",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#175"
+    },
+    {
+        "matricola": "176",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#176"
+    },
+    {
+        "matricola": "177",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#177"
+    },
+    {
+        "matricola": "178",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#178"
+    },
+    {
+        "matricola": "179",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#179"
+    },
+    {
+        "matricola": "180",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#180"
+    },
+    {
+        "matricola": "181",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#181"
+    },
+    {
+        "matricola": "182",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#182"
+    },
+    {
+        "matricola": "183",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#183"
+    },
+    {
+        "matricola": "184",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#184"
+    },
+    {
+        "matricola": "185",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#185"
+    },
+    {
+        "matricola": "186",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#186"
+    },
+    {
+        "matricola": "187",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#187"
+    },
+    {
+        "matricola": "188",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#188"
+    },
+    {
+        "matricola": "189",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#189"
+    },
+    {
+        "matricola": "190",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#190"
+    },
+    {
+        "matricola": "191",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#191"
+    },
+    {
+        "matricola": "192",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#192"
+    },
+    {
+        "matricola": "193",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#193"
+    },
+    {
+        "matricola": "194",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#194"
+    },
+    {
+        "matricola": "195",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#195"
+    },
+    {
+        "matricola": "196",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#196"
+    },
+    {
+        "matricola": "197",
+        "settore": "Urbano",
+        "modello": "Irisbus Citelis CNG EEV",
+        "link": "/setamodena_bus/urbano/citelis.html#197"
+    },
+    {
+        "matricola": "198",
+        "settore": "Urbano",
+        "modello": "Solaris Urbino 12 III CNG",
+        "link": "/setamodena_bus/urbano/surbinocng.html#198"
+    },
+    {
+        "matricola": "199",
+        "settore": "Urbano",
+        "modello": "Solaris Urbino 12 III CNG",
+        "link": "/setamodena_bus/urbano/surbinocng.html#199"
+    },
+    {
+        "matricola": "200",
+        "settore": "Urbano",
+        "modello": "Solaris Urbino 12 III CNG",
+        "link": "/setamodena_bus/urbano/surbinocng.html#200"
+    },
+    {
+        "matricola": "271",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#271"
+    },
+    {
+        "matricola": "272",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#272"
+    },
+    {
+        "matricola": "273",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#273"
+    },
+    {
+        "matricola": "274",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#274"
+    },
+    {
+        "matricola": "275",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#275"
+    },
+    {
+        "matricola": "276",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#276"
+    },
+    {
+        "matricola": "277",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#277"
+    },
+    {
+        "matricola": "278",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#278"
+    },
+    {
+        "matricola": "279",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#279"
+    },
+    {
+        "matricola": "280",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#280"
+    },
+    {
+        "matricola": "281",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#281"
+    },
+    {
+        "matricola": "282",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#282"
+    },
+    {
+        "matricola": "283",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#283"
+    },
+    {
+        "matricola": "284",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#284"
+    },
+    {
+        "matricola": "285",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#285"
+    },
+    {
+        "matricola": "286",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#286"
+    },
+    {
+        "matricola": "287",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#287"
+    },
+    {
+        "matricola": "288",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#288"
+    },
+    {
+        "matricola": "289",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#289"
+    },
+    {
+        "matricola": "290",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood CNG",
+        "link": "/setamodena_bus/urbano/menarinocng.html#290"
+    },
+    {
+        "matricola": "291",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ex Pavia",
+        "link": "/setamodena_bus/urbano/cityclasspavia.html#291"
+    },
+    {
+        "matricola": "292",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ex Pavia",
+        "link": "/setamodena_bus/urbano/cityclasspavia.html#292"
+    },
+    {
+        "matricola": "293",
+        "settore": "Urbano",
+        "modello": "Irisbus Cityclass CNG ex Pavia",
+        "link": "/setamodena_bus/urbano/cityclasspavia.html#293"
+    },
+    {
+        "matricola": "4750",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4750"
+    },
+    {
+        "matricola": "4751",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4751"
+    },
+    {
+        "matricola": "4752",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4752"
+    },
+    {
+        "matricola": "4753",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4753"
+    },
+    {
+        "matricola": "4754",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4754"
+    },
+    {
+        "matricola": "4755",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4755"
+    },
+    {
+        "matricola": "4756",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4756"
+    },
+    {
+        "matricola": "4757",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4757"
+    },
+    {
+        "matricola": "4758",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4758"
+    },
+    {
+        "matricola": "4759",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4759"
+    },
+    {
+        "matricola": "4760",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4760"
+    },
+    {
+        "matricola": "4761",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4761"
+    },
+    {
+        "matricola": "4762",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4762"
+    },
+    {
+        "matricola": "4763",
+        "settore": "Urbano e Suburbano",
+        "modello": "MenariniBus Citymood LNG",
+        "link": "/setamodena_bus/urbano/menarinolng.html#4763"
+    },
+    {
+        "matricola": "4770",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4770"
+    },
+    {
+        "matricola": "4771",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4771"
+    },
+    {
+        "matricola": "4772",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4772"
+    },
+    {
+        "matricola": "4773",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4773"
+    },
+    {
+        "matricola": "4774",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4774"
+    },
+    {
+        "matricola": "4775",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4775"
+    },
+    {
+        "matricola": "4776",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4776"
+    },
+    {
+        "matricola": "4777",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4777"
+    },
+    {
+        "matricola": "4778",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4778"
+    },
+    {
+        "matricola": "4779",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4779"
+    },
+    {
+        "matricola": "4780",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4780"
+    },
+    {
+        "matricola": "4781",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4781"
+    },
+    {
+        "matricola": "4782",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4782"
+    },
+    {
+        "matricola": "4783",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4783"
+    },
+    {
+        "matricola": "4784",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4784"
+    },
+    {
+        "matricola": "4785",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4785"
+    },
+    {
+        "matricola": "4786",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4786"
+    },
+    {
+        "matricola": "4787",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4787"
+    },
+    {
+        "matricola": "4788",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4788"
+    },
+    {
+        "matricola": "4789",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4789"
+    },
+    {
+        "matricola": "4790",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4790"
+    },
+    {
+        "matricola": "4791",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4791"
+    },
+    {
+        "matricola": "4792",
+        "settore": "Urbano",
+        "modello": "Iveco Urbanway Hybrid 2022",
+        "link": "/setamodena_bus/urbano/urbanway.html#4792"
+    },
+    {
+        "matricola": "651",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#651"
+    },
+    {
+        "matricola": "652",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#652"
+    },
+    {
+        "matricola": "653",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#653"
+    },
+    {
+        "matricola": "654",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#654"
+    },
+    {
+        "matricola": "655",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#655"
+    },
+    {
+        "matricola": "656",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#656"
+    },
+    {
+        "matricola": "676",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#676"
+    },
+    {
+        "matricola": "677",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#677"
+    },
+    {
+        "matricola": "678",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#678"
+    },
+    {
+        "matricola": "679",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#679"
+    },
+    {
+        "matricola": "680",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#680"
+    },
+    {
+        "matricola": "681",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#681"
+    },
+    {
+        "matricola": "682",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530Ü LE",
+        "link": "/setamodena_bus/suburbano/citarole.html#682"
+    },
+    {
+        "matricola": "209",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 18 III",
+        "link": "/setamodena_bus/suburbano/surbinodoppio.html#209"
+    },
+    {
+        "matricola": "210",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 18 III",
+        "link": "/setamodena_bus/suburbano/surbinodoppio.html#210"
+    },
+    {
+        "matricola": "211",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 18 III",
+        "link": "/setamodena_bus/suburbano/surbinodoppio.html#211"
+    },
+    {
+        "matricola": "212",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 18 III",
+        "link": "/setamodena_bus/suburbano/surbinodoppio.html#212"
+    },
+    {
+        "matricola": "323",
+        "settore": "Suburbano",
+        "modello": "Irisbus Crossway LE",
+        "link": "/setamodena_bus/suburbano/ibcwle.html#323"
+    },
+    {
+        "matricola": "324",
+        "settore": "Suburbano",
+        "modello": "Irisbus Crossway LE",
+        "link": "/setamodena_bus/suburbano/ibcwle.html#324"
+    },
+    {
+        "matricola": "213",
+        "settore": "Suburbano",
+        "modello": "BredaMenariniBus Avancity+ CNG 18",
+        "link": "/setamodena_bus/suburbano/bredone.html#213"
+    },
+    {
+        "matricola": "214",
+        "settore": "Suburbano",
+        "modello": "BredaMenariniBus Avancity+ CNG 18",
+        "link": "/setamodena_bus/suburbano/bredone.html#214"
+    },
+    {
+        "matricola": "215",
+        "settore": "Suburbano",
+        "modello": "BredaMenariniBus Avancity+ CNG 18",
+        "link": "/setamodena_bus/suburbano/bredone.html#215"
+    },
+    {
+        "matricola": "216",
+        "settore": "Suburbano",
+        "modello": "BredaMenariniBus Avancity+ CNG 18",
+        "link": "/setamodena_bus/suburbano/bredone.html#216"
+    },
+    {
+        "matricola": "339",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#339"
+    },
+    {
+        "matricola": "340",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#340"
+    },
+    {
+        "matricola": "345",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#345"
+    },
+    {
+        "matricola": "346",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#346"
+    },
+    {
+        "matricola": "347",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#347"
+    },
+    {
+        "matricola": "348",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#348"
+    },
+    {
+        "matricola": "349",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#349"
+    },
+    {
+        "matricola": "350",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#350"
+    },
+    {
+        "matricola": "351",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#351"
+    },
+    {
+        "matricola": "352",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#352"
+    },
+    {
+        "matricola": "353",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#353"
+    },
+    {
+        "matricola": "364",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#364"
+    },
+    {
+        "matricola": "365",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#365"
+    },
+    {
+        "matricola": "366",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#366"
+    },
+    {
+        "matricola": "367",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#367"
+    },
+    {
+        "matricola": "368",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#368"
+    },
+    {
+        "matricola": "369",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#369"
+    },
+    {
+        "matricola": "370",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#370"
+    },
+    {
+        "matricola": "371",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#371"
+    },
+    {
+        "matricola": "372",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#372"
+    },
+    {
+        "matricola": "373",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#373"
+    },
+    {
+        "matricola": "374",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#374"
+    },
+    {
+        "matricola": "375",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#375"
+    },
+    {
+        "matricola": "376",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#376"
+    },
+    {
+        "matricola": "377",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#377"
+    },
+    {
+        "matricola": "378",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#378"
+    },
+    {
+        "matricola": "379",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/setamodena_bus/suburbano/cwle.html#379"
+    },
+    {
+        "matricola": "222",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City G 4p ex Unibuss",
+        "link": "/setamodena_bus/suburbano/mang4p.html#222"
+    },
+    {
+        "matricola": "223",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City G 4p ex Unibuss",
+        "link": "/setamodena_bus/suburbano/mang4p.html#223"
+    },
+    {
+        "matricola": "224",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City G 4p ex Unibuss",
+        "link": "/setamodena_bus/suburbano/mang4p.html#224"
+    },
+    {
+        "matricola": "251",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#251"
+    },
+    {
+        "matricola": "252",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#252"
+    },
+    {
+        "matricola": "253",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#253"
+    },
+    {
+        "matricola": "254",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#254"
+    },
+    {
+        "matricola": "255",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#255"
+    },
+    {
+        "matricola": "256",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#256"
+    },
+    {
+        "matricola": "257",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#257"
+    },
+    {
+        "matricola": "258",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#258"
+    },
+    {
+        "matricola": "259",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#259"
+    },
+    {
+        "matricola": "260",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#260"
+    },
+    {
+        "matricola": "261",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#261"
+    },
+    {
+        "matricola": "262",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#262"
+    },
+    {
+        "matricola": "263",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#263"
+    },
+    {
+        "matricola": "264",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#264"
+    },
+    {
+        "matricola": "265",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#265"
+    },
+    {
+        "matricola": "266",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#266"
+    },
+    {
+        "matricola": "267",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#267"
+    },
+    {
+        "matricola": "268",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#268"
+    },
+    {
+        "matricola": "269",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#269"
+    },
+    {
+        "matricola": "270",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 12 III LE",
+        "link": "/setamodena_bus/suburbano/surbinole.html#270"
+    },
+    {
+        "matricola": "229",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530G ex Koln",
+        "link": "/setamodena_bus/suburbano/citarogkoln.html#229"
+    },
+    {
+        "matricola": "230",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530G ex Koln",
+        "link": "/setamodena_bus/suburbano/citarogkoln.html#230"
+    },
+    {
+        "matricola": "231",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530G ex Koln",
+        "link": "/setamodena_bus/suburbano/citarogkoln.html#231"
+    },
+    {
+        "matricola": "232",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530G ex Koln",
+        "link": "/setamodena_bus/suburbano/citarogkoln.html#232"
+    },
+    {
+        "matricola": "380",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City L CNG ex TronderBilene",
+        "link": "/setamodena_bus/suburbano/manl.html#380"
+    },
+    {
+        "matricola": "381",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City L CNG ex TronderBilene",
+        "link": "/setamodena_bus/suburbano/manl.html#381"
+    },
+    {
+        "matricola": "382",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE Bianchi",
+        "link": "/setamodena_bus/suburbano/cwlebianco.html#382"
+    },
+    {
+        "matricola": "383",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE Bianchi",
+        "link": "/setamodena_bus/suburbano/cwlebianco.html#383"
+    },
+    {
+        "matricola": "384",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE Bianchi",
+        "link": "/setamodena_bus/suburbano/cwlebianco.html#384"
+    },
+    {
+        "matricola": "385",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE Bianchi",
+        "link": "/setamodena_bus/suburbano/cwlebianco.html#385"
+    },
+    {
+        "matricola": "386",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE Bianchi",
+        "link": "/setamodena_bus/suburbano/cwlebianco.html#386"
+    },
+    {
+        "matricola": "387",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE Bianchi",
+        "link": "/setamodena_bus/suburbano/cwlebianco.html#387"
+    },
+    {
+        "matricola": "4501",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4501"
+    },
+    {
+        "matricola": "4502",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4502"
+    },
+    {
+        "matricola": "4503",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4503"
+    },
+    {
+        "matricola": "4504",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4504"
+    },
+    {
+        "matricola": "4505",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4505"
+    },
+    {
+        "matricola": "4506",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4506"
+    },
+    {
+        "matricola": "4507",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LE 2p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra2p.html#4507"
+    },
+    {
+        "matricola": "4508",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LF 3p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra3p.html#4508"
+    },
+    {
+        "matricola": "4509",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LF 3p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra3p.html#4509"
+    },
+    {
+        "matricola": "4510",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LF 3p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra3p.html#4510"
+    },
+    {
+        "matricola": "4511",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LF 3p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra3p.html#4511"
+    },
+    {
+        "matricola": "4512",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LF 3p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra3p.html#4512"
+    },
+    {
+        "matricola": "4513",
+        "settore": "Suburbano",
+        "modello": "Setra S415 LF 3p ex Bolzano",
+        "link": "/setamodena_bus/suburbano/setra3p.html#4513"
+    },
+    {
+        "matricola": "4621",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4621"
+    },
+    {
+        "matricola": "4622",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4622"
+    },
+    {
+        "matricola": "4623",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4623"
+    },
+    {
+        "matricola": "4624",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4624"
+    },
+    {
+        "matricola": "4625",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4625"
+    },
+    {
+        "matricola": "4626",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4626"
+    },
+    {
+        "matricola": "4627",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4627"
+    },
+    {
+        "matricola": "4628",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/setamodena_bus/suburbano/cwlelungo.html#4628"
+    },
+    {
+        "matricola": "4450",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4450"
+    },
+    {
+        "matricola": "4451",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4451"
+    },
+    {
+        "matricola": "4452",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4452"
+    },
+    {
+        "matricola": "4453",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4453"
+    },
+    {
+        "matricola": "4454",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4454"
+    },
+    {
+        "matricola": "4455",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4455"
+    },
+    {
+        "matricola": "4456",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4456"
+    },
+    {
+        "matricola": "4457",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4457"
+    },
+    {
+        "matricola": "4458",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4458"
+    },
+    {
+        "matricola": "4459",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4459"
+    },
+    {
+        "matricola": "4460",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4460"
+    },
+    {
+        "matricola": "4461",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4461"
+    },
+    {
+        "matricola": "4462",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4462"
+    },
+    {
+        "matricola": "4463",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/setamodena_bus/suburbano/cwlecng.html#4463"
+    },
+    {
+        "matricola": "4850",
+        "settore": "Suburbano",
+        "modello": "New MAN Lion's City 19 CNG",
+        "link": "/setamodena_bus/suburbano/newman.html#4850"
+    },
+    {
+        "matricola": "4851",
+        "settore": "Suburbano",
+        "modello": "New MAN Lion's City 19 CNG",
+        "link": "/setamodena_bus/suburbano/newman.html#4851"
+    },
+    {
+        "matricola": "4852",
+        "settore": "Suburbano",
+        "modello": "New MAN Lion's City 19 CNG",
+        "link": "/setamodena_bus/suburbano/newman.html#4852"
+    },
+    {
+        "matricola": "4853",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530GU ex Tper",
+        "link": "/setamodena_bus/suburbano/citarogtper.html#4853"
+    },
+    {
+        "matricola": "4854",
+        "settore": "Suburbano",
+        "modello": "Mercedes Citaro O530GU ex Tper",
+        "link": "/setamodena_bus/suburbano/citarogtper.html#4854"
+    },
+    {
+        "matricola": "692",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Ares SFR117",
+        "link": "/setamodena_bus/extraurbano/ares.html#692"
+    },
+    {
+        "matricola": "693",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Ares SFR117",
+        "link": "/setamodena_bus/extraurbano/ares.html#693"
+    },
+    {
+        "matricola": "694",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Ares SFR117",
+        "link": "/setamodena_bus/extraurbano/ares.html#694"
+    },
+    {
+        "matricola": "695",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Ares SFR117",
+        "link": "/setamodena_bus/extraurbano/ares.html#695"
+    },
+    {
+        "matricola": "696",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Ares SFR117",
+        "link": "/setamodena_bus/extraurbano/ares.html#696"
+    },
+    {
+        "matricola": "699",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Ares SFR117",
+        "link": "/setamodena_bus/extraurbano/ares.html#699"
+    },
+    {
+        "matricola": "354",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#354"
+    },
+    {
+        "matricola": "355",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#355"
+    },
+    {
+        "matricola": "356",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#356"
+    },
+    {
+        "matricola": "357",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#357"
+    },
+    {
+        "matricola": "358",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#358"
+    },
+    {
+        "matricola": "359",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#359"
+    },
+    {
+        "matricola": "360",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#360"
+    },
+    {
+        "matricola": "361",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#361"
+    },
+    {
+        "matricola": "362",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#362"
+    },
+    {
+        "matricola": "588",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#588"
+    },
+    {
+        "matricola": "589",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#589"
+    },
+    {
+        "matricola": "590",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#590"
+    },
+    {
+        "matricola": "591",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#591"
+    },
+    {
+        "matricola": "592",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#592"
+    },
+    {
+        "matricola": "593",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#593"
+    },
+    {
+        "matricola": "594",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#594"
+    },
+    {
+        "matricola": "595",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#595"
+    },
+    {
+        "matricola": "596",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#596"
+    },
+    {
+        "matricola": "597",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#597"
+    },
+    {
+        "matricola": "598",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#598"
+    },
+    {
+        "matricola": "599",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#599"
+    },
+    {
+        "matricola": "600",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#600"
+    },
+    {
+        "matricola": "601",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#601"
+    },
+    {
+        "matricola": "602",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#602"
+    },
+    {
+        "matricola": "603",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#603"
+    },
+    {
+        "matricola": "604",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#604"
+    },
+    {
+        "matricola": "605",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#605"
+    },
+    {
+        "matricola": "606",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#606"
+    },
+    {
+        "matricola": "607",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#607"
+    },
+    {
+        "matricola": "631",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#631"
+    },
+    {
+        "matricola": "632",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#632"
+    },
+    {
+        "matricola": "683",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#683"
+    },
+    {
+        "matricola": "684",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#684"
+    },
+    {
+        "matricola": "685",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#685"
+    },
+    {
+        "matricola": "686",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550 (Giallo)",
+        "link": "/setamodena_bus/extraurbano/integrogiallo.html#686"
+    },
+    {
+        "matricola": "687",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#687"
+    },
+    {
+        "matricola": "688",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#688"
+    },
+    {
+        "matricola": "689",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#689"
+    },
+    {
+        "matricola": "690",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#690"
+    },
+    {
+        "matricola": "691",
+        "settore": "Extraurbano",
+        "modello": "Mercedes Integro O550",
+        "link": "/setamodena_bus/extraurbano/integro.html#691"
+    },
+    {
+        "matricola": "300",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#300"
+    },
+    {
+        "matricola": "301",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#301"
+    },
+    {
+        "matricola": "302",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#302"
+    },
+    {
+        "matricola": "303",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#303"
+    },
+    {
+        "matricola": "304",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#304"
+    },
+    {
+        "matricola": "305",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#305"
+    },
+    {
+        "matricola": "306",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#306"
+    },
+    {
+        "matricola": "307",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#307"
+    },
+    {
+        "matricola": "308",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#308"
+    },
+    {
+        "matricola": "309",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#309"
+    },
+    {
+        "matricola": "310",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#310"
+    },
+    {
+        "matricola": "311",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#311"
+    },
+    {
+        "matricola": "312",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#312"
+    },
+    {
+        "matricola": "313",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#313"
+    },
+    {
+        "matricola": "314",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#314"
+    },
+    {
+        "matricola": "315",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#315"
+    },
+    {
+        "matricola": "316",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#316"
+    },
+    {
+        "matricola": "317",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#317"
+    },
+    {
+        "matricola": "318",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#318"
+    },
+    {
+        "matricola": "319",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#319"
+    },
+    {
+        "matricola": "890",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#890"
+    },
+    {
+        "matricola": "891",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway",
+        "link": "/setamodena_bus/extraurbano/cwiris.html#891"
+    },
+    {
+        "matricola": "325",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#325"
+    },
+    {
+        "matricola": "326",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#326"
+    },
+    {
+        "matricola": "327",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#327"
+    },
+    {
+        "matricola": "328",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#328"
+    },
+    {
+        "matricola": "329",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#329"
+    },
+    {
+        "matricola": "330",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#330"
+    },
+    {
+        "matricola": "331",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#331"
+    },
+    {
+        "matricola": "332",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#332"
+    },
+    {
+        "matricola": "333",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#333"
+    },
+    {
+        "matricola": "334",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Crossway ex Esercito Tedesco",
+        "link": "/setamodena_bus/extraurbano/cwesercito.html#334"
+    },
+    {
+        "matricola": "341",
+        "settore": "Extraurbano",
+        "modello": "MAN Lion's Regio",
+        "link": "/setamodena_bus/extraurbano/lionregio.html#341"
+    },
+    {
+        "matricola": "342",
+        "settore": "Extraurbano",
+        "modello": "MAN Lion's Regio",
+        "link": "/setamodena_bus/extraurbano/lionregio.html#342"
+    },
+    {
+        "matricola": "343",
+        "settore": "Extraurbano",
+        "modello": "MAN Lion's Regio",
+        "link": "/setamodena_bus/extraurbano/lionregio.html#343"
+    },
+    {
+        "matricola": "344",
+        "settore": "Extraurbano",
+        "modello": "MAN Lion's Regio",
+        "link": "/setamodena_bus/extraurbano/lionregio.html#344"
+    },
+    {
+        "matricola": "352",
+        "settore": "Extraurbano",
+        "modello": "MAN Lion's Regio",
+        "link": "/setamodena_bus/extraurbano/lionregio.html#352"
+    },
+    {
+        "matricola": "4401",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4401"
+    },
+    {
+        "matricola": "4402",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4402"
+    },
+    {
+        "matricola": "4403",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4403"
+    },
+    {
+        "matricola": "4404",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4404"
+    },
+    {
+        "matricola": "4405",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4405"
+    },
+    {
+        "matricola": "4406",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4406"
+    },
+    {
+        "matricola": "4407",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4407"
+    },
+    {
+        "matricola": "4408",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4408"
+    },
+    {
+        "matricola": "4409",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4409"
+    },
+    {
+        "matricola": "4410",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4410"
+    },
+    {
+        "matricola": "4411",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4411"
+    },
+    {
+        "matricola": "4412",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4412"
+    },
+    {
+        "matricola": "4413",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4413"
+    },
+    {
+        "matricola": "4414",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4414"
+    },
+    {
+        "matricola": "4415",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4415"
+    },
+    {
+        "matricola": "4416",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4416"
+    },
+    {
+        "matricola": "4417",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4417"
+    },
+    {
+        "matricola": "4418",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4418"
+    },
+    {
+        "matricola": "4419",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4419"
+    },
+    {
+        "matricola": "4420",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4420"
+    },
+    {
+        "matricola": "4421",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4421"
+    },
+    {
+        "matricola": "4422",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4422"
+    },
+    {
+        "matricola": "4423",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4423"
+    },
+    {
+        "matricola": "4424",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4424"
+    },
+    {
+        "matricola": "4425",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4425"
+    },
+    {
+        "matricola": "4426",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway Line",
+        "link": "/setamodena_bus/extraurbano/cwline.html#4426"
+    },
+    {
+        "matricola": "4427",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4427"
+    },
+    {
+        "matricola": "4428",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4428"
+    },
+    {
+        "matricola": "4429",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4429"
+    },
+    {
+        "matricola": "4430",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4430"
+    },
+    {
+        "matricola": "4431",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4431"
+    },
+    {
+        "matricola": "4432",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4432"
+    },
+    {
+        "matricola": "4433",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4433"
+    },
+    {
+        "matricola": "4434",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4434"
+    },
+    {
+        "matricola": "4435",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4435"
+    },
+    {
+        "matricola": "4436",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4436"
+    },
+    {
+        "matricola": "4437",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4437"
+    },
+    {
+        "matricola": "4438",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4438"
+    },
+    {
+        "matricola": "4439",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4439"
+    },
+    {
+        "matricola": "4440",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4440"
+    },
+    {
+        "matricola": "4441",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4441"
+    },
+    {
+        "matricola": "4442",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4442"
+    },
+    {
+        "matricola": "4443",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4443"
+    },
+    {
+        "matricola": "4444",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4444"
+    },
+    {
+        "matricola": "4445",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4445"
+    },
+    {
+        "matricola": "4446",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4446"
+    },
+    {
+        "matricola": "4447",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4447"
+    },
+    {
+        "matricola": "4448",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4448"
+    },
+    {
+        "matricola": "4449",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 LNG",
+        "link": "/setamodena_bus/extraurbano/irizar.html#4449"
     }
 ]
