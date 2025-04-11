@@ -21,7 +21,6 @@
                 buttons.innerHTML = `
                 <div class="verticale">
                     <h3>Oppure sfoglia una categoria</h3>
-                    <h3>Oppure sfoglia una categoria</h3>
                     <a href="/start_menu/starturbano.html" class="button">Urbano</a>
                     <a href="/start_menu/startsub.html" class="button">Suburbano</a>
                     <a href="/start_menu/startextra.html" class="button">Extraurbano</a>
