@@ -460,5 +460,1049 @@
         "settore" : "Urbano",
         "modello" : "Iveco Urbanway 12 BHNS CNG",
         "link": "/startravenna_bus/urbano/uw.html#10448"
-    }
+    },
+    {
+        "matricola": "32051",
+        "settore" : "Urbano",
+        "modello" : "Iveco Urbanway 10,5 CNG",
+        "link": "/startravenna_bus/urbano/uwpiccolo.html#32051"
+    },
+    {
+        "matricola": "32301",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood 12 CNG",
+        "link": "/startravenna_bus/urbano/menarinocng.html#32301"
+    },
+    {
+        "matricola": "32302",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood 12 CNG",
+        "link": "/startravenna_bus/urbano/menarinocng.html#32302"
+    },
+    {
+        "matricola": "32303",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood 12 CNG",
+        "link": "/startravenna_bus/urbano/menarinocng.html#32303"
+    },
+    {
+        "matricola": "32304",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood 12 CNG",
+        "link": "/startravenna_bus/urbano/menarinocng.html#32304"
+    },
+    {
+        "matricola": "32305",
+        "settore": "Urbano",
+        "modello": "MenariniBus Citymood 12 CNG",
+        "link": "/startravenna_bus/urbano/menarinocng.html#32305"
+    },
+    {
+        "matricola": "34231",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34231"
+    },
+    {
+        "matricola": "34232",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34232"
+    },
+    {
+        "matricola": "34233",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34233"
+    },
+    {
+        "matricola": "34234",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34234"
+    },
+    {
+        "matricola": "34235",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34235"
+    },
+    {
+        "matricola": "34236",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34236"
+    },
+    {
+        "matricola": "34237",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34237"
+    },
+    {
+        "matricola": "34238",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34238"
+    },
+    {
+        "matricola": "34239",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34239"
+    },
+    {
+        "matricola": "34240",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34240"
+    },
+    {
+        "matricola": "34241",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34241"
+    },
+    {
+        "matricola": "34242",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34242"
+    },
+    {
+        "matricola": "34243",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34243"
+    },
+    {
+        "matricola": "34244",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34244"
+    },
+    {
+        "matricola": "34245",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34245"
+    },
+    {
+        "matricola": "34246",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34246"
+    },
+    {
+        "matricola": "34247",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34247"
+    },
+    {
+        "matricola": "34248",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34248"
+    },
+    {
+        "matricola": "34249",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34249"
+    },
+    {
+        "matricola": "34250",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34250"
+    },
+    {
+        "matricola": "34251",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34251"
+    },
+    {
+        "matricola": "34252",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34252"
+    },
+    {
+        "matricola": "34253",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34253"
+    },
+    {
+        "matricola": "34254",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34254"
+    },
+    {
+        "matricola": "34255",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34255"
+    },
+    {
+        "matricola": "34256",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34256"
+    },
+    {
+        "matricola": "34257",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34257"
+    },
+    {
+        "matricola": "34258",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34258"
+    },
+    {
+        "matricola": "34259",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34259"
+    },
+    {
+        "matricola": "34260",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34260"
+    },
+    {
+        "matricola": "34261",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34261"
+    },
+    {
+        "matricola": "34262",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34262"
+    },
+    {
+        "matricola": "34263",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34263"
+    },
+    {
+        "matricola": "34264",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34264"
+    },
+    {
+        "matricola": "34265",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34265"
+    },
+    {
+        "matricola": "34266",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34266"
+    },
+    {
+        "matricola": "34267",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12",
+        "link": "/startravenna_bus/extraurbano/crossway12le.html#34267"
+    },
+    {
+        "matricola": "34301",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 13",
+        "link": "/startravenna_bus/extraurbano/crossway13le.html#34301"
+    },
+    {
+        "matricola": "34302",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 13",
+        "link": "/startravenna_bus/extraurbano/crossway13le.html#34302"
+    },
+    {
+        "matricola": "34303",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 13",
+        "link": "/startravenna_bus/extraurbano/crossway13le.html#34303"
+    },
+    {
+        "matricola": "34411",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34411"
+    },
+    {
+        "matricola": "34412",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34412"
+    },
+    {
+        "matricola": "34413",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34413"
+    },
+    {
+        "matricola": "34414",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34414"
+    },
+    {
+        "matricola": "34415",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34415"
+    },
+    {
+        "matricola": "34416",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34416"
+    },
+    {
+        "matricola": "34417",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34417"
+    },
+    {
+        "matricola": "34418",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34418"
+    },
+    {
+        "matricola": "34419",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34419"
+    },
+    {
+        "matricola": "34420",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34420"
+    },
+    {
+        "matricola": "34421",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34421"
+    },
+    {
+        "matricola": "34422",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34422"
+    },
+    {
+        "matricola": "34423",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34423"
+    },
+    {
+        "matricola": "34424",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34424"
+    },
+    {
+        "matricola": "34425",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34425"
+    },
+    {
+        "matricola": "34426",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34426"
+    },
+    {
+        "matricola": "34427",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34427"
+    },
+    {
+        "matricola": "34428",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34428"
+    },
+    {
+        "matricola": "34429",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34429"
+    },
+    {
+        "matricola": "34430",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34430"
+    },
+    {
+        "matricola": "34431",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34431"
+    },
+    {
+        "matricola": "34432",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34432"
+    },
+    {
+        "matricola": "34433",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34433"
+    },
+    {
+        "matricola": "34434",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34434"
+    },
+    {
+        "matricola": "34435",
+        "settore": "Extraurbano",
+        "modello": "Scania Irizar i4 12,2 LNG",
+        "link": "/startravenna_bus/extraurbano/irizari4.html#34435"
+    },
+    {
+        "matricola": "34441",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 Facelift CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle2023.html#34441"
+    },
+    {
+        "matricola": "34442",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 Facelift CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle2023.html#34442"
+    },
+    {
+        "matricola": "34443",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 Facelift CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle2023.html#34443"
+    },
+    {
+        "matricola": "34444",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 Facelift CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle2023.html#34444"
+    },
+    {
+        "matricola": "34445",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 Facelift CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle2023.html#34445"
+    },
+    {
+        "matricola": "34446",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 Facelift CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle2023.html#34446"
+    },
+    {
+        "matricola": "34451",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34451"
+    },
+    {
+        "matricola": "34452",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34452"
+    },
+    {
+        "matricola": "34453",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34453"
+    },
+    {
+        "matricola": "34454",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34454"
+    },
+    {
+        "matricola": "34455",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34455"
+    },
+    {
+        "matricola": "34456",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34456"
+    },
+    {
+        "matricola": "34457",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34457"
+    },
+    {
+        "matricola": "34458",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34458"
+    },
+    {
+        "matricola": "34459",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34459"
+    },
+    {
+        "matricola": "34460",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34460"
+    },
+    {
+        "matricola": "34461",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34461"
+    },
+    {
+        "matricola": "34462",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34462"
+    },
+    {
+        "matricola": "34463",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34463"
+    },
+    {
+        "matricola": "34464",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34464"
+    },
+    {
+        "matricola": "34465",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34465"
+    },
+    {
+        "matricola": "34466",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34466"
+    },
+    {
+        "matricola": "34467",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34467"
+    },
+    {
+        "matricola": "34468",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34468"
+    },
+    {
+        "matricola": "34469",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34469"
+    },
+    {
+        "matricola": "34470",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34470"
+    },
+    {
+        "matricola": "34471",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34471"
+    },
+    {
+        "matricola": "34472",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34472"
+    },
+    {
+        "matricola": "34473",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34473"
+    },
+    {
+        "matricola": "34474",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34474"
+    },
+    {
+        "matricola": "34475",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34475"
+    },
+    {
+        "matricola": "34476",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34476"
+    },
+    {
+        "matricola": "34477",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34477"
+    },
+    {
+        "matricola": "34478",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34478"
+    },
+    {
+        "matricola": "34479",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34479"
+    },
+    {
+        "matricola": "34480",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34480"
+    },
+    {
+        "matricola": "34481",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34481"
+    },
+    {
+        "matricola": "34482",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34482"
+    },
+    {
+        "matricola": "34483",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34483"
+    },
+    {
+        "matricola": "34484",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34484"
+    },
+    {
+        "matricola": "34485",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34485"
+    },
+    {
+        "matricola": "34486",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34486"
+    },
+    {
+        "matricola": "34487",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34487"
+    },
+    {
+        "matricola": "34488",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34488"
+    },
+    {
+        "matricola": "34489",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34489"
+    },
+    {
+        "matricola": "34490",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34490"
+    },
+    {
+        "matricola": "34491",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34491"
+    },
+    {
+        "matricola": "34492",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34492"
+    },
+    {
+        "matricola": "34493",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34493"
+    },
+    {
+        "matricola": "34494",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34494"
+    },
+    {
+        "matricola": "34495",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34495"
+    },
+    {
+        "matricola": "34496",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34496"
+    },
+    {
+        "matricola": "34497",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34497"
+    },
+    {
+        "matricola": "34498",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34498"
+    },
+    {
+        "matricola": "34499",
+        "settore": "Extraurbano",
+        "modello": "Iveco Crossway LE 12 CNG",
+        "link": "/startravenna_bus/extraurbano/crossway12cngle.html#34499"
+    },
+    {
+        "matricola": "36101",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36101"
+    },
+    {
+        "matricola": "36102",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36102"
+    },
+    {
+        "matricola": "36103",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36103"
+    },
+    {
+        "matricola": "36104",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36104"
+    },
+    {
+        "matricola": "36105",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36105"
+    },
+    {
+        "matricola": "36106",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36106"
+    },
+    {
+        "matricola": "36107",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36107"
+    },
+    {
+        "matricola": "36108",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36108"
+    },
+    {
+        "matricola": "36109",
+        "settore": "Suburbano",
+        "modello": "MAN Lion's City A40 GL CNG",
+        "link": "/startravenna_bus/suburbano/mana40.html#36109"
+    },
+    {
+        "matricola": "37111",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37111"
+    },
+    {
+        "matricola": "37112",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37112"
+    },
+    {
+        "matricola": "37113",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37113"
+    },
+    {
+        "matricola": "37114",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37114"
+    },
+    {
+        "matricola": "37115",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37115"
+    },
+    {
+        "matricola": "37116",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37116"
+    },
+    {
+        "matricola": "37117",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37117"
+    },
+    {
+        "matricola": "37118",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37118"
+    },
+    {
+        "matricola": "37119",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37119"
+    },
+    {
+        "matricola": "37120",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37120"
+    },
+    {
+        "matricola": "37121",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37121"
+    },
+    {
+        "matricola": "37122",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37122"
+    },
+    {
+        "matricola": "37123",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37123"
+    },
+    {
+        "matricola": "37124",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37124"
+    },
+    {
+        "matricola": "37125",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37125"
+    },
+    {
+        "matricola": "37126",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37126"
+    },
+    {
+        "matricola": "37127",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37127"
+    },
+    {
+        "matricola": "37128",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37128"
+    },
+    {
+        "matricola": "37129",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37129"
+    },
+    {
+        "matricola": "37130",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37130"
+    },
+    {
+        "matricola": "37131",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37131"
+    },
+    {
+        "matricola": "37132",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37132"
+    },
+    {
+        "matricola": "37133",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37133"
+    },
+    {
+        "matricola": "37134",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37134"
+    },
+    {
+        "matricola": "37135",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37135"
+    },
+    {
+        "matricola": "37136",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37136"
+    },
+    {
+        "matricola": "37137",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37137"
+    },
+    {
+        "matricola": "37138",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37138"
+    },
+    {
+        "matricola": "37139",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37139"
+    },
+    {
+        "matricola": "37140",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37140"
+    },
+    {
+        "matricola": "37141",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37141"
+    },
+    {
+        "matricola": "37142",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37142"
+    },
+    {
+        "matricola": "37143",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37143"
+    },
+    {
+        "matricola": "37144",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37144"
+    },
+    {
+        "matricola": "37145",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37145"
+    },
+    {
+        "matricola": "37146",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37146"
+    },
+    {
+        "matricola": "37147",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37147"
+    },
+    {
+        "matricola": "37148",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37148"
+    },
+    {
+        "matricola": "37149",
+        "settore": "Urbano",
+        "modello": "Karsan e-ATAK",
+        "link": "/startravenna_bus/urbano/karsan.html#37149"
+    }      
 ]
