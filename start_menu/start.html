@@ -23,13 +23,23 @@
   </header>
   <h1>START Romagna - Bacino di Ravenna</h1>
   <div class="verticale">
-    <a href="start_menu/starturbano.html" class="button">Urbano</a>
-    <a href="start_menu/startsub.html" class="button">Suburbano</a>
-    <a href="start_menu/startextra.html" class="button">Extraurbano</a>
+    <h3>Cerca una matricola</h3>
+    <input type="text" id="searchBar" placeholder="Cerca per matricola...">
+    <div id="bus-container"></div>
   </div>
-  <div style="height: 35px;"></div>
-  <div>
-    <a class="gbutton" href="startravenna_bus/listamezzi.html">Lista mezzi</a>
+  <br>
+  <div id="buttons">
+    <div class="verticale">
+      <h3>Oppure sfoglia una categoria</h3>
+      <a href="/start_menu/starturbano.html" class="button">Urbano</a>
+      <a href="/start_menu/startsub.html" class="button">Suburbano</a>
+      <a href="/start_menu/startextra.html" class="button">Extraurbano</a>
+    </div>
+    <div style="height: 35px;"></div>
+    <div>
+      <a class="gbutton" href="/startravenna_bus/listamezzi.html">Lista mezzi</a>
+    </div>
   </div>
+  <script src="/scripts/startsearch.js"></script>
 </body>
 </html>
