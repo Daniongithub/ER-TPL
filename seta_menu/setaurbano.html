@@ -26,11 +26,21 @@
         </nav>
     </header>
     <h1>Autobus Urbani di SETA Modena</h1>
+    <script>
+        document.querySelectorAll('img').forEach(img => {
+          img.addEventListener('error', function () {
+            const fallback = this.getAttribute('data-fallback');
+            if (fallback && this.src !== fallback) {
+              this.src = fallback;
+            }
+          });
+        });
+    </script>
     <table class="image-table">
         <tr>
             <td>
                 <p>113, 115-117, 120-121, 123-125, 128-132<br>Mercedes Citaro O530N Diesel</p>
-                <a href="/setamodena_bus/urbano/citarodiesel.html"><img class="bus" src="https://drive-vichingo455.duckdns.org/apps/files_sharing/publicpreview/dydYxaqMrKce3Zj?file=/Leo/SETA/Citaro%20Diesel/117-2.jpg&fileId=234151&x=1920&y=1080"alt="Server foto non raggiungibile." style="width:100%"></a>
+                <a href="/setamodena_bus/urbano/citarodiesel.html"><img class="bus" src="http://serverissimo.freeddns.org:30081/apps/files_sharing/publicpreview/ffdqobqRg2ezKXt?file=/Leo/SETA/Citaro%20Diesel/117-2.jpg&fileId=9674&x=1920&y=1080&etag=cb5efc9e356f03195595921d182a8f54" data-fallback="https://drive-vichingo455.duckdns.org/apps/files_sharing/publicpreview/dydYxaqMrKce3Zj?file=/Leo/SETA/Citaro%20Diesel/117-2.jpg&fileId=234151&x=1920&y=1080" alt="Server foto non raggiungibile." style="width:100%"></a>
             </td>
             <td>
                 <p>133-142<br>Irisbus Cityclass CNG CURSOR (ATCM)</p>
