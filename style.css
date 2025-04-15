@@ -176,12 +176,12 @@ table.image-table img {
         width: 100%;
     }
 
-    td {
+    table.image-table td {
         display: block;
         width: 100%;
     }
 
-    img {
+    table.image-table img {
         margin-bottom: 10px;
     }
 }
