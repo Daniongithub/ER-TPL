@@ -192,29 +192,28 @@ table.image-table img {
     border-spacing: 0;
     margin: auto;
     border: 2px solid gray;
-    overflow: hidden;
 }
 .lista-mezzi thead{
     background-color: #282828;
     position: sticky;
     top: 0;
-    display: table;
-    width: 100%;
-    table-layout: fixed;
 }
 .lista-mezzi th, .lista-mezzi td{
     padding: 10px;
     text-align: center;
     border: 1px solid gray;
-    white-space: nowrap;
 }
 .lista-mezzi thead th{
     position: sticky;
     top: 0;
     z-index: 2;
 }
+.lista-mezzi thead tr{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
 .lista-mezzi tbody{
-    display: block;
     overflow-y: auto;
 }
 .lista-mezzi tbody tr{
