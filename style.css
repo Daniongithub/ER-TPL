@@ -202,6 +202,9 @@ table.image-table img {
     padding: 10px;
     text-align: center;
     border: 1px solid gray;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 .lista-mezzi thead th{
     position: sticky;
