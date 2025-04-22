@@ -138,6 +138,9 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+td a{
+    text-decoration: none;
+}
 .nospazio{
     margin-top: 0px;
     margin-bottom: 0px;
