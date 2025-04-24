@@ -1,8 +1,296 @@
 [
     {
+        "matricola": "19071",
+        "vettore" : "Pollini",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/pollini.html#19071"
+    },
+    {
+        "matricola": "19072",
+        "vettore" : "Pollini",
+        "modello" : "Irisbus Karosa Axer",
+        "link": "/ravenna_privatibus/pollini.html#19072"
+    },
+    {
+        "matricola": "19073",
+        "vettore" : "Pollini",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/pollini.html#19073"
+    },
+    {
+        "matricola": "19074",
+        "vettore" : "Pollini",
+        "modello" : "Irisbus Crossway",
+        "link": "/ravenna_privatibus/pollini.html#19074"
+    },
+    {
+        "matricola": "19101",
+        "vettore" : "Gamberini",
+        "modello" : "Mercedes-Benz Sprinter",
+        "link": "/ravenna_privatibus/gamberini.html#19101"
+    },
+    {
+        "matricola": "19102",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon Millemiglia ex APT Gorizia",
+        "link": "/ravenna_privatibus/gamberini.html#19102"
+    },
+    {
+        "matricola": "19103",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon IL.3 ex APT",
+        "link": "/ravenna_privatibus/gamberini.html#19103"
+    },
+    {
+        "matricola": "19104",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon IL.3 ex APT",
+        "link": "/ravenna_privatibus/gamberini.html#19104"
+    },
+    {
+        "matricola": "19105",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon Millemiglia",
+        "link": "/ravenna_privatibus/gamberini.html#19105"
+    },
+    {
+        "matricola": "19106",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon IL.3 ex APT",
+        "link": "/ravenna_privatibus/gamberini.html#19106"
+    },
+    {
+        "matricola": "19107",
+        "vettore" : "Gamberini",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/gamberini.html#19107"
+    },
+    {
+        "matricola": "19108",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon IN.3 ex ATAP",
+        "link": "/ravenna_privatibus/gamberini.html#19108"
+    },
+    {
+        "matricola": "19109",
+        "vettore" : "Gamberini",
+        "modello" : "Irisbus Indcar Mago",
+        "link": "/ravenna_privatibus/gamberini.html#19109"
+    },
+    {
+        "matricola": "19110",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon IL.3 ex APT",
+        "link": "/ravenna_privatibus/gamberini.html#19110"
+    },
+    {
+        "matricola": "19111",
+        "vettore" : "Gamberini",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/gamberini.html#19111"
+    },
+    {
+        "matricola": "19112",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon IL.3 ex APT",
+        "link": "/ravenna_privatibus/gamberini.html#19112"
+    },
+    {
+        "matricola": "19113",
+        "vettore" : "Gamberini",
+        "modello" : "Setra S315UL",
+        "link": "/ravenna_privatibus/gamberini.html#19113"
+    },
+    {
+        "matricola": "19114",
+        "vettore" : "Gamberini",
+        "modello" : "Iveco Crossway LE CNG",
+        "link": "/ravenna_privatibus/gamberini.html#19114"
+    },
+    {
         "matricola": "19115",
         "vettore" : "Gamberini",
         "modello" : "Volvo 8900 LE 14",
         "link": "/ravenna_privatibus/gamberini.html#19115"
+    },
+    {
+        "matricola": "19116",
+        "vettore" : "Gamberini",
+        "modello" : "Setra S417UL ex TPER",
+        "link": "/ravenna_privatibus/gamberini.html#19116"
+    },
+    {
+        "matricola": "19117",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon Millemiglia",
+        "link": "/ravenna_privatibus/gamberini.html#19117"
+    },
+    {
+        "matricola": "19201",
+        "vettore" : "Zaganelli",
+        "modello" : "Irisbus Evadys H",
+        "link": "/ravenna_privatibus/zaganelli.html#19201"
+    },
+    {
+        "matricola": "19202",
+        "vettore" : "Zaganelli",
+        "modello" : "Irisbus Evadys",
+        "link": "/ravenna_privatibus/zaganelli.html#19202"
+    },
+    {
+        "matricola": "19203",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway Line",
+        "link": "/ravenna_privatibus/zaganelli.html#19203"
+    },
+    {
+        "matricola": "19204",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway Line",
+        "link": "/ravenna_privatibus/zaganelli.html#19204"
+    },
+    {
+        "matricola": "19205",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19205"
+    },
+    {
+        "matricola": "19206",
+        "vettore" : "Zaganelli",
+        "modello" : "Volvo 8700",
+        "link": "/ravenna_privatibus/zaganelli.html#19206"
+    },
+    {
+        "matricola": "19207",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19207"
+    },
+    {
+        "matricola": "19208",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19208"
+    },
+    {
+        "matricola": "19209",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19209"
+    },
+    {
+        "matricola": "19210",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19210"
+    },
+    {
+        "matricola": "19211",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19211"
+    },
+    {
+        "matricola": "19212",
+        "vettore" : "Zaganelli",
+        "modello" : "Irisbus Arway 12",
+        "link": "/ravenna_privatibus/zaganelli.html#19212"
+    },
+    {
+        "matricola": "19213",
+        "vettore" : "Zaganelli",
+        "modello" : "Setra S315GTHD",
+        "link": "/ravenna_privatibus/zaganelli.html#19213"
+    },
+    {
+        "matricola": "19214",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19214"
+    },
+    {
+        "matricola": "19215",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19215"
+    },
+    {
+        "matricola": "19216",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19216"
+    },
+    {
+        "matricola": "19217",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19217"
+    },
+    {
+        "matricola": "19218",
+        "vettore" : "Zaganelli",
+        "modello" : "Volvo 8700 LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19218"
+    },
+    {
+        "matricola": "19219",
+        "vettore" : "Zaganelli",
+        "modello" : "Volvo 8700 LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19219"
+    },
+    {
+        "matricola": "19220",
+        "vettore" : "Zaganelli",
+        "modello" : "Volvo 8700 LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19220"
+    },
+    {
+        "matricola": "19221",
+        "vettore" : "Zaganelli",
+        "modello" : "Volvo 8700 LE",
+        "link": "/ravenna_privatibus/zaganelli.html#19221"
+    },
+    {
+        "matricola": "19222",
+        "vettore" : "Zaganelli",
+        "modello" : "Mercedes-Benz Intouro",
+        "link": "/ravenna_privatibus/zaganelli.html#19222"
+    },
+    {
+        "matricola": "19223",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19223"
+    },
+    {
+        "matricola": "19224",
+        "vettore" : "Zaganelli",
+        "modello" : "Sconosciuto",
+        "link": "/ravenna_privatibus/zaganelli.html#19224"
+    },
+    {
+        "matricola": "19225",
+        "vettore" : "Zaganelli",
+        "modello" : "Setra S417UL",
+        "link": "/ravenna_privatibus/zaganelli.html#19225"
+    },
+    {
+        "matricola": "19226",
+        "vettore" : "Zaganelli",
+        "modello" : "Setra S417UL",
+        "link": "/ravenna_privatibus/zaganelli.html#19226"
+    },
+    {
+        "matricola": "19227",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19227"
+    },
+    {
+        "matricola": "19228",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19228"
     }
 ]
