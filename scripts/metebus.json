@@ -266,7 +266,7 @@
     {
         "matricola": "19224",
         "vettore" : "Zaganelli",
-        "modello" : "Sconosciuto",
+        "modello" : "Setra S417UL",
         "link": "/ravenna_privatibus/zaganelli.html#19224"
     },
     {
@@ -292,5 +292,11 @@
         "vettore" : "Zaganelli",
         "modello" : "Iveco Crossway LE ex Austria",
         "link": "/ravenna_privatibus/zaganelli.html#19228"
+    },
+    {
+        "matricola": "19513",
+        "vettore" : "Cooperativa Trasporti di Riolo Terme",
+        "modello" : "Isuzu Novo Ultra",
+        "link": "/ravenna_privatibus/riolo.html#19513"
     }
 ]
