@@ -291,7 +291,8 @@ table.image-table img {
 div.riga {
     flex: 1;
     min-width: 0;
-    border: 2px solid white;
+    border: 2px solid #3d3d3d;
+    border-radius: 5px;
     padding: 15px;
     box-sizing: border-box;
     overflow-wrap: break-word;
