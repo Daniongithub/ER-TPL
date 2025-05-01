@@ -187,6 +187,9 @@ table.image-table img {
     table.image-table img {
         margin-bottom: 10px;
     }
+    .container {
+        flex-direction: column;
+    }
 }
 /*zona lista mezzi*/
 .lista-mezzi{
@@ -277,4 +280,20 @@ table.image-table img {
     width: 300px;
     margin: 20px;
     font-size: 16px;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px;
+}
+div.riga {
+    flex: 1;
+    min-width: 0;
+    border: 2px solid white;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
