@@ -298,5 +298,23 @@
         "vettore" : "Cooperativa Trasporti di Riolo Terme",
         "modello" : "Isuzu Novo Ultra",
         "link": "/ravenna_privatibus/riolo.html#19513"
+    },
+    {
+        "matricola": "30",
+        "vettore" :"Gamberini",
+        "modello" :"Scania De Simon IN.3 ex ATAP",
+        "link": "/ravenna_privatibus/gamberini.html#gamb30"
+    },
+    {
+        "matricola": "34",
+        "vettore" :"Gamberini",
+        "modello" :"Volvo B10 Poland ex SAF Udine",
+        "link": "/ravenna_privatibus/gamberini.html#gamb34"
+    },
+    {
+        "matricola": "46",
+        "vettore" :"Gamberini",
+        "modello" :"Scania De Simon IL.3 ex APT",
+        "link": "/ravenna_privatibus/gamberini.html#gamb46"
     }
 ]
