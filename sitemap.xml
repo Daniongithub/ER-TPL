@@ -166,11 +166,6 @@
 		<lastmod>2025-04-23</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/template.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-04-23</lastmod>
-	</url>
-	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/menarinocng.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-04-23</lastmod>
@@ -191,17 +186,7 @@
 		<lastmod>2025-04-23</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/uwmh.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-04-23</lastmod>
-	</url>
-	<url>
 		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/uw.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-04-23</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/startravenna_bus/suburbano/template.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-04-23</lastmod>
 	</url>
