@@ -124,12 +124,15 @@ nav {
     text-align: center;
     flex-shrink: 0;
 }
-  
+nav.index{
+    display: flex;
+    min-height: 51px;
+}
 nav ul li {
     margin-left: 20px;
     margin-right: 20px;
 }
-  
+ 
 nav ul li a {
     color: #fff;
     text-decoration: none;
