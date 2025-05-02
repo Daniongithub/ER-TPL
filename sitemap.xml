@@ -3,7 +3,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2025-05-01</lastmod>
+		<lastmod>2025-05-02</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/pagenotavailable.html</loc>
@@ -24,6 +24,16 @@
 		<loc>https://www.ertpl.pages.dev/404.html</loc>
 		<priority>0.75</priority>
 		<lastmod>2025-04-23</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/altri_menu/at.html</loc>
+		<priority>0.50</priority>
+		<lastmod>2025-05-02</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/other_menu/altri.html</loc>
+		<priority>0.50</priority>
+		<lastmod>2025-05-02</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/busottolalinea.html</loc>
