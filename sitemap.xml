@@ -3,7 +3,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2025-05-08</lastmod>
+		<lastmod>2025-05-09</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/404.html</loc>
@@ -24,6 +24,16 @@
 		<loc>https://www.ertpl.pages.dev/pagenotavailable.html</loc>
 		<priority>0.75</priority>
 		<lastmod>2025-04-23</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/tper_menu/tperextra.html</loc>
+		<priority>0.50</priority>
+		<lastmod>2025-05-09</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/tper_menu/tpersub.html</loc>
+		<priority>0.50</priority>
+		<lastmod>2025-05-09</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/ravenna_menu/mete.html</loc>
@@ -123,7 +133,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_menu/tper.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-04-23</lastmod>
+		<lastmod>2025-05-09</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/busottolalinea.html</loc>
@@ -139,6 +149,16 @@
 		<loc>https://www.ertpl.pages.dev/altri_menu/at.html</loc>
 		<priority>0.50</priority>
 		<lastmod>2025-05-02</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/template.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-05-09</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/newmanc.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-05-09</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/ares.html</loc>
