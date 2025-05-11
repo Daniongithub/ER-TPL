@@ -32,7 +32,7 @@
     {
         "matricola": "19102",
         "vettore" : "Gamberini",
-        "modello" : "Scania De Simon Millemiglia ex APT Gorizia",
+        "modello" : "Scania De Simon Millemiglia HD ex APT Gorizia",
         "link": "/ravenna_privatibus/gamberini.html#19102"
     },
     {
@@ -50,7 +50,7 @@
     {
         "matricola": "19105",
         "vettore" : "Gamberini",
-        "modello" : "Scania De Simon Millemiglia",
+        "modello" : "Scania De Simon Millemiglia HD",
         "link": "/ravenna_privatibus/gamberini.html#19105"
     },
     {
@@ -118,12 +118,6 @@
         "vettore" : "Gamberini",
         "modello" : "Setra S417UL ex TPER",
         "link": "/ravenna_privatibus/gamberini.html#19116"
-    },
-    {
-        "matricola": "19117",
-        "vettore" : "Gamberini",
-        "modello" : "Scania De Simon Millemiglia",
-        "link": "/ravenna_privatibus/gamberini.html#19117"
     },
     {
         "matricola": "19201",
@@ -316,5 +310,17 @@
         "vettore" :"Gamberini",
         "modello" :"Scania De Simon IL.3 ex APT",
         "link": "/ravenna_privatibus/gamberini.html#gamb46"
+    },
+    {
+        "matricola": "50",
+        "vettore" :"Gamberini",
+        "modello" :"Scania De Simon Millemiglia HD",
+        "link": "/ravenna_privatibus/gamberini.html#gamb50"
+    },
+    {
+        "matricola": "53",
+        "vettore" :"Gamberini",
+        "modello" :"Scania De Simon Millemiglia",
+        "link": "/ravenna_privatibus/gamberini.html#gamb53"
     }
 ]
