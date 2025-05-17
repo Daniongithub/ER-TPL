@@ -1,5 +1,6 @@
 function generatd() {
     const matricola = document.getElementById("matricola").value.trim();
+    var numero = document.getElementById("numero").value.trim();
     const link = document.getElementById("link").value.trim();
 
     if (!matricola || !link) {
@@ -16,8 +17,12 @@ function generatd() {
             alert("Parametro ?file= mancante nell'URL.");
             return;
         }
+        
+        if (numero === "") {
+            numero = 1;
+        }
 
-        const htmlString = `<td><a id="${matricola}-link1" href="${link}"><img id="${matricola}-img1" src="${link}" onerror='this.onerror=null; changeUrlToFallback("${matricola}-link1","${matricola}-img1","${path}");' alt="Server foto non raggiungibile."></a></td>`;
+        const htmlString = `<td><a id="${matricola}-link${numero}" href="${link}"><img id="${matricola}-img${numero}" src="${link}" onerror='this.onerror=null; changeUrlToFallback("${matricola}-link${numero}","${matricola}-img${numero}","${path}");' alt="Server foto non raggiungibile."></a></td>`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
@@ -73,8 +78,14 @@ function copiaOutput() {
     });
 }
 
-function pulisci() {
+function puliscitd() {
     document.getElementById("matricola").value = "";
     document.getElementById("link").value = "";
     document.getElementById("output").innerHTML = "";
 }
+
+function pulisciimg() {
+    document.getElementById("mezzo").value = "";
+    document.getElementById("link").value = "";
+    document.getElementById("output").innerHTML = "";
+}  
