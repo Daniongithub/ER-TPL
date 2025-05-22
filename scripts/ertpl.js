@@ -7,17 +7,17 @@ path = path for the image starting from the root, for example /Dani/10225.jpg
 */
 function changeUrlToFallback(aid,imgid,path) {
     try {
-        document.getElementById(imgid).src = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/9AejGcwKf9F735n?file=" + path + "&x=1920&y=1080&a=true";
+        document.getElementById(imgid).src = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080&a=true";
     } catch {}
     try {
-        document.getElementById(aid).href = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/9AejGcwKf9F735n?file=" + path + "&x=1920&y=1080&a=true";
+        document.getElementById(aid).href = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080&a=true";
     } catch {}
 }
 function changeUrlToFallbackNoTrue(aid,imgid,path) {
     try {
-        document.getElementById(imgid).src = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/9AejGcwKf9F735n?file=" + path + "&x=1920&y=1080";
+        document.getElementById(imgid).src = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080";
     } catch {}
     try {
-        document.getElementById(aid).href = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/9AejGcwKf9F735n?file=" + path + "&x=1920&y=1080";
+        document.getElementById(aid).href = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080";
     } catch {}
 }
