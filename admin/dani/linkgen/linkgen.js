@@ -80,6 +80,7 @@ function copiaOutput() {
 
 function puliscitd() {
     document.getElementById("matricola").value = "";
+    document.getElementById("numero").value = "";
     document.getElementById("link").value = "";
     document.getElementById("output").innerHTML = "";
 }
