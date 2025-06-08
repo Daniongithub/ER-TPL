@@ -21,8 +21,8 @@ searchBar.addEventListener('input', () => {
         productsContainer.innerHTML = ' ';
         buttons.innerHTML = `
         <div class="verticale">
-            <a href="/tper_menu/tpersub.html" class="button">Suburbano</a>
-            <a href="/tper_menu/tperextra.html" class="button">Extraurbano</a>
+            <a href="/tper_menu/bol.html" class="button">Bologna</a>
+            <a href="/tper_menu/fer.html" class="button">Ferrara</a>
         </div>
         `;
         return;
@@ -43,6 +43,7 @@ function renderProducts(products) {
         div.innerHTML = `
             <a href="${bus.link}">
                 <h3>${bus.matricola}</h3>
+                <p>${bus.bacino}</p>
                 <p>${bus.modello}</p>
                 <p>${bus.settore}</p>
             </a>
