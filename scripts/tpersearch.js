@@ -43,7 +43,6 @@ function renderProducts(products) {
         div.innerHTML = `
             <a href="${bus.link}">
                 <h3>${bus.matricola}</h3>
-                <p>${bus.bacino}</p>
                 <p>${bus.modello}</p>
                 <p>${bus.settore}</p>
             </a>
