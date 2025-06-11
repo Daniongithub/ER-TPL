@@ -1,0 +1,18 @@
+body{
+    text-align: center;
+    font-family: Consolas;
+    background-color: #282828;
+    color:white;
+}
+div.output{
+    font-size: 80%;
+    background-color: black;
+    min-height:150px;
+    border-radius: 10px;
+}
+p.output{
+    padding-top:5px;
+    padding-left:5px;
+    padding-right:5px;
+    margin:0;
+}

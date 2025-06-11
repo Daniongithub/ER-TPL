@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore <td></title>
+    <link rel="stylesheet" href="style.css">
+    <script src="linkgen.js"></script>
+</head>
+<body>
+    <h1>Generatore di &lt;td&gt; per ER-TPL</h1>
+    <a href="notrue.html">Generatore &lt;img&gt;</a>
+    <p>Inserisci matricola:</p>
+    <input type="number" id="matricola" required="required">
+    <p>Inserisci il nome del modello (quello della cartella):</p>
+    <select name="modelli" id="link">
+        <option value="A-Sprinter">A-Sprinter</option>
+        <option value="BMB Avancity+">BMB Avancity+</option>
+        <option value="Busotto NGT">Busotto NGT</option>
+        <option value="Citaro CNG">Citaro CNG</option>
+        <option value="Citaro Diesel">Citaro Diesel</option>
+        <option value="Citaro Diesel LE">Citaro Diesel LE</option>
+        <option value="Citaro G ex Koln">Citaro G ex Koln</option>
+        <option value="Citaro G ex TPER">Citaro G ex TPER</option>
+        <option value="Citelis">Citelis</option>
+        <option value="Cityclass ATCM">Cityclass ATCM</option>
+        <option value="Cityclass PAVIA">Cityclass PAVIA</option>
+        <option value="CW Irisbus">CW Irisbus</option>
+        <option value="CW LE">CW LE</option>
+        <option value="CW LE Bianchi">CW LE Bianchi</option>
+        <option value="CW LE CNG">CW LE CNG</option>
+        <option value="CW LE Irisbus">CW LE Irisbus</option>
+        <option value="CW LE Lunghi">CW LE Lunghi</option>
+        <option value="CW Line">CW Line</option>
+        <option value="CW Line CNG">CW Line CNG</option>
+        <option value="Integro">Integro</option>
+        <option value="Integro Giallo">Integro Giallo</option>
+        <option value="Irisbus Ares">Irisbus Ares</option>
+        <option value="Irizar">Irizar</option>
+        <option value="Lion's City G 3p">Lion's City G 3p</option>
+        <option value="Lion's City G 4p">Lion's City G 4p</option>
+        <option value="Lion's City L">Lion's City L</option>
+        <option value="Lion's Regio">Lion's Regio</option>
+        <option value="Menarino cng">Menarino cng</option>
+        <option value="Menarino Ing">Menarino Ing</option>
+        <option value="Neoplan Electroliner">Neoplan Electroliner</option>
+        <option value="New MAN 19">New MAN 19</option>
+        <option value="Setra ex Bolzano">Setra ex Bolzano</option>
+        <option value="Solaris 12 CNG">Solaris 12 CNG</option>
+        <option value="Solaris Diesel">Solaris Diesel</option>
+        <option value="Solaris Urbino 18">Solaris Urbino 18</option>
+        <option value="Trollino 12">Trollino 12</option>
+        <option value="UW">UW</option>
+        <option value="Volvo Reggiano">Volvo Reggiano</option>
+    </select>
+    <button onclick="generatd()">Conferma</button>
+    <button onclick="copiaOutput()">Copia negli appunti</button>
+    <div style="min-height: 50px;"></div>
+    <div class="output"><p id="output" class="output"></p></div>
+    <table>
+    </table>
+</body>
+<footer style="position: fixed;bottom: 0;text-align: center;width: 100%;">
+    <p>Brought to you by: Menarino cng</p>
+</footer>
+</html>
