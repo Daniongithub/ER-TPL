@@ -8,11 +8,12 @@ const startMatricola = parseInt(matrda);
 const endMatricola = parseInt(matra);
 let jsonArray = [];
 for (let i = startMatricola; i <= endMatricola; i++) {
+	link2 = link + "#" + i.toString();
     let baseJson = {
         "matricola": i.toString(),
         "settore": selezione,
         "modello": modello,
-        "link": link
+        "link": link2
     };
 
     jsonArray.push(baseJson);
