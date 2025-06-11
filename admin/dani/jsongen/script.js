@@ -34,6 +34,7 @@ function copiaOutput() {
 function pulisci() {
     document.getElementById("matrda").value = "";
     document.getElementById("matra").value = "";
+    document.getElementById("modello").value = "";
     document.getElementById("link").value = "";
     document.getElementById("output").innerHTML = "";
 }
