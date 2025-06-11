@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <title>Start Romagna - Autobus in tempo reale</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+  <center><img src="img/start.png" alt="Start Romagna" width="10%"></center>
+  <h1>Autobus in tempo reale</h1>
+  <h3 id="clock">00:00:00</h3>
+  <!-- Contenitore per i filtri per ogni colonna -->
+  <div class="filter-container">
+    <input type="text" id="filterZona" placeholder="Filtra per zona" />
+    <input type="text" id="filterLinea" placeholder="Filtra per linea" />
+    <input type="text" id="filterVeicolo" placeholder="Filtra per veicolo" />
+    <input type="text" id="filterCodiceFermata" placeholder="Filtra per codice fermata" />
+    <button type="button" id="resetFilters" onclick="clearFilters()">Reset</button>
+  </div>
+
+  <div id="data-container"><p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p></div>
+
+  <p style="text-align: center; color: white;">Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by EmmeV (Vichingo455) <a href="https://git.vichingo455.freeddns.org/emmev-code/start-livebus" target="_blank">Codice Sorgente</a></p>
+  <p style="text-align: center; color: white;">Start Romagna, Start e il logo Start Romagna sono marchi registrati e protetti da copyright da Start Romagna SpA. Vengono usati in questa pagina solo per riferimento.</p>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+:root {
+    --primary-color: #afafaf;
+    --accent-color: #0074d9;
+    --bg-color: #2e2d2d;
+    --white: #ffffff;
+    --light-gray: #848991;
+    --border-color: #727070;
+    --text-color: #ffffff;
+    --black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--bg-color);
+    /*border-radius: 10px;*/
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);*/
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+form label {
+    font-weight: 600;
+}
+
+form select,
+form button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+form button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #005fa3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    display: none;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    background-color: var(--light-gray);
+}
+
+tr:nth-child(even) {
+    background-color: #505050;
+}
+
+.loading-message {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+footer {
+    text-align: center;
+}
+a {
+    color: var(--text-color);
+}
