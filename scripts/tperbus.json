@@ -1,6 +1,8 @@
-{
+[
+    {
     "matricola": "placeholderMatricola",
     "settore": "placeholderSettore",
     "modello": "placeholderModello",
     "link": "placeholderLink"
-}
+    }
+]

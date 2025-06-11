@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JsonGen</title>
+    <link rel="stylesheet" href="/admin/dani/linkgen/style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>JsonGen</h1>
+    <div>
+        <p>Inserisci matricola a partire da:</p>
+        <input type="number" id="matrda">
+        <p>Matricola a:</p>
+        <input type="number" id="matra">
+    </div>
+    <p>Seleziona settore:</p>
+    <select id="selezione">
+        <option value="urbano">Urbano</option>
+        <option value="suburbano">Suburbano</option>
+        <option value="extraurbano">Extraurbano</option>
+    </select>
+    <p>Inserisci modello mezzo:</p>
+    <input type="text" id="modello">
+    <p>Inserisci link HTML:</p>
+    <input type="text" id="link">
+    <button onclick="genera()">Conferma</button>
+    <button onclick="copiaOutput()">Copia negli appunti</button>
+	<button onclick="pulisci()">Pulisci</button>
+    <pre><code id="output"></code></pre>
+</body>
+</html>

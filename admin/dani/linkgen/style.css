@@ -2,3 +2,6 @@ body{
     text-align: center;
     font-family: Consolas;
 }
+pre{
+    text-align: left;
+}
