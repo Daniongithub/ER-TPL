@@ -1,12 +1,7 @@
 function generatd() {
     const matricola = document.getElementById("matricola").value.trim();
     var link = document.getElementById("link").value.trim();
-
-    if (!matricola || !link) {
-        alert("Compila entrambi i campi.");
-        return;
-    }
-
+    
     try {
         link = "https://drive.serverissimo.freeddns.org/apps/files_sharing/publicpreview/ffdqobqRg2ezKXt?file=/Leo/SETA/"+link+"/"+matricola;
 
