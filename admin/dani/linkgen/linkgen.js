@@ -38,22 +38,16 @@ function generatd() {
 
 function generaimg() {
     const mezzo = document.getElementById("mezzo").value.trim();
-    const link = document.getElementById("link").value.trim();
-
+    var link = document.getElementById("link").value.trim();
     if (!mezzo || !link) {
         alert("Compila entrambi i campi.");
         return;
     }
-
+    link = link.replace(/&a=true/, '');
     try {
         const urlObj = new URL(link);
         const params = new URLSearchParams(urlObj.search);
         const path = params.get("file");
-
-        if (!path) {
-            alert("Parametro ?file= mancante nell'URL.");
-            return;
-        }
 
         const htmlString = `<img id="${mezzo}" class="bus" src="${link}" onerror='this.onerror=null; changeUrlToFallbackNoTrue("","${mezzo}","${path}");' alt="Server foto non raggiungibile.">`;
 
