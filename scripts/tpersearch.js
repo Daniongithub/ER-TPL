@@ -21,9 +21,9 @@ searchBar.addEventListener('input', () => {
         productsContainer.innerHTML = ' ';
         buttons.innerHTML = `
         <div class="verticale">
-            <a href="/pagenotavailable.html" class="button">Urbano</a>
+            <a href="/tper_menu/tperurb.html" class="button">Urbano</a>
             <a href="/tper_menu/tpersub.html" class="button">Suburbano</a>
-            <a href="/pagenotavailable.html" class="button">Extraurbano</a>
+            <a href="/tper_menu/tperext.html" class="button">Extraurbano</a>
         </div>
         `;
         return;
