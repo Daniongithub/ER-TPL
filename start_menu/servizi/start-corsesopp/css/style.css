@@ -101,6 +101,7 @@ tr:nth-child(even) {
 footer {
     text-align: center;
 }
+
 a {
-    color: var(--text-color);
+	color: orange;
 }
