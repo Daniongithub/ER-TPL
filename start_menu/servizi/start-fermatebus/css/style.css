@@ -1,0 +1,98 @@
+body {
+    background-color: #282828;
+    text-align: center;
+    color: white;
+    font-family: Helvetica;
+}
+
+.search-result {
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 15%;
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 8px;
+    width: 85%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+th {
+    background-color: lightslategray;
+}
+
+th,
+td {
+    border: 2px solid #444;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: dimgray;
+}
+
+.bus-card-red {
+    background-color: rgb(241, 120, 120) !important;
+}
+
+header {
+    font-size: 67%;
+    background-color: #333;
+    height: auto;
+    padding: 0px 0px;
+    align-items: start;
+    width: 100%;
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+}
+
+nav {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+nav.index {
+    display: flex;
+    min-height: 51px;
+}
+
+nav ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: orange;
+}
+
+@media (max-width: 768px) {
+    .search-result {
+        display: block;
+    }    
+}

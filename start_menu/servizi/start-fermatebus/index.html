@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>START Romagna - Visualizza fermata</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+    <h1>Visualizzatore fermate START Romagna</h1>
+    <label for="bacino">Bacino:</label>
+    <select id="bacino">
+        <option value="" selected>--Scegli un'opzione--</option>
+        <option value="ra">Ravenna</option>
+        <option value="rn">Rimini</option>
+        <option value="fc">Forlì-Cesena</option>
+    </select>
+    <div>
+        <label for="searchBar">Cerca fermata:</label>
+        <input type="text" id="searchBar" placeholder="Cerca una fermata...">
+    </div>
+    <div id="searchResults"></div>
+    <footer>
+        <p>Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani <a href="https://git.vichingo455.freeddns.org/daniele/start-fermatebus" target="_blank">Codice Sorgente</a><br>
+        Start Romagna, Start e il logo Start Romagna sono marchi registrati e protetti da copyright da Start Romagna SpA. Vengono usati in questa pagina solo per riferimento.</p>
+    </footer>
+    <script src="js/cercafermata.js"></script>
+</body>
+</html>
