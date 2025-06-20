@@ -7,7 +7,8 @@ console.log(palina, targetID, selectedOption);
 // Esempio URL backend che ritorna JSON { linea, destinazione, veicolo, soppressa }
 const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus.json/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 
-fetch(urlBackend)
+function caricadati(){
+    fetch(urlBackend)
     .then(res => res.json())
     .then(data => {
         const container = document.getElementById('tabella-container');
@@ -56,3 +57,8 @@ fetch(urlBackend)
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
     });
+}
+
+caricadati();
+
+setInterval(caricaDati, 60000);
