@@ -15,7 +15,7 @@
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Titillium Web;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
