@@ -61,4 +61,4 @@ function caricadati(){
 
 caricadati();
 
-setInterval(caricaDati, 60000);
+setInterval(caricadati, 60000);
