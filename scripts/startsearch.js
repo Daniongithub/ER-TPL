@@ -26,9 +26,13 @@ searchBar.addEventListener('input', () => {
             <a href="/start_menu/startextra.html" class="button">Extraurbano</a>
         </div>
         <div style="height: 35px;"></div>
-        <div>
+        <div class="verticale">
             <a class="gbutton" href="/startravenna_bus/listamezzi.html">Lista mezzi</a>
+            <a class="gbutton" href="/start_menu/servizi/start-fermatebus/">Visualizzatore fermate</a>
+            <a class="gbutton" href="/start_menu/servizi/start-livebus/">Autobus in tempo reale</a>
+            <a class="gbutton" href="/start_menu/servizi/start-corsesopp/">Corse non garantite</a>
         </div>
+        <p>I servizi "Visualizzatore fermate", "Autobus in tempo reale" e "Corse non garantite" fanno uso di dati forniti da servizi Start Romagna. <br>L'unica cosa che facciamo è ottenerli e impaginarli in maniera differente dai servizi Start, spesso perchè fatti male.</p>
         `;
         return;
     }
