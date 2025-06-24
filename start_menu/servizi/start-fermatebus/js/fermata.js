@@ -2,15 +2,15 @@ const params = new URLSearchParams(window.location.search);
 const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
-console.log(palina, targetID, selectedOption);
 
-// Esempio URL backend che ritorna JSON { linea, destinazione, veicolo, soppressa }
 const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus.json/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-
+//const urlBackend = `http://localhost:3005/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 function caricadati(){
     fetch(urlBackend)
     .then(res => res.json())
     .then(data => {
+        const fermata_span = document.getElementById('fermata-span');
+        fermata_span.innerHTML = `"${data[0].fermata}"`;
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
 
@@ -28,6 +28,8 @@ function caricadati(){
                     <tr>
                         <th>Linea</th>
                         <th>Destinazione</th>
+                        <th>Orario</th>
+                        <th>Stato attuale</th>
                         <th>Veicolo</th>
                         <th>Soppressa</th>
                     </tr>
@@ -36,7 +38,7 @@ function caricadati(){
 
         // Corpo tabella
         const tbody = document.createElement('tbody');
-        data.forEach(item => {
+        data.slice(1).forEach(item => {
             const tr = document.createElement('tr');
             if (item.soppressa) {
                 tr.classList.add('bus-card-red');
@@ -44,6 +46,8 @@ function caricadati(){
             tr.innerHTML = `
                         <td>${item.linea}</td>
                         <td>${item.destinazione}</td>
+                        <td>${item.orario}</td>
+                        <td>${item.stato}</td>
                         <td>${item.mezzo}</td>
                         <td>${item.soppressa ? 'Sì' : 'No'}</td>
                     `;
