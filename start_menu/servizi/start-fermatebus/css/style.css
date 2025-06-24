@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #afafaf;
+    --accent-color: #0074d9;
+    --bg-color: #2e2d2d;
+    --white: #ffffff;
+    --light-gray: #848991;
+    --border-color: #727070;
+    --text-color: #ffffff;
+    --black: #000000;
+}
 body {
     background-color: #282828;
     text-align: center;
@@ -95,4 +105,11 @@ a {
     .search-result {
         display: block;
     }    
+}
+#bacino,
+#searchBar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
 }
