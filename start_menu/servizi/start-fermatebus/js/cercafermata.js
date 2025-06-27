@@ -34,8 +34,14 @@ function populateSearchResults(results, selectedOption) {
 }
 
 function filterOptions(query, data) {
-    return data.filter(item => item.nome.toLowerCase().includes(query.toLowerCase()));
+    const q = query.toLowerCase();
+    return data.filter(item =>
+        (item.nome || '').toLowerCase().includes(q) ||
+        (item.palina || '').toLowerCase().includes(q) ||
+        (item.targetID || '').toLowerCase().includes(q)
+    );
 }
+
 
 let allOptions = [];
 let currentSelectedOption = '';
