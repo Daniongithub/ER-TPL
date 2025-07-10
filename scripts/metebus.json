@@ -120,6 +120,12 @@
         "link": "/ravenna_privatibus/gamberini.html#19116"
     },
     {
+        "matricola": "19117",
+        "vettore" : "Gamberini",
+        "modello" : "Scania De Simon Millemiglia HD ex APT Gorizia",
+        "link": "/ravenna_privatibus/gamberini.html#19117"
+    },
+    {
         "matricola": "19201",
         "vettore" : "Zaganelli",
         "modello" : "Irisbus Evadys H",
@@ -310,12 +316,6 @@
         "vettore" :"Gamberini",
         "modello" :"Scania De Simon IL.3 ex APT",
         "link": "/ravenna_privatibus/gamberini.html#gamb46"
-    },
-    {
-        "matricola": "50",
-        "vettore" :"Gamberini",
-        "modello" :"Scania De Simon Millemiglia HD",
-        "link": "/ravenna_privatibus/gamberini.html#gamb50"
     },
     {
         "matricola": "53",
