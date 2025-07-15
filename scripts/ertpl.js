@@ -23,6 +23,8 @@ function changeUrlToFallbackNoTrue(aid,imgid,path) {
     } catch {}
 }
 
+// The functions below are used to display from how much time the project has been living
+
 const startDate = new Date("2024-12-22T15:49:00");
 
 function updateTimer() {
@@ -44,7 +46,9 @@ function updateTimer() {
         hours + " ore " +
         minutes + " minuti " +
         seconds + " secondi";
-    }
+}
 
-updateTimer();
-setInterval(updateTimer, 1000);
+function chisiamoInizializza() {
+    updateTimer();
+    setInterval(updateTimer, 1000);
+}
