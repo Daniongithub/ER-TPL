@@ -3,8 +3,7 @@ const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
 
-//const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus.json/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-const urlBackend = `https://api.allorigins.win/get?url=${encodeURIComponent('http://balledelmona.keenetic.link:3005/?param=36&param2=ra&palina=700050')}`;
+const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus.json/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 //const urlBackend = `http://localhost:3005/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 function caricadati(){
     fetch(urlBackend)
