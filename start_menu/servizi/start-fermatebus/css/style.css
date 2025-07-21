@@ -113,3 +113,9 @@ a {
     border-radius: 6px;
     border: 1px solid var(--border-color);
 }
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}

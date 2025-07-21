@@ -1,10 +1,3 @@
-function loadJSON(file, callback) {
-    fetch(file)
-        .then(response => response.json())
-        .then(data => callback(data))
-        .catch(error => console.error('Errore nel caricare il file JSON:', error));
-}
-
 function populateSearchResults(results, selectedOption) {
     const searchResultsContainer = document.getElementById('searchResults');
     searchResultsContainer.innerHTML = '';
@@ -57,25 +50,23 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    let file = '';
-    switch (selectedOption) {
-        case 'ra':
-            file = 'js/fermate-ra.json';
-            break;
-        case 'rn':
-            file = 'js/fermate-rn.json'; 
-            break;
-        case 'fc':
-            file = 'js/fermate-fc.json';
-            break;
-        default:
-            allOptions = [];
-            document.getElementById('searchResults').innerHTML = '';
-            return;
+    if (!selectedOption) {
+        allOptions = [];
+        document.getElementById('searchResults').innerHTML = '';
+        return;
     }
 
-    loadJSON(file, (data) => {
-        allOptions = data;
-        populateSearchResults(allOptions, currentSelectedOption);
-    });
+    const resultsContainer = document.getElementById('searchResults');
+    resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
+
+    fetch(`https://api.vichingo455.freeddns.org/start-fermatebus/bacino?selectedOption=${selectedOption}`)
+        .then(res => res.json())
+        .then(data => {
+            allOptions = data;
+            populateSearchResults(allOptions, selectedOption);
+        })
+        .catch(err => {
+            resultsContainer.innerHTML = '<p>Errore nel caricamento delle fermate.</p>';
+            console.error('Errore:', err);
+        });
 });

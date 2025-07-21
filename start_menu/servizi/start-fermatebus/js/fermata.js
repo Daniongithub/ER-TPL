@@ -3,19 +3,21 @@ const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
 
-const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus.json/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-//const urlBackend = `http://localhost:3005/?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
+const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
+//const urlBackend = `http://localhost:3005/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 function caricadati(){
     fetch(urlBackend)
     .then(res => res.json())
     .then(data => {
         const fermata_span = document.getElementById('fermata-span');
-        fermata_span.innerHTML = `"${data[0].fermata}"`;
+        if (data[0] && data[0].fermata !== undefined) {
+            fermata_span.innerHTML = `"${data[0].fermata}"`;
+        }
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
 
         if (!data || data.length === 0) {
-            container.textContent = 'Nessun dato trovato.';
+            container.innerHTML = '<h3>Nessuna linea in arrivo.</h3>';
             return;
         }
 
