@@ -19,7 +19,7 @@ function populateSearchResults(results, selectedOption) {
 
         div.addEventListener('click', () => {
             const url = `fermata.html?palina=${encodeURIComponent(item.palina)}&targetID=${encodeURIComponent(item.targetID)}&selectedOption=${encodeURIComponent(selectedOption)}`;
-            window.location.href = url;
+            window.open(url, '_blank');
         });
 
         searchResultsContainer.appendChild(div);
