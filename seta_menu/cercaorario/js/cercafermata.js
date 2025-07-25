@@ -4,7 +4,7 @@ const resultsContainer = document.getElementById('searchResults');
 let allresults = [];
 window.onbeforeunload=searchBar.value="";
 
-const url = 'http://setaapi.serverissimo.freeddns.org/stoplist';
+const url = 'https://setaapi.serverissimo.freeddns.org/stoplist';
 fetch(url)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");

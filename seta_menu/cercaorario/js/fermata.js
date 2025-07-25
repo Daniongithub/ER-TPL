@@ -6,7 +6,7 @@ const codice = params.get('code');
 const fermata_span = document.getElementById('fermata-span');
 fermata_span.innerHTML = `"${nome}"`;
 
-const urlBackend = `http://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
+const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
 function caricadati(){
     fetch(urlBackend)
     .then(response => {
