@@ -142,6 +142,12 @@ nav ul li a {
 nav ul li a:hover {
     text-decoration: underline;
 }
+
+nav ul li h1.warning {
+    color:red;
+    font-size: 16px;
+}
+
 .bus{
     border: 2px solid;
     border-style: hidden;
