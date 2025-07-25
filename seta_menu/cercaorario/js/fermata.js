@@ -32,12 +32,12 @@ function caricadati(){
         const thead = document.createElement('thead');
         thead.innerHTML = `
                     <tr>
-                        <th>Linea</th>
-                        <th>Direzione</th>
-                        <th>Orario</th>
-                        <th>Stato corsa</th>
-                        <th>Veicolo</th>
-                        <th>Ora si trova a:</th>
+                        <th class="linea">Linea</th>
+                        <th class="direzione">Direzione</th>
+                        <th class="orario">Orario</th>
+                        <th class="stato">Stato corsa</th>
+                        <th class="veicolo">Veicolo</th>
+                        <th class="location">Ora si trova a:</th>
                     </tr>
                 `;
         table.appendChild(thead);

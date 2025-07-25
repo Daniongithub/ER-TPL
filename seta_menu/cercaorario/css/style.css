@@ -30,24 +30,23 @@ body {
 table {
     border-collapse: collapse;
     border-radius: 8px;
-    width: 85%;
+    min-width: 85%;
+    max-width: 100%;
     margin: auto;
     margin-top: 1rem;
 }
 
 th {
-    background-color: lightslategray;
+    background-color: rgb(204, 132, 0);
 }
 
-th,
-td {
+th,td {
     border: 2px solid #444;
-    padding: 8px;
+    padding: .7vw;
+    padding-top: .6vw;
+    padding-bottom: .6vw;
     text-align: left;
-}
-
-tr:nth-child(even) {
-    background-color: dimgray;
+    font-size: 1.1vw;
 }
 
 .bus-card-red {
