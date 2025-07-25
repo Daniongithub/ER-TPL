@@ -8,6 +8,14 @@
     --text-color: #ffffff;
     --black: #000000;
 }
+
+@media (max-width: 768px) {
+    .search-result {
+        display: block;
+        width: 95.5%;
+    }
+}
+
 body {
     background-color: #282828;
     text-align: center;
