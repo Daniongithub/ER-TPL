@@ -36,7 +36,6 @@ th,td {
     padding-top: .6vw;
     padding-bottom: .6vw;
     text-align: left;
-    font-size: 1.1vw;
 }
 
 .bus-card-red {
@@ -108,6 +107,9 @@ a {
     }
     .container {
         flex-direction: column;
+    }
+    th,td {
+        font-size: 70%;
     }
 }
 #bacino,
