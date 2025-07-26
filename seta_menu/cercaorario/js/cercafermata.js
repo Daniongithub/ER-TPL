@@ -7,6 +7,7 @@ window.onbeforeunload=searchBar.value="";
 window.onbeforeunload=stopCodeBar.value="";
 
 const url = 'https://setaapi.serverissimo.freeddns.org/stoplist';
+//const url='http://localhost:5001/stoplist';
 fetch(url)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");

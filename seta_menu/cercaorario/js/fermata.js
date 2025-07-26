@@ -7,6 +7,7 @@ const fermata_span = document.getElementById('fermata-span');
 fermata_span.innerHTML = `"${nome}"`;
 
 const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
+//const urlBackend = `http://localhost:5001/arrivals/${codice}`;
 function caricadati(){
     fetch(urlBackend)
     .then(response => {
@@ -34,7 +35,7 @@ function caricadati(){
                     <tr>
                         <th class="linea">Linea</th>
                         <th class="direzione">Direzione</th>
-                        <th class="orario">Orario</th>
+                        <th class="orario">Orario (Rit/Ant)</th>
                         <th class="stato">Stato corsa</th>
                         <th class="veicolo">Veicolo</th>
                         <th class="location">Ora si trova a:</th>
@@ -55,7 +56,8 @@ function caricadati(){
             }else{
                 var posizione=item.next_stop;
             }
-            tr.innerHTML = `
+            if(item.delay==undefined){
+                tr.innerHTML = `
                         <td>${item.service}</td>
                         <td>${item.destination}</td>
                         <td>${item.arrival}</td>
@@ -63,7 +65,31 @@ function caricadati(){
                         <td>${item.busnum}</td>
                         <td>${posizione}</td>
                     `;
-            tbody.appendChild(tr);
+                tbody.appendChild(tr);
+            }else{
+                if(item.delay>0){
+                    tr.innerHTML = `
+                        <td>${item.service}</td>
+                        <td>${item.destination}</td>
+                        <td>${item.arrival} (+${item.delay})</td>
+                        <td>${stato}</td>
+                        <td>${item.busnum}</td>
+                        <td>${posizione}</td>
+                    `;
+                    tbody.appendChild(tr);
+                }else{
+                    tr.innerHTML = `
+                        <td>${item.service}</td>
+                        <td>${item.destination}</td>
+                        <td>${item.arrival} (${item.delay})</td>
+                        <td>${stato}</td>
+                        <td>${item.busnum}</td>
+                        <td>${posizione}</td>
+                    `;
+                    tbody.appendChild(tr);
+                }
+            }
+            
         });
         table.appendChild(tbody);
 
