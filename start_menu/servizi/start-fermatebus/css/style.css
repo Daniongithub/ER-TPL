@@ -109,11 +109,6 @@ a {
     color: orange;
 }
 
-@media (max-width: 768px) {
-    .search-result {
-        display: block;
-    }    
-}
 #bacino,
 #searchBar {
     padding: 10px;
