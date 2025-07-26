@@ -124,14 +124,12 @@ a {
     font-size: 16px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    width: 20vw;
 }
 #stopCodeBar {
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    width: 20vw;
 }
 
 footer {
