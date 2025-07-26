@@ -16,6 +16,8 @@ fetch(url)
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
 
 searchBar.addEventListener('input', () => {
+    const footer=document.getElementById('footer');
+    footer.innerHTML='';
     const searchTerm = searchBar.value.toLowerCase();
     const filtered = allresults.filter(item =>
         item.fermata.toLowerCase().includes(searchTerm)
