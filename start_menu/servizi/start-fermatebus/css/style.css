@@ -11,8 +11,8 @@
 
 @media (max-width: 768px) {
     .search-result {
-        display: block;
-        width: 95.5%;
+        display: block !important;
+        width: 95.5% !important;
     }
 }
 
