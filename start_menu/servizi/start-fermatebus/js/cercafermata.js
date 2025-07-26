@@ -59,7 +59,7 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     const resultsContainer = document.getElementById('searchResults');
     resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
 
-    fetch(`https://startapi.serverissimo.freeddns.org/start-fermatebus/bacino?selectedOption=${selectedOption}`)
+    fetch(`https://startapi.serverissimo.freeddns.org/bacino?selectedOption=${selectedOption}`)
         .then(res => res.json())
         .then(data => {
             allOptions = data;
