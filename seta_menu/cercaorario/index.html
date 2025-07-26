@@ -14,7 +14,7 @@
     <header>
         <nav>
             <ul>
-                <li><h1 class="warning">ATTENZIONE! Il servizio è ancora in fase di sviluppo e mancano le fermate di ritorno (codici 4000 in su), inoltre le corse vengono al momento duplicate, riferirsi sempre, se disponibile, a quella in tempo reale.</h1></li>
+                <li><h1 class="warning">ATTENZIONE! Il servizio è ancora in fase di sviluppo e le fermate potrebbero essere non corrette, mancano i ritorni, inoltre le corse vengono al momento duplicate, riferirsi sempre, se disponibile, a quella in tempo reale.</h1></li>
             </ul>
             <ul>
                 <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
@@ -35,8 +35,13 @@
     <div>
         <input type="text" id="searchBar" placeholder="Cerca una fermata...">
     </div>
+    <h3 style="margin: 16px;">Oppure:</h3>
+    <div>
+        <input type="text" id="stopCodeBar" placeholder="Inserisci un codice fermata...">
+    </div>
+    <p id="warning-mo">Attenzione! Se la palina non riporta MO all'inizio del codice, il MO NON va inserito!</p>
     <div id="searchResults"></div>
-    <footer id="footer">
+    <footer>
         <div>
 			<p>Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani & SetaModenaFanpage <a href="about:blank" target="_blank">Codice Sorgente (Inserire link)</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione.</p>
 		</div>
