@@ -42,8 +42,13 @@ th,td {
     background-color: rgb(241, 120, 120) !important;
 }
 
-nav ul li h1.warning {
+h1.warning {
     color:red;
+    font-size: 16px;
+}
+
+h1.yellow-warning {
+    color:rgb(255, 205, 0);
     font-size: 16px;
 }
 

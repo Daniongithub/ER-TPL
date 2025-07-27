@@ -148,6 +148,11 @@ nav ul li h1.warning {
     font-size: 16px;
 }
 
+nav ul li h1.yellow-warning {
+    color:rgb(255, 205, 0);
+    font-size: 16px;
+}
+
 .bus{
     border: 2px solid;
     border-style: hidden;
