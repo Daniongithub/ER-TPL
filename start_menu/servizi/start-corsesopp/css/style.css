@@ -14,7 +14,6 @@
 }
 
 body {
-    margin: 0;
     font-family: Titillium Web;
     background-color: var(--bg-color);
     color: var(--text-color);
