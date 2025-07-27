@@ -3,9 +3,7 @@ const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
 
-const urlBackend = `https://startapi.serverissimo.freeddns.org/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-//const urlBackend = `https://api.vichingo455.freeddns.org/start-fermatebus/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-//const urlBackend = `http://localhost:3005/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
+const urlBackend = `https://api.vichingo455.freeddns.org/fermateapi/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 function caricadati(){
     fetch(urlBackend)
     .then(res => res.json())
