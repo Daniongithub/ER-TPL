@@ -143,3 +143,7 @@ footer {
 	left: 0;
     width: 100%;
 }
+div.search-result div{
+    margin-left: 2px;
+    margin-right: 2px;
+}
