@@ -38,7 +38,7 @@ function caricadati(){
                         <th class="orario">Orario (Rit/Ant)</th>
                         <th class="stato">Stato corsa</th>
                         <th class="veicolo">Veicolo</th>
-                        <th class="location">Ora si trova a:</th>
+                        <th class="location">Ora si trova a</th>
                     </tr>
                 `;
         table.appendChild(thead);
