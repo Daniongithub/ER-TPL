@@ -52,3 +52,15 @@ function chisiamoInizializza() {
     updateTimer();
     setInterval(updateTimer, 1000);
 }
+
+function mostraemail() {
+    document.getElementById("email").innerHTML = "";
+    const p1 = "info";
+    const p2 = ".";
+    const p3 = "ertpl";
+    const p4 = "@";
+    const p5 = "gmail";
+    const p6 = ".";
+    const p7 = "com";
+    document.getElementById("email").innerHTML = p1+p2+p3+p4+p5+p6+p7;
+}

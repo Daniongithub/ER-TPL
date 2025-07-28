@@ -201,6 +201,14 @@ table.image-table img {
     max-width: 100%;
     height: auto;
 }
+.bottone{
+    border: none;
+    background: none;
+    text-decoration: underline;
+    color: rgb(0, 255, 0);
+    font-family: Titillium Web;
+    font-size: medium;
+}
 @media (max-width: 768px) {
     table.image-table {
         width: 100%;
