@@ -82,7 +82,10 @@ nav#corsie-nav ul li a{
     color: white;
     text-decoration: underline;
 }
-
+nav#corsie-nav ul li{
+    margin-left: 8px;
+    margin-right: 7px;
+}
 nav ul li {
     margin-left: 20px;
     margin-right: 20px;
@@ -124,6 +127,16 @@ a {
     }
     th,td {
         font-size: 70%;
+    }
+    nav#corsie-nav ul li a{
+        font-size: 75%;
+        margin: 0;
+    }
+    table {
+        margin-top: 10px;
+    }
+    h2{
+        margin-bottom: 0;
     }
 }
 #bacino,
