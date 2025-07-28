@@ -138,6 +138,12 @@ a {
     h2{
         margin-bottom: 0;
     }
+    #searchBar {
+        width: 80%;
+    }
+    #stopCodeBar {
+        width: 80%;
+    }
 }
 #bacino,
 #searchBar {
