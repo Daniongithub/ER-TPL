@@ -5,6 +5,64 @@ const codice = params.get('code');
 //Sets stop name
 const fermata_span = document.getElementById('fermata-span');
 fermata_span.innerHTML = `"${nome}"`;
+//Set corsie per stazione o autostazione
+const corsie_nav = document.getElementById('corsie-nav');
+if(nome=="STAZIONE FS (Corsia 1)"){
+    corsie_nav.innerHTML = `
+        <ul>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6133&name=STAZIONE%20FS%20(Corsia%202)">Corsia 2</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6134&name=STAZIONE%20FS%20(Corsia%203)">Corsia 3</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6119&name=STAZIONE%20FS%20(Corsia%204)">Corsia 4</a>
+            </li>
+        </ul>`;
+}
+if(nome=="STAZIONE FS (Corsia 2)"){
+    corsie_nav.innerHTML = `
+        <ul>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6132&name=STAZIONE%20FS%20(Corsia%201)">Corsia 1</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6134&name=STAZIONE%20FS%20(Corsia%203)">Corsia 3</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6119&name=STAZIONE%20FS%20(Corsia%204)">Corsia 4</a>
+            </li>
+        </ul>`;
+}
+if(nome=="STAZIONE FS (Corsia 3)"){
+    corsie_nav.innerHTML = `
+        <ul>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6132&name=STAZIONE%20FS%20(Corsia%201)">Corsia 1</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6133&name=STAZIONE%20FS%20(Corsia%202)">Corsia 2</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6119&name=STAZIONE%20FS%20(Corsia%204)">Corsia 4</a>
+            </li>
+        </ul>`;
+}
+if(nome=="STAZIONE FS (Corsia 4)"){
+    corsie_nav.innerHTML = `
+        <ul>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6132&name=STAZIONE%20FS%20(Corsia%201)">Corsia 1</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6133&name=STAZIONE%20FS%20(Corsia%202)">Corsia 2</a>
+            </li>
+            <li>
+                <a href="/seta_menu/cercaorario/fermata.html?code=MO6134&name=STAZIONE%20FS%20(Corsia%203)">Corsia 3</a>
+            </li>
+        </ul>`;
+}
 
 const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
 //const urlBackend = `http://localhost:5001/arrivals/${codice}`;

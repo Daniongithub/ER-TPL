@@ -8,7 +8,7 @@ body {
 .search-result {
     border: 2px solid white;
     border-radius: 8px;
-    width: 15%;
+    width: 20vw;
     margin: auto;
     margin-left: 5px;
     margin-right: 5px;
@@ -75,9 +75,12 @@ nav {
     flex-shrink: 0;
 }
 
-nav.index {
-    display: flex;
-    min-height: 51px;
+nav#corsie-nav ul{
+    justify-content: center;
+}
+nav#corsie-nav ul li a{
+    color: white;
+    text-decoration: underline;
 }
 
 nav ul li {
@@ -144,6 +147,9 @@ footer {
     width: 100%;
 }
 div.search-result div{
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+p.space{
+    width: 20px;
 }
