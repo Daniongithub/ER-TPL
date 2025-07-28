@@ -31,10 +31,14 @@ p {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-x: scroll;
 }
 
 .filter-container {
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
@@ -42,7 +46,10 @@ p {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  align-items: center;
+}
+
+.filter-container button{
+  margin-left: 15px;
 }
 
 .filter-container input {
@@ -69,6 +76,11 @@ table {
   font-size: 15px;
   border-radius: 8px;
   overflow: hidden;
+}
+
+table th:nth-child(6),
+td:nth-child(6){
+  display: none;
 }
 
 table,
@@ -99,12 +111,17 @@ tr:hover td {
 }
 
 @media (max-width: 768px) {
-  .filter-container {
-    flex-direction: column;
+  table th:nth-child(4),
+  td:nth-child(4){
+    display: none;
   }
 
-  .filter-container input button {
-    width: 100%;
+  .filter-container input{
+      margin-top: 5px;
+  }
+
+  .filter-container button{
+    margin-top: 75%;
   }
 }
 
@@ -173,4 +190,12 @@ nav ul li a:hover {
 }
 input::placeholder {
   color: white;
+}
+.immagine{
+  display: flex;
+  justify-content: center;
+}
+img{
+  margin-top: 10px;
+  width: 150px;
 }

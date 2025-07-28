@@ -6,24 +6,9 @@
 		<lastmod>2025-07-28</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/404.html</loc>
-		<priority>0.75</priority>
-		<lastmod>2025-05-11</lastmod>
-	</url>
-	<url>
 		<loc>https://www.ertpl.pages.dev/chisiamo.html</loc>
 		<priority>0.75</priority>
 		<lastmod>2025-07-27</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/google20540786677952e8.html</loc>
-		<priority>0.75</priority>
-		<lastmod>2025-04-23</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/pagenotavailable.html</loc>
-		<priority>0.75</priority>
-		<lastmod>2025-05-11</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_menu/tperextra.html</loc>
@@ -59,16 +44,6 @@
 		<loc>https://www.ertpl.pages.dev/ravenna_privatibus/zaganelli.html</loc>
 		<priority>0.50</priority>
 		<lastmod>2025-05-11</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/isp.html</loc>
-		<priority>0.50</priority>
-		<lastmod>2025-05-11</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/maintenance.html</loc>
-		<priority>0.50</priority>
-		<lastmod>2025-07-25</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/atcmlalinea.html</loc>
@@ -149,11 +124,6 @@
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/cwlinecng.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-06-06</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/template.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-05-11</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/newmanc.html</loc>
@@ -441,7 +411,7 @@
 		<lastmod>2025-05-11</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/menarinocng.html</loc>
+		<loc>https://www.ertpl.pages.dev/startravenna_bus/urbano/citymoodcng.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-05-11</lastmod>
 	</url>
@@ -469,10 +439,5 @@
 		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/bredino.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-04-23</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/seta_menu/test.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-07-25</lastmod>
 	</url>
 </urlset>

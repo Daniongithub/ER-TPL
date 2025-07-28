@@ -9,6 +9,17 @@
     --black: #000000;
 }
 
+@media (max-width: 768px) {
+    .divtab{
+        overflow-x: scroll;
+    }
+}
+
+img{
+  margin-top: 10px;
+  width: 150px;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -28,8 +39,6 @@ main {
     margin: 40px auto;
     padding: 30px;
     background-color: var(--bg-color);
-    /*border-radius: 10px;*/
-    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);*/
     text-align: center;
 }
 
