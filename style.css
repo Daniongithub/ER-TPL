@@ -75,7 +75,6 @@ a.gbutton{
     transform: translateY(5px)
 }
 footer{
-    position: fixed;
     left: 8px;
     right: 8px;
     bottom: 0px;
@@ -85,7 +84,6 @@ footer{
     border-radius: 10px;
 }
 div.footer{
-    position: fixed;
     left: 8px;
     right: 8px;
     bottom: 8px;
@@ -201,6 +199,9 @@ table.image-table img {
     max-width: 100%;
     height: auto;
 }
+.email{
+    width: 7%;
+}
 @media (max-width: 768px) {
     table.image-table {
         width: 100%;
@@ -216,6 +217,9 @@ table.image-table img {
     }
     .container {
         flex-direction: column;
+    }
+    .email{
+        width: 40%;
     }
 }
 /*zona lista mezzi*/
