@@ -104,6 +104,21 @@ nav ul li a:hover {
 a {
     color: orange;
 }
+#bacino,
+#searchBar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    width: 280px;
+}
+#stopCodeBar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    width: 280px;
+}
 
 @media (max-width: 768px) {
     .search-result {
@@ -144,19 +159,6 @@ a {
     #stopCodeBar {
         width: 80%;
     }
-}
-#bacino,
-#searchBar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-}
-#stopCodeBar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
 }
 
 footer {
