@@ -126,7 +126,7 @@ nav {
 }
 nav.index{
     display: flex;
-    min-height: 51px;
+    min-height: 46px;
 }
 nav ul li {
     margin-left: 20px;

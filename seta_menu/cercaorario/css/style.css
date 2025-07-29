@@ -23,7 +23,7 @@ table {
     min-width: 85%;
     max-width: 100%;
     margin: auto;
-    margin-top: 1rem;
+    margin-top: 18px;
 }
 
 th {
@@ -40,6 +40,10 @@ th,td {
 
 .bus-card-red {
     background-color: rgb(241, 120, 120) !important;
+}
+
+hr{
+    margin-top:19px;
 }
 
 h1.warning {
@@ -104,6 +108,11 @@ nav ul li a:hover {
 a {
     color: orange;
 }
+a.bianco{
+    color: white;
+    text-decoration: none;
+}
+
 #bacino,
 #searchBar {
     padding: 10px;
@@ -158,6 +167,9 @@ a {
     }
     #stopCodeBar {
         width: 80%;
+    }
+    hr{
+        margin-bottom:19px;
     }
 }
 
