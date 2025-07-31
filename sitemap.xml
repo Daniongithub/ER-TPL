@@ -53,7 +53,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/setaurbano.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-06-15</lastmod>
+		<lastmod>2025-07-31</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/setasub.html</loc>
@@ -228,7 +228,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/template.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-05-11</lastmod>
+		<lastmod>2025-07-31</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/surbinocng.html</loc>
@@ -253,7 +253,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/cityclassatcm.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-06-10</lastmod>
+		<lastmod>2025-07-31</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/citelis.html</loc>
@@ -444,5 +444,15 @@
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/extraurbano/cwlinecng.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-06-06</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/solarisidrogeno.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-07-31</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/setamodena_bus/urbano/uwfacelift.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-07-31</lastmod>
 	</url>
 </urlset>
