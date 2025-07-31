@@ -3,7 +3,7 @@ const bottoni = document.getElementById('buttons');
 const posto = params.get('location');
 const fermata_span = document.getElementById('fermata-span');
 
-fermata_span.innerHTML=posto;
+fermata_span.textContent=posto;
 
 if(posto=="STAZIONE FS"){
     bottoni.innerHTML = `
