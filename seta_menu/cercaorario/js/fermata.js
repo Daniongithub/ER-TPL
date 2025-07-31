@@ -4,7 +4,7 @@ const codice = params.get('code');
 
 //Sets stop name
 const fermata_span = document.getElementById('fermata-span');
-fermata_span.innerHTML = `"${nome}"`;
+fermata_span.textContent=nome;
 //Set corsie per stazione o autostazione
 const corsie_nav = document.getElementById('corsie-nav');
 if(nome.includes("STAZIONE FS")){
