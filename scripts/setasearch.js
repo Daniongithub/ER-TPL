@@ -32,15 +32,25 @@ searchBar.addEventListener('input', () => {
             <a class="gbutton" href="atcmlalinea.html">Archivio La Linea ATCM</a>
             <a class="gbutton" href="setastreetview.html">Storico StreetView</a>
         </div>
+        <div style="height: 5px;"></div>
+        <h2>Servizi SETA Modena:</h2>
+        <div>
+            <a class="gbutton" href="cercaorario/index.html">Orario in tempo reale</a>
+        </div>
         `;
         return;
     }
     buttons.innerHTML = ' ';
-        const searchTerm = searchBar.value.toLowerCase();
-        const filtered = allProducts.filter(bus =>
-            bus.matricola.toLowerCase().includes(searchTerm)
-        );
-        renderProducts(filtered);
+    const searchTerm = searchBar.value.toLowerCase();
+    const filtered = allProducts.filter(bus => bus.matricola.toLowerCase().includes(searchTerm))
+    .sort((a, b) => {
+        const aStartsWith = a.matricola.toLowerCase().startsWith(searchTerm);
+        const bStartsWith = b.matricola.toLowerCase().startsWith(searchTerm);
+        if (aStartsWith && !bStartsWith) return -1;
+        if (!aStartsWith && bStartsWith) return 1;
+        return 0; // keep original order if both or neither match at start
+    });
+    renderProducts(filtered);
 });
 
 function renderProducts(products) {

@@ -20,9 +20,15 @@ fetch(url)
 
 searchBar.addEventListener('input', () => {
     const searchTerm = searchBar.value.toLowerCase();
-    const filtered = allresults.filter(item =>
-        item.fermata.toLowerCase().includes(searchTerm)
-    );
+    const filtered = allresults
+    .filter(item => item.fermata.toLowerCase().includes(searchTerm))
+    .sort((a, b) => {
+        const aStartsWith = a.fermata.toLowerCase().startsWith(searchTerm);
+        const bStartsWith = b.fermata.toLowerCase().startsWith(searchTerm);
+        if (aStartsWith && !bStartsWith) return -1;
+        if (!aStartsWith && bStartsWith) return 1;
+        return 0;
+    });
     renderresults(filtered);
 });
 
