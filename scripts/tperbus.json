@@ -2920,5 +2920,65 @@
         "settore": "Extraurbano",
         "modello": "Iveco Crossway 12 CNG",
         "link": "/tper_bus/extraurbano/crossway12cng.html#3263"
+    },
+    {
+        "matricola": "5667",
+        "settore": "Urbano",
+        "modello": "MAN Lion's City 12G EfficientHybrid",
+        "link": "MAN Lion's City 12G EfficientHybrid#5667"
+    },
+    {
+        "matricola": "5668",
+        "settore": "Urbano",
+        "modello": "MAN Lion's City 12G EfficientHybrid",
+        "link": "MAN Lion's City 12G EfficientHybrid#5668"
+    },
+    {
+        "matricola": "5669",
+        "settore": "Urbano",
+        "modello": "MAN Lion's City 12G EfficientHybrid",
+        "link": "MAN Lion's City 12G EfficientHybrid#5669"
+    },
+    {
+        "matricola": "5670",
+        "settore": "Urbano",
+        "modello": "MAN Lion's City 12G EfficientHybrid",
+        "link": "MAN Lion's City 12G EfficientHybrid#5670"
+    },
+    {
+        "matricola": "5671",
+        "settore": "Urbano",
+        "modello": "MAN Lion's City 12G EfficientHybrid",
+        "link": "MAN Lion's City 12G EfficientHybrid#5671"
+    },
+    {
+        "matricola": "5672",
+        "settore": "Urbano",
+        "modello": "MAN Lion's City 12G EfficientHybrid",
+        "link": "MAN Lion's City 12G EfficientHybrid#5672"
+    },
+    {
+        "matricola": "1383",
+        "settore": "Suburbano",
+        "modello": "MAN A44 Lion's City L LE CNG",
+        "link": "/tper_bus/suburbano/manlcllecng.html#1383"
+    },
+    {
+        "matricola": "1384",
+        "settore": "Suburbano",
+        "modello": "MAN A44 Lion's City L LE CNG",
+        "link": "/tper_bus/suburbano/manlcllecng.html#1384"
+    },
+    {
+        "matricola": "1385",
+        "settore": "Suburbano",
+        "modello": "MAN A44 Lion's City L LE CNG",
+        "link": "/tper_bus/suburbano/manlcllecng.html#1385"
+    },
+    {
+        "matricola": "1386",
+        "settore": "Suburbano",
+        "modello": "MAN A44 Lion's City L LE CNG",
+        "link": "/tper_bus/suburbano/manlcllecng.html#1386"
     }
 ]
