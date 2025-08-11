@@ -68,14 +68,14 @@ if(posto=="GARIBALDI"){
         <a href="/seta_menu/cercaorario/fermata.html?code=MO30&name=GARIBALDI%20(dir.%20Trento%20Trieste)" class="bianco">
             <div class="search-result"><h3>Direzione Trento Trieste</h3></div>
         </a>
-        <a href="/seta_menu/cercaorario/fermata.html?code=MO5900&name=GARIBALDI%20(dir.%20Centro)" class="bianco">
-            <div class="search-result"><h3>Direzione Centro</h3></div>
+        <a href="/seta_menu/cercaorario/fermata.html?code=MO9&name=GARIBALDI (lato Caduti in Guerra)" class="bianco">
+            <div class="search-result"><h3>Lato Caduti in Guerra</h3></div>
         </a>
         <a href="/seta_menu/cercaorario/fermata.html?code=MO5111&name=GARIBALDI%20(Storchi%20dir.%20Trento%20Trieste)" class="bianco">
             <div class="search-result"><h3>Storchi direzione Trento Trieste</h3></div>
         </a>
         <a href="/seta_menu/cercaorario/fermata.html?code=MO5112&name=GARIBALDI%20(Storchi%20dir.%20Centro)" class="bianco">
-            <div class="search-result"><h3>Storchi direzione. Centro</h3></div>
+            <div class="search-result"><h3>Storchi direzione Centro</h3></div>
         </a>
     `;
 }
