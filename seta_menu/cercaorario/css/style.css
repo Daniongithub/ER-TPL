@@ -128,6 +128,9 @@ a.bianco{
     border: 1px solid var(--border-color);
     width: 280px;
 }
+img{
+    height:300px;
+}
 
 @media (max-width: 768px) {
     .search-result {
@@ -162,6 +165,9 @@ a.bianco{
     h2{
         margin-bottom: 0;
     }
+    h2.noreduction{
+        margin-bottom: 16px;
+    }
     #searchBar {
         width: 80%;
     }
@@ -170,6 +176,10 @@ a.bianco{
     }
     hr{
         margin-bottom:19px;
+    }
+    img{
+        width: 98%;
+        height: auto;
     }
 }
 
