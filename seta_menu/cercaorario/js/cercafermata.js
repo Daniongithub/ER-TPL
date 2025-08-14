@@ -20,6 +20,8 @@ fetch(url)
 
 searchBar.addEventListener('input', () => {
     const searchTerm = searchBar.value.toLowerCase();
+    const warning=document.getElementById('warning-mo');
+    warning.innerHTML='';
     const filtered = allresults
     .filter(item => item.fermata.toLowerCase().includes(searchTerm))
     .sort((a, b) => {
@@ -30,6 +32,12 @@ searchBar.addEventListener('input', () => {
         return 0;
     });
     renderresults(filtered);
+    if (searchBar.value == '') {
+        resultsContainer.innerHTML='';
+        warning.innerHTML = `
+        <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
+        `;
+    }
 });
 
 stopCodeBar.addEventListener('input', () => {
@@ -59,7 +67,7 @@ stopCodeBar.addEventListener('input', () => {
     if (stopCodeBar.value == '') {
         resultsContainer.innerHTML='';
         warning.innerHTML = `
-        Attenzione! Se la palina non riporta MO all'inizio del codice, il MO viene inserito in automatico!
+        <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
         `;
         return;
     }
