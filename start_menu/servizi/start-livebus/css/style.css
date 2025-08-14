@@ -1,15 +1,14 @@
 body {
-  font-family: Titillium Web;
-  padding: 20px;
-  background-color: #282828;
-  margin: 0;
+    background-color: #282828;
+    text-align: center;
+    color: white;
+    font-family: Titillium Web;
 }
 
 h1 {
   text-align: center;
   color: white;
   font-size: 2em;
-  margin-bottom: 30px;
 }
 
 h3 {
@@ -149,7 +148,6 @@ a {
 header {
   font-size: 67%;
   background-color: #333;
-  height: 51.3667px;
   padding: 0px 0px;
   align-items: start;
   width: 100%;
@@ -157,36 +155,32 @@ header {
 }
 
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
 }
-
 nav {
-  text-align: center;
-  flex-shrink: 0;
+    text-align: center;
 }
-
-nav.index {
-  display: flex;
-  min-height: 51px;
+nav.index{
+    display: flex;
+    min-height: 51px;
 }
-
 nav ul li {
-  margin-left: 20px;
-  margin-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
-
+ 
 nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
 }
-
+  
 nav ul li a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 input::placeholder {
   color: white;

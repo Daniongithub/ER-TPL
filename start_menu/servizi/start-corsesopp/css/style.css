@@ -1,7 +1,13 @@
+body {
+    background-color: #282828;
+    text-align: center;
+    color: white;
+    font-family: Titillium Web;
+}
+
 :root {
     --primary-color: #afafaf;
     --accent-color: #0074d9;
-    --bg-color: #2e2d2d;
     --white: #ffffff;
     --light-gray: #848991;
     --border-color: #727070;
@@ -16,29 +22,18 @@
 }
 
 img{
-  margin-top: 10px;
-  width: 150px;
+    margin-top: 10px;
+    width: 150px;
 }
 
 * {
     box-sizing: border-box;
 }
 
-body {
-    font-family: Titillium Web;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-h1 {
-    text-align: center;
-}
-
 main {
     max-width: 900px;
     margin: 40px auto;
     padding: 30px;
-    background-color: var(--bg-color);
     text-align: center;
 }
 
@@ -100,10 +95,6 @@ tr:nth-child(even) {
     color: #777;
     font-style: italic;
     padding: 20px 0;
-}
-
-footer {
-    text-align: center;
 }
 
 a {
