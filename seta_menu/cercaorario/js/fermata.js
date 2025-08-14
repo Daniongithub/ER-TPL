@@ -88,7 +88,7 @@ function caricadati(){
                         <td>${item.destination}</td>
                         <td>${item.arrival}</td>
                         <td>${stato}</td>
-                        <td>${item.busnum}</td>
+                        <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
                         <td>${posizione}</td>
                     `;
                 tbody.appendChild(tr);
@@ -99,7 +99,7 @@ function caricadati(){
                         <td>${item.destination}</td>
                         <td>${item.arrival} (+${item.delay})</td>
                         <td>${stato}</td>
-                        <td>${item.busnum}</td>
+                        <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
                         <td>${posizione}</td>
                     `;
                     tbody.appendChild(tr);
@@ -109,7 +109,7 @@ function caricadati(){
                         <td>${item.destination}</td>
                         <td>${item.arrival} (${item.delay})</td>
                         <td>${stato}</td>
-                        <td>${item.busnum}</td>
+                        <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
                         <td>${posizione}</td>
                     `;
                     tbody.appendChild(tr);
