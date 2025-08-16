@@ -55,4 +55,3 @@ document.getElementById("formStazione").addEventListener("submit", (e) => {
     caricaDati(e, true);
     avviaAggiornamentoAutomatico();
 });
-caricaStazioni();
