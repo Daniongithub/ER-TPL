@@ -61,7 +61,7 @@ tr:nth-child(even) {
 }
 
 .bus-card-red {
-    background-color: rgb(241, 120, 120) !important;
+    background-color: red !important;
 }
 
 header {
