@@ -78,7 +78,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/seta.html</loc>
 		<priority>0.50</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2025-08-19</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/atcmlalinea.html</loc>
@@ -469,5 +469,10 @@
 		<loc>https://www.ertpl.pages.dev/setamodena_bus/servizio.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-08-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_menu/livebus/altrecorsie.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-08-19</lastmod>
 	</url>
 </urlset>

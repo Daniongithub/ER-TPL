@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETA Modena - Orario fermate</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="https://www.setaweb.it/images/favicon/android-icon-192x192.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav style="display: flex;">
+            <ul>
+                <li><a href="/seta_menu/cercaorario/index.html"><h1 style="font-size: 100%;font-weight: 500;">Torna indietro</h1></a></li>
+            </ul>
+            <ul style="flex:1;justify-content: right;">
+                <li><a href=""><h1 style="font-size: 100%;font-weight: 500;">Aggiorna</h1></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Informazioni fermata "<span id="fermata-span"></span>"</h2>
+    <nav id="corsie-nav"></nav>
+    <div id="tabella-container">Caricamento dati...</div>
+    <p>Il ritardo viene espresso rispetto all'orario previsto. Quello indicato, se disponibile, è l'orario di arrivo in tempo reale.</p>
+    <p>E' possibile cliccare sul numero del mezzo per vedere la sua posizione sulla mappa.</p>
+    <footer>
+        <div>
+			<p>Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Leocraft1/SetaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione.</p>
+		</div>
+    </footer>
+    <script src="js/fermata.js"></script>
+</body>
+</html>
