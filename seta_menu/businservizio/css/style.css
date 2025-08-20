@@ -180,6 +180,7 @@ select,input{
     }
     table {
         margin-top: 10px;
+        min-width: 100%;
     }
     h2{
         margin-bottom: 0;
