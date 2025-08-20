@@ -30,6 +30,10 @@ table {
     margin-top: 18px;
 }
 
+td.uguale{
+    min-width: 50%;
+}
+
 th {
     background-color: rgb(204, 132, 0);
 }
@@ -43,7 +47,13 @@ th,td {
 }
 
 .bus-card-red {
-    background-color: rgb(241, 120, 120) !important;
+    background-color: rgb(55,0,0) !important;
+}
+.bus-card-yellow {
+    background-color: rgb(65, 65, 0) !important;
+}
+.bus-card-green {
+    background-color: rgb(0, 55, 0) !important;
 }
 
 hr{
@@ -81,18 +91,6 @@ nav ul {
 nav {
     text-align: center;
     flex-shrink: 0;
-}
-
-nav#corsie-nav ul{
-    justify-content: center;
-}
-nav#corsie-nav ul li a{
-    color: white;
-    text-decoration: underline;
-}
-nav#corsie-nav ul li{
-    margin-left: 8px;
-    margin-right: 7px;
 }
 nav ul li {
     margin-left: 20px;
@@ -169,54 +167,16 @@ select,input{
     padding-bottom: 0px;
 }
 
-input{
-    height: 46.8px;
-}
-
-#searchBar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    width: 280px;
-}
-#stopCodeBar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    width: 280px;
-}
-img{
-    height:300px;
-}
-
 @media (max-width: 768px) {
     .search-result {
         display: block;
         width: 95.5%;
-    }    
-    table.image-table {
-        width: 100%;
-    }
-
-    table.image-table td {
-        display: block;
-        width: 100%;
-    }
-
-    table.image-table img {
-        margin-bottom: 10px;
-    }
-    .container {
-        flex-direction: column;
     }
     th,td {
         font-size: 70%;
     }
-    nav#corsie-nav ul li a{
-        font-size: 75%;
-        margin: 0;
+    p.scaled{
+        font-size: 70%;
     }
     table {
         margin-top: 10px;
@@ -226,12 +186,6 @@ img{
     }
     h2.noreduction{
         margin-bottom: 16px;
-    }
-    #searchBar {
-        width: 80%;
-    }
-    #stopCodeBar {
-        width: 80%;
     }
     hr{
         margin-bottom:19px;

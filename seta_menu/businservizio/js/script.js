@@ -43,10 +43,9 @@ fetch(urlModels)
     });
     })
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
-
-const urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
 caricadati();
 function caricadati(){
+    const urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
     fetch(urlList)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
@@ -89,7 +88,7 @@ function caricadati(){
             tr.innerHTML = `
                 <td>${element.linea}</td>
                 <td>${element.route_desc}</td>
-                <td><a href="https://wimb.setaweb.it/qm/index.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
+                <td><a href="infoveicolo.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
                 <td>${element.model}</td>
                 <td>${posizione}</td>
             `;
@@ -104,3 +103,5 @@ function caricadati(){
         document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
     });
 }
+
+setInterval(caricadati, 60000);
