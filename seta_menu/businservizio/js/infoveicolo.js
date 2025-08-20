@@ -144,7 +144,6 @@ function caricadati(){
                         <td class="bus-card-green">${bus.num_passeggeri}</td>
                     </tr>
                 `;
-                tbody.appendChild(tr);
             }else if(bus.num_passeggeri<=bus.posti_totali/1.8){
                 tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -153,7 +152,6 @@ function caricadati(){
                         <td class="bus-card-yellow">${bus.num_passeggeri}</td>
                     </tr>
                 `;
-                tbody.appendChild(tr);
             }else{
                 tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -162,8 +160,16 @@ function caricadati(){
                         <td class="bus-card-red">${bus.num_passeggeri}</td>
                     </tr>
                 `;
-                tbody.appendChild(tr);
+            }if(bus.num_passeggeri==null){
+                tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <tr>
+                        <td>Numero passeggeri a bordo:</td>
+                        <td>Non disponibile</td>
+                    </tr>
+                `;
             }
+            tbody.appendChild(tr);
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
