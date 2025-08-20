@@ -71,7 +71,6 @@ function caricadati(){
                         <th class="direzione">Direzione</th>
                         <th class="orario">Veicolo</th>
                         <th class="stato">Modello veicolo</th>
-                        <th class="stato">Targa</th>
                         <th class="veicolo">Ora si trova a</th>
                     </tr>
                 `;
@@ -92,7 +91,6 @@ function caricadati(){
                 <td>${element.route_desc}</td>
                 <td><a href="https://wimb.setaweb.it/qm/index.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
                 <td>${element.model}</td>
-                <td>${element.plate_num}</td>
                 <td>${posizione}</td>
             `;
             tbody.appendChild(tr);
