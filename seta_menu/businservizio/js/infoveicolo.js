@@ -41,7 +41,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td class="uguale">Linea:</td>
-                    <td>${bus.linea}</td>
+                    <td class="uguale">${bus.linea}</td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -115,7 +115,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Ora si trova a:</td>
-                    <td>${bus.wp_desc}</td>
+                    <td>${bus.next_stop}</td>
                 </tr>
             `;
             tbody.appendChild(tr);
