@@ -23,15 +23,6 @@
         </nav>
     </header>
     <h1>Visualizzatore orari di arrivo SETA Modena</h1>
-    <!--
-    <label for="bacino">Bacino:</label>
-    <select id="bacino">
-        <option value="" selected>--Scegli un'opzione--</option>
-        <option value="ra">Ravenna</option>
-        <option value="rn">Rimini</option>
-        <option value="fc">Forlì-Cesena</option>
-    </select>
-    -->
     <div>
         <input type="text" id="searchBar" placeholder="Cerca una fermata...">
     </div>
@@ -40,7 +31,13 @@
         <input type="text" id="stopCodeBar" placeholder="Inserisci un codice fermata...">
     </div>
     <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
-    <div id="searchResults"></div>
+    
+    <div id="searchResults">
+        <h3 style="margin-bottom:4px;">Fermate rapide:</h3>
+        <a href="/seta_menu/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
+        <a href="/seta_menu/cercaorario/altrecorsie.html?location=STAZIONE FS" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
+        <a href="/seta_menu/cercaorario/altrecorsie.html?location=GARIBALDI" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
+    </div>
     <h1 class="yellow-warning">ATTENZIONE! Riportare eventuali discrepanze ai contatti del sito presenti in <a href="https://ertpl.pages.dev/chisiamo">chi siamo</a></h1>
     <footer>
         <div>

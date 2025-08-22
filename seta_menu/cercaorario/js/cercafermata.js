@@ -19,24 +19,30 @@ fetch(url)
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
 
 searchBar.addEventListener('input', () => {
-    const searchTerm = searchBar.value.toLowerCase();
     const warning=document.getElementById('warning-mo');
-    warning.innerHTML='';
-    const filtered = allresults
-    .filter(item => item.fermata.toLowerCase().includes(searchTerm))
-    .sort((a, b) => {
-        const aStartsWith = a.fermata.toLowerCase().startsWith(searchTerm);
-        const bStartsWith = b.fermata.toLowerCase().startsWith(searchTerm);
-        if (aStartsWith && !bStartsWith) return -1;
-        if (!aStartsWith && bStartsWith) return 1;
-        return 0;
-    });
-    renderresults(filtered);
     if (searchBar.value == '') {
-        resultsContainer.innerHTML='';
-        warning.innerHTML = `
-        <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
+        resultsContainer.innerHTML=`
+            <h3 style="margin-bottom:4px;">Fermate rapide:</h3>
+            <a href="/seta_menu/cercaorario/altrecorsie.html?location=STAZIONE FS" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
+            <a href="/seta_menu/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
+            <a href="/seta_menu/cercaorario/altrecorsie.html?location=GARIBALDI" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
         `;
+        warning.innerHTML = `
+            <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
+        `;
+    }else{
+        const searchTerm = searchBar.value.toLowerCase();
+        warning.innerHTML='';
+        const filtered = allresults
+        .filter(item => item.fermata.toLowerCase().includes(searchTerm))
+        .sort((a, b) => {
+            const aStartsWith = a.fermata.toLowerCase().startsWith(searchTerm);
+            const bStartsWith = b.fermata.toLowerCase().startsWith(searchTerm);
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return 0;
+        });
+        renderresults(filtered);
     }
 });
 
@@ -65,9 +71,14 @@ stopCodeBar.addEventListener('input', () => {
 
     searchResultsContainer.appendChild(div);
     if (stopCodeBar.value == '') {
-        resultsContainer.innerHTML='';
+        resultsContainer.innerHTML=`
+            <h3 style="margin-bottom:4px;">Fermate rapide:</h3>
+            <a href="" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
+            <a href="" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
+            <a href="" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
+        `;
         warning.innerHTML = `
-        <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
+            <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
         `;
         return;
     }
