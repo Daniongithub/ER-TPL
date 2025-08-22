@@ -230,6 +230,10 @@ table.image-table img {
     .container {
         flex-direction: column;
     }
+    iframe.chisiamo{
+        width: 340px;
+        height: 190px;
+    }
 }
 /*zona lista mezzi*/
 .lista-mezzi{
