@@ -351,6 +351,9 @@ table.image-table img {
 .lista-mezzi tbody tr.trasferito{
     background-color: blue;
 }
+.lista-mezzi a{
+    text-decoration: underline;
+}
 /* Zona ricerca */
 #bus-container a{
     text-decoration: none;
