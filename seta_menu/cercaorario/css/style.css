@@ -147,18 +147,6 @@ img{
     .search-result {
         display: block;
         width: 95.5%;
-    }    
-    table.image-table {
-        width: 100%;
-    }
-
-    table.image-table td {
-        display: block;
-        width: 100%;
-    }
-
-    table.image-table img {
-        margin-bottom: 10px;
     }
     .container {
         flex-direction: column;

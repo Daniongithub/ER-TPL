@@ -74,6 +74,29 @@ a.gbutton{
     box-shadow: none;
     transform: translateY(5px)
 }
+a.rbutton{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 20px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: .1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(200, 0, 0);
+    box-shadow: 0 5px 0 darkred;
+}
+.rbutton:active {
+    box-shadow: none;
+    transform: translateY(5px)
+}
 footer{
     position: fixed;
     left: 8px;
@@ -162,8 +185,33 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+table.greenhead{
+    border-collapse: collapse;
+    border-radius: 8px;
+    margin: auto;
+    margin-top: 18px;
+    width: 50%; 
+    text-align: left;
+}
+table.greenhead td,table.greenhead th{
+    border: 2px solid #444;
+    padding: .7vw;
+    padding-top: .6vw;
+    padding-bottom: .6vw;
+    text-align: left;
+    width: 50%;
+}
+table.greenhead td a{
+    text-decoration: underline;
+}
+table.greenhead th{
+    background-color: rgb(0, 160, 0);
+}
 td a{
     text-decoration: none;
+}
+td.sott a{
+    text-decoration: underline;
 }
 .nospazio{
     margin-top: 0px;
@@ -233,6 +281,15 @@ table.image-table img {
     iframe.chisiamo{
         width: 340px;
         height: 190px;
+    }
+    table.greenhead{
+        width: 100%; 
+    }
+    table.greenhead td,table.greenhead th{
+        border: 2px solid #444;
+        padding: 1.8vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
     }
 }
 /*zona lista mezzi*/
