@@ -7,7 +7,7 @@ const ritSpan = document.getElementById('ritardo-span');
 //Displays route code
 codiceSpan.innerHTML = id;
 
-const urlBackend = `http://setaapi.serverissimo.freeddns.org/nextstops/${id}`;
+const urlBackend = `https://setaapi.serverissimo.freeddns.org/nextstops/${id}`;
 //const urlBackend = `http://localhost:5001/arrivals/${codice}`;
 function caricadati(){
     var item=[];
