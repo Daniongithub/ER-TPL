@@ -14,20 +14,23 @@
     <header>
         <nav style="display: flex;">
             <ul>
-                <li><a href="/seta_menu/businservizio/index.html"><h1 style="font-size: 100%;font-weight: 500;">Torna indietro</h1></a></li>
+                <li><a href="/seta_menu/businservizio/index.html"><h1 style="font-size: 100%;font-weight: 500;">Monitor bus in servizio</h1></a></li>
             </ul>
             <ul style="flex:1;justify-content: right;">
                 <li><a href=""><h1 style="font-size: 100%;font-weight: 500;">Aggiorna</h1></a></li>
             </ul>
         </nav>
     </header>
-    <h2>Informazioni veicolo numero: <span id="numero-span"></span></h2>
+    <h2>Lista prossime fermate corsa: <span id="codice-span"></span></h2>
+    <p>Direzione: <span id="destinazione-span"></span></p>
+    <strong><p>Ritardo/Anticipo: <span id="ritardo-span"></span></p></strong>
+    <p>E' possibile cliccare sul codice o nome fermata per vedere gli arrivi alla rispettiva fermata.</p>
     <div id="tabella-container">Caricamento dati...</div>
     <footer>
         <div>
 			<p>Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Leocraft1/SetaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione.</p>
 		</div>
     </footer>
-    <script src="js/infoveicolo.js"></script>
+    <script src="js/percorso-rt.js"></script>
 </body>
 </html>

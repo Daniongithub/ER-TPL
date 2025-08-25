@@ -123,7 +123,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Codice percorso:</td>
-                    <td>${bus.route_code}</td>
+                    <td><a href="/seta_menu/percorsi/percorso.html?routecode=${bus.route_code}" class="bianco">${bus.route_code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -131,7 +131,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Codice corsa:</td>
-                    <td>${bus.journey_code}</td>
+                    <td><a href="/seta_menu/percorsi/prossimefermate.html?journeycode=${bus.journey_code}" class="bianco">${bus.journey_code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);

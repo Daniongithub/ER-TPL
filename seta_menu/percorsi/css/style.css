@@ -38,6 +38,10 @@ th,td {
     text-align: left;
 }
 
+td.uguale{
+    width: 50%;
+}
+
 .bus-card-red {
     background-color: rgb(241, 120, 120) !important;
 }
@@ -77,6 +81,11 @@ nav ul {
 nav {
     text-align: center;
     flex-shrink: 0;
+}
+
+nav.index{
+    display: flex;
+    min-height: 46px;
 }
 
 nav#corsie-nav ul{
@@ -124,21 +133,11 @@ a.link-cell {
   color: white;
 }
 
-#bacino,
-#searchBar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    width: 280px;
+#urbano-container{
+    display: flex;
+    justify-content: center;
 }
-#stopCodeBar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    width: 280px;
-}
+
 img{
     height:300px;
 }
