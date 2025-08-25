@@ -108,9 +108,12 @@ function caricadati(){
 //FILTRI
 //Filtro per linea
 lineaSelect.addEventListener('change', function(event) {
-    const eventConst=event;
-    caricaFiltratiLinea(eventConst);
-    setInterval(function dummyFunc(){caricaFiltratiLinea(eventConst);}, 60000);
+    if(intervalFiltrati!=undefined){
+        clearInterval(intervalFiltrati);
+    }
+    const selectedOption = event.target.value;
+    caricaFiltratiLinea(selectedOption);
+    var intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiLinea(selectedOption);}, 60000);
     clearInterval(refreshGeneraleID);
     if(document.getElementById("reimposta-filtro")==undefined){
         const reimpostaFiltro = document.createElement('p');
@@ -123,18 +126,31 @@ lineaSelect.addEventListener('change', function(event) {
     }
 });
 
-function caricaFiltratiLinea(event){
+function reloadFiltratiLinea(){
+    caricaFiltratiLinea(lineaSelect.value);
+}
+
+function caricaFiltratiLinea(selectedOption){
+    const container = document.getElementById('tabella-container');
+    container.innerHTML = 'Caricamento dati...';
     fetch(urlList)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
     })
     .then(data=>{
-        const selectedOption = event.target.value;
-        currentSelectedOption = selectedOption;
-        const container = document.getElementById('tabella-container');
         container.innerHTML = '';
-
+        //Sostituisco il pulsante aggiorna tutti col pulsante aggiorna filtrati
+        const aggiornaNav = document.getElementById('nav-inservizio');
+        aggiornaNav.innerHTML = `
+            <ul>
+                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+                <li><a href="/seta_menu/seta.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
+            </ul>
+            <ul style="flex:1;justify-content: right;">
+                <li><a href="javascript:reloadFiltratiLinea();"><h1 style="font-size: 16px;font-weight: 500;">Aggiorna</h1></a></li>
+            </ul>
+        `;
         // Creo tabella
         const table = document.createElement('table');
 
@@ -173,6 +189,7 @@ function caricaFiltratiLinea(event){
                 table.appendChild(tbody);
 
                 container.appendChild(table);
+                console.log("Ricarico");
             }else{
                 container.appendChild(table);
             }
