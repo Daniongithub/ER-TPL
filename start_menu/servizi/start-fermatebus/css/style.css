@@ -16,6 +16,10 @@ body {
     font-family: Titillium Web;
 }
 
+input{
+    margin-top: 5px;
+}
+
 .search-result {
     border: 2px solid white;
     border-radius: 8px;

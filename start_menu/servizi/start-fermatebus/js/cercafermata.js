@@ -50,16 +50,23 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    if (!selectedOption) {
+    const ricerca = document.getElementById('ricerca');
+    ricerca.removeAttribute('style');
+
+    document.getElementById('searchBar').value = "";
+    
+    if(selectedOption == "n"){
+        ricerca.setAttribute("style", "display: none;");
         allOptions = [];
         document.getElementById('searchResults').innerHTML = '';
         return;
     }
 
-    const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
+    if(selectedOption != "n"){
+        const resultsContainer = document.getElementById('searchResults');
+        resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
 
-    fetch(`https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`)
+        fetch(`https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`)
         .then(res => res.json())
         .then(data => {
             allOptions = data;
@@ -69,4 +76,5 @@ document.getElementById('bacino').addEventListener('change', function(event) {
             resultsContainer.innerHTML = '<p>Errore nel caricamento delle fermate.</p>';
             console.error('Errore:', err);
         });
+    }
 });
