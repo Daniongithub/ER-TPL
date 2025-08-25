@@ -1,0 +1,197 @@
+body {
+    background-color: #282828;
+    text-align: center;
+    color: white;
+    font-family: Titillium Web;
+}
+
+.search-result {
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 20vw;
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 8px;
+    min-width: 85%;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 18px;
+}
+
+th {
+    background-color: rgb(204, 132, 0);
+}
+
+th,td {
+    border: 2px solid #444;
+    padding: .7vw;
+    padding-top: .6vw;
+    padding-bottom: .6vw;
+    text-align: left;
+}
+
+.bus-card-red {
+    background-color: rgb(241, 120, 120) !important;
+}
+
+hr{
+    margin-top:19px;
+}
+
+h1.warning {
+    color:red;
+    font-size: 16px;
+}
+
+h1.yellow-warning {
+    color:rgb(255, 205, 0);
+    font-size: 16px;
+}
+
+header {
+    font-size: 67%;
+    background-color: #333;
+    height: auto;
+    padding: 0px 0px;
+    align-items: start;
+    width: 100%;
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+}
+
+nav {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+nav#corsie-nav ul{
+    justify-content: center;
+}
+nav#corsie-nav ul li a{
+    color: white;
+    text-decoration: underline;
+}
+nav#corsie-nav ul li{
+    margin-left: 8px;
+    margin-right: 7px;
+}
+nav ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: orange;
+}
+
+a.bianco{
+    color: white;
+    text-decoration: none;
+}
+
+a.biancosott{
+    color: white;
+}
+a.link-cell {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+#bacino,
+#searchBar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    width: 280px;
+}
+#stopCodeBar {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    width: 280px;
+}
+img{
+    height:300px;
+}
+
+@media (max-width: 768px) {
+    .search-result {
+        display: block;
+        width: 95.5%;
+    }
+    .container {
+        flex-direction: column;
+    }
+    th,td {
+        font-size: 70%;
+    }
+    nav#corsie-nav ul li a{
+        font-size: 75%;
+        margin: 0;
+    }
+    table {
+        margin-top: 10px;
+    }
+    h2{
+        margin-bottom: 0;
+    }
+    h2.noreduction{
+        margin-bottom: 16px;
+    }
+    #searchBar {
+        width: 80%;
+    }
+    #stopCodeBar {
+        width: 80%;
+    }
+    hr{
+        margin-bottom:19px;
+    }
+    img{
+        width: 98%;
+        height: auto;
+    }
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+	left: 0;
+    width: 100%;
+}
+div.search-result div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+p.space{
+    width: 20px;
+}

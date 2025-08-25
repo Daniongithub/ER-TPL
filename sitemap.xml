@@ -21,6 +21,11 @@
 		<lastmod>2025-08-04</lastmod>
 	</url>
 	<url>
+		<loc>https://ertpl.pages.dev/percorsi/index.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2025-08-04</lastmod>
+	</url>
+	<url>
 		<loc>https://ertpl.pages.dev/tper_menu/tperext.html</loc>
 		<priority>0.60</priority>
 		<lastmod>2025-08-04</lastmod>
@@ -63,7 +68,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_menu/setasub.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2025-08-25</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_menu/setastreetview.html</loc>
@@ -523,7 +528,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/newman.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2025-08-25</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/manl.html</loc>
