@@ -88,7 +88,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_menu/seta.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-25</lastmod>
+		<lastmod>2025-08-26</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_menu/radiatimenu.html</loc>
@@ -683,6 +683,11 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_menu/percorsi/prossimefermate.html</loc>
 		<priority>0.25</priority>
-		<lastmod>2025-08-25</lastmod>
+		<lastmod>2025-08-26</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_menu/percorsi/rcodes.html</loc>
+		<priority>0.25</priority>
+		<lastmod>2025-08-26</lastmod>
 	</url>
 </urlset>

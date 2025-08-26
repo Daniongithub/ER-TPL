@@ -12,7 +12,7 @@ const urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
 const urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
 //const urlModels = 'http://localhost:5001/stoplist';
 
-//Fetch routes and models and fill the select options
+//Fetch routes and models and fill the selects
 fetch(urlRoutes)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
@@ -21,11 +21,11 @@ fetch(urlRoutes)
     .then(data => {
         allresults = data;
         allresults.forEach(route => {
-        const option = document.createElement('option');
-        option.value = route;
-        option.textContent = route;
-        lineaSelect.appendChild(option);
-    });
+            const option = document.createElement('option');
+            option.value = route;
+            option.textContent = route;
+            lineaSelect.appendChild(option);
+        });
     })
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
 

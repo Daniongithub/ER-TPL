@@ -133,11 +133,6 @@ a.link-cell {
   color: white;
 }
 
-#urbano-container{
-    display: flex;
-    justify-content: center;
-}
-
 img{
     height:300px;
 }
@@ -145,7 +140,7 @@ img{
 @media (max-width: 768px) {
     .search-result {
         display: block;
-        width: 95.5%;
+        width: 96.5%;
     }
     .container {
         flex-direction: column;
