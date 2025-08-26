@@ -64,6 +64,11 @@ function routesDictionary(rcode){
             return "3 MONTEFIORINO";
         case "MO3-As-348":
             return "3 MATTARELLA";
+        //Linea 4
+        case "MO4-As-434":
+            return "4 GALILEI";
+        case "MO4-Di-437":
+            return "4 VACIGLIO NORD";
         
     }
 }
