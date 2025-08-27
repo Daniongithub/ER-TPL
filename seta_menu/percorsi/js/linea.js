@@ -1,10 +1,20 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get('routecode');
+const num = params.get('routenum');
 const codiceSpan = document.getElementById('codice-span');
 const destSpan = document.getElementById('destinazione-span');
+const pNav = document.getElementById('percorso-nav');
 
 //Displays route code
-codiceSpan.innerHTML = id;
+codiceSpan.textContent = id;
+//Nav per tornare indietro
+pNav.innerHTML = `            
+        <ul>
+            <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+            <li><a href="/seta_menu/percorsi/index.html"><h1 style="font-size: 100%;font-weight: 500;">Selettore linea</h1></a></li>
+            <li><a href="/seta_menu/percorsi/rcodes.html?routenum=${num}"><h1 style="font-size: 100%;font-weight: 500;">Selettore percorso</h1></a></li>
+        </ul>
+    `;
 
 const urlBackend = `https://setaapi.serverissimo.freeddns.org/routestops/${id}`;
 //const urlBackend = `http://localhost:5001/arrivals/${codice}`;
@@ -47,7 +57,7 @@ function caricadati(){
             `;
             tbody.appendChild(tr);
             if(element.islast==true){
-                destSpan.innerHTML=element.desc;
+                destSpan.innerHTML=element.desc.toUpperCase();
             }
         });
         table.appendChild(tbody);
