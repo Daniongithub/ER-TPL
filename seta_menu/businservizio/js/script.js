@@ -37,9 +37,15 @@ fetch(urlModels)
         allresults = data;
         allresults.forEach(model => {
             const option = document.createElement('option');
-            option.value = modelsDictionary(model);
-            option.textContent = model;
-            modelloSelect.appendChild(option);
+            if(
+                model!="CAM New Busotto"&&
+                model!="Iveco Cityclass CNG"&&
+                model!="Mercedes Integro O550 (Giallo)"
+            ){
+                option.value = modelsDictionary(model);
+                option.textContent = model;
+                modelloSelect.appendChild(option);
+            }
         });
     })
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
@@ -49,31 +55,83 @@ function modelsDictionary(model){
     if(model=="Irisbus Citelis CNG EEV"){
         return "Irisbus Citelis CNG";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="Irisbus Crossway"){
+        return "Irisbus Crossway";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="Irisbus Crossway ex Esercito Tedesco"){
+        return "Irisbus Crossway Esercito";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="Iveco Urbanway Mild Hybrid 2022"){
+        return "Iveco Urbanway Hybrid CNG";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="MenariniBus Citymood LNG"){
+        return "Menarinibus Citymood LNG";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="MenariniBus Citymood CNG"){
+        return "Menarinibus Citymood CNG";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="Iveco Crossway LE 12 CNG"){
+        return "Iveco Crossway LE CNG";
     }
-    if(model=="Irisbus Citelis CNG EEV"){
-        return "Irisbus Citelis CNG";
+    if(model=="Iveco Crossway LE"){
+        return "Iveco Crossway LE Diesel";
+    }
+    if(model=="Iveco Crossway Line"){
+        return "Iveco Crossway Line";
+    }
+    if(model=="Mercedes Integro O550"||model=="Mercedes Integro O550 (Giallo)"){
+        return "Mercedes Integro";
+    }
+    if(model=="Scania Irizar i4 LNG"){
+        return "Irizar i4 LNG";
+    }
+    if(model=="Solaris Urbino 12 III CNG"){
+        return "Solaris Urbino 12 CNG";
+    }
+    if(model=="Iveco Crossway Line 12 CNG"){
+        return "Iveco Crossway Line CNG";
+    }
+    if(model=="MAN Lion's Regio"){
+        return "MAN Lion's Regio";
+    }
+    if(model=="Setra S415 LE 2p ex Bolzano"){
+        return "Setra ex Bolzano (2 porte)";
+    }
+    if(model=="Setra S415 LE 3p ex Bolzano"){
+        return "Setra ex Bolzano (3 porte)";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
+    }
+    if(model=="Iveco Crossway LE 14"){
+        return "Iveco Crossway LE 14m";
     }
 }
 
 caricadati();
 var refreshGeneraleID=setInterval(caricadati, 60000);
+
 function caricadati(){
     fetch(urlList)
     .then(response => {
@@ -133,11 +191,12 @@ function caricadati(){
     });
 }
 
-var intervalFiltrati = 0;
 //FILTRI
+var intervalFiltrati = 0;
 //Filtro per linea
 lineaSelect.addEventListener('change', function(event) {
     if(intervalFiltrati!=undefined){
+        //alert("Non è possibile usare due filtri allo stesso momento")
         clearInterval(intervalFiltrati);
     }
     const selectedOption = event.target.value;
