@@ -28,7 +28,6 @@ fetch(urlRoutes)
         });
     })
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
-
 fetch(urlModels)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
@@ -36,14 +35,43 @@ fetch(urlModels)
     })
     .then(data => {
         allresults = data;
-        allresults.forEach(route => {
-        const option = document.createElement('option');
-        option.value = route;
-        option.textContent = route;
-        modelloSelect.appendChild(option);
-    });
+        allresults.forEach(model => {
+            const option = document.createElement('option');
+            option.value = modelsDictionary(model);
+            option.textContent = model;
+            modelloSelect.appendChild(option);
+        });
     })
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
+
+
+function modelsDictionary(model){
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+    if(model=="Irisbus Citelis CNG EEV"){
+        return "Irisbus Citelis CNG";
+    }
+}
+
 caricadati();
 var refreshGeneraleID=setInterval(caricadati, 60000);
 function caricadati(){
@@ -105,6 +133,7 @@ function caricadati(){
     });
 }
 
+var intervalFiltrati = 0;
 //FILTRI
 //Filtro per linea
 lineaSelect.addEventListener('change', function(event) {
@@ -113,7 +142,28 @@ lineaSelect.addEventListener('change', function(event) {
     }
     const selectedOption = event.target.value;
     caricaFiltratiLinea(selectedOption);
-    var intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiLinea(selectedOption);}, 60000);
+    intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiLinea(selectedOption);}, 60000);
+    clearInterval(refreshGeneraleID);
+    if(document.getElementById("reimposta-filtro")==undefined){
+        const reimpostaFiltro = document.createElement('p');
+        reimpostaFiltro.setAttribute("style","margin-bottom: 0; font-size: 14px;");
+        reimpostaFiltro.setAttribute("id","reimposta-filtro");
+        reimpostaFiltro.innerHTML = `
+                <a href="" class="biancosott">Reimposta il filtro</a>
+            `;
+        contentBackground.appendChild(reimpostaFiltro);
+    }
+});
+
+//Filtro per modello
+modelloSelect.addEventListener('change', function(event) {
+    if(intervalFiltrati!=undefined){
+        //alert("Non è possibile usare due filtri allo stesso momento")
+        clearInterval(intervalFiltrati);
+    }
+    const selectedOption = event.target.value;
+    caricaFiltratiModello(selectedOption);
+    intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiModello(selectedOption);}, 60000);
     clearInterval(refreshGeneraleID);
     if(document.getElementById("reimposta-filtro")==undefined){
         const reimpostaFiltro = document.createElement('p');
@@ -195,4 +245,73 @@ function caricaFiltratiLinea(selectedOption){
             }
         });
     });
+}
+
+function caricaFiltratiModello(selectedOption){
+    const container = document.getElementById('tabella-container');
+    container.innerHTML = 'Caricamento dati...';
+    fetch(urlList)
+    .then(response => {
+        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+        return response.json();
+    })
+    .then(data=>{
+        container.innerHTML = '';
+        //Sostituisco il pulsante aggiorna tutti col pulsante aggiorna filtrati
+        const aggiornaNav = document.getElementById('nav-inservizio');
+        aggiornaNav.innerHTML = `
+            <ul>
+                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+                <li><a href="/seta_menu/seta.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
+            </ul>
+            <ul style="flex:1;justify-content: right;">
+                <li><a href="javascript:reloadFiltratiModello();"><h1 style="font-size: 16px;font-weight: 500;">Aggiorna</h1></a></li>
+            </ul>
+        `;
+        // Creo tabella
+        const table = document.createElement('table');
+
+        // Intestazione
+        const thead = document.createElement('thead');
+        thead.innerHTML = `
+                    <tr>
+                        <th class="linea">Linea</th>
+                        <th class="direzione">Direzione</th>
+                        <th class="orario">Veicolo</th>
+                        <th class="stato">Modello veicolo</th>
+                        <th class="veicolo">Ora si trova a</th>
+                    </tr>
+                `;
+        table.appendChild(thead);
+        data.features.forEach(elements => {
+            if(elements.properties.model==selectedOption){
+                const tbody = document.createElement('tbody');
+                const element = elements.properties;
+                const tr = document.createElement('tr');
+                if(element.next_stop==null){
+                    var posizione="";
+                }else{
+                    var posizione=element.next_stop;
+                }
+                tr.innerHTML = `
+                    <td>${element.linea}</td>
+                    <td>${element.route_desc}</td>
+                    <td><a href="infoveicolo.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
+                    <td>${element.model}</td>
+                    <td>${posizione}</td>
+                `;
+                tbody.appendChild(tr);
+                table.appendChild(tbody);
+
+                container.appendChild(table);
+                console.log("Ricarico");
+            }else{
+                container.appendChild(table);
+            }
+        });
+    });
+}
+
+function reloadFiltratiModello(){
+    caricaFiltratiModello(lineaSelect.value);
 }
