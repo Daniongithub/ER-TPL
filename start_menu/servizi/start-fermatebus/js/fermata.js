@@ -57,6 +57,10 @@ function caricadati(){
         table.appendChild(tbody);
 
         container.appendChild(table);
+
+        fetch('https://api.vichingo455.freeddns.org/fermateapi/versione')
+        .then(res => res.text())
+        .then(versione => document.getElementById("ver").innerHTML = versione);
     })
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
