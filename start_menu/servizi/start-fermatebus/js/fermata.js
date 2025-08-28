@@ -15,6 +15,10 @@ function caricadati(){
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
 
+        fetch('https://api.vichingo455.freeddns.org/fermateapi/versione')
+        .then(res => res.text())
+        .then(versione => document.getElementById("ver").innerHTML = versione);
+        
         if (!data || data.length === 0) {
             container.innerHTML = '<h3>Nessuna linea in arrivo.</h3>';
             return;
@@ -57,10 +61,6 @@ function caricadati(){
         table.appendChild(tbody);
 
         container.appendChild(table);
-
-        fetch('https://api.vichingo455.freeddns.org/fermateapi/versione')
-        .then(res => res.text())
-        .then(versione => document.getElementById("ver").innerHTML = versione);
     })
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
@@ -69,5 +69,6 @@ function caricadati(){
 }
 
 caricadati();
+
 
 setInterval(caricadati, 60000);
