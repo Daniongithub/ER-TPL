@@ -6,7 +6,7 @@ let allresults = [];
 window.onbeforeunload=searchBar.value="";
 window.onbeforeunload=stopCodeBar.value="";
 
-const url = 'https://setaapi.serverissimo.freeddns.org/stoplist';
+const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
 //const url='http://localhost:5001/stoplist';
 fetch(url)
     .then(response => {
