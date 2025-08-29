@@ -103,11 +103,11 @@ function modelsDictionary(model){
     if(model=="Iveco Crossway LE 14"){
         return "Iveco Crossway LE 14m";
     }
-    if(model=="Iveco Crossway LE 14"){
-        return "Iveco Crossway LE 14m";
+    if(model=="MAN Lion's City 19 CNG"){
+        return "MAN Lion's City 19G";
     }
-    if(model=="Iveco Crossway LE 14"){
-        return "Iveco Crossway LE 14m";
+    if(model=="Solaris Trollino 12 IV"){
+        return "Solaris Trollino 12";
     }
     if(model=="Iveco Crossway LE 14"){
         return "Iveco Crossway LE 14m";
