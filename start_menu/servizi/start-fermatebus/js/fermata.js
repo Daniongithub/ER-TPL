@@ -36,7 +36,6 @@ function caricadati(){
                         <th>Orario</th>
                         <th>Stato attuale</th>
                         <th>Veicolo</th>
-                        <th>Soppressa</th>
                     </tr>
                 `;
         table.appendChild(thead);
@@ -54,7 +53,6 @@ function caricadati(){
                         <td>${item.orario}</td>
                         <td>${item.stato}</td>
                         <td>${item.mezzo}</td>
-                        <td>${item.soppressa ? 'Sì' : 'No'}</td>
                     `;
             tbody.appendChild(tr);
         });
