@@ -112,8 +112,8 @@ function modelsDictionary(model){
     if(model=="Irisbus Cityclass CNG ATCM"){
         return "Irisbus Cityclass CNG ATCM";
     }
-    if(model=="Iveco Crossway LE 14"){
-        return "Iveco Crossway LE 14m";
+    if(model=="Mercedes Citaro O530N CNG"){
+        return "Mercedes Citaro CNG";
     }
     if(model=="Iveco Crossway LE 14"){
         return "Iveco Crossway LE 14m";
