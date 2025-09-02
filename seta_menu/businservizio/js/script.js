@@ -109,8 +109,8 @@ function modelsDictionary(model){
     if(model=="Solaris Trollino 12 IV"){
         return "Solaris Trollino 12";
     }
-    if(model=="Iveco Crossway LE 14"){
-        return "Iveco Crossway LE 14m";
+    if(model=="Irisbus Cityclass CNG ATCM"){
+        return "Irisbus Cityclass CNG ATCM";
     }
     if(model=="Iveco Crossway LE 14"){
         return "Iveco Crossway LE 14m";
