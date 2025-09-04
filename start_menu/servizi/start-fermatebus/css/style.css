@@ -118,3 +118,13 @@ footer {
 	left: 0;
     width: 100%;
 }
+
+.info{
+    color: white;
+}
+
+.lista li{
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: 10px;
+}

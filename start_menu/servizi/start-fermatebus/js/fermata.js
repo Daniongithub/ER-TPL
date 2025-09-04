@@ -11,6 +11,7 @@ function caricadati(){
         const fermata_span = document.getElementById('fermata-span');
         if (data[0] && data[0].fermata !== undefined) {
             fermata_span.innerHTML = `"${data[0].fermata}"`;
+            document.title = `Fermata ${data[0].fermata}`
         }
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';

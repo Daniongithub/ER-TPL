@@ -17,28 +17,24 @@
                 <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
                 <li><a href="/ravenna_menu/ravenna.html"><h1 style="font-size: 100%;font-weight: 500;">Ravenna</h1></a></li>
                 <li><a href="/start_menu/start.html"><h1 style="font-size: 100%;font-weight: 500;">START Romagna</h1></a></li>
+                <li><a href="/start_menu/servizi/start-fermatebus/index.html"><h1 style="font-size: 100%;font-weight: 500;">Torna indietro</h1></a></li>
             </ul>
         </nav>
     </header>
-    <h1>Visualizzatore fermate START Romagna</h1>
-    <a class="info" href="info.html">Informazioni sul servizio</a><br>
-    <label for="bacino">Bacino:</label>
-    <select id="bacino">
-        <option value="n" selected>--Scegli un'opzione--</option>
-        <option value="ra">Ravenna</option>
-        <option value="rn">Rimini</option>
-        <option value="fc">Forlì-Cesena</option>
-    </select>
-    <div id="ricerca" style="display: none;">
-        <label for="searchBar">Cerca fermata:</label>
-        <input type="text" id="searchBar" placeholder="Cerca una fermata...">
-    </div>
-    <div id="searchResults"></div>
+    <h1>Note e informazioni sul visualizzatore fermate</h1>
+    <h3>Come leggere il codice fermata e inserirlo sul sito:</h3>
+    <p><em>Questa sezione sarà scritta entro o poco oltre l'inizio del servizio scolastico</em></p>
+    <h3>Note varie:</h3>
+    <ul class="lista">
+        <li>I dati qui visualizzati sono direttamente ottenuti da Start Romagna,<br>pertanto eventuali imprecisioni o errori non sono a carico nostro.</li>
+        <li>Per le linee di Ravenna sono state incluse le varianti (es. 1B, 4C, 70/...), esse si basano sul tipo di capolinea in base agli orari.<br>Non conoscendo FC e RN, è impossibile replicare ciò senza errori (se vuoi aiutarci, scrivici nella mail di <a href="/chisiamo.html">chi siamo</a>).</li>
+        <li>Un particolare accenno è dedicato alle linee "barrate", esempio 4/, 80/... Esse compariranno quando una linea è "limitata" come da orario oppure,<br>come abbiamo notato in vita reale, quando una corsa tipo il 70 e l'80 vengono soppresse spesso le dividono a metà e si fermano in stazione.</li>
+        <li>Ci tenevo (io, Il Dani) a precisare che queste varianti possono non essere sempre corrette, in tal caso mi scuso in anticipo, ma almene avete un dettaglio in più,<br>perchè start mette solo il numero linea su Infobus.</li>
+    </ul>
     <footer>
         <div>
 			<p>Copyright &copy; 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani <a href="https://github.com/Daniongithub/startfermate" target="_blank">codice sorgente</a><br>Start Romagna, Start e il logo Start Romagna sono marchi registrati e protetti da copyright da Start Romagna SpA. Vengono usati in questa pagina solo per riferimento.</p>
 		</div>
     </footer>
-    <script src="js/cercafermata.js"></script>
 </body>
 </html>
