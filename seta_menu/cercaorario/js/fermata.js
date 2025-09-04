@@ -2,35 +2,65 @@ const params = new URLSearchParams(window.location.search);
 const nome = params.get('name');
 const codice = params.get('code');
 
+//Ricerca per pulsante dall'altra parte
+const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
+//const url='http://localhost:5001/stoplist';
+fetch(url)
+    .then(response => {
+        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+        return response.json();
+    })
+    .then(data => {
+        allresults = data;
+        //Set corsie per stazione o autostazione
+        const corsie_nav = document.getElementById('corsie-nav');
+        if(nome.includes("STAZIONE FS")){
+            corsie_nav.innerHTML = `
+                <ul>
+                    <li>
+                        <a href="/seta_menu/cercaorario/altrecorsie.html?location=STAZIONE FS">Altre corsie</a>
+                    </li>
+                </ul>`;
+        }
+        if(nome.includes("MODENA AUTOSTAZIONE")){
+            corsie_nav.innerHTML = `
+                <ul>
+                    <li>
+                        <a href="/seta_menu/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Altre corsie</a>
+                    </li>
+                </ul>`;
+        }
+        if(nome.includes("GARIBALDI")){
+            corsie_nav.innerHTML = `
+                <ul>
+                    <li>
+                        <a href="/seta_menu/cercaorario/altrecorsie.html?location=GARIBALDI">Altre corsie</a>
+                    </li>
+                </ul>`;
+        }
+        //Pulsante dall'altra parte
+        console.log(altraParteSearch(nome))
+        if(altraParteSearch(nome)!=undefined){
+            const codes = altraParteSearch(nome);
+            const altrocodice = 0;
+            if(codice==codes[0]){
+                altroCodice = codes[1];
+            }else{
+                altroCodice = codes[0];
+            }
+            corsie_nav.innerHTML = `
+                <ul>
+                    <li>
+                        <a href="/seta_menu/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Dall'altra parte</a>
+                    </li>
+                </ul>`;
+        }
+    })
+    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+
 //Sets stop name
 const fermata_span = document.getElementById('fermata-span');
 fermata_span.textContent=nome;
-//Set corsie per stazione o autostazione
-const corsie_nav = document.getElementById('corsie-nav');
-if(nome.includes("STAZIONE FS")){
-    corsie_nav.innerHTML = `
-        <ul>
-            <li>
-                <a href="/seta_menu/cercaorario/altrecorsie.html?location=STAZIONE FS">Altre corsie</a>
-            </li>
-        </ul>`;
-}
-if(nome.includes("MODENA AUTOSTAZIONE")){
-    corsie_nav.innerHTML = `
-        <ul>
-            <li>
-                <a href="/seta_menu/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Altre corsie</a>
-            </li>
-        </ul>`;
-}
-if(nome.includes("GARIBALDI")){
-    corsie_nav.innerHTML = `
-        <ul>
-            <li>
-                <a href="/seta_menu/cercaorario/altrecorsie.html?location=GARIBALDI">Altre corsie</a>
-            </li>
-        </ul>`;
-}
 
 const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
 //const urlBackend = `http://localhost:5001/arrivals/${codice}`;
@@ -130,3 +160,19 @@ function caricadati(){
 caricadati();
 
 setInterval(caricadati, 60000);
+
+function altraParteSearch(searchTerm){
+    var dupedCodes = [];
+    var i = 0;
+    allresults.forEach(element => {
+        if(element.fermata.toLowerCase().includes(searchTerm.toLowerCase())){
+            dupedCodes[i]=element.valore;
+            i++;
+        }
+    });
+    if(dupedCodes.length==2){
+        return dupedCodes;
+    }else if(dupedCodes.length==1){
+        return undefined;
+    }
+}
