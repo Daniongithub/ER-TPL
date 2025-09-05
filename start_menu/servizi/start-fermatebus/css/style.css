@@ -144,11 +144,14 @@ footer {
     margin-top: 15px;
     margin-bottom: 15px;
     display: flex;
-    justify-content: center ;
+    justify-content: center;
 }
+
 div#radios div{
+    display: flex;
+    align-items: center;
     width: auto;
-    margin-left: 10px;
+    margin-left: 8px;
     padding: 8px;
     border: 2px #404040 solid;
     border-radius: 8px;
