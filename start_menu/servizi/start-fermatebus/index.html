@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="filtroport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>START Romagna - Visualizza fermata</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.ico">
@@ -23,14 +23,15 @@
     <h1>Visualizzatore fermate START Romagna</h1>
     <a class="info" href="info.html">Informazioni sul servizio</a><br>
     <label for="bacino">Bacino:</label>
-    <select id="bacino">
+    <select id="bacino" autocomplete="off">
         <option value="n" selected>--Scegli un'opzione--</option>
         <option value="ra">Ravenna</option>
         <option value="rn">Rimini</option>
         <option value="fc">Forlì-Cesena</option>
     </select>
     <div id="ricerca" style="display: none;">
-        <!--<form id="radios" style="display: none;">
+        <div id="radios" style="display: none;">
+            <p>Seleziona un filtro:</p>
             <div>
                 <label for="text">Nome fermata</label>
                 <input type="radio" name="filtro" id="text" autocomplete="off" checked>
@@ -47,7 +48,7 @@
                 <label for="tid">Target ID</label>
                 <input type="radio" name="filtro" id="tid" autocomplete="off">
             </div>
-        </form>-->
+        </div>
         <label for="searchBar">Cerca fermata:</label>
         <input type="text" id="searchBar" placeholder="Cerca una fermata...">
     </div>

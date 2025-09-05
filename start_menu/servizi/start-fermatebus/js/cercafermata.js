@@ -13,7 +13,7 @@ function populateSearchResults(results, selectedOption) {
         div.innerHTML = `
             <div>
                 <h3>${item.nome}</h3>
-                <p>Palina: ${item.palina}, Target ID: ${item.targetID}</p>
+                <p>Fermata: ${item.palina}, Target ID: ${item.targetID}</p>
             </div>
         `;
 
@@ -26,8 +26,8 @@ function populateSearchResults(results, selectedOption) {
     });
 }
 
-function getFermatadaBreve(codbreve){
-    const middle = String(codbreve).padStart(4, "0");
+function getFermatadaBreve(codice){
+    const middle = String(codice).padStart(4, "0");
     return `7${middle}0`;
 }
 
@@ -40,6 +40,31 @@ function filterOptions(query, data) {
     );
 }
 
+function filtraTesto(query, data){
+    const q = query.toLowerCase();
+    return data
+    .filter(item => (item.nome || '').toLowerCase().includes(q))
+    .sort((a, b) => (a.nome || '').localeCompare(b.nome || ''));
+}
+
+function filtraLungo(query, data){
+    const q = query.toLowerCase();
+    return data
+    .filter(item => (item.palina || '').toLowerCase().includes(q))
+    .sort((a, b) => (a.palina || '').localeCompare(b.palina || ''));
+}
+
+function filtraBreve(query, data){
+    const cod = getFermatadaBreve(query);
+    return filtraLungo(cod, data);
+}
+
+function filtraTID(query, data){
+    const q = query.toLowerCase();
+    return data
+    .filter(item => (item.targetID || '').toLowerCase().includes(q))
+    .sort((a, b) => (a.targetID || '').localeCompare(b.targetID || ''));
+}
 
 let allOptions = [];
 let currentSelectedOption = '';
@@ -58,20 +83,37 @@ searchBar.addEventListener('input', function() {
     if (currentSelectedOption !== "ra") {
         filteredOptions = filterOptions(query, allOptions);
     } else {
-        //placeholder: qui metteremo il filtro dettagliato per "ra"
-        filteredOptions = filterOptions(query, allOptions); 
-        //TODO: implementare filtro "ra" custom
+        if (document.getElementById('text').checked){
+            filteredOptions = filtraTesto(query, allOptions);
+        }
+        else if (document.getElementById('lungo').checked){
+            filteredOptions = filtraLungo(query, allOptions);
+        }
+        else if (document.getElementById('breve').checked){
+            filteredOptions = filtraBreve(query, allOptions);
+        }
+        else if(document.getElementById('tid').checked){
+            filteredOptions = filtraTID(query, allOptions);
+        }
     }
-
     populateSearchResults(filteredOptions, currentSelectedOption);
 });
 
+const radios = document.querySelectorAll('#radios input[type="radio"]');
+radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        searchBar.value = '';
+        document.getElementById('searchResults').innerHTML = '';
+    });
+});
 
 document.getElementById('bacino').addEventListener('change', function(event) {
     const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    //const radiobuttons = document.getElementById('radios');
+    const urlFermate = `https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`;
+
+    const radiobuttons = document.getElementById('radios');
     const ricerca = document.getElementById('ricerca');
     ricerca.removeAttribute('style');
 
@@ -79,20 +121,22 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     
     if(selectedOption == "n"){
         ricerca.setAttribute("style", "display: none;");
-        //radiobuttons.setAttribute("style", "display: none;");
+        radiobuttons.setAttribute("style", "display: none;");
         allOptions = [];
         document.getElementById('searchResults').innerHTML = '';
         return;
     }
-    /*else if(selectedOption == "ra"){
+    else if(selectedOption == "ra"){
         radiobuttons.removeAttribute('style')
-    }*/
+    }
 
     if(selectedOption != "n"){
         const resultsContainer = document.getElementById('searchResults');
         resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
-
-        fetch(`https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`)
+        if(selectedOption != "ra"){
+            radiobuttons.setAttribute("style", "display: none;");
+        }
+        fetch(urlFermate)
         .then(res => res.json())
         .then(data => {
             allOptions = data;

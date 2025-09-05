@@ -3,7 +3,14 @@
         display: block !important;
         width: 95.5% !important;
     }
-    
+    #radios{
+        display: table !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #radios div{
+        margin-top: 8px;
+    }
     #tabella-container{
         overflow-x: scroll;
     }
@@ -30,6 +37,7 @@ input{
     margin-top: 10px;
     cursor: pointer;
     display: inline-block;
+    padding: 2px;
 }
 
 table {
@@ -112,6 +120,10 @@ a {
     border: 1px solid #727070;
 }
 
+#bacino{
+    margin-top: 10px;
+}
+
 footer {
     position: relative;
     bottom: 0;
@@ -134,7 +146,7 @@ footer {
     display: flex;
     justify-content: center ;
 }
-form#radios div{
+div#radios div{
     width: auto;
     margin-left: 10px;
     padding: 8px;
