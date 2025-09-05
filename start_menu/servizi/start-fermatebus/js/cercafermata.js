@@ -71,7 +71,7 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    const radiobuttons = document.getElementById('radios');
+    //const radiobuttons = document.getElementById('radios');
     const ricerca = document.getElementById('ricerca');
     ricerca.removeAttribute('style');
 
@@ -79,14 +79,14 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     
     if(selectedOption == "n"){
         ricerca.setAttribute("style", "display: none;");
-        radiobuttons.setAttribute("style", "display: none;");
+        //radiobuttons.setAttribute("style", "display: none;");
         allOptions = [];
         document.getElementById('searchResults').innerHTML = '';
         return;
     }
-    else if(selectedOption == "ra"){
+    /*else if(selectedOption == "ra"){
         radiobuttons.removeAttribute('style')
-    }
+    }*/
 
     if(selectedOption != "n"){
         const resultsContainer = document.getElementById('searchResults');
