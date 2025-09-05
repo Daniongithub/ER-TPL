@@ -26,6 +26,11 @@ function populateSearchResults(results, selectedOption) {
     });
 }
 
+function getFermatadaBreve(codbreve){
+    const middle = String(codbreve).padStart(4, "0");
+    return `7${middle}0`;
+}
+
 function filterOptions(query, data) {
     const q = query.toLowerCase();
     return data.filter(item =>
@@ -46,10 +51,27 @@ searchBar.addEventListener('input', function() {
     populateSearchResults(filteredOptions, currentSelectedOption);
 });
 
+searchBar.addEventListener('input', function() {
+    const query = searchBar.value;
+    let filteredOptions;
+
+    if (currentSelectedOption !== "ra") {
+        filteredOptions = filterOptions(query, allOptions);
+    } else {
+        //placeholder: qui metteremo il filtro dettagliato per "ra"
+        filteredOptions = filterOptions(query, allOptions); 
+        //TODO: implementare filtro "ra" custom
+    }
+
+    populateSearchResults(filteredOptions, currentSelectedOption);
+});
+
+
 document.getElementById('bacino').addEventListener('change', function(event) {
     const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
+    const radiobuttons = document.getElementById('radios');
     const ricerca = document.getElementById('ricerca');
     ricerca.removeAttribute('style');
 
@@ -57,9 +79,13 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     
     if(selectedOption == "n"){
         ricerca.setAttribute("style", "display: none;");
+        radiobuttons.setAttribute("style", "display: none;");
         allOptions = [];
         document.getElementById('searchResults').innerHTML = '';
         return;
+    }
+    else if(selectedOption == "ra"){
+        radiobuttons.removeAttribute('style')
     }
 
     if(selectedOption != "n"){
