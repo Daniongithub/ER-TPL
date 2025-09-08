@@ -40,6 +40,7 @@ fetch(urlModels)
             if(
                 model!="CAM New Busotto"&&
                 model!="Iveco Cityclass CNG"&&
+                model!="Irisbus Cityclass CNG ex Pavia"&&
                 model!="Mercedes Integro O550 (Giallo)"
             ){
                 option.value = modelsDictionary(model);
