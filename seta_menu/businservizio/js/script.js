@@ -53,6 +53,9 @@ fetch(urlModels)
 
 
 function modelsDictionary(model){
+    return model;
+    //Non serve piu! :D
+    /*
     if(model=="Irisbus Citelis CNG EEV"){
         return "Irisbus Citelis CNG";
     }
@@ -63,7 +66,7 @@ function modelsDictionary(model){
         return "Irisbus Crossway Esercito";
     }
     if(model=="Iveco Urbanway Mild Hybrid 2022"){
-        return "Iveco Urbanway Hybrid CNG";
+        return "Iveco Urbanway Mild Hybrid CNG";
     }
     if(model=="MenariniBus Citymood LNG"){
         return "Menarinibus Citymood LNG";
@@ -114,7 +117,7 @@ function modelsDictionary(model){
         return "Irisbus Cityclass CNG ATCM";
     }
     if(model=="Mercedes Citaro O530N CNG"){
-        return "Mercedes Citaro CNG";
+        return model;
     }
     if(model=="Iveco Crossway LE 14"){
         return "Iveco Crossway LE 14m";
@@ -128,6 +131,7 @@ function modelsDictionary(model){
     if(model=="Iveco Crossway LE 14"){
         return "Iveco Crossway LE 14m";
     }
+    */
 }
 
 caricadati();
