@@ -38,6 +38,14 @@ fetch(url)
                     </li>
                 </ul>`;
         }
+        if(nome.includes("POLO LEONARDO")){
+            corsie_nav.innerHTML = `
+                <ul>
+                    <li>
+                        <a href="/seta_menu/cercaorario/altrecorsie.html?location=POLO LEONARDO">Altre corsie</a>
+                    </li>
+                </ul>`;
+        }
         //Pulsante dall'altra parte
         console.log(altraParteSearch(nome))
         if(altraParteSearch(nome)!=undefined){
@@ -165,7 +173,7 @@ function altraParteSearch(searchTerm){
     var dupedCodes = [];
     var i = 0;
     allresults.forEach(element => {
-        if(element.fermata.toLowerCase().includes(searchTerm.toLowerCase())){
+        if(element.fermata.toLowerCase()==searchTerm.toLowerCase()){
             dupedCodes[i]=element.valore;
             i++;
         }

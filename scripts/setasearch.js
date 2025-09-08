@@ -26,6 +26,10 @@ searchBar.addEventListener('input', () => {
             <a href="/seta_menu/setaextra.html" class="button">Extraurbano</a>
             <a href="/seta_menu/setafilobus.html" class="button">Filobus</a>
             <a href="/setamodena_bus/minibus/sprinter.html" class="button">Minibus</a>
+            <div style="height: 8px;"></div>
+            <a href="/setamodena_bus/servizio.html" class="button">Veicoli di servizio</a>
+            <div style="height: 8px;"></div>
+            <a href="/seta_menu/radiatimenu.html" class="rbutton">Veicoli radiati</a>
         </div>
         <div style="height: 35px;"></div>
         <div>
@@ -35,7 +39,9 @@ searchBar.addEventListener('input', () => {
         <div style="height: 5px;"></div>
         <h2>Servizi SETA Modena:</h2>
         <div>
-            <a class="gbutton" href="cercaorario/index.html">Orario in tempo reale</a>
+            <a class="gbutton" href="cercaorario/index.html">Orari in tempo reale</a>
+            <a class="gbutton" href="businservizio/index.html">Monitor autobus in servizio</a>
+            <a class="gbutton" href="percorsi/index.html">Percorsi</a>
         </div>
         `;
         return;

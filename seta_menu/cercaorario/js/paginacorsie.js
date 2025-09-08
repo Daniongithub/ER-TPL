@@ -79,3 +79,13 @@ if(posto=="GARIBALDI"){
         </a>
     `;
 }
+if(posto=="POLO LEONARDO"){
+    bottoni.innerHTML = `
+        <a href="/seta_menu/cercaorario/fermata.html?code=MO6783&name=POLO LEONARDO (Strada)" class="bianco">
+            <div class="search-result"><h3>POLO LEONARDO (Strada)</h3></div>
+        </a>
+        <a href="/seta_menu/cercaorario/fermata.html?code=MO2928&name=POLO LEONARDO 1" class="bianco">
+            <div class="search-result"><h3>POLO LEONARDO 1</h3></div>
+        </a>
+    `;
+}

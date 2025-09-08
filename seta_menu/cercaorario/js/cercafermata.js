@@ -65,7 +65,7 @@ stopCodeBar.addEventListener('input', () => {
     `;
 
     div.addEventListener('click', () => {
-        const url = `fermata.html?code=${encodeURIComponent(code)}&name=${encodeURIComponent(code)}`;
+        const url = `fermata.html?code=${code}&name=${code}`;
         parent.location=url;
     });
 
@@ -98,7 +98,7 @@ function renderresultscode(results) {
     `;
 
     div.addEventListener('click', () => {
-        const url = `fermata.html?code=${encodeURIComponent(item.valore)}&name=${encodeURIComponent(item.fermata)}`;
+        const url = `fermata.html?code=${item.valore}&name=${item.fermata}`;
         parent.location=url;
     });
 
@@ -125,7 +125,7 @@ function renderresults(results) {
         `;
 
         div.addEventListener('click', () => {
-            const url = `fermata.html?code=${encodeURIComponent(item.valore)}&name=${encodeURIComponent(item.fermata)}`;
+            const url = `fermata.html?code=${item.valore}&name=${item.fermata}`;
             parent.location=url;
         });
 
