@@ -23,13 +23,32 @@
     <h1>Visualizzatore fermate START Romagna</h1>
     <a class="info" href="info.html">Informazioni sul servizio</a><br>
     <label for="bacino">Bacino:</label>
-    <select id="bacino">
+    <select id="bacino" autocomplete="off">
         <option value="n" selected>--Scegli un'opzione--</option>
         <option value="ra">Ravenna</option>
         <option value="rn">Rimini</option>
         <option value="fc">Forlì-Cesena</option>
     </select>
     <div id="ricerca" style="display: none;">
+        <div id="radios" style="display: none;">
+            <p>Seleziona un filtro:</p>
+            <div>
+                <label for="text">Nome fermata</label>
+                <input type="radio" name="filtro" id="text" autocomplete="off" checked>
+            </div>
+            <div>
+                <label for="lungo">Cod. fermata lungo</label>
+                <input type="radio" name="filtro" id="lungo" autocomplete="off">
+            </div>
+            <div>
+                <label for="breve">Cod. fermata breve</label>
+                <input type="radio" name="filtro" id="breve" autocomplete="off">
+            </div>
+            <div>
+                <label for="tid">Target ID</label>
+                <input type="radio" name="filtro" id="tid" autocomplete="off">
+            </div>
+        </div>
         <label for="searchBar">Cerca fermata:</label>
         <input type="text" id="searchBar" placeholder="Cerca una fermata...">
     </div>
