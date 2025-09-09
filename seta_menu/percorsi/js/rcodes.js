@@ -129,6 +129,14 @@ function routesDictionary(rcode){
             return "6 CHINNICI";
         case "MO6-As-614":
             return "6 AUTOSTAZIONE";
+        case "MO6-As-620":
+            return "6A SANTI";
+        case "MO6-As-622":
+            return "6B VILLANOVA";
+        case "MO6-Di-621":
+            return "6 SANTI -> CHINNICI";
+        case "MO6-Di-623":
+            return "6 VILLANOVA -> CHINNICI";
         //Linea 7
         case "MO7-As-703":
             return "7 GRAMSCI";
