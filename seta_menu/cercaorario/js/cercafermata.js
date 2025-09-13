@@ -2,9 +2,13 @@ const searchBar = document.getElementById('searchBar');
 const stopCodeBar = document.getElementById('stopCodeBar');
 const resultsContainer = document.getElementById('searchResults');
 
+//Calcio 13/09/2025
+const calcio = document.getElementById('calcio');
+if(new Date().getDate()!="13"||new Date().getMonth()!="8"){
+    calcio.setAttribute("style","display: none;")
+}
+
 let allresults = [];
-window.onbeforeunload=searchBar.value="";
-window.onbeforeunload=stopCodeBar.value="";
 
 const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
 //const url='http://localhost:5001/stoplist';

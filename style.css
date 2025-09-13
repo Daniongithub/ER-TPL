@@ -166,7 +166,7 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-nav ul li h1.warning {
+.warning {
     color:red;
     font-size: 16px;
 }
@@ -213,6 +213,12 @@ td a{
 td.sott a{
     text-decoration: underline;
 }
+
+a.rossosott{
+    color: red;
+    text-decoration: underline;
+}
+
 .nospazio{
     margin-top: 0px;
     margin-bottom: 0px;

@@ -109,6 +109,11 @@ a {
     color: orange;
 }
 
+a.rossosott{
+    color: red;
+    text-decoration: underline;
+}
+
 a.bianco{
     color: white;
     text-decoration: none;
