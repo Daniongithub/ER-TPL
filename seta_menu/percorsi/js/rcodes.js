@@ -249,6 +249,20 @@ function routesDictionary(rcode){
         //Linea 12
         case "MO12-As-1279":
             return "12S GARIBALDI";
+        case "MO12-As-1280":
+            return "12A NAZIONI";
+        case "MO12-As-1282":
+            return "12 FINZI";
+        case "MO12-As-1284":
+            return "12A GARIBALDI -> NAZIONI";
+        case "MO12-As-1286":
+            return "12/ FANTI FS";
+        case "MO12-Di-1281":
+            return "12 NAZIONI-> POLO LEONARDO";
+        case "MO12-Di-1283":
+            return "12 FINZI -> POLO LEONARDO";
+        case "MO12-Di-1285":
+            return "12 FANTI FS -> POLO LEONARDO";
         case "MO12-As-1276 (2025)":
             return "12 S.CATERINA";
         case "MO12-Di-1277 (2025)":
