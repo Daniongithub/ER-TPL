@@ -22,10 +22,16 @@ fetch(url)
                     result.setAttribute("class","bianco");
                     result.setAttribute("href","percorso.html?routecode="+item+"&routenum="+id);
                     if(dest==undefined){
+                        if(item.includes("(")){
+                            result.setAttribute("class","rosso");
+                        }
                         result.innerHTML = `
                             <div class="search-result"><h3 style="margin-left: 8px;margin-right: 8px;">${item}</h3>
                         `;
                     }else{
+                        if(item.includes("(")){
+                            result.setAttribute("class","rosso");
+                        }
                         result.innerHTML = `
                             <div class="search-result"><h3 style="margin-left: 8px;margin-right: 8px;">${dest} <br> (${item})</h3>
                         `;
@@ -59,9 +65,15 @@ function routesDictionary(rcode){
         case "MO1-Di-144":
             return "1A AUTOSTAZIONE -> POLO LEONARDO";
         case "MO1-As-152":
-            return "1S AUTOSTAZIONE";
+            return "1A POLO LEONARDO -> MODENA EST";
         case "MO1-Di-141":
             return "1A MARINUZZI -> POLO LEONARDO";
+        case "MO1-Di-142":
+            return "1A SCARLATTI -> POLO LEONARDO";
+        case "MO1-Di-140":
+            return "1A BONACINI -> POLO LEONARDO";
+        case "MO1-As-160":
+            return "1S AUTOSTAZIONE";
         //Linea 2
         case "MO2-As-220":
             return "2 SAN DAMASO";
@@ -80,23 +92,23 @@ function routesDictionary(rcode){
             return "3 MONTEFIORINO";
         case "MO3-As-348":
             return "3 MATTARELLA";
-        case "MO3-Di-325":
-            return "3A VACIGLIO -> PORTORICO";
-        case "MO3-Di-316":
-            return "3 MATTARELLA -> S.CATERINA";
-        case "MO3-As-322":
-            return "3A PORTORICO -> VACIGLIO";
-        case "MO3-As-361":
-            return "3 S.CATERINA -> MATTARELLA";
         case "MO3-As-354":
             return "3A MONTEFIORINO -> VACIGLIO";
         case "MO3-Di-317":
             return "3 VACIGLIO -> MONTEFIORINO";
-        case "MO3-Di-320":
+        case "MO3-Di-325 (2025)":
+            return "3A VACIGLIO -> PORTORICO";
+        case "MO3-Di-316 (2025)":
+            return "3 MATTARELLA -> S.CATERINA";
+        case "MO3-As-322 (2025)":
+            return "3A PORTORICO -> VACIGLIO";
+        case "MO3-As-361 (2025)":
+            return "3 S.CATERINA -> MATTARELLA";
+        case "MO3-Di-320 (2025)":
             return "3A MATTARELLA -> PORTORICO";
-        case "MO3-As-323":
+        case "MO3-As-323 (2025)":
             return "3 PORTORICO -> MATTARELLA";
-        case "MO3-As-319":
+        case "MO3-As-319 (2025)":
             return "3 S.CATERINA -> MATTARELLA";
         //Linea 4
         case "MO4-As-434":
@@ -121,10 +133,6 @@ function routesDictionary(rcode){
         case "MO5-As-513":
             return "5 TRE OLMI -> D'AVIA -> LA TORRE";
         //Linea 6
-        case "MO6-Di-611":
-            return "6 CHINNICI (per PANNI)";
-        case "MO6-As-610":
-            return "6 AUTOSTAZIONE (per PANNI)";
         case "MO6-Di-615":
             return "6 CHINNICI";
         case "MO6-As-614":
@@ -137,6 +145,10 @@ function routesDictionary(rcode){
             return "6 SANTI -> CHINNICI";
         case "MO6-Di-623":
             return "6 VILLANOVA -> CHINNICI";
+        case "MO6-Di-611 (2025)":
+            return "6 CHINNICI (per PANNI)";
+        case "MO6-As-610 (2025)":
+            return "6 AUTOSTAZIONE (per PANNI)";
         //Linea 7
         case "MO7-As-703":
             return "7 GRAMSCI";
@@ -164,10 +176,12 @@ function routesDictionary(rcode){
             return "8 GAZZOTTI (per ARTIGIANATO)";
         case "MO8-Di-855":
             return "8 PANNI (per ARTIGIANATO)";
-        case "MO8-As-817":
-            return "8 GAZZOTTI";
         case "MO8-Di-853":
             return "8 PANNI";
+        case "MO8-As-820":
+            return "8 GARIBALDI -> GAZZOTTI";
+        case "MO8-As-817 (2025)":
+            return "8 GAZZOTTI";
         //Linea 9
         case "MO9-As-9951":
             return "9 M.NUOVA -> M.VECCHIA -> GOTTARDI";
@@ -233,14 +247,14 @@ function routesDictionary(rcode){
         case "MO11-As-1137":
             return "11 ZODIACO";
         //Linea 12
-        case "MO12-As-1276":
-            return "12 S.CATERINA";
-        case "MO12-Di-1277":
-            return "12 POLO LEONARDO";
-        case "MO12-As-1272":
-            return "12 GARIBALDI -> S.CATERINA";
         case "MO12-As-1279":
             return "12S GARIBALDI";
+        case "MO12-As-1276 (2025)":
+            return "12 S.CATERINA";
+        case "MO12-Di-1277 (2025)":
+            return "12 POLO LEONARDO";
+        case "MO12-As-1272 (2025)":
+            return "12 GARIBALDI -> S.CATERINA";
         //Linea 13
         case "MO13-As-1330":
             return "13F SANT'ANNA";
