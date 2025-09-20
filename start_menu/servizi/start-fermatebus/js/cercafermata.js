@@ -134,7 +134,7 @@ document.getElementById('bacino').addEventListener('change', function(event) {
         const resultsContainer = document.getElementById('searchResults');
         resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
         if(selectedOption != "ra"){
-            radiobuttons.setAttribute("style", "display: none;");
+            radiobuttons.setAttribute("style", "display: none !important;");
         }
         fetch(urlFermate)
         .then(res => res.json())
