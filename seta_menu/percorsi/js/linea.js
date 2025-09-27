@@ -46,13 +46,13 @@ function caricadati(){
 
         // Corpo tabella
         const tbody = document.createElement('tbody');
-        item.features.forEach(item => {
-            const element = item.properties;
+        item.forEach(item => {
+            const element = item;
             var tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${element.code}&name=${element.desc}" class="bianco">${element.desc}</a></td>
-                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${element.code}&name=${element.desc}" class="bianco">${element.code}</a></td>
+                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
+                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
