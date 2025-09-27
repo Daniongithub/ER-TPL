@@ -74,6 +74,10 @@ function routesDictionary(rcode){
             return "1A BONACINI -> POLO LEONARDO";
         case "MO1-As-160":
             return "1S AUTOSTAZIONE";
+        case "MO1-As-139":
+            return "1 POLO LEONARDO -> MARINUZZI";
+        case "MO1-Di-158":
+            return "1 STAZIONE FS -> V.ZETA";
         //Linea 2
         case "MO2-As-220":
             return "2 SAN DAMASO";
@@ -85,6 +89,10 @@ function routesDictionary(rcode){
             return "2A SAN DONNINO";
         case "MO2-Di-268":
             return "2 SAN DONNINO -> SAN DAMASO -> SANT'ANNA";
+        case "MO2-Di-290":
+            return "2/ AUTOSTAZIONE";
+        case "MO2-As-291":
+            return "2 AUTOSTAZIONE -> SAN DONNINO";
         //Linea 3
         case "MO3-As-343":
             return "3A VACIGLIO-MATTARELLA";
@@ -94,6 +102,32 @@ function routesDictionary(rcode){
             return "3 MATTARELLA";
         case "MO3-As-354":
             return "3A MONTEFIORINO -> VACIGLIO";
+        case "MO3-Di-397":
+            return "3B NONANTOLANA 1010";
+        case "MO3-As-396":
+            return "3B RAGAZZI DEL 99";
+        case "MO3-As-302":
+            return "3/ NONANTOLANA 1010 -> STAZIONE FS";
+        case "MO3-As-326":
+            return "3A MONTEFIORINO -> MATTARELLA -> VACIGLIO";
+        case "MO3-Di-400":
+            return "3B STAZIONE FS -> NONANTOLANA 1010";
+        case "MO3-Di-339":
+            return "3A S.CATERINA-MONTEFIORINO";
+        case "MO3-As-296":
+            return "3B NONANTOLANA 1010 -> CANALETTO -> RAGAZZI DEL 99";
+        case "MO3-As-294":
+            return "3A MONTEFIORINO -> CANALETTO -> MATTARELLA -> VACIGLIO";
+        case "MO3-Di-288":
+            return "3B RAGAZZI DEL 99 -> CANALETTO -> NONANTOLANA 1010";
+        case "MO3-Di-293":
+            return "3/ RAGAZZI DEL 99 -> STAZIONE FS";
+        case "MO3-Di-289":
+            return "3A VACIGLIO -> CANALETTO -> S.CATERINA-MONTEFIORINO";
+        case "MO3-Di-295":
+            return "3/ VACIGLIO -> STAZIONE FS";
+        case "MO3-Di-394":
+            return "3A NONANTOLANA -> S.CATERINA-MONTEFIORINO";
         case "MO3-Di-317":
             return "3 VACIGLIO -> MONTEFIORINO";
         case "MO3-Di-325 (2025)":
@@ -117,6 +151,10 @@ function routesDictionary(rcode){
             return "4 VACIGLIO NORD";
         case "MO4-As-432":
             return "4 V.NORD -> POLO -> GALILEI";
+        case "MO4-As-492":
+            return "4/ V.NORD -> AUTOSTAZIONE";
+        case "MO4-As-490":
+            return "4/ GALILEI -> AUTOSTAZIONE";
         //Linea 5
         case "MO5-Di-535":
             return "5A LA TORRE -> D'AVIA -> TRE OLMI";
@@ -180,6 +218,10 @@ function routesDictionary(rcode){
             return "8 PANNI";
         case "MO8-As-820":
             return "8 GARIBALDI -> GAZZOTTI";
+        case "MO8-Di-891":
+            return "8 GARIBALDI -> PANNI";
+        case "MO8-As-819":
+            return "8 GAZZOTTI";
         case "MO8-As-817 (2025)":
             return "8 GAZZOTTI";
         //Linea 9
@@ -246,6 +288,8 @@ function routesDictionary(rcode){
             return "11 SANT'ANNA";
         case "MO11-As-1137":
             return "11 ZODIACO";
+        case "MO11-Di-1140":
+            return "11/ STAZIONE FS";
         //Linea 12
         case "MO12-As-1279":
             return "12S GARIBALDI";
