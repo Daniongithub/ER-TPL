@@ -268,6 +268,13 @@ table.image-table img {
     font-family: Titillium Web;
     font-size: medium;
 }
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px;
+}
 @media (max-width: 768px) {
     table.image-table {
         width: 100%;
@@ -283,6 +290,8 @@ table.image-table img {
     }
     .container {
         flex-direction: column;
+        margin-left:0;
+        margin-right:0;
     }
     iframe.chisiamo{
         width: 340px;
@@ -390,11 +399,4 @@ table.image-table img {
     width: 300px;
     margin: 20px;
     font-size: 16px;
-}
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 20px;
 }
