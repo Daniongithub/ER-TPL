@@ -58,7 +58,7 @@ p {
   border: 1px solid #ccc;
   border-radius: 8px;
   transition: border-color 0.3s ease;
-  background-color: gray;
+  background-color: rgb(60, 60, 60);
   color: white;
 }
 
@@ -125,7 +125,7 @@ tr:hover td {
 }
 
 button {
-  background-color: gray;
+  background-color: rgb(60, 60, 60);
   color: white;
   border: none;
   padding: 10px 20px;
