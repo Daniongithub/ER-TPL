@@ -42,24 +42,38 @@ function applyFilter() {
       const table = document.createElement('table');
 
       // Aggiungi l'intestazione della tabella
-      const header = table.createTHead();
-      const headerRow = header.insertRow();
-      headerRow.insertCell().textContent = 'Zona';
-      headerRow.insertCell().textContent = 'Linea';
-      headerRow.insertCell().textContent = 'Fermata';
-      headerRow.insertCell().textContent = 'Codice Fermata';
-      headerRow.insertCell().textContent = 'Veicolo';
-      headerRow.insertCell().textContent = ' ';
-      headerRow.insertCell().textContent = 'Ultimo Aggiornamento';
+      var th = document.createElement('th');
+      var tr = document.createElement('tr');
+      th.innerHTML='Zona';
+      tr.appendChild(th);
+      th = document.createElement('th');
+      th.innerHTML='Linea';
+      tr.appendChild(th);
+      th = document.createElement('th');
+      th.innerHTML='Fermata';
+      tr.appendChild(th);
+      th = document.createElement('th');
+      th.innerHTML='Codice fermata';
+      tr.appendChild(th);
+      th = document.createElement('th');
+      th.innerHTML='Veicolo';
+      tr.appendChild(th);
+      th = document.createElement('th');
+      th.innerHTML='Ultimo aggiornamento';
+      tr.appendChild(th);
+      table.appendChild(tr);
 
       // Aggiungi i dati alla tabella
-      const tbody = table.createTBody();
       data.forEach(row => {
-        const rowElement = tbody.insertRow();
+        const rowt = document.createElement('tr');
         row.forEach(cellData => {
-          const cell = rowElement.insertCell();
-          cell.textContent = cellData;
+          if(cellData!=""){
+            const cell = document.createElement('td');
+            cell.innerHTML = cellData;
+            rowt.appendChild(cell);
+          }
         });
+        table.appendChild(rowt);
       });
 
       // Aggiungi la tabella alla pagina
