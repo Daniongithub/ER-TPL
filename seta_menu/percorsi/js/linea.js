@@ -64,8 +64,12 @@ function caricadati(){
         container.appendChild(table);
     })
     .catch(err => {
-        console.error('Errore nel caricamento dati:', err);
-        document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
+        if(item.error=="Percorso non trovato"){
+            document.getElementById('tabella-container').textContent = "Percorso non trovato.";
+        }else{
+            console.error('Errore nel caricamento dati:', err);
+            document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
+        }
     });
 }
 
