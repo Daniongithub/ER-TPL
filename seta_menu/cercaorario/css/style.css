@@ -190,7 +190,7 @@ img{
 
 @media (max-width: 512px) {
     th,td {
-        font-size: 3.1vw;
+        font-size: 3vw;
         padding: 1vw;
         padding-top: .9vw;
         padding-bottom: .9vw;
@@ -199,7 +199,7 @@ img{
         margin-top:10px;
     }
     nav#corsie-nav ul li a{
-        font-size: 3.1vw;
+        font-size: 3vw;
     }
     h2{
         margin-bottom: 0;
