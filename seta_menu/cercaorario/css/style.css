@@ -157,17 +157,18 @@ img{
         flex-direction: column;
     }
     th,td {
-        font-size: 90%;
+        font-size: 2vw;
+        padding: 1vw;
     }
     nav#corsie-nav ul li a{
-        font-size: 2.8vw;
+        font-size: 90%;
         margin: 0;
     }
     table {
         width: 100%;
     }
     h2{
-        margin-bottom: 0;
+        margin-bottom: 8px;
     }
     h2.noreduction{
         margin-bottom: 16px;
@@ -189,11 +190,20 @@ img{
 
 @media (max-width: 512px) {
     th,td {
-        font-size: 2.8vw;
-        padding: .8vw;
+        font-size: 3vw;
+        padding: 1vw;
     }
     table{
         margin-top:10px;
+    }
+    nav#corsie-nav ul li a{
+        font-size: 2.8vw;
+    }
+    h2{
+        margin-bottom: 0;
+    }
+    h2.noreduction{
+        margin-bottom: 16px;
     }
 }
 
