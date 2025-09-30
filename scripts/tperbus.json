@@ -2980,5 +2980,23 @@
         "settore": "Suburbano",
         "modello": "MAN A44 Lion's City L LE CNG",
         "link": "/tper_bus/suburbano/manlcllecng.html#1386"
+    },
+    {
+        "matricola": "1588",
+        "settore": "Extraurbano",
+        "modello": "Mercedes-Benz Integro O550FL (II)",
+        "link": "/tper_bus/extraurbano/integrofl.html#1588"
+    },
+    {
+        "matricola": "1589",
+        "settore": "Extraurbano",
+        "modello": "Mercedes-Benz Integro O550FL (II)",
+        "link": "/tper_bus/extraurbano/integrofl.html#1589"
+    },
+    {
+        "matricola": "1590",
+        "settore": "Extraurbano",
+        "modello": "Mercedes-Benz Integro O550FL (II)",
+        "link": "/tper_bus/extraurbano/integrofl.html#1590"
     }
 ]

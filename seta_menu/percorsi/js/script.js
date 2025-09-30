@@ -18,6 +18,9 @@ fetch(url)
             if(element<100){
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");
+                if(element.includes("(")){
+                    result.setAttribute("class","rosso");
+                }
                 result.setAttribute("href","rcodes.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
@@ -26,6 +29,9 @@ fetch(url)
             }else if(element>390&&element<400){
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");
+                if(element.includes("(")){
+                    result.setAttribute("class","rosso");
+                }
                 result.setAttribute("href","rcodes.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
@@ -34,14 +40,20 @@ fetch(url)
             }else if(element=="5taxi"||element=="10tax"){
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");
+                if(element.includes("(")){
+                    result.setAttribute("class","rosso");
+                }
                 result.setAttribute("href","rcodes.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;
                 sContainer.appendChild(result);
-            }else if(/^[^A-Z].*[A-Z]/i.test(element)){
+            }else if(/^[^A-Z].*[A-Z]/i.test(element)||element.includes("(")){
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");
+                if(element.includes("(")){
+                    result.setAttribute("class","rosso");
+                }
                 result.setAttribute("href","rcodes.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
@@ -50,6 +62,9 @@ fetch(url)
             }else if(!/^[A-Z]/i.test(element)){
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");
+                if(element.includes("(")){
+                    result.setAttribute("class","rosso");
+                }
                 result.setAttribute("href","rcodes.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
@@ -58,6 +73,9 @@ fetch(url)
             }else{
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");
+                if(element.includes("(")){
+                    result.setAttribute("class","rosso");
+                }
                 result.setAttribute("href","rcodes.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>

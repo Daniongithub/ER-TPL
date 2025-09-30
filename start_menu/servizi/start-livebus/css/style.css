@@ -1,8 +1,8 @@
 body {
-    background-color: #282828;
-    text-align: center;
-    color: white;
-    font-family: Titillium Web;
+  background-color: #282828;
+  text-align: center;
+  color: white;
+  font-family: Titillium Web;
 }
 
 h1 {
@@ -22,15 +22,8 @@ p {
 }
 
 #data-container {
-  margin-top: 20px;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #333;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow-x: scroll;
+  min-width: 80%;
+  max-width: 100%;
 }
 
 .filter-container {
@@ -58,7 +51,7 @@ p {
   border: 1px solid #ccc;
   border-radius: 8px;
   transition: border-color 0.3s ease;
-  background-color: gray;
+  background-color: rgb(60, 60, 60);
   color: white;
 }
 
@@ -69,52 +62,46 @@ p {
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  font-size: 15px;
-  border-radius: 8px;
-  overflow: hidden;
+  border-collapse: separate; 
+  border-spacing: 0;
+  border: 1px solid rgb(100,100,100);
+  border-radius: 16px;
+  overflow: hidden; 
+  min-width: 85%;
+  max-width: 100%;
+  margin: 18px auto;
 }
 
-table th:nth-child(6),
-td:nth-child(6){
-  display: none;
+/*Linee verticali*/
+th:not(:last-child),
+td:not(:last-child) {
+  border-right: 1px solid rgb(100,100,100);
 }
 
-table,
-th,
-td {
-  border: 1px solid #e0e0e0;
+/*Linee orizzontali*/
+tr:not(:last-child) > th,
+tr:not(:last-child) > td {
+    border-bottom: 1px solid rgb(100,100,100);;
 }
 
 th {
   background-color: slategray;
   color: white;
-  padding: 12px;
-  text-align: left;
+  text-align: center;
+  padding: .7vw;
 }
 
 td {
-  padding: 10px;
-  background-color: dimgray;
+  padding: .7vw;
+  background-color: #282828;
   color: white;
 }
 
 tr:nth-child(even) td {
-  background-color: gray;
-}
-
-tr:hover td {
-  background-color: darkgray;
+  background-color: rgb(60, 60, 60);
 }
 
 @media (max-width: 768px) {
-  table th:nth-child(4),
-  td:nth-child(4){
-    display: none;
-  }
-
   .filter-container input{
       margin-top: 5px;
   }
@@ -122,10 +109,13 @@ tr:hover td {
   .filter-container button{
     margin-top: 75%;
   }
+  #data-container {
+    overflow-x: scroll;
+  }
 }
 
 button {
-  background-color: gray;
+  background-color: rgb(60, 60, 60);
   color: white;
   border: none;
   padding: 10px 20px;

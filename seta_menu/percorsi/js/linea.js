@@ -46,13 +46,13 @@ function caricadati(){
 
         // Corpo tabella
         const tbody = document.createElement('tbody');
-        item.features.forEach(item => {
-            const element = item.properties;
+        item.forEach(item => {
+            const element = item;
             var tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${element.code}&name=${element.desc}" class="bianco">${element.desc}</a></td>
-                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${element.code}&name=${element.desc}" class="bianco">${element.code}</a></td>
+                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
+                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -64,8 +64,12 @@ function caricadati(){
         container.appendChild(table);
     })
     .catch(err => {
-        console.error('Errore nel caricamento dati:', err);
-        document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
+        if(item.error=="Percorso non trovato"){
+            document.getElementById('tabella-container').textContent = "Percorso non trovato.";
+        }else{
+            console.error('Errore nel caricamento dati:', err);
+            document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
+        }
     });
 }
 

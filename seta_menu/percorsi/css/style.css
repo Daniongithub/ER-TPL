@@ -161,14 +161,13 @@ img{
         flex-direction: column;
     }
     th,td {
-        font-size: 70%;
+        font-size: 90%;
     }
     nav#corsie-nav ul li a{
         font-size: 75%;
         margin: 0;
     }
     table {
-        margin-top: 10px;
         width: 100%;
     }
     h2{
@@ -189,6 +188,15 @@ img{
     img{
         width: 98%;
         height: auto;
+    }
+}
+
+@media (max-width: 512px) {
+    th,td {
+        font-size: 3.2vw;
+    }
+    table{
+        margin-top:10px;
     }
 }
 
