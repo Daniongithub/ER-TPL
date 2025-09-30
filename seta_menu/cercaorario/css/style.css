@@ -158,7 +158,6 @@ img{
     }
     th,td {
         font-size: 2vw;
-        padding: 1vw;
     }
     nav#corsie-nav ul li a{
         font-size: 90%;
@@ -191,15 +190,12 @@ img{
 @media (max-width: 512px) {
     th,td {
         font-size: 3vw;
-        padding: 1vw;
-        padding-top: .9vw;
-        padding-bottom: .9vw;
     }
     table{
         margin-top:10px;
     }
     nav#corsie-nav ul li a{
-        font-size: 3vw;
+        font-size: 3.2vw;
     }
     h2{
         margin-bottom: 0;

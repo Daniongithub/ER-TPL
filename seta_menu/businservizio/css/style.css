@@ -168,13 +168,6 @@ select,input{
 }
 
 @media (max-width: 768px) {
-    .search-result {
-        display: block;
-        width: 95.5%;
-    }
-    th,td {
-        font-size: 70%;
-    }
     p.scaled{
         font-size: 70%;
     }
@@ -182,8 +175,28 @@ select,input{
         margin-top: 10px;
         min-width: 100%;
     }
+    div.content-background {
+        max-width: 100%;
+    }
+    .search-result {
+        display: block;
+        width: 96.5%;
+    }
+    .container {
+        flex-direction: column;
+    }
+    th,td {
+        font-size: 2vw;
+    }
+    nav#corsie-nav ul li a{
+        font-size: 90%;
+        margin: 0;
+    }
+    table {
+        width: 100%;
+    }
     h2{
-        margin-bottom: 0;
+        margin-bottom: 8px;
     }
     h2.noreduction{
         margin-bottom: 16px;
@@ -195,8 +208,20 @@ select,input{
         width: 98%;
         height: auto;
     }
-    div.content-background {
-        max-width: 100%;
+}
+
+@media (max-width: 512px) {
+    th,td {
+        font-size: 3vw;
+    }
+    table{
+        margin-top:10px;
+    }
+    h2{
+        margin-bottom: 0;
+    }
+    h2.noreduction{
+        margin-bottom: 16px;
     }
 }
 
