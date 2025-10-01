@@ -377,5 +377,5 @@ function caricaFiltratiModello(selectedOption){
 }
 
 function reloadFiltratiModello(){
-    caricaFiltratiModello(lineaSelect.value);
+    caricaFiltratiModello(modelloSelect.value);
 }
