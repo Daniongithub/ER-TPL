@@ -27,7 +27,7 @@ fetch(urlRoutes)
             lineaSelect.appendChild(option);
         });
     })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
 fetch(urlModels)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
@@ -49,7 +49,7 @@ fetch(urlModels)
             }
         });
     })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
 
 
 function modelsDictionary(model){
