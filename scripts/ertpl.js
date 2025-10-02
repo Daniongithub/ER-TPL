@@ -53,14 +53,18 @@ function chisiamoInizializza() {
     setInterval(updateTimer, 1000);
 }
 
+// This function below is just a simple obfuscator for the email address, in order to prevent bots invading the inbox.
+
 function mostraemail() {
     document.getElementById("email").innerHTML = "";
     const p1 = "info";
     const p2 = ".";
     const p3 = "ertpl";
     const p4 = "@";
-    const p5 = "gmail";
+    const p5 = "protonmail";
     const p6 = ".";
     const p7 = "com";
-    document.getElementById("email").innerHTML = p1+p2+p3+p4+p5+p6+p7;
+    const link = document.getElementById("email").appendChild(document.createElement("a"));
+    link.innerHTML = p1+p2+p3+p4+p5+p6+p7;
+    link.setAttribute("href", "mailto:" + p1+p2+p3+p4+p5+p6+p7);
 }
