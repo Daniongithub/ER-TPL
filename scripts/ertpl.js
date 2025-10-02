@@ -65,6 +65,7 @@ function mostraemail() {
     const p6 = ".";
     const p7 = "com";
     const link = document.getElementById("email").appendChild(document.createElement("a"));
+    link.setAttribute("class", "novita")
     link.innerHTML = p1+p2+p3+p4+p5+p6+p7;
     link.setAttribute("href", "mailto:" + p1+p2+p3+p4+p5+p6+p7);
 }
