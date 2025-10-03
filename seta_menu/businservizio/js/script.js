@@ -4,11 +4,12 @@ const contentBackground = document.getElementById('content-background');
 
 let allresults = [];
 const urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
+//const urlList="http://localhost:5001/busesinservice";
 
 //Reperire modelli e numeri linea
 
 const urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
-//const urlRoutes = 'http://localhost:5001/stoplist';
+//const urlRoutes = 'http://localhost:5001/routenumberslist';
 const urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
 //const urlModels = 'http://localhost:5001/stoplist';
 

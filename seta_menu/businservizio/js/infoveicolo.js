@@ -6,7 +6,7 @@ const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
 
 const urlBackend = `https://setaapi.serverissimo.freeddns.org/vehicleinfo/${id}`;
-//const urlBackend = `http://localhost:5001/arrivals/${codice}`;
+//const urlBackend = `http://localhost:5001/vehicleinfo/${id}`;
 function caricadati(){
     var item=[];
     fetch(urlBackend)
