@@ -306,6 +306,12 @@ table.image-table img {
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
     }
+    nav ul:last-child li {
+        margin-right: 20px;
+    }
+    nav ul li {
+        margin-right: 8px;
+    }
 }
 /*zona lista mezzi*/
 .lista-mezzi{
