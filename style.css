@@ -182,7 +182,7 @@ nav ul li h1.yellow-warning {
     border-radius: 10px;
 }
 .nomargin{
-    
+    margin: 0;
 }
 table{
     margin-left: auto;
@@ -209,6 +209,16 @@ table.greenhead td a{
 }
 table.greenhead th{
     background-color: rgb(0, 160, 0);
+}
+table.zone{
+    text-align: left;
+}
+table.zone td, table.zone th{
+    padding-right: 16px;
+}
+table.zone th h3{
+    margin-bottom:4px;
+    margin-top:4px;
 }
 td a{
     text-decoration: none;
