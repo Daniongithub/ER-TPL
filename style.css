@@ -181,6 +181,9 @@ nav ul li h1.yellow-warning {
     border-style: hidden;
     border-radius: 10px;
 }
+.nomargin{
+    
+}
 table{
     margin-left: auto;
     margin-right: auto;
