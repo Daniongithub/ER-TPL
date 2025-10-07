@@ -212,9 +212,11 @@ table.greenhead th{
 }
 table.zone{
     text-align: left;
+    margin-top:0;
 }
 table.zone td, table.zone th{
     padding-right: 16px;
+    height: 16px;
 }
 table.zone th h3{
     margin-bottom:4px;
