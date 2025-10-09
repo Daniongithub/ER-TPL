@@ -169,7 +169,7 @@ select,input{
 
 @media (max-width: 768px) {
     p.scaled{
-        font-size: 70%;
+        font-size: 2vw;
     }
     table {
         margin-top: 10px;
@@ -217,6 +217,9 @@ select,input{
 }
 
 @media (max-width: 512px) {
+    p.scaled{
+        font-size: 3vw;
+    }
     th,td {
         font-size: 3vw;
     }
