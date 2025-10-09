@@ -1806,6 +1806,12 @@
         "link": "/setamodena_bus/suburbano/citarogtper.html#4854"
     },
     {
+        "matricola": "4855",
+        "settore": "Suburbano",
+        "modello": "Solaris Urbino 18 III ex START",
+        "link": "/setamodena_bus/suburbano/urbinostart.html"
+    },
+    {
         "matricola": "692",
         "settore": "Extraurbano",
         "modello": "Irisbus Ares SFR117",
