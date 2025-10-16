@@ -15,22 +15,19 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav id="iframe-orari-nav">
             <ul>
-                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-                <li><a href="/seta_menu/seta.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
                 <li><a href="/seta_menu/frequenze/index.html"><h1 style="font-size: 100%;font-weight: 500;">Selettore linea</h1></a></li>
             </ul>
         </nav>
     </header>
-    <h1>Frequenze e tempi di percorrenza linea: <span id="linea-span"></span></h1>
-    <div id="desc-container"></div>
-    <div id="link-a-seta"></div>
+    <h2>Orari oggi linea: <span id="linea-span"></span></h2>
+    <iframe id="iframe" src="https://www.setaweb.it/lineedyn_linea_dett_fermate_e_orari.php" frameborder="0" height="500" width="500"></iframe>
     <footer>
         <div>
 			<p>Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Leocraft1/SetaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione.</p>
 		</div>
     </footer>
-    <script src="js/infos.js"></script>
+    <script src="js/iframeorari.js"></script>
 </body>
 </html>

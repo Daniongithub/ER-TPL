@@ -21,6 +21,10 @@ body {
     margin:8px;
 }
 
+#iframe{
+    width: 100%;
+}
+
 table{
     margin-left: auto;
     margin-right: auto;
