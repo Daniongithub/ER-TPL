@@ -22,7 +22,7 @@ body {
 }
 
 #iframe{
-    width: 100%;
+    width: 97%;
 }
 
 table{
@@ -169,9 +169,6 @@ img{
     }
     table {
         width: 100%;
-    }
-    h2{
-        margin-bottom: 0;
     }
     h2.noreduction{
         margin-bottom: 16px;
