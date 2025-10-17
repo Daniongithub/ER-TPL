@@ -18,7 +18,7 @@ setTimeout(function(){}, 2000);
 
 //Adatta altezza iframe da codice injectato
 window.addEventListener("message", (event) => {
-    if (event.origin !== "https://setaapi.serverissimo.freeddns.org/") return; // sicurezza
+    if (event.origin !== "https://setaapi.serverissimo.freeddns.org/lineedyn_linea_dett_percorsi") return; // sicurezza
     if (event.data?.type === "resize") {
         frame.style.height = event.data.height + "px";
     }
