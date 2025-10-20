@@ -40,9 +40,9 @@ fetch(urlDesc)
             var td = document.createElement('td');
             td.innerHTML=data[0].frequenze[i];
             tr.appendChild(td);
-            var td = document.createElement('td');
-            td.innerHTML=data[0].frequenze_dom[i];
-            tr.appendChild(td);
+            //var td = document.createElement('td');
+            //td.innerHTML=data[0].frequenze_dom[i];
+            //tr.appendChild(td);
             table.appendChild(tr);
             i++;
         });

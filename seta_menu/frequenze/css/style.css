@@ -170,9 +170,6 @@ img{
     .container {
         flex-direction: column;
     }
-    th,td {
-        font-size: 90%;
-    }
     nav#corsie-nav ul li a{
         font-size: 75%;
         margin: 0;
