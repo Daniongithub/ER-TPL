@@ -22,7 +22,6 @@ fetch(urlDesc)
             <th>Destinazione</th>
             <th>Tempo di percorrenza (min)</th>
             <th>Frequenza (min)</th>
-            <th>Sabato dopo le 14 e domenica (min)</th>
         </table>`;
         const table = document.getElementById('desc-table');
         if(data[0].linea==undefined){
