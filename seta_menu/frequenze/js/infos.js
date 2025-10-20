@@ -16,11 +16,13 @@ fetch(urlDesc)
         return response.json();
     })
     .then(data =>{
+        linkContainer.innerHTML=`<a href="iframeorari.html?routenum=${data[0].linea}" class="biancosott">Visualizza tabella e mappa</a>`;
         descContainer.innerHTML=`
         <table id="desc-table">
             <th>Destinazione</th>
-            <th>Tempo di percorrenza</th>
-            <th>Frequenza</th>
+            <th>Tempo di percorrenza (min)</th>
+            <th>Frequenza (min)</th>
+            <th>Sabato dopo le 14 e domenica (min)</th>
         </table>`;
         const table = document.getElementById('desc-table');
         if(data[0].linea==undefined){
@@ -38,9 +40,11 @@ fetch(urlDesc)
             var td = document.createElement('td');
             td.innerHTML=data[0].frequenze[i];
             tr.appendChild(td);
+            var td = document.createElement('td');
+            td.innerHTML=data[0].frequenze_dom[i];
+            tr.appendChild(td);
             table.appendChild(tr);
             i++;
         });
-        linkContainer.innerHTML=`<a href="iframeorari.html?routenum=${data[0].linea}" class="biancosott">Visualizza tabella e mappa</a>`;
     })
     .catch(error => {descContainer.innerHTML="La linea specificata non possiede nessuna descrizione valida.";console.error(error);})
