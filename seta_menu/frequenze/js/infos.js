@@ -41,6 +41,6 @@ fetch(urlDesc)
             table.appendChild(tr);
             i++;
         });
-        linkContainer.innerHTML=`<a href="${data[0].linkseta}" class="biancosott">Visualizza sul sito seta</a>`;
+        linkContainer.innerHTML=`<a href="iframeorari.html?routenum=${data[0].linea}" class="biancosott">Visualizza tabella e mappa</a>`;
     })
     .catch(error => {descContainer.innerHTML="La linea specificata non possiede nessuna descrizione valida.";console.error(error);})

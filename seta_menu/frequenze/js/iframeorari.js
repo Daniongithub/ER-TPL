@@ -2,15 +2,30 @@ const params = new URLSearchParams(window.location.search);
 const num = params.get('routenum');
 const lineaSpan = document.getElementById('linea-span');
 const iframe = document.getElementById('iframe');
-const linkContainer = document.getElementById('link-a-seta');
+const messageDiv = document.getElementById('message');
 
 const date = new Date();
 const todayDate=date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
 
-const baseURL = "https://setaapi.serverissimo.freeddns.org/lineedyn_linea_dett_percorsi/?b=mo&l=MO"+num+"&dd="+todayDate+"&v=As";
+const asURL = "https://setaapi.serverissimo.freeddns.org/lineedyn_linea_dett_percorsi/?b=mo&l=MO"+num+"&dd="+todayDate+"&v=As";
+const diURL = "https://setaapi.serverissimo.freeddns.org/lineedyn_linea_dett_percorsi/?b=mo&l=MO"+num+"&dd="+todayDate+"&v=Di";
 
 //Display numero linea
-lineaSpan.innerHTML=num;
+lineaSpan.textContent=num;
 
 //Spawn iframe
-iframe.setAttribute("src",baseURL);
+iframe.setAttribute("src",asURL);
+if(num==undefined||num==""){
+    iframe.setAttribute("src","");
+    message.innerHTML=`
+    <p>Non hai specificato nessuna linea nei parametri dell'url</p>
+    `;
+}
+
+function setAs(){
+    iframe.setAttribute("src",asURL);
+}
+
+function setDi(){
+    iframe.setAttribute("src",diURL);
+}
