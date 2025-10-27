@@ -32,9 +32,9 @@ th {
 
 th,td {
     border: 2px solid #444;
-    padding: .7vw;
-    padding-top: .6vw;
-    padding-bottom: .6vw;
+    padding: 10.75px;
+    padding-top: 9.2px;
+    padding-bottom: 9.2px;
     text-align: left;
 }
 
@@ -162,6 +162,9 @@ img{
     }
     th,td {
         font-size: 90%;
+        padding: .7vw;
+        padding-top: .6vw;
+        padding-bottom: .6vw;
     }
     nav#corsie-nav ul li a{
         font-size: 75%;
@@ -189,11 +192,14 @@ img{
         width: 98%;
         height: auto;
     }
-    nav ul:last-child li {
-        margin-right: 20px;
-    }
     nav ul li {
         margin-right: 8px;
+    }
+    nav#rcodes-nav ul:last-child li {
+        margin-right: 20px;
+    }
+    nav#rcodes-nav ul li:last-child {
+        margin-right: 20px;
     }
 }
 

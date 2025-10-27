@@ -1,8 +1,17 @@
 const params = new URLSearchParams(window.location.search);
 const container = document.getElementById('res-container');
 const id = params.get('routenum');
+const nav = document.getElementById('rcodes-nav')
 
 const url = "https://setaapi.serverissimo.freeddns.org/routecodesarchive";
+
+//Spawn iframeorari
+if(id!=undefined&&id!=""){
+    const ul = document.createElement('ul');
+    ul.setAttribute("style","flex:1;justify-content: right;");
+    ul.innerHTML=`<li><a href="/seta_menu/percorsi/iframeorari.html?routenum=${id}"><h1 style="font-size: 100%;font-weight: 500;">Orari e mappa di oggi</h1></a></li>`;
+    nav.appendChild(ul);
+}
 
 //Elenco percorsi
 fetch(url)

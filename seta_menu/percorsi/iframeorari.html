@@ -6,7 +6,7 @@
     <meta name="keywords" content="seta, modena, seta-modena, orari, in, tempo, reale, autobus, fermate, orario, palina">
     <meta name="author" content="ER-TPL Team">
     <title>SETA Modena - Tempi di percorrenza</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-iframeorari.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://www.setaweb.it/images/favicon/android-icon-192x192.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,19 +17,23 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-                <li><a href="/seta_menu/seta.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
+                <li><a href="javascript:history.back()"><h1 style="font-size: 100%;font-weight: 500;">Torna indietro</h1></a></li>
             </ul>
         </nav>
     </header>
-    <h1>Frequenze e tempi di percorrenza linee urbane SETA Modena</h1>
-    <h2>Scegli una linea:</h2>
-    <div id="urbano-container"></div>
+    <h2>Linea: <span id="linea-span"></span></h2>
+    <div id="message"></div>
+    <table id="selettore-direzione">
+        <th onclick="javascript:setAs()">Andata</th>
+        <th onclick="javascript:setDi()">Ritorno</th>
+    </table>
+    <div id="caricamento-div"></div>
+    <iframe id="iframe" src="" frameborder="0" onload="javascript:removeLoading()"></iframe>
+    <script src="js/iframeorari.js"></script>
     <footer>
         <div>
 			<p>Copyright (C) 2025 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Leocraft1/SetaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione.</p>
 		</div>
     </footer>
-    <script src="js/script.js"></script>
 </body>
 </html>
