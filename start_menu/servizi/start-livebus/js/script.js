@@ -1,4 +1,4 @@
-const apiurl = 'https://startapi.serverissimo.freeddns.org/infobus/';
+const apiurl = 'https://api.vichingo455.freeddns.org/infobus/';
 // Funzione per applicare il filtro su ogni colonna
 function applyFilter() {
     const filterZona = document.getElementById('filterZona').value.toLowerCase();
