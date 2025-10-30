@@ -120,6 +120,37 @@ a.ybutton{
     box-shadow: none;
     transform: translateY(5px)
 }
+a.wbutton {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 20px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: .1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+    color: black;
+    background-color: #ffc107; 
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #ffc107 0px,
+        #ffc107 25px,
+        #d14600 25px,
+        #d14600 50px
+    );
+    box-shadow: 0 5px 0 #d14600;
+}
+
+a.wbutton:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
 footer{
     position: fixed;
     left: 8px;
