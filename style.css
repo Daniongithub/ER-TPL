@@ -199,6 +199,11 @@ nav ul li h1.yellow-warning {
     font-size: 16px;
 }
 
+.yellow-warning {
+    color:rgb(255, 205, 0);
+    margin:8px;
+}
+
 .bus{
     border: 2px solid;
     border-style: hidden;
@@ -436,6 +441,7 @@ table.image-table img {
 #bus-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 #searchBar {
