@@ -31,28 +31,6 @@ a.novita{
 }
 
 /*PULSANTI CON <a>*/
-
-a.button {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 18px;
-    width: auto;
-    margin-bottom: 1rem;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 0 20px;
-    font-weight: 700;
-    line-height: 48px;
-    letter-spacing: .1px;
-    white-space: wrap;
-    border-radius: 8px;
-    cursor: pointer;
-}
-a.button:active {
-    box-shadow: none;
-    transform: translateY(5px)
-}
-
 /*COLORI BUTTON*/
 
 a.blue.button{
@@ -79,9 +57,8 @@ a.yellow.button{
     box-shadow: 0 5px 0 darkgoldenrod;
 }
 
-a.striped.button{
+a.wip.button{
     color: black;
-    background-color: #ffc107; 
     background-image: repeating-linear-gradient(
         -45deg,
         #ffc107 0px,
@@ -89,7 +66,30 @@ a.striped.button{
         #d14600 25px,
         #d14600 50px
     );
-    box-shadow: 0 5px 0 #d14600;
+    box-shadow: 0 5px 0 #8b2e00;
+}
+
+/*PULSANTE GENERICO*/
+
+a.button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 20px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: .1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+}
+a.button:active {
+    box-shadow: none;
+    transform: translateY(5px);
 }
 
 footer{
