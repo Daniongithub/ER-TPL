@@ -1,5 +1,5 @@
 // VARIABILI DA MODIFICARE - VARIABLES TO MODIFY //
-const ApiUri = 'https://api.vichingo455.freeddns.org/start-corsesopp.json'; //JSON Dinamico - Dynamic JSON
+const ApiUri = 'https://startapi.serverissimo.freeddns.org/start-corsesopp.json'; //JSON Dinamico - Dynamic JSON
 
 // IMPORTANTE!! NON MODIFICARE SOTTO!! - IMPORTANT!! DO NOT MODIFY THE CODE BELOW!! //
 let ultimaRichiesta = null;
