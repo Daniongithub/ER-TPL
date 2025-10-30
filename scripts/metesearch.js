@@ -21,9 +21,9 @@ searchBar.addEventListener('input', () => {
         productsContainer.innerHTML = ' ';
         buttons.innerHTML = `
         <div class="verticale">
-            <a href="/ravenna_privatibus/gamberini.html" class="button">Gamberini</a>
-            <a href="/ravenna_privatibus/pollini.html" class="button">Pollini</a>
-            <a href="/ravenna_privatibus/zaganelli.html" class="button">Zaganelli</a>
+            <a href="/ravenna_privatibus/gamberini.html" class="blue button">Gamberini</a>
+            <a href="/ravenna_privatibus/pollini.html" class="blue button">Pollini</a>
+            <a href="/ravenna_privatibus/zaganelli.html" class="blue button">Zaganelli</a>
         </div>
         `;
         return;

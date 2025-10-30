@@ -5,29 +5,7 @@ body{
     font-family: Titillium Web;
     margin-bottom: 0px;
 }
-.button {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 18px;
-    width: auto;
-    margin-bottom: 1rem;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 0 20px;
-    font-weight: 700;
-    line-height: 48px;
-    letter-spacing: .1px;
-    white-space: wrap;
-    border-radius: 8px;
-    cursor: pointer;
-    color: white;
-    background-color: blue;
-    box-shadow: 0 5px 0 darkblue;
-}
-.button:active {
-    box-shadow: none;
-    transform: translateY(5px)
-}
+
 p.listamezzi{
     border-radius: 5px;
     display:inline;
@@ -51,7 +29,10 @@ a{
 a.novita{
     color: rgb(0, 255, 0);
 }
-a.gbutton{
+
+/*PULSANTI CON <a>*/
+
+a.button {
     display: inline-block;
     text-decoration: none;
     font-size: 18px;
@@ -66,75 +47,39 @@ a.gbutton{
     white-space: wrap;
     border-radius: 8px;
     cursor: pointer;
+}
+a.button:active {
+    box-shadow: none;
+    transform: translateY(5px)
+}
+
+/*COLORI BUTTON*/
+
+a.blue.button{
+    color: white;
+    background-color: blue;
+    box-shadow: 0 5px 0 darkblue;
+}
+
+a.green.button{
     color: white;
     background-color: rgb(0, 160, 0);
     box-shadow: 0 5px 0 darkgreen;
 }
-.gbutton:active {
-    box-shadow: none;
-    transform: translateY(5px)
-}
-a.rbutton{
-    display: inline-block;
-    text-decoration: none;
-    font-size: 18px;
-    width: auto;
-    margin-bottom: 1rem;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 0 20px;
-    font-weight: 700;
-    line-height: 48px;
-    letter-spacing: .1px;
-    white-space: wrap;
-    border-radius: 8px;
-    cursor: pointer;
+
+a.red.button{
     color: white;
     background-color: rgb(200, 0, 0);
     box-shadow: 0 5px 0 darkred;
 }
-.rbutton:active {
-    box-shadow: none;
-    transform: translateY(5px)
-}
-a.ybutton{
-    display: inline-block;
-    text-decoration: none;
-    font-size: 18px;
-    width: auto;
-    margin-bottom: 1rem;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 0 20px;
-    font-weight: 700;
-    line-height: 48px;
-    letter-spacing: .1px;
-    white-space: wrap;
-    border-radius: 8px;
-    cursor: pointer;
+
+a.yellow.button{
     color: black;
     background-color: rgb(255, 255, 0);
     box-shadow: 0 5px 0 darkgoldenrod;
 }
-.ybutton:active {
-    box-shadow: none;
-    transform: translateY(5px)
-}
-a.wbutton {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 18px;
-    width: auto;
-    margin-bottom: 1rem;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 0 20px;
-    font-weight: 700;
-    line-height: 48px;
-    letter-spacing: .1px;
-    white-space: wrap;
-    border-radius: 8px;
-    cursor: pointer;
+
+a.striped.button{
     color: black;
     background-color: #ffc107; 
     background-image: repeating-linear-gradient(
@@ -147,10 +92,6 @@ a.wbutton {
     box-shadow: 0 5px 0 #d14600;
 }
 
-a.wbutton:active {
-    box-shadow: none;
-    transform: translateY(5px);
-}
 footer{
     position: fixed;
     left: 8px;
