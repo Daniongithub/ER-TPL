@@ -181,6 +181,14 @@ nav ul li h1.yellow-warning {
     border-style: hidden;
     border-radius: 10px;
 }
+img.service{
+    border-radius: 10px;
+    margin-top: 38px;
+    width:40%;
+}
+img.ui.service{
+    width:30%;
+}
 .nomargin{
     margin: 0;
 }
@@ -326,6 +334,9 @@ table.image-table img {
     }
     nav ul li {
         margin-right: 8px;
+    }
+    img.service{
+        width:80% !important;
     }
 }
 /*zona lista mezzi*/
