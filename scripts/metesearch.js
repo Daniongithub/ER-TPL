@@ -20,7 +20,7 @@ searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {
         productsContainer.innerHTML = ' ';
         buttons.innerHTML = `
-        <div class="verticale">
+        <div>
             <a href="/ravenna_privatibus/gamberini.html" class="blue button">Gamberini</a>
             <a href="/ravenna_privatibus/pollini.html" class="blue button">Pollini</a>
             <a href="/ravenna_privatibus/zaganelli.html" class="blue button">Zaganelli</a>

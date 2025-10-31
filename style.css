@@ -92,6 +92,70 @@ a.button:active {
     transform: translateY(5px);
 }
 
+/*PULSANTI CON <button>*/
+/*COLORI BUTTON*/
+
+button.blue.button{
+    color: white;
+    background-color: blue;
+    box-shadow: 0 5px 0 darkblue;
+}
+
+button.green.button{
+    color: white;
+    background-color: rgb(0, 160, 0);
+    box-shadow: 0 5px 0 darkgreen;
+}
+
+button.red.button{
+    color: white;
+    background-color: rgb(200, 0, 0);
+    box-shadow: 0 5px 0 darkred;
+}
+
+button.yellow.button{
+    color: black;
+    background-color: rgb(255, 255, 0);
+    box-shadow: 0 5px 0 darkgoldenrod;
+}
+
+button.wip.button{
+    color: black;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #ffc107 0px,
+        #ffc107 25px,
+        #d14600 25px,
+        #d14600 50px
+    );
+    box-shadow: 0 5px 0 #8b2e00;
+}
+
+/*PULSANTE GENERICO*/
+
+button.button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 18px;
+    width: auto;
+    margin-bottom: 1rem;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0 20px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: .1px;
+    white-space: wrap;
+    border-radius: 8px;
+    cursor: pointer;
+    border:0px;
+    font-family: inherit;
+}
+button.button:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
 footer{
     position: fixed;
     left: 8px;

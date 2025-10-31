@@ -20,7 +20,7 @@ searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {
         productsContainer.innerHTML = ' ';
         buttons.innerHTML = `
-        <div class="verticale">
+        <div>
             <a href="/tper_menu/tperurb.html" class="blue button">Urbano</a>
             <a href="/tper_menu/tpersub.html" class="blue button">Suburbano</a>
             <a href="/tper_menu/tperext.html" class="blue button">Extraurbano</a>
