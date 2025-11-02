@@ -11,8 +11,8 @@ codiceSpan.textContent = id;
 pNav.innerHTML = `            
         <ul>
             <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-            <li><a href="/seta_menu/percorsi/index.html"><h1 style="font-size: 100%;font-weight: 500;">Selettore linea</h1></a></li>
-            <li><a href="/seta_menu/percorsi/rcodes.html?routenum=${num}"><h1 style="font-size: 100%;font-weight: 500;">Selettore percorso</h1></a></li>
+            <li><a href="/seta_modena/servizi/percorsi/index.html"><h1 style="font-size: 100%;font-weight: 500;">Selettore linea</h1></a></li>
+            <li><a href="/seta_modena/servizi/percorsi/rcodes.html?routenum=${num}"><h1 style="font-size: 100%;font-weight: 500;">Selettore percorso</h1></a></li>
         </ul>
     `;
 
@@ -51,8 +51,8 @@ function caricadati(){
             var tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
-                    <td class="uguale"><a href="/seta_menu/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
+                    <td class="uguale"><a href="/seta_servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
+                    <td class="uguale"><a href="/seta_servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);

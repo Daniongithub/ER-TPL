@@ -5,7 +5,7 @@ const buttons = document.getElementById('buttons');
 let allProducts = [];
 window.onbeforeunload=searchBar.value="";
 
-const url = '/seta_menu/js_menu/setabus.json';
+const url = '/seta_modena/menu/js/setabus.json';
 fetch(url)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");

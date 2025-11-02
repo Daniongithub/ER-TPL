@@ -115,7 +115,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Ora si trova a:</td>
-                    <td><a href="/seta_menu/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
+                    <td><a href="/seta_servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -123,7 +123,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Codice percorso:</td>
-                    <td><a href="/seta_menu/percorsi/percorso.html?routecode=${bus.route_code}" class="bianco">${bus.route_code}</a></td>
+                    <td><a href="/seta_modena/servizi/percorsi/percorso.html?routecode=${bus.route_code}" class="bianco">${bus.route_code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -131,7 +131,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Codice corsa:</td>
-                    <td><a href="/seta_menu/percorsi/prossimefermate.html?journeycode=${bus.journey_code}" class="bianco">${bus.journey_code}</a></td>
+                    <td><a href="/seta_modena/servizi/percorsi/prossimefermate.html?journeycode=${bus.journey_code}" class="bianco">${bus.journey_code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);

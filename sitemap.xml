@@ -91,7 +91,7 @@
 		<lastmod>2025-08-22</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_menu/cercaorario</loc>
+		<loc>https://ertpl.pages.dev/seta_servizi/cercaorario</loc>
 		<priority>0.60</priority>
 		<lastmod>2025-08-29</lastmod>
 	</url>
@@ -101,7 +101,7 @@
 		<lastmod>2025-07-12</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_menu/businservizio</loc>
+		<loc>https://ertpl.pages.dev/seta_servizi/businservizio</loc>
 		<priority>0.60</priority>
 		<lastmod>2025-08-29</lastmod>
 	</url>
@@ -426,12 +426,12 @@
 		<lastmod>2025-08-22</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_menu/cercaorario/comeleggere.html</loc>
+		<loc>https://ertpl.pages.dev/seta_servizi/cercaorario/comeleggere.html</loc>
 		<priority>0.40</priority>
 		<lastmod>2025-08-22</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_menu/businservizio/infoveicolo.html</loc>
+		<loc>https://ertpl.pages.dev/seta_servizi/businservizio/infoveicolo.html</loc>
 		<priority>0.40</priority>
 		<lastmod>2025-08-25</lastmod>
 	</url>
@@ -671,17 +671,17 @@
 		<lastmod>2025-07-12</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/seta_menu/percorsi/percorso.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/percorso.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-08-27</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/seta_menu/percorsi/prossimefermate.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/prossimefermate.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-08-26</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/seta_menu/percorsi/rcodes.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/rcodes.html</loc>
 		<priority>0.25</priority>
 		<lastmod>2025-09-02</lastmod>
 	</url>

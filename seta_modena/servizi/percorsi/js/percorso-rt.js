@@ -40,7 +40,7 @@ function caricadati(){
             const thead = document.createElement('thead');
             thead.innerHTML = `
                 <tr>
-                    <th class="linea" style="text-align:center;" colspan="2"><a href="/seta_menu/cercaorario/fermata.html?code=${element.wp_code}&name=${element.desc}" class="bianco">${element.desc}</a></th>
+                    <th class="linea" style="text-align:center;" colspan="2"><a href="/seta_servizi/cercaorario/fermata.html?code=${element.wp_code}&name=${element.desc}" class="bianco">${element.desc}</a></th>
                 </tr>
             `;
             table.appendChild(thead);
