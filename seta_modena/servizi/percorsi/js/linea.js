@@ -51,8 +51,8 @@ function caricadati(){
             var tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td class="uguale"><a href="/seta_servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
-                    <td class="uguale"><a href="/seta_servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
+                    <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
+                    <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);

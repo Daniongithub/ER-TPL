@@ -115,7 +115,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Ora si trova a:</td>
-                    <td><a href="/seta_servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
+                    <td><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);

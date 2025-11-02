@@ -21,9 +21,9 @@ searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {
         resultsContainer.innerHTML=`
             <h3 style="margin-bottom:4px;">Fermate rapide:</h3>
-            <a href="/seta_servizi/cercaorario/altrecorsie.html?location=STAZIONE FS" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
-            <a href="/seta_servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
-            <a href="/seta_servizi/cercaorario/altrecorsie.html?location=GARIBALDI" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
+            <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
+            <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
+            <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
         `;
         warning.innerHTML = `
             <p id="warning-mo"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>

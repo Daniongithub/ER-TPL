@@ -18,7 +18,7 @@ fetch(url)
             corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Altre corsie</a>
+                        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Altre corsie</a>
                     </li>
                 </ul>`;
         }
@@ -26,7 +26,7 @@ fetch(url)
             corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Altre corsie</a>
+                        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Altre corsie</a>
                     </li>
                 </ul>`;
         }
@@ -34,7 +34,7 @@ fetch(url)
             corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Altre corsie</a>
+                        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Altre corsie</a>
                     </li>
                 </ul>`;
         }
@@ -42,7 +42,7 @@ fetch(url)
             corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_servizi/cercaorario/altrecorsie.html?location=POLO LEONARDO">Altre corsie</a>
+                        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=POLO LEONARDO">Altre corsie</a>
                     </li>
                 </ul>`;
         }
@@ -59,7 +59,7 @@ fetch(url)
             corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Dall'altra parte</a>
+                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Dall'altra parte</a>
                     </li>
                 </ul>`;
         }
