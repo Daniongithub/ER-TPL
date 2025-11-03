@@ -294,10 +294,220 @@
         "link": "/ravenna_privatibus/zaganelli.html#19228"
     },
     {
+        "matricola": "19502",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway LE Line",
+        "link": "/ravenna_privatibus/riolo.html#19502"
+    },
+    {
+        "matricola": "19503",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway LE Line",
+        "link": "/ravenna_privatibus/riolo.html#19502"
+    },
+    {
+        "matricola": "19504",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway LE Line",
+        "link": "/ravenna_privatibus/riolo.html#19502"
+    },
+    {
+        "matricola": "19505",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway LE Line",
+        "link": "/ravenna_privatibus/riolo.html#19502"
+    },
+    {
+        "matricola": "19506",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway LE Line",
+        "link": "/ravenna_privatibus/riolo.html#19502"
+    },
+    {
+        "matricola": "19507",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Isuzu Novo Ultra",
+        "link": "/ravenna_privatibus/riolo.html#19507"
+    },
+    {
+        "matricola": "19508",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Isuzu Novo Ultra",
+        "link": "/ravenna_privatibus/riolo.html#19507"
+    },
+    {
+        "matricola": "19509",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Isuzu Novo Ultra",
+        "link": "/ravenna_privatibus/riolo.html#19507"
+    },
+    {
         "matricola": "19513",
         "vettore" : "Cooperativa Trasporti di Riolo Terme",
         "modello" : "Isuzu Novo Ultra",
         "link": "/ravenna_privatibus/riolo.html#19513"
+    },
+    {
+        "matricola": "19517",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Mercedes Sprinter",
+        "link": "/ravenna_privatibus/riolo.html#19517"
+    },
+    {
+        "matricola": "19518",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Daily Line",
+        "link": "/ravenna_privatibus/riolo.html#19518"
+    },
+    {
+        "matricola": "19520",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "VDL Bova Futura 12m",
+        "link": "/ravenna_privatibus/riolo.html#19520"
+    },
+    {
+        "matricola": "19521",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "VDL Bova Futura 10m",
+        "link": "/ravenna_privatibus/riolo.html#19521"
+    },
+    {
+        "matricola": "19522",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "VDL Lezio",
+        "link": "/ravenna_privatibus/riolo.html#19522"
+    },
+    {
+        "matricola": "19523",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "VDL Lezio",
+        "link": "/ravenna_privatibus/riolo.html#19523"
+    },
+    {
+        "matricola": "19524",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Mercedes Sprinter",
+        "link": "/ravenna_privatibus/riolo.html#19524"
+    },
+    {
+        "matricola": "19525",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Daily Line",
+        "link": "/ravenna_privatibus/riolo.html#19525"
+    },
+    {
+        "matricola": "19526",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S418 LE Business",
+        "link": "/ravenna_privatibus/riolo.html#19526"
+    },
+    {
+        "matricola": "19527",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S418 LE Business",
+        "link": "/ravenna_privatibus/riolo.html#19526"
+    },
+    {
+        "matricola": "19528",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S418 LE Business",
+        "link": "/ravenna_privatibus/riolo.html#19526"
+    },
+    {
+        "matricola": "19529",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S418 LE Business",
+        "link": "/ravenna_privatibus/riolo.html#19526"
+    },
+    {
+        "matricola": "19531",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "VDL Lexio",
+        "link": "/ravenna_privatibus/riolo.html#19531"
+    },
+    {
+        "matricola": "19533",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19533"
+    },
+    {
+        "matricola": "19535",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Mercedes Intouro",
+        "link": "/ravenna_privatibus/riolo.html#19535"
+    },
+    {
+        "matricola": "19536",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Mercedes Intouro",
+        "link": "/ravenna_privatibus/riolo.html#19535"
+    },
+    {
+        "matricola": "19537",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19537"
+    },
+    {
+        "matricola": "19538",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway LE Line",
+        "link": "/ravenna_privatibus/riolo.html#19538"
+    },
+    {
+        "matricola": "19539I",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19539I"
+    },
+    {
+        "matricola": "19539II",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Iveco Crossway NF Line",
+        "link": "/ravenna_privatibus/riolo.html#19539II"
+    },
+    {
+        "matricola": "19540",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Bova Futura 10m",
+        "link": "/ravenna_privatibus/riolo.html#19540"
+    },
+    {
+        "matricola": "19541",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19541"
+    },
+    {
+        "matricola": "19542",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19541"
+    },
+    {
+        "matricola": "19543",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315 LE Business",
+        "link": "/ravenna_privatibus/riolo.html#19543"
+    },
+    {
+        "matricola": "19544",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19544"
+    },
+    {
+        "matricola": "19545",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19544"
+    },
+    {
+        "matricola": "19546",
+        "vettore": "Cooperativa Trasporti di Riolo Terme",
+        "modello": "Setra S315UL",
+        "link": "/ravenna_privatibus/riolo.html#19544"
     },
     {
         "matricola": "30",
