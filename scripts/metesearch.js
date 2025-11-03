@@ -24,6 +24,7 @@ searchBar.addEventListener('input', () => {
             <a href="/ravenna_privatibus/gamberini.html" class="blue button">Gamberini</a>
             <a href="/ravenna_privatibus/pollini.html" class="blue button">Pollini</a>
             <a href="/ravenna_privatibus/zaganelli.html" class="blue button">Zaganelli</a>
+											<a href="/ravenna_privatibus/riolo.html" class="blue button">C.T.R.T.</a>
         </div>
         `;
         return;
