@@ -284,14 +284,32 @@
     {
         "matricola": "19227",
         "vettore" : "Zaganelli",
-        "modello" : "Iveco Crossway LE ex Austria",
+        "modello" : "Iveco Crossway NF ex Austria",
         "link": "/ravenna_privatibus/zaganelli.html#19227"
     },
     {
         "matricola": "19228",
         "vettore" : "Zaganelli",
-        "modello" : "Iveco Crossway LE ex Austria",
+        "modello" : "Iveco Crossway NF ex Austria",
         "link": "/ravenna_privatibus/zaganelli.html#19228"
+    },
+    {
+        "matricola": "19229",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19229"
+    },
+    {
+        "matricola": "19230",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19229"
+    },
+    {
+        "matricola": "19231",
+        "vettore" : "Zaganelli",
+        "modello" : "Iveco Crossway LE ex Austria",
+        "link": "/ravenna_privatibus/zaganelli.html#19231"
     },
     {
         "matricola": "19502",
