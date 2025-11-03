@@ -311,8 +311,9 @@ table.image-table img {
     border: 3px solid #787878;
     border-radius: 8px;
     background-color: #282828;
-    min-width: 320px;
-    min-height: 146px;
+    min-width: 250px;
+    max-height: 113px;
+    overflow: hidden;
     display: flex;
     align-items:center;
 }
@@ -336,7 +337,7 @@ span.yellow{
     font-weight: 700;
 }
 span.green{
-    color: rgb(0, 160, 0) !important;
+    color: rgb(0, 220, 0) !important;
     font-weight: 700;
 }
 span.blu{
@@ -347,52 +348,7 @@ span.blu{
     text-align: left;
     margin:64px;
 }
-@media (max-width: 768px) {
-    table.image-table {
-        width: 100%;
-    }
-
-    table.image-table td {
-        display: block;
-        width: 100%;
-    }
-
-    table.image-table img {
-        margin-bottom: 10px;
-    }
-    .container {
-        flex-direction: column;
-        margin-left:0;
-        margin-right:0;
-    }
-    iframe.chisiamo{
-        width: 340px;
-        height: 190px;
-    }
-    table.greenhead{
-        width: 100%; 
-    }
-    table.greenhead td,table.greenhead th{
-        border: 2px solid #444;
-        padding: 1.8vw;
-        padding-top: 1.5vw;
-        padding-bottom: 1.5vw;
-    }
-    nav ul:last-child li {
-        margin-right: 20px;
-    }
-    nav ul li {
-        margin-right: 8px;
-    }
-    img.service{
-        width:80% !important;
-    }
-    #notizia-container{
-        margin:12px;
-        margin-top: 24px;
-    }
-}
-/*zona lista mezzi*/
+/*Zona lista mezzi*/
 .lista-mezzi{
     width: 80vw;
     border-collapse: separate;
@@ -483,4 +439,52 @@ span.blu{
     width: 300px;
     margin: 20px;
     font-size: 16px;
+}
+@media (max-width: 768px) {
+    table.image-table {
+        width: 100%;
+    }
+
+    table.image-table td {
+        display: block;
+        width: 100%;
+    }
+
+    table.image-table img {
+        margin-bottom: 10px;
+    }
+    .container {
+        flex-direction: column;
+        margin-left:0;
+        margin-right:0;
+    }
+    iframe.chisiamo{
+        width: 340px;
+        height: 190px;
+    }
+    table.greenhead{
+        width: 100%; 
+    }
+    table.greenhead td,table.greenhead th{
+        border: 2px solid #444;
+        padding: 1.8vw;
+        padding-top: 1.5vw;
+        padding-bottom: 1.5vw;
+    }
+    nav ul:last-child li {
+        margin-right: 20px;
+    }
+    nav ul li {
+        margin-right: 8px;
+    }
+    img.service{
+        width:80% !important;
+    }
+    .news-card{
+        min-width: 250px;
+    }
+    #notizia-container{
+        margin:12px;
+        margin-top: 24px;
+    }
 }

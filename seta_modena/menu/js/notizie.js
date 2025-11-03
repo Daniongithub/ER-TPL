@@ -3,6 +3,11 @@ const newsContainer = document.getElementById('news-container');
 //URL
 const newsURL = "https://setaapi.serverissimo.freeddns.org/allnews";
 
+//Vars
+const trimWidth = 250;
+const trimMargins = 16;
+const trimLines = 2;
+
 newsContainer.innerHTML="<p>Caricamento notizie...</p>";
 fetch(newsURL)
     .then(response => {
@@ -44,7 +49,7 @@ fetch(newsURL)
             //P creation
             span.innerHTML=element.type;
             p.innerHTML=element.date+" - ";
-            p.appendChild(span);
+            p.appendChild(span);            
             h3.innerHTML=element.title;
             //Link creation
             const link = "/seta_modena/menu/notizia.html?link="+element.link;
