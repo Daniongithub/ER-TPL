@@ -38,8 +38,8 @@ th,td {
     text-align: left;
 }
 
-.bus-card-red {
-    background-color: rgb(55, 14, 14) !important;
+.bus-card-yellow {
+    background-color: rgb(55, 55, 14) !important;
 }
 .cursor-pointer{
     cursor: pointer;
