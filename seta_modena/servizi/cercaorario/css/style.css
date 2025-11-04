@@ -39,7 +39,7 @@ th,td {
 }
 
 .bus-card-yellow {
-    background-color: rgb(55, 55, 14) !important;
+    background-color: rgb(55, 55, 0) !important;
 }
 .cursor-pointer{
     cursor: pointer;
