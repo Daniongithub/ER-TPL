@@ -122,10 +122,10 @@ function caricadati(){
                 var posizione=item.next_stop;
             }
             if(item.hasProblems==true){
-                tr.setAttribute("class","bus-card-red");
+                //tr.setAttribute("class","bus-card-red");
                 tr.innerHTML = `
-                        <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.service}</td>
-                        <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.destination}</td>
+                        <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.service}</td>
+                        <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.destination}</td>
                     `;
             }else{
                 tr.innerHTML = `
