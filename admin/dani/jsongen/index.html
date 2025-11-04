@@ -16,11 +16,20 @@
         <input type="number" id="matra">
     </div>
     <p>Seleziona settore:</p>
-    <select id="selezione">
-        <option value="Urbano">Urbano</option>
-        <option value="Suburbano">Suburbano</option>
-        <option value="Extraurbano">Extraurbano</option>
-    </select>
+    <label for="privati">Stai inserendo un <i>vettore</i> privato?</label>
+    <input type="checkbox" name="privati" id="flag">
+    <br>
+    <div style="margin-top: 15px;">
+        <select id="selezione">
+            <option value="Urbano">Urbano</option>
+            <option value="Suburbano">Suburbano</option>
+            <option value="Extraurbano">Extraurbano</option>
+            <option value="Cooperativa Trasporti di Riolo Terme">C.T.R.T.</option>
+            <option value="Gamberini">Gamberini</option>
+            <option value="Pollini">Pollini</option>
+            <option value="Zaganelli">Zaganelli</option>
+        </select>
+    </div>
     <p>Inserisci modello mezzo:</p>
     <input type="text" id="modello">
     <p>Inserisci link HTML:</p>
