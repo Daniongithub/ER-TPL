@@ -410,6 +410,14 @@ span.blu{
 .lista-mezzi a{
     text-decoration: underline;
 }
+
+/*Notizie cercaorario*/
+
+#notizie-container{
+    display: flex;
+    justify-content: center;
+}
+
 /* Zona ricerca */
 .product-card {
     margin: 10px;
