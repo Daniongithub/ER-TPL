@@ -260,7 +260,7 @@ function caricaFiltratiLinea(selectedOption){
         aggiornaNav.innerHTML = `
             <ul>
                 <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-                <li><a href="/service/newui.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
+                <li><a href="/seta_modena/menu/index.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
             </ul>
             <ul style="flex:1;justify-content: right;">
                 <li><a href="javascript:reloadFiltratiLinea();"><h1 style="font-size: 16px;font-weight: 500;">Aggiorna</h1></a></li>
@@ -327,7 +327,7 @@ function caricaFiltratiModello(selectedOption){
         aggiornaNav.innerHTML = `
             <ul>
                 <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-                <li><a href="/service/newui.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
+                <li><a href="/seta_modena/menu/index.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
             </ul>
             <ul style="flex:1;justify-content: right;">
                 <li><a href="javascript:reloadFiltratiModello();"><h1 style="font-size: 16px;font-weight: 500;">Aggiorna</h1></a></li>
