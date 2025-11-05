@@ -166,6 +166,20 @@ nav ul li a:hover {
     font-size: 16px;
 }
 
+h2.wip-bg{
+    color: black;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #ffc107 0px,
+        #ffc107 25px,
+        #d14600 25px,
+        #d14600 50px
+    );
+    margin:0;
+    padding:16px;
+}
+
+
 nav ul li h1.yellow-warning {
     color:rgb(255, 205, 0);
     font-size: 16px;
