@@ -46,6 +46,9 @@ fetch(newsURL)
             if(element.type=="Biglietti"){
                 span.setAttribute("class","blu");
             }
+            if(element.type=="Personale"){
+                span.setAttribute("class","blu");
+            }
             //P creation
             span.innerHTML=element.type;
             p.innerHTML=element.date+" - ";
