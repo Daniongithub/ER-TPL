@@ -4,6 +4,7 @@ const num = params.get('routenum');
 const codiceSpan = document.getElementById('codice-span');
 const destSpan = document.getElementById('destinazione-span');
 const pNav = document.getElementById('percorso-nav');
+const existP = document.getElementById('esiste-p');
 
 //Displays route code
 codiceSpan.textContent = id;
@@ -29,6 +30,14 @@ function caricadati(){
         item = data;
     })
     .then(data => {
+        //Display testo esiste o no
+        if(item.stillExists==true){
+            existP.setAttribute("class","green-bold");
+            existP.innerHTML="Questo percorso esiste ancora"
+        }else if(item.stillExists==undefined){}else{
+            existP.setAttribute("class","red-bold");
+            existP.innerHTML="Questo percorso non esiste più"
+        }
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
         // Creo tabella
@@ -46,7 +55,7 @@ function caricadati(){
 
         // Corpo tabella
         const tbody = document.createElement('tbody');
-        item.forEach(item => {
+        item.stops.forEach(item => {
             const element = item;
             var tr = document.createElement('tr');
             tr.innerHTML = `

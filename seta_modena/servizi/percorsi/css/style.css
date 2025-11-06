@@ -152,6 +152,17 @@ img{
     height:300px;
 }
 
+.green-bold{
+    color:green;
+    font-weight: bold;
+}
+
+.red-bold{
+    color:rgba(255, 50, 50, 1);
+    font-weight: bold;
+}
+
+
 @media (max-width: 768px) {
     .search-result {
         display: block;
