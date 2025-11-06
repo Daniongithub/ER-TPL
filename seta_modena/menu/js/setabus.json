@@ -2280,6 +2280,42 @@
         "link": "/seta_modena/bus/extraurbano/cwesercito.html#334"
     },
     {
+        "matricola": "335",
+        "settore": "Extraurbano",
+        "modello": "Mercedes New Integro O550",
+        "link": "/seta_modena/bus/extraurbano/newintegro.html#335"
+    },
+    {
+        "matricola": "336",
+        "settore": "Extraurbano",
+        "modello": "Mercedes New Integro O550",
+        "link": "/seta_modena/bus/extraurbano/newintegro.html#336"
+    },
+    {
+        "matricola": "337",
+        "settore": "Extraurbano",
+        "modello": "Mercedes New Integro O550",
+        "link": "/seta_modena/bus/extraurbano/newintegro.html#337"
+    },
+    {
+        "matricola": "338",
+        "settore": "Extraurbano",
+        "modello": "Mercedes New Integro O550",
+        "link": "/seta_modena/bus/extraurbano/newintegro.html#338"
+    },
+    {
+        "matricola": "339",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/seta_modena/bus/extraurbano/cwle.html#339"
+    },
+    {
+        "matricola": "340",
+        "settore": "Suburbano",
+        "modello": "Iveco Crossway LE",
+        "link": "/seta_modena/bus/extraurbano/cwle.html#340"
+    },
+    {
         "matricola": "341",
         "settore": "Extraurbano",
         "modello": "MAN Lion's Regio",
