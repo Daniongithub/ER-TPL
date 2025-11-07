@@ -103,14 +103,6 @@ function routesDictionary(rcode){
         case "MO2-As-291":
             return "2 AUTOSTAZIONE -> SAN DONNINO";
         //Linea 3
-        case "MO3-As-343":
-            return "3A VACIGLIO-MATTARELLA";
-        case "MO3-Di-318":
-            return "3 MONTEFIORINO";
-        case "MO3-As-348":
-            return "3 MATTARELLA";
-        case "MO3-As-354":
-            return "3A MONTEFIORINO -> VACIGLIO";
         case "MO3-Di-397":
             return "3B NONANTOLANA 1010";
         case "MO3-As-396":
@@ -127,8 +119,6 @@ function routesDictionary(rcode){
             return "3B NONANTOLANA 1010 -> CANALETTO -> RAGAZZI DEL 99";
         case "MO3-As-294":
             return "3A MONTEFIORINO -> CANALETTO -> MATTARELLA -> VACIGLIO";
-        case "MO3-Di-288":
-            return "3B RAGAZZI DEL 99 -> CANALETTO -> NONANTOLANA 1010";
         case "MO3-Di-293":
             return "3/ RAGAZZI DEL 99 -> STAZIONE FS";
         case "MO3-Di-289":
@@ -137,8 +127,6 @@ function routesDictionary(rcode){
             return "3/ VACIGLIO -> STAZIONE FS";
         case "MO3-Di-394":
             return "3A NONANTOLANA -> S.CATERINA-MONTEFIORINO";
-        case "MO3-Di-317":
-            return "3 VACIGLIO -> MONTEFIORINO";
         case "MO3-Di-325 (2025)":
             return "3A VACIGLIO -> PORTORICO";
         case "MO3-Di-316 (2025)":
@@ -153,6 +141,26 @@ function routesDictionary(rcode){
             return "3 PORTORICO -> MATTARELLA";
         case "MO3-As-319 (2025)":
             return "3 S.CATERINA -> MATTARELLA";
+        case "MO3-As-343 (2025)":
+            return "3A VACIGLIO-MATTARELLA";
+        case "MO3-Di-318 (2025)":
+            return "3 MONTEFIORINO";
+        case "MO3-As-348 (2025)":
+            return "3 MATTARELLA";
+        case "MO3-As-354 (2025)":
+            return "3A MONTEFIORINO -> VACIGLIO";
+        case "MO3-Di-317 (2025)":
+            return "3 VACIGLIO -> MONTEFIORINO";
+        case "MO3-Di-403 (09-2025)":
+            return "3F RAGAZZI DEL 99 -> PORTORICO";
+        case "MO3-Di-405 (09-2025)":
+            return "3F VACIGLIO -> PORTORICO";
+        case "MO3-As-406 (09-2025)":
+            return "3F PORTORICO -> VACIGLIO";
+        case "MO3-As-404 (09-2025)":
+            return "3F PORTORICO -> RAGAZZI DEL 99";
+        case "MO3-Di-288 (09-2025)":
+            return "3B RAGAZZI DEL 99 -> CANALETTO -> NONANTOLANA 1010";
         //Linea 4
         case "MO4-As-434":
             return "4 GALILEI";
