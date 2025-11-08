@@ -25,7 +25,8 @@ searchBar.addEventListener('input', () => {
             <a href="/start_menu/startsub.html" class="blue button">Suburbano</a>
             <a href="/start_menu/startextra.html" class="blue button">Extraurbano</a>
         </div>
-        <div style="height: 35px;"></div>
+        <hr class="solid">
+        <h2>Servizi START Romagna</h2>
         <div>
             <a class="green button" href="/start_menu/servizi/start-livebus/">Autobus in tempo reale</a>
             <a class="green button" href="/start_menu/servizi/start-corsesopp/">Corse non garantite</a>
