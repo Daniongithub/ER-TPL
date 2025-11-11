@@ -281,7 +281,7 @@ h2.admin{
     margin-left: 12px;
 }
 p.novitasito{
-    margin-top: 10px;
+    margin: 10px;
 }
 table.image-table {
     width: 98%;
@@ -311,6 +311,7 @@ table.image-table img {
     justify-content: space-between;
     gap: 20px;
     margin: 20px;
+    margin-top:8px;
 }
 
 /* News seta */
