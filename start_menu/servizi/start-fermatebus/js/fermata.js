@@ -3,8 +3,8 @@ const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
 
-//const urlBackend = `https://api.vichingo455.freeddns.org/fermateapi/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-const urlBackend = `https://startapi.serverissimo.freeddns.org/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
+const urlBackend = `https://api.vichingo455.freeddns.org/fermateapi/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
+//const urlBackend = `https://startapi.serverissimo.freeddns.org/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 function caricadati(){
     fetch(urlBackend)
     .then(res => res.json())
@@ -17,7 +17,7 @@ function caricadati(){
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
 
-        fetch('https://startapi.serverissimo.freeddns.org/versione')
+        fetch('https://api.vichingo455.freeddns.org/fermateapi/versione')
         .then(res => res.text())
         .then(versione => document.getElementById("ver").innerHTML = versione);
         
