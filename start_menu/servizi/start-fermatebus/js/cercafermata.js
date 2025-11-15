@@ -111,7 +111,8 @@ document.getElementById('bacino').addEventListener('change', function(event) {
     const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    const urlFermate = `https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`;
+    //const urlFermate = `https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`;
+    const urlFermate = `https://startapi.serverissimo.freeddns.org/bacino?selectedOption=${selectedOption}`;
 
     const radiobuttons = document.getElementById('radios');
     const ricerca = document.getElementById('ricerca');
