@@ -38,7 +38,7 @@ fetch(newsURL)
                 span.setAttribute("class","yellow");
             }
             if(element.type=="Autobus Treno"){
-                span.setAttribute("class","blu");
+                span.setAttribute("class","blue");
             }
             if(element.type=="Lavori in corso"){
                 span.setAttribute("class","red");
