@@ -319,6 +319,7 @@ table.image-table img {
 #news-container{
     display:flex;
     overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .news-card{
@@ -327,13 +328,11 @@ table.image-table img {
     border-radius: 8px;
     background-color: #282828;
     min-width: 250px;
-    max-height: 113px;
+    max-height: 118px;
+    align-items: center;
     overflow: hidden;
-    display: flex;
-    align-items:center;
 }
 .news-card a{
-    flex:1;
     height: 100%;
     align-items: center;
     text-decoration: none;

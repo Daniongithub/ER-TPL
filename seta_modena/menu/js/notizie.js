@@ -44,10 +44,10 @@ fetch(newsURL)
                 span.setAttribute("class","red");
             }
             if(element.type=="Biglietti"){
-                span.setAttribute("class","blu");
+                span.setAttribute("class","blue");
             }
             if(element.type=="Personale"){
-                span.setAttribute("class","blu");
+                span.setAttribute("class","blue");
             }
             //P creation
             span.innerHTML=element.type;
