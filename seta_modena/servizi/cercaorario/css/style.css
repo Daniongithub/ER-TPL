@@ -17,6 +17,15 @@ body {
     display: inline-block;
 }
 
+.search-result.desc h3{
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+.search-result.desc p{
+    margin-top:0px;
+    font-size: 15px;
+}
+
 table {
     border-collapse: collapse;
     border-radius: 8px;
