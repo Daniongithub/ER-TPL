@@ -158,9 +158,9 @@ function routesDictionary(rcode){
         case "MO3-Di-405 (09-2025)":
             return "3F VACIGLIO -> PORTORICO";
         case "MO3-As-406 (09-2025)":
-            return "3F PORTORICO -> VACIGLIO";
+            return "3F VACIGLIO";
         case "MO3-As-404 (09-2025)":
-            return "3F PORTORICO -> RAGAZZI DEL 99";
+            return "3F RAGAZZI DEL 99";
         case "MO3-Di-288 (09-2025)":
             return "3B SCUOLE MARCONI-NONANTOLANA 1010";
         //Linea 4
@@ -295,7 +295,7 @@ function routesDictionary(rcode){
         case "MO10-As-1032":
             return "10 LA ROCCA -> COGNENTO (Festivo)";
         case "MO10-Di-1090":
-            return "10A ALBARETO -> M.NUOVA";
+            return "10 M.NUOVA -> ALBARETO";
         case "MO10-As-1058":
             return "10 LA ROCCA -> COGNENTO";
         case "MO10-As-1039":
