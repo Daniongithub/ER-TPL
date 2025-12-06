@@ -116,17 +116,19 @@ function routesDictionary(rcode){
         case "MO3-Di-339":
             return "3A S.CATERINA-MONTEFIORINO";
         case "MO3-As-296":
-            return "3B NONANTOLANA 1010 -> CANALETTO -> RAGAZZI DEL 99";
+            return "3B SCUOLE MARCONI-RAGAZZI DEL 99";
         case "MO3-As-294":
-            return "3A MONTEFIORINO -> CANALETTO -> MATTARELLA -> VACIGLIO";
+            return "3A SCUOLE MARCONI-VACIGLIO";
         case "MO3-Di-293":
             return "3/ RAGAZZI DEL 99 -> STAZIONE FS";
         case "MO3-Di-289":
-            return "3A VACIGLIO -> CANALETTO -> S.CATERINA-MONTEFIORINO";
+            return "3A SCUOLE MARCONI-MONTEFIORINO";
         case "MO3-Di-295":
             return "3/ VACIGLIO -> STAZIONE FS";
         case "MO3-Di-394":
             return "3A NONANTOLANA -> S.CATERINA-MONTEFIORINO";
+        case "MO3-Di-287":
+            return "3B SCUOLE MARCONI-NONANTOLANA 1010";
         case "MO3-Di-325 (2025)":
             return "3A VACIGLIO -> PORTORICO";
         case "MO3-Di-316 (2025)":
@@ -156,11 +158,11 @@ function routesDictionary(rcode){
         case "MO3-Di-405 (09-2025)":
             return "3F VACIGLIO -> PORTORICO";
         case "MO3-As-406 (09-2025)":
-            return "3F PORTORICO -> VACIGLIO";
+            return "3F VACIGLIO";
         case "MO3-As-404 (09-2025)":
-            return "3F PORTORICO -> RAGAZZI DEL 99";
+            return "3F RAGAZZI DEL 99";
         case "MO3-Di-288 (09-2025)":
-            return "3B RAGAZZI DEL 99 -> CANALETTO -> NONANTOLANA 1010";
+            return "3B SCUOLE MARCONI-NONANTOLANA 1010";
         //Linea 4
         case "MO4-As-434":
             return "4 GALILEI";
@@ -293,7 +295,7 @@ function routesDictionary(rcode){
         case "MO10-As-1032":
             return "10 LA ROCCA -> COGNENTO (Festivo)";
         case "MO10-Di-1090":
-            return "10A ALBARETO -> M.NUOVA";
+            return "10 M.NUOVA -> ALBARETO";
         case "MO10-As-1058":
             return "10 LA ROCCA -> COGNENTO";
         case "MO10-As-1039":

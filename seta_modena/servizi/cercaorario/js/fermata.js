@@ -72,6 +72,7 @@ fermata_span.textContent=nome;
 
 const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
 //const urlBackend = `http://localhost:5001/arrivals/${codice}`;
+
 function caricadati(){
     fetch(urlBackend)
     .then(response => {
@@ -120,10 +121,21 @@ function caricadati(){
             }else{
                 var posizione=item.next_stop;
             }
-            if(item.delay==undefined){
+            if(item.hasProblems==true){
+                //tr.setAttribute("class","bus-card-red");
+                tr.innerHTML = `
+                        <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.service}</td>
+                        <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.destination}</td>
+                    `;
+            }else{
                 tr.innerHTML = `
                         <td>${item.service}</td>
                         <td>${item.destination}</td>
+                    `;
+            }
+            if(item.delay==undefined){
+                //le prime righe sono spostate sopra per link alle notizie se ci sono problemi
+                tr.innerHTML += `
                         <td>${item.arrival}</td>
                         <td>${stato}</td>
                         <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
@@ -132,9 +144,7 @@ function caricadati(){
                 tbody.appendChild(tr);
             }else{
                 if(item.delay>0){
-                    tr.innerHTML = `
-                        <td>${item.service}</td>
-                        <td>${item.destination}</td>
+                    tr.innerHTML += `
                         <td>${item.arrival} (+${item.delay})</td>
                         <td>${stato}</td>
                         <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
@@ -142,9 +152,7 @@ function caricadati(){
                     `;
                     tbody.appendChild(tr);
                 }else{
-                    tr.innerHTML = `
-                        <td>${item.service}</td>
-                        <td>${item.destination}</td>
+                    tr.innerHTML += `
                         <td>${item.arrival} (${item.delay})</td>
                         <td>${stato}</td>
                         <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
@@ -153,7 +161,6 @@ function caricadati(){
                     tbody.appendChild(tr);
                 }
             }
-            
         });
         table.appendChild(tbody);
 
