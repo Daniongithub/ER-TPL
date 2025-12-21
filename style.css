@@ -4,6 +4,7 @@ body{
     text-align: center;
     font-family: Titillium Web;
     margin-bottom: 0px;
+    overflow: hidden;
 }
 
 p.listamezzi{
