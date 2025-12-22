@@ -40,8 +40,10 @@ function updateTimer() {
     const minutes = Math.floor(diff / 1000 / 60) % 60;
     const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 
     document.getElementById("timer").innerHTML =
+        years + " anni " +
         days + " giorni " +
         hours + " ore " +
         minutes + " minuti " +
