@@ -39,7 +39,7 @@ function updateTimer() {
     const seconds = Math.floor(diff / 1000) % 60;
     const minutes = Math.floor(diff / 1000 / 60) % 60;
     const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24) % 365);
     const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 
     document.getElementById("timer").innerHTML =
