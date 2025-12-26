@@ -110,7 +110,7 @@ function routesDictionary(rcode){
         case "MO3-As-302":
             return "3/ NONANTOLANA 1010 -> STAZIONE FS";
         case "MO3-As-326":
-            return "3A MONTEFIORINO -> MATTARELLA -> VACIGLIO";
+            return "3A VACIGLIO";
         case "MO3-Di-400":
             return "3B STAZIONE FS -> NONANTOLANA 1010";
         case "MO3-Di-339":
