@@ -129,13 +129,18 @@ a.bianco{
     text-decoration: none;
 }
 
-a.rosso{
-    color:white;
+a.rosso, a.giallo{
     text-decoration: none;
 }
 
 a.rosso div{
     background-color: rgb(55,0,0) !important;
+    color:white;
+}
+
+a.giallo div{
+    background-color: rgb(55,55,0) !important;
+    color: white;
 }
 
 a.biancosott{

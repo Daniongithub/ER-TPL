@@ -38,6 +38,9 @@ fetch(url)
                             <div class="search-result"><h3 style="margin-left: 8px;margin-right: 8px;">${item}</h3>
                         `;
                     }else{
+                        if(dest.includes("[")){
+                            result.setAttribute("class","giallo");
+                        }
                         if(item.includes("(")){
                             result.setAttribute("class","rosso");
                         }
@@ -107,14 +110,14 @@ function routesDictionary(rcode){
             return "3B NONANTOLANA 1010";
         case "MO3-As-396":
             return "3B RAGAZZI DEL 99";
-        case "MO3-As-302":
-            return "3/ NONANTOLANA 1010 -> STAZIONE FS";
         case "MO3-As-326":
             return "3A VACIGLIO";
-        case "MO3-Di-400":
-            return "3B STAZIONE FS -> NONANTOLANA 1010";
         case "MO3-Di-339":
             return "3A S.CATERINA-MONTEFIORINO";
+        case "MO3-As-302":
+            return "3/ NONANTOLANA 1010 -> STAZIONE FS";
+        case "MO3-Di-400":
+            return "3B STAZIONE FS -> NONANTOLANA 1010";
         case "MO3-As-296":
             return "3B SCUOLE MARCONI-RAGAZZI DEL 99";
         case "MO3-As-294":
@@ -129,20 +132,26 @@ function routesDictionary(rcode){
             return "3A NONANTOLANA -> S.CATERINA-MONTEFIORINO";
         case "MO3-Di-287":
             return "3B SCUOLE MARCONI-NONANTOLANA 1010";
-        case "MO3-Di-325 (2025)":
-            return "3A VACIGLIO -> PORTORICO";
-        case "MO3-Di-316 (2025)":
-            return "3 MATTARELLA -> S.CATERINA";
-        case "MO3-As-322 (2025)":
-            return "3A PORTORICO -> VACIGLIO";
-        case "MO3-As-361 (2025)":
-            return "3 S.CATERINA -> MATTARELLA";
-        case "MO3-Di-320 (2025)":
-            return "3A MATTARELLA -> PORTORICO";
-        case "MO3-As-323 (2025)":
-            return "3 PORTORICO -> MATTARELLA";
-        case "MO3-As-319 (2025)":
-            return "3 S.CATERINA -> MATTARELLA";
+        case "MO3-Di-407":
+            return '3A MONTEFIORINO [Festivo]';
+        case "MO3-As-408":
+            return '3B RAGAZZI DEL 99 [Festivo]';
+        case "MO3-As-410":
+            return '3A VACIGLIO [Festivo]';
+        case "MO3-Di-399":
+            return '3B NONANTOLANA 1010 [Ridotto]';
+        case "MO3-As-402":
+            return '3B PORTORICO -> RAGAZZI DEL 99 [Ridotto]';
+        case "MO3-Di-327":
+            return '3A MONTEFIORINO [Ridotto]';
+        case "MO3-As-398":
+            return '3B RAGAZZI DEL 99 [Ridotto]';
+        case "MO3-As-324":
+            return '3A VACIGLIO [Ridotto]';
+        case "MO3-Di-301":
+            return '3/ VACIGLIO -> STAZIONE FS [Ridotto]';
+        case "MO3-Di-303":
+            return '3A RAGAZZI DEL 99 -> STAZIONE FS [Ridotto]';
         case "MO3-As-343 (2025)":
             return "3A VACIGLIO-MATTARELLA";
         case "MO3-Di-318 (2025)":
@@ -202,10 +211,6 @@ function routesDictionary(rcode){
             return "6 SANTI -> CHINNICI";
         case "MO6-Di-623":
             return "6 VILLANOVA -> CHINNICI";
-        case "MO6-Di-611 (2025)":
-            return "6 CHINNICI (per PANNI)";
-        case "MO6-As-610 (2025)":
-            return "6 AUTOSTAZIONE (per PANNI)";
         //Linea 7
         case "MO7-As-703":
             return "7 GRAMSCI";
@@ -240,8 +245,6 @@ function routesDictionary(rcode){
         case "MO8-Di-891":
             return "8 GARIBALDI -> PANNI";
         case "MO8-As-819":
-            return "8 GAZZOTTI";
-        case "MO8-As-817 (2025)":
             return "8 GAZZOTTI";
         //Linea 9
         case "MO9-As-9951":
@@ -302,6 +305,18 @@ function routesDictionary(rcode){
             return "10A LA ROCCA -> M.NUOVA";
         case "MO10-Di-1045":
             return "10/ COGNENTO -> AUTOSTAZIONE";
+        case "MO10-As-1035":
+            return "10 SCUOLE MARCONI-COGNENTO";
+        case "MO10-Di-1037":
+            return "10 AUTOSTAZIONE -> NONANTOLANA SCUOLE";
+        case "MO10-As-1036":
+            return "10 NONANTOLANA SCUOLE -> AUTOSTAZIONE";
+        case "MO10-Di-1043":
+            return "10 SCUOLE MARCONI-ALBARETO";
+        case "MO10-As-1089":
+            return "10 VIA CORNI-COGNENTO";
+        case "MO10-Di-1041 (12-2025)":
+            return "10 M.NUOVA -> ALBARETO";
         //Linea 11
         case "MO11-Di-1138":
             return "11 SANT'ANNA";
@@ -326,23 +341,7 @@ function routesDictionary(rcode){
             return "12 FINZI -> POLO LEONARDO";
         case "MO12-Di-1285":
             return "12 FANTI FS -> POLO LEONARDO";
-        case "MO12-As-1276 (2025)":
-            return "12 S.CATERINA";
-        case "MO12-Di-1277 (2025)":
-            return "12 POLO LEONARDO";
-        case "MO12-As-1272 (2025)":
-            return "12 GARIBALDI -> S.CATERINA";
         //Linea 13
-        case "MO13-As-1330":
-            return "13F SANT'ANNA";
-        case "MO13-Di-1333":
-            return "13F OSPEDALE BAGGIOVARA";
-        case "MO13-As-1332":
-            return "13F SANT'ANNA incl. CIMITERO";
-        case "MO13-As-1334":
-            return "13A CARCERE";
-        case "MO13-Di-1337":
-            return "13F CARCERE -> OSPEDALE BAGGIOVARA";
         case "MO13-As-1323":
             return "13 SANT'ANNA";
         case "MO13-Di-1321":
@@ -351,32 +350,44 @@ function routesDictionary(rcode){
             return "13A CARCERE";
         case "MO13-Di-1320":
             return "13 CARCERE -> OSPEDALE BAGGIOVARA";
+        case "MO13-Di-1391":
+            return "13 AUTOSTAZIONE -> OSPEDALE BAGGIOVARA";
+        case "MO13-As-1330":
+            return "13F SANT'ANNA [Festivo]";
+        case "MO13-Di-1333":
+            return "13F OSPEDALE BAGGIOVARA [Festivo]";
+        case "MO13-As-1332":
+            return "13F SANT'ANNA incl. CIMITERO [Festivo]";
+        case "MO13-As-1334":
+            return "13A CARCERE (13F) [Festivo]";
+        case "MO13-Di-1337":
+            return "13F CARCERE -> OSPEDALE BAGGIOVARA [Festivo]";
         //Linea 14
-        case "MO14-Di-1434":
+        case "MO14-Di-1434 (2025)":
             return "14A NAZIONI";
-        case "MO14-As-1437":
+        case "MO14-As-1437 (2025)":
             return "14 NAZIONI -> NONANTOLANA";
-        case "MO14-As-1435":
+        case "MO14-As-1435 (2025)":
             return "14 FINZI -> NONANTOLANA";
-        case "MO14-Di-1432":
+        case "MO14-Di-1432 (2025)":
             return "14 FINZI";
-        case "MO14-As-1433":
+        case "MO14-As-1433 (2025)":
             return "14 PORTORICO";
         //Linea 15
-        case "MO15-Di-1501":
+        case "MO15-Di-1501 (2025)":
             return "15 VILLANOVA";
-        case "MO15-As-1502":
+        case "MO15-As-1502 (2025)":
             return "15 VILLANOVA -> AUTOSTAZIONE";
-        case "MO15-Di-1503":
+        case "MO15-Di-1503 (2025)":
             return "15/ SANTI";
-        case "MO15-As-1504":
+        case "MO15-As-1504 (2025)":
             return "15 SANTI -> AUTOSTAZIONE";
-        case "MO15-As-1505":
+        case "MO15-As-1505 (2025)":
             return "15 VILLANOVA -> SAN CATALDO";
         //Linea 81
-        case "MO81-As-2213":
+        case "MO81-As-2213 (2025)":
             return "81 TETRA PAK";
-        case "MO81-As-2207":
+        case "MO81-As-2207 (2025)":
             return "81 SANT'ANNA";
     }
 }
