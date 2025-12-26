@@ -47,7 +47,6 @@ fetch(url)
                 </ul>`;
         }
         //Pulsante dall'altra parte
-        console.log(altraParteSearch(nome))
         if(altraParteSearch(nome)!=undefined){
             const codes = altraParteSearch(nome);
             const altrocodice = 0;
@@ -121,6 +120,11 @@ function caricadati(){
             }else{
                 var posizione=item.next_stop;
             }
+            if(item.br==true){
+                var finalDestination = item.destination1+"<br>"+item.destination2;
+            }else{
+                var finalDestination = item.destination;
+            }
             if(item.hasProblems==true){
                 //tr.setAttribute("class","bus-card-red");
                 tr.innerHTML = `
@@ -130,7 +134,7 @@ function caricadati(){
             }else{
                 tr.innerHTML = `
                         <td>${item.service}</td>
-                        <td>${item.destination}</td>
+                        <td>${finalDestination}</td>
                     `;
             }
             if(item.delay==undefined){
