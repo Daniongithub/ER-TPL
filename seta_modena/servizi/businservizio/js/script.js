@@ -96,7 +96,7 @@ function caricadati(){
                 var posizione=element.next_stop;
             }
             if(element.br==true){
-                var dest = element.destination1+"<br>"+destination2;
+                var dest = element.destination1+"<br>"+element.destination2;
             }else{
                 var dest = element.route_desc;
             }
