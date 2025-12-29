@@ -6,11 +6,12 @@ function generatd() {
         alert("Compila entrambi i campi.");
         return;
     }try{
-        link = "https://drive.serverissimo.freeddns.org/apps/files_sharing/publicpreview/ffdqobqRg2ezKXt?file=/Leo/SETA/"+link+"/"+matricola;
+        //Nuovo td
+        //<td><a data-path="/Fogli/TPER/TPER5630.jpg"><img data-path="/Fogli/TPER/TPER5630.jpg" alt="Server foto non raggiungibile."></a></td>
+        link = "/Leo/SETA/"+link+"/"+matricola;
 
-        const linkFinaleNoTrue = link+".jpg&x=1920&y=1080"
-        const linkFinaleTrue = link+".jpg&x=1920&y=1080&a=true"
-        const htmlString = "<td><a href=\""+linkFinaleTrue+"\"><img src=\""+linkFinaleNoTrue+"\"alt=\"Server foto non raggiungibile.\"></a></td>";
+        const linkFinale = link+".jpg"
+        const htmlString = "<td><a data-path=\""+linkFinale+"\"><img data-path=\""+linkFinale+"\"alt=\"Server foto non raggiungibile.\"></a></td>";
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
