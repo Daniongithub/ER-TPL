@@ -2236,5 +2236,41 @@
         "settore": "Urbano",
         "modello": "Menarinibus Citymood 12 LU",
         "link": "/start_bus/urbano/citymood12.html#32245"
+    },
+    {
+        "matricola": "34401",
+        "settore": "Extraurbano",
+        "modello": "Scania Interlink LD LNG",
+        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34401"
+    },
+    {
+        "matricola": "34402",
+        "settore": "Extraurbano",
+        "modello": "Scania Interlink LD LNG",
+        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34402"
+    },
+    {
+        "matricola": "34403",
+        "settore": "Extraurbano",
+        "modello": "Scania Interlink LD LNG",
+        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34403"
+    },
+    {
+        "matricola": "34404",
+        "settore": "Extraurbano",
+        "modello": "Scania Interlink LD LNG",
+        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34404"
+    },
+    {
+        "matricola": "34405",
+        "settore": "Extraurbano",
+        "modello": "Scania Interlink LD LNG",
+        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34405"
+    },
+    {
+        "matricola": "34406",
+        "settore": "Extraurbano",
+        "modello": "Scania Interlink LD LNG",
+        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34406"
     }
 ]
