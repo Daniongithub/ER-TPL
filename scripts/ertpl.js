@@ -5,23 +5,69 @@ aid = identifier for the anchor (a tag)
 imgid = identifier for the image (img tag)
 path = path for the image starting from the root, for example /Dani/10225.jpg
 */
-function changeUrlToFallback(aid,imgid,path) {
+function changeUrlToFallback(aid, imgid, path) {
     try {
         document.getElementById(imgid).src = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080&a=true";
-    } catch {}
+    } catch { }
     try {
         document.getElementById(aid).href = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080&a=true";
-    } catch {}
+    } catch { }
 }
 
-function changeUrlToFallbackNoTrue(aid,imgid,path) {
+function changeUrlToFallbackNoTrue(aid, imgid, path) {
     try {
         document.getElementById(imgid).src = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080";
-    } catch {}
+    } catch { }
     try {
         document.getElementById(aid).href = "https://drive.vichingo455.freeddns.org/apps/files_sharing/publicpreview/w8Nr4jZN3g6z3pn?file=" + path + "&x=1920&y=1080";
-    } catch {}
+    } catch { }
 }
+
+// New fallback system (HA)
+(() => {
+    const API_ENDPOINT = "https://ertpl-api.vercel.app/nextcloud";
+    let photoConfig = null;
+
+    async function getConfig() {
+        if (photoConfig) return photoConfig;
+
+        const res = await fetch(API_ENDPOINT);
+        photoConfig = await res.json();
+        return photoConfig;
+    }
+
+    function buildPreviewUrl(cfg, path, x = 1920, y = 1080) {
+        return `${cfg.url}/apps/files_sharing/publicpreview/${cfg.share}` +
+            `?file=${encodeURIComponent(path)}&x=${x}&y=${y}&a=true`;
+    }
+
+    async function initPhotos() {
+        try {
+            const cfg = await getConfig();
+            if (cfg.status !== "ok") return;
+
+            document.querySelectorAll("img[data-path]").forEach(img => {
+                const path = img.dataset.path;
+                const link = img.closest("a");
+
+                const url = buildPreviewUrl(cfg, path);
+
+                img.src = url;
+
+                // aggiorna solo i link che NON finiscono con .html
+                if (link && !link.href.endsWith(".html")) {
+                    link.href = url;
+                }
+            });
+
+        } catch (e) {
+            console.error("Photo init failed", e);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", initPhotos);
+})();
+
 
 // The functions below are used to display from how much time the project has been living
 
@@ -68,6 +114,6 @@ function mostraemail() {
     const p7 = "com";
     const link = document.getElementById("email").appendChild(document.createElement("a"));
     link.setAttribute("class", "novita")
-    link.innerHTML = p1+p2+p3+p4+p5+p6+p7;
-    link.setAttribute("href", "mailto:" + p1+p2+p3+p4+p5+p6+p7);
+    link.innerHTML = p1 + p2 + p3 + p4 + p5 + p6 + p7;
+    link.setAttribute("href", "mailto:" + p1 + p2 + p3 + p4 + p5 + p6 + p7);
 }
