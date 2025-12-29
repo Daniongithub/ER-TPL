@@ -36,9 +36,9 @@ function changeUrlToFallbackNoTrue(aid, imgid, path) {
         return photoConfig;
     }
 
-    function buildPreviewUrl(cfg, path, x = 1920, y = 1080) {
+    function buildPreviewUrl(cfg, path, x = 1920, y = 1080, isMenu = false) {
         return `${cfg.url}/apps/files_sharing/publicpreview/${cfg.share}` +
-            `?file=${encodeURIComponent(path)}&x=${x}&y=${y}&a=true`;
+            `?file=${encodeURIComponent(path)}&x=${x}&y=${y}` + (isMenu ? "" : "&a=true");
     }
 
     async function initPhotos() {
@@ -49,8 +49,9 @@ function changeUrlToFallbackNoTrue(aid, imgid, path) {
             document.querySelectorAll("img[data-path]").forEach(img => {
                 const path = img.dataset.path;
                 const link = img.closest("a");
+                const isMenu = img.classList.contains("bus");
 
-                const url = buildPreviewUrl(cfg, path);
+                const url = buildPreviewUrl(cfg, path, 1920, 1080, isMenu);
 
                 img.src = url;
 
