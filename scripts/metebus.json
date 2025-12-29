@@ -92,13 +92,13 @@
     {
         "matricola": "19112",
         "vettore" : "Gamberini",
-        "modello" : "Scania De Simon IL.3 ex APT",
+        "modello" : "Irisbus Crossway NF ex Finlandia",
         "link": "/ravenna_privatibus/gamberini.html#19112"
     },
     {
         "matricola": "19113",
         "vettore" : "Gamberini",
-        "modello" : "Setra S315UL",
+        "modello" : "Irisbus Crossway LE ex Västtrafik Svezia",
         "link": "/ravenna_privatibus/gamberini.html#19113"
     },
     {
@@ -134,7 +134,7 @@
     {
         "matricola": "19202",
         "vettore" : "Zaganelli",
-        "modello" : "Irisbus Evadys",
+        "modello" : "Irisbus Evadys H",
         "link": "/ravenna_privatibus/zaganelli.html#19202"
     },
     {
@@ -182,7 +182,7 @@
     {
         "matricola": "19210",
         "vettore" : "Zaganelli",
-        "modello" : "Sconosciuto",
+        "modello" : "Irisbus Daily Way",
         "link": "/ravenna_privatibus/zaganelli.html#19210"
     },
     {
@@ -206,7 +206,7 @@
     {
         "matricola": "19214",
         "vettore" : "Zaganelli",
-        "modello" : "Sconosciuto",
+        "modello" : "Mercedes Sprinter Altes Ecoline",
         "link": "/ravenna_privatibus/zaganelli.html#19214"
     },
     {
@@ -224,7 +224,7 @@
     {
         "matricola": "19217",
         "vettore" : "Zaganelli",
-        "modello" : "Sconosciuto",
+        "modello" : "Volkswagen Crafter",
         "link": "/ravenna_privatibus/zaganelli.html#19217"
     },
     {

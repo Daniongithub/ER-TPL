@@ -107,11 +107,11 @@ function getApiVersionHA() {
     fetch("https://ertpl-api.vercel.app/")
   .then(res => res.json())
   .then(info => {
-    document.getElementById("apiVersion").textContent =
+    document.getElementById("apiVersion").innerHTML =
       `Versione API Alta Disponibilità: v${info.version}`;
   })
   .catch(() => {
-    document.getElementById("apiVersion").textContent =
+    document.getElementById("apiVersion").innerHTML =
       "Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento.";
   });
 
