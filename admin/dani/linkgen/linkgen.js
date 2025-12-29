@@ -1,6 +1,5 @@
 function generatd() {
     const matricola = document.getElementById("matricola").value.trim();
-    var numero = document.getElementById("numero").value.trim();
     const link = document.getElementById("link").value.trim();
 
     if (!matricola || !link) {
@@ -17,12 +16,7 @@ function generatd() {
             alert("Parametro ?file= mancante nell'URL.");
             return;
         }
-        
-        if (numero === "") {
-            numero = 1;
-        }
-
-        const htmlString = `<td><a id="${matricola}-link${numero}" href="${link}"><img id="${matricola}-img${numero}" src="${link}" onerror='this.onerror=null; changeUrlToFallback("${matricola}-link${numero}","${matricola}-img${numero}","${path}");' alt="Server foto non raggiungibile."></a></td>`;
+        const htmlString = `<td><a data-path="${path}"><img data-path="${path}" alt="Server foto non raggiungibile."></a></td>`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
@@ -37,10 +31,9 @@ function generatd() {
 }
 
 function generaimg() {
-    const mezzo = document.getElementById("mezzo").value.trim();
     var link = document.getElementById("link").value.trim();
-    if (!mezzo || !link) {
-        alert("Compila entrambi i campi.");
+    if (!link) {
+        alert("Compila i campi.");
         return;
     }
     link = link.replace(/&a=true/, '');
@@ -49,7 +42,7 @@ function generaimg() {
         const params = new URLSearchParams(urlObj.search);
         const path = params.get("file");
 
-        const htmlString = `<img id="${mezzo}" class="bus" src="${link}" onerror='this.onerror=null; changeUrlToFallbackNoTrue("","${mezzo}","${path}");' alt="Server foto non raggiungibile.">`;
+        const htmlString = `<img class="bus" data-path="${path}" alt="Server foto non raggiungibile.">`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
@@ -74,13 +67,11 @@ function copiaOutput() {
 
 function puliscitd() {
     document.getElementById("matricola").value = "";
-    document.getElementById("numero").value = "";
     document.getElementById("link").value = "";
     document.getElementById("output").innerHTML = "";
 }
 
 function pulisciimg() {
-    document.getElementById("mezzo").value = "";
     document.getElementById("link").value = "";
     document.getElementById("output").innerHTML = "";
 }  
