@@ -56,9 +56,7 @@
 
 
 // The functions below are used to display from how much time the project has been living
-
 const startDate = new Date("2024-12-22T15:49:00");
-
 function updateTimer() {
     const now = new Date();
     const diff = now - startDate;
@@ -84,11 +82,11 @@ function updateTimer() {
 
 function chisiamoInizializza() {
     updateTimer();
+    getApiVersionHA();
     setInterval(updateTimer, 1000);
 }
 
 // This function below is just a simple obfuscator for the email address, in order to prevent bots invading the inbox.
-
 function mostraemail() {
     document.getElementById("email").innerHTML = "";
     const p1 = "info";
@@ -102,4 +100,19 @@ function mostraemail() {
     link.setAttribute("class", "novita")
     link.innerHTML = p1 + p2 + p3 + p4 + p5 + p6 + p7;
     link.setAttribute("href", "mailto:" + p1 + p2 + p3 + p4 + p5 + p6 + p7);
+}
+
+// This function below is to display the version of the HA API
+function getApiVersionHA() {
+    fetch("https://ertpl-api.vercel.app/")
+  .then(res => res.json())
+  .then(info => {
+    document.getElementById("apiVersion").textContent =
+      `Versione API Alta Disponibilità: v${info.version}`;
+  })
+  .catch(() => {
+    document.getElementById("apiVersion").textContent =
+      "Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento.";
+  });
+
 }
