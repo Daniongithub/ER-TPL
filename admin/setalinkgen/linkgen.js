@@ -11,7 +11,7 @@ function generatd() {
         link = "/Leo/SETA/"+link+"/"+matricola;
 
         const linkFinale = link+".jpg"
-        const htmlString = "<td><a class=\"bus\" data-path=\""+linkFinale+"\"><img data-path=\""+linkFinale+"\"alt=\"Server foto non raggiungibile.\"></a></td>";
+        const htmlString = "<td><a data-path=\""+linkFinale+"\"><img data-path=\""+linkFinale+"\"alt=\"Server foto non raggiungibile.\"></a></td>";
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
