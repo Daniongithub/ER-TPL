@@ -1,4 +1,12 @@
-const apiurl = 'https://api.vichingo455.freeddns.org/infobus/';
+// New fallback system (HA)
+const API_ENDPOINT = "https://ertpl-api.vercel.app/startbus";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
 // Funzione per applicare il filtro su ogni colonna
 function applyFilter() {
     const filterZona = document.getElementById('filterZona').value.toLowerCase();
@@ -39,7 +47,8 @@ function applyFilter() {
   }, 30000);
   // Fetch dei dati e creazione della tabella
   function fetchData() {
-    fetch(apiurl)
+    getApiUrl().then(url => {
+        fetch(url)
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('data-container');
@@ -94,6 +103,7 @@ function applyFilter() {
     .catch(err => {
       //console.error("Errore nel caricamento dati:", err);
       document.getElementById('data-container').innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="fetchData()">riprova adesso</a> o riprova più tardi.</p>`;
+    });
     });
   }
   function updateClock() {

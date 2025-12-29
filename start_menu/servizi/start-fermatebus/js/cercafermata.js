@@ -1,3 +1,13 @@
+// New fallback system (HA)
+const API_ENDPOINT = "https://ertpl-api.vercel.app/startfermate";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 function populateSearchResults(results, selectedOption) {
     const searchResultsContainer = document.getElementById('searchResults');
     searchResultsContainer.innerHTML = '';
@@ -108,11 +118,11 @@ radios.forEach(radio => {
 });
 
 document.getElementById('bacino').addEventListener('change', function(event) {
-    const selectedOption = event.target.value;
+    getApiUrl().then(url => {
+        const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    const urlFermate = `https://api.vichingo455.freeddns.org/fermateapi/bacino?selectedOption=${selectedOption}`;
-    //const urlFermate = `https://startapi.serverissimo.freeddns.org/bacino?selectedOption=${selectedOption}`;
+    const urlFermate = `${url}/bacino?selectedOption=${selectedOption}`;
 
     const radiobuttons = document.getElementById('radios');
     const ricerca = document.getElementById('ricerca');
@@ -148,4 +158,5 @@ document.getElementById('bacino').addEventListener('change', function(event) {
             console.error('Errore:', err);
         });
     }
+    });
 });

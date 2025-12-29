@@ -1,12 +1,20 @@
+// New fallback system (HA)
+const API_ENDPOINT = "https://ertpl-api.vercel.app/startfermate";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const params = new URLSearchParams(window.location.search);
 const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
-
-const urlBackend = `https://api.vichingo455.freeddns.org/fermateapi/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
-//const urlBackend = `https://startapi.serverissimo.freeddns.org/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`;
 function caricadati(){
-    fetch(urlBackend)
+    getApiUrl().then(url => {
+        fetch(`${url}/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`)
     .then(res => res.json())
     .then(data => {
         const fermata_span = document.getElementById('fermata-span');
@@ -17,7 +25,7 @@ function caricadati(){
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
 
-        fetch('https://api.vichingo455.freeddns.org/fermateapi/versione')
+        fetch(`${url}/versione`)
         .then(res => res.text())
         .then(versione => document.getElementById("ver").innerHTML = versione);
         
@@ -65,6 +73,7 @@ function caricadati(){
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
+    });
     });
 }
 
