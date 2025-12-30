@@ -102,13 +102,17 @@ function mostraemail() {
     link.setAttribute("href", "mailto:" + p1 + p2 + p3 + p4 + p5 + p6 + p7);
 }
 
-// This function below is to display the version of the HA API
+// This function below is to display the version of the HA API and the current server
 function getApiVersionHA() {
     fetch("https://ertpl-api.vercel.app/")
   .then(res => res.json())
   .then(info => {
     document.getElementById("apiVersion").innerHTML =
       `Versione API Alta Disponibilità: v${info.version}`;
+      fetch("https://ertpl-api.vercel.app/nextcloud").then(res => res.json()).then(info => {
+        document.getElementById("apiServer").innerHTML =
+      `Server in uso: ${info.server}`;
+      })
   })
   .catch(() => {
     document.getElementById("apiVersion").innerHTML =
