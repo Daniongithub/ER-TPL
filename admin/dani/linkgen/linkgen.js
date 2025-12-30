@@ -1,9 +1,8 @@
 function generatd() {
-    const matricola = document.getElementById("matricola").value.trim();
     const link = document.getElementById("link").value.trim();
 
-    if (!matricola || !link) {
-        alert("Compila entrambi i campi.");
+    if (!link) {
+        alert("Compila i campi.");
         return;
     }
 
@@ -65,13 +64,7 @@ function copiaOutput() {
     });
 }
 
-function puliscitd() {
-    document.getElementById("matricola").value = "";
+function pulisci() {
     document.getElementById("link").value = "";
     document.getElementById("output").innerHTML = "";
 }
-
-function pulisciimg() {
-    document.getElementById("link").value = "";
-    document.getElementById("output").innerHTML = "";
-}  
