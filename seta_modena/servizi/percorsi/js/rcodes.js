@@ -151,7 +151,7 @@ function routesDictionary(rcode){
         case "MO3-Di-301":
             return '3/ VACIGLIO -> STAZIONE FS [Ridotto]';
         case "MO3-Di-303":
-            return '3A RAGAZZI DEL 99 -> STAZIONE FS [Ridotto]';
+            return '3/ RAGAZZI DEL 99 -> STAZIONE FS [Ridotto]';
         case "MO3-As-343 (2025)":
             return "3A VACIGLIO-MATTARELLA";
         case "MO3-Di-318 (2025)":
