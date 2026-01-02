@@ -11,7 +11,7 @@ const searchBar = document.getElementById('searchBar');
 const stopCodeBar = document.getElementById('stopCodeBar');
 const resultsContainer = document.getElementById('searchResults');
 
-let allresults = [];
+var allresults = [];
 
 //const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
 getApiUrl().then(url => {

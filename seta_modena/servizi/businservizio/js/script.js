@@ -1,23 +1,23 @@
 const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
 
 async function getApiUrl() {
-  const res = await fetch(API_ENDPOINT);
-  const cfg = await res.json();
-  if (cfg.status !== "ok") return null;
-  return cfg.url;
+    const res = await fetch(API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
 }
 
 const lineaSelect = document.getElementById('linea');
 const modelloSelect = document.getElementById('modello');
 const contentBackground = document.getElementById('content-background');
 
-let allresults = [];
-let urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
+var allresults = [];
+var urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
 
-//Reperire modelli e numeri linea
+//URLs
 
-let urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
-let urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
+var urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
+var urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
 
 getApiUrl().then(url => {
     urlList = url + "/busesinservice";
