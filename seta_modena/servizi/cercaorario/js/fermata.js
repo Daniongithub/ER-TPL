@@ -1,11 +1,20 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const params = new URLSearchParams(window.location.search);
 const nome = params.get('name');
 const codice = params.get('code');
 
 //Ricerca per pulsante dall'altra parte
-const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
-//const url='http://localhost:5001/stoplist';
-fetch(url)
+//const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
+getApiUrl().then(url => {
+fetch(url + "/stopcodesarchive")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -63,17 +72,17 @@ fetch(url)
                 </ul>`;
         }
     })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    .catch(error => console.error('Errore nel caricamento dei dati:', error));})
 
 //Sets stop name
 const fermata_span = document.getElementById('fermata-span');
 fermata_span.textContent=nome;
 
-const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
-//const urlBackend = `http://localhost:5001/arrivals/${codice}`;
+//const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
 
 function caricadati(){
-    fetch(urlBackend)
+    getApiUrl().then(url => {
+    fetch(url + "/arrivals/" + codice)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -173,7 +182,7 @@ function caricadati(){
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
-    });
+    });})
 }
 
 caricadati();

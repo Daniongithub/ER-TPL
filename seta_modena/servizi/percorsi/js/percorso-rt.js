@@ -1,3 +1,12 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get('journeycode');
 const codiceSpan = document.getElementById('codice-span');
@@ -7,10 +16,10 @@ const ritSpan = document.getElementById('ritardo-span');
 //Displays route code
 codiceSpan.innerHTML = id;
 
-const urlBackend = `https://setaapi.serverissimo.freeddns.org/nextstops/${id}`;
-//const urlBackend = `http://localhost:5001/arrivals/${codice}`;
 function caricadati(){
     var item=[];
+    getApiUrl().then(url => {
+        const urlBackend = `${url}/nextstops/${id}`;
     fetch(urlBackend)
     .then(response => {
         if (!response.ok) throw new Error("Errore di risposta nel caricamento dei dati, probabilmente il server API è offline.");
@@ -78,7 +87,7 @@ function caricadati(){
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
-    });
+    });})
 }
 
 caricadati();

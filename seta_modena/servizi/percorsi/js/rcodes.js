@@ -1,9 +1,18 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const params = new URLSearchParams(window.location.search);
 const container = document.getElementById('res-container');
 const id = params.get('routenum');
 const nav = document.getElementById('rcodes-nav')
 
-const url = "https://setaapi.serverissimo.freeddns.org/routecodesarchive";
+//const url = "https://setaapi.serverissimo.freeddns.org/routecodesarchive";
 
 //Spawn iframeorari
 if(id!=undefined&&id!=""){
@@ -14,7 +23,8 @@ if(id!=undefined&&id!=""){
 }
 
 //Elenco percorsi
-fetch(url)
+getApiUrl().then(url => {
+fetch(url + "/routecodesarchive")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -53,7 +63,7 @@ fetch(url)
             }
         });
     })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    .catch(error => console.error('Errore nel caricamento dei dati:', error));})
 
 function routesDictionary(rcode){
     switch(rcode){

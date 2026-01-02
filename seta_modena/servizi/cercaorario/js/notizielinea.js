@@ -1,16 +1,26 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const params = new URLSearchParams(window.location.search);
 const num = params.get('routenum');
 const newsContainer = document.getElementById('notizie-container');
 const lineaSpan = document.getElementById('linea-span');
 
 //Urls
-const url = "https://setaapi.serverissimo.freeddns.org/routeproblems/"+num;
+//const url = "https://setaapi.serverissimo.freeddns.org/routeproblems/"+num;
 
 //Display numero linea
 lineaSpan.textContent=num;
 
 //Spawn product card
-fetch(url)
+getApiUrl().then(url => {
+fetch(url + "/routeproblems/" + num)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -33,4 +43,4 @@ fetch(url)
             div.appendChild(a);
             newsContainer.appendChild(div);
         });
-    })
+    })})

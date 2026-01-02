@@ -1,17 +1,29 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const lineaSelect = document.getElementById('linea');
 const modelloSelect = document.getElementById('modello');
 const contentBackground = document.getElementById('content-background');
 
 let allresults = [];
-const urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
-//const urlList="http://localhost:5001/busesinservice";
+let urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
 
 //Reperire modelli e numeri linea
 
-const urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
-//const urlRoutes = 'http://localhost:5001/routenumberslist';
-const urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
-//const urlModels = 'http://localhost:5001/stoplist';
+let urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
+let urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
+
+getApiUrl().then(url => {
+    urlList = url + "/busesinservice";
+    urlRoutes = url + "/routenumberslist";
+    urlModels = url + "/busmodels";
+})
 
 //Fetch routes and models and fill the selects
 fetch(urlRoutes)

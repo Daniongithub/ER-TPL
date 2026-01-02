@@ -1,13 +1,23 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const uContainer = document.getElementById('urbano-container');
 const sContainer = document.getElementById('speciali-container');
 const seContainer = document.getElementById('subextra-container');
 const othContainer = document.getElementById('altri-container');
 const schContainer = document.getElementById('scuola-container');
 
-const url = "https://setaapi.serverissimo.freeddns.org/routenumberslist";
+//const url = "https://setaapi.serverissimo.freeddns.org/routenumberslist";
 
 //Elenco linee urbano
-fetch(url)
+getApiUrl().then(url => {
+fetch(url + "/routenumberslist")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -84,4 +94,4 @@ fetch(url)
             }
         });
     })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    .catch(error => console.error('Errore nel caricamento dei dati:', error));})

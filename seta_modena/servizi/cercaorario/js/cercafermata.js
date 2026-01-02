@@ -1,12 +1,21 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const searchBar = document.getElementById('searchBar');
 const stopCodeBar = document.getElementById('stopCodeBar');
 const resultsContainer = document.getElementById('searchResults');
 
 let allresults = [];
 
-const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
-//const url='http://localhost:5001/stoplist';
-fetch(url)
+//const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
+getApiUrl().then(url => {
+fetch(url + "/stopcodesarchive")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -14,7 +23,7 @@ fetch(url)
     .then(data => {
         allresults = data;
     })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    .catch(error => console.error('Errore nel caricamento dei dati:', error));})
 
 searchBar.addEventListener('input', () => {
     const warning=document.getElementById('warning-mo');

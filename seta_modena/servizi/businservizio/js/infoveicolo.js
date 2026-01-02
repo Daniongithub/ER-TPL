@@ -1,3 +1,12 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+  const res = await fetch(API_ENDPOINT);
+  const cfg = await res.json();
+  if (cfg.status !== "ok") return null;
+  return cfg.url;
+}
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
@@ -5,11 +14,11 @@ const id = params.get('id');
 const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
 
-const urlBackend = `https://setaapi.serverissimo.freeddns.org/vehicleinfo/${id}`;
-//const urlBackend = `http://localhost:5001/vehicleinfo/${id}`;
+//const urlBackend = `https://setaapi.serverissimo.freeddns.org/vehicleinfo/${id}`;
 function caricadati(){
     var item=[];
-    fetch(urlBackend)
+    getApiUrl().then(url => {
+    fetch(url + "/vehicleinfo/" + id)
     .then(response => {
         if (!response.ok) throw new Error("Errore di risposta nel caricamento dei dati, probabilmente il server API è offline.");
         return response.json();
@@ -194,7 +203,7 @@ function caricadati(){
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
-    });
+    });})
 }
 
 caricadati();
