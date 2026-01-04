@@ -4,9 +4,8 @@ const newsContainer = document.getElementById('news-container');
 const newsURL = "https://setaapi.serverissimo.freeddns.org/allnews";
 
 //Vars
-const trimWidth = 250;
-const trimMargins = 16;
-const trimLines = 2;
+const trimCh = 48;
+const forceTrimCh = 56;
 
 newsContainer.innerHTML="<p>Caricamento notizie...</p>";
 fetch(newsURL)
@@ -52,8 +51,10 @@ fetch(newsURL)
             //P creation
             span.innerHTML=element.type;
             p.innerHTML=element.date+" - ";
-            p.appendChild(span);            
-            h3.innerHTML=element.title;
+            p.appendChild(span);
+            //Very roughly cuts title to prevent overflow from the card
+            const trimmedTitle = trimTitle(element.title);
+            h3.innerHTML=trimmedTitle;
             //Link creation
             const link = "/seta_modena/menu/notizia.html?link="+element.link;
             a.setAttribute("href",link);
@@ -63,3 +64,23 @@ fetch(newsURL)
             newsContainer.appendChild(div);
         });
     })
+
+function trimTitle(title){
+    if(title.length<forceTrimCh){
+        return title;
+    }
+    const nextSpace = charsBeforeSpace(title);
+    console.log(forceTrimCh>nextSpace)
+    if(forceTrimCh>nextSpace){
+        return title.slice(0,nextSpace)+"...";
+    }
+    return title.slice(0,forceTrimCh)+"...";
+
+    function charsBeforeSpace(title){
+        for(var i=trimCh;i<title.length;i++){
+            if(title.charAt(i)==" "){
+                return i;
+            }
+        }
+    }
+}
