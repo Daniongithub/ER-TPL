@@ -15,7 +15,7 @@ function generatd() {
             alert("Parametro ?file= mancante nell'URL.");
             return;
         }
-        const htmlString = `<td><a><img data-path="${path}" alt="Server foto non raggiungibile."></a></td>`;
+        const htmlString = `<td><a><img data-path="${path}" alt="Caricamento in corso..."></a></td>`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
@@ -41,7 +41,7 @@ function generaimg() {
         const params = new URLSearchParams(urlObj.search);
         const path = params.get("file");
 
-        const htmlString = `<img class="bus" data-path="${path}" alt="Server foto non raggiungibile.">`;
+        const htmlString = `<img class="bus" data-path="${path}" alt="Caricamento in corso...">`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")

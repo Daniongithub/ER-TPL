@@ -28,7 +28,8 @@
 
             document.querySelectorAll("img[data-path]").forEach(img => {
                 if(isOffline){
-                    
+                    img.setAttribute("alt","Server foto non raggiungibili.");
+                    return;
                 }
                 const path = img.dataset.path;
                 let isLeo = false;
