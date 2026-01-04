@@ -15,7 +15,7 @@ function generatd() {
             alert("Parametro ?file= mancante nell'URL.");
             return;
         }
-        const htmlString = `<td><a data-path="${path}"><img data-path="${path}" alt="Server foto non raggiungibile."></a></td>`;
+        const htmlString = `<td><a><img data-path="${path}" alt="Server foto non raggiungibile."></a></td>`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")

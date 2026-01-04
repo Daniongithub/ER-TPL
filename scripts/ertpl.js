@@ -23,9 +23,13 @@
     async function initPhotos() {
         try {
             const cfg = await getConfig();
-            if (cfg.status !== "ok") return;
+            let isOffline = false;
+            if (cfg.status !== "ok") isOffline=true;
 
             document.querySelectorAll("img[data-path]").forEach(img => {
+                if(isOffline){
+                    
+                }
                 const path = img.dataset.path;
                 let isLeo = false;
                 const pageUrl = document.location.href;

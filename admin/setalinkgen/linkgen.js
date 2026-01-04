@@ -7,11 +7,11 @@ function generatd() {
         return;
     }try{
         //Nuovo td
-        //<td><a data-path="/Fogli/TPER/TPER5630.jpg"><img data-path="/Fogli/TPER/TPER5630.jpg" alt="Server foto non raggiungibile."></a></td>
+        //<td><a><img data-path="/Fogli/TPER/TPER5630.jpg" alt="Server foto non raggiungibile."></a></td>
         link = "/Leo/SETA/"+link+"/"+matricola;
 
         const linkFinale = link+".jpg"
-        const htmlString = "<td><a data-path=\""+linkFinale+"\"><img data-path=\""+linkFinale+"\"alt=\"Server foto non raggiungibile.\"></a></td>";
+        const htmlString = "<td><a><img data-path=\""+linkFinale+"\"alt=\"Server foto non raggiungibile.\"></a></td>";
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
