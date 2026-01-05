@@ -419,9 +419,6 @@ span.blue{
 .lista-mezzi tbody tr.dismesso{
     background-color: orangered;
 }
-.lista-mezzi tbody tr.trasferito{
-    background-color: blue;
-}
 .lista-mezzi a{
     text-decoration: underline;
 }
