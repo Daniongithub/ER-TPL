@@ -1,14 +1,24 @@
+const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+
+async function getApiUrl() {
+    const res = await fetch(API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
+}
+
 const newsContainer = document.getElementById('news-container');
 
 //URL
-const newsURL = "https://setaapi.serverissimo.freeddns.org/allnews";
+//const newsURL = "https://setaapi.serverissimo.freeddns.org/allnews";
 
 //Vars
 const trimCh = 48;
 const forceTrimCh = 56;
 
 newsContainer.innerHTML="<p>Caricamento notizie...</p>";
-fetch(newsURL)
+getApiUrl().then(url => {
+fetch(url + "/allnews")
     .then(response => {
         if (!response.ok){
             newsContainer.innerHTML="<p>Impossibile raggiungere l'API.</p>";
@@ -63,7 +73,7 @@ fetch(newsURL)
             div.appendChild(a);
             newsContainer.appendChild(div);
         });
-    })
+    })})
 
 function trimTitle(title){
     if(title.length<forceTrimCh){
