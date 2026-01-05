@@ -363,7 +363,9 @@ span.blue{
     text-align: left;
     margin:64px;
 }
+
 /*Zona lista mezzi*/
+
 .lista-mezzi{
     width: 80vw;
     border-collapse: separate;
@@ -421,6 +423,12 @@ span.blue{
 }
 .lista-mezzi a{
     text-decoration: underline;
+}
+.lista-mezzi td:nth-child(4){
+    width: 5%;
+}
+.lista-mezzi th:nth-child(4){
+    width: 5%;
 }
 
 /*Notizie cercaorario*/
@@ -517,6 +525,13 @@ span.blue{
     /*Cerca orario*/
     #notizie-container{
         display: block;
+    }
+    /*Lista mezzi*/
+    .lista-mezzi td:nth-child(4){
+        display: none;
+    }
+    .lista-mezzi th:nth-child(4){
+        display: none;
     }
 }
 
