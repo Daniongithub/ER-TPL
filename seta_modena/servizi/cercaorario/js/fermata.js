@@ -146,6 +146,9 @@ function caricadati(){
                         <td>${finalDestination}</td>
                     `;
             }
+            if(item.isImpossible==true){
+                tr.setAttribute("class","bus-card-yellow");
+            }
             if(item.delay==undefined){
                 //le prime righe sono spostate sopra per link alle notizie se ci sono problemi
                 tr.innerHTML += `
