@@ -1,3 +1,5 @@
+// API source code: https://github.com/Daniongithub/startfermate-api
+
 // New fallback system (HA)
 const API_ENDPOINT = "https://ertpl-api.vercel.app/startfermate";
 
@@ -12,9 +14,15 @@ const params = new URLSearchParams(window.location.search);
 const palina = params.get('palina');
 const targetID = params.get('targetID');
 const selectedOption = params.get('selectedOption');
+/*
+Anche se det e' null non c'e' problema: la API aspetta sia "true", altrimenti la visualizzazione non cambia.
+det impostato a "true" dice all'API di fornire l'output in maniera intera, senza applicare un filtro che scarta schifezze,
+ergo, visualizzazione dettagliata, che comunque all'utente finale non serve.
+*/
+const det = params.get('det');
 function caricadati(){
     getApiUrl().then(url => {
-        fetch(`${url}/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}`)
+        fetch(`${url}/fermata?param=${targetID}&param2=${selectedOption}&palina=${palina}&det=${det}`)
     .then(res => res.json())
     .then(data => {
         const fermata_span = document.getElementById('fermata-span');
@@ -29,7 +37,11 @@ function caricadati(){
         .then(res => res.text())
         .then(versione => document.getElementById("ver").innerHTML = versione);
         
-        if (!data || data.length === 0) {
+        /*
+        Se capita una fermata pulita dall'API, perche' contiene solo spazzatura, rimane solo data[0], che però fa creare al JS la thead
+        anche se non ci sono risultati effettivi.
+        */
+        if (!data || data.length === 0 || !data[1]) {
             container.innerHTML = '<h3>Nessuna linea in arrivo.</h3>';
             return;
         }
