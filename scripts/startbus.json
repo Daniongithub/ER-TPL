@@ -462,6 +462,42 @@
         "link": "/start_bus/urbano/uw.html#10448"
     },
     {
+        "matricola": "20766",
+        "settore": "Urbano",
+        "modello": "Irisbus Arway 12",
+        "link": "/start_bus/extraurbano/arway.html#20766"
+    },
+    {
+        "matricola": "20767",
+        "settore": "Urbano",
+        "modello": "Irisbus Arway 12",
+        "link": "/start_bus/extraurbano/arway.html#20767"
+    },
+    {
+        "matricola": "20768",
+        "settore": "Urbano",
+        "modello": "Irisbus Arway 12",
+        "link": "/start_bus/extraurbano/arway.html#20768"
+    },
+    {
+        "matricola": "20769",
+        "settore": "Urbano",
+        "modello": "Irisbus Arway 12",
+        "link": "/start_bus/extraurbano/arway.html#20769"
+    },
+    {
+        "matricola": "20770",
+        "settore": "Urbano",
+        "modello": "Irisbus Arway 12",
+        "link": "/start_bus/extraurbano/arway.html#20770"
+    },
+    {
+        "matricola": "20771",
+        "settore": "Urbano",
+        "modello": "Irisbus Arway 12",
+        "link": "/start_bus/extraurbano/arway.html#20771"
+    },
+    {
         "matricola": "32051",
         "settore": "Urbano",
         "modello": "Iveco Urbanway 10,5 CNG",
@@ -1410,6 +1446,108 @@
         "link": "/start_bus/extraurbano/crossway12cngle.html#34499"
     },
     {
+        "matricola": "34601",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34601"
+    },
+    {
+        "matricola": "34602",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34602"
+    },
+    {
+        "matricola": "34603",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34603"
+    },
+    {
+        "matricola": "34604",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34604"
+    },
+    {
+        "matricola": "34605",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34605"
+    },
+    {
+        "matricola": "34606",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34606"
+    },
+    {
+        "matricola": "34607",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34607"
+    },
+    {
+        "matricola": "34608",
+        "settore": "Urbano",
+        "modello": "Iveco Crossway LE 14",
+        "link": "/start_bus/extraurbano/crossway14le.html#34608"
+    },
+    {
+        "matricola": "34651",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34651"
+    },
+    {
+        "matricola": "34652",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34652"
+    },
+    {
+        "matricola": "34653",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34653"
+        },
+    {
+        "matricola": "34654",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34654"
+    },
+    {
+        "matricola": "34655",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34655"
+    },
+    {
+        "matricola": "34656",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34656"
+    },
+    {
+        "matricola": "34657",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34657"
+    },
+    {
+        "matricola": "34658",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34658"
+    },
+    {
+        "matricola": "34659",
+        "settore": "Urbano",
+        "modello": "Scania Citywide LE II 14,4m CNG",
+        "link": "/start_bus/extraurbano/citywide.html#34659"
+    },
+    {
         "matricola": "36101",
         "settore": "Urbano",
         "modello": "MAN Lion's City A40 GL CNG",
@@ -2241,36 +2379,36 @@
         "matricola": "34401",
         "settore": "Extraurbano",
         "modello": "Scania Interlink LD LNG",
-        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34401"
+        "link": "/start_bus/extraurbano/interlinklng.html#34401"
     },
     {
         "matricola": "34402",
         "settore": "Extraurbano",
         "modello": "Scania Interlink LD LNG",
-        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34402"
+        "link": "/start_bus/extraurbano/interlinklng.html#34402"
     },
     {
         "matricola": "34403",
         "settore": "Extraurbano",
         "modello": "Scania Interlink LD LNG",
-        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34403"
+        "link": "/start_bus/extraurbano/interlinklng.html#34403"
     },
     {
         "matricola": "34404",
         "settore": "Extraurbano",
         "modello": "Scania Interlink LD LNG",
-        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34404"
+        "link": "/start_bus/extraurbano/interlinklng.html#34404"
     },
     {
         "matricola": "34405",
         "settore": "Extraurbano",
         "modello": "Scania Interlink LD LNG",
-        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34405"
+        "link": "/start_bus/extraurbano/interlinklng.html#34405"
     },
     {
         "matricola": "34406",
         "settore": "Extraurbano",
         "modello": "Scania Interlink LD LNG",
-        "link": "https://ertpl.pages.dev/start_bus/extraurbano/interlinklng.html#34406"
+        "link": "/start_bus/extraurbano/interlinklng.html#34406"
     }
 ]
