@@ -201,6 +201,11 @@ img.service{
     margin-top: 38px;
     width:40%;
 }
+img.smf-service{
+    border-radius: 10px;
+    margin-top: 38px;
+    width:50%;
+}
 img.ui.service{
     width:30%;
 }
