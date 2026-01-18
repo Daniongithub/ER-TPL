@@ -1842,6 +1842,12 @@
         "link": "/seta_modena/bus/extraurbano/ares.html#696"
     },
     {
+        "matricola": "698",
+        "settore": "Extraurbano",
+        "modello": "Irisbus Arway",
+        "link": "/seta_modena/bus/extraurbano/arway.html#698"
+    },
+    {
         "matricola": "699",
         "settore": "Extraurbano",
         "modello": "Irisbus Ares SFR117",

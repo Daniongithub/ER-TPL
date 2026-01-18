@@ -220,6 +220,12 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+table.fullscreen{
+    width:100%;
+}
+table.fullscreen tr th,table.fullscreen tr td{
+    padding-bottom: 12px;
+}
 table.greenhead{
     border-collapse: collapse;
     border-radius: 8px;
