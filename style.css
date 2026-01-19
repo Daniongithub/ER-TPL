@@ -483,6 +483,13 @@ span.blue{
     margin: 20px;
     font-size: 16px;
 }
+
+.articoloPar {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    text-align: left;
+}
+
 @media (max-width: 768px) {
     .logo {
         width: 75%;
