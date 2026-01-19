@@ -2,6 +2,9 @@ body{
     text-align: center;
     font-family: Consolas;
 }
+input{
+    margin-bottom: 15px;
+}
 pre{
     text-align: left;
 }

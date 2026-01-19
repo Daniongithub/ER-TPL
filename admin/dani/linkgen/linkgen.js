@@ -30,6 +30,7 @@ function generatd() {
 }
 
 function generaimg() {
+    const flag = document.getElementById("flag");
     var link = document.getElementById("link").value.trim();
     if (!link) {
         alert("Compila i campi.");
@@ -40,8 +41,11 @@ function generaimg() {
         const urlObj = new URL(link);
         const params = new URLSearchParams(urlObj.search);
         const path = params.get("file");
+        let class1 = "class=\"bus\"";
+        let class2 = "class=\"copertina\" width=\"500vw\"";
+        let classe = (flag.checked) ? class2 : class1;
 
-        const htmlString = `<img class="bus" data-path="${path}" alt="Caricamento in corso...">`;
+        const htmlString = `<img ${classe} data-path="${path}" alt="Caricamento in corso...">`;
 
         const escapedOutput = htmlString
             .replace(/&/g, "&amp;")
