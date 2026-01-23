@@ -259,45 +259,64 @@ function routesDictionary(rcode){
         //Linea 9
         case "MO9-As-9951":
             return "9 M.NUOVA -> M.VECCHIA -> GOTTARDI";
-        case "MO9-As-9952":
-            return "9 CITTANOVA -> GOTTARDI (Festivo)";
         case "MO9-Di-960":
             return "9C GOTTARDI -> M.NUOVA -> RUBIERA";
-        case "MO9-Di-9964":
-            return "9A GOTTARDI -> M.VECCHIA -> M.NUOVA";
         case "MO9-As-963":
             return "9 RUBIERA -> M.VECCHIA -> GOTTARDI";
         case "MO9-As-9949":
             return "9 M.NUOVA -> GOTTARDI";
-        case "MO9-Di-9981":
-            return "9 CITTANOVA";
         case "MO9-Di-960":
             return "9C RUBIERA";
         case "MO9-As-9955":
             return "9 RUBIERA -> M.NUOVA -> M.VECCHIA -> GOTTARDI";
-        case "MO9-Di-9953":
-            return "9A MARZAGLIA NUOVA";
-        //NUOVE
         case "MO9-Di-9954":
             return "9C GOTTARDI -> M.VECCHIA -> RUBIERA";
         case "MO9-Di-985":
             return "9C AUTOSTAZIONE -> RUBIERA";
         case "MO9-As-9950":
             return "9 RUBIERA -> M.NUOVA -> GOTTARDI";
-        case "MO9-As-956":
-            return "9 CITTANOVA -> GOTTARDI (Non festivo)";
         case "MO9-Di-966":
             return "9A STAZIONE FS -> M.VECCHIA -> M.NUOVA";
         case "MO9-Di-912":
             return "9A STAZIONE FS -> M.NUOVA";
-        case "MO9-As-9691":
-            return "9 M.NUOVA -> M.VECCHIA -> GOTTARDI";
         case "MO9-As-969":
-            return "9A GOTTARDI -> M.VECCHIA -> M.NUOVA";
+            return "9 M.NUOVA -> M.VECCHIA -> GOTTARDI";
         case "MO9-As-9955":
             return "9 RUBIERA -> M.NUOVA -> M.VECCHIA -> GOTTARDI";
         case "MO9-As-986":
             return "9/ RUBIERA -> AUTOSTAZIONE";
+        case "MO9-Di-973":
+            return "9A GOTTARDI -> M.VECCHIA -> M.NUOVA";
+        case "MO9-As-961":
+            return "9 M.NUOVA -> GOTTARDI";
+        case "MO9-As-988":
+            return "9/ M.NUOVA -> M.VECCHIA -> AUTOSTAZIONE";
+        case "MO9-As-9956":
+            return "9/ RUBIERA -> M.NUOVA -> AUTOSTAZIONE";
+        case "MO9-As-959":
+            return "9 VIRGILIO -> GOTTARDI";
+        case "MO9-Di-990":
+            return "9 viale VIRGILIO";
+        case "MO9-As-987":
+            return "9/ VIRGILIO -> AUTOSTAZIONE";
+        case "MO9-As-992":
+            return "9 AUTOSTAZIONE -> BRAGHIROLI-GOTTARDI";
+        case "MO9-Di-991":
+            return "9 STAZIONE FS -> VIRGILIO";
+        case "MO9-As-993":
+            return "9/ M.NUOVA -> AUTOSTAZIONE";
+        case "MO9-As-986":
+            return "9/ RUBIERA -> AUTOSTAZIONE";
+        //Roba gialla
+        case "MO9-Di-9964":
+            return "9A GOTTARDI -> MODENAFIERE -> M.VECCHIA -> M.NUOVA [Fiera]";
+        case "MO9-Di-9953":
+            return "9A MODENAFIERE-MARZAGLIA NUOVA [Fiera]";
+        //Discontinued
+        case "MO9-As-9952 (2025)":
+            return "9 CITTANOVA -> GOTTARDI (Festivo)";
+        case "MO9-Di-9981 (2025)":
+            return "9 CITTANOVA";
         //Linea 10
         case "MO10-As-1034":
             return "10 ALBARETO -> COGNENTO";
