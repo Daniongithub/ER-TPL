@@ -558,6 +558,12 @@ span.blue{
     .lista-mezzi th:nth-child(4){
         display: none;
     }
+    .of-x-media{
+        overflow-x: scroll;
+    }
+    table.guida-linee{
+        width: 250%;
+    }
 }
 
 /*Lucine di Natale*/
