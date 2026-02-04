@@ -25,7 +25,7 @@ function populateSearchResults(results, selectedOption) {
         div.innerHTML = `
             <div>
                 <h3>${item.nome}</h3>
-                <p>Fermata: ${item.palina}, Target ID: ${item.targetID}</p>
+                <p>Fermata: ${item.palina}</p>
             </div>
         `;
 
