@@ -12,59 +12,61 @@ const modelloSelect = document.getElementById('modello');
 const contentBackground = document.getElementById('content-background');
 
 var allresults = [];
-var urlList="https://setaapi.serverissimo.freeddns.org/busesinservice";
+var urlList;
 
 //URLs
 
-var urlRoutes = 'https://setaapi.serverissimo.freeddns.org/routenumberslist';
-var urlModels = 'https://setaapi.serverissimo.freeddns.org/busmodels';
-
+var urlRoutes;
+var urlModels;
 getApiUrl().then(url => {
     urlList = url + "/busesinservice";
     urlRoutes = url + "/routenumberslist";
     urlModels = url + "/busmodels";
+    fillSelect();
+    caricadati();
 })
 
 //Fetch routes and models and fill the selects
-fetch(urlRoutes)
-    .then(response => {
-        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-        return response.json();
-    })
-    .then(data => {
-        allresults = data;
-        allresults.forEach(route => {
-            const option = document.createElement('option');
-            option.value = route;
-            option.textContent = route;
-            lineaSelect.appendChild(option);
-        });
-    })
-    .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
-fetch(urlModels)
-    .then(response => {
-        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-        return response.json();
-    })
-    .then(data => {
-        allresults = data;
-        allresults.forEach(model => {
-            const option = document.createElement('option');
-            if(
-                model!="CAM New Busotto"&&
-                model!="Iveco Cityclass CNG"&&
-                model!="Irisbus Cityclass CNG ex Pavia"&&
-                model!="Mercedes Integro O550 (Giallo)"
-            ){
-                option.value = model;
-                option.textContent = model;
-                modelloSelect.appendChild(option);
-            }
-        });
-    })
-    .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
+function fillSelect(){
+    fetch(urlRoutes)
+        .then(response => {
+            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+            return response.json();
+        })
+        .then(data => {
+            allresults = data;
+            allresults.forEach(route => {
+                const option = document.createElement('option');
+                option.value = route;
+                option.textContent = route;
+                lineaSelect.appendChild(option);
+            });
+        })
+        .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
+    fetch(urlModels)
+        .then(response => {
+            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+            return response.json();
+        })
+        .then(data => {
+            allresults = data;
+            allresults.forEach(model => {
+                const option = document.createElement('option');
+                if(
+                    model!="CAM New Busotto"&&
+                    model!="Iveco Cityclass CNG"&&
+                    model!="Irisbus Cityclass CNG ex Pavia"&&
+                    model!="Mercedes Integro O550 (Giallo)"
+                ){
+                    option.value = model;
+                    option.textContent = model;
+                    modelloSelect.appendChild(option);
+                }
+            });
+        })
+        .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
+}
 
-caricadati();
 var refreshGeneraleID=setInterval(caricadati, 60000);
 
 function caricadati(){
