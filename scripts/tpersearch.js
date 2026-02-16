@@ -21,10 +21,13 @@ searchBar.addEventListener('input', () => {
         productsContainer.innerHTML = ' ';
         buttons.innerHTML = `
         <div>
-            <a href="/tper_menu/tperurb.html" class="blue button">Urbano</a>
-            <a href="/tper_menu/tpersub.html" class="blue button">Suburbano</a>
-            <a href="/tper_menu/tperext.html" class="blue button">Extraurbano</a>
-        </div>
+        <a href="/tper_menu/tperurb.html" class="blue button">Urbano</a>
+        <a href="/tper_menu/tpersub.html" class="blue button">Suburbano</a>
+        <a href="/tper_menu/tperext.html" class="blue button">Extraurbano</a>
+      </div>
+      <div>
+        <a href="articoli.html" class="green button">Articoli</a>
+      </div>
         `;
         return;
     }
