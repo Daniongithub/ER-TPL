@@ -14,7 +14,6 @@ const id = params.get('id');
 const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
 
-//const urlBackend = `https://setaapi.serverissimo.freeddns.org/vehicleinfo/${id}`;
 function caricadati(){
     var item=[];
     getApiUrl().then(url => {
@@ -27,7 +26,6 @@ function caricadati(){
         item = data;
     })
     .then(data => {
-        
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
         // Creo tabella
@@ -132,7 +130,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Codice percorso:</td>
-                    <td><a href="/seta_modena/servizi/percorsi/percorso.html?routecode=${bus.route_code}" class="bianco">${bus.route_code}</a></td>
+                    <td><a href="/seta_modena/servizi/percorsi/percorso.html?routecode=${bus.route_code}&routenum=${bus.officialService}" class="bianco">${bus.route_code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);

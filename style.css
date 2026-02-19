@@ -224,6 +224,7 @@ table.fullscreen{
     width:100%;
 }
 table.fullscreen tr th,table.fullscreen tr td{
+    padding-top: 12px;
     padding-bottom: 12px;
 }
 table.greenhead{
@@ -259,6 +260,12 @@ table.zone td, table.zone th{
 table.zone th h3{
     margin-bottom:4px;
     margin-top:4px;
+}
+table.guida-linee{
+    border-collapse: collapse;
+}
+table.guida-linee td,table.guida-linee th{
+    border: 2px solid #343434;
 }
 td a{
     text-decoration: none;

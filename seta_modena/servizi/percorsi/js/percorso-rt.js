@@ -10,7 +10,6 @@ async function getApiUrl() {
 const params = new URLSearchParams(window.location.search);
 const id = params.get('journeycode');
 const codiceSpan = document.getElementById('codice-span');
-const destSpan = document.getElementById('destinazione-span');
 const ritSpan = document.getElementById('ritardo-span');
 
 //Displays route code
@@ -31,8 +30,6 @@ function caricadati(){
     .then(data => {
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
-        //Testo destinazione
-        //destSpan.innerHTML=item.arrivals[item.arrivals.length-1].desc;
         //Testo ritardo
         if(item.arrivals[0].delay>0){
             ritSpan.setAttribute("style","color:rgba(255, 50, 50, 1);")

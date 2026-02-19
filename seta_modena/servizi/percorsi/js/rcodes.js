@@ -192,11 +192,13 @@ function routesDictionary(rcode){
         case "MO4-Di-437":
             return "4 VACIGLIO NORD";
         case "MO4-As-432":
-            return "4 V.NORD -> POLO -> GALILEI";
+            return "4 POLO LEONARDO-GALILEI";
         case "MO4-As-492":
-            return "4/ V.NORD -> AUTOSTAZIONE";
+            return "4/ AUTOSTAZIONE";
         case "MO4-As-490":
-            return "4/ GALILEI -> AUTOSTAZIONE";
+            return "4 AUTOSTAZIONE -> GALILEI";
+        case "MO4-Di-428":
+            return "4/ STAZIONE FS";
         //Linea 5
         case "MO5-Di-535":
             return "5A LA TORRE -> D'AVIA -> TRE OLMI";
