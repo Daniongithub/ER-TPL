@@ -123,7 +123,7 @@ function caricadati(){
             if(item.type=="planned"){
                 var stato="Prevista";
             }else{
-                var stato="In tempo reale";
+                var stato="Tempo reale";
             }if(item.next_stop==null){
                 var posizione="";
             }else{
