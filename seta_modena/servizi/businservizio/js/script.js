@@ -114,10 +114,19 @@ function caricadati(){
             }else{
                 var dest = element.route_desc;
             }
-            tr.innerHTML = `
-                <td>${element.linea}</td>
-                <td>${dest}</td>
-                <td><a href="infoveicolo.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
+            if(element.hasProblems==true){
+                tr.innerHTML = `
+                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${element.linea}</td>
+                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${dest}</td>
+                `;
+            }else{
+                tr.innerHTML = `
+                    <td>${element.linea}</td>
+                    <td>${dest}</td>
+                `;
+            }
+            tr.innerHTML += `
+                <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
                 <td>${element.model}</td>
                 <td>${posizione}</td>
             `;
@@ -219,8 +228,7 @@ function caricaFiltratiLinea(selectedOption){
         table.appendChild(thead);
         data.features.forEach(elements => {
             // Extract only the numeric part
-            const number = elements.properties.linea.match(/\d+/g);
-            if(number==selectedOption){
+            if(elements.properties.officialService==selectedOption){
                 const tbody = document.createElement('tbody');
                 const element = elements.properties;
                 const tr = document.createElement('tr');

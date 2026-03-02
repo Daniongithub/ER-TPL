@@ -91,7 +91,6 @@ function caricadati(){
         item = data.arrival;
     })
     .then(data => {
-        
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
 
@@ -154,8 +153,8 @@ function caricadati(){
                 tr.innerHTML += `
                         <td>${item.arrival}</td>
                         <td>${stato}</td>
-                        <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
-                        <td>${posizione}</td>
+                        <td></td>
+                        <td></td>
                     `;
                 tbody.appendChild(tr);
             }else{
@@ -163,7 +162,7 @@ function caricadati(){
                     tr.innerHTML += `
                         <td>${item.arrival} (+${item.delay})</td>
                         <td>${stato}</td>
-                        <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
+                        <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
                         <td>${posizione}</td>
                     `;
                     tbody.appendChild(tr);
@@ -171,7 +170,7 @@ function caricadati(){
                     tr.innerHTML += `
                         <td>${item.arrival} (${item.delay})</td>
                         <td>${stato}</td>
-                        <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.busnum}" class="bianco">${item.busnum}</a></td>
+                        <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
                         <td>${posizione}</td>
                     `;
                     tbody.appendChild(tr);
