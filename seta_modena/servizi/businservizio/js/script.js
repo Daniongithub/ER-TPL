@@ -114,6 +114,15 @@ function caricadati(){
             }else{
                 var dest = element.route_desc;
             }
+            //Overflow tabella
+            if(window.screen.width<=512){
+                if(element.route_desc=="MONTEBARANZONE"){
+                    dest = "MONTEBA-<br>RANZONE";
+                }
+                if(element.route_desc=="MONTOMBRARO"){
+                    dest = "MONTOM-<br>BRARO";
+                }
+            }
             if(element.hasProblems==true){
                 tr.innerHTML = `
                     <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${element.linea}</td>
