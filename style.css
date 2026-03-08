@@ -487,7 +487,7 @@ span.blue{
 #searchBar {
     padding: 10px;
     width: 300px;
-    margin: 20px;
+    margin: 15px;
     font-size: 16px;
 }
 
@@ -500,6 +500,11 @@ span.blue{
 @media (max-width: 768px) {
     .logo {
         width: 75%;
+    }
+    a.button {
+        font-size: 16px;
+        margin-left: 3px;
+        margin-right: 3px;
     }
     .bottel a.button{
         display: flex;
