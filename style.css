@@ -343,6 +343,7 @@ table.image-table img {
     display:flex;
     overflow-x: scroll;
     overflow-y: hidden;
+    height: 151.6px;
 }
 
 .news-card{
