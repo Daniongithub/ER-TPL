@@ -158,10 +158,6 @@ div.content-background select {
     box-sizing: border-box;
 }
 
-#tabella-container {
-    overflow-x: scroll;
-}
-
 select,input{
     height: 50px;
     width: auto;
@@ -240,6 +236,9 @@ select,input{
     }
     h2.noreduction{
         margin-bottom: 16px;
+    }
+    #tabella-container {
+        overflow-x: scroll;
     }
 }
 
