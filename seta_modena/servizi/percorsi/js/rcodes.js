@@ -446,5 +446,24 @@ function routesDictionary(rcode){
             return "81 TETRA PAK";
         case "MO81-As-2207 (2025)":
             return "81 SANT'ANNA";
+        //Linea 391
+        case "MO391-Di-3928":
+            return "391 ist. GUARINI-FP-GOTTARDI";
+        case "MO391-As-3805":
+            return "391 FP-GUARINI-POLO LEONARDO";
+        //Linea 393
+        case "MO393-Di-3944":
+            return "393 AUTOSTAZIONE-STAZIONE FS";
+        case "MO393-As-3916":
+            return "393 STAZIONE FS-POLO LEONARDO";
+        //Linea 394
+        case "MO394-Di-3949":
+            return "394 CINEMA ESTIVO";
+        case "MO394-Di-3941":
+            return "394 S.CATERINA";
+        case "MO394-As-3946":
+            return "394 POLO LEONARDO-TETRA PAK";
+        case "MO394-As-3948":
+            return "394 POLO LEONARDO";
     }
 }
