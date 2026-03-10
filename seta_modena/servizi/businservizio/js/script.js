@@ -122,6 +122,12 @@ function caricadati(){
                 if(element.route_desc=="MONTOMBRARO"){
                     dest = "MONTOM-<br>BRARO";
                 }
+                if(element.route_desc=="CAMPOGALLIANO"){
+                    dest = "CAMPOGAL-<br>LIANO";
+                }
+                if(element.route_desc=="MONTEBONELLO"){
+                    dest = "MONTEBO-<br>NELLO";
+                }
             }
             if(element.hasProblems==true){
                 tr.innerHTML = `
