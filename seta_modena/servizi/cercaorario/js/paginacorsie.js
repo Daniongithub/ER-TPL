@@ -82,10 +82,23 @@ if(posto=="GARIBALDI"){
 if(posto=="POLO LEONARDO"){
     bottoni.innerHTML = `
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO6783&name=POLO LEONARDO (Strada)" class="bianco">
-            <div class="search-result"><h3>POLO LEONARDO (Strada)</h3></div>
+            <div class="search-result"><h3>POLO LEONARDO (Strada)</h3><p>Linee: 1A, 4, 10, 12</p></div>
         </a>
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO2928&name=POLO LEONARDO 1" class="bianco">
-            <div class="search-result"><h3>POLO LEONARDO 1</h3></div>
+            <div class="search-result"><h3>POLO LEONARDO 1</h3><p>Linee: 1A, 4, 10, 12</p></div>
+        </a>
+        <hr>
+        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO218&name=POLO LEONARDO (Corsia 1)" class="bianco">
+            <div class="search-result"><h3>Corsia 1</h3><p>Linee: 12, 391</p></div>
+        </a>
+        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO228&name=POLO LEONARDO (Corsia 2)" class="bianco">
+            <div class="search-result"><h3>Corsia 2</h3><p>Linee: 731, 740</p></div>
+        </a>
+        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO224&name=POLO LEONARDO (Corsia 3)" class="bianco">
+            <div class="search-result"><h3>Corsia 3</h3><p>Linee: 815, 820</p></div>
+        </a>
+        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO217&name=POLO LEONARDO (Corsie 5, 6, 7)" class="bianco">
+            <div class="search-result"><h3>Corsie 5, 6, 7</h3><p>Linee: 392, 393</p></div>
         </a>
     `;
 }
