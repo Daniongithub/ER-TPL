@@ -80,7 +80,6 @@ function trimTitle(title){
         return title;
     }
     const nextSpace = charsBeforeSpace(title);
-    console.log(forceTrimCh>nextSpace)
     if(forceTrimCh>nextSpace){
         return title.slice(0,nextSpace)+"...";
     }
