@@ -58,6 +58,9 @@ fetch(url + "/allnews")
             if(element.type=="Personale"){
                 span.setAttribute("class","blue");
             }
+            if(element.type=="Agevolazioni"){
+                span.setAttribute("class","green");
+            }
             //P creation
             span.innerHTML=element.type;
             p.innerHTML=element.date+" - ";

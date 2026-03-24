@@ -10,6 +10,7 @@ async function getApiUrl() {
 const lineaSelect = document.getElementById('linea');
 const modelloSelect = document.getElementById('modello');
 const contentBackground = document.getElementById('content-background');
+const container = document.getElementById('tabella-container');
 
 var allresults = [];
 var urlList;
@@ -77,84 +78,99 @@ function caricadati(){
     })
     .then(data => {
         item = data.features;
-    })
-    .then(data => {
-        
-        const container = document.getElementById('tabella-container');
-        container.innerHTML = '';
-
-        // Creo tabella
-        const table = document.createElement('table');
-
-        // Intestazione
-        const thead = document.createElement('thead');
-        thead.innerHTML = `
-                    <tr>
-                        <th class="linea">Linea</th>
-                        <th class="direzione">Direzione</th>
-                        <th class="orario">Veicolo</th>
-                        <th class="stato">Modello veicolo</th>
-                        <th class="veicolo">Ora si trova a</th>
-                    </tr>
-                `;
-        table.appendChild(thead);
-
-        // Corpo tabella
-        const tbody = document.createElement('tbody');
-        item.forEach(item => {
-            const element = item.properties;
-            const tr = document.createElement('tr');
-            if(element.next_stop==null){
-                var posizione="";
-            }else{
-                var posizione=element.next_stop;
-            }
-            if(element.br==true){
-                var dest = element.destination1+"<br>"+element.destination2;
-            }else{
-                var dest = element.route_desc;
-            }
-            //Overflow tabella
-            if(window.screen.width<=512){
-                if(element.route_desc=="MONTEBARANZONE"){
-                    dest = "MONTEBA-<br>RANZONE";
-                }
-                if(element.route_desc=="MONTOMBRARO"){
-                    dest = "MONTOM-<br>BRARO";
-                }
-                if(element.route_desc=="CAMPOGALLIANO"){
-                    dest = "CAMPOGAL-<br>LIANO";
-                }
-                if(element.route_desc=="MONTEBONELLO"){
-                    dest = "MONTEBO-<br>NELLO";
-                }
-            }
-            if(element.hasProblems==true){
-                tr.innerHTML = `
-                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${element.linea}</td>
-                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${dest}</td>
-                `;
-            }else{
-                tr.innerHTML = `
-                    <td>${element.linea}</td>
-                    <td>${dest}</td>
-                `;
-            }
-            tr.innerHTML += `
-                <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
-                <td>${element.model}</td>
-                <td>${posizione}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-        table.appendChild(tbody);
-
-        container.appendChild(table);
+        renderTable(item);
     })
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
     });
+}
+
+function renderTable(item,selectedOption){
+    try{
+        if(selectedOption==undefined){
+            container.innerHTML = '';
+
+            // Creo tabella
+            const table = document.createElement('table');
+
+            // Intestazione
+            renderTH(table);
+
+            // Corpo tabella
+            const tbody = document.createElement('tbody');
+            item.forEach(item => {
+                renderElement(tbody, item);
+            });
+            table.appendChild(tbody);
+
+            container.appendChild(table);
+        }
+    }catch(err){
+        console.error('Errore nel caricamento dati:', err);
+        document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
+    }   
+}
+
+function renderTH(table){
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+            <tr>
+                <th class="linea">Linea</th>
+                <th class="direzione">Direzione</th>
+                <th class="orario">Veicolo</th>
+                <th class="stato">Modello veicolo</th>
+                <th class="veicolo">Ora si trova a</th>
+            </tr>
+        `;
+    table.appendChild(thead);
+}
+
+function renderElement(tbody, item){
+    const element = item.properties;
+    const tr = document.createElement('tr');
+    if(element.next_stop==null){
+        var posizione="";
+    }else{
+        var posizione=element.next_stop;
+    }
+    if(element.br==true){
+        var dest = element.destination1+"<br>"+element.destination2;
+    }else{
+        var dest = element.route_desc;
+    }
+    //Overflow tabella
+    if(window.screen.width<=512){
+        if(element.route_desc=="MONTEBARANZONE"){
+            dest = "MONTEBA-<br>RANZONE";
+        }
+        if(element.route_desc=="MONTOMBRARO"){
+            dest = "MONTOM-<br>BRARO";
+        }
+        if(element.route_desc=="CAMPOGALLIANO"){
+            dest = "CAMPOGAL-<br>LIANO";
+        }
+        if(element.route_desc=="MONTEBONELLO"){
+            dest = "MONTEBO-<br>NELLO";
+        }
+    }
+    if(element.hasProblems==true){
+        tr.innerHTML = `
+            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${element.linea}</td>
+            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${dest}</td>
+        `;
+    }else{
+        tr.innerHTML = `
+            <td>${element.linea}</td>
+            <td>${dest}</td>
+        `;
+    }
+    tr.innerHTML += `
+        <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
+        <td>${element.model}</td>
+        <td>${posizione}</td>
+    `;
+    tbody.appendChild(tr);
 }
 
 //FILTRI
@@ -206,7 +222,6 @@ function reloadFiltratiLinea(){
 }
 
 function caricaFiltratiLinea(selectedOption){
-    const container = document.getElementById('tabella-container');
     container.innerHTML = 'Caricamento dati...';
     fetch(urlList)
     .then(response => {
@@ -230,40 +245,15 @@ function caricaFiltratiLinea(selectedOption){
         const table = document.createElement('table');
 
         // Intestazione
-        const thead = document.createElement('thead');
-        thead.innerHTML = `
-                    <tr>
-                        <th class="linea">Linea</th>
-                        <th class="direzione">Direzione</th>
-                        <th class="orario">Veicolo</th>
-                        <th class="stato">Modello veicolo</th>
-                        <th class="veicolo">Ora si trova a</th>
-                    </tr>
-                `;
-        table.appendChild(thead);
+        renderTH(table);
+
         data.features.forEach(elements => {
-            // Extract only the numeric part
             if(elements.properties.officialService==selectedOption){
                 const tbody = document.createElement('tbody');
-                const element = elements.properties;
-                const tr = document.createElement('tr');
-                if(element.next_stop==null){
-                    var posizione="";
-                }else{
-                    var posizione=element.next_stop;
-                }
-                tr.innerHTML = `
-                    <td>${element.linea}</td>
-                    <td>${element.route_desc}</td>
-                    <td><a href="infoveicolo.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
-                    <td>${element.model}</td>
-                    <td>${posizione}</td>
-                `;
-                tbody.appendChild(tr);
+                renderElement(tbody, elements);
                 table.appendChild(tbody);
 
                 container.appendChild(table);
-                console.log("Ricarico");
             }else{
                 container.appendChild(table);
             }
@@ -272,7 +262,6 @@ function caricaFiltratiLinea(selectedOption){
 }
 
 function caricaFiltratiModello(selectedOption){
-    const container = document.getElementById('tabella-container');
     container.innerHTML = 'Caricamento dati...';
     fetch(urlList)
     .then(response => {
@@ -296,39 +285,15 @@ function caricaFiltratiModello(selectedOption){
         const table = document.createElement('table');
 
         // Intestazione
-        const thead = document.createElement('thead');
-        thead.innerHTML = `
-                    <tr>
-                        <th class="linea">Linea</th>
-                        <th class="direzione">Direzione</th>
-                        <th class="orario">Veicolo</th>
-                        <th class="stato">Modello veicolo</th>
-                        <th class="veicolo">Ora si trova a</th>
-                    </tr>
-                `;
-        table.appendChild(thead);
+        renderTH(table);
+        
         data.features.forEach(elements => {
             if(elements.properties.model==selectedOption){
                 const tbody = document.createElement('tbody');
-                const element = elements.properties;
-                const tr = document.createElement('tr');
-                if(element.next_stop==null){
-                    var posizione="";
-                }else{
-                    var posizione=element.next_stop;
-                }
-                tr.innerHTML = `
-                    <td>${element.linea}</td>
-                    <td>${element.route_desc}</td>
-                    <td><a href="infoveicolo.html?id=${element.vehicle_code}" class="bianco">${element.vehicle_code}</a></td>
-                    <td>${element.model}</td>
-                    <td>${posizione}</td>
-                `;
-                tbody.appendChild(tr);
+                renderElement(tbody, elements);
                 table.appendChild(tbody);
 
                 container.appendChild(table);
-                console.log("Ricarico");
             }else{
                 container.appendChild(table);
             }
