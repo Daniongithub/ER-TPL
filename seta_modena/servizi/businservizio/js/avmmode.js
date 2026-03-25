@@ -53,13 +53,16 @@ function caricadati(){
             `;
             tbody.appendChild(tr);
             //Ritardo col +
-            if(bus.delay>0){
-                bus.delay="+"+bus.delay;
+            var rit = "";
+            if(bus.delay>=0){
+                rit="RIT:"
+            }else{
+                rit="ANT:"
             }
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td>Ritardo/Anticipo: (+/-)</td>
+                    <td>${rit}</td>
                     <td>${bus.delay}</td>
                 </tr>
             `;
@@ -75,7 +78,7 @@ function caricadati(){
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td>Codice percorso:</td>
+                    <td>Percorso:</td>
                     <td><a href="/seta_modena/servizi/percorsi/percorso.html?routecode=${bus.route_code}&routenum=${bus.officialService}" class="bianco">${bus.route_code}</a></td>
                 </tr>
             `;
@@ -83,7 +86,7 @@ function caricadati(){
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td>Codice corsa:</td>
+                    <td>Corsa:</td>
                     <td><a href="/seta_modena/servizi/percorsi/prossimefermate.html?journeycode=${bus.journey_code}" class="bianco">${bus.journey_code}</a></td>
                 </tr>
             `;
