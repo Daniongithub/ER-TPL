@@ -16,7 +16,7 @@ numero_span.textContent=id;
 
 //AVM Mode
 const avmContainer = document.getElementById('avm-container');
-avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'" class="biancosott">Modalità AVM</a>';
+avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Modalità AVM</a>';
 
 function caricadati(){
     var item=[];

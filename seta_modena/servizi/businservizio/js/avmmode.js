@@ -1,10 +1,10 @@
 const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
 
 async function getApiUrl() {
-  const res = await fetch(API_ENDPOINT);
-  const cfg = await res.json();
-  if (cfg.status !== "ok") return null;
-  return cfg.url;
+    const res = await fetch(API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -15,7 +15,6 @@ const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
 
 function caricadati(){
-    var item=[];
     getApiUrl().then(url => {
     fetch(url + "/vehicleinfo/" + id)
     .then(response => {
@@ -23,9 +22,7 @@ function caricadati(){
         return response.json();
     })
     .then(data => {
-        item = data;
-    })
-    .then(data => {
+        var item=data;
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
         // Creo tabella
@@ -33,11 +30,16 @@ function caricadati(){
 
         // Intestazione
         const thead = document.createElement('thead');
+        var sec = new Date().getSeconds();
+        //Aggiunge uno 0 ai secondi se serve
+        if(sec<10){
+            sec = "0"+sec;
+        }
         thead.innerHTML = `
-                    <tr>
-                        <th class="linea" colspan="2" style="text-align:center;">Informazioni veicolo:</th>
-                    </tr>
-                `;
+                <tr>
+                    <th class="linea" colspan="2" style="text-align:center;">Ultimo aggiornamento: ${new Date().getHours()}:${new Date().getMinutes()}:${sec}</th>
+                </tr>
+            `;
         table.appendChild(thead);
 
         // Corpo tabella
@@ -47,8 +49,8 @@ function caricadati(){
             var tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td class="uguale">Linea:</td>
-                    <td class="uguale">${bus.linea} ${bus.route_desc}</td>
+                    
+                    <td colspan="2">${bus.linea} ${bus.route_desc}</td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -58,20 +60,21 @@ function caricadati(){
                 rit="RIT:"
             }else{
                 rit="ANT:"
+            }bus.delay=Math.abs(bus.delay);
+            if(bus.delay<10){
+                bus.delay="0"+bus.delay;
             }
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td>${rit}</td>
-                    <td>${bus.delay}</td>
+                    <td colspan="2">${rit}${bus.delay}</td>
                 </tr>
             `;
             tbody.appendChild(tr);
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td>Prossima fermata:</td>
-                    <td><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
+                    <td colspan="2"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -87,7 +90,7 @@ function caricadati(){
             tr.innerHTML = `
                 <tr>
                     <td>Corsa:</td>
-                    <td><a href="/seta_modena/servizi/percorsi/prossimefermate.html?journeycode=${bus.journey_code}" class="bianco">${bus.journey_code}</a></td>
+                    <td class="uguale"><a href="/seta_modena/servizi/percorsi/prossimefermate.html?journeycode=${bus.journey_code}" class="bianco">${bus.journey_code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);            
@@ -103,4 +106,4 @@ function caricadati(){
 
 caricadati();
 
-setInterval(caricadati, 60000);
+setInterval(caricadati, 10000);
