@@ -1,0 +1,257 @@
+body {
+    background-color: #282828;
+    text-align: center;
+    color: white;
+    font-family: Titillium Web;
+}
+
+.search-result {
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 20vw;
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+h3{
+    font-size: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 8px;
+    min-width: 85%;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 18px;
+}
+
+td.uguale{
+    width: 50%;
+}
+
+th {
+    background-color: rgb(204, 132, 0);
+}
+
+th,td {
+    border: 2px solid #444;
+    padding: .7vw;
+    padding-top: .6vw;
+    padding-bottom: .6vw;
+    text-align: left;
+}
+
+.bus-card-red {
+    background-color: rgb(55,14,14) !important;
+}
+.bus-card-yellow {
+    background-color: rgb(65, 65, 0) !important;
+}
+.bus-card-green {
+    background-color: rgb(0, 55, 0) !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+hr{
+    margin-top:19px;
+}
+
+h1.warning {
+    color:red;
+    font-size: 16px;
+}
+
+h1.yellow-warning {
+    color:rgb(255, 205, 0);
+    font-size: 16px;
+}
+
+header {
+    font-size: 67%;
+    background-color: #333;
+    height: auto;
+    padding: 0px 0px;
+    align-items: start;
+    width: 100%;
+    border-radius: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: left;
+}
+
+nav {
+    text-align: center;
+    flex-shrink: 0;
+}
+nav ul li {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: orange;
+}
+
+a.bianco{
+    color: white;
+    text-decoration: none;
+}
+
+a.biancosott{
+    color: white;
+}
+a.link-cell {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: white;
+}
+
+div.content-background {
+    background-color: #333;
+    max-width: 85%;
+    margin: auto;
+    border-radius: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+div.content-background h3{
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+div.select-container {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+div.content-background select {
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+select,input{
+    height: 50px;
+    width: auto;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid rgb(100, 100, 100);
+    padding-left: 8px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+@media (max-width: 768px) {
+    p.scaled{
+        font-size: 2vw;
+    }
+    table {
+        margin-top: 10px;
+        min-width: 100%;
+    }
+    div.content-background {
+        max-width: 100%;
+    }
+    .search-result {
+        display: block;
+        width: 96.5%;
+    }
+    .container {
+        flex-direction: column;
+    }
+    th,td {
+        font-size: 2vw;
+    }
+    nav#corsie-nav ul li a{
+        font-size: 90%;
+        margin: 0;
+    }
+    table {
+        width: 100%;
+        max-width: 100% !important;
+    }
+    h2{
+        margin-bottom: 8px;
+    }
+    h2.noreduction{
+        margin-bottom: 16px;
+    }
+    hr{
+        margin-bottom:19px;
+    }
+    img{
+        width: 98%;
+        height: auto;
+    }
+    nav ul:last-child li {
+        margin-right: 20px;
+    }
+    nav ul li {
+        margin-right: 8px;
+    }
+}
+
+@media (max-width: 512px) {
+    p.scaled{
+        font-size: 3.2vw;
+    }
+    th,td {
+        font-size: 4.5vw;
+    }
+    table{
+        margin-top:10px;
+    }
+    h2{
+        margin-bottom: 0;
+    }
+    h2.noreduction{
+        margin-bottom: 16px;
+    }
+    #tabella-container {
+        overflow-x: scroll;
+    }
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+	left: 0;
+    width: 100%;
+}
+div.search-result div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+p.space{
+    width: 20px;
+}

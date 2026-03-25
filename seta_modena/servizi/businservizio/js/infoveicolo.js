@@ -9,10 +9,17 @@ async function getApiUrl() {
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
+const boolAvm = params.get('avm');
 
 //Sets stop name
 const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
+
+if(boolAvm){
+    //AVM Mode
+    const avmContainer = document.getElementById('avm-container');
+    avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'" class="biancosott">Modalità AVM</a>';
+}
 
 function caricadati(){
     var item=[];
