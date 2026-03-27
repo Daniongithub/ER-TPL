@@ -109,7 +109,7 @@ function getApiVersionHA() {
         if (!res.ok) {
             throw new Error(res.status);
         }
-        res.json();
+        return res.json();
     })
     .then(info => {
     document.getElementById("apiVersion").innerHTML =
