@@ -105,7 +105,12 @@ function mostraemail() {
 // This function below is to display the version of the HA API and the current server
 function getApiVersionHA() {
     fetch("https://ertpl-api.vercel.app/")
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) {
+            throw new Error(res.status);
+        }
+        res.json();
+    })
     .then(info => {
     document.getElementById("apiVersion").innerHTML =
         `Versione API Alta Disponibilità: v${info.version} (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
