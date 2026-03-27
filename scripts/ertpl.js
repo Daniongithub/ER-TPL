@@ -105,18 +105,17 @@ function mostraemail() {
 // This function below is to display the version of the HA API and the current server
 function getApiVersionHA() {
     fetch("https://ertpl-api.vercel.app/")
-  .then(res => res.json())
-  .then(info => {
+    .then(res => res.json())
+    .then(info => {
     document.getElementById("apiVersion").innerHTML =
-      `Versione API Alta Disponibilità: v${info.version}`;
-      fetch("https://ertpl-api.vercel.app/nextcloud").then(res => res.json()).then(info => {
-        document.getElementById("apiServer").innerHTML =
-      `Server in uso: ${info.server}`;
-      })
-  })
-  .catch(() => {
-    document.getElementById("apiVersion").innerHTML =
-      "Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento.";
-  });
-
+        `Versione API Alta Disponibilità: v${info.version} (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
+        /*fetch("https://ertpl-api.vercel.app/nextcloud").then(res => res.json()).then(info => {
+            document.getElementById("apiServer").innerHTML = `Server in uso: ${info.server}`;
+        }).catch(() => {
+            document.getElementById("apiServer").innerHTML = "Server in uso: info non disponibile al momento";
+        });*/
+    })
+    .catch(() => {
+        document.getElementById("apiVersion").innerHTML = `Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento. (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
+    });
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER-TPL - Test Alta Disponibilità</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/tablogo.png" type="image/x-icon">
+    <style>
+#container {
+    display: flex;
+    flex-direction: column;   /* 👈 mette tutto in verticale */
+    align-items: center;      /* 👈 centra orizzontalmente */
+    /*justify-content: center;  /* 👈 centra verticalmente */
+    min-height: 80vh;
+    text-align: center;
+}
+#risultatoDettagliato {
+    max-width: 600px;
+    width: 100%;
+    text-align: left; /* testo leggibile */
+}
+    </style>
+</head>
+<body>
+    <header>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="history.back()"><h1 style="font-size: 100%;font-weight: 500;">Torna Indietro</h1></a></li>
+                </ul>
+            </nav>
+    </header>
+    <div id="container">
+        <h1>Test Alta Disponibilità</h1>
+        <p>In questa pagina è possibile testare la funzione di alta disponibilità del sito per verificare eventuali problemi con i nostri server.</p>
+        <div id="risultatoFinale"></div>
+        <h1 class="spazio"></h1>
+        <div id="risultatoDettagliato" style="margin-left: 5vw; margin-right: 5vw; text-align: left;">
+            <h3>Dettagli test:</h3>
+            <div id="apiVersion">Versione API Alta Disponibilità: </div>
+            <h1 class="spazio"></h1>
+            <div id="apiNextcloudServer"></div>
+            <h1 class="spazio"></h1>
+            <div id="apiStartBusServer"></div>
+            <h1 class="spazio"></h1>
+            <div id="apiStartSoppServer"></div>
+            <h1 class="spazio"></h1>
+            <div id="apiStartFermateServer"></div>
+            <h1 class="spazio"></h1>
+            <div id="apiSetaServer"></div>
+        </div>
+    </div>
+    <script src="testha.js"></script>
+    <script>
+        initTestHA();
+    </script>
+</body>
+</html>
