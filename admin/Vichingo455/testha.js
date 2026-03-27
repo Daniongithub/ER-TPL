@@ -23,6 +23,9 @@ async function getApiVersionHA() {
     const res = await fetch("https://ertpl-api.vercel.app/", {
   cache: "no-store"
 });
+if (!res.ok) {
+    throw new Error(res.status);
+  }
     const info = await res.json();
 
     document.getElementById("apiVersion").innerHTML =
@@ -43,6 +46,9 @@ async function getNextcloudServer() {
     const res = await fetch("https://ertpl-api.vercel.app/nextcloud", {
   cache: "no-store"
 });
+if (!res.ok) {
+    throw new Error(res.status);
+  }
     const info = await res.json();
 
     document.getElementById("apiNextcloudServer").innerHTML =
@@ -64,6 +70,9 @@ async function getStartBusServer() {
     const res = await fetch("https://ertpl-api.vercel.app/startbus", {
   cache: "no-store"
 });
+if (!res.ok) {
+    throw new Error(res.status);
+  }
     const info = await res.json();
 
     document.getElementById("apiStartBusServer").innerHTML =
@@ -85,6 +94,9 @@ async function getStartSoppServer() {
     const res = await fetch("https://ertpl-api.vercel.app/startsopp", {
   cache: "no-store"
 });
+if (!res.ok) {
+    throw new Error(res.status);
+  }
     const info = await res.json();
 
     document.getElementById("apiStartSoppServer").innerHTML =
@@ -106,6 +118,9 @@ async function getStartFermateServer() {
     const res = await fetch("https://ertpl-api.vercel.app/startfermate", {
   cache: "no-store"
 });
+if (!res.ok) {
+    throw new Error(res.status);
+  }
     const info = await res.json();
 
     document.getElementById("apiStartFermateServer").innerHTML =
@@ -127,6 +142,9 @@ async function getSetaServer() {
     const res = await fetch("https://ertpl-api.vercel.app/seta", {
   cache: "no-store"
 });
+if (!res.ok) {
+    throw new Error(res.status);
+  }
     const info = await res.json();
 
     document.getElementById("apiSetaServer").innerHTML =
