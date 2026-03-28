@@ -146,7 +146,8 @@ function caricadati(){
                 </tr>
             `;
             tbody.appendChild(tr);
-            //Colore sfondo conta passeggeri
+            //Colore sfondo conta passeggeri (NON FUNZIONA LATO SETA)
+            /*
             if(bus.num_passeggeri<=bus.posti_totali/4){
                 tr = document.createElement('tr');
                 tr.innerHTML = `
@@ -180,6 +181,7 @@ function caricadati(){
                     </tr>
                 `;
             }
+            */
             tbody.appendChild(tr);
             tr = document.createElement('tr');
             tr.innerHTML = `
