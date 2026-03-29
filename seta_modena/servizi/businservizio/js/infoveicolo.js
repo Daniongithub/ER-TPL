@@ -133,6 +133,14 @@ function caricadati(){
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
+                    <td>Tabella oraria N°:</td>
+                    <td>${bus.duty_id}</td>
+                </tr>
+            `;
+            tbody.appendChild(tr);
+            tr = document.createElement('tr');
+            tr.innerHTML = `
+                <tr>
                     <td>Codice percorso:</td>
                     <td><a href="/seta_modena/servizi/percorsi/percorso.html?routecode=${bus.route_code}&routenum=${bus.officialService}" class="bianco">${bus.route_code}</a></td>
                 </tr>
