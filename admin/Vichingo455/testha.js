@@ -53,12 +53,12 @@ if (!res.ok) {
 
     document.getElementById("apiNextcloudServer").innerHTML =
       //`Server in uso (NextCloud): ${info.server} (${info.url})`;
-      `Server in uso (NextCloud): ${info.server} (<span class="green">TEST OK</span>)`;
+      `Server in uso (foto): ${info.server} (<span class="green">TEST OK</span>)`;
 
     return true;
   } catch {
     document.getElementById("apiNextcloudServer").innerHTML =
-      `Server in uso (NextCloud): info non disponibile al momento. (<span class="red">TEST FALLITO</span>)`;
+      `Server in uso (foto): sconosciuto. (<span class="red">TEST FALLITO</span>)`;
 
     return false;
   }
@@ -82,7 +82,7 @@ if (!res.ok) {
     return true;
   } catch {
     document.getElementById("apiStartBusServer").innerHTML =
-      `Server in uso (START Autobus in tempo reale): info non disponibile al momento. (<span class="red">TEST FALLITO</span>)`;
+      `Server in uso (START Autobus in tempo reale): sconosciuto. (<span class="red">TEST FALLITO</span>)`;
 
     return false;
   }
@@ -106,7 +106,7 @@ if (!res.ok) {
     return true;
   } catch {
     document.getElementById("apiStartSoppServer").innerHTML =
-      `Server in uso (START Corse Soppresse): info non disponibile al momento. (<span class="red">TEST FALLITO</span>)`;
+      `Server in uso (START Corse Soppresse): sconosciuto. (<span class="red">TEST FALLITO</span>)`;
 
     return false;
   }
@@ -130,7 +130,7 @@ if (!res.ok) {
     return true;
   } catch {
     document.getElementById("apiStartFermateServer").innerHTML =
-      `Server in uso (START Fermate): info non disponibile al momento. (<span class="red">TEST FALLITO</span>)`;
+      `Server in uso (START Fermate): sconosciuto. (<span class="red">TEST FALLITO</span>)`;
 
     return false;
   }
@@ -154,7 +154,7 @@ if (!res.ok) {
     return true;
   } catch {
     document.getElementById("apiSetaServer").innerHTML =
-      `Server in uso (SETA): info non disponibile al momento. (<span class="red">TEST FALLITO</span>)`;
+      `Server in uso (SETA): sconosciuto. (<span class="red">TEST FALLITO</span>)`;
 
     return false;
   }
