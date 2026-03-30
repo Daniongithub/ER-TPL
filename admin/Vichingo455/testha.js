@@ -1,7 +1,9 @@
+// Variabili per controllo client-side
+var NextCloudUri = '',StartBusUri = '', StartSoppUri = '', StartFermateUri = '', SetaUri = '';
 // Funzione principale
 async function initTestHA() {
   document.getElementById("risultatoFinale").innerHTML = `<span style="font-weight: 700;">Stato: </span><span class="blue">Test in corso, attendere prego...</span>`
-  const results = await Promise.all([
+  const serverResults = await Promise.all([
     getApiVersionHA(),
     getNextcloudServer(),
     getStartBusServer(),
@@ -10,11 +12,17 @@ async function initTestHA() {
     getSetaServer()
   ]);
 
-  const allOk = results.every(r => r === true);
+  const serverOk = serverResults.every(r => r === true); // Controlla se i server sono online
+  const clientOk = await checkBrowser(); // Controlla se il client può raggiungere i server
 
-  document.getElementById("risultatoFinale").innerHTML = allOk
-    ? `<span style="font-weight: 700;">Stato: </span><span class="green">I servizi funzionano correttamente. Nessun problema riscontrato.</span> - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`
-    : `<span style="font-weight: 700;">Stato: </span><span class="red">Alcuni dei nostri servizi stanno riscontrando problemi. Riprova o contattaci.</span> - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`;
+  if (serverOk && clientOk) {
+    document.getElementById("risultatoFinale").innerHTML = `<span style="font-weight: 700;">Stato: </span><span class="green">I servizi funzionano correttamente. Nessun problema riscontrato.</span> - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`;
+  } else if (serverOk) {
+    document.getElementById("risultatoFinale").innerHTML = `<span style="font-weight: 700;">Stato: </span><span class="yellow">I servizi funzionano correttamente, ma la tua rete o il browser potrebbe bloccare alcuni dei nostri servizi. Per altre informazioni, contatta il tuo amministratore di rete.</span> - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`
+  }
+  else {
+    document.getElementById("risultatoFinale").innerHTML = `<span style="font-weight: 700;">Stato: </span><span class="red">Alcuni dei nostri servizi stanno riscontrando problemi. Riprova o contattaci.</span> - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`;
+  }
 }
 
 // API Version
@@ -54,7 +62,7 @@ if (!res.ok) {
     document.getElementById("apiNextcloudServer").innerHTML =
       //`Server in uso (NextCloud): ${info.server} (${info.url})`;
       `Server in uso (foto): ${info.server} (<span class="green">TEST OK</span>)`;
-
+    NextCloudUri = info.url + "/status.php";
     return true;
   } catch {
     document.getElementById("apiNextcloudServer").innerHTML =
@@ -78,7 +86,7 @@ if (!res.ok) {
     document.getElementById("apiStartBusServer").innerHTML =
       //`Server in uso (START Autobus in tempo reale): ${info.server} (${info.url})`;
       `Server in uso (START Autobus in tempo reale): ${info.server} (<span class="green">TEST OK</span>)`;
-
+    StartBusUri = info.url;
     return true;
   } catch {
     document.getElementById("apiStartBusServer").innerHTML =
@@ -102,7 +110,7 @@ if (!res.ok) {
     document.getElementById("apiStartSoppServer").innerHTML =
       //`Server in uso (START Corse Soppresse): ${info.server} (${info.url})`;
       `Server in uso (START Corse Soppresse): ${info.server} (<span class="green">TEST OK</span>)`;
-
+    StartSoppUri = info.url;
     return true;
   } catch {
     document.getElementById("apiStartSoppServer").innerHTML =
@@ -126,7 +134,7 @@ if (!res.ok) {
     document.getElementById("apiStartFermateServer").innerHTML =
       //`Server in uso (START Fermate): ${info.server} (${info.url})`;
       `Server in uso (START Fermate): ${info.server} (<span class="green">TEST OK</span>)`;
-
+    StartFermateUri = info.url + "/versione";
     return true;
   } catch {
     document.getElementById("apiStartFermateServer").innerHTML =
@@ -150,12 +158,80 @@ if (!res.ok) {
     document.getElementById("apiSetaServer").innerHTML =
       //`Server in uso (SETA): ${info.server} (${info.url})`;
       `Server in uso (SETA): ${info.server} (<span class="green">TEST OK</span>)`;
-
+    SetaUri = info.url + "/allnews";
     return true;
   } catch {
     document.getElementById("apiSetaServer").innerHTML =
       `Server in uso (SETA): sconosciuto. (<span class="red">TEST FALLITO</span>)`;
 
+    return false;
+  }
+}
+// Controllo client-side (dal browser)
+async function checkBrowser() {
+  try {
+    var res,header;
+    if (NextCloudUri != '') {
+      res = await fetch(NextCloudUri, { cache: "no-store" });
+      header = res.headers.get('content-type');
+      NextCloudUri = '';
+      if (!res.ok || !header.includes('application/json')) {
+        throw new Error();
+      }
+    }
+    else {
+      throw new Error();
+    }
+    if (StartBusUri != '') {
+      res = await fetch(StartBusUri, { cache: "no-store" });
+      header = res.headers.get('content-type');
+      StartBusUri = '';
+      if (!res.ok || !header.includes('application/json')) {
+        throw new Error();
+      }
+    }
+    else {
+      throw new Error();
+    }
+    if (StartSoppUri != '') {
+      res = await fetch(StartSoppUri, { cache: "no-store" });
+      header = res.headers.get('content-type');
+      StartSoppUri = '';
+      if (!res.ok || !header.includes('application/json')) {
+        throw new Error();
+      }
+    }
+    else {
+      throw new Error();
+    }
+    if (StartFermateUri != '') {
+      res = await fetch(StartFermateUri, { cache: "no-store" });
+      header = res.headers.get('content-type');
+      StartFermateUri = '';
+      if (!res.ok || !header.includes('text/html')) {
+        throw new Error();
+      }
+    }
+    else {
+      throw new Error();
+    }
+    if (SetaUri != '') {
+      res = await fetch(SetaUri, { cache: "no-store" });
+      header = res.headers.get('content-type');
+      SetaUri = '';
+      if (!res.ok || !header.includes('application/json')) {
+        throw new Error();
+      }
+    }
+    else {
+      throw new Error();
+    }
+    document.getElementById("browserCheck").innerHTML =
+      `Raggiungibilità servizi: tutti i servizi sembrano raggiungibili. (<span class="green">TEST OK</span>)`;
+    return true;
+  } catch {
+    document.getElementById("browserCheck").innerHTML =
+      `Raggiungibilità servizi: alcuni servizi non sono raggiungibili. (<span class="red">TEST FALLITO</span>)`;
     return false;
   }
 }
