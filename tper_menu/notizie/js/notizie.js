@@ -38,6 +38,13 @@ function loadNews(category){
                 return response.json();
             }).then(data =>{
                 newsContainer.innerHTML="";
+                data.sort((a, b) => {
+                    const parseDate = (d) => {
+                        const parts = d.split('.');
+                        return new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+                    };
+                    return parseDate(b.date) - parseDate(a.date);
+                });
                 data.forEach(element => {
                     var div = document.createElement('div');
                     div.setAttribute("class","news-card");
