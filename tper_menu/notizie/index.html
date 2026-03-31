@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER-TPL</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/tablogo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+        <ul>
+            <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+            <li><a href="/tper_menu/tper.html"><h1 style="font-size: 100%;font-weight: 500;">TPER</h1></a></li>
+        </ul>
+        </nav>
+    </header>
+    <h1>Notizie</h1>
+    <p>Notizie da TPER.</p>
+    <h1 class="spazio"></h1>
+    <p>Categorie:</p>
+    <div>
+        <a class="green button" href="#" onclick='changeCategory("principali")'>Notizie principali</a>
+        <a class="green button" href="#" onclick='changeCategory("bologna")'>Bologna</a>
+        <a class="green button" href="#" onclick='changeCategory("ferrara")'>Ferrara</a>
+        <a class="green button" href="#" onclick='changeCategory("ferrovie")'>Ferrovie</a>
+    </div>
+    <h1 class="spazio"></h1>
+    <p id="newstext">Notizie principali:</p>
+    <div id="news-container"></div>
+    <h1 class="spazio"></h1>
+    <p>Pagina sviluppata con l'appoggio di <a href="https://git.vichingo455.qzz.io/emmev-code/tper-api" target="_blank">TPER API</a>, Copyright (C) 2026 EmmeV, rilasciata sotto licenza GNU AGPL 3.0.</p>
+    <h1 class="spazio"></h1>
+    <script src="js/notizie.js"></script>
+</body>
+</html>

@@ -23,6 +23,7 @@ async function checkBrowser(services) {
     await checkEndpoint(services.startsopp.url, "application/json");
     await checkEndpoint(services.startfermate.url, "text/html");
     await checkEndpoint(services.seta.url, "application/json");
+    await checkEndpoint(services.tper.url, "application/json");
 
     return true;
   } catch {
@@ -107,6 +108,19 @@ async function getSetaServer() {
   }
 }
 
+async function getTperServer() {
+  try {
+    const info = await fetchJson("https://ertpl-api.vercel.app/tper");
+    return {
+      ok: true,
+      server: info.server,
+      url: info.url
+    };
+  } catch {
+    return { ok: false };
+  }
+}
+
 // =========================
 // FUNZIONI UI
 // =========================
@@ -172,14 +186,16 @@ async function initTestHA() {
     startbus,
     startsopp,
     startfermate,
-    seta
+    seta,
+    tper
   ] = await Promise.all([
     getApiVersionHA(),
     getNextcloudServer(),
     getStartBusServer(),
     getStartSoppServer(),
     getStartFermateServer(),
-    getSetaServer()
+    getSetaServer(),
+    getTperServer()
   ]);
 
   // Render risultati singoli
@@ -189,6 +205,7 @@ async function initTestHA() {
   renderServer("apiStartSoppServer", "Server in uso (START Corse Soppresse)", startsopp);
   renderServer("apiStartFermateServer", "Server in uso (START Fermate)", startfermate);
   renderServer("apiSetaServer", "Server in uso (SETA)", seta);
+  renderServer("apiTperServer", "Server in uso (TPER)", tper);
 
   const serverOk = [
     api,
@@ -196,7 +213,8 @@ async function initTestHA() {
     startbus,
     startsopp,
     startfermate,
-    seta
+    seta,
+    tper
   ].every(r => r.ok);
 
   const clientOk = await checkBrowser({
@@ -204,7 +222,8 @@ async function initTestHA() {
     startbus,
     startsopp,
     startfermate,
-    seta
+    seta,
+    tper
   });
 
   renderBrowser(clientOk);
