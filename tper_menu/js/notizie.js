@@ -59,7 +59,7 @@ function loadNews(category){
                     }
                     const trimmedTitle = trimTitle(element.title);
                     h3.innerHTML=trimmedTitle;
-                    const link = "/tper_menu/notizie/notizia.html?link="+element.link;
+                    const link = "/tper_menu/notizia.html?link="+element.link;
                     a.setAttribute("href",link);
                     a.appendChild(p);
                     a.appendChild(h3);
