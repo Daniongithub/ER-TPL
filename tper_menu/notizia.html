@@ -9,6 +9,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/img/tablogo.png" type="image/x-icon">
+    <style>
+        .allegati-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #2a2a2a; /* Grigio leggermente più chiaro del fondo */
+            border-radius: 12px;
+            border: 1px solid #444;
+        }
+
+        .allegati-section h3 {
+            color: #00ff00; /* Verde Tper */
+            margin-bottom: 15px;
+        }
+
+        .allegato-link {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 8px;
+            padding: 5px 0;
+            border-bottom: 1px solid #555;
+            transition: 0.2s;
+        }
+
+        .allegato-link:hover {
+            color: #00ff00;
+            border-bottom-color: #00ff00;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,13 +45,10 @@
             <ul>
                 <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
                 <li><a href="/tper_menu/tper.html"><h1 style="font-size: 100%;font-weight: 500;">TPER</h1></a></li>
-                <li><a href="index.html"><h1 style="font-size: 100%;font-weight: 500;">Notizie</h1></a></li>
             </ul>
         </nav>
     </header>
     <div id="notizia-container"></div>
-    <h1 class="spazio"></h1>
-    <p>Pagina sviluppata con l'appoggio di <a href="https://git.vichingo455.qzz.io/emmev-code/tper-api" target="_blank">TPER API</a>, Copyright (C) 2026 EmmeV, rilasciata sotto licenza GNU AGPL 3.0.</p>
     <h1 class="spazio"></h1>
     <script src="js/notizia.js"></script>
 </body>

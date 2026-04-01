@@ -24,12 +24,35 @@ fetch(url + "/news?link=" + link)
         notiziaContainer.innerHTML="";
         var div = document.createElement('div');
         var h1 = document.createElement('h1');
-        var p = document.createElement('p');
         var p2 = document.createElement('div');
-        p.innerHTML=element.date;
         h1.innerHTML=element.title;
-        div.appendChild(p);
         div.appendChild(h1);
+        if (element.allegati && element.allegati.length > 0) {
+            var allegatiDiv = document.createElement('div');
+            allegatiDiv.classList.add('allegati-section');
+            
+            var titleAllegati = document.createElement('h3');
+            titleAllegati.innerText = "Allegati";
+            allegatiDiv.appendChild(titleAllegati);
+
+            element.allegati.forEach(allegato => {
+                var a = document.createElement('a');
+                a.href = allegato.link;
+                a.target = "_blank";
+                a.className = "allegato-link";
+                
+                // Usiamo il titolo dell'allegato, se manca mettiamo un default
+                a.innerText = (allegato.titolo && allegato.titolo.trim() !== "") 
+                            ? allegato.titolo 
+                            : "Scarica allegato";
+
+                allegatiDiv.appendChild(a);
+                // Aggiungiamo un break o un div per mandarli a capo
+                allegatiDiv.appendChild(document.createElement('br'));
+            });
+            
+            div.appendChild(allegatiDiv);
+        }
         p2.innerHTML=element.content;
         div.appendChild(p2);
         notiziaContainer.appendChild(div);
