@@ -1,688 +1,1048 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://ertpl.pages.dev</loc>
+		<loc>https://www.ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/chisiamo.html</loc>
+		<loc>https://www.ertpl.pages.dev/google20540786677952e8.html</loc>
 		<priority>0.80</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2025-04-23</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_menu/tperurb.html</loc>
+		<loc>https://www.ertpl.pages.dev/chisiamo.html</loc>
+		<priority>0.80</priority>
+		<lastmod>2026-03-27</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/404.html</loc>
+		<priority>0.80</priority>
+		<lastmod>2026-02-03</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/tper_menu/tperurb.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_menu/tpersub.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/tpersub.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/percorsi/index.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/tperext.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_menu/tperext.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/tper.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_menu/tper.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/notizie</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-25</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/starturbano.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/notizia.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/startsub.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/articoli.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-23</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/startextra.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/starturbano.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/start.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/startsub.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-27</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/listamezzi.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/startextra.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/urbano.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/start.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-20</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/setasub.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/zonetariffarie.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-25</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/setastreetview.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/traghetto.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/setafilobus.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/listamezzi.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-03-26</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/setaextra.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/radiatimenu.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/servizi/cercaorario</loc>
+		<loc>https://www.ertpl.pages.dev/service/update.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-29</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/documenti/speciali/busottolalinea.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/smf.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/servizi/businservizio</loc>
+		<loc>https://www.ertpl.pages.dev/service/servicenotavailable.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-29</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/atcmlalinea.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/pastebin-errori.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/servizio.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/pagenotavailable.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_privatibus/zaganelli.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/newui.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_privatibus/riolo.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/maintenance.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_privatibus/pollini.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/isp.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_privatibus/gamberini.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/comingsoon.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_menu/ravenna.html</loc>
+		<loc>https://www.ertpl.pages.dev/service/avmseta.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-20</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_menu/mete.html</loc>
+		<loc>https://www.ertpl.pages.dev/ravenna_privatibus/zaganelli.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-27</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/extra_menu/at.html</loc>
+		<loc>https://www.ertpl.pages.dev/ravenna_privatibus/riolo.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-02</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/extra_menu/altri.html</loc>
+		<loc>https://www.ertpl.pages.dev/ravenna_privatibus/pollini.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/urbano/manlc12g.html</loc>
-		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<loc>https://www.ertpl.pages.dev/ravenna_privatibus/gamberini.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/urbano/m240lucng.html</loc>
-		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<loc>https://www.ertpl.pages.dev/ravenna_menu/mete.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/urbano/citymoodcng.html</loc>
-		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<loc>https://www.ertpl.pages.dev/ravenna_menu/articoli.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_menu/extra.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2026-03-24</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_menu/altri.html</loc>
+		<priority>0.60</priority>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/urbano/cito.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_menu/articoli/sanvitale.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-23</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/urbano/citea.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/manlc12g.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/manlcllecng.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/m240lucng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/manlcllcng.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/citymoodcng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/citymood.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/cito.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/citarol.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/urbano/citea.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/citarogfl.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/manlcllecng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/citaroc2h.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/manlcllcng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/citaro2.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/citymood.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/suburbano/citaro1.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/citarol.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/regio14.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/citarogfl.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/mywayfer.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/citaroc2h.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/myway.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/citaro2.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/manlic.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/suburbano/citaro1.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/manlc19g.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/s417ul.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/irizari4.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/regio14.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/interlinklng.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/mywayfer.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/crossway14le.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/myway.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-02-04</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/crossway12le.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/manlic.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/crossway12cng.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/manlc19g.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/citymoodlng.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/irizari4.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/citarou.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/interlinklng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/citarolu.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/integrofl.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/citarogu.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/crossway14le.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/arwayfer.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/crossway12le.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/extraurbano/arway.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/crossway12cng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/start-livebus</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/citymoodlng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-29</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/start-fermatebus</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/citarou.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-28</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/start-corsesopp</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/citarolu.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-16</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/uwpiccolo.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/citarogu.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/uwdim.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/arwayfer.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/uw.html</loc>
+		<loc>https://www.ertpl.pages.dev/tper_bus/extraurbano/arway.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/manlc19g.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-livebus</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-08</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/manlc12e.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-fermatebus</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-01-08</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/karsan.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-corsesopp</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-01-08</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/citymoodcng.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/uwpiccolo.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-02</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/bredinovivo.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/uwdim.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-02-04</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/urbano/bredino.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/uw.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/suburbano/uwmh.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/manlc19g.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/suburbano/uw.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/manlc12geh.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/suburbano/mana40.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/manlc12e.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-02</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/suburbano/citeliseev.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/mana21demo.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/suburbano/citelis.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/m231cuvivacitycng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/irizari4.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/karsan.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-02-04</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/interlinklng.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/higer7.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/desimon.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/citymood12cng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/crossway13le.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/citymood12.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/crossway12le.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/citymood10cng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/crossway12cngle2023.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/citelis10.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/startravenna_bus/extraurbano/crossway12cngle.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/bredinovivo.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/menu/radiati/estate25.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/bredino.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-03-02</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/servizi/cercaorario/comeleggere.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/urbano/bmbvivacitypcng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/servizi/businservizio/infoveicolo.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/uwmh.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-25</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/uwfacelift.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/uw.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/urbanway.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/mana40.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-29</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/template.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/mana21fin.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/surbinocng.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/m240avancitycng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-16</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/solarisidrogeno.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/citeliseev.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-03-02</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/menarinolng.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/suburbano/citelis.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-03-02</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/menarinocng.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/manlic.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/cityclasspavia.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/irizari4.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-20</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/cityclassatcm.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/interlinklng.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/citelis.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/desimon.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/citarodiesel.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/crossway14le.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/urbano/citarocng.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/crossway13le.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/template.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/crossway12le.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-03-09</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/solaris18.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/crossway12cngle2023.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-02-13</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/solarisdiesel.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/crossway12cngle.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-22</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/setra3p.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/citywide.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/setra2p.html</loc>
+		<loc>https://www.ertpl.pages.dev/start_bus/extraurbano/arway.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/newman.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-25</lastmod>
+		<lastmod>2026-01-08</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/manl.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/guidalinee</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-03-12</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/mang4p.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/cercaorario</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/mang3p.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/businservizio</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/ibcwle.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu/zone.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2025-11-05</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/cwlelungo.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu/urbano.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/cwlefacelift.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu/suburbano.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/cwlecng.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu/notizia.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/cwlebianco.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu/filobus.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-03-12</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/cwle.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/menu/extraurbano.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-18</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/citarou.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/wayback.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-04</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/citarogtper.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/streetview.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/citarogkoln.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/setanewsletter.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/suburbano/bredone.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/radiati.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/minibus/template.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/atcmlalinea.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/minibus/sprinter.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/servizio.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/filobus/trollino.html</loc>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/deposito.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/filobus/template.html</loc>
+		<loc>https://www.ertpl.pages.dev/ravenna_menu/articoli/portediravenna.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/filobus/neoplan.html</loc>
+		<loc>https://www.ertpl.pages.dev/ravenna_menu/articoli/navettamaratona.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-02-19</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/filobus/busottongt.html</loc>
+		<loc>https://www.ertpl.pages.dev/ravenna_menu/articoli/navettacimitero.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-02-19</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/template.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/san_marino/rsm.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/lionregio.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/znojmo.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/irizar.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/repubblica_ceca.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/integrogiallo.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/praga.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-08</lastmod>
+		<lastmod>2026-03-24</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/integro.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/plzen.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-08-16</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/cwlinecng.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/italia/italia.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/cwline.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/eventi/ibede2025.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-31</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/cwiris.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/eventi/eventi.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/cwesercito.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/austria/vor_regio.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/setamodena_bus/extraurbano/ares.html</loc>
+		<loc>https://www.ertpl.pages.dev/extra_bus/austria/austria.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2025-07-12</lastmod>
+		<lastmod>2026-01-17</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/percorso.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-08-27</lastmod>
+		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-fermatebus/info.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-02-19</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/prossimefermate.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-08-26</lastmod>
+		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-fermatebus/fermata.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/rcodes.html</loc>
-		<priority>0.25</priority>
-		<lastmod>2025-09-02</lastmod>
+		<priority>0.20</priority>
+		<lastmod>2026-01-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/prossimefermate.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-02-19</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/percorso.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/iframeorari.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-08</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/cercaorario/notizielinea.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-02-19</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/cercaorario/fermata.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/cercaorario/comeleggere.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-02-19</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/cercaorario/altrecorsie.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-03-12</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/businservizio/infoveicolo.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-03-25</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/businservizio/avmmode.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-03-25</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/speciali/busottolalinea.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/radiati/inizio26.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/radiati/estate25.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici/radiati/aut25.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-24</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/uwfacelift.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/urbanway.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/surbinocng.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/solarisidrogeno.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/menarinolng.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/menarinocng.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/cityclasspavia.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/cityclassatcm.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/citelis.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/citarodiesel.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/urbano/citarocng.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/urbinostart.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/solarisdiesel.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/solaris18.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/setra3p.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/setra2p.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/newman.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/manl.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/mang4p.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/mang3p.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/ibcwle.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/cwlesaca.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/cwlelungo.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/cwlefacelift.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-03-10</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/cwlecng.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/cwlebianco.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/cwle.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/citarou.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-24</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/citarogtper.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/citarogkoln.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/bredone.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/minibus/sprinter.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/filobus/trollone.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-03-12</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/filobus/trollino.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-24</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/filobus/neoplan.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-03-12</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/filobus/busottongt.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-24</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/newintegro.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/lionregio.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/irizar.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/integrogiallo.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/integro.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/cwlinecng.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/cwline.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/cwiris.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/cwesercito.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/arway.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-18</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/bus/extraurbano/ares.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/pz_bus/dp.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/pz_bus/car-tour.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/pid/regionale.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/pid/podebrady.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/pid/Kolin.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/repubblica_ceca/hk_bus/dp.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-01-17</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/italia/veneto/atv.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/extra_bus/italia/toscana/at.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-01</lastmod>
 	</url>
 </urlset>
