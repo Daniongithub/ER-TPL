@@ -19,17 +19,10 @@ fetch(url)
 searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {
         productsContainer.innerHTML = ' ';
-        buttons.innerHTML = `
-        <div>
-            <a href="/ravenna_privatibus/gamberini.html" class="blue button">Gamberini</a>
-            <a href="/ravenna_privatibus/pollini.html" class="blue button">Pollini</a>
-            <a href="/ravenna_privatibus/zaganelli.html" class="blue button">Zaganelli</a>
-			<a href="/ravenna_privatibus/riolo.html" class="blue button">C.T.R.T.</a>
-        </div>
-        `;
+        buttons.style.display="";
         return;
     }
-    buttons.innerHTML = ' ';
+    buttons.style.display="none";
         const searchTerm = searchBar.value.toLowerCase();
         const filtered = allProducts.filter(bus =>
             bus.matricola.toLowerCase().includes(searchTerm)

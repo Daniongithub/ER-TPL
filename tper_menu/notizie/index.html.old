@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER-TPL</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/tablogo.png" type="image/x-icon">
+    <style>
+        #categories{
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        #categories div{
+            display: flex;
+            align-items: center;
+            width: auto;
+            margin-left: 8px;
+            padding: 8px;
+            border: 2px #404040 solid;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            #categories{
+                flex-wrap: wrap;
+            }
+            #categories p{
+                flex-basis: 100%;
+                text-align: center;
+            }
+            #categories div{
+                width: calc(50% - 16px);
+                margin: 4px;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+        <ul>
+            <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+            <li><a href="/tper_menu/tper.html"><h1 style="font-size: 100%;font-weight: 500;">TPER</h1></a></li>
+        </ul>
+        </nav>
+    </header>
+    <h1>Notizie</h1>
+    <p>Notizie da TPER.</p>
+    <div id="categories">
+        <div>
+            <label for="principali">Notizie Principali</label>
+            <input type="radio" name="category" id="principali" autocomplete="off" value="principali" checked>
+        </div>
+        <div>
+            <label for="bologna">Bologna</label>
+            <input type="radio" name="category" id="bologna" autocomplete="off" value="bologna">
+        </div>
+        <div>
+            <label for="ferrara">Ferrara</label>
+            <input type="radio" name="category" id="ferrara" autocomplete="off" value="ferrara">
+        </div>
+        <div>
+            <label for="ferrovie">Ferrovie</label>
+            <input type="radio" name="category" id="ferrovie" autocomplete="off" value="ferrovie">
+        </div>
+    </div>
+    <h1 class="spazio"></h1>
+    <p id="newstext">Notizie principali:</p>
+    <div id="news-container"></div>
+    <h1 class="spazio"></h1>
+    <script src="js/notizie.js"></script>
+</body>
+</html>

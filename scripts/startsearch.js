@@ -19,33 +19,10 @@ fetch(url)
 searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {
         productsContainer.innerHTML = ' ';
-        buttons.innerHTML = `
-        <div>
-            <a href="/start_menu/starturbano.html" class="blue button">Urbano</a>
-            <a href="/start_menu/startsub.html" class="blue button">Suburbano</a>
-            <a href="/start_menu/startextra.html" class="blue button">Extraurbano</a>
-        </div>
-        <div>
-            <a href="/start_bus/traghetto.html" class="blue button">Traghetti</a>
-            <a href="/ravenna_menu/mete.html" class="blue button">(RA) Privati METE S.p.A.</a>
-            <a href="/ravenna_menu/articoli.html" class="green button">Articoli</a>
-        </div>
-        <hr class="solid">
-        <h2>Servizi START Romagna</h2>
-        <div class="bottel">
-            <a class="green button" href="/start_menu/servizi/start-fermatebus/">Visualizzatore fermate</a>
-            <a class="green button" href="/start_menu/servizi/start-livebus/">Autobus in tempo reale</a>
-            <a class="green button" href="/start_menu/servizi/start-corsesopp/">Corse non garantite</a>
-            <a class="green button" href="/start_bus/listamezzi.html">Lista mezzi</a>
-            <a class="green button" href="/start_bus/zonetariffarie.html">Zone tariffarie</a>
-        </div>
-        <hr class="solid">
-        <h4>Sezione redatta da "Il Dani", foto di A. Fogli/ravennabuses, @Autobus_94ita, Edoggus, ErikMontagne, Vichingo455.</h4>
-        <p>I servizi "Autobus in tempo reale", "Corse non garantite" e "Visualizzatore fermate" fanno uso di dati forniti dai servizi di Start Romagna. <br>L'unica cosa che facciamo è ottenerli e impaginarli in maniera differente dai siti di Start per esigenze nostre.</p>
-        `;
+        buttons.style.display="";
         return;
     }
-    buttons.innerHTML = ' ';
+    buttons.style.display="none";
         const searchTerm = searchBar.value.toLowerCase();
         const filtered = allProducts.filter(bus =>
             bus.matricola.toLowerCase().includes(searchTerm)

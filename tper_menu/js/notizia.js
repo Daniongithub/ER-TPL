@@ -24,11 +24,11 @@ fetch(url + "/news?link=" + link)
         notiziaContainer.innerHTML="";
         var div = document.createElement('div');
         var h1 = document.createElement('h1');
-        var p = document.createElement('p');
+        //var p = document.createElement('p');
         var p2 = document.createElement('div');
-        p.innerHTML=element.date;
+        //p.innerHTML=element.date;
         h1.innerHTML=element.title;
-        div.appendChild(p);
+        //div.appendChild(p);
         div.appendChild(h1);
         p2.innerHTML=element.content;
         div.appendChild(p2);

@@ -23,13 +23,13 @@ function loadNews(category){
         } else if (category == "ferrara") {
             uri = "/news/ferrara";
         } else if (category == "ferrovie") {
-            uri = "/news/ferrovie";
+            uri = "/news/ferrovia";
         } else {
             newsContainer.innerHTML="<p>Errore.</p>";
             throw new Error("Errore nel caricamento dei dati.");
         }
         getApiUrl().then(url => {
-        fetch(url + "/news")
+        fetch(url + uri)
             .then(response => {
                 if (!response.ok){
                     newsContainer.innerHTML="<p>Impossibile raggiungere l'API.</p>";
@@ -90,7 +90,7 @@ function trimTitle(title){
 }
 
 function changeCategory(category){
-    if (category == "principali") {
+    /*if (category == "principali") {
         document.getElementById('newstext').innerText = "Notizie principali:";
     } else if (category == "bologna") {
         document.getElementById('newstext').innerText = "Notizie di Bologna:";
@@ -101,7 +101,15 @@ function changeCategory(category){
     } else {
         console.log("Ricevuta richiesta per cambio di categoria con parametro non valido.");
         return;
-    }
+    }*/
     loadNews(category);
 }
+
+document.getElementById("categories").addEventListener('change', (event) => {
+  if (event.target.type === 'radio') {
+    console.log(`Selected value: ${event.target.value}`);
+    changeCategory(event.target.value);
+  }
+});
+
 changeCategory("principali");
