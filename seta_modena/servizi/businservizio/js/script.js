@@ -12,19 +12,11 @@ const modelloSelect = document.getElementById('modello');
 const contentBackground = document.getElementById('content-background');
 const container = document.getElementById('tabella-container');
 
-//April fools
-const params = new URLSearchParams(window.location.search);
-const noaf = params.get('noaf');
-if(noaf){
-    const promptAf = document.getElementById('prompt-af');
-    promptAf.setAttribute('href','index.html');
-    promptAf.innerHTML = `<h1 style="font-size: 100%;font-weight: 500;">Abilita Pesce d'Aprile</h1>`;
-}
-
 var allresults = [];
 var urlList;
 
 //URLs
+
 var urlRoutes;
 var urlModels;
 getApiUrl().then(url => {
@@ -108,12 +100,7 @@ function renderTable(item,selectedOption){
             // Corpo tabella
             const tbody = document.createElement('tbody');
             item.forEach(item => {
-                //April fools
-                if(noaf){
-                    renderElement(tbody, item);
-                }else{
-                    renderElementAF(tbody, item);
-                }
+                renderElement(tbody, item);
             });
             table.appendChild(tbody);
 
@@ -181,47 +168,6 @@ function renderElement(tbody, item){
     tr.innerHTML += `
         <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
         <td>${element.model}</td>
-        <td>${posizione}</td>
-    `;
-    tbody.appendChild(tr);
-}
-
-//April fools
-function renderElementAF(tbody, item){
-    const element = item.properties;
-    const tr = document.createElement('tr');
-    if(element.next_stop==null){
-        var posizione="";
-    }else{
-        var posizione=element.next_stop;
-    }
-    if(element.br==true){
-        var dest = element.destination1+"<br>"+element.destination2;
-    }else{
-        var dest = element.route_desc;
-    }
-    //Overflow tabella
-    if(window.screen.width<=512){
-        if(element.route_desc=="MONTEBARANZONE"){
-            dest = "MONTEBA-<br>RANZONE";
-        }
-        if(element.route_desc=="MONTOMBRARO"){
-            dest = "MONTOM-<br>BRARO";
-        }
-        if(element.route_desc=="CAMPOGALLIANO"){
-            dest = "CAMPOGAL-<br>LIANO";
-        }
-        if(element.route_desc=="MONTEBONELLO"){
-            dest = "MONTEBO-<br>NELLO";
-        }
-    }
-    tr.innerHTML = `
-        <td>1988</td>
-        <td>Glory to ATCM</td>
-    `;
-    tr.innerHTML += `
-        <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
-        <td>Un Busotto Diesel o un qualche Citaro</td>
         <td>${posizione}</td>
     `;
     tbody.appendChild(tr);
