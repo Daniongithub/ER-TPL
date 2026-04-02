@@ -6,19 +6,9 @@
 		<lastmod>2026-04-01</lastmod>
 	</url>
 	<url>
-		<loc>https://www.ertpl.pages.dev/google20540786677952e8.html</loc>
-		<priority>0.80</priority>
-		<lastmod>2025-04-23</lastmod>
-	</url>
-	<url>
 		<loc>https://www.ertpl.pages.dev/chisiamo.html</loc>
 		<priority>0.80</priority>
 		<lastmod>2026-03-27</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/404.html</loc>
-		<priority>0.80</priority>
-		<lastmod>2026-02-03</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_menu/tperurb.html</loc>
@@ -99,56 +89,6 @@
 		<loc>https://www.ertpl.pages.dev/seta_modena/documentistorici</loc>
 		<priority>0.60</priority>
 		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/update.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/smf.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/servicenotavailable.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/pastebin-errori.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-04-01</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/pagenotavailable.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/newui.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/maintenance.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/isp.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/comingsoon.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/service/avmseta.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-03-20</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/ravenna_privatibus/zaganelli.html</loc>
@@ -689,16 +629,6 @@
 		<loc>https://www.ertpl.pages.dev/extra_bus/austria/austria.html</loc>
 		<priority>0.40</priority>
 		<lastmod>2026-01-17</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-fermatebus/info.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-02-19</lastmod>
-	</url>
-	<url>
-		<loc>https://www.ertpl.pages.dev/start_menu/servizi/start-fermatebus/fermata.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-01-08</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/percorsi/rcodes.html</loc>
