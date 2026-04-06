@@ -124,8 +124,13 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-a {
+a.colore{
     color: orange;
+}
+
+a.risultato {
+    color: white;
+    text-decoration: none;
 }
 
 #bacino,

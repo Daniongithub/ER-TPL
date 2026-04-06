@@ -21,19 +21,14 @@ function populateSearchResults(results, selectedOption) {
 
     results.forEach(item => {
         const div = document.createElement('div');
+        const url = `fermata.html?palina=${encodeURIComponent(item.palina)}&targetID=${encodeURIComponent(item.targetID)}&selectedOption=${encodeURIComponent(selectedOption)}`;
         div.className = 'search-result';
         div.innerHTML = `
-            <div>
+            <a class="risultato" href="${url}" target="_blank">
                 <h3>${item.nome}</h3>
                 <p>Fermata: ${item.palina}</p>
-            </div>
+            </a>
         `;
-
-        div.addEventListener('click', () => {
-            const url = `fermata.html?palina=${encodeURIComponent(item.palina)}&targetID=${encodeURIComponent(item.targetID)}&selectedOption=${encodeURIComponent(selectedOption)}`;
-            window.open(url, "_blank");
-        });
-
         searchResultsContainer.appendChild(div);
     });
 }
