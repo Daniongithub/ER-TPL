@@ -123,6 +123,9 @@ function renderresults(results) {
 
     results.forEach(item => {
         const div = document.createElement('div');
+        const a = document.createElement('a');
+        a.setAttribute('class','bianco');
+        a.setAttribute('href',`fermata.html?code=${item.valore}&name=${item.fermata}`);
         div.className = 'search-result';
         div.innerHTML = `
             <div>
@@ -130,12 +133,8 @@ function renderresults(results) {
                 <p>Codice fermata: ${item.valore}</p>
             </div>
         `;
+        a.appendChild(div);
 
-        div.addEventListener('click', () => {
-            const url = `fermata.html?code=${item.valore}&name=${item.fermata}`;
-            parent.location=url;
-        });
-
-        searchResultsContainer.appendChild(div);
+        searchResultsContainer.appendChild(a);
     });
 }

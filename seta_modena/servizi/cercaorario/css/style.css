@@ -179,7 +179,7 @@ img{
         font-size: 2vw;
     }
     nav#corsie-nav ul li a{
-        font-size: 90%;
+        font-size: 95%;
         margin: 0;
     }
     table {
@@ -218,9 +218,6 @@ img{
     }
     table{
         margin-top:10px;
-    }
-    nav#corsie-nav ul li a{
-        font-size: 3.5vw;
     }
     h2{
         margin-bottom: 0;
