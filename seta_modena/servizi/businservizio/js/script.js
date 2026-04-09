@@ -57,7 +57,9 @@ function fillSelect(){
                     model!="CAM New Busotto"&&
                     model!="Iveco Cityclass CNG"&&
                     model!="Irisbus Cityclass CNG ex Pavia"&&
-                    model!="Mercedes Integro O550 (Giallo)"
+                    model!="Mercedes Integro O550 (Giallo)"&&
+                    model!="Mercedes Citaro O530N Diesel"&&
+                    model!="Mercedes Citaro O530Ü"
                 ){
                     option.value = model;
                     option.textContent = model;
