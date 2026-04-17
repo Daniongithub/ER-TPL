@@ -49,18 +49,23 @@ p {
 .filter-container button{
   margin-left: 15px;
   flex: 1 1 10px;
+  background-color: transparent;
+  border: 2px #404040 solid;
+  border-radius: 8px;
 }
 
 .filter-container input {
   flex: 1 1 200px;
   padding: 10px 15px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px #404040 solid;
   border-radius: 8px;
   transition: border-color 0.3s ease;
-  background-color: rgb(60, 60, 60);
+  background-color: transparent;
   color: white;
   min-width: 0;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .filter-container input:focus {
@@ -72,18 +77,25 @@ p {
   flex: 1 1 200px;
   padding: 10px 15px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 2px #404040 solid;
   border-radius: 8px;
   transition: border-color 0.3s ease;
-  background-color: rgb(60, 60, 60);
+  background-color: transparent;
   color: white;
   min-width: 0;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .filter-container select:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.filter-container select option {
+  background-color: rgb(60, 60, 60);
+  color: white;
 }
 
 .num {
@@ -140,10 +152,12 @@ tr:nth-child(even) td {
 @media (max-width: 768px) {
   .filter-container {
     flex-direction: column;
-    padding: 12px;
+    padding: 12px 15%;
     row-gap: 8px;
     box-sizing: border-box;
-    width: 100%;
+    width: calc(100% - 30px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .filter-container input,
