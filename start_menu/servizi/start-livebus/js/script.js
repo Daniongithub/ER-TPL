@@ -47,11 +47,12 @@ function applyFilter() {
   }, 30000);
   // Fetch dei dati e creazione della tabella
   function fetchData() {
+    const container = document.getElementById('data-container');
+    container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>';
     getApiUrl().then(url => {
-        fetch(url)
+    fetch(url)
     .then(response => response.json())
     .then(data => {
-      const container = document.getElementById('data-container');
       container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
 
       // Crea la tabella
@@ -102,7 +103,7 @@ function applyFilter() {
     })
     .catch(err => {
       //console.error("Errore nel caricamento dati:", err);
-      document.getElementById('data-container').innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="fetchData()">riprova adesso</a> o riprova più tardi.</p>`;
+      container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="fetchData()">riprova adesso</a> o riprova più tardi.</p>`;
     });
     });
   }
