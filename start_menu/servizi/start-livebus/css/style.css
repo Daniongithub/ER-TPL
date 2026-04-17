@@ -28,7 +28,7 @@ p {
 
 .filter-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 5px;
   margin-bottom: 5px;
   max-width: 1000px;
@@ -38,10 +38,13 @@ p {
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  row-gap: 4px;
 }
 
 .filter-container button{
   margin-left: 15px;
+  flex: 1 1 100%;
 }
 
 .filter-container input {
@@ -53,6 +56,7 @@ p {
   transition: border-color 0.3s ease;
   background-color: rgb(60, 60, 60);
   color: white;
+  min-width: 0;
 }
 
 .filter-container input:focus {
@@ -69,6 +73,7 @@ p {
   transition: border-color 0.3s ease;
   background-color: rgb(60, 60, 60);
   color: white;
+  min-width: 0;
 }
 
 .filter-container select:focus {
