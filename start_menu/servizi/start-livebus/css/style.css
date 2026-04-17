@@ -60,6 +60,22 @@ p {
   border-color: #3498db;
   box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
+.filter-container select {
+  flex: 1 1 200px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  background-color: rgb(60, 60, 60);
+  color: white;
+}
+
+.filter-container select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
 
 .num {
   margin-top: 5px;

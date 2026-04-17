@@ -28,7 +28,12 @@
   <p style="color: orange;">Attenzione! Tramite questo servizio non è possibile visualizzare alcuni lotti di autobus tra cui quelli senza contatore capienze passeggeri attivo.</p>
   <div class="filter-container">
     <div>
-      <input type="text" id="filterZona" placeholder="Filtra per zona"/>
+      <select id="filterZona" name="zona">
+                <option value="" selected>Tutti i bacini</option>
+                <option value="Ravenna">Ravenna</option>
+                <option value="Rimini">Rimini</option>
+                <option value="Forlì-Cesena">Forlì-Cesena</option>
+      </select>
       <input type="text" id="filterLinea" placeholder="Filtra per linea"/>
       <input type="text" id="filterVeicolo" placeholder="Filtra per veicolo"/>
       <input type="text" id="filterCodiceFermata" placeholder="Filtra per codice fermata"/>
