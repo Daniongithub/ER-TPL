@@ -66,7 +66,7 @@ function applyFilter() {
       let th = document.createElement('th');
       const thead = document.createElement('thead');
       const tbody = document.createElement('tbody');
-      th.innerHTML='Zona';
+      th.innerHTML='Bacino';
       thead.appendChild(th);
       th = document.createElement('th');
       th.innerHTML='Linea';
