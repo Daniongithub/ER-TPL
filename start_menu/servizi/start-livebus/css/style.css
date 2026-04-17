@@ -31,7 +31,7 @@ p {
   justify-content: space-evenly;
   margin-top: 5px;
   margin-bottom: 5px;
-  max-width: 1000px;
+  max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
   background-color: #333;
@@ -42,9 +42,13 @@ p {
   row-gap: 4px;
 }
 
+.filter-container > *:not(:last-child) {
+  margin-right: 10px;
+}
+
 .filter-container button{
   margin-left: 15px;
-  flex: 1 1 100%;
+  flex: 1 1 10px;
 }
 
 .filter-container input {
@@ -134,13 +138,23 @@ tr:nth-child(even) td {
 }
 
 @media (max-width: 768px) {
-  .filter-container input{
-      margin-top: 5px;
+  .filter-container {
+    flex-direction: column;
+    padding: 12px;
+    row-gap: 8px;
+    box-sizing: border-box;
+    width: 100%;
   }
 
-  .filter-container button{
-    margin-top: 75%;
+  .filter-container input,
+  .filter-container select,
+  .filter-container button {
+    flex: unset;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
   }
+
   #data-container {
     overflow-x: scroll;
   }
