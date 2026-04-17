@@ -1,5 +1,6 @@
 // New fallback system (HA)
 const API_ENDPOINT = "https://ertpl-api.vercel.app/startbus";
+var manualLoad = true;
 
 async function getApiUrl() {
   const res = await fetch(API_ENDPOINT);
@@ -48,11 +49,14 @@ function applyFilter() {
   // Fetch dei dati e creazione della tabella
   function fetchData() {
     const container = document.getElementById('data-container');
-    container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>';
+    if (manualLoad) {
+      container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>'
+    }
     getApiUrl().then(url => {
     fetch(url)
     .then(response => response.json())
     .then(data => {
+      manualLoad = false;
       container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
 
       // Crea la tabella
@@ -103,8 +107,11 @@ function applyFilter() {
     })
     .catch(err => {
       //console.error("Errore nel caricamento dati:", err);
-      container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="fetchData()">riprova adesso</a> o riprova più tardi.</p>`;
+      container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
     });
+    }).catch(err => {
+      //console.error("Errore nel caricamento dati:", err);
+      container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
     });
   }
   function updateClock() {
