@@ -14,6 +14,10 @@ const codiceSpan = document.getElementById('codice-span');
 const destSpan = document.getElementById('destinazione-span');
 const pNav = document.getElementById('percorso-nav');
 const existP = document.getElementById('esiste-p');
+const mapContainer = document.getElementById('map-container');
+
+//Short id per mappa
+const shortId = id.split('-')[2];
 
 //Displays route code
 codiceSpan.textContent = id;
@@ -39,10 +43,25 @@ function caricadati(){
         item = data;
     })
     .then(data => {
-        //Display testo esiste o no
+        //Display testo esiste o no + mappa se esiste
         if(item.stillExists==true){
             existP.setAttribute("class","green-bold");
             existP.innerHTML="Questo percorso esiste ancora"
+
+            //Mappa
+            const mapIFR = document.createElement('iframe');
+            mapIFR.src="https://setaapi.serverissimo.freeddns.org/routemap/"+shortId;
+            mapIFR.height="600px";
+            mapContainer.appendChild(mapIFR);
+
+            mapContainer.innerHTML+="<br>";
+
+            //Bottone fullscreen
+            const fullscreenA = document.createElement('a');
+            fullscreenA.href="https://setaapi.serverissimo.freeddns.org/routemap/"+shortId;
+            fullscreenA.textContent="Espandi a tutto schermo";
+            fullscreenA.className="biancosott"
+            mapContainer.appendChild(fullscreenA);
         }else if(item.stillExists==undefined){}else{
             existP.setAttribute("class","red-bold");
             existP.innerHTML="Questo percorso non esiste più"

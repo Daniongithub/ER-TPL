@@ -167,6 +167,13 @@ img{
     font-weight: bold;
 }
 
+div#map-container{
+    margin: 24px;
+}
+
+div#map-container iframe{
+    width: 60%;
+}
 
 @media (max-width: 768px) {
     .search-result {
@@ -214,6 +221,9 @@ img{
     nav#rcodes-nav ul li:last-child {
         margin-right: 20px;
     }
+    div#map-container iframe{
+        width: 80%;
+    }
 }
 
 @media (max-width: 512px) {
@@ -223,6 +233,13 @@ img{
     table{
         margin-top:10px;
     }
+    div#map-container iframe{
+        width: 99%;
+    }
+    div#map-container{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }
 
 footer {
@@ -231,10 +248,12 @@ footer {
 	left: 0;
     width: 100%;
 }
+
 div.search-result div{
     margin-left: 10px;
     margin-right: 10px;
 }
+
 p.space{
     width: 20px;
 }
