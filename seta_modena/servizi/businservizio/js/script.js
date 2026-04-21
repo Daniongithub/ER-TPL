@@ -167,8 +167,16 @@ function renderElement(tbody, item){
             <td>${dest}</td>
         `;
     }
+    if(element.hasAEP){
+        tr.innerHTML += `
+            <td class="bus-card-green cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
+        `;
+    }else{
+        tr.innerHTML += `
+            <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
+        `;
+    }
     tr.innerHTML += `
-        <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
         <td>${element.model}</td>
         <td>${posizione}</td>
     `;

@@ -15,8 +15,10 @@ const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
 
 //AVM Mode
+/*
 const avmContainer = document.getElementById('avm-container');
 avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Modalità AVM</a>';
+*/
 
 function caricadati(){
     var item=[];
@@ -85,12 +87,21 @@ function caricadati(){
             `;
             tbody.appendChild(tr);
             tr = document.createElement('tr');
-            tr.innerHTML = `
-                <tr>
-                    <td>Numero mezzo:</td>
-                    <td>${bus.vehicle_code}</td>
-                </tr>
-            `;
+            if(bus.hasAEP){
+                tr.innerHTML = `
+                    <tr>
+                        <td class="bus-card-green">Numero mezzo:</td>
+                        <td class="bus-card-green">${bus.vehicle_code}</td>
+                    </tr>
+                `;
+            }else{
+                tr.innerHTML = `
+                    <tr>
+                        <td>Numero mezzo:</td>
+                        <td>${bus.vehicle_code}</td>
+                    </tr>
+                `;
+            }
             tbody.appendChild(tr);
             tr = document.createElement('tr');
             tr.innerHTML = `

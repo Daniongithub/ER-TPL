@@ -134,48 +134,53 @@ function caricadati(){
                 var finalDestination = item.destination;
             }
             if(item.hasProblems==true){
-                //tr.setAttribute("class","bus-card-red");
                 tr.innerHTML = `
-                        <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.service}</td>
-                        <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.destination}</td>
-                    `;
+                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.service}</td>
+                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.destination}</td>
+                `;
             }else{
                 tr.innerHTML = `
-                        <td>${item.service}</td>
-                        <td>${finalDestination}</td>
-                    `;
+                    <td>${item.service}</td>
+                    <td>${finalDestination}</td>
+                `;
             }
-            if(item.isImpossible==true){
-                tr.setAttribute("class","bus-card-yellow");
-            }
-            if(item.delay==undefined){
-                //le prime righe sono spostate sopra per link alle notizie se ci sono problemi
+
+            //Delay
+            if(item.delay>0){
                 tr.innerHTML += `
-                        <td>${item.arrival}</td>
-                        <td>${stato}</td>
-                        <td></td>
-                        <td></td>
-                    `;
-                tbody.appendChild(tr);
+                    <td>${item.arrival} (+${item.delay})</td>
+                    <td>${stato}</td>
+                `;
+            }else if(item.delay<=0){
+                tr.innerHTML += `
+                    <td>${item.arrival} (${item.delay})</td>
+                    <td>${stato}</td>
+                `;
             }else{
-                if(item.delay>0){
-                    tr.innerHTML += `
-                        <td>${item.arrival} (+${item.delay})</td>
-                        <td>${stato}</td>
-                        <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
-                        <td>${posizione}</td>
-                    `;
-                    tbody.appendChild(tr);
-                }else{
-                    tr.innerHTML += `
-                        <td>${item.arrival} (${item.delay})</td>
-                        <td>${stato}</td>
-                        <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
-                        <td>${posizione}</td>
-                    `;
-                    tbody.appendChild(tr);
-                }
+                tr.innerHTML += `
+                    <td>${item.arrival}</td>
+                    <td>${stato}</td>
+                `;
             }
+
+            //AEP specification
+            if(item.hasAEP==true){
+                tr.innerHTML += `
+                    <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
+                    <td>${posizione}</td>
+                `;
+            }else if(item.delay!=undefined){
+                tr.innerHTML += `
+                    <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
+                    <td>${posizione}</td>
+                `;
+            }else{
+                tr.innerHTML += `
+                    <td></td>
+                    <td></td>
+                `;
+            }
+            tbody.appendChild(tr);
         });
         table.appendChild(tbody);
 
