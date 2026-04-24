@@ -30,6 +30,14 @@ function caricadati(){
 
         // Intestazione
         const thead = document.createElement('thead');
+        var h = new Date().getHours();
+        if(h<10){
+            h = "0"+h;
+        }
+        var m = new Date().getMinutes();
+        if(m<10){
+            m = "0"+m;
+        }
         var sec = new Date().getSeconds();
         //Aggiunge uno 0 ai secondi se serve
         if(sec<10){
@@ -37,7 +45,7 @@ function caricadati(){
         }
         thead.innerHTML = `
                 <tr>
-                    <th class="linea" colspan="2" style="text-align:center;">Ultimo aggiornamento: ${new Date().getHours()}:${new Date().getMinutes()}:${sec}</th>
+                    <th class="linea" colspan="2" style="text-align:center;">Ultimo aggiornamento: ${h}:${m}:${sec}</th>
                 </tr>
             `;
         table.appendChild(thead);

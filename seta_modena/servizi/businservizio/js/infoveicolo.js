@@ -15,10 +15,8 @@ const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
 
 //AVM Mode
-/*
 const avmContainer = document.getElementById('avm-container');
-avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Modalità AVM</a>';
-*/
+avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Ingrandisci i dati</a>';
 
 function caricadati(){
     var item=[];

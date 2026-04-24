@@ -8,9 +8,11 @@ switch(evento){
     case "partita":
         nomeSpan.textContent="partita di calcio";
         renderPartita();
+        break;
     case "proma":
         nomeSpan.textContent="chiusura di Piazza Roma";
         renderProma();
+        break;
 }
 
 function renderPartita(){
