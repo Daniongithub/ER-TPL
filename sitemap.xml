@@ -128,7 +128,7 @@
 	<url>
 		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/deviazioni</loc>
 		<priority>0.40</priority>
-		<lastmod>2026-04-18</lastmod>
+		<lastmod>2026-04-24</lastmod>
 	</url>
 	<url>
 		<loc>https://www.ertpl.pages.dev/tper_menu/articoli/sanvitale.html</loc>
@@ -979,5 +979,10 @@
 		<loc>https://www.ertpl.pages.dev/seta_modena/bus/suburbano/citarogatm.html</loc>
 		<priority>0.20</priority>
 		<lastmod>2026-04-14</lastmod>
+	</url>
+	<url>
+		<loc>https://www.ertpl.pages.dev/seta_modena/servizi/deviazioni/deviazione.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-04-24</lastmod>
 	</url>
 </urlset>
