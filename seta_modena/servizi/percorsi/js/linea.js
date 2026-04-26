@@ -34,6 +34,7 @@ function caricadati(){
     var item=[];
     getApiUrl().then(url => {
         const urlBackend = `${url}/routestops/${id}`;
+        const baseURL = url;
     fetch(urlBackend)
     .then(response => {
         if (!response.ok) throw new Error("Errore di risposta nel caricamento dei dati, probabilmente il server API è offline.");
@@ -50,7 +51,7 @@ function caricadati(){
 
             //Mappa
             const mapIFR = document.createElement('iframe');
-            mapIFR.src="https://setaapi.serverissimo.freeddns.org/routemap/"+shortId;
+            mapIFR.src=baseURL+"/routemap/"+shortId;
             mapIFR.height="600px";
             mapContainer.appendChild(mapIFR);
 
@@ -58,7 +59,7 @@ function caricadati(){
 
             //Bottone fullscreen
             const fullscreenA = document.createElement('a');
-            fullscreenA.href="https://setaapi.serverissimo.freeddns.org/routemap/"+shortId;
+            fullscreenA.href=baseURL+"/routemap/"+shortId;
             fullscreenA.textContent="Espandi a tutto schermo";
             fullscreenA.className="biancosott"
             mapContainer.appendChild(fullscreenA);
