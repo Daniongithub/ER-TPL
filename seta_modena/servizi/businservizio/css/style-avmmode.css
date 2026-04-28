@@ -190,7 +190,7 @@ select,input{
         flex-direction: column;
     }
     th,td {
-        font-size: 2vw;
+        font-size: 2.5vw;
     }
     nav#corsie-nav ul li a{
         font-size: 90%;
@@ -226,7 +226,7 @@ select,input{
         font-size: 3.2vw;
     }
     th,td {
-        font-size: 4.5vw;
+        font-size: 5vw;
     }
     table{
         margin-top:10px;
