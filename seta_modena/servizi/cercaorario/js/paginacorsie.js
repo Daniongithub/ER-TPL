@@ -72,7 +72,7 @@ if(posto=="GARIBALDI"){
             <div class="search-result desc"><h3>Lato Caduti in Guerra</h3><p>Linee: 3, 12</p></div>
         </a>
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO5111&name=GARIBALDI%20(Storchi%20dir.%20Trento%20Trieste)" class="bianco">
-            <div class="search-result desc"><h3>Storchi direzione Trento Trieste</h3><p>Linee: 2, 3</p></div>
+            <div class="search-result desc"><h3>Storchi direzione Trento Trieste</h3><p>Linee: 2, 3, 12</p></div>
         </a>
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO5112&name=GARIBALDI%20(Storchi%20dir.%20Centro)" class="bianco">
             <div class="search-result desc"><h3>Storchi direzione Centro</h3><p>Linee: 2</p></div>
