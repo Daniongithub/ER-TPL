@@ -10,19 +10,18 @@ async function getApiUrl() {
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+var httpcode;
+
 //Sets stop name
 const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
-
-//AVM Mode
-const avmContainer = document.getElementById('avm-container');
-avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Ingrandisci i dati</a>';
 
 function caricadati(){
     var item=[];
     getApiUrl().then(url => {
     fetch(url + "/vehicleinfo/" + id)
     .then(response => {
+        httpcode = response.status;
         if (!response.ok) throw new Error("Errore di risposta nel caricamento dei dati, probabilmente il server API è offline.");
         return response.json();
     })
@@ -216,17 +215,37 @@ function caricadati(){
                 </tr>
             `;
             tbody.appendChild(tr);
-            
         });
-        table.appendChild(tbody);
-        container.appendChild(table);
+        //ERRORS
+        if(item.features.length==0){
+            container.innerHTML="<strong>Il veicolo non è operativo o non comunica dati.</strong>";
+        }else{
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+        
     })
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
-        document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
+        //Errore di connessione
+        if(httpcode>="300"){
+            document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API. (Codice HTTP:"+httpcode+")";
+            return;
+        }if(err.message=="NetworkError when attempting to fetch resource."){
+            document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API.";
+            return;
+        }
+        document.getElementById('tabella-container').textContent = 'Errore nella sintassi dei dati ricevuti.';  
     });})
 }
 
-caricadati();
+if(id==""||id==undefined){
+    document.getElementById('tabella-container').textContent = "Non hai inserito l'id del mezzo nell'URL.";
+}else{
+    caricadati();
 
-setInterval(caricadati, 60000);
+    setInterval(caricadati, 60000);
+    //AVM Mode
+    const avmContainer = document.getElementById('avm-container');
+    avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Ingrandisci i dati</a>';
+}

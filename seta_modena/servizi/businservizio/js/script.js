@@ -14,12 +14,18 @@ const container = document.getElementById('tabella-container');
 
 var allresults = [];
 var urlList;
+var httpcode;
 
 //URLs
 
 var urlRoutes;
 var urlModels;
-getApiUrl().then(url => {
+getApiUrl()
+.catch(err => {
+    console.error('Errore nel caricamento dati:', err);
+    document.getElementById('tabella-container').textContent = "Impossibile raggiungere il server alta disponibilità.";
+})
+.then(url => {
     urlList = url + "/busesinservice";
     urlRoutes = url + "/routenumberslist";
     urlModels = url + "/busmodels";
@@ -73,19 +79,35 @@ function fillSelect(){
 var refreshGeneraleID=setInterval(caricadati, 60000);
 
 function caricadati(){
-    fetch(urlList)
-    .then(response => {
-        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-        return response.json();
-    })
-    .then(data => {
-        item = data.features;
-        renderTable(item);
-    })
-    .catch(err => {
-        console.error('Errore nel caricamento dati:', err);
-        document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
-    });
+    //Catalogare errore di connessione HA
+    if(urlList.includes("http")){
+        fetch(urlList)
+        .then(response => {
+            httpcode=response.status;
+            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+            return response.json();
+        })
+        .then(data => {
+            item = data.features;
+            //Verifica se ci sono bus in servizio
+            if(item.length==0){
+                document.getElementById('tabella-container').textContent = "<strong>Nessun bus in è servizio al momento.</strong>";
+            }
+            renderTable(item);
+        })
+        .catch(err => {
+            console.error('Errore nel caricamento dati:', err);
+            //Errore di connessione
+            if(httpcode>="300"){
+                document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API. (Codice HTTP:"+httpcode+")";
+                return;
+            }if(err.message=="NetworkError when attempting to fetch resource."){
+                document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API.";
+                return;
+            }
+            document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';  
+        });
+    }
 }
 
 function renderTable(item,selectedOption){

@@ -10,6 +10,8 @@ async function getApiUrl() {
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+var httpcode;
+
 //Sets stop name
 const numero_span = document.getElementById('numero-span');
 numero_span.textContent=id;
@@ -18,6 +20,7 @@ function caricadati(){
     getApiUrl().then(url => {
     fetch(url + "/vehicleinfo/" + id)
     .then(response => {
+        httpcode = response.status;
         if (!response.ok) throw new Error("Errore di risposta nel caricamento dei dati, probabilmente il server API è offline.");
         return response.json();
     })
@@ -72,6 +75,11 @@ function caricadati(){
             if(bus.delay<10){
                 bus.delay="0"+bus.delay;
             }
+            //Fuori percorso
+            var nextStop;
+            if(bus.next_stop==""){
+                nextStop='<span style="color: red; font-weight:700;">FUORI PERCORSO</span>';
+            }
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
@@ -82,7 +90,7 @@ function caricadati(){
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td colspan="2"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${bus.next_stop}</a></td>
+                    <td colspan="2"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${bus.waypoint_code}&name=${bus.next_stop}" class="bianco">${nextStop}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
@@ -103,11 +111,23 @@ function caricadati(){
             `;
             tbody.appendChild(tr);            
         });
-        table.appendChild(tbody);
-        container.appendChild(table);
+        if(item.features.length==0){
+            container.innerHTML="<strong>Il veicolo non è operativo o non comunica dati.</strong>";
+        }else{
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
     })
     .catch(err => {
         console.error('Errore nel caricamento dati:', err);
+        //Errore di connessione
+        if(httpcode>="300"){
+            document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API. (Codice HTTP:"+httpcode+")";
+            return;
+        }if(err.message=="NetworkError when attempting to fetch resource."){
+            document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API.";
+            return;
+        }
         document.getElementById('tabella-container').textContent = "Errore nella sintassi dei dati ricevuti.";
     });})
 }
