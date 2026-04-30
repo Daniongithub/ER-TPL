@@ -79,6 +79,8 @@ function caricadati(){
             var nextStop;
             if(bus.next_stop==""){
                 nextStop='<span style="color: red; font-weight:700;">FUORI PERCORSO</span>';
+            }else{
+                nextStop=bus.next_stop;
             }
             tr = document.createElement('tr');
             tr.innerHTML = `
