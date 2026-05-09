@@ -12,9 +12,6 @@ const num = params.get('routenum');
 const newsContainer = document.getElementById('notizie-container');
 const lineaSpan = document.getElementById('linea-span');
 
-//Urls
-//const url = "https://setaapi.serverissimo.freeddns.org/routeproblems/"+num;
-
 //Display numero linea
 lineaSpan.textContent=num;
 

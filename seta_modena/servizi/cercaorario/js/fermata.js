@@ -11,8 +11,6 @@ const params = new URLSearchParams(window.location.search);
 const nome = params.get('name');
 const codice = params.get('code');
 
-//Ricerca per pulsante dall'altra parte
-//const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
 getApiUrl().then(url => {
 fetch(url + "/stopcodesarchive")
     .then(response => {
@@ -77,8 +75,6 @@ fetch(url + "/stopcodesarchive")
 //Sets stop name
 const fermata_span = document.getElementById('fermata-span');
 fermata_span.textContent=nome;
-
-//const urlBackend = `https://setaapi.serverissimo.freeddns.org/arrivals/${codice}`;
 
 function caricadati(){
     getApiUrl().then(url => {

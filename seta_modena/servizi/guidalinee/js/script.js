@@ -1,6 +1,5 @@
 const textH3 = document.getElementById('text-h3');
 const buttonsContainer = document.getElementById('buttons-container');
-const tableContainer = document.getElementById('table-container');
 const resultsContainer = document.getElementById('results-container');
 
 //Pagina corrente
@@ -154,6 +153,7 @@ function renderTable(start, dest){
                         13 SANT'ANNA <br>
                         13F SANT'ANNA
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -164,6 +164,7 @@ function renderTable(start, dest){
                         4 VACIGLIO NORD <br>
                         7 POLICLINICO GOTTARDI <br>
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -191,6 +192,7 @@ function renderTable(start, dest){
                         13 OSPEDALE BAGGIOVARA <br>
                         13F OSPEDALE BAGGIOVARA
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -202,6 +204,7 @@ function renderTable(start, dest){
                         7 POLICLINICO GOTTARDI <br>
                         7A GOTTARDI
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -210,6 +213,7 @@ function renderTable(start, dest){
                         3A VACIGLIO <br>
                         3B RAGAZZI DEL 99
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -223,6 +227,7 @@ function renderTable(start, dest){
                         4 GALILEI <br>
                         7 GRAMSCI
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -235,6 +240,7 @@ function renderTable(start, dest){
                         7 GRAMSCI <br>
                         7A GRAMSCI
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -244,6 +250,7 @@ function renderTable(start, dest){
                         3B RAGAZZI DEL 99 <br>
                         12 POLO LEONARDO
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -264,6 +271,7 @@ function renderTable(start, dest){
                         3A MONTEFIORINO <br>
                         3B NONANTOLANA 1010
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/fermata.html?code=MO11&name=Piazza Manzoni">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -275,6 +283,7 @@ function renderTable(start, dest){
                         12 FINZI <br>
                         12A NAZIONI
                         <div style="height:24px;"></div>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/fermata.html?code=MO11&name=Piazza Manzoni">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;

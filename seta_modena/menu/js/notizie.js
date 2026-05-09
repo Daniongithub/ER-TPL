@@ -9,9 +9,6 @@ async function getApiUrl() {
 
 const newsContainer = document.getElementById('news-container');
 
-//URL
-//const newsURL = "https://setaapi.serverissimo.freeddns.org/allnews";
-
 //Vars
 const trimCh = 48;
 const forceTrimCh = 56;

@@ -12,8 +12,6 @@ const container = document.getElementById('res-container');
 const id = params.get('routenum');
 const nav = document.getElementById('rcodes-nav')
 
-//const url = "https://setaapi.serverissimo.freeddns.org/routecodesarchive";
-
 //Spawn iframeorari
 if(id!=undefined&&id!=""){
     const ul = document.createElement('ul');

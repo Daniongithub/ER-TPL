@@ -13,8 +13,6 @@ const seContainer = document.getElementById('subextra-container');
 const othContainer = document.getElementById('altri-container');
 const schContainer = document.getElementById('scuola-container');
 
-//const url = "https://setaapi.serverissimo.freeddns.org/routenumberslist";
-
 //Elenco linee urbano
 getApiUrl().then(url => {
 fetch(url + "/routenumberslist")

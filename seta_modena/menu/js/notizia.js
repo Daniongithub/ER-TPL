@@ -11,9 +11,6 @@ const params = new URLSearchParams(window.location.search);
 const link = params.get('link');
 const notiziaContainer = document.getElementById('notizia-container');
 
-//URL
-//const newsURL = "https://setaapi.serverissimo.freeddns.org/news?link="+link;
-
 notiziaContainer.innerHTML="<p>Caricamento notizia...</p>";
 getApiUrl().then(url => {
 fetch(url + "/news?link=" + link)

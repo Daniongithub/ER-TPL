@@ -16,7 +16,6 @@ var searching = false;
 var oldTerm;
 var allresults = false;
 
-//const url = 'https://setaapi.serverissimo.freeddns.org/stopcodesarchive';
 getApiUrl().then(url => {
 fetch(url + "/stopcodesarchive")
     .then(response => {
