@@ -21,8 +21,24 @@ fetch(url + "/stopcodesarchive")
     })
     .then(data => {
         allresults = data;
-        //Set corsie per stazione o autostazione
+        //Pulsante dall'altra parte
         const corsie_nav = document.getElementById('corsie-nav');
+        if(altraParteSearch(nome)!=undefined){
+            const codes = altraParteSearch(nome);
+            const altrocodice = 0;
+            if(codice==codes[0]){
+                altroCodice = codes[1];
+            }else{
+                altroCodice = codes[0];
+            }
+            corsie_nav.innerHTML = `
+                <ul>
+                    <li>
+                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Dall'altra parte</a>
+                    </li>
+                </ul>`;
+        }
+        //Set corsie per stazione o autostazione
         if(nome.includes("STAZIONE FS")){
             corsie_nav.innerHTML = `
                 <ul>
@@ -52,22 +68,6 @@ fetch(url + "/stopcodesarchive")
                 <ul>
                     <li>
                         <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=POLO LEONARDO">Altre corsie</a>
-                    </li>
-                </ul>`;
-        }
-        //Pulsante dall'altra parte
-        if(altraParteSearch(nome)!=undefined){
-            const codes = altraParteSearch(nome);
-            const altrocodice = 0;
-            if(codice==codes[0]){
-                altroCodice = codes[1];
-            }else{
-                altroCodice = codes[0];
-            }
-            corsie_nav.innerHTML = `
-                <ul>
-                    <li>
-                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Dall'altra parte</a>
                     </li>
                 </ul>`;
         }
