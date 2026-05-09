@@ -88,8 +88,6 @@ function routesDictionary(rcode){
             return "1A POLO LEONARDO -> MODENA EST";
         case "MO1-Di-141":
             return "1A MARINUZZI -> POLO LEONARDO";
-        case "MO1-Di-142":
-            return "1A SCARLATTI -> POLO LEONARDO";
         case "MO1-Di-140":
             return "1A BONACINI -> POLO LEONARDO";
         case "MO1-As-160":
@@ -98,6 +96,8 @@ function routesDictionary(rcode){
             return "1 POLO LEONARDO -> MARINUZZI";
         case "MO1-Di-158":
             return "1 STAZIONE FS -> V.ZETA";
+        case "MO1-Di-132":
+            return "1A DEGLI SCARLATTI -> POLO LEONARDO"
         //Linea 2
         case "MO2-As-220":
             return "2 SAN DAMASO";
@@ -109,10 +109,10 @@ function routesDictionary(rcode){
             return "2A SAN DONNINO";
         case "MO2-Di-268":
             return "2 SAN DONNINO -> SAN DAMASO -> SANT'ANNA";
-        case "MO2-Di-290":
-            return "2/ AUTOSTAZIONE";
         case "MO2-As-291":
-            return "2 AUTOSTAZIONE -> SAN DONNINO";
+            return "2A AUTOSTAZIONE -> SAN DONNINO";
+        case "MO2-Di-277":
+            return "2/ AUTOSTAZIONE"
         //Linea 3
         case "MO3-Di-397":
             return "3B NONANTOLANA 1010";
@@ -208,8 +208,6 @@ function routesDictionary(rcode){
             return "5 D'AVIA -> LA TORRE";
         case "MO5-Di-542":
             return "5A LA TORRE -> TRE OLMI";
-        case "MO5-As-514":
-            return "5 TRE OLMI -> D'AVIA -> CENTRO 2000 -> LA TORRE";
         case "MO5-As-513":
             return "5 TRE OLMI -> D'AVIA -> LA TORRE";
         //Linea 6
@@ -356,8 +354,6 @@ function routesDictionary(rcode){
             return "10 M.NUOVA -> ALBARETO";
         case "MO10-As-1058":
             return "10 LA ROCCA -> COGNENTO";
-        case "MO10-As-1039":
-            return "10A LA ROCCA -> M.NUOVA";
         case "MO10-Di-1045":
             return "10/ COGNENTO -> AUTOSTAZIONE";
         case "MO10-As-1035":
@@ -402,11 +398,15 @@ function routesDictionary(rcode){
         case "MO13-Di-1321":
             return "13 OSPEDALE BAGGIOVARA";
         case "MO13-As-1324":
-            return "13A CARCERE";
+            return "13A CARCERE incl. CIMITERO";
         case "MO13-Di-1320":
             return "13 CARCERE -> OSPEDALE BAGGIOVARA";
         case "MO13-Di-1391":
             return "13 AUTOSTAZIONE -> OSPEDALE BAGGIOVARA";
+        case "MO13-As-1325":
+            return "13A CARCERE";
+        case "MO13-As-1326":
+            return "13 SANT'ANNA incl. CIMITERO"
         case "MO13-As-1330":
             return "13F SANT'ANNA [Festivo]";
         case "MO13-Di-1333":
