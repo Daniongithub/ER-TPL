@@ -139,9 +139,9 @@ function routesDictionary(rcode){
         case "MO3-Di-394":
             return "3A NONANTOLANA -> S.CATERINA-MONTEFIORINO";
         case "MO3-Di-401":
-            return "3B SCUOLE MARCONI-NONANTOLANA 1010";
-        case "MO3-Di-287":
             return "3A STAZIONE FS -> S.CATERINA-MONTEFIORINO";
+        case "MO3-Di-287":
+            return "3B SCUOLE MARCONI-NONANTOLANA 1010";
         case "MO3-As-300":
             return "3/ S.CATERINA-MONTEFIORINO -> STAZIONE FS";
         case "MO3-Di-407":
