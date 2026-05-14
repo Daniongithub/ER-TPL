@@ -91,9 +91,10 @@ function caricadati(){
             item = data.features;
             //Verifica se ci sono bus in servizio
             if(item.length==0){
-                document.getElementById('tabella-container').textContent = "<strong>Nessun bus in è servizio al momento.</strong>";
+                document.getElementById('tabella-container').innerHTML = "<strong>Nessun bus in è servizio al momento.</strong>";
+            }else{
+                renderTable(item);
             }
-            renderTable(item);
         })
         .catch(err => {
             console.error('Errore nel caricamento dati:', err);
