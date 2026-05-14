@@ -1,0 +1,56 @@
+#categories{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+#categories div{
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin-left: 8px;
+    padding: 8px;
+    border: 2px #404040 solid;
+    border-radius: 8px;
+}
+@media (max-width: 768px) {
+    #categories{
+        flex-wrap: wrap;
+    }
+    #categories p{
+        flex-basis: 100%;
+        text-align: center;
+    }
+    #categories div{
+        width: calc(50% - 16px);
+        margin: 4px;
+        justify-content: space-between;
+    }
+}
+.allegati-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #2a2a2a; /* Grigio leggermente più chiaro del fondo */
+    border-radius: 12px;
+    border: 1px solid #444;
+}
+
+.allegati-section h3 {
+    color: #00ff00; /* Verde Tper */
+    margin-bottom: 15px;
+}
+
+.allegato-link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid #555;
+    transition: 0.2s;
+}
+
+.allegato-link:hover {
+    color: #00ff00;
+    border-bottom-color: #00ff00;
+        }
