@@ -23,7 +23,7 @@ var urlModels;
 getApiUrl()
 .catch(err => {
     console.error('Errore nel caricamento dati:', err);
-    document.getElementById('tabella-container').textContent = "Impossibile raggiungere il server alta disponibilità.";
+    container.textContent = "Impossibile raggiungere il server alta disponibilità.";
 })
 .then(url => {
     urlList = url + "/busesinservice";
@@ -91,7 +91,7 @@ function caricadati(){
             item = data.features;
             //Verifica se ci sono bus in servizio
             if(item.length==0){
-                document.getElementById('tabella-container').innerHTML = "<strong>Nessun bus in è servizio al momento.</strong>";
+                container.innerHTML = "<strong>Nessun bus in è servizio al momento.</strong>";
             }else{
                 renderTable(item);
             }
@@ -100,13 +100,13 @@ function caricadati(){
             console.error('Errore nel caricamento dati:', err);
             //Errore di connessione
             if(httpcode>="300"){
-                document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API. (Codice HTTP:"+httpcode+")";
+                container.textContent = "Impossibile raggiungere l'API. (Codice HTTP:"+httpcode+")";
                 return;
             }if(err.message=="NetworkError when attempting to fetch resource."){
-                document.getElementById('tabella-container').textContent = "Impossibile raggiungere l'API.";
+                container.textContent = "Impossibile raggiungere l'API.";
                 return;
             }
-            document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';  
+            container.textContent = 'Errore nel caricamento dati.';  
         });
     }
 }
@@ -133,7 +133,7 @@ function renderTable(item,selectedOption){
         }
     }catch(err){
         console.error('Errore nel caricamento dati:', err);
-        document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
+        container.textContent = 'Errore nel caricamento dati.';
     }   
 }
 
@@ -211,8 +211,8 @@ var intervalFiltrati = 0;
 //Filtro per linea
 lineaSelect.addEventListener('change', function(event) {
     if(intervalFiltrati!=undefined){
-        //alert("Non è possibile usare due filtri allo stesso momento")
         clearInterval(intervalFiltrati);
+        modelloSelect.value="ph";
     }
     const selectedOption = event.target.value;
     caricaFiltratiLinea(selectedOption);
@@ -232,8 +232,8 @@ lineaSelect.addEventListener('change', function(event) {
 //Filtro per modello
 modelloSelect.addEventListener('change', function(event) {
     if(intervalFiltrati!=undefined){
-        //alert("Non è possibile usare due filtri allo stesso momento")
         clearInterval(intervalFiltrati);
+        lineaSelect.value="ph";
     }
     const selectedOption = event.target.value;
     caricaFiltratiModello(selectedOption);
@@ -274,12 +274,15 @@ function caricaFiltratiLinea(selectedOption){
                 <li><a href="javascript:reloadFiltratiLinea();"><h1 style="font-size: 16px;font-weight: 500;">Aggiorna</h1></a></li>
             </ul>
         `;
-        // Creo tabella
+        //Create table
         const table = document.createElement('table');
 
-        // Intestazione
+        if(data.features.length==0){
+            container.innerHTML="<strong>Nessun bus è in servizio al momento.</strong>";
+            return;
+        }
+        //Fill table
         renderTH(table);
-
         data.features.forEach(elements => {
             if(elements.properties.officialService==selectedOption){
                 const tbody = document.createElement('tbody');
@@ -287,10 +290,12 @@ function caricaFiltratiLinea(selectedOption){
                 table.appendChild(tbody);
 
                 container.appendChild(table);
-            }else{
-                container.appendChild(table);
-            }
+            }           
         });
+        //Controllo se c'è qualche elemento altrimenti errore
+        if(table.childElementCount==1){
+            container.innerHTML="<strong>Nessun bus trovato per la linea scelta.</strong>";
+        }
     });
 }
 
@@ -319,7 +324,6 @@ function caricaFiltratiModello(selectedOption){
 
         // Intestazione
         renderTH(table);
-        
         data.features.forEach(elements => {
             if(elements.properties.model==selectedOption){
                 const tbody = document.createElement('tbody');
