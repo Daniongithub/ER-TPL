@@ -331,10 +331,12 @@ function caricaFiltratiModello(selectedOption){
                 table.appendChild(tbody);
 
                 container.appendChild(table);
-            }else{
-                container.appendChild(table);
             }
         });
+        //Controllo se c'è qualche elemento altrimenti errore
+        if(table.childElementCount==1){
+            container.innerHTML="<strong>Nessun bus trovato per il modello scelto.</strong>";
+        }
     });
 }
 
