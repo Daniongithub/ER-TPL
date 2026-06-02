@@ -91,7 +91,7 @@ function routesDictionary(rcode){
         case "MO1-Di-140":
             return "1A BONACINI -> POLO LEONARDO";
         case "MO1-As-160":
-            return "1S AUTOSTAZIONE";
+            return "1/ AUTOSTAZIONE";
         case "MO1-As-139":
             return "1 POLO LEONARDO -> MARINUZZI";
         case "MO1-Di-158":
@@ -377,7 +377,7 @@ function routesDictionary(rcode){
             return "11/ STAZIONE FS";
         //Linea 12
         case "MO12-As-1279":
-            return "12S GARIBALDI";
+            return "12/ GARIBALDI";
         case "MO12-As-1280":
             return "12A NAZIONI";
         case "MO12-As-1282":
