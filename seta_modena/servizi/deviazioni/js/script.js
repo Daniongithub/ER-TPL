@@ -13,6 +13,10 @@ switch(evento){
         nomeSpan.textContent="chiusura di Piazza Roma";
         renderProma();
         break;
+    case "centro":
+        nomeSpan.textContent="chiusura del centro (via Emilia Centro)"
+        renderCentro();
+        break;
 }
 
 function renderPartita(){
@@ -55,12 +59,36 @@ function renderProma(){
         Chiusura al transito di Piazza Roma. <br> 
         Sono interessate le linee seguenti: <strong>7A, 11</strong> <br> <br>
 
-        <strong>Linea 7A:</strong> <br>
+        <strong>Linea 7A GRAMSCI:</strong> <br>
         <span style="color: red; font-weight:700;">Percorso sospeso:</span> Largo Garibaldi, Canalgrande, Piazza Roma, Vittorio Emanuele, Stazione FS. <br>
-        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> Largo Garibaldi, viale Caduti in Guerra, Stazione FS. <br> <br>
+        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> Largo Garibaldi, viale Caduti in Guerra, Stazione FS. <br>
+        Percorso inverso verso <strong>GOTTARDI</strong> <br> <br>
         
-        <strong>Linea 11:</strong> <br>
+        <strong>Linea 11 SANT'ANNA:</strong> <br>
         <span style="color: red; font-weight:700;">Percorso sospeso:</span> "Emilia Centro posta", Canalgrande, Piazza Roma, Vittorio Emanuele, Stazione FS. <br>
-        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> "Emilia Centro posta", viale Caduti in Guerra, Stazione FS. <br> <br>
-        `;
+        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> "Emilia Centro posta", viale Caduti in Guerra, Stazione FS. <br>
+        Percorso inverso verso <strong>ZODIACO</strong> <br> <br>
+    `;
+}
+
+function renderCentro(){
+    textContainer.innerHTML=`
+        Chiusura al transito di Piazza Roma. <br> 
+        Sono interessate le linee seguenti: <strong>7, 7A, 11</strong> <br> <br>
+
+        <strong>Linea 7 GRAMSCI:</strong> <br>
+        <span style="color: red; font-weight:700;">Percorso sospeso:</span> Largo Garibaldi, via Emilia Centro, Autostazione. <br>
+        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> Largo Garibaldi, viale Delle Rimembranze, viale Martiri della Libertà, viale Vittorio Veneto, Autostazione. <br>
+        Percorso inverso verso <strong>GOTTARDI</strong> <br> <br>
+        
+        <strong>Linea 7A GRAMSCI:</strong> <br>
+        <span style="color: red; font-weight:700;">Percorso sospeso:</span> Largo Garibaldi, Canalgrande, Piazza Roma, Vittorio Emanuele, Stazione FS. <br>
+        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> Largo Garibaldi, viale Caduti in Guerra, Stazione FS. <br>
+        Percorso inverso verso <strong>GOTTARDI</strong> <br> <br>
+
+        <strong>Linea 11 SANT'ANNA:</strong> <br>
+        <span style="color: red; font-weight:700;">Percorso sospeso:</span> "Emilia Centro posta", Canalgrande, Piazza Roma, Vittorio Emanuele, Stazione FS. <br>
+        <span style="color: lime; font-weight:700;">Percorso temporaneo:</span> "Emilia Centro posta", viale Caduti in Guerra, Stazione FS. <br>
+        Percorso inverso verso <strong>ZODIACO</strong> <br> <br>
+    `;
 }

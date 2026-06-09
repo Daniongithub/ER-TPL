@@ -48,7 +48,7 @@ fetch(url)
         }
 
         tr.innerHTML = `
-            <td><a href="${bus.link}">${bus.matricola}</a></td>
+            <td class="cursor-pointer" onclick="window.location.href='${bus.link}'">${bus.matricola}</td>
             <td>${bus.modello}</td>
             <td>${bus.settore}</td>
         `;

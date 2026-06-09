@@ -5,25 +5,8 @@ body {
     font-family: Titillium Web;
 }
 
-.search-result {
-    border: 2px solid white;
-    border-radius: 8px;
-    width: 20vw;
-    margin: auto;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-h3{
-    font-size: 20px;
-}
-
 a {
-    color: white;
-    text-decoration: none;
+    color: orange;
 }
 
 table {
@@ -40,20 +23,20 @@ th {
 }
 
 /* Colori righe tabella */
-tr.sconosciuto {
+tr.sconosciuto,p.sconosciuto {
     background-color: purple;
 }
-tr.fermo {
+tr.fermo,p.fermo {
     background-color: yellow;
     color: black;
 }
 tr.fermo td a {
     color: black;
 }
-tr.dismesso {
+tr.dismesso,p.dismesso {
     background-color: orangered;
 }
-tr.demolito {
+tr.demolito,p.demolito {
     background-color: rgb(100, 0, 0);
 }
 
@@ -80,7 +63,7 @@ th,td {
 }
 
 hr{
-    margin-top:19px;
+    margin-top:16px;
 }
 
 h1.warning {
@@ -130,11 +113,17 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-p.legenda {
+div.legenda {
+    display: flex;
+    justify-content: center;
+}
+
+div.legenda p {
+    border-radius: 4px;
     padding-left: 5px;
     padding-right: 5px;
-    display: inline;
-    border-radius: 4px;
+    margin:2px;
+    height: fit-content;
 }
 
 div.content-background {
@@ -180,7 +169,7 @@ select,input{
 
 @media (max-width: 768px) {
     p.scaled{
-        font-size: 2vw;
+        font-size: 3vw;
     }
     table {
         margin-top: 10px;
@@ -197,7 +186,7 @@ select,input{
         flex-direction: column;
     }
     th,td {
-        font-size: 2vw;
+        font-size: 3vw;
     }
     nav#corsie-nav ul li a{
         font-size: 90%;
@@ -230,10 +219,10 @@ select,input{
 
 @media (max-width: 512px) {
     p.scaled{
-        font-size: 3.2vw;
+        font-size: 3.6vw;
     }
     th,td {
-        font-size: 3.2vw;
+        font-size: 3.6vw;
     }
     table{
         margin-top:10px;
@@ -254,11 +243,4 @@ footer {
     bottom: 0;
 	left: 0;
     width: 100%;
-}
-div.search-result div{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-p.space{
-    width: 20px;
 }

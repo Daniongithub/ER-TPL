@@ -22,15 +22,27 @@ fetch(url + "/news?link=" + link)
         return response.json();
     }).then(element =>{
         notiziaContainer.innerHTML="";
+
         var div = document.createElement('div');
         var h1 = document.createElement('h1');
         var p = document.createElement('p');
         var p2 = document.createElement('p');
+
         p.innerHTML=element.date;
         h1.innerHTML=element.title;
         div.appendChild(p);
         div.appendChild(h1);
+
         p2.innerHTML=element.content;
         div.appendChild(p2);
+
         notiziaContainer.appendChild(div);
+
+        //Controllo deviazioni per collegamento al servizio deviazioni nostro
+        if(element.title.includes("chiusura al trasito di Piazza Roma")||element.title.includes("chiusura al trasito di via emilia centro")){
+            const deviazioniP = document.createElement('p');
+
+            deviazioniP.innerHTML=`<br> <strong>E' possibile consultare le deviazioni attive sul nostro servizio <a class="novita" href="/seta_modena/servizi/deviazioni/index.html">Deviazioni</a></strong>`;
+            notiziaContainer.appendChild(deviazioniP);
+        }
     })})
