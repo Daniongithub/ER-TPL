@@ -102,10 +102,6 @@ div#map-container iframe{
         padding-top: .6vw;
         padding-bottom: .6vw;
     }
-    nav#corsie-nav ul li a{
-        font-size: 75%;
-        margin: 0;
-    }
     table {
         width: 100%;
     }
