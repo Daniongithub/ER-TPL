@@ -1,10 +1,3 @@
-body {
-    background-color: #282828;
-    text-align: center;
-    color: white;
-    font-family: Titillium Web;
-}
-
 .search-result {
     border: 2px solid white;
     border-radius: 8px;
@@ -57,71 +50,8 @@ th,td {
     background-color: rgb(14, 65, 14) !important;
 }
 
-.cursor-pointer{
-    cursor: pointer;
-}
-
 hr{
     margin-top:19px;
-}
-
-h1.warning {
-    color:red;
-    font-size: 16px;
-}
-
-h1.yellow-warning {
-    color:rgb(255, 205, 0);
-    font-size: 16px;
-}
-
-header {
-    font-size: 67%;
-    background-color: #333;
-    height: auto;
-    padding: 0px 0px;
-    align-items: start;
-    width: 100%;
-    border-radius: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: left;
-}
-
-nav {
-    text-align: center;
-    flex-shrink: 0;
-}
-
-nav#corsie-nav ul{
-    justify-content: center;
-}
-nav#corsie-nav ul li a{
-    color: white;
-    text-decoration: underline;
-}
-nav#corsie-nav ul li{
-    margin-left: 8px;
-    margin-right: 7px;
-}
-nav ul li {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
 }
 
 a {
@@ -148,7 +78,6 @@ a.link-cell {
   color: white;
 }
 
-#bacino,
 #searchBar {
     padding: 10px;
     font-size: 16px;
@@ -171,9 +100,6 @@ img{
     .search-result {
         display: block;
         width: 96.5%;
-    }
-    .container {
-        flex-direction: column;
     }
     th,td {
         font-size: 2vw;
@@ -217,7 +143,7 @@ img{
         font-size: 3.2vw;
     }
     table{
-        margin-top:10px;
+        margin-top: 10px;
     }
     h2{
         margin-bottom: 0;
@@ -236,7 +162,4 @@ footer {
 div.search-result div{
     margin-left: 10px;
     margin-right: 10px;
-}
-p.space{
-    width: 20px;
 }

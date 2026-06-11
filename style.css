@@ -14,12 +14,7 @@ p.listamezzi{
 hr.solid {
     border: 3px solid #3d3d3d;
     border-radius: 5px;
-    width: 100%;
-}
-hr.solidfooter {
-    border: 1px solid #525252;
-    border-radius: 1px;
-    width: 96%;
+    width: 99.55%;
 }
 .link{
     color: cyan;
@@ -80,9 +75,8 @@ a.button {
     margin-bottom: 1rem;
     margin-left: 10px;
     margin-right: 10px;
-    padding: 0 20px;
+    padding: 10px 20px;
     font-weight: 700;
-    line-height: 48px;
     letter-spacing: .1px;
     white-space: wrap;
     border-radius: 8px;
@@ -166,9 +160,18 @@ nav ul li a:hover {
     width: 25%;
 }
 
-.warning {
+h1.warning {
     color:red;
     font-size: 16px;
+}
+
+h1.yellow-warning {
+    color:rgb(255, 205, 0);
+    font-size: 16px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
 }
 
 h2.wip-bg{
@@ -190,16 +193,12 @@ nav ul li h1.yellow-warning {
     font-size: 16px;
 }
 
-.yellow-warning {
-    color:rgb(255, 205, 0);
-    margin:8px;
-}
-
 .bus{
     border: 2px solid;
     border-style: hidden;
     border-radius: 10px;
 }
+
 img.service{
     border-radius: 10px;
     margin-top: 38px;
@@ -220,13 +219,16 @@ table{
     margin-left: auto;
     margin-right: auto;
 }
+
 table.fullscreen{
     width:100%;
 }
+
 table.fullscreen tr th,table.fullscreen tr td{
     padding-top: 12px;
     padding-bottom: 12px;
 }
+
 table.greenhead{
     border-collapse: collapse;
     border-radius: 8px;
@@ -235,6 +237,7 @@ table.greenhead{
     width: 50%; 
     text-align: left;
 }
+
 table.greenhead td,table.greenhead th{
     border: 2px solid #444;
     padding: .7vw;
@@ -243,6 +246,7 @@ table.greenhead td,table.greenhead th{
     text-align: left;
     width: 50%;
 }
+
 table.greenhead td a{
     text-decoration: underline;
 }

@@ -3,14 +3,6 @@
         display: block !important;
         width: 95.5% !important;
     }
-    /* #radios{
-        display: table !important;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    #radios div{
-        margin-top: 8px;
-    } */
     #radios{
         flex-wrap: wrap;
     }
@@ -30,13 +22,6 @@
         max-width: 300px;
         height: auto !important;
     }
-}
-
-body {
-    background-color: #282828;
-    text-align: center;
-    color: white;
-    font-family: Titillium Web;
 }
 
 input{
@@ -78,49 +63,6 @@ tr:nth-child(even) {
 
 .bus-card-red {
     background-color: red !important;
-}
-
-header {
-    font-size: 67%;
-    background-color: #333;
-    height: auto;
-    padding: 0px 0px;
-    align-items: start;
-    width: 100%;
-    border-radius: 10px;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: left;
-}
-
-nav {
-    text-align: center;
-    flex-shrink: 0;
-}
-
-nav.index {
-    display: flex;
-    min-height: 51px;
-}
-
-nav ul li {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
 }
 
 a.colore{
