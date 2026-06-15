@@ -18,7 +18,7 @@
         "settore": "Filobus",
         "modello": "Neoplan Electroliner",
         "link": "/seta_modena/bus/filobus/neoplan.html#3",
-        "stato": "Demolito"
+        "stato": "Dismesso"
     },
     {
         "matricola": "4",
@@ -389,7 +389,7 @@
         "settore": "Urbano",
         "modello": "Mercedes Citaro O530N CNG",
         "link": "/seta_modena/bus/urbano/citarocng.html#146",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "158",
@@ -1467,7 +1467,7 @@
         "settore": "Extraurbano",
         "modello": "Mercedes Integro O550",
         "link": "/seta_modena/bus/extraurbano/integro.html#358",
-        "stato": ""
+        "stato": "fermo"
     },
     {
         "matricola": "359",
@@ -1810,7 +1810,7 @@
         "settore": "Extraurbano",
         "modello": "Mercedes Integro O550",
         "link": "/seta_modena/bus/extraurbano/integro.html#631",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "632",
@@ -1957,7 +1957,7 @@
         "settore": "Extraurbano",
         "modello": "Mercedes Integro O550",
         "link": "/seta_modena/bus/extraurbano/integro.html#689",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "690",
@@ -3126,83 +3126,83 @@
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7901",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7902",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7902",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7903",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7903",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7904",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7904",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7905",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7905",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7906",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7906",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7907",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7907",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7908",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7908",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7909",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7909",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7910",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7910",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7911",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7911",
-        "stato": ""
+        "stato": "Fermo"
     },
     {
         "matricola": "7912",
         "settore": "Urbano",
         "modello": "Solaris Urbino 12 IV Hydrogen",
         "link": "/seta_modena/bus/urbano/solarisidrogeno.html#7912",
-        "stato": ""
+        "stato": "Fermo"
     }
 ]
