@@ -18,7 +18,7 @@ fetch(url + "/news?link=" + link)
         if (!response.ok){
             notiziaContainer.innerHTML="<p>Impossibile raggiungere l'API.</p>";
             if(response.status=="404"){
-                notiziaContainer.innerHTML="<p>Impossibile ottenere il contenuto della notizia. L'API ha resistuito 404 Not Found.</p>";
+                notiziaContainer.innerHTML="<p>Errore HTTP 404 Not Found. Impossibile leggere la notizia.</p>";
             }
             throw new Error("Errore nel caricamento dei dati.");
         } 
