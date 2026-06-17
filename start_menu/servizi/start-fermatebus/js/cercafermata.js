@@ -42,8 +42,8 @@ function filterOptions(query, data) {
     const q = query.toLowerCase();
     return data.filter(item =>
         (item.nome || '').toLowerCase().includes(q) ||
-        (item.palina || '').toLowerCase().includes(q) ||
-        (item.targetID || '').toLowerCase().includes(q)
+        (item.palina || '').toLowerCase().includes(q) /*||
+        (item.targetID || '').toLowerCase().includes(q)*/
     );
 }
 
@@ -64,13 +64,6 @@ function filtraLungo(query, data){
 function filtraBreve(query, data){
     const cod = getFermatadaBreve(query);
     return filtraLungo(cod, data);
-}
-
-function filtraTID(query, data){
-    const q = query.toLowerCase();
-    return data
-    .filter(item => (item.targetID || '').toLowerCase().includes(q))
-    .sort((a, b) => (a.targetID || '').localeCompare(b.targetID || ''));
 }
 
 let allOptions = [];
@@ -98,9 +91,6 @@ searchBar.addEventListener('input', function() {
         }
         else if (document.getElementById('breve').checked){
             filteredOptions = filtraBreve(query, allOptions);
-        }
-        else if(document.getElementById('tid').checked){
-            filteredOptions = filtraTID(query, allOptions);
         }
     }
     populateSearchResults(filteredOptions, currentSelectedOption);
