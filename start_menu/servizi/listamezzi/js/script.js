@@ -3,7 +3,7 @@
 // Attenzione, tutto ciò qui sotto è in fase di sviluppo, né definitivo.
 // Momentaneamente link endpoint senza HA, senza SSL
 
-const API_URL = "http://dbiface.serverissimo.com/api/start/mezzi";
+const API_URL = "https://dbiface.serverissimo.com/api/start/mezzi";
 
 loadMezzi();
 
