@@ -5,7 +5,9 @@ const buttons = document.getElementById('buttons');
 let allProducts = [];
 window.onbeforeunload=searchBar.value="";
 
-const url = '/scripts/startbus.json';
+//const url = '/scripts/startbus.json';
+const url = "https://dbiface.serverissimo.com/api/start/mezzi";
+
 fetch(url)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");

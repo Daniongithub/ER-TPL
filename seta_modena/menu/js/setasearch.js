@@ -5,7 +5,9 @@ const buttons = document.getElementById('buttons');
 let allProducts = [];
 window.onbeforeunload=searchBar.value="";
 
-const url = '/seta_modena/menu/js/setabus.json';
+//const url = '/seta_modena/menu/js/setabus.json';
+const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
+
 fetch(url)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");

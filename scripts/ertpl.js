@@ -78,7 +78,7 @@ function updateTimer() {
     const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 
     document.getElementById("timer").innerHTML =
-        years + " anni " +
+        years + (years==1 ? " anno " : " anni ") +
         days + " giorni " +
         hours + " ore " +
         minutes + " minuti " +
