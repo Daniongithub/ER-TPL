@@ -1,7 +1,8 @@
 const tableContainer = document.getElementById('table-container');
 
-//URL (local file)
-const url = "/seta_modena/menu/js/setabus.json";
+//URL (new remote DB)
+//const url = "/seta_modena/menu/js/setabus.json";
+const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
 
 //Create table
 const table = document.createElement('table');
@@ -33,16 +34,16 @@ fetch(url)
 
         //Check vehicle status
         switch(bus.stato){
-            case "Sconosciuto":
+            case "sconosciuto":
                 tr.className="sconosciuto";
                 break;
-            case "Fermo":
+            case "fermo":
                 tr.className="fermo";
                 break;
-            case "Dismesso":
+            case "dismesso":
                 tr.className="dismesso";
                 break;
-            case "Demolito":
+            case "demolito":
                 tr.className="demolito";
                 break;
         }

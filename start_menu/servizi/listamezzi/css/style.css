@@ -1,0 +1,81 @@
+/*Zona lista mezzi*/
+
+.lista-mezzi{
+    min-width: 80vw;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: auto;
+    border: 2px solid gray;
+}
+.lista-mezzi thead{
+    background-color: #282828;
+    position: sticky;
+    top: 0;
+}
+.lista-mezzi th, .lista-mezzi td{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid gray;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+.lista-mezzi thead th{
+    position: sticky;
+}
+.lista-mezzi tbody{
+    overflow-y: auto;
+}
+.lista-mezzi tbody tr.demolito{
+    background-color: darkred;
+}
+.lista-mezzi tbody tr.sconosciuto{
+    background-color: purple;
+}
+.lista-mezzi tbody tr.fermo{
+    background-color: yellow;
+    color: black;
+}
+.lista-mezzi tbody tr.fermo a{
+    background-color: yellow;
+    color: black;
+}
+.lista-mezzi tbody tr.dismesso{
+    background-color: orangered;
+}
+.lista-mezzi a{
+    text-decoration: underline;
+}
+.lista-mezzi td:nth-child(4){
+    width: 5%;
+}
+.lista-mezzi th:nth-child(4){
+    width: 5%;
+}
+
+p.listamezzi{
+    border-radius: 5px;
+    display:inline;
+}
+
+@media (max-width: 768px) {
+    .lista-mezzi td:nth-child(4){
+        display: none;
+    }
+    .lista-mezzi th:nth-child(4){
+        display: none;
+    }
+    .lista-mezzi{
+        margin: 0px;
+        max-width: 1000%;
+    }
+    .of-x-media{
+        overflow-x: scroll;
+    }
+    #contenitore {
+        overflow-x: scroll;
+    }
+    table.guida-linee{
+        width: 250%;
+    }
+}

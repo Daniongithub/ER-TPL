@@ -104,6 +104,13 @@ img{
     height:300px;
 }
 
+/*Notizie cercaorario*/
+
+#notizie-container{
+    display: flex;
+    justify-content: center;
+}
+
 @media (max-width: 768px) {
     .search-result {
         display: block;
@@ -143,6 +150,9 @@ img{
     }
     nav ul li {
         margin-right: 8px;
+    }
+    #notizie-container{
+        display: block;
     }
 }
 
