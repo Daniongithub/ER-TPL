@@ -32,21 +32,7 @@ fetch(url)
     data.forEach(bus => {
         const tr = document.createElement('tr');
 
-        //Check vehicle status
-        switch(bus.stato){
-            case "sconosciuto":
-                tr.className="sconosciuto";
-                break;
-            case "fermo":
-                tr.className="fermo";
-                break;
-            case "dismesso":
-                tr.className="dismesso";
-                break;
-            case "demolito":
-                tr.className="demolito";
-                break;
-        }
+        tr.className = bus.stato;
 
         tr.innerHTML = `
             <td class="cursor-pointer" onclick="window.location.href='${bus.link}'">${bus.matricola}</td>

@@ -53,9 +53,34 @@
     width: 5%;
 }
 
-p.listamezzi{
-    border-radius: 5px;
-    display:inline;
+div.legenda {
+    display: flex;
+    justify-content: center;
+}
+
+div.legenda p {
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin:2px;
+    height: fit-content;
+}
+
+tr.sconosciuto,p.sconosciuto {
+    background-color: purple;
+}
+tr.fermo,p.fermo {
+    background-color: yellow;
+    color: black;
+}
+tr.fermo td a {
+    color: black;
+}
+tr.dismesso,p.dismesso {
+    background-color: orangered;
+}
+tr.demolito,p.demolito {
+    background-color: rgb(100, 0, 0);
 }
 
 @media (max-width: 768px) {
