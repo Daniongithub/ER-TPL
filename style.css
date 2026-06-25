@@ -88,22 +88,23 @@ footer{
     left: 8px;
     right: 8px;
     bottom: 0px;
-    background-color: #282828;
     height: 75px;
-    width: 100%;
+    justify-content: center;
+    display: flex;
 }
 div.footer{
     position: fixed;
-    left: 8px;
-    right: 8px;
     bottom: 8px;
     width: auto;
-    height: 60px;
+    height: 48px;
     background-color:#333;
     border-radius: 10px;
+    box-shadow: 0px 20px 50px -8px black;
 }
-hr.solidfooter{
-    color: #525252;
+div.footer div{
+    margin-top: 9px;
+    margin-left: 48px;
+    margin-right: 46px;
 }
 
 div.riga {
