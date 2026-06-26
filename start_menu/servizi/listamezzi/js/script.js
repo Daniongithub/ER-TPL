@@ -1,15 +1,25 @@
 // ER-TPL - Dani
 // *** BETA LISTA MEZZI! ***
 // Attenzione, tutto ciò qui sotto è in fase di sviluppo, né definitivo.
-// Momentaneamente link endpoint senza HA, senza SSL
 
-const API_URL = "https://dbiface.serverissimo.com/api/start/mezzi";
+const API_ENDPOINT = "https://ertpl-api.vercel.app/mezzi";
+
+async function getApiUrl() {
+    const res = await fetch(API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
+}
+
+
+//const API_URL = getApiUrl() + "/start/mezzi";
 
 loadMezzi();
 
 function loadMezzi() {
     const container = document.getElementById('contenitore');
-    fetch(API_URL)
+    getApiUrl().then(url => {
+    fetch(url + "/start/mezzi")
     .then(response => response.json())
     .then(data => {
         container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
@@ -73,6 +83,5 @@ function loadMezzi() {
       container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="loadMezzi();">riprova adesso</a> o riprova più tardi.</p>`;
     });
 
-
-
+    });
 }

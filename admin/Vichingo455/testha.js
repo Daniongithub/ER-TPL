@@ -1,11 +1,38 @@
 // =========================
 // ROBE
 // =========================
-async function fetchJson(url) {
+
+/*async function fetchJson(url) {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) throw new Error(res.status);
   return res.json();
+}*/
+
+function tryParseJson(str) {
+  try {
+    return JSON.parse(str);
+  } catch {
+    return null;
+  }
 }
+
+async function fetchJson(url) {
+  const res = await fetch(url, { cache: "no-store" });
+
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}`);
+  }
+
+  const text = await res.text();
+  const data = tryParseJson(text);
+
+  if (data === null) {
+    throw new Error("Response is not valid JSON");
+  }
+
+  return data;
+}
+
 
 async function checkEndpoint(url, expectedContentType) {
   const res = await fetch(url, { cache: "no-store" });
@@ -13,6 +40,9 @@ async function checkEndpoint(url, expectedContentType) {
 
   if (!res.ok || !header.includes(expectedContentType)) {
     throw new Error();
+  }
+  if (expectedContentType == "application/json") {
+    res.json();
   }
 }
 
@@ -121,6 +151,19 @@ async function getTperServer() {
   }
 }
 
+async function getMezziServer() {
+  try {
+    const info = await fetchJson("https://ertpl-api.vercel.app/mezzi");
+    return {
+      ok: true,
+      server: info.server,
+      url: info.url
+    };
+  } catch {
+    return { ok: false };
+  }
+}
+
 // =========================
 // FUNZIONI UI
 // =========================
@@ -187,7 +230,8 @@ async function initTestHA() {
     startsopp,
     startfermate,
     seta,
-    tper
+    tper,
+    mezzi
   ] = await Promise.all([
     getApiVersionHA(),
     getNextcloudServer(),
@@ -195,7 +239,8 @@ async function initTestHA() {
     getStartSoppServer(),
     getStartFermateServer(),
     getSetaServer(),
-    getTperServer()
+    getTperServer(),
+    getMezziServer()
   ]);
 
   // Render risultati singoli
@@ -206,6 +251,7 @@ async function initTestHA() {
   renderServer("apiStartFermateServer", "Server in uso (START Fermate)", startfermate);
   renderServer("apiSetaServer", "Server in uso (SETA)", seta);
   renderServer("apiTperServer", "Server in uso (TPER)", tper);
+  renderServer("apiMezziServer", "Server in uso (Liste Mezzi)", mezzi);
 
   const serverOk = [
     api,
@@ -214,7 +260,8 @@ async function initTestHA() {
     startsopp,
     startfermate,
     seta,
-    tper
+    tper,
+    mezzi
   ].every(r => r.ok);
 
   const clientOk = await checkBrowser({
@@ -223,7 +270,8 @@ async function initTestHA() {
     startsopp,
     startfermate,
     seta,
-    tper
+    tper,
+    mezzi
   });
 
   renderBrowser(clientOk);
