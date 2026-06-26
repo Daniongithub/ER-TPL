@@ -1,3 +1,12 @@
+const MEZZI_API_ENDPOINT = "https://ertpl-api.vercel.app/mezzi";
+
+async function getApiUrl() {
+    const res = await fetch(MEZZI_API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
+}
+
 const searchBar = document.getElementById('searchBar');
 const productsContainer = document.getElementById('bus-container');
 const buttons = document.getElementById('buttons');
@@ -6,9 +15,9 @@ let allProducts = [];
 window.onbeforeunload=searchBar.value="";
 
 //const url = '/scripts/startbus.json';
-const url = "https://dbiface.serverissimo.com/api/start/mezzi";
-
-fetch(url)
+//const url = "https://dbiface.serverissimo.com/api/start/mezzi";
+getApiUrl().then(url => {
+fetch(url + "/start/mezzi")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -17,6 +26,7 @@ fetch(url)
         allProducts = data;
     })
     .catch(error => console.error('Errore nel caricamento dei dati:', error));
+});
 
 searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {

@@ -1,8 +1,17 @@
 const tableContainer = document.getElementById('table-container');
 
+const API_ENDPOINT = "https://ertpl-api.vercel.app/mezzi";
+
+async function getApiUrl() {
+    const res = await fetch(API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
+}
+
 //URL (new remote DB)
 //const url = "/seta_modena/menu/js/setabus.json";
-const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
+//const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
 
 //Create table
 const table = document.createElement('table');
@@ -16,7 +25,8 @@ thead.innerHTML = `
 `;
 table.appendChild(thead);
 
-fetch(url)
+getApiUrl().then(url => {
+fetch(url + "/seta/mezzi")
 .then(response => {
     if (!response.ok) {
         throw new Error("Errore nel caricamento dei dati.");
@@ -44,3 +54,4 @@ fetch(url)
     });
     tableContainer.appendChild(table);
 })
+});
