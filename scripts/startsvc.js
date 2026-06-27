@@ -1,20 +1,32 @@
 const btnFermate = document.getElementById("fermate");
 const btnLive = document.getElementById("live");
 const btnSopp = document.getElementById("sopp");
+const btnMezzi = document.getElementById("mezzi");
+const divCerca = document.getElementById("cercamatricole");
 const outErr = document.getElementById("errori");
 
 async function checkStato() {
-  const [fermate, bus, sopp] = await Promise.all([
+  const [fermate, bus, sopp, mezzi] = await Promise.all([
     getStartFermateServer(),
     getStartBusServer(),
-    getStartSoppServer()
+    getStartSoppServer(),
+    getMezziServer()
   ]);
   
   const fermateOk = fermate.ok;
   const busOk = bus.ok;
   const soppOk = sopp.ok;
+  const mezziOk = mezzi.ok;
   let conto = 0;
   let serviziDown = [];
+  if (!mezziOk) {
+    btnMezzi.classList.replace("green", "wip");
+    btnMezzi.removeAttribute("href");
+    btnMezzi.setAttribute("href", "/service/servicenotavailable.html");
+    divCerca.setAttribute("style","display: none");
+    conto++;
+    serviziDown.push("Lista Mezzi");
+  }
   if(!fermateOk) {
     btnFermate.classList.replace("green", "wip");
     btnFermate.removeAttribute("href");
@@ -36,7 +48,7 @@ async function checkStato() {
     conto++;
     serviziDown.push("Corse non garantite");
   }
-  if(!fermateOk || !busOk || !soppOk) {
+  if(!fermateOk || !busOk || !soppOk || !mezziOk) {
     outErr.appendChild(document.createElement("h3")).setAttribute("id", "testo");
     const testo = document.getElementById("testo");
       testo.setAttribute("style", "color: Orange");
