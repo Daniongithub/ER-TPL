@@ -143,3 +143,14 @@ document.getElementById('filterZona').addEventListener('input', numeromezzi);
 document.getElementById('filterLinea').addEventListener('input', numeromezzi);
 document.getElementById('filterVeicolo').addEventListener('input', numeromezzi);
 document.getElementById('filterCodiceFermata').addEventListener('input', numeromezzi);
+
+// Roba per il footer
+const footer = document.querySelector("footer");
+const container = document.getElementById("data-container");
+
+function aggiornaSpazio() {
+    container.style.paddingBottom = footer.offsetHeight + 20 + "px";
+}
+
+window.addEventListener("load", aggiornaSpazio);
+window.addEventListener("resize", aggiornaSpazio);
