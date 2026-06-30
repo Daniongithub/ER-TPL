@@ -84,27 +84,20 @@ a.button:active {
 }
 
 footer{
-    position: static;
-    left: 8px;
-    right: 8px;
-    bottom: 0px;
-    height: 75px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 8px;
     justify-content: center;
     display: flex;
 }
 div.footer{
-    position: fixed;
-    bottom: 8px;
-    width: auto;
-    height: auto;
+    height: 57px;
     background-color:#333;
     border-radius: 10px;
     box-shadow: 0px 20px 50px -8px black;
-}
-div.footer div{
-    margin-top: 9px;
-    margin-left: 48px;
-    margin-right: 46px;
+    padding-left: 48px;
+    padding-right: 48px;
 }
 
 div.riga {
