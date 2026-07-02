@@ -26,9 +26,9 @@ function caricadati(){
     .then(res => res.json())
     .then(data => {
         const fermata_span = document.getElementById('fermata-span');
-        if (data[0] && data[0].fermata !== undefined) {
-            fermata_span.innerHTML = `"${data[0].fermata}"`;
-            document.title = `Fermata ${data[0].fermata}`
+        if (data && data.fermata.length !== 0) {
+            fermata_span.innerHTML = `"${data.fermata}"`;
+            document.title = `Fermata ${data.fermata}`
         }
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
@@ -41,7 +41,7 @@ function caricadati(){
         Se capita una fermata pulita dall'API, perche' contiene solo spazzatura, rimane solo data[0], che però fa creare al JS la thead
         anche se non ci sono risultati effettivi.
         */
-        if (!data || data.length === 0 || !data[1]) {
+        if (!data || data.fermata.length === 0) {
             container.innerHTML = '<h3>Nessuna linea in arrivo.</h3>';
             return;
         }
@@ -64,7 +64,7 @@ function caricadati(){
 
         // Corpo tabella
         const tbody = document.createElement('tbody');
-        data.slice(1).forEach(item => {
+        data.bus.forEach(item => {
             const tr = document.createElement('tr');
             if (item.soppressa) {
                 tr.classList.add('bus-card-red');
@@ -92,4 +92,4 @@ function caricadati(){
 caricadati();
 
 
-setInterval(caricadati, 60000);
+setInterval(caricadati, 30000);
