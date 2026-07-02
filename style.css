@@ -467,11 +467,11 @@ span.blue{
         padding-top: 1.5vw;
         padding-bottom: 1.5vw;
     }
-    nav ul:last-child li {
+    nav ul li:last-child {
         margin-right: 20px;
     }
     nav ul li {
-        margin-right: 8px;
+        margin-right: 0;
     }
     img.service{
         width:80% !important;

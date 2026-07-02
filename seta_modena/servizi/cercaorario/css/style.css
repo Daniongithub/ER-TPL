@@ -92,6 +92,7 @@ nav#corsie-nav ul li{
     border-radius: 6px;
     border: 1px solid var(--border-color);
     width: 280px;
+    margin: 0;
 }
 #stopCodeBar {
     padding: 10px;
