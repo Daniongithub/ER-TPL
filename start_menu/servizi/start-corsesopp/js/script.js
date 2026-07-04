@@ -12,6 +12,19 @@ let ultimaRichiesta = null;
 let intervalloAggiornamento = null;
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
+async function loadVersion() {
+  try {
+    let testUri = await getApiUrl();
+    testUri = testUri + "/versione";
+    const response = await fetch(testUri);
+    const data = await response.json();
+    document.getElementById("version").innerHTML = data.version;
+  }
+  catch {
+    document.getElementById("version").innerHTML = "Errore";
+  }
+}
+
 async function caricaDati(event = null, richiestaManuale = false) {
   if (event) event.preventDefault();
 
@@ -80,3 +93,5 @@ document.getElementById("formStazione").addEventListener("submit", e => {
   caricaDati(e, true);
   avviaAggiornamentoAutomatico();
 });
+
+loadVersion();

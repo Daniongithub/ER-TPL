@@ -56,6 +56,15 @@ function applyFilter() {
     fetch(url)
     .then(response => response.json())
     .then(data => {
+      fetch(url + "/versione")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("version").innerHTML = data.version;
+        })
+        .catch(err => {
+          document.getElementById("version").innerHTML = "Errore";
+        });
+
       manualLoad = false;
       container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
 
