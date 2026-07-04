@@ -51,7 +51,7 @@ async function checkBrowser(services) {
     await checkEndpoint(services.nextcloud.url, "application/json");
     await checkEndpoint(services.startbus.url, "application/json");
     await checkEndpoint(services.startsopp.url, "application/json");
-    await checkEndpoint(services.startfermate.url, "text/html");
+    await checkEndpoint(services.startfermate.url, "text/plain");
     await checkEndpoint(services.seta.url, "application/json");
     await checkEndpoint(services.tper.url, "application/json");
 
