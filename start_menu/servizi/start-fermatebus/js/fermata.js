@@ -41,7 +41,7 @@ function caricadati(){
         Se capita una fermata pulita dall'API, perche' contiene solo spazzatura, rimane solo data[0], che però fa creare al JS la thead
         anche se non ci sono risultati effettivi.
         */
-        if (!data || data.fermata.length === 0) {
+        if (!data || data.bus.length === 0) {
             container.innerHTML = '<h3>Nessuna linea in arrivo.</h3>';
             return;
         }
@@ -55,7 +55,7 @@ function caricadati(){
                     <tr>
                         <th>Linea</th>
                         <th>Destinazione</th>
-                        <th>Orario</th>
+                        <th>Orario previsto</th>
                         <th>Stato attuale</th>
                         <th>Veicolo</th>
                     </tr>
