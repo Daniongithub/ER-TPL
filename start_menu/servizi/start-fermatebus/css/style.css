@@ -22,6 +22,9 @@
         max-width: 300px;
         height: auto !important;
     }
+    td, th{
+        padding: 1.35vw !important;
+    }
 }
 
 body {
@@ -176,7 +179,7 @@ div#radios div{
 }
 
 .ritardo{
-    color: red;
+    color: rgb(255, 112, 112);
 }
 
 
