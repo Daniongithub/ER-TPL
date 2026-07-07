@@ -31,12 +31,16 @@ body {
     font-family: Titillium Web;
 }
 
+label[for="bacino"], .filtroRa,label[for="searchBar"]{
+    font-weight: 700;
+}
+
 input{
     margin-top: 5px;
 }
 
 .search-result {
-    border: 2px solid white;
+    border: 2px solid dimgray;
     border-radius: 8px;
     width: 15%;
     margin: auto;
@@ -55,7 +59,7 @@ table {
 }
 
 th {
-    background-color: lightslategray;
+    background-color: darkcyan;
 }
 
 th, td {
@@ -65,11 +69,12 @@ th, td {
 }
 
 tr:nth-child(even) {
-    background-color: dimgray;
+    background-color: #595656;
 }
 
 .bus-card-red {
     background-color: red !important;
+    font-weight: 700;
 }
 
 a.colore{
@@ -126,6 +131,7 @@ nav ul li a:hover {
 
 #bacino,
 #searchBar {
+    margin: 5px;
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
@@ -167,4 +173,13 @@ div#radios div{
     padding: 8px;
     border: 2px #404040 solid;
     border-radius: 8px;
+}
+
+.ritardo{
+    color: red;
+}
+
+
+.anticipo{
+    color: lime;
 }

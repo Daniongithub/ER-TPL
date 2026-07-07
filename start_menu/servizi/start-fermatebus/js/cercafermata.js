@@ -10,18 +10,23 @@ async function getApiUrl() {
   return cfg.url;
 }
 
+let allOptions = [];
+let currentSelectedOption = '';
+
+const searchBar = document.getElementById('searchBar');
+
 function populateSearchResults(results, selectedOption) {
     const searchResultsContainer = document.getElementById('searchResults');
     searchResultsContainer.innerHTML = '';
 
-    if (results.length === 0) {
+    if (results.length === 0 && searchBar.value !== "") {
         searchResultsContainer.innerHTML = '<p>Nessun risultato trovato</p>';
         return;
     }
 
     results.forEach(item => {
         const div = document.createElement('div');
-        const url = `fermata.html?palina=${encodeURIComponent(item.palina)}&targetID=${encodeURIComponent(item.targetID)}&selectedOption=${encodeURIComponent(selectedOption)}`;
+        const url = `fermata.html?cod=${encodeURIComponent(item.palina)}&tID=${encodeURIComponent(item.targetID)}&prov=${encodeURIComponent(selectedOption)}`;
         div.className = 'search-result';
         div.innerHTML = `
             <a class="risultato" href="${url}" target="_blank">
@@ -66,16 +71,6 @@ function filtraBreve(query, data){
     return filtraLungo(cod, data);
 }
 
-let allOptions = [];
-let currentSelectedOption = '';
-
-const searchBar = document.getElementById('searchBar');
-searchBar.addEventListener('input', function() {
-    const query = searchBar.value;
-    const filteredOptions = filterOptions(query, allOptions);
-    populateSearchResults(filteredOptions, currentSelectedOption);
-});
-
 searchBar.addEventListener('input', function() {
     const query = searchBar.value;
     let filteredOptions;
@@ -105,45 +100,48 @@ radios.forEach(radio => {
 });
 
 document.getElementById('bacino').addEventListener('change', function(event) {
+    searchBar.setAttribute("disabled", "");
     getApiUrl().then(url => {
         const selectedOption = event.target.value;
-    currentSelectedOption = selectedOption;
+        currentSelectedOption = selectedOption;
 
-    const urlFermate = `${url}/bacino?prov=${selectedOption}`;
+        const urlFermate = `${url}/bacino?prov=${selectedOption}`;
 
-    const radiobuttons = document.getElementById('radios');
-    const ricerca = document.getElementById('ricerca');
-    ricerca.removeAttribute('style');
+        const radiobuttons = document.getElementById('radios');
+        const ricerca = document.getElementById('ricerca');
+        ricerca.removeAttribute('style');
 
-    document.getElementById('searchBar').value = "";
-    
-    if(selectedOption == "n"){
-        ricerca.setAttribute("style", "display: none;");
-        radiobuttons.setAttribute("style", "display: none;");
-        allOptions = [];
-        document.getElementById('searchResults').innerHTML = '';
-        return;
-    }
-    else if(selectedOption == "ra"){
-        radiobuttons.removeAttribute('style')
-    }
-
-    if(selectedOption != "n"){
-        const resultsContainer = document.getElementById('searchResults');
-        resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
-        if(selectedOption != "ra"){
-            radiobuttons.setAttribute("style", "display: none !important;");
+        document.getElementById('searchBar').value = "";
+        
+        if(selectedOption == "n"){
+            ricerca.setAttribute("style", "display: none;");
+            radiobuttons.setAttribute("style", "display: none;");
+            searchBar.setAttribute("disabled", "");
+            allOptions = [];
+            document.getElementById('searchResults').innerHTML = '';
+            return;
         }
-        fetch(urlFermate)
-        .then(res => res.json())
-        .then(data => {
-            allOptions = data;
-            populateSearchResults(allOptions, selectedOption);
-        })
-        .catch(err => {
-            resultsContainer.innerHTML = '<p>Errore nel caricamento delle fermate.</p>';
-            console.error('Errore:', err);
-        });
-    }
+        else if(selectedOption == "ra"){
+            radiobuttons.removeAttribute('style')
+        }
+
+        if(selectedOption != "n"){
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
+            if(selectedOption != "ra"){
+                radiobuttons.setAttribute("style", "display: none !important;");
+            }
+            fetch(urlFermate)
+            .then(res => res.json())
+            .then(data => {
+                allOptions = data;
+                populateSearchResults(allOptions, selectedOption);
+                searchBar.removeAttribute("disabled");
+            })
+            .catch(err => {
+                resultsContainer.innerHTML = '<p>Errore nel caricamento delle fermate.</p>';
+                console.error('Errore:', err);
+            });
+        }
     });
 });
