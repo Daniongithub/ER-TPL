@@ -109,7 +109,7 @@ document.getElementById('bacino').addEventListener('change', function(event) {
         const selectedOption = event.target.value;
     currentSelectedOption = selectedOption;
 
-    const urlFermate = `${url}/bacino?selectedOption=${selectedOption}`;
+    const urlFermate = `${url}/bacino?prov=${selectedOption}`;
 
     const radiobuttons = document.getElementById('radios');
     const ricerca = document.getElementById('ricerca');
