@@ -92,7 +92,7 @@ async function getStartBusServer() {
     return {
       ok: true,
       server: info.server,
-      url: info.url
+      url: info.url + "/versione"
     };
   } catch {
     return { ok: false };
@@ -105,7 +105,7 @@ async function getStartSoppServer() {
     return {
       ok: true,
       server: info.server,
-      url: info.url
+      url: info.url + "/versione"
     };
   } catch {
     return { ok: false };
