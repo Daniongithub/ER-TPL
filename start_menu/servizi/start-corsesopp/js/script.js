@@ -27,7 +27,6 @@ async function loadVersion() {
 }
 
 async function caricaDati() {
-    container.style.display = 'none';
     const bacino = document.getElementById("stazione").value;
     const tbody = document.querySelector("tbody");
 

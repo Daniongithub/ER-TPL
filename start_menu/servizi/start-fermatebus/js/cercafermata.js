@@ -1,6 +1,5 @@
 // API source code: https://github.com/Daniongithub/startfermate-api
 
-// New fallback system (HA)
 const API_ENDPOINT = "https://ertpl-api.vercel.app/startfermate";
 
 async function getApiUrl() {
@@ -47,8 +46,7 @@ function filterOptions(query, data) {
     const q = query.toLowerCase();
     return data.filter(item =>
         (item.nome || '').toLowerCase().includes(q) ||
-        (item.palina || '').toLowerCase().includes(q) /*||
-        (item.targetID || '').toLowerCase().includes(q)*/
+        (item.palina || '').toLowerCase().includes(q) 
     );
 }
 

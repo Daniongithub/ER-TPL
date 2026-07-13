@@ -6,61 +6,56 @@ const divCerca = document.getElementById("cercamatricole");
 const outErr = document.getElementById("errori");
 
 async function checkStato() {
-  const [fermate, bus, sopp, mezzi] = await Promise.all([
-    getStartFermateServer(),
-    getStartBusServer(),
-    getStartSoppServer(),
-    getMezziServer()
-  ]);
-  
-  const fermateOk = fermate.ok;
-  const busOk = bus.ok;
-  const soppOk = sopp.ok;
-  const mezziOk = mezzi.ok;
-  let conto = 0;
-  let serviziDown = [];
-  if (!mezziOk) {
-    btnMezzi.classList.replace("green", "wip");
-    btnMezzi.removeAttribute("href");
-    btnMezzi.setAttribute("href", "/service/servicenotavailable.html");
-    divCerca.setAttribute("style","display: none");
-    conto++;
-    serviziDown.push("Lista Mezzi");
-  }
-  if(!fermateOk) {
-    btnFermate.classList.replace("green", "wip");
-    btnFermate.removeAttribute("href");
-    btnFermate.setAttribute("href", "https://infobus.startromagna.it/");
-    conto++;
-    serviziDown.push("Visualizzatore fermate");
-  }
-  if(!busOk) {
-    btnLive.classList.replace("green", "wip");
-    btnLive.removeAttribute("href");
-    btnLive.setAttribute("href", "https://infobus.startromagna.it/CapienzaAutobusTempoReale/");
-    conto++;
-    serviziDown.push("Bus in tempo reale");
-  }
-  if(!soppOk) {
-    btnSopp.classList.replace("green", "wip");
-    btnSopp.removeAttribute("href");
-    btnSopp.setAttribute("href", "https://www.startromagna.it/corse-non-garantite/");
-    conto++;
-    serviziDown.push("Corse non garantite");
-  }
-  if(!fermateOk || !busOk || !soppOk || !mezziOk) {
-    outErr.appendChild(document.createElement("h3")).setAttribute("id", "testo");
-    const testo = document.getElementById("testo");
-      testo.setAttribute("style", "color: Orange");
-      let messaggio = "";
+    const [fermate, bus, sopp, mezzi] = await Promise.all([
+        getStartFermateServer(),
+        getStartBusServer(),
+        getStartSoppServer(),
+        getMezziServer()
+    ]);
 
-      if (serviziDown.length === 1) {
-          messaggio = `Il servizio ${serviziDown[0]} non è attualmente disponibile, il bottone rimanda al servizio originale di Start.`;
-      } else {
-          const lista = serviziDown.slice(0, -1).join(", ") + " e " + serviziDown.slice(-1);
-          messaggio = `I servizi ${lista} non sono attualmente disponibili, i bottoni rimandano ai servizi originali di Start.`;
-      }
+    const fermateOk = fermate.ok;
+    const busOk = bus.ok;
+    const soppOk = sopp.ok;
+    const mezziOk = mezzi.ok;
+    let serviziDown = [];
+    if (!mezziOk) {
+        btnMezzi.classList.replace("green", "wip");
+        btnMezzi.removeAttribute("href");
+        btnMezzi.setAttribute("href", "/service/servicenotavailable.html");
+        divCerca.setAttribute("style","display: none");
+        serviziDown.push("Lista Mezzi");
+    }
+    if(!fermateOk) {
+        btnFermate.classList.replace("green", "wip");
+        btnFermate.removeAttribute("href");
+        btnFermate.setAttribute("href", "https://infobus.startromagna.it/");
+        serviziDown.push("Visualizzatore fermate");
+    }
+    if(!busOk) {
+        btnLive.classList.replace("green", "wip");
+        btnLive.removeAttribute("href");
+        btnLive.setAttribute("href", "https://infobus.startromagna.it/CapienzaAutobusTempoReale/");
+        serviziDown.push("Bus in tempo reale");
+    }
+    if(!soppOk) {
+        btnSopp.classList.replace("green", "wip");
+        btnSopp.removeAttribute("href");
+        btnSopp.setAttribute("href", "https://www.startromagna.it/corse-non-garantite/");
+        serviziDown.push("Corse non garantite");
+    }
+    if(!fermateOk || !busOk || !soppOk || !mezziOk) {
+        outErr.appendChild(document.createElement("h3")).setAttribute("id", "testo");
+        const testo = document.getElementById("testo");
+        testo.setAttribute("style", "color: Orange");
+        let messaggio = "";
 
-      testo.innerHTML = messaggio;
-  }
+        if (serviziDown.length == 1) {
+            messaggio = `Il servizio ${serviziDown[0]} non è attualmente disponibile, il bottone rimanda al servizio originale di Start.`;
+        } else {
+            const lista = serviziDown.slice(0, -1).join(", ") + " e " + serviziDown.slice(-1);
+            messaggio = `I servizi ${lista} non sono attualmente disponibili, i bottoni rimandano ai servizi originali di Start.`;
+        }
+
+        testo.innerHTML = messaggio;
+    }
 }

@@ -23,7 +23,7 @@
         height: auto !important;
     }
     td, th{
-        padding: 1.35vw !important;
+        padding: 1.5vw !important;
     }
 }
 
@@ -136,17 +136,18 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
-#bacino,
-#searchBar {
+#bacino, #searchBar {
     margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
-    border: 1px solid #727070;
+    border: 0;
 }
 
 #bacino{
-    margin-top: 10px;
+    margin-top: 16px;
 }
 
 footer {
@@ -166,19 +167,19 @@ footer {
     margin-bottom: 10px;
 }
 #radios{
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
 }
 
-div#radios div{
+#radios div{
     display: flex;
     align-items: center;
     width: auto;
     margin-left: 8px;
     padding: 8px;
-    border: 2px #404040 solid;
+    border: 2px dimgray solid;
     border-radius: 8px;
 }
 
@@ -189,4 +190,8 @@ div#radios div{
 
 .anticipo{
     color: lime;
+}
+
+footer div p{
+    margin-top: 4px;
 }

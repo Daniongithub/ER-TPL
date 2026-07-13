@@ -56,13 +56,6 @@ function numeromezzi() {
     });
     document.getElementById('nummezzi').innerHTML = visibili.length;
 }
-// Primo fetch
-fetchData();
-
-// Fetch dei dati ogni 30 secondi (30 000 millisecondi)
-timer = setInterval(() => {
-    fetchData();
-}, 30000);
 
 // Fetch dei dati e creazione della tabella
 function fetchData() {
@@ -168,3 +161,8 @@ document.getElementById('filterZona').addEventListener('input', numeromezzi);
 document.getElementById('filterLinea').addEventListener('input', numeromezzi);
 document.getElementById('filterVeicolo').addEventListener('input', numeromezzi);
 document.getElementById('filterCodiceFermata').addEventListener('input', numeromezzi);
+
+fetchData();
+
+//Auto update
+timer = setInterval(fetchData, 30000);
