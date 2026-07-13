@@ -99,6 +99,9 @@ div.footer{
     padding-left: 48px;
     padding-right: 48px;
 }
+div.footer p{
+    margin-top: 15px;
+}
 
 div.riga {
     flex: 1;
@@ -284,11 +287,6 @@ a.rossosott{
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.spazio{
-    height: 20px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
 h2 {
     font-size: 20px;
     margin-bottom: 10px;
@@ -299,9 +297,6 @@ h2.sezioni {
 }
 h2.admin{
     margin-left: 12px;
-}
-p.novitasito{
-    margin: 10px;
 }
 table.image-table {
     width: 98%;
@@ -413,6 +408,8 @@ span.blue{
     width: 300px;
     margin: 15px;
     font-size: 16px;
+    border-radius: 6px;
+    border: 0;
 }
 
 .articoloPar {

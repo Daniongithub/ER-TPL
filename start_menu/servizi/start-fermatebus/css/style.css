@@ -54,10 +54,14 @@ input{
     padding: 2px;
 }
 
+#tabella-container{
+    display: flex;
+    justify-content: center;
+}
+
 table {
     border-collapse: collapse;
-    width: 85%;
-    margin: auto;
+    min-width: 85%;
     margin-top: 1rem;
 }
 
@@ -66,13 +70,13 @@ th {
 }
 
 th, td {
-    border: 2px solid #444;
+    border: 1px solid rgb(100, 100, 100);
     padding: 8px;
     text-align: left;
 }
 
 tr:nth-child(even) {
-    background-color: #595656;
+    background-color: rgb(60, 60, 60);
 }
 
 .bus-card-red {
@@ -179,7 +183,7 @@ div#radios div{
 }
 
 .ritardo{
-    color: rgb(255, 112, 112);
+    color: rgb(255, 70, 70);
 }
 
 

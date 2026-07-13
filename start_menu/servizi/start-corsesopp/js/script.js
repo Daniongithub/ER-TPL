@@ -1,97 +1,91 @@
 const API_ENDPOINT = "https://ertpl-api.vercel.app/startsopp";
 
 async function getApiUrl() {
-  const res = await fetch(API_ENDPOINT);
-  const cfg = await res.json();
-  if (cfg.status !== "ok") return null;
-  return cfg.url;
+    const res = await fetch(API_ENDPOINT);
+    const cfg = await res.json();
+    if (cfg.status !== "ok") return null;
+    return cfg.url;
 }
 
-// IMPORTANT!! DO NOT MODIFY BELOW //
-let ultimaRichiesta = null;
-let intervalloAggiornamento = null;
-const delay = ms => new Promise(res => setTimeout(res, ms));
+const container = document.getElementById('tabella-container');
+const message = document.getElementById('message-container');
+let updateInt = null;
+
+//IMPORTANT!! DO NOT MODIFY BELOW
+//E io lo faccio lo stesso :D -SMF
 
 async function loadVersion() {
-  try {
-    let testUri = await getApiUrl();
-    testUri = testUri + "/versione";
-    const response = await fetch(testUri);
-    const data = await response.json();
-    document.getElementById("version").innerHTML = data.version;
-  }
-  catch {
-    document.getElementById("version").innerHTML = "Errore";
-  }
+    try {
+        const testUri = await getApiUrl() + "/versione";
+        const response = await fetch(testUri);
+        const data = await response.json();
+        document.getElementById("version").innerHTML = data.version;
+    }
+    catch {
+        document.getElementById("version").innerHTML = "Errore";
+    }
 }
 
-async function caricaDati(event = null, richiestaManuale = false) {
-  if (event) event.preventDefault();
+async function caricaDati() {
+    container.style.display = 'none';
+    const bacino = document.getElementById("stazione").value;
+    const tbody = document.querySelector("tbody");
 
-  let ApiUri = await getApiUrl();
-  if (!ApiUri) {
-    console.error("No API URI available");
-    return;
-  }
+    //Loading screen
+    message.innerHTML = `<tr>Caricamento in corso...</tr>`;
 
-  ApiUri = ApiUri.replace(/\/$/, ""); // 🔧 normalize
+    //Date composing
+    const date = new Date().toISOString().slice(0, 10);
 
-  const Bacino = document.getElementById("stazione").value;
-  const corpo = document.getElementById("corpoTabella");
-  const tabella = document.getElementById("tabellaDati");
+    //URL creation
+    const url = await getApiUrl() + `/?Bacino=${bacino}&Data=${date}`;
+    console.log(url);
 
-  ultimaRichiesta = { Bacino };
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Errore nella richiesta. Stato HTTP: ${response.status}`);
+        }
+        const data = await response.json();
 
-  const oggi = new Date();
-  const Data = oggi.toISOString().slice(0, 10);
+        if (data.length == 0) {
+            message.innerHTML = `<tr>Nessun dato disponibile.</tr>`;
+            return;
+        }
 
-  const url = `${ApiUri}/?Bacino=${Bacino}&Data=${Data}`;
-
-  try {
-    if (richiestaManuale) {
-      tabella.style.display = "table";
-      corpo.innerHTML = `<tr><td colspan="6" class="loading-message">Caricamento in corso...</td></tr>`;
+        //Fill table
+        tbody.innerHTML = '';
+        data.forEach(element => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${element[0]}</td>
+                <td>${element[1]}</td>
+                <td>${element[2]}</td>
+                <td>${element[3]}</td>
+                <td>${element[4]}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch (error) {
+        console.error("Errore durante il caricamento dati:", error);
+        tbody.innerHTML = `
+            <tr>
+                Errore durante il caricamento dei dati.<br>
+            </tr>`;
     }
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Upstream error ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (!Array.isArray(data) || data.length === 0) {
-      corpo.innerHTML = `<tr><td colspan="6" class="loading-message">Nessun dato disponibile.</td></tr>`;
-      return;
-    }
-
-    corpo.innerHTML = data
-      .map(row => `<tr>${row.map(col => `<td>${col}</td>`).join("")}</tr>`)
-      .join("");
-
-  } catch (error) {
-    console.error("Errore durante la richiesta:", error);
-    if (richiestaManuale) {
-      corpo.innerHTML = `<tr><td colspan="6" class="loading-message">
-        Errore durante il caricamento dei dati.<br>
-        Controlla la console per i dettagli.
-      </td></tr>`;
-      await delay(7000);
-      tabella.style.display = "none";
-    }
-  }
+    container.style.display = 'block';
+    message.innerHTML = '<p>I dati si riferiscono alla giornata di oggi.</p>';
 }
 
-function avviaAggiornamentoAutomatico() {
-  if (intervalloAggiornamento) clearInterval(intervalloAggiornamento);
-  intervalloAggiornamento = setInterval(() => {
-    if (ultimaRichiesta) caricaDati(null, false);
-  }, 30000);
+function startUpdate() {
+    if (updateInt) clearInterval(updateInt);
+    updateInt = setInterval(caricaDati, 30000);
 }
 
-document.getElementById("formStazione").addEventListener("submit", e => {
-  caricaDati(e, true);
-  avviaAggiornamentoAutomatico();
-});
+function buttonPress(){
+    startUpdate();
+    caricaDati();
+}
 
 loadVersion();
+buttonPress();

@@ -14,7 +14,6 @@ const buttons = document.getElementById('buttons');
 let allProducts = [];
 window.onbeforeunload=searchBar.value="";
 
-//const url = '/seta_modena/menu/js/setabus.json';
 //const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
 getApiUrl().then(url => {
 fetch(url + "/seta/mezzi")

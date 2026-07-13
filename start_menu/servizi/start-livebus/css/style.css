@@ -1,19 +1,3 @@
-h1 {
-    text-align: center;
-    color: white;
-    font-size: 2em;
-}
-
-h3 {
-    text-align: center;
-    color: white;
-    margin-bottom: 30px;
-}
-
-p {
-    text-align: center;
-}
-
 #data-container {
     min-width: 80%;
     max-width: 100%;
@@ -31,7 +15,6 @@ p {
     background-color: #333;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
     row-gap: 4px;
 }
@@ -41,20 +24,20 @@ p {
 }
 
 .filter-container button {
-    margin-left: 15px;
     flex: 1 1 10px;
-    background-color: transparent;
-    border: 2px #404040 solid;
+    background-color: darkcyan;
+    border: 0;
     border-radius: 8px;
 }
 
-.filter-container input {
+.filter-container input, .filter-container select{
     flex: 1 1 200px;
     padding: 10px 15px;
     font-size: 16px;
-    border: 2px #404040 solid;
+    border: 2px rgba(0, 139, 139, 0.5) solid;
     border-radius: 8px;
     transition: border-color 0.3s ease;
+    /*transition: background-color 0.3s ease;*/
     background-color: transparent;
     color: white;
     min-width: 0;
@@ -62,93 +45,59 @@ p {
     margin-right: 15px;
 }
 
-.filter-container input:focus {
+.filter-container input:focus, .filter-container select:focus{
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    border-color: darkcyan;
+    /*background-color: rgba(0, 139, 139, 0.1)*/
 }
 
-.filter-container select {
-    flex: 1 1 200px;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 2px #404040 solid;
-    border-radius: 8px;
-    transition: border-color 0.3s ease;
-    background-color: transparent;
-    color: white;
-    min-width: 0;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-.filter-container select:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-}
-
-.filter-container select option {
-    background-color: rgb(60, 60, 60);
-    color: white;
+.filter-container button:active {
+    background-color: rgba(0, 139, 139, 0.5);
 }
 
 .num {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 6px;
+    margin-bottom: 6px;
     max-width: 150px;
     margin-left: auto;
     margin-right: auto;
     background-color: #333;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 table {
     border-collapse: separate;
     border-spacing: 0;
     border: 1px solid rgb(100, 100, 100);
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
     min-width: 85%;
     max-width: 100%;
-    margin: 18px auto;
 }
 
 /*Linee verticali*/
-th:not(:last-child),
-td:not(:last-child) {
+th:not(:last-child), td:not(:last-child) {
     border-right: 1px solid rgb(100, 100, 100);
 }
-
 /*Linee orizzontali*/
-tr:not(:last-child)>th,
-tr:not(:last-child)>td {
+tr:not(:last-child) > th, tr:not(:last-child) > td {
     border-bottom: 1px solid rgb(100, 100, 100);
-    ;
 }
-
 th {
-    background-color: slategray;
-    color: white;
-    text-align: center;
+    background-color: darkcyan;
     padding: .7vw;
 }
-
 td {
     padding: .7vw;
-    background-color: #282828;
-    color: white;
 }
-
-tr:nth-child(even) td {
+tr.even {
     background-color: rgb(60, 60, 60);
 }
 
 @media (max-width: 768px) {
     .filter-container {
         flex-direction: column;
-        padding: 12px 15%;
+        padding: 12px ;
         row-gap: 8px;
         box-sizing: border-box;
         width: calc(100% - 30px);

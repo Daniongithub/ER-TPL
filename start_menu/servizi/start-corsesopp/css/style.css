@@ -3,55 +3,36 @@
     --accent-color: #0074d9;
     --white: #ffffff;
     --light-gray: #848991;
-    --border-color: #727070;
+    --border-color: rgb(100, 100, 100);
     --text-color: #ffffff;
     --black: #000000;
 }
 
 @media (max-width: 768px) {
-    .divtab{
+    #tabella-container{
         overflow-x: scroll;
     }
 }
 
 img{
-    margin-top: 10px;
+    margin-top: 32px;
     width: 150px;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    text-align: center;
-}
-
-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-form label {
+label {
     font-weight: 600;
+    margin-right: 8px;
 }
 
-form select,
-form button {
+select, button {
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
-    border: 1px solid var(--border-color);
+    margin-right: 8px;
+    border: 0;
 }
 
-form button {
+button {
     background-color: var(--accent-color);
     color: white;
     border: none;
@@ -59,35 +40,53 @@ form button {
     transition: background-color 0.3s ease;
 }
 
-form button:hover {
+button:hover {
     background-color: #005fa3;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+button:active {
+    background-color: #00487b;
+}
+
+#message-container{
+    margin:16px;
+}
+
+#tabella-container{
     display: none;
+}
+
+table {
+    min-width: 85%;
+    max-width: 100%;
+    /*Tabella tonda*/
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+/*Linee verticali*/
+th:not(:last-child), td:not(:last-child) {
+    border-right: 1px solid rgb(100, 100, 100);
+}
+/*Linee orizzontali*/
+tr:not(:last-child) > th, tr:not(:last-child) > td {
+    border-bottom: 1px solid rgb(100, 100, 100);
 }
 
 th, td {
     padding: 12px;
-    border: 1px solid var(--border-color);
     text-align: left;
 }
 
 th {
-    background-color: var(--light-gray);
+    background-color: darkcyan;
 }
 
 tr:nth-child(even) {
-    background-color: #505050;
-}
-
-.loading-message {
-    text-align: center;
-    color: #777;
-    font-style: italic;
-    padding: 20px 0;
+    background-color: rgb(60, 60, 60);
 }
 
 a {
