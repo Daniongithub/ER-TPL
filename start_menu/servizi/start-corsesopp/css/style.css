@@ -52,7 +52,6 @@
     select, input[type="date"], button {
         width: 100%;
         margin-right: 0;
-        box-sizing: border-box;
     }
     
     button {
@@ -87,7 +86,7 @@ label {
     margin-right: 8px;
 }
 
-select, input[type="date"], button {
+select, input, button {
     height: 44px;
     margin: 0;
     padding: 0 12px;
@@ -99,6 +98,15 @@ select, input[type="date"], button {
     border: 2px rgba(0, 139, 139, 0.5) solid;
     transition: border-color 0.3s ease;
     box-sizing: border-box;
+}
+
+button {
+    border: 0;
+}
+
+select:focus, input:focus {
+    outline: none;
+    border: 2px darkcyan solid;
 }
 
 select option {
@@ -113,7 +121,6 @@ input[type="date"] {
 button {
     background-color: var(--accent-color);
     color: white;
-    border: 2px solid var(--accent-color);
     cursor: pointer;
     transition: background-color 0.3s ease, border-color 0.3s ease;
     display: inline-flex;
