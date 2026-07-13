@@ -88,4 +88,3 @@ function buttonPress(){
 }
 
 loadVersion();
-buttonPress();
