@@ -106,8 +106,8 @@ select option {
     color: white;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
+input[type="date"] {
+    color-scheme: dark;
 }
 
 button {
