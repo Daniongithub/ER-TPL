@@ -153,3 +153,9 @@ img {
     margin-top: 10px;
     width: 150px;
 }
+
+/* Questo pezzo qui fixa il dropdown su alcuni browser*/
+.filter-container select option {
+    background-color: rgb(60, 60, 60);
+    color: white;
+}

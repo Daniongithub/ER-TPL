@@ -11,9 +11,7 @@ const container = document.getElementById('tabella-container');
 const message = document.getElementById('message-container');
 let updateInt = null;
 
-//IMPORTANT!! DO NOT MODIFY BELOW
-//E io lo faccio lo stesso :D -SMF
-
+// Carica la versione della API
 async function loadVersion() {
     try {
         const testUri = await getApiUrl() + "/versione";
@@ -26,15 +24,21 @@ async function loadVersion() {
     }
 }
 
+// Carica i dati effettivi
 async function caricaDati() {
+    container.style.display = 'none';
     const bacino = document.getElementById("stazione").value;
     const tbody = document.querySelector("tbody");
 
-    //Loading screen
+    // Messaggio di caricamento
     message.innerHTML = `<tr>Caricamento in corso...</tr>`;
 
     //Date composing
-    const date = new Date().toISOString().slice(0, 10);
+    let date = document.getElementById("data").value;
+    if (!date) {
+        date = new Date().toISOString().slice(0, 10);
+        document.getElementById("data").value = date;
+    }
 
     //URL creation
     const url = await getApiUrl() + `/?Bacino=${bacino}&Data=${date}`;
@@ -73,7 +77,7 @@ async function caricaDati() {
             </tr>`;
     }
     container.style.display = 'block';
-    message.innerHTML = '<p>I dati si riferiscono alla giornata di oggi.</p>';
+    message.innerHTML = "";
 }
 
 function startUpdate() {
@@ -87,3 +91,9 @@ function buttonPress(){
 }
 
 loadVersion();
+
+// Imposta la data di oggi come default nell'input
+const dateInput = document.getElementById("data");
+if (dateInput) {
+    dateInput.value = new Date().toISOString().slice(0, 10);
+}
