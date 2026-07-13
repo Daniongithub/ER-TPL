@@ -61,7 +61,7 @@
     }
     
     #tabella-container {
-        overflow-x: auto;
+        overflow-x: scroll;
         -webkit-overflow-scrolling: touch;
         padding: 0 8px;
     }
@@ -72,7 +72,7 @@
     }
     
     th, td {
-        padding: 8px 6px;
+        padding: 1.5vw;
         font-size: 14px;
     }
 }
@@ -160,7 +160,7 @@ tr:not(:last-child) > th, tr:not(:last-child) > td {
 }
 
 th, td {
-    padding: 12px;
+    padding: .7vw;
     text-align: left;
 }
 
