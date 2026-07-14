@@ -86,7 +86,7 @@ function startUpdate() {
 }
 
 function buttonPress(){
-    startUpdate();
+    //startUpdate();
     caricaDati();
 }
 
