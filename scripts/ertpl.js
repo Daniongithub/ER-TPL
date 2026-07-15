@@ -27,6 +27,8 @@
             if (cfg.status !== "ok") isOffline=true;
 
             document.querySelectorAll("img[data-path]").forEach(img => {
+                img.loading = "lazy"; // Implementazione del lazy-loading
+
                 if(isOffline){
                     img.setAttribute("alt","Server foto non raggiungibili.");
                     return;
@@ -45,10 +47,13 @@
 
                 img.src = imglink;
 
-                // aggiorna solo i link che NON finiscono con .html
+                // Aggiorna solo i link che NON finiscono con .html
                 if (link && !link.href.endsWith(".html")) {
                     link.href = url;
                 }
+
+                // Pulisci il data-path
+                img.removeAttribute("data-path");
             });
 
         } catch (e) {
