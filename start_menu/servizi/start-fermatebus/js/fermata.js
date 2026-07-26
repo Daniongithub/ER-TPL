@@ -1,7 +1,7 @@
 // API source code: https://github.com/Daniongithub/startfermate-api
 
 // New fallback system (HA)
-const API_ENDPOINT = "https://ertpl-api.vercel.app/startfermate";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/startfermate";
 
 async function getApiUrl() {
   const res = await fetch(API_ENDPOINT);

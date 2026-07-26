@@ -1,5 +1,5 @@
 // New fallback system (HA)
-const API_ENDPOINT = "https://ertpl-api.vercel.app/startbus";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/startbus";
 var manualLoad = true;
 
 async function getApiUrl() {

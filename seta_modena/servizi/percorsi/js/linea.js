@@ -1,4 +1,4 @@
-const API_ENDPOINT = "https://ertpl-api.vercel.app/seta";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/seta";
 
 async function getApiUrl() {
   const res = await fetch(API_ENDPOINT);

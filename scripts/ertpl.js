@@ -1,6 +1,6 @@
 // New fallback system (HA)
 (() => {
-    const API_ENDPOINT = "https://ertpl-api.vercel.app/nextcloud";
+    const API_ENDPOINT = "https://ertpl-api.vichingo455.com/nextcloud";
     let photoConfig = null;
 
     async function getConfig() {
@@ -109,7 +109,7 @@ function mostraemail() {
 
 // This function below is to display the version of the HA API and the current server
 function getApiVersionHA() {
-    fetch("https://ertpl-api.vercel.app/")
+    fetch("https://ertpl-api.vichingo455.com/")
     .then(res => {
         if (!res.ok) {
             throw new Error(res.status);
@@ -119,7 +119,7 @@ function getApiVersionHA() {
     .then(info => {
     document.getElementById("apiVersion").innerHTML =
         `Versione API Alta Disponibilità: v${info.version} (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
-        /*fetch("https://ertpl-api.vercel.app/nextcloud").then(res => res.json()).then(info => {
+        /*fetch("https://ertpl-api.vichingo455.com/nextcloud").then(res => res.json()).then(info => {
             document.getElementById("apiServer").innerHTML = `Server in uso: ${info.server}`;
         }).catch(() => {
             document.getElementById("apiServer").innerHTML = "Server in uso: info non disponibile al momento";

@@ -1,6 +1,6 @@
 const tableContainer = document.getElementById('table-container');
 
-const API_ENDPOINT = "https://ertpl-api.vercel.app/mezzi";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/mezzi";
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);

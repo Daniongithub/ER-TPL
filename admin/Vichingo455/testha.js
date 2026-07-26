@@ -66,7 +66,7 @@ async function checkBrowser(services) {
 // =========================
 async function getApiVersionHA() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/");
     return { ok: true, version: info.version };
   } catch {
     return { ok: false };
@@ -75,7 +75,7 @@ async function getApiVersionHA() {
 
 async function getNextcloudServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/nextcloud");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/nextcloud");
     return {
       ok: true,
       server: info.server,
@@ -88,7 +88,7 @@ async function getNextcloudServer() {
 
 async function getStartBusServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/startbus");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/startbus");
     return {
       ok: true,
       server: info.server,
@@ -101,7 +101,7 @@ async function getStartBusServer() {
 
 async function getStartSoppServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/startsopp");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/startsopp");
     return {
       ok: true,
       server: info.server,
@@ -114,7 +114,7 @@ async function getStartSoppServer() {
 
 async function getStartFermateServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/startfermate");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/startfermate");
     return {
       ok: true,
       server: info.server,
@@ -127,7 +127,7 @@ async function getStartFermateServer() {
 
 async function getSetaServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/seta");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/seta");
     return {
       ok: true,
       server: info.server,
@@ -140,7 +140,7 @@ async function getSetaServer() {
 
 async function getTperServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/tper");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/tper");
     return {
       ok: true,
       server: info.server,
@@ -153,7 +153,7 @@ async function getTperServer() {
 
 async function getMezziServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vercel.app/mezzi");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/mezzi");
     return {
       ok: true,
       server: info.server,

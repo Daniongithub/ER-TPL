@@ -2,7 +2,7 @@
 // *** BETA LISTA MEZZI! ***
 // Attenzione, tutto ciò qui sotto è in fase di sviluppo, né definitivo.
 
-const API_ENDPOINT = "https://ertpl-api.vercel.app/mezzi";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/mezzi";
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
