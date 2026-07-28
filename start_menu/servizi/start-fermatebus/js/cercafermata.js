@@ -97,49 +97,45 @@ radios.forEach(radio => {
     });
 });
 
-document.getElementById('bacino').addEventListener('change', function(event) {
+document.getElementById('bacino').addEventListener('change', async function (event) {
+    const selectedOption = event.target.value;
+    currentSelectedOption = selectedOption;
+
+    const radiobuttons = document.getElementById('radios');
+    const ricerca = document.getElementById('ricerca');
+    const resultsContainer = document.getElementById('searchResults');
+
     searchBar.setAttribute("disabled", "");
-    getApiUrl().then(url => {
-        const selectedOption = event.target.value;
-        currentSelectedOption = selectedOption;
+    ricerca.removeAttribute("style");
+    document.getElementById('searchBar').value = "";
 
-        const urlFermate = `${url}/bacino?prov=${selectedOption}`;
+    if (selectedOption === "n") {
+        ricerca.style.display = "none";
+        radiobuttons.style.display = "none";
+        allOptions = [];
+        resultsContainer.innerHTML = "";
+        return;
+    }
 
-        const radiobuttons = document.getElementById('radios');
-        const ricerca = document.getElementById('ricerca');
-        ricerca.removeAttribute('style');
+    if (selectedOption === "ra") {
+        radiobuttons.removeAttribute("style");
+    } else {
+        radiobuttons.style.display = "none";
+    }
 
-        document.getElementById('searchBar').value = "";
-        
-        if(selectedOption == "n"){
-            ricerca.setAttribute("style", "display: none;");
-            radiobuttons.setAttribute("style", "display: none;");
-            searchBar.setAttribute("disabled", "");
-            allOptions = [];
-            document.getElementById('searchResults').innerHTML = '';
-            return;
-        }
-        else if(selectedOption == "ra"){
-            radiobuttons.removeAttribute('style')
-        }
+    resultsContainer.innerHTML = "<p>Caricamento lista fermate in corso...</p>";
 
-        if(selectedOption != "n"){
-            const resultsContainer = document.getElementById('searchResults');
-            resultsContainer.innerHTML = '<p>Caricamento lista fermate in corso...</p>';
-            if(selectedOption != "ra"){
-                radiobuttons.setAttribute("style", "display: none !important;");
-            }
-            fetch(urlFermate)
-            .then(res => res.json())
-            .then(data => {
-                allOptions = data;
-                populateSearchResults(allOptions, selectedOption);
-                searchBar.removeAttribute("disabled");
-            })
-            .catch(err => {
-                resultsContainer.innerHTML = '<p>Errore nel caricamento delle fermate.</p>';
-                console.error('Errore:', err);
-            });
-        }
-    });
+    try {
+        const url = await getApiUrl();
+
+        const res = await fetch(`${url}/bacino?prov=${selectedOption}`);
+        const data = await res.json();
+
+        allOptions = data;
+        populateSearchResults(allOptions, selectedOption);
+        searchBar.removeAttribute("disabled");
+    } catch (err) {
+        resultsContainer.innerHTML = "<p>Errore nel caricamento delle fermate.</p>";
+        console.error(err);
+    }
 });

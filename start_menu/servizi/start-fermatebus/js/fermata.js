@@ -22,7 +22,7 @@ ergo, visualizzazione dettagliata, che comunque all'utente finale non serve.
 const det = params.get('det');
 function caricadati(){
     getApiUrl().then(url => {
-        fetch(`${url}/fermata?param=${tID}&param2=${prov}&palina=${cod}&det=${det}`)
+        fetch(`${url}/fermata?param=${tID}&param2=${prov}&palina=${cod}&det=${det || ''}`)
     .then(res => res.json())
     .then(data => {
         const fermata_span = document.getElementById('fermata-span');
