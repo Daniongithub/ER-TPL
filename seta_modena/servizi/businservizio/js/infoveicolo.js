@@ -245,7 +245,4 @@ if(id==""||id==undefined){
     caricadati();
 
     setInterval(caricadati, 60000);
-    //AVM Mode
-    const avmContainer = document.getElementById('avm-container');
-    avmContainer.innerHTML = '<a href="avmmode.html?id='+id+'">Ingrandisci i dati</a>';
 }
