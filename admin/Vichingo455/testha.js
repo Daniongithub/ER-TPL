@@ -48,7 +48,7 @@ async function checkEndpoint(url, expectedContentType) {
 
 async function checkBrowser(services) {
   try {
-    await checkEndpoint(services.nextcloud.url, "application/json");
+    await checkEndpoint(services.cdn.url, "text/plain");
     await checkEndpoint(services.startbus.url, "application/json");
     await checkEndpoint(services.startsopp.url, "application/json");
     await checkEndpoint(services.startfermate.url, "text/plain");
@@ -73,13 +73,13 @@ async function getApiVersionHA() {
   }
 }
 
-async function getNextcloudServer() {
+async function getCdnServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vichingo455.com/nextcloud");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/cdn");
     return {
       ok: true,
       server: info.server,
-      url: info.url + "/status.php"
+      url: info.url + "/health"
     };
   } catch {
     return { ok: false };
@@ -225,7 +225,7 @@ async function initTestHA() {
 
   const [
     api,
-    nextcloud,
+    cdn,
     startbus,
     startsopp,
     startfermate,
@@ -234,7 +234,7 @@ async function initTestHA() {
     mezzi
   ] = await Promise.all([
     getApiVersionHA(),
-    getNextcloudServer(),
+    getCdnServer(),
     getStartBusServer(),
     getStartSoppServer(),
     getStartFermateServer(),
@@ -245,7 +245,7 @@ async function initTestHA() {
 
   // Render risultati singoli
   renderApiVersion(api);
-  renderServer("apiNextcloudServer", "Server in uso (foto)", nextcloud);
+  renderServer("apiCdnServer", "Server in uso (foto)", cdn);
   renderServer("apiStartBusServer", "Server in uso (START Autobus in tempo reale)", startbus);
   renderServer("apiStartSoppServer", "Server in uso (START Corse Soppresse)", startsopp);
   renderServer("apiStartFermateServer", "Server in uso (START Fermate)", startfermate);
@@ -255,7 +255,7 @@ async function initTestHA() {
 
   const serverOk = [
     api,
-    nextcloud,
+    cdn,
     startbus,
     startsopp,
     startfermate,
@@ -265,7 +265,7 @@ async function initTestHA() {
   ].every(r => r.ok);
 
   const clientOk = await checkBrowser({
-    nextcloud,
+    cdn,
     startbus,
     startsopp,
     startfermate,
