@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore pagine sito</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Generatore di pagine web per ER-TPL</h1>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <label for="mezzo">Inserisci modello del mezzo:</label>
+        <input type="url" id="mezzo" required="required">
+        <label for="matr">Inserisci range matricole:</label>
+        <input type="url" id="matr" required="required">
+        <label for="azienda">Inserisci nome azienda principale:</label>
+        <input type="url" id="azienda" required="required">
+        <label for="linkAz">Inserisci link HTML azienda principale:</label>
+        <input type="url" id="linkAz" required="required">
+        <label for="sezione">Inserisci nome sezione:</label>
+        <input type="url" id="sezione" required="required">
+        <label for="linkSez">Inserisci link HTML sezione:</label>
+        <input type="url" id="linkSez" required="required">
+    </div>
+    <br>
+    <br>
+    <button onclick="genera()">Conferma</button>
+    <button onclick="copiaOutput()">Copia negli appunti</button>
+	<button onclick="pulisci()">Pulisci</button>
+    <pre><code id="output"></code></pre>
+    <script src="script.js"></script>
+</body>
+</html>

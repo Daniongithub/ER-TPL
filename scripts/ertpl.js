@@ -1,6 +1,6 @@
 // New fallback system (HA)
 (() => {
-    const API_ENDPOINT = "https://ertpl-api.vichingo455.com/nextcloud";
+    const API_ENDPOINT = "https://ertpl-api.vichingo455.com/cdn";
     let photoConfig = null;
 
     async function getConfig() {
@@ -11,41 +11,52 @@
         return photoConfig;
     }
 
-    function buildPreviewUrl(cfg, path, x = 1920, y = 1080, isMenu = false, isLeo) {
-        if(isLeo){
-            return `${cfg.url}/apps/files_sharing/publicpreview/${cfg.share}` +
-            `?file=${encodeURIComponent(path)}&x=${x}&y=${y}`;
+    function buildPreviewUrl(cfg, path, isMenu = false, isLeo, original = false) {
+        if (isLeo) {
+            return `${cfg.url}/img?path=${encodeURIComponent(path)}&crop=true`;
         }
-        return `${cfg.url}/apps/files_sharing/publicpreview/${cfg.share}` +
-            `?file=${encodeURIComponent(path)}&x=${x}&y=${y}` + (isMenu ? "" : "&a=true");
+
+        if (original) {
+            return `${cfg.url}/img?path=${encodeURIComponent(path)}`;
+        }
+
+        return `${cfg.url}/img?path=${encodeURIComponent(path)}` + (isMenu ? "&crop=true" : "&crop=resize");
     }
 
     async function initPhotos() {
         try {
             const cfg = await getConfig();
             let isOffline = false;
-            if (cfg.status !== "ok") isOffline=true;
+            if (cfg.status !== "ok") isOffline = true;
 
             document.querySelectorAll("img[data-path]").forEach(img => {
+                img.addEventListener("error", () => { img.alt = "Errore nel caricamento delle foto."; });
+
                 img.loading = "lazy"; // Implementazione del lazy-loading
 
-                if(isOffline){
-                    img.setAttribute("alt","Server foto non raggiungibili.");
+                if (isOffline) {
+                    img.setAttribute("alt", "Server foto non raggiungibili.");
                     return;
                 }
+
                 const path = img.dataset.path;
+
+                if (!path) {
+                    return;
+                }
+
                 let isLeo = false;
                 const pageUrl = document.location.href;
-                if(pageUrl.includes("/seta_modena/")){
+                if (pageUrl.includes("/seta_modena/")) {
                     isLeo = true;
                 }
+
                 const link = img.closest("a");
                 const isMenu = img.classList.contains("bus");
-
-                const url = buildPreviewUrl(cfg, path, 1920, 1080, isMenu, false);
-                const imglink = buildPreviewUrl(cfg, path, 1920, 1080, isMenu, isLeo);
-
+                const imglink = buildPreviewUrl(cfg, path, isMenu, isLeo);
                 img.src = imglink;
+
+                const url = buildPreviewUrl(cfg, path, false, false, true);
 
                 // Aggiorna solo i link che NON finiscono con .html
                 if (link && !link.href.endsWith(".html")) {
@@ -58,6 +69,7 @@
 
         } catch (e) {
             console.error("Photo init failed", e);
+            document.querySelectorAll("img[data-path]").forEach(img => {img.setAttribute("alt", "Server foto non raggiungibili.");});
         }
     }
 
@@ -83,7 +95,7 @@ function updateTimer() {
     const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 
     document.getElementById("timer").innerHTML =
-        years + (years==1 ? " anno " : " anni ") +
+        years + (years == 1 ? " anno " : " anni ") +
         days + " giorni " +
         hours + " ore " +
         minutes + " minuti " +
@@ -110,22 +122,15 @@ function mostraemail() {
 // This function below is to display the version of the HA API and the current server
 function getApiVersionHA() {
     fetch("https://ertpl-api.vichingo455.com/")
-    .then(res => {
-        if (!res.ok) {
-            throw new Error(res.status);
-        }
-        return res.json();
-    })
-    .then(info => {
-    document.getElementById("apiVersion").innerHTML =
-        `Versione API Alta Disponibilità: v${info.version} (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
-        /*fetch("https://ertpl-api.vichingo455.com/nextcloud").then(res => res.json()).then(info => {
-            document.getElementById("apiServer").innerHTML = `Server in uso: ${info.server}`;
-        }).catch(() => {
-            document.getElementById("apiServer").innerHTML = "Server in uso: info non disponibile al momento";
-        });*/
-    })
-    .catch(() => {
-        document.getElementById("apiVersion").innerHTML = `Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento. (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
-    });
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(res.status);
+            }
+            return res.json();
+        })
+        .then(info => {
+            document.getElementById("apiVersion").innerHTML =`Versione API Alta Disponibilità: v${info.version} (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`})
+        .catch(() => {
+            document.getElementById("apiVersion").innerHTML = `Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento. (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
+        });
 }

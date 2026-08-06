@@ -17,12 +17,7 @@ function generatd() {
         }
         const htmlString = `<td><a><img data-path="${path}" alt="Caricamento in corso..."></a></td>`;
 
-        const escapedOutput = htmlString
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;");
-
-        document.getElementById("output").innerHTML = escapedOutput;
+        document.getElementById("output").textContent = htmlString;
 
     } catch (error) {
         alert("URL non valido.");
@@ -36,23 +31,23 @@ function generaimg() {
         alert("Compila i campi.");
         return;
     }
-    link = link.replace(/&a=true/, '');
     try {
         const urlObj = new URL(link);
         const params = new URLSearchParams(urlObj.search);
+
         const path = params.get("file");
+        if (!path) {
+            alert("Parametro ?file= mancante nell'URL.");
+            return;
+        }
+
         let class1 = "class=\"bus\"";
         let class2 = "class=\"copertina\" width=\"500vw\"";
         let classe = (flag.checked) ? class2 : class1;
 
         const htmlString = `<img ${classe} data-path="${path}" alt="Caricamento in corso...">`;
 
-        const escapedOutput = htmlString
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;");
-
-        document.getElementById("output").innerHTML = escapedOutput;
+        document.getElementById("output").textContent = htmlString;
 
     } catch (error) {
         alert("URL non valido.");
@@ -60,15 +55,11 @@ function generaimg() {
 }
 
 function copiaOutput() {
-    const code = document.getElementById("output").innerText;
-    navigator.clipboard.writeText(code).then(() => {
-        //alert("Codice copiato negli appunti!");
-    }).catch(() => {
-        alert("Errore durante la copia.");
-    });
+    const code = document.getElementById("output").textContent;
+    navigator.clipboard.writeText(code);
 }
 
 function pulisci() {
     document.getElementById("link").value = "";
-    document.getElementById("output").innerHTML = "";
+    document.getElementById("output").textContent = "";
 }
