@@ -41,11 +41,12 @@ fetch(url + "/news?link=" + link)
 
         notiziaContainer.appendChild(div);
 
+        /*
         //Controllo deviazioni per collegamento al servizio deviazioni nostro
         if(element.title.includes("chiusura al transito di piazza Roma")||element.title.includes("chiusura al transito di via Emilia centro")){
             const deviazioniP = document.createElement('p');
 
             deviazioniP.innerHTML=`<br> <strong>E' possibile consultare le deviazioni attive sul nostro servizio <a class="novita" href="/seta_modena/servizi/deviazioni/index.html">Deviazioni</a></strong>`;
             notiziaContainer.appendChild(deviazioniP);
-        }
+        }*/
     })})
