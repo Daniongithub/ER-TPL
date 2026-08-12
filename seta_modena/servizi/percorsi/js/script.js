@@ -15,7 +15,7 @@ const schContainer = document.getElementById('scuola-container');
 
 //Elenco linee urbano
 getApiUrl().then(url => {
-fetch(url + "/routenumberslist")
+fetch(url + "/linelist")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -23,6 +23,7 @@ fetch(url + "/routenumberslist")
     .then(data => {
         allresults = data;
         allresults.forEach(element => {
+            //Ordina le linee in categorie
             if(element<100){
                 const result = document.createElement('a');
                 result.setAttribute("class","bianco");

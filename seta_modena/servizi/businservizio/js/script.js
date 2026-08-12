@@ -27,8 +27,8 @@ getApiUrl()
 })
 .then(url => {
     urlList = url + "/busesinservice";
-    urlRoutes = url + "/routenumberslist";
-    urlModels = url + "/busmodels";
+    urlRoutes = url + "/linelist";
+    urlModels = url + "/modelslist";
     fillSelect();
     caricadati();
 })
@@ -76,7 +76,7 @@ function fillSelect(){
         .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
 }
 
-var refreshGeneraleID=setInterval(caricadati, 60000);
+var refreshGeneraleID=setInterval(caricadati, 30000);
 
 function caricadati(){
     //Catalogare errore di connessione HA
@@ -88,7 +88,7 @@ function caricadati(){
             return response.json();
         })
         .then(data => {
-            item = data.features;
+            item = data.buses;
             //Verifica se ci sono bus in servizio
             if(item.length==0){
                 container.innerHTML = "<strong>Nessun bus in è servizio al momento.</strong>";
@@ -151,52 +151,46 @@ function renderTH(table){
     table.appendChild(thead);
 }
 
-function renderElement(tbody, item){
-    const element = item.properties;
+function renderElement(tbody, element){
     const tr = document.createElement('tr');
     if(element.next_stop==null){
         var posizione="";
     }else{
         var posizione=element.next_stop;
     }
-    if(element.br==true){
-        var dest = element.destination1+"<br>"+element.destination2;
-    }else{
-        var dest = element.route_desc;
-    }
     //Overflow tabella
     if(window.screen.width<=512){
-        if(element.route_desc=="MONTEBARANZONE"){
-            dest = "MONTEBA-<br>RANZONE";
+        if(element.destination=="MONTEBARANZONE"){
+            element.destination = "MONTEBA-<br>RANZONE";
         }
-        if(element.route_desc=="MONTOMBRARO"){
-            dest = "MONTOM-<br>BRARO";
+        if(element.destination=="MONTOMBRARO"){
+            element.destination = "MONTOM-<br>BRARO";
         }
-        if(element.route_desc=="CAMPOGALLIANO"){
-            dest = "CAMPOGAL-<br>LIANO";
+        if(element.destination=="CAMPOGALLIANO"){
+            element.destination = "CAMPOGAL-<br>LIANO";
         }
-        if(element.route_desc=="MONTEBONELLO"){
-            dest = "MONTEBO-<br>NELLO";
+        if(element.destination=="MONTEBONELLO"){
+            element.destination = "MONTEBO-<br>NELLO";
         }
     }
-    if(element.hasProblems==true){
+    if(element.has_problems){
         tr.innerHTML = `
-            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${element.linea}</td>
-            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.officialService}'">${dest}</td>
+            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.official_line}'">${element.line}</td>
+            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${element.official_line}'">${element.destination}</td>
         `;
     }else{
         tr.innerHTML = `
-            <td>${element.linea}</td>
-            <td>${dest}</td>
+            <td>${element.line}</td>
+            <td>${element.destination}</td>
         `;
     }
-    if(element.hasAEP){
+    if(element.has_AEP){
         tr.innerHTML += `
-            <td class="bus-card-green cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
+            <td class="bus-card-green cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle}'">${element.vehicle}</td>
         `;
     }else{
         tr.innerHTML += `
-            <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle_code}'">${element.vehicle_code}</td>
+            <td class="cursor-pointer" onclick="window.location.href='/seta_modena/servizi/businservizio/infoveicolo.html?id=${element.vehicle}'">${element.vehicle}</td>
         `;
     }
     tr.innerHTML += `

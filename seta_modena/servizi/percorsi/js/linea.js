@@ -45,7 +45,7 @@ function caricadati(){
     })
     .then(data => {
         //Display testo esiste o no + mappa se esiste
-        if(item.stillExists==true){
+        if(item.still_exists==true){
             existP.setAttribute("class","green-bold");
             existP.innerHTML="Questo percorso esiste ancora"
 
@@ -59,14 +59,18 @@ function caricadati(){
 
             //Bottone fullscreen
             const fullscreenA = document.createElement('a');
+
             fullscreenA.href=baseURL+"/routemap/"+shortId;
             fullscreenA.textContent="Espandi a tutto schermo";
             fullscreenA.className="biancosott"
+
             mapContainer.appendChild(fullscreenA);
-        }else if(item.stillExists==undefined){}else{
+        }else{
             existP.setAttribute("class","red-bold");
             existP.innerHTML="Questo percorso non esiste più"
+            //No mappa
         }
+
         const container = document.getElementById('tabella-container');
         container.innerHTML = '';
         // Creo tabella
@@ -89,13 +93,13 @@ function caricadati(){
             var tr = document.createElement('tr');
             tr.innerHTML = `
                 <tr>
-                    <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.desc}</a></td>
-                    <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}&name=${item.desc}" class="bianco">${item.code}</a></td>
+                    <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}&name=${item.name}" class="bianco">${item.name}</a></td>
+                    <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}&name=${item.name}" class="bianco">${item.code}</a></td>
                 </tr>
             `;
             tbody.appendChild(tr);
-            if(element.islast==true){
-                destSpan.innerHTML=element.desc.toUpperCase();
+            if(element.is_last){
+                destSpan.innerHTML=element.name.toUpperCase();
             }
         });
         table.appendChild(tbody);
