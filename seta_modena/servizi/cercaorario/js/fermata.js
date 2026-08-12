@@ -12,7 +12,7 @@ const nome = params.get('name');
 const codice = params.get('code');
 
 getApiUrl().then(url => {
-fetch(url + "/stopcodesarchive")
+fetch(url + "/stoplist")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -21,7 +21,7 @@ fetch(url + "/stopcodesarchive")
         allresults = data;
         //Pulsante dall'altra parte
         const corsie_nav = document.getElementById('corsie-nav');
-        if(altraParteSearch(nome)!=undefined){
+        if(altraParteSearch(nome)){
             const codes = altraParteSearch(nome);
             const altrocodice = 0;
             if(codice==codes[0]){
@@ -32,7 +32,7 @@ fetch(url + "/stopcodesarchive")
             corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Dall'altra parte</a>
+                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Fermata opposta</a>
                     </li>
                 </ul>`;
         }
@@ -75,25 +75,28 @@ fetch(url + "/stopcodesarchive")
 //Sets stop name
 const fermata_span = document.getElementById('fermata-span');
 fermata_span.textContent=nome;
+const container = document.getElementById('tabella-container');
 
 function caricadati(){
     getApiUrl().then(url => {
     fetch(url + "/arrivals/" + codice)
     .then(response => {
-        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+        if (!response.ok&&response.status!==400) throw new Error("Errore nel caricamento dei dati.");
+        else{
+            container.innerHTML = '';
+
+            if (response.status===400) {
+                container.innerHTML = '<h3>Nessuna corsa programmata nei prossimi 90 minuti.</h3>';
+                throw new Error("NO_ARRIVALS");
+            }
+        }
+        
         return response.json();
     })
     .then(data => {
-        item = data.arrival;
+        item = data.arrivals;
     })
     .then(data => {
-        const container = document.getElementById('tabella-container');
-        container.innerHTML = '';
-
-        if (item.error=="no arrivals scheduled in next 90 minutes") {
-            container.innerHTML = '<h3>Nessuna corsa programmata nei prossimi 90 minuti.</h3>';
-            return;
-        }
         // Creo tabella
         const table = document.createElement('table');
 
@@ -115,7 +118,7 @@ function caricadati(){
         const tbody = document.createElement('tbody');
         item.services.forEach(item => {
             const tr = document.createElement('tr');
-            if(item.type=="planned"){
+            if(item.state=="planned"){
                 var stato="Prevista";
             }else{
                 var stato="Tempo reale";
@@ -124,37 +127,32 @@ function caricadati(){
             }else{
                 var posizione=item.next_stop;
             }
-            if(item.br==true){
-                var finalDestination = item.destination1+"<br>"+item.destination2;
-            }else{
-                var finalDestination = item.destination;
-            }
-            if(item.hasProblems==true){
+            if(item.has_problems==true){
                 tr.innerHTML = `
-                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.service}</td>
-                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.officialService}'">${item.destination}</td>
+                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.line}</td>
+                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.destination}</td>
                 `;
             }else{
                 tr.innerHTML = `
-                    <td>${item.service}</td>
-                    <td>${finalDestination}</td>
+                    <td>${item.line}</td>
+                    <td>${item.destination}</td>
                 `;
             }
 
             //Delay
             if(item.delay>0){
                 tr.innerHTML += `
-                    <td>${item.arrival} (+${item.delay})</td>
+                    <td>${item.arrival_time} (+${item.delay})</td>
                     <td>${stato}</td>
                 `;
-            }else if(item.delay<=0){
+            }else if(item.delay<=0&&item.delay){
                 tr.innerHTML += `
-                    <td>${item.arrival} (${item.delay})</td>
+                    <td>${item.arrival_time} (${item.delay})</td>
                     <td>${stato}</td>
                 `;
             }else{
                 tr.innerHTML += `
-                    <td>${item.arrival}</td>
+                    <td>${item.arrival_time}</td>
                     <td>${stato}</td>
                 `;
             }
@@ -162,12 +160,12 @@ function caricadati(){
             //AEP specification
             if(item.hasAEP==true){
                 tr.innerHTML += `
-                    <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
+                    <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
                     <td>${posizione}</td>
                 `;
-            }else if(item.delay!=undefined){
+            }else if(item.delay){
                 tr.innerHTML += `
-                    <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.busnum}'">${item.busnum}</a></td>
+                    <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
                     <td>${posizione}</td>
                 `;
             }else{
@@ -183,6 +181,10 @@ function caricadati(){
         container.appendChild(table);
     })
     .catch(err => {
+        if (err.message === "NO_ARRIVALS") {
+            //Caso gestito volontariamente: non fare nulla
+            return;
+        }
         console.error('Errore nel caricamento dati:', err);
         document.getElementById('tabella-container').textContent = 'Errore nel caricamento dati.';
     });})
@@ -190,14 +192,14 @@ function caricadati(){
 
 caricadati();
 
-setInterval(caricadati, 60000);
+setInterval(caricadati, 30000);
 
 function altraParteSearch(searchTerm){
     var dupedCodes = [];
     var i = 0;
     allresults.forEach(element => {
-        if(element.fermata.toLowerCase()==searchTerm.toLowerCase()){
-            dupedCodes[i]=element.valore;
+        if(element.name.toLowerCase()==searchTerm.toLowerCase()){
+            dupedCodes[i]=element.code;
             i++;
         }
     });

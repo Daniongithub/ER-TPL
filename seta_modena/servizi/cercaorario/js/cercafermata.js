@@ -17,7 +17,7 @@ var oldTerm;
 var allresults = false;
 
 getApiUrl().then(url => {
-fetch(url + "/stopcodesarchive")
+fetch(url + "/stoplist")
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
@@ -93,12 +93,12 @@ function renderResults(results) {
         const div = document.createElement('div');
         const a = document.createElement('a');
         a.setAttribute('class','bianco');
-        a.setAttribute('href',`fermata.html?code=${item.valore}&name=${item.fermata}`);
+        a.setAttribute('href',`fermata.html?code=${item.code}&name=${item.name}`);
         div.className = 'search-result';
         div.innerHTML = `
             <div>
-                <h3>${item.fermata}</h3>
-                <p>Codice fermata: ${item.valore}</p>
+                <h3>${item.name}</h3>
+                <p>Codice fermata: ${item.code}</p>
             </div>
         `;
         a.appendChild(div);
@@ -112,10 +112,10 @@ function search(searchTerm){
     searching = true;
     oldTerm = searchTerm;
     const filtered = allresults
-    .filter(item => item.fermata.toLowerCase().includes(searchTerm))
+    .filter(item => item.name.toLowerCase().includes(searchTerm))
     .sort((a, b) => {
-        const aStartsWith = a.fermata.toLowerCase().startsWith(searchTerm);
-        const bStartsWith = b.fermata.toLowerCase().startsWith(searchTerm);
+        const aStartsWith = a.name.toLowerCase().startsWith(searchTerm);
+        const bStartsWith = b.name.toLowerCase().startsWith(searchTerm);
         if (aStartsWith && !bStartsWith) return -1;
         if (!aStartsWith && bStartsWith) return 1;
         return 0;

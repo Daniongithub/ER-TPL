@@ -17,14 +17,14 @@ lineaSpan.textContent=num;
 
 //Spawn product card
 getApiUrl().then(url => {
-fetch(url + "/routeproblems/" + num)
+fetch(url + "/lineproblems/" + num)
     .then(response => {
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
     })
     .then(data => {
         newsContainer.innerHTML='';
-        data.problems.forEach(element => {
+        data.news.forEach(element => {
             var div = document.createElement("div");
             div.setAttribute("class","news-card");
             var p = document.createElement('p');

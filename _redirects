@@ -11,6 +11,5 @@
 /seta_modena/documentistorici/index.html /service/servicenotavailable.html
 
 /seta_modena/servizi/businservizio/* /service/backend.html
-/seta_modena/servizi/cercaorario/* /service/backend.html
 /seta_modena/servizi/percorsi/* /service/backend.html
 /seta_modena/servizi/deviazioni/* /service/backend.html
