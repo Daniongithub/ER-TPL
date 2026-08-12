@@ -145,7 +145,7 @@ function caricadati(){
                     <td>${item.arrival_time} (+${item.delay})</td>
                     <td>${stato}</td>
                 `;
-            }else if(item.delay<=0&&item.delay){
+            }else if(item.delay<=0&&item.delay!=null){
                 tr.innerHTML += `
                     <td>${item.arrival_time} (${item.delay})</td>
                     <td>${stato}</td>
@@ -163,7 +163,7 @@ function caricadati(){
                     <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
                     <td>${posizione}</td>
                 `;
-            }else if(item.delay){
+            }else if(item.delay!=null){
                 tr.innerHTML += `
                     <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
                     <td>${posizione}</td>
