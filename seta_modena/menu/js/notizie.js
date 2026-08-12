@@ -31,33 +31,30 @@ fetch(url + "/allnews")
             var h3 = document.createElement('h3');
             var p = document.createElement('p');
             var span = document.createElement('span');
-            if(element.type=="Importante"){
-                span.setAttribute("class","red");
+
+            switch (element.type) {
+                case "Importante":
+                case "Lavori in corso":
+                    span.setAttribute("class", "red");
+                    break;
+                case "Informazione":
+                case "Orari":
+                    span.setAttribute("class", "yellow");
+                    break;
+                case "Novità":
+                case "Agevolazioni":
+                    span.setAttribute("class", "green");
+                    break;
+                case "Autobus Treno":
+                case "Biglietti":
+                case "Abbonamenti":
+                    span.setAttribute("class", "blue");
+                    break;
+                case "Scuola":
+                    span.setAttribute("class", "orange");
+                    break;
             }
-            if(element.type=="Informazione"){
-                span.setAttribute("class","yellow");
-            }
-            if(element.type=="Novità"){
-                span.setAttribute("class","green");
-            }
-            if(element.type=="Orari"){
-                span.setAttribute("class","yellow");
-            }
-            if(element.type=="Autobus Treno"){
-                span.setAttribute("class","blue");
-            }
-            if(element.type=="Lavori in corso"){
-                span.setAttribute("class","red");
-            }
-            if(element.type=="Biglietti"){
-                span.setAttribute("class","blue");
-            }
-            if(element.type=="Personale"){
-                span.setAttribute("class","blue");
-            }
-            if(element.type=="Agevolazioni"){
-                span.setAttribute("class","green");
-            }
+            
             //P creation
             span.innerHTML=element.type;
             p.innerHTML=element.date+" - ";
@@ -71,6 +68,7 @@ fetch(url + "/allnews")
             a.appendChild(p);
             a.appendChild(h3);
             div.appendChild(a);
+            
             newsContainer.appendChild(div);
         });
     })})

@@ -375,6 +375,10 @@ span.blue{
     color: rgb(35, 35, 255) !important;
     font-weight: 700;
 }
+span.orange{
+    color: orange !important;
+    font-weight: 700;
+}
 #notizia-container{
     text-align: left;
     margin:64px;
