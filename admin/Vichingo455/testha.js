@@ -52,9 +52,9 @@ async function checkBrowser(services) {
     await checkEndpoint(services.startbus.url, "application/json");
     await checkEndpoint(services.startsopp.url, "application/json");
     await checkEndpoint(services.startfermate.url, "text/plain");
-    await checkEndpoint(services.seta.url, "application/json");
+    await checkEndpoint(services.startnews.url, "text/plain");
+    await checkEndpoint(services.seta.url, "text/plain");
     await checkEndpoint(services.tper.url, "application/json");
-
     return true;
   } catch {
     return false;
@@ -131,7 +131,7 @@ async function getSetaServer() {
     return {
       ok: true,
       server: info.server,
-      url: info.url + "/allnews"
+      url: info.url + "/health"
     };
   } catch {
     return { ok: false };
@@ -164,6 +164,19 @@ async function getMezziServer() {
   }
 }
 
+async function getStartNewsServer() {
+  try {
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/startnews");
+    return {
+      ok: true,
+      server: info.server,
+      url: info.url
+    };
+  } catch {
+    return { ok: false };
+  }
+}
+
 // =========================
 // FUNZIONI UI
 // =========================
@@ -171,14 +184,14 @@ function renderApiVersion(result) {
   const el = document.getElementById("apiVersion");
   el.innerHTML = result.ok
     ? `Versione API Alta Disponibilità: v${result.version} (<span class="green">TEST OK</span>)`
-    : `Versione API Alta Disponibilità non raggiungibile. (<span class="red">TEST FALLITO</span>)`;
+    : `Versione API Alta Disponibilità: non raggiungibile. (<span class="red">TEST FALLITO</span>)`;
 }
 
 function renderServer(id, label, result) {
   const el = document.getElementById(id);
   el.innerHTML = result.ok
     ? `${label}: ${result.server} (<span class="green">TEST OK</span>)`
-    : `${label}: sconosciuto. (<span class="red">TEST FALLITO</span>)`;
+    : `${label}: non disponibile. (<span class="red">TEST FALLITO</span>)`;
 }
 
 function renderBrowser(result) {
@@ -231,7 +244,8 @@ async function initTestHA() {
     startfermate,
     seta,
     tper,
-    mezzi
+    mezzi,
+    startnews
   ] = await Promise.all([
     getApiVersionHA(),
     getCdnServer(),
@@ -240,7 +254,8 @@ async function initTestHA() {
     getStartFermateServer(),
     getSetaServer(),
     getTperServer(),
-    getMezziServer()
+    getMezziServer(),
+    getStartNewsServer()
   ]);
 
   // Render risultati singoli
@@ -249,6 +264,7 @@ async function initTestHA() {
   renderServer("apiStartBusServer", "Server in uso (START Autobus in tempo reale)", startbus);
   renderServer("apiStartSoppServer", "Server in uso (START Corse Soppresse)", startsopp);
   renderServer("apiStartFermateServer", "Server in uso (START Fermate)", startfermate);
+  renderServer("apiStartNewsServer", "Server in uso (START Notizie)", startnews);
   renderServer("apiSetaServer", "Server in uso (SETA)", seta);
   renderServer("apiTperServer", "Server in uso (TPER)", tper);
   renderServer("apiMezziServer", "Server in uso (Liste Mezzi)", mezzi);
@@ -261,7 +277,8 @@ async function initTestHA() {
     startfermate,
     seta,
     tper,
-    mezzi
+    mezzi,
+    startnews
   ].every(r => r.ok);
 
   const clientOk = await checkBrowser({
@@ -271,7 +288,8 @@ async function initTestHA() {
     startfermate,
     seta,
     tper,
-    mezzi
+    mezzi,
+    startnews
   });
 
   renderBrowser(clientOk);
