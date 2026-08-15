@@ -158,7 +158,7 @@ function caricadati(){
             }
 
             //AEP specification
-            if(item.hasAEP==true){
+            if(item.has_AEP==true){
                 tr.innerHTML += `
                     <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
                     <td>${posizione}</td>
