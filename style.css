@@ -12,6 +12,10 @@ hr.solid {
     border-radius: 5px;
     width: 99.55%;
 }
+hr.with-margin {
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
 .link{
     color: cyan;
 }

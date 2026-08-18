@@ -9,6 +9,4 @@
 /seta_modena/servizi/percorsi/iframeorari.html /service/comingsoon.html
 /seta_modena/servizi/orari/* /service/comingsoon.html
 
-/seta_modena/documentistorici/index.html /service/servicenotavailable.html
-
 /seta_modena/servizi/deviazioni/* /service/serviceupdate.html
