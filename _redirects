@@ -3,10 +3,8 @@
 /dani /admin/dani/servizi.html
 /extra_bus/eventi/eventi.html /service/comingsoon.html
 /extra_bus/eventi/ibede2025.html /service/comingsoon.html
-/tper_menu/notizie /tper_menu/tper.html
 /extra_bus/italia/ligura/atclaspezia.html /service/comingsoon.html
 
-/seta_modena/servizi/percorsi/iframeorari.html /service/comingsoon.html
-/seta_modena/servizi/orari/* /service/comingsoon.html
+/seta_modena/servizi/orari/* /service/smf.html
 
 /seta_modena/servizi/deviazioni/* /service/serviceupdate.html
