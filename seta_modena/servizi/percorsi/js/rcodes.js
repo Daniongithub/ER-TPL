@@ -45,12 +45,12 @@ fetch(url + "/routecodes")
                         if(code.description.includes("[")){
                             result.setAttribute("class","giallo");
                         }
-                        if(code.description.includes("(")){
-                            result.setAttribute("class","rosso");
-                        }
                         result.innerHTML = `
                             <div class="search-result"><h3 style="margin-left: 8px;margin-right: 8px;">${code.description} <br> (${code.route_code})</h3>
                         `;
+                    }
+                    if(!code.exists){
+                        result.setAttribute("class","rosso");
                     }
                     container.appendChild(result);
                 })

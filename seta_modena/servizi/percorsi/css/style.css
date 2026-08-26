@@ -31,6 +31,10 @@ th,td {
     text-align: left;
 }
 
+hr.solid{
+    margin-top: 16px
+}
+
 td.uguale{
     width: 50%;
 }
@@ -104,9 +108,6 @@ div#map-container iframe{
     }
     table {
         width: 100%;
-    }
-    hr{
-        margin-bottom:19px;
     }
     nav#rcodes-nav ul:last-child li {
         margin-right: 20px;
