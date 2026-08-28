@@ -19,13 +19,15 @@
     font-size: 15px;
 }
 
+#tabella-container{
+    margin-top: 16px;
+}
+
 table {
     border-collapse: collapse;
     border-radius: 8px;
     min-width: 85%;
     max-width: 100%;
-    margin: auto;
-    margin-top: 18px;
 }
 
 th {
@@ -72,6 +74,10 @@ a.biancosott{
     color: white;
 }
 
+h2{
+    margin-bottom: 12px;
+}
+
 nav#corsie-nav ul{
     justify-content: center;
 }
@@ -86,7 +92,7 @@ nav#corsie-nav ul li{
     margin-right: 7px;
 }
 
-#searchBar {
+#search-bar {
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
@@ -94,13 +100,18 @@ nav#corsie-nav ul li{
     width: 280px;
     margin: 0;
 }
-#stopCodeBar {
+#stop-code-bar {
     padding: 10px;
     font-size: 16px;
     border-radius: 6px;
     border: 0;
     width: 280px;
 }
+
+div#results-container {
+    margin-top: 16px;
+}
+
 img{
     height:300px;
 }
@@ -133,10 +144,10 @@ img{
     h2.noreduction{
         margin-bottom: 16px;
     }
-    #searchBar {
+    #search-bar {
         width: 80%;
     }
-    #stopCodeBar {
+    #stop-code-bar {
         width: 80%;
     }
     hr{

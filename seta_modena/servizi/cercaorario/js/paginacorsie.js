@@ -39,7 +39,7 @@ if(posto=="MODENA AUTOSTAZIONE"){
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO6120&name=MODENA AUTOSTAZIONE (fianco biglietteria lato Novi Park)" class="bianco">
             <div class="search-result desc"><h3>Fianco Biglietteria lato Novi Park</h3><p>Linee: 9, 10</p></div>
         </a>
-        <hr>
+        <hr class="solid">
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO3&name=MODENA AUTOSTAZIONE (Corriere corsia 1)" class="bianco">
             <div class="search-result"><h3>Corriere corsia 1</h3></div>
         </a>
@@ -87,7 +87,7 @@ if(posto=="POLO LEONARDO"){
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO2928&name=POLO LEONARDO 1" class="bianco">
             <div class="search-result"><h3>POLO LEONARDO 1</h3><p>Linee: 1A, 4, 10, 12</p></div>
         </a>
-        <hr>
+        <hr class="solid">
         <a href="/seta_modena/servizi/cercaorario/fermata.html?code=MO218&name=POLO LEONARDO (Corsia 1)" class="bianco">
             <div class="search-result"><h3>Corsia 1</h3><p>Linee: 12, 391</p></div>
         </a>

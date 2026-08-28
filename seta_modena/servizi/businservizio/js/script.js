@@ -255,7 +255,7 @@ function caricaFiltratiLinea(selectedOption){
         if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
         return response.json();
     })
-    .then(data=>{
+    .then(data => {
         container.innerHTML = '';
         //Sostituisco il pulsante aggiorna tutti col pulsante aggiorna filtrati
         const aggiornaNav = document.getElementById('nav-inservizio');
@@ -271,16 +271,16 @@ function caricaFiltratiLinea(selectedOption){
         //Create table
         const table = document.createElement('table');
 
-        if(data.features.length==0){
+        if(data.buses.length==0){
             container.innerHTML="<strong>Nessun bus è in servizio al momento.</strong>";
             return;
         }
         //Fill table
         renderTH(table);
-        data.features.forEach(elements => {
-            if(elements.properties.officialService==selectedOption){
+        data.buses.forEach(element => {
+            if(element.official_line==selectedOption){
                 const tbody = document.createElement('tbody');
-                renderElement(tbody, elements);
+                renderElement(tbody, element);
                 table.appendChild(tbody);
 
                 container.appendChild(table);
@@ -316,12 +316,16 @@ function caricaFiltratiModello(selectedOption){
         // Creo tabella
         const table = document.createElement('table');
 
+        if(data.buses.length==0){
+            container.innerHTML="<strong>Nessun bus è in servizio al momento.</strong>";
+            return;
+        }
         // Intestazione
         renderTH(table);
-        data.features.forEach(elements => {
-            if(elements.properties.model==selectedOption){
+        data.buses.forEach(element => {
+            if(element.model==selectedOption){
                 const tbody = document.createElement('tbody');
-                renderElement(tbody, elements);
+                renderElement(tbody, element);
                 table.appendChild(tbody);
 
                 container.appendChild(table);

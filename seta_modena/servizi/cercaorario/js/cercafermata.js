@@ -7,9 +7,8 @@ async function getApiUrl() {
     return cfg.url;
 }
 
-const searchBar = document.getElementById('searchBar');
-const stopCodeBar = document.getElementById('stopCodeBar');
-const stopCode = document.getElementById('stopCode');
+const searchBar = document.getElementById('search-bar');
+const stopCodeBar = document.getElementById('stop-code-bar');
 const resultsContainer = document.getElementById('results-container');
 const quickContainer = document.getElementById('quick-container');
 const comeLeggere = document.getElementById('comeleggere-p');
@@ -39,17 +38,19 @@ searchBar.addEventListener('input', () => {
         resultsContainer.innerHTML = '';
         quickContainer.style.display = '';
         comeLeggere.style.display = '';
-        stopCode.style.display = '';
     } else {
         const searchTerm = searchBar.value.trim().toLowerCase();
+        stopCodeBar.value = ''
         search(searchTerm);
     }
 });
 
 stopCodeBar.addEventListener('input', () => {
     var code = "MO" + stopCodeBar.value.trim().toUpperCase();
-    comeLeggere.style.display = 'none';
     resultsContainer.innerHTML = '';
+    quickContainer.style.display = 'none';
+    comeLeggere.style.display = 'none';
+    searchBar.value = ''
 
     const div = document.createElement('div');
     const a = document.createElement('a');
@@ -76,7 +77,6 @@ function renderResults(results) {
     resultsContainer.innerHTML = '';
     quickContainer.style.display = 'none';
     comeLeggere.style.display = 'none';
-    stopCode.style.display = 'none';
     if (results.length === 0) {
         resultsContainer.innerHTML = '<p>Nessun risultato trovato</p>';
         return;
