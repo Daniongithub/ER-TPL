@@ -48,7 +48,7 @@ searchBar.addEventListener('input', () => {
 
 stopCodeBar.addEventListener('input', () => {
     var code = "MO" + stopCodeBar.value.trim().toUpperCase();
-    comeLeggere.innerHTML = '';
+    comeLeggere.style.display = 'none';
     resultsContainer.innerHTML = '';
 
     const div = document.createElement('div');
