@@ -9,13 +9,14 @@ async function getApiUrl() {
 
 const searchBar = document.getElementById('searchBar');
 const stopCodeBar = document.getElementById('stopCodeBar');
+const stopCode = document.getElementById('stopCode');
 const resultsContainer = document.getElementById('results-container');
 const quickContainer = document.getElementById('quick-container');
 const comeLeggere = document.getElementById('comeleggere-p');
 
 var searching = false;
 var oldTerm;
-var allresults = false;
+var allresults = [];
 
 getApiUrl().then(url => {
     fetch(url + "/stoplist")
@@ -38,20 +39,22 @@ searchBar.addEventListener('input', () => {
         resultsContainer.innerHTML = '';
         quickContainer.style.display = '';
         comeLeggere.style.display = '';
+        stopCode.style.display = '';
     } else {
-        const searchTerm = searchBar.value.toLowerCase();
+        const searchTerm = searchBar.value.trim().toLowerCase();
         search(searchTerm);
     }
 });
 
 stopCodeBar.addEventListener('input', () => {
-    var code = "MO" + stopCodeBar.value.toUpperCase();
+    var code = "MO" + stopCodeBar.value.trim().toUpperCase();
     comeLeggere.innerHTML = '';
     resultsContainer.innerHTML = '';
 
     const div = document.createElement('div');
     const a = document.createElement('a');
-    a.href = "fermata.html?code=${code}&name=${code}";
+    a.className = 'bianco';
+    a.href = `fermata.html?code=${encodeURIComponent(code)}&name=${encodeURIComponent(code)}`;
     div.className = 'search-result';
     div.innerHTML = `
         <div>
@@ -61,7 +64,7 @@ stopCodeBar.addEventListener('input', () => {
     `;
     a.appendChild(div);
 
-    resultsContainer.appendChild(div);
+    resultsContainer.appendChild(a);
     if (stopCodeBar.value == '') {
         resultsContainer.innerHTML = '';
         quickContainer.style.display = '';
@@ -70,9 +73,11 @@ stopCodeBar.addEventListener('input', () => {
 });
 
 function renderResults(results) {
+    resultsContainer.innerHTML = '';
     quickContainer.style.display = 'none';
     comeLeggere.style.display = 'none';
-    if (results.length == 0) {
+    stopCode.style.display = 'none';
+    if (results.length === 0) {
         resultsContainer.innerHTML = '<p>Nessun risultato trovato</p>';
         return;
     }
@@ -80,8 +85,8 @@ function renderResults(results) {
     results.forEach(item => {
         const div = document.createElement('div');
         const a = document.createElement('a');
-        a.setAttribute('class', 'bianco');
-        a.setAttribute('href', `fermata.html?code=${item.code}&name=${item.name}`);
+        a.className = 'bianco';
+        a.href = `fermata.html?code=${encodeURIComponent(item.code)}&name=${encodeURIComponent(item.name)}`;
         div.className = 'search-result';
         div.innerHTML = `
             <div>
@@ -100,13 +105,17 @@ function search(searchTerm) {
     searching = true;
     oldTerm = searchTerm;
     const filtered = allresults
-        .filter(item => item.name.toLowerCase().includes(searchTerm))
-        .sort((a, b) => {
-            const aStartsWith = a.name.toLowerCase().startsWith(searchTerm);
-            const bStartsWith = b.name.toLowerCase().startsWith(searchTerm);
-            if (aStartsWith && !bStartsWith) return -1;
-            if (!aStartsWith && bStartsWith) return 1;
-            return 0;
-        });
+    .filter(item =>
+        item.name.toLowerCase().includes(searchTerm)
+    )
+    .sort((a, b) => {
+        const aName = a.name.toLowerCase();
+        const bName = b.name.toLowerCase();
+
+        const aIndex = aName.indexOf(searchTerm);
+        const bIndex = bName.indexOf(searchTerm);
+
+        return aIndex - bIndex;
+    });
     renderResults(filtered);
 }
