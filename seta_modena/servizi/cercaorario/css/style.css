@@ -138,11 +138,8 @@ img{
     table {
         width: 100%;
     }
-    h2{
-        margin-bottom: 8px;
-    }
     h2.noreduction{
-        margin-bottom: 16px;
+        margin-bottom: 12px;
     }
     #search-bar {
         width: 80%;
