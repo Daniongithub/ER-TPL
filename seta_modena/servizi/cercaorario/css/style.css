@@ -78,6 +78,10 @@ h2{
     margin-bottom: 12px;
 }
 
+h2.noreduction{
+    margin-bottom: 16px;
+}
+
 nav#corsie-nav ul{
     justify-content: center;
 }
@@ -138,9 +142,6 @@ img{
     table {
         width: 100%;
     }
-    h2.noreduction{
-        margin-bottom: 12px;
-    }
     #search-bar {
         width: 80%;
     }
@@ -171,12 +172,6 @@ img{
     }
     table{
         margin-top: 10px;
-    }
-    h2{
-        margin-bottom: 0;
-    }
-    h2.noreduction{
-        margin-bottom: 16px;
     }
 }
 
