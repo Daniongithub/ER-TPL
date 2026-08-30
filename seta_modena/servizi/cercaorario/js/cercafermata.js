@@ -18,7 +18,7 @@ var oldTerm;
 var allresults = [];
 
 getApiUrl().then(url => {
-    fetch(url + "/stoplist")
+    fetch(url + "/stops")
         .then(response => {
             if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
             return response.json();
