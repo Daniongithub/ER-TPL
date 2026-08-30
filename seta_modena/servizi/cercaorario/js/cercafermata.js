@@ -12,6 +12,7 @@ const stopCodeBar = document.getElementById('stop-code-bar');
 const resultsContainer = document.getElementById('results-container');
 const quickContainer = document.getElementById('quick-container');
 const comeLeggere = document.getElementById('comeleggere-p');
+const aggiornamentoP = document.getElementById('aggiornamento-p')
 
 var searching = false;
 var oldTerm;
@@ -28,6 +29,19 @@ getApiUrl().then(url => {
             if (searching) {
                 search(oldTerm);
             }
+        })
+        .catch(error => console.error('Errore nel caricamento dei dati:', error));
+})
+
+getApiUrl().then(url => {
+    fetch(url + "/stopsinfo")
+        .then(response => {
+            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+            return response.json();
+        })
+        .then(data => {
+            //Sets last update
+            aggiornamentoP.innerHTML = "Ultimo aggiornamento fermate il " + data.updated_at_date + " alle " + data.updated_at_time;
         })
         .catch(error => console.error('Errore nel caricamento dei dati:', error));
 })
@@ -55,7 +69,7 @@ stopCodeBar.addEventListener('input', () => {
     const div = document.createElement('div');
     const a = document.createElement('a');
     a.className = 'bianco';
-    a.href = `fermata.html?code=${encodeURIComponent(code)}&name=${encodeURIComponent(code)}`;
+    a.href = `fermata.html?code=${code}`;
     div.className = 'search-result';
     div.innerHTML = `
         <div>
@@ -86,7 +100,7 @@ function renderResults(results) {
         const div = document.createElement('div');
         const a = document.createElement('a');
         a.className = 'bianco';
-        a.href = `fermata.html?code=${encodeURIComponent(item.code)}&name=${encodeURIComponent(item.name)}`;
+        a.href = `fermata.html?code=${item.code}`;
         div.className = 'search-result';
         div.innerHTML = `
             <div>
@@ -105,17 +119,17 @@ function search(searchTerm) {
     searching = true;
     oldTerm = searchTerm;
     const filtered = allresults
-    .filter(item =>
-        item.name.toLowerCase().includes(searchTerm)
-    )
-    .sort((a, b) => {
-        const aName = a.name.toLowerCase();
-        const bName = b.name.toLowerCase();
+        .filter(item =>
+            item.name.toLowerCase().includes(searchTerm)
+        )
+        .sort((a, b) => {
+            const aName = a.name.toLowerCase();
+            const bName = b.name.toLowerCase();
 
-        const aIndex = aName.indexOf(searchTerm);
-        const bIndex = bName.indexOf(searchTerm);
+            const aIndex = aName.indexOf(searchTerm);
+            const bIndex = bName.indexOf(searchTerm);
 
-        return aIndex - bIndex;
-    });
+            return aIndex - bIndex;
+        });
     renderResults(filtered);
 }
