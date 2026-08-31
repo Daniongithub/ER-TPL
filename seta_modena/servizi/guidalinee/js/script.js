@@ -271,7 +271,7 @@ function renderTable(start, dest){
                         3A MONTEFIORINO <br>
                         3B NONANTOLANA 1010
                         <div style="height:24px;"></div>
-                        <a class="green button" href="/seta_modena/servizi/cercaorario/fermata.html?code=MO11&name=Piazza Manzoni">Vai alla fermata di partenza</a>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/fermata.html?code=MO11">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;
@@ -283,7 +283,7 @@ function renderTable(start, dest){
                         12 FINZI <br>
                         12A NAZIONI
                         <div style="height:24px;"></div>
-                        <a class="green button" href="/seta_modena/servizi/cercaorario/fermata.html?code=MO11&name=Piazza Manzoni">Vai alla fermata di partenza</a>
+                        <a class="green button" href="/seta_modena/servizi/cercaorario/fermata.html?code=MO11">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
                     `;
                     return;

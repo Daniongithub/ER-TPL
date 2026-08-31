@@ -43,7 +43,7 @@ getApiUrl().then(url => {
                 corsie_nav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}&name=${nome}">Fermata opposta</a>
+                        <a href="/seta_modena/servizi/cercaorario/fermata.html?code=${altroCodice}">Fermata opposta</a>
                     </li>
                 </ul>`;
             }
