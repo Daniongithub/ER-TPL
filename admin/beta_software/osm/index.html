@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mappa Trasporti</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /* Icona bus */
+  .bus-icon {
+    width: 34px;
+    height: 34px;
+    background: #1e88e5;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  /* Icone inizio/fine shape */
+  .shape-endpoint-icon {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  .shape-endpoint-icon.start {
+    border-radius: 50%;
+  }
+  .shape-endpoint-icon.end {
+    border-radius: 4px;
+  }
+
+  /* Popup styling */
+  .leaflet-popup-content-wrapper {
+    border-radius: 10px;
+  }
+  .popup-content {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .popup-content h3 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: #1e88e5;
+  }
+  .popup-content table {
+    border-collapse: collapse;
+  }
+  .popup-content td {
+    padding: 2px 6px 2px 0;
+    vertical-align: top;
+  }
+  .popup-content td.label {
+    color: #666;
+    white-space: nowrap;
+  }
+
+  #status {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    display: none;
+    max-width: 70%;
+  }
+
+  #legend {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    display: none;
+    max-height: 40%;
+    overflow-y: auto;
+  }
+  #legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 3px 0;
+  }
+  #legend .legend-swatch {
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<div id="status"></div>
+<div id="legend"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+
+  // ======================================================================
+  // CONFIGURAZIONE GENERALE (modificabile)
+  // ======================================================================
+  const CONFIG = {
+    // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri.
+    BASE_URL: "https://startapi.serverissimo.com", // es: "https://tuo-dominio.it/api"
+
+    // Path per la modalità "vehicles", aggiunto a BASE_URL.
+    VEHICLES_ENDPOINT: "/vehiclepositions",
+
+    // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
+    SHAPE_ENDPOINT_TEMPLATE: "/getshape/{shapeId}",
+
+    // Intervallo di refresh dati, in millisecondi. Usato solo in modalità "vehicles".
+    REFRESH_INTERVAL_MS: 15000,
+
+    // Vista iniziale della mappa (usata finché non arrivano dati da adattare)
+    INITIAL_CENTER: [44.42, 12.2],
+    INITIAL_ZOOM: 11
+  };
+
+  // Palette colori per distinguere più shape sulla stessa mappa
+  const SHAPE_COLORS = ["#e53935", "#1e88e5", "#43a047", "#fb8c00", "#8e24aa", "#00897b", "#c0ca33", "#d81b60", "#3949ab", "#6d4c41"];
+
+  // ======================================================================
+  // QUERY PARAMS
+  // ======================================================================
+  // ?mode=vehicles              -> mostra i mezzi in tempo reale
+  // ?mode=shapes&shapeId=8003_A -> mostra un singolo tracciato
+  // ?mode=shapes&shapeId=8003_A,8003_B,8004_C -> più tracciati, colori diversi
+  const params = new URLSearchParams(window.location.search);
+  const MODE = (params.get('mode') || 'vehicles').toLowerCase();
+  const SHAPE_IDS = (params.get('shapeId') || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean);
+
+  // ======================================================================
+  // DATI DI FALLBACK (usati se BASE_URL non è configurato o il fetch fallisce)
+  // ======================================================================
+  const FALLBACK_VEHICLES = [
+    {"basin":"RA","trip_id":"RA2796612","vehicle":"10440","lat":44.4121,"long":12.2161},
+    {"basin":"RA","trip_id":"RA2889204","vehicle":"10441","lat":44.43466,"long":12.209282},
+    {"basin":"RA","trip_id":"RA2889257","vehicle":"10443","lat":44.380135,"long":12.236528},
+    {"basin":"RA","trip_id":"RA2888990","vehicle":"10448","lat":44.408333,"long":12.307585},
+    {"basin":"RA","trip_id":"RA2796614","vehicle":"10433","lat":44.419575,"long":12.147208},
+    {"basin":"RA","trip_id":"RA2888992","vehicle":"10436","lat":44.409336,"long":12.191605},
+    {"basin":"RA","trip_id":"RA2796701","vehicle":"10437","lat":44.37021,"long":12.23698},
+    {"basin":"RA","trip_id":"RA2796687","vehicle":"10438","lat":44.402008,"long":12.184932},
+    {"basin":"RA","trip_id":"RA2795412","vehicle":"10430","lat":44.403324,"long":12.194161},
+    {"basin":"RA","trip_id":"RA2796750","vehicle":"10431","lat":44.491184,"long":12.279529},
+    {"basin":"RA","trip_id":"RA2888989","vehicle":"10432","lat":44.403946,"long":12.207572},
+    {"basin":"RA","trip_id":"RA2889120","vehicle":"37141","lat":44.406002,"long":12.197911},
+    {"basin":"RA","trip_id":"RA2889137","vehicle":"37134","lat":44.41728,"long":12.203954},
+    {"basin":"RA","trip_id":"RA2889398","vehicle":"37124","lat":44.412304,"long":12.197718},
+    {"basin":"RA","trip_id":"RA2889138","vehicle":"37128","lat":44.418716,"long":12.207713},
+    {"basin":"RA","trip_id":"RA2889389","vehicle":"37131","lat":44.406662,"long":12.252172},
+    {"basin":"RA","trip_id":"RA2889716","vehicle":"34497","lat":44.430374,"long":12.037927},
+    {"basin":"RA","trip_id":"RA2889358","vehicle":"37123","lat":44.41843,"long":12.221982},
+    {"basin":"RA","trip_id":"RA2796653","vehicle":"34486","lat":44.289474,"long":12.347948},
+    {"basin":"RA","trip_id":"RA2795457","vehicle":"34467","lat":44.41844,"long":12.204146},
+    {"basin":"RA","trip_id":"RA2796351","vehicle":"34463","lat":44.30288,"long":12.112004},
+    {"basin":"RA","trip_id":"RA2888192","vehicle":"34424","lat":44.31436,"long":11.90021},
+    {"basin":"RA","trip_id":"RA2795472","vehicle":"32462","lat":44.511845,"long":12.273761},
+    {"basin":"RA","trip_id":"RA2888905","vehicle":"32459","lat":44.421562,"long":12.205171},
+    {"basin":"RA","trip_id":"RA2888162","vehicle":"31101","lat":44.28255,"long":11.87646},
+    {"basin":"RA","trip_id":"RA2796610","vehicle":"32302","lat":44.48453,"long":12.27479},
+    {"basin":"RA","trip_id":"RA2796520","vehicle":"32417","lat":44.31098,"long":12.34233}
+  ];
+
+  // Fallback shapes: mappa shapeId -> array di punti, per testare la modalità "shapes" senza BASE_URL.
+  const FALLBACK_SHAPES = {
+    "8003_A": [
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22305,"shape_pt_lon":12.05557,"shape_pt_sequence":1},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22301,"shape_pt_lon":12.05554,"shape_pt_sequence":2},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22293,"shape_pt_lon":12.05547,"shape_pt_sequence":3},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22243,"shape_pt_lon":12.05663,"shape_pt_sequence":4},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22273,"shape_pt_lon":12.05691,"shape_pt_sequence":5},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22285,"shape_pt_lon":12.05702,"shape_pt_sequence":6},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22339,"shape_pt_lon":12.05567,"shape_pt_sequence":7},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22355,"shape_pt_lon":12.05525,"shape_pt_sequence":8},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22358,"shape_pt_lon":12.05514,"shape_pt_sequence":9},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22361,"shape_pt_lon":12.05504,"shape_pt_sequence":10},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22366,"shape_pt_lon":12.0548,"shape_pt_sequence":11},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22366,"shape_pt_lon":12.05455,"shape_pt_sequence":12},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22368,"shape_pt_lon":12.05453,"shape_pt_sequence":13},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.2237,"shape_pt_lon":12.05452,"shape_pt_sequence":14},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22371,"shape_pt_lon":12.05449,"shape_pt_sequence":15},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22372,"shape_pt_lon":12.05446,"shape_pt_sequence":16},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22373,"shape_pt_lon":12.05443,"shape_pt_sequence":17},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22373,"shape_pt_lon":12.0544,"shape_pt_sequence":18},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22373,"shape_pt_lon":12.05437,"shape_pt_sequence":19},
+      {"basin":"FC","shape_id":"8003_A","shape_pt_lat":44.22372,"shape_pt_lon":12.05434,"shape_pt_sequence":20}
+    ]
+  };
+
+  // ======================================================================
+  // MAPPA
+  // ======================================================================
+  const map = L.map('map').setView(CONFIG.INITIAL_CENTER, CONFIG.INITIAL_ZOOM);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  const statusEl = document.getElementById('status');
+  const legendEl = document.getElementById('legend');
+
+  function showStatus(msg) {
+    statusEl.textContent = msg;
+    statusEl.style.display = 'block';
+  }
+  function hideStatus() {
+    statusEl.style.display = 'none';
+  }
+
+  async function fetchJson(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Risposta non ok: ' + res.status);
+    return res.json();
+  }
+
+  // ======================================================================
+  // MODALITÀ: VEHICLES
+  // ======================================================================
+  function busIcon() {
+    return L.divIcon({
+      className: '',
+      html: '<div class="bus-icon">🚌</div>',
+      iconSize: [34, 34],
+      iconAnchor: [17, 17],
+      popupAnchor: [0, -17]
+    });
+  }
+
+  function vehiclePopupHtml(item) {
+    return `
+      <div class="popup-content">
+        <h3>Veicolo ${item.vehicle ?? '-'}</h3>
+        <table>
+          <tr><td class="label">Trip ID:</td><td>${item.trip_id ?? '-'}</td></tr>
+          <tr><td class="label">Bacino:</td><td>${item.basin ?? '-'}</td></tr>
+          <tr><td class="label">Lat:</td><td>${item.lat ?? '-'}</td></tr>
+          <tr><td class="label">Long:</td><td>${item.long ?? '-'}</td></tr>
+        </table>
+      </div>
+    `;
+  }
+
+  const markersByVehicle = new Map();
+  let vehiclesFirstLoad = true;
+
+  function plotVehicles(data) {
+    if (!Array.isArray(data) || data.length === 0) {
+      showStatus('Nessun mezzo da mostrare.');
+      return;
+    }
+    hideStatus();
+
+    const seenVehicles = new Set();
+
+    data.forEach(item => {
+      if (typeof item.lat !== 'number' || typeof item.long !== 'number') return;
+      const key = item.vehicle ?? item.trip_id;
+      if (!key) return;
+      seenVehicles.add(key);
+
+      const existing = markersByVehicle.get(key);
+      if (existing) {
+        existing.setLatLng([item.lat, item.long]);
+        existing.setPopupContent(vehiclePopupHtml(item));
+      } else {
+        const marker = L.marker([item.lat, item.long], { icon: busIcon() })
+          .bindPopup(vehiclePopupHtml(item));
+        marker.addTo(map);
+        markersByVehicle.set(key, marker);
+      }
+    });
+
+    for (const [key, marker] of markersByVehicle.entries()) {
+      if (!seenVehicles.has(key)) {
+        map.removeLayer(marker);
+        markersByVehicle.delete(key);
+      }
+    }
+
+    if (vehiclesFirstLoad && markersByVehicle.size > 0) {
+      const group = L.featureGroup(Array.from(markersByVehicle.values()));
+      map.fitBounds(group.getBounds().pad(0.15));
+      vehiclesFirstLoad = false;
+    }
+  }
+
+  async function loadVehicles() {
+    const url = CONFIG.BASE_URL ? (CONFIG.BASE_URL + CONFIG.VEHICLES_ENDPOINT) : "";
+    if (!url) {
+      showStatus('BASE_URL non impostato: uso i dati di esempio.');
+      plotVehicles(FALLBACK_VEHICLES);
+      return;
+    }
+    try {
+      const data = await fetchJson(url);
+      plotVehicles(data);
+    } catch (err) {
+      console.error('Errore nel fetch dei mezzi, uso il fallback:', err);
+      showStatus('Errore nel caricamento dati live: uso i dati di esempio.');
+      plotVehicles(FALLBACK_VEHICLES);
+    }
+  }
+
+  function initVehiclesMode() {
+    loadVehicles();
+    setInterval(loadVehicles, CONFIG.REFRESH_INTERVAL_MS);
+  }
+
+  // ======================================================================
+  // MODALITÀ: SHAPES
+  // ======================================================================
+  function shapePopupHtml(shapeId, points) {
+    const basin = points[0]?.basin ?? '-';
+    return `
+      <div class="popup-content">
+        <h3>Tracciato ${shapeId}</h3>
+        <table>
+          <tr><td class="label">Bacino:</td><td>${basin}</td></tr>
+          <tr><td class="label">Punti:</td><td>${points.length}</td></tr>
+        </table>
+      </div>
+    `;
+  }
+
+  function shapeEndpointIcon(color, type) {
+    // type: 'start' -> cerchio verde con ▶, 'end' -> quadrato rosso con ⏹
+    const symbol = type === 'start' ? '▶' : '⏹';
+    return L.divIcon({
+      className: '',
+      html: `<div class="shape-endpoint-icon ${type}" style="background:${color}">${symbol}</div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -12]
+    });
+  }
+
+  function shapeEndpointPopupHtml(shapeId, type) {
+    const label = type === 'start' ? 'Inizio tracciato' : 'Fine tracciato';
+    return `
+      <div class="popup-content">
+        <h3>${label}</h3>
+        <table>
+          <tr><td class="label">Shape ID:</td><td>${shapeId}</td></tr>
+        </table>
+      </div>
+    `;
+  }
+
+  function buildLegend(shapeIdToColor) {
+    const entries = Object.entries(shapeIdToColor);
+    if (entries.length <= 1) {
+      legendEl.style.display = 'none';
+      return;
+    }
+    legendEl.innerHTML = entries.map(([id, color]) => `
+      <div class="legend-item">
+        <span class="legend-swatch" style="background:${color}"></span>
+        <span>${id}</span>
+      </div>
+    `).join('');
+    legendEl.style.display = 'block';
+  }
+
+  async function loadShapeData(shapeId) {
+    if (!CONFIG.BASE_URL) {
+      if (FALLBACK_SHAPES[shapeId]) return FALLBACK_SHAPES[shapeId];
+      throw new Error('BASE_URL non impostato e nessun fallback per ' + shapeId);
+    }
+    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{shapeId}', encodeURIComponent(shapeId));
+    return fetchJson(url);
+  }
+
+  async function initShapesMode() {
+    if (SHAPE_IDS.length === 0) {
+      showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&shapeId=8003_A (o una lista separata da virgole).');
+      return;
+    }
+
+    const allPolylineLayers = [];
+    const shapeIdToColor = {};
+    let anyError = false;
+
+    for (let i = 0; i < SHAPE_IDS.length; i++) {
+      const shapeId = SHAPE_IDS[i];
+      const color = SHAPE_COLORS[i % SHAPE_COLORS.length];
+      shapeIdToColor[shapeId] = color;
+
+      try {
+        let points = await loadShapeData(shapeId);
+        if (!Array.isArray(points) || points.length === 0) {
+          console.warn('Nessun punto ricevuto per ' + shapeId);
+          continue;
+        }
+        points = [...points].sort((a, b) => (a.shape_pt_sequence ?? 0) - (b.shape_pt_sequence ?? 0));
+
+        const latlngs = points
+          .filter(p => typeof p.shape_pt_lat === 'number' && typeof p.shape_pt_lon === 'number')
+          .map(p => [p.shape_pt_lat, p.shape_pt_lon]);
+
+        if (latlngs.length === 0) continue;
+
+        const polyline = L.polyline(latlngs, {
+          color: color,
+          weight: 5,
+          opacity: 0.85
+        }).bindPopup(shapePopupHtml(shapeId, points));
+
+        polyline.addTo(map);
+        allPolylineLayers.push(polyline);
+
+        // Marker di inizio (▶) e fine (⏹) per capire il verso del tracciato
+        const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
+          .bindPopup(shapeEndpointPopupHtml(shapeId, 'start'));
+        const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
+          .bindPopup(shapeEndpointPopupHtml(shapeId, 'end'));
+        startMarker.addTo(map);
+        endMarker.addTo(map);
+        allPolylineLayers.push(startMarker, endMarker);
+      } catch (err) {
+        console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
+        anyError = true;
+      }
+    }
+
+    if (allPolylineLayers.length === 0) {
+      showStatus('Impossibile caricare i tracciati richiesti.');
+      return;
+    }
+
+    if (anyError) {
+      showStatus('Alcuni tracciati non sono stati caricati correttamente (vedi console).');
+    } else {
+      hideStatus();
+    }
+
+    buildLegend(shapeIdToColor);
+
+    const group = L.featureGroup(allPolylineLayers);
+    map.fitBounds(group.getBounds().pad(0.15));
+  }
+
+  // ======================================================================
+  // AVVIO IN BASE ALLA MODALITÀ
+  // ======================================================================
+  if (MODE === 'shapes') {
+    initShapesMode();
+  } else {
+    initVehiclesMode();
+  }
+
+</script>
+</body>
+</html>
