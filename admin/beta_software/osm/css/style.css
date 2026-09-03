@@ -6,10 +6,6 @@ body {
     font-family: Titillium Web !important;
 }
 
-.leaflet-container {
-    font-family: Titillium Web !important;
-}
-
 #map {
     position: absolute;
     top: 0;
@@ -86,6 +82,62 @@ body {
 .popup-content td.label {
     color: #666;
     white-space: nowrap;
+}
+
+.popup-head {
+    background-color: darkcyan;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.line-box {
+    padding: 8px;
+    background-color: rgb(0, 161, 161);
+    width: fit-content;
+    margin: 8px !important;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 24px;
+    height: 40px;
+    min-width: 40px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    line-height: 1.1;
+    overflow: hidden;
+}
+
+.dest-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 8px !important;
+}
+
+.popup-base {
+    padding: 14px;
+}
+
+.leaflet-container {
+    font-family: Titillium Web !important;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: white;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 0;
 }
 
 #status {

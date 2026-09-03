@@ -8,3 +8,5 @@
 /seta_modena/servizi/orari/* /service/smf.html
 
 /seta_modena/servizi/deviazioni/* /service/serviceupdate.html
+
+/map /admin/beta_software/osm
