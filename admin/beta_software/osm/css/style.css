@@ -1,0 +1,132 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Titillium Web !important;
+}
+
+.leaflet-container {
+    font-family: Titillium Web !important;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Icona bus */
+.bus-icon {
+    width: 40px;
+    height: 40px;
+    background: rgb(0, 164, 164);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+}
+
+/* Icone inizio/fine shape */
+.shape-endpoint-icon {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.shape-endpoint-icon.start {
+    border-radius: 50%;
+}
+
+.shape-endpoint-icon.end {
+    border-radius: 4px;
+}
+
+/* Popup styling */
+.leaflet-popup-content-wrapper {
+    border-radius: 10px;
+}
+
+.popup-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.popup-content h3 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+    color: darkcyan;
+}
+
+.popup-content table {
+    border-collapse: collapse;
+}
+
+.popup-content td {
+    padding: 2px 6px 2px 0;
+    vertical-align: top;
+}
+
+.popup-content td.label {
+    color: #666;
+    white-space: nowrap;
+}
+
+#status {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    display: none;
+    max-width: 70%;
+}
+
+#legend {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    display: none;
+    max-height: 40%;
+    overflow-y: auto;
+}
+
+#legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 3px 0;
+}
+
+#legend .legend-swatch {
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
