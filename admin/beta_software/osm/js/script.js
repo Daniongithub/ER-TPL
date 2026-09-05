@@ -9,7 +9,7 @@ const CONFIG = {
     VEHICLES_ENDPOINT: "/vehiclepositions",
 
     // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
-    SHAPE_ENDPOINT_TEMPLATE: "/getshape/{shapeId}",
+    SHAPE_ENDPOINT_TEMPLATE: "/shape/{shapeId}",
 
     // Intervallo di refresh dati, in millisecondi. Usato solo in modalità "vehicles".
     REFRESH_INTERVAL_MS: 30000,
