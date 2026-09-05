@@ -10,8 +10,8 @@ async function getApiUrl() {
 const newsContainer = document.getElementById('news-container');
 
 //Vars
-const trimCh = 48;
-const forceTrimCh = 56;
+const trimCh = 46;
+const forceTrimCh = 52;
 
 newsContainer.innerHTML = "<p>Caricamento notizie...</p>";
 getApiUrl().then(url => {

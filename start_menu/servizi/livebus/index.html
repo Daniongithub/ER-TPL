@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Romagna - Autobus in tempo reale</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+                <li><a href="/start_menu/start.html"><h1 style="font-size: 100%;font-weight: 500;">START Romagna</h1></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Autobus in tempo reale</h1>
+    <h3 id="clock">00:00:00</h3>
+    <div class="filter-container">
+        <select id="filterZona" name="zona">
+            <option value="" selected>Tutti i bacini</option>
+            <option value="RA">Ravenna</option>
+            <option value="FC">Forlì-Cesena</option>
+            <option value="RN">Rimini</option>
+        </select>
+        <input type="text" id="filterLinea" placeholder="Filtra per linea" />
+        <input type="text" id="filterVeicolo" placeholder="Filtra per veicolo" />
+        <input type="text" id="filterCodiceFermata" placeholder="Filtra per codice fermata" />
+        <button type="button" id="resetFilters" onclick="clearFilters()">Reset</button>
+    </div>
+    <div class="num">
+        <p>Numero mezzi: <span id="nummezzi"></span></p>
+    </div>
+    <div id="data-container">
+        <p>Caricamento in corso, attendere prego...</p>
+    </div>
+    <footer>
+        <div>
+            <p>Copyright (C) 2025-2026 ER-TPL Team - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Daniongithub/StartRomagnaAPI" target="_blank">Codice Sorgente</a> - I loghi START Romagna sono marchi registrati da START Romagna SpA e sono inseriti in questa pagina solo per riferimento.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

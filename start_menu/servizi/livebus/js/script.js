@@ -6,7 +6,8 @@ async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
-    return cfg.url;
+    //return cfg.url;
+    return "https://startapi.serverissimo.com/busesinservice"
 }
 
 // Funzione per applicare il filtro su ogni colonna
@@ -29,19 +30,19 @@ function applyFilter() {
         if (cells[1] && !cells[1].textContent.toLowerCase().includes(filterLinea)) match = false;
         if (cells[4] && !cells[4].textContent.toLowerCase().includes(filterVeicolo)) match = false;
         if (cells[3] && !cells[3].textContent.toLowerCase().includes(filterCodiceFermata)) match = false;
-        
+
 
         // Mostra o nascondi la riga in base al filtro
-        if(match==false){
+        if (match == false) {
             row.style.display = 'none';
-        }else{
+        } else {
             row.style.display = '';
             i++;
         }
         //Previene casino alla UI quando applichi un filtro
-        if(i%2==0){
+        if (i % 2 == 0) {
             row.className = "even";
-        }else{
+        } else {
             row.className = "";
         }
     });
@@ -59,10 +60,9 @@ function numeromezzi() {
 // Primo fetch
 fetchData();
 
-// Fetch dei dati ogni 30 secondi (30 000 millisecondi)
 timer = setInterval(() => {
     fetchData();
-}, 30000);
+}, 20000);
 
 // Fetch dei dati e creazione della tabella
 function fetchData() {
@@ -72,70 +72,94 @@ function fetchData() {
     }
     getApiUrl().then(url => {
         fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            fetch(url + "/versione")
             .then(response => response.json())
             .then(data => {
-                document.getElementById("version").innerHTML = data.version;
+                /*
+                fetch(url + "/versione")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("version").innerHTML = data.version;
+                })
+                .catch(err => {
+                    document.getElementById("version").innerHTML = "Errore";
+                });*/
+
+                manualLoad = false;
+                container.innerHTML = '';
+
+                //Table and thead creation
+                const table = document.createElement('table');
+
+                var th = document.createElement('th');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+                th.innerHTML = 'Bacino';
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Linea';
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Direzione';
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Veicolo';
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Modello veicolo';
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Prossima fermata';
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Codice percorso';
+                th.className = 'mobile-hidden'
+                thead.appendChild(th);
+
+                var th = document.createElement('th');
+                th.innerHTML = 'Ultimo aggiornamento';
+                th.className = 'mobile-hidden'
+                thead.appendChild(th);
+
+                table.appendChild(thead);
+
+                // Aggiungi i dati alla tabella
+                data.forEach(bus => {
+                    const tr = document.createElement('tr');
+                    if (bus.vehicle_info.model == null) {
+                        bus.vehicle_info.model = "Sconosciuto"
+                    }
+                    tr.innerHTML = `
+                        <td>${bus.basin}</td>
+                        <td>${bus.line}</td>
+                        <td>${bus.destination}</td>
+                        <td>${bus.vehicle_info.number}</td>
+                        <td>${bus.vehicle_info.model}</td>
+                        <td>${bus.next_stop.stop_name}</td>
+                        <td class="mobile-hidden">${bus.shape_id}</td>
+                        <td class="mobile-hidden">${bus.last_update}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                // Aggiungi la tabella alla pagina
+                container.appendChild(table);
+                table.id = "tabella";
+                // Preserva il filtro
+                applyFilter();
+                numeromezzi();
             })
             .catch(err => {
-                document.getElementById("version").innerHTML = "Errore";
+                console.error(err)
+                container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
             });
-
-            manualLoad = false;
-            container.innerHTML = ''; 
-
-            // Crea la tabella
-            const table = document.createElement('table');
-
-            // Aggiungi l'intestazione della tabella
-            let th = document.createElement('th');
-            const thead = document.createElement('thead');
-            const tbody = document.createElement('tbody');
-            th.innerHTML = 'Bacino';
-            thead.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Linea';
-            thead.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Fermata';
-            thead.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Codice fermata';
-            thead.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Veicolo';
-            thead.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Ultimo aggiornamento';
-            thead.appendChild(th);
-            table.appendChild(thead);
-
-            // Aggiungi i dati alla tabella
-            data.forEach(row => {
-            const rowt = document.createElement('tr');
-            row.forEach(cellData => {
-                if (cellData != "") {
-                const cell = document.createElement('td');
-                cell.innerHTML = cellData;
-                rowt.appendChild(cell);
-                }
-            });
-            tbody.appendChild(rowt);
-            });
-            table.appendChild(tbody);
-            // Aggiungi la tabella alla pagina
-            container.appendChild(table);
-            table.id = "tabella";
-            // Preserva il filtro
-            applyFilter();
-            numeromezzi();
-        })
-        .catch(err => {
-            container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
-        });
     }).catch(err => {
+        console.error(err)
         container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
     });
 }

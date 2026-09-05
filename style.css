@@ -30,6 +30,15 @@ a.novita {
     color: rgb(0, 255, 0);
 }
 
+a.bianco{
+    color: white;
+    text-decoration: none;
+}
+
+a.biancosott {
+    color: white;
+}
+
 /*PULSANTI CON <a>*/
 /*COLORI BUTTON*/
 
