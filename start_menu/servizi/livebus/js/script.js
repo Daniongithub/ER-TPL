@@ -134,6 +134,12 @@ function fetchData() {
                     if (bus.vehicle_info.model == null) {
                         bus.vehicle_info.model = "Sconosciuto"
                     }
+                    if (bus.next_stop == null) {
+                        bus.next_stop = {
+                            stop_name: "",
+                            stop_code: ""
+                        };
+                    }
                     tr.innerHTML = `
                         <td>${bus.basin}</td>
                         <td>${bus.line}</td>

@@ -139,50 +139,50 @@ function caricadati() {
                     }
                     if (item.has_problems == true) {
                         tr.innerHTML = `
-                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.line}</td>
-                    <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.destination}</td>
-                `;
+                            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.line}</td>
+                            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.destination}</td>
+                        `;
                     } else {
                         tr.innerHTML = `
-                    <td>${item.line}</td>
-                    <td>${item.destination}</td>
-                `;
+                            <td>${item.line}</td>
+                            <td>${item.destination}</td>
+                        `;
                     }
 
                     //Delay
                     if (item.delay > 0) {
                         tr.innerHTML += `
-                    <td>${item.arrival_time} (+${item.delay})</td>
-                    <td>${stato}</td>
-                `;
+                            <td>${item.arrival_time} (+${item.delay})</td>
+                            <td>${stato}</td>
+                        `;
                     } else if (item.delay <= 0 && item.delay != null) {
                         tr.innerHTML += `
-                    <td>${item.arrival_time} (${item.delay})</td>
-                    <td>${stato}</td>
-                `;
+                            <td>${item.arrival_time} (${item.delay})</td>
+                            <td>${stato}</td>
+                        `;
                     } else {
                         tr.innerHTML += `
-                    <td>${item.arrival_time}</td>
-                    <td>${stato}</td>
-                `;
+                            <td>${item.arrival_time}</td>
+                            <td>${stato}</td>
+                        `;
                     }
 
                     //AEP specification
                     if (item.has_AEP == true) {
                         tr.innerHTML += `
-                    <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
-                    <td>${posizione}</td>
-                `;
+                            <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
+                            <td>${posizione}</td>
+                        `;
                     } else if (item.delay != null) {
                         tr.innerHTML += `
-                    <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
-                    <td>${posizione}</td>
-                `;
+                            <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
+                            <td>${posizione}</td>
+                        `;
                     } else {
                         tr.innerHTML += `
-                    <td></td>
-                    <td></td>
-                `;
+                            <td></td>
+                            <td></td>
+                        `;
                     }
                     tbody.appendChild(tr);
                 });
