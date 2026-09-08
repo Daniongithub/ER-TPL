@@ -7,6 +7,8 @@
 .filter-container {
     display: flex;
     justify-content: space-evenly;
+    margin-top: 5px;
+    margin-bottom: 5px;
     max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
@@ -30,7 +32,8 @@
     margin-left: 32px;
 }
 
-.filter-container input, .filter-container select{
+.filter-container input,
+.filter-container select {
     flex: 1 1 200px;
     padding: 10px 15px;
     font-size: 16px;
@@ -44,7 +47,8 @@
     margin-right: 15px;
 }
 
-.filter-container input:focus, .filter-container select:focus{
+.filter-container input:focus,
+.filter-container select:focus {
     outline: none;
     border-color: darkcyan;
     /*background-color: rgba(0, 139, 139, 0.1)*/
@@ -55,48 +59,34 @@
 }
 
 .num {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    padding: 1px;
-    padding-left: 12px;
-    padding-right: 12px;
-    max-width: fit-content;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    max-width: 150px;
     margin-left: auto;
     margin-right: auto;
     background-color: #333;
     border-radius: 8px;
 }
 
-.num p {
-    margin: 0;
-}
-
 table {
     border-collapse: separate;
     border-spacing: 0;
-    border: 1px solid rgb(100, 100, 100);
-    border-radius: 12px;
+    border-radius: 8px;
     overflow: hidden;
     min-width: 85%;
     max-width: 100%;
     text-align: left;
 }
 
-/*Linee verticali*/
-th:not(:last-child), td:not(:last-child) {
-    border-right: 1px solid rgb(100, 100, 100);
-}
-/*Linee orizzontali*/
-tr:not(:last-child) > th, tr:not(:last-child) > td {
-    border-bottom: 1px solid rgb(100, 100, 100);
-}
 th {
     background-color: darkcyan;
     padding: .7vw;
 }
+
 td {
     padding: .7vw;
 }
+
 tr.even {
     background-color: rgb(60, 60, 60);
 }
@@ -124,6 +114,29 @@ tr.even {
     #data-container {
         overflow-x: scroll;
     }
+
+    th,
+    td {
+        font-size: 2.2vw;
+    }
+}
+
+@media (max-width: 512px) {
+    th {
+        position: sticky;
+    }
+
+    th,
+    td {
+        font-size: 3.3vw;
+        padding: 1.2vw;
+    }
+
+    td:first-child,
+    th:first-child {
+        padding-left: 5px;
+    }
+
     .mobile-hidden {
         display: none;
     }
@@ -154,11 +167,9 @@ input::placeholder {
     color: white;
 }
 
-h1 {
-    margin-bottom: 14px;
-}
-h3 {
-    margin-top: 14px;
+img {
+    margin-top: 10px;
+    width: 150px;
 }
 
 /* Questo pezzo qui fixa il dropdown su alcuni browser*/
@@ -169,7 +180,4 @@ h3 {
 
 footer {
     position: relative;
-    bottom: 0;
-	left: 0;
-    width: 100%;
 }

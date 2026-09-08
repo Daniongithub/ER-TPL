@@ -10,12 +10,36 @@ async function getApiUrl() {
     return "https://startapi.serverissimo.com/busesinservice"
 }
 
+// Funzione per riempire il select dei modelli solo con i modelli che comunicano
+function fillModels() {
+    const modelSelect = document.getElementById('filter-modello')
+
+    const table = document.querySelector('table');
+    const rows = table.querySelectorAll('tr');
+    var models = new Map();
+
+    rows.forEach(row => {
+        const cells = row.getElementsByTagName('td');
+        models.set(cells[4].textContent, true);
+    })
+
+    //Sarebbe da ordinarli ma non ci riesco
+
+    models.forEach((model, idx) => {
+        if (idx != "Sconosciuto") {
+            const option = document.createElement('option');
+            option.value = idx;
+            option.textContent = idx;
+            modelSelect.appendChild(option)
+        }
+    })
+}
+
 // Funzione per applicare il filtro su ogni colonna
 function applyFilter() {
-    const filterZona = document.getElementById('filterZona').value.toLowerCase();
-    const filterLinea = document.getElementById('filterLinea').value.toLowerCase();
-    const filterVeicolo = document.getElementById('filterVeicolo').value.toLowerCase();
-    const filterCodiceFermata = document.getElementById('filterCodiceFermata').value.toLowerCase();
+    const filterZona = document.getElementById('filter-zona').value.toLowerCase();
+    const filterLinea = document.getElementById('filter-linea').value.toLowerCase();
+    const filterModello = document.getElementById('filter-modello').value.toLowerCase();
 
     const table = document.querySelector('table');
     const rows = table.querySelectorAll('tr');
@@ -28,9 +52,7 @@ function applyFilter() {
         // Verifica ogni cella rispetto al filtro per la colonna
         if (cells[0] && !cells[0].textContent.toLowerCase().includes(filterZona)) match = false;
         if (cells[1] && !cells[1].textContent.toLowerCase().includes(filterLinea)) match = false;
-        if (cells[4] && !cells[4].textContent.toLowerCase().includes(filterVeicolo)) match = false;
-        if (cells[3] && !cells[3].textContent.toLowerCase().includes(filterCodiceFermata)) match = false;
-
+        if (cells[3] && !cells[4].textContent.toLowerCase().includes(filterModello)) match = false;
 
         // Mostra o nascondi la riga in base al filtro
         if (match == false) {
@@ -74,16 +96,6 @@ function fetchData() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                /*
-                fetch(url + "/versione")
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("version").innerHTML = data.version;
-                })
-                .catch(err => {
-                    document.getElementById("version").innerHTML = "Errore";
-                });*/
-
                 manualLoad = false;
                 container.innerHTML = '';
 
@@ -109,7 +121,7 @@ function fetchData() {
                 thead.appendChild(th);
 
                 var th = document.createElement('th');
-                th.innerHTML = 'Modello veicolo';
+                th.innerHTML = 'Modello';
                 thead.appendChild(th);
 
                 var th = document.createElement('th');
@@ -117,7 +129,7 @@ function fetchData() {
                 thead.appendChild(th);
 
                 var th = document.createElement('th');
-                th.innerHTML = 'Codice percorso';
+                th.innerHTML = 'Codice fermata';
                 th.className = 'mobile-hidden'
                 thead.appendChild(th);
 
@@ -142,7 +154,7 @@ function fetchData() {
                     }
 
                     let ISOdate = new Date(bus.last_update);
-                    const aggiornamento = 
+                    const aggiornamento =
                         ISOdate.toLocaleTimeString("it-IT", {
                             hour: "2-digit",
                             minute: "2-digit",
@@ -162,7 +174,7 @@ function fetchData() {
                         <td>${bus.vehicle_info.number}</td>
                         <td>${bus.vehicle_info.model}</td>
                         <td>${bus.next_stop.stop_name}</td>
-                        <td class="mobile-hidden">${bus.shape_id}</td>
+                        <td class="mobile-hidden">${bus.next_stop.stop_code}</td>
                         <td class="mobile-hidden">${aggiornamento}</td>
                     `;
                     tbody.appendChild(tr);
@@ -174,6 +186,7 @@ function fetchData() {
                 // Preserva il filtro
                 applyFilter();
                 numeromezzi();
+                fillModels();
             })
             .catch(err => {
                 console.error(err)
@@ -193,10 +206,9 @@ function updateClock() {
 }
 function clearFilters() {
     // Pulisci tutti i filtri
-    document.getElementById("filterZona").value = "";
-    document.getElementById("filterLinea").value = "";
-    document.getElementById("filterVeicolo").value = "";
-    document.getElementById("filterCodiceFermata").value = "";
+    document.getElementById("filter-zona").value = "";
+    document.getElementById("filter-linea").value = "";
+    document.getElementById("filter-modello").value = "";
     // Esegui la funzione per applicare i filtri (per sicurezza)
     applyFilter();
     numeromezzi();
@@ -205,11 +217,9 @@ function clearFilters() {
 setInterval(updateClock, 1000);
 updateClock();
 // Applica il filtro ogni volta che l'utente digita
-document.getElementById('filterZona').addEventListener('input', applyFilter);
-document.getElementById('filterLinea').addEventListener('input', applyFilter);
-document.getElementById('filterVeicolo').addEventListener('input', applyFilter);
-document.getElementById('filterCodiceFermata').addEventListener('input', applyFilter);
-document.getElementById('filterZona').addEventListener('input', numeromezzi);
-document.getElementById('filterLinea').addEventListener('input', numeromezzi);
-document.getElementById('filterVeicolo').addEventListener('input', numeromezzi);
-document.getElementById('filterCodiceFermata').addEventListener('input', numeromezzi);
+document.getElementById('filter-zona').addEventListener('input', applyFilter);
+document.getElementById('filter-linea').addEventListener('input', applyFilter);
+document.getElementById('filter-modello').addEventListener('input', applyFilter);
+document.getElementById('filter-zona').addEventListener('input', numeromezzi);
+document.getElementById('filter-linea').addEventListener('input', numeromezzi);
+document.getElementById('filter-modello').addEventListener('input', numeromezzi);
