@@ -140,6 +140,21 @@ function fetchData() {
                             stop_code: ""
                         };
                     }
+
+                    let ISOdate = new Date(bus.last_update);
+                    const aggiornamento = 
+                        ISOdate.toLocaleTimeString("it-IT", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            second: "2-digit",
+                        }) +
+                        " " +
+                        ISOdate.toLocaleDateString("it-IT", {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                        });
+
                     tr.innerHTML = `
                         <td>${bus.basin}</td>
                         <td>${bus.line}</td>
@@ -148,7 +163,7 @@ function fetchData() {
                         <td>${bus.vehicle_info.model}</td>
                         <td>${bus.next_stop.stop_name}</td>
                         <td class="mobile-hidden">${bus.shape_id}</td>
-                        <td class="mobile-hidden">${bus.last_update}</td>
+                        <td class="mobile-hidden">${aggiornamento}</td>
                     `;
                     tbody.appendChild(tr);
                 });
