@@ -7,7 +7,7 @@ async function getApiUrl() {
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
     //return cfg.url;
-    return "https://startapi.serverissimo.com/busesinservice"
+    return "https://startapi.serverissimo.com/busesinservice";
 }
 
 // Funzione per riempire il select dei modelli
@@ -171,7 +171,7 @@ timer = setInterval(() => {
 function fetchData() {
     const container = document.getElementById('data-container');
     if (manualLoad) {
-        container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>'
+        container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>';
     }
     getApiUrl().then(url => {
         fetch(url)
@@ -183,41 +183,41 @@ function fetchData() {
                 //Table and thead creation
                 const table = document.createElement('table');
 
-                let th = document.createElement('th');
+                let th1 = document.createElement('th');
                 const thead = document.createElement('thead');
                 const tbody = document.createElement('tbody');
-                th.innerHTML = 'Bacino';
-                thead.appendChild(th);
+                th1.innerHTML = 'Bacino';
+                thead.appendChild(th1);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Linea';
-                thead.appendChild(th);
+                let th2 = document.createElement('th');
+                th2.innerHTML = 'Linea';
+                thead.appendChild(th2);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Direzione';
-                thead.appendChild(th);
+                let th3 = document.createElement('th');
+                th3.innerHTML = 'Direzione';
+                thead.appendChild(th3);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Veicolo';
-                thead.appendChild(th);
+                let th4 = document.createElement('th');
+                th4.innerHTML = 'Veicolo';
+                thead.appendChild(th4);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Modello';
-                thead.appendChild(th);
+                let th5 = document.createElement('th');
+                th5.innerHTML = 'Modello';
+                thead.appendChild(th5);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Prossima fermata';
-                thead.appendChild(th);
+                let th6 = document.createElement('th');
+                th6.innerHTML = 'Prossima fermata';
+                thead.appendChild(th6);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Codice fermata';
-                th.className = 'mobile-hidden'
-                thead.appendChild(th);
+                let th7 = document.createElement('th');
+                th7.innerHTML = 'Codice fermata';
+                th7.className = 'mobile-hidden';
+                thead.appendChild(th7);
 
-                let th = document.createElement('th');
-                th.innerHTML = 'Ultimo aggiornamento';
-                th.className = 'mobile-hidden'
-                thead.appendChild(th);
+                let th8 = document.createElement('th');
+                th8.innerHTML = 'Ultimo aggiornamento';
+                th8.className = 'mobile-hidden';
+                thead.appendChild(th8);
 
                 table.appendChild(thead);
 
@@ -225,7 +225,7 @@ function fetchData() {
                 data.forEach(bus => {
                     const tr = document.createElement('tr');
                     if (bus.vehicle_info.model == null) {
-                        bus.vehicle_info.model = "Sconosciuto"
+                        bus.vehicle_info.model = "Sconosciuto";
                     }
                     if (bus.next_stop == null) {
                         bus.next_stop = {
@@ -270,11 +270,11 @@ function fetchData() {
                 numeromezzi();
             })
             .catch(err => {
-                console.error(err)
+                console.error(err);
                 container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
             });
     }).catch(err => {
-        console.error(err)
+        console.error(err);
         container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
     });
 }

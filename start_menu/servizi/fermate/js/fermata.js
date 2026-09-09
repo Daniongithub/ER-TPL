@@ -7,13 +7,13 @@ async function getApiUrl() {
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
     //return cfg.url;
-    return "https://startapi.serverissimo.com"
+    return "https://startapi.serverissimo.com";
 }
 
 const params = new URLSearchParams(window.location.search);
 const code = params.get('code');
 const basin = params.get('basin');
-let nome
+let nome = "";
 
 const tableContainer = document.getElementById('tabella-container');
 const stopSpan = document.getElementById('fermata-span');
@@ -43,7 +43,7 @@ getApiUrl().then(url => {
             //Pulsante dall'altra parte
             if (altraParteSearch(nome)) {
                 const codes = altraParteSearch(nome);
-                let altroCodice
+                let altroCodice = "";
                 if (code == codes[0]) {
                     altroCodice = codes[1];
                 } else {
@@ -92,21 +92,21 @@ function loadArrivals() {
                     //Checks if route is realtime and displays real time information
                     if (element.state == "realtime") {
                         if (element.next_stop.delay > 0) {
-                            formattedDelay = `(+${element.next_stop.delay})`
+                            formattedDelay = `(+${element.next_stop.delay})`;
                         } else {
-                            formattedDelay = `(${element.next_stop.delay})`
+                            formattedDelay = `(${element.next_stop.delay})`;
                         }
                         if (element.next_stop.stop_name == nome) {
-                            nextStopName = "<strong>" + element.next_stop.stop_name + "</strong>"
+                            nextStopName = "<b>" + element.next_stop.stop_name + "</b>";
                         } else {
-                            nextStopName = element.next_stop.stop_name
+                            nextStopName = element.next_stop.stop_name;
                         }
                     }
                     //Canceled trips
                     if (element.state == "canceled") {
-                        formattedDelay = "SOPPRESSA"
-                        tr.className = "red-bg"
-                        element.arrival_time = `<s>${element.arrival_time}</s>`
+                        formattedDelay = "SOPPRESSA";
+                        tr.className = "red-bg";
+                        element.arrival_time = `<s>${element.arrival_time}</s>`;
                     }
                     //Checks if vehicle is null
                     let vehicle = "";
@@ -121,13 +121,13 @@ function loadArrivals() {
                         <td>${nextStopName}</td>
                     `;
                     if (idx % 2 != 0) {
-                        tr.className = "even"
+                        tr.className = "even";
                     }
                     table.appendChild(tr);
                 });
                 tableContainer.appendChild(table);
-            })
-    })
+            });
+    });
 }
 
 function altraParteSearch(searchTerm) {
@@ -146,7 +146,7 @@ function altraParteSearch(searchTerm) {
     }
 }
 
-loadArrivals()
+loadArrivals();
 
 timer = setInterval(() => {
     loadArrivals();

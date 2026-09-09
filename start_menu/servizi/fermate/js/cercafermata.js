@@ -7,31 +7,31 @@ async function getApiUrl() {
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
     //return cfg.url;
-    return "https://startapi.serverissimo.com"
+    return "https://startapi.serverissimo.com";
 }
 
-const basinSelect = document.getElementById('basin-select')
-const filtersContainer = document.getElementById('filters-container')
-const nameButton = document.getElementById('name-button')
-const longcodeButton = document.getElementById('longcode-button')
-const shortcodeButton = document.getElementById('shortcode-button')
-const searchBar = document.getElementById('search-bar')
-const resultsContainer = document.getElementById('search-results')
+const basinSelect = document.getElementById('basin-select');
+const filtersContainer = document.getElementById('filters-container');
+const nameButton = document.getElementById('name-button');
+const longcodeButton = document.getElementById('longcode-button');
+const shortcodeButton = document.getElementById('shortcode-button');
+const searchBar = document.getElementById('search-bar');
+const resultsContainer = document.getElementById('search-results');
 
-let selectedBasin
-let searchMethod
-let stops
+let selectedBasin = "";
+let searchMethod = "";
+let stops = [];
 
 async function loadStops() {
     //Locks search if we need to get stops
-    searchBar.disabled = 'true'
-    searchBar.className = 'blocked'
-    searchBar.style.display = ''
+    searchBar.disabled = 'true';
+    searchBar.className = 'blocked';
+    searchBar.style.display = '';
     //Default search by name
-    searchByName()
-    resultsContainer.style.display = 'block'
-    resultsContainer.textContent = 'Caricamento lista fermate...'
-    const baseUrl = await getApiUrl()
+    searchByName();
+    resultsContainer.style.display = 'block';
+    resultsContainer.textContent = 'Caricamento lista fermate...';
+    const baseUrl = await getApiUrl();
     fetch(baseUrl + "/static/stops/" + selectedBasin)
         .then(response => {
             if (!response.ok) { resultsContainer.textContent = "Errore nel caricamento lista fermate"; throw new Error("Errore nel caricamento lista fermate.") }
@@ -44,97 +44,102 @@ async function loadStops() {
             resultsContainer.innerHTML = ''
             resultsContainer.style.display = 'none'
             searchBar.focus()
-        })
-}
+        });
+};
 
 //Detect basin selection and spawns buttons
 basinSelect.addEventListener('change', async function (event) {
-    selectedBasin = basinSelect.value
+    selectedBasin = basinSelect.value;
 
-    filtersContainer.style.display = ''
-    await loadStops()
+    filtersContainer.style.display = '';
+    await loadStops();
     //Default search by name moved to loadStops
 });
 
 function searchByName() {
-    searchMethod = "name"
-    searchBar.style.display = ''
-    searchBar.value = ''
-    resultsContainer.innerHTML = ''
-    nameButton.classList.add("selected")
+    searchMethod = "name";
+    searchBar.style.display = '';
+    searchBar.value = '';
+    resultsContainer.innerHTML = '';
+    nameButton.classList.add("selected");
     //Removes other buttons selection
-    longcodeButton.classList.remove("selected")
-    shortcodeButton.classList.remove("selected")
-    searchBar.focus()
+    longcodeButton.classList.remove("selected");
+    shortcodeButton.classList.remove("selected");
+    searchBar.focus();
 }
 
 function searchByLongCode() {
-    searchMethod = "longcode"
-    searchBar.style.display = ''
-    searchBar.value = ''
-    resultsContainer.innerHTML = ''
-    longcodeButton.classList.add("selected")
+    searchMethod = "longcode";
+    searchBar.style.display = '';
+    searchBar.value = '';
+    resultsContainer.innerHTML = '';
+    longcodeButton.classList.add("selected");
     //Removes other buttons selection
-    nameButton.classList.remove("selected")
-    shortcodeButton.classList.remove("selected")
-    searchBar.focus()
+    nameButton.classList.remove("selected");
+    shortcodeButton.classList.remove("selected");
+    searchBar.focus();
 }
 
 function searchByShortCode() {
-    searchMethod = "shortcode"
-    searchBar.style.display = ''
-    searchBar.value = ''
-    resultsContainer.innerHTML = ''
-    shortcodeButton.classList.add("selected")
+    searchMethod = "shortcode";
+    searchBar.style.display = '';
+    searchBar.value = '';
+    resultsContainer.innerHTML = '';
+    shortcodeButton.classList.add("selected");
     //Removes other buttons selection
-    nameButton.classList.remove("selected")
-    longcodeButton.classList.remove("selected")
-    searchBar.focus()
+    nameButton.classList.remove("selected");
+    longcodeButton.classList.remove("selected");
+    searchBar.focus();
 }
 
 searchBar.addEventListener('input', function (event) {
     if (searchBar.value == '') {
-        resultsContainer.innerHTML = ''
-        resultsContainer.style.display = 'none'
+        resultsContainer.innerHTML = '';
+        resultsContainer.style.display = 'none';
     } else {
         const searchTerm = searchBar.value.trim().toLowerCase();
         search(searchTerm);
     }
 })
 
+function getFermatadaBreve(codice) {
+    const middle = String(codice).padStart(4, "0");
+    return `7${middle}0`;
+}
+
 function search(searchTerm) {
-    let results = []
+    let results = [];
+
     stops.forEach(stop => {
         switch (searchMethod) {
             case "name":
                 if (stop.stop_name.toLowerCase().includes(searchTerm)) {
-                    results.push(stop)
+                    results.push(stop);
                 }
-                break
+                break;
+
             case "longcode":
                 if (stop.stop_code == searchTerm) {
-                    results.push(stop)
+                    results.push(stop);
                 }
-                break
+                break;
+
             case "shortcode":
-                if (searchTerm.length == 3) {
-                    searchTerm = "700" + searchTerm + "0"
-                } else {
-                    searchTerm = "70" + searchTerm + "0"
+                const longCode = getFermatadaBreve(searchTerm);
+                if (stop.stop_code == longCode) {
+                    results.push(stop);
                 }
-                if (stop.stop_code == searchTerm) {
-                    results.push(stop)
-                }
-                break
+                break;
         }
     });
 
-    renderResults(results)
+    renderResults(results);
 }
+
 
 function renderResults(results) {
     resultsContainer.innerHTML = '';
-    resultsContainer.style.display = 'block'
+    resultsContainer.style.display = 'block';
     if (results.length === 0) {
         resultsContainer.innerHTML = '<p>Nessun risultato trovato</p>';
         return;
