@@ -1,6 +1,6 @@
 // New fallback system (HA)
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/startbus";
-var manualLoad = true;
+let manualLoad = true;
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
@@ -165,7 +165,7 @@ fetchData();
 
 timer = setInterval(() => {
     fetchData();
-}, 20000);
+}, 30000);
 
 // Fetch dei dati e creazione della tabella
 function fetchData() {
@@ -183,38 +183,38 @@ function fetchData() {
                 //Table and thead creation
                 const table = document.createElement('table');
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 const thead = document.createElement('thead');
                 const tbody = document.createElement('tbody');
                 th.innerHTML = 'Bacino';
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Linea';
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Direzione';
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Veicolo';
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Modello';
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Prossima fermata';
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Codice fermata';
                 th.className = 'mobile-hidden'
                 thead.appendChild(th);
 
-                var th = document.createElement('th');
+                let th = document.createElement('th');
                 th.innerHTML = 'Ultimo aggiornamento';
                 th.className = 'mobile-hidden'
                 thead.appendChild(th);

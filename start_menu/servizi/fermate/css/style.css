@@ -1,0 +1,214 @@
+a {
+    color: orange;
+}
+
+nav#corsie-nav ul {
+    justify-content: center;
+}
+
+nav#corsie-nav ul li a {
+    color: white;
+    text-decoration: underline;
+}
+
+nav#corsie-nav ul li {
+    margin-left: 8px;
+    margin-right: 7px;
+}
+
+nav#corsie-nav ul li a {
+    font-size: 95%;
+    margin: 0;
+}
+
+.basin-select-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#basin-select {
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    border: 2px rgba(0, 139, 139, 0.5) solid;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+#basin-select:focus {
+    outline: none;
+    border-color: darkcyan;
+}
+
+#filters-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+
+#search-bar {
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    border: 2px #444444 solid;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: darkcyan;
+}
+
+#search-results {
+    display: none;
+    margin-bottom: 20px;
+}
+
+#search-results>p {
+    margin: 0;
+}
+
+.filter-box {
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    padding: 10px 15px;
+    border: 2px #444444 solid;
+    border-radius: 8px;
+    transition: all 0.1s ease;
+    margin: 0px 6px;
+}
+
+.filter-box:hover {
+    outline: none;
+    border-color: darkcyan;
+}
+
+.filter-box.selected {
+    border-color: darkcyan;
+    background-color: darkcyan;
+}
+
+input.blocked {
+    background-color: #333 !important;
+}
+
+.search-result {
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 8px;
+    width: 20vw;
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: border-color 0.1s ease;
+}
+
+.search-result:hover {
+    border-color: darkcyan;
+}
+
+/* Fermata */
+
+#tabella-container {
+    margin-top: 16px;
+    margin-bottom: 18px;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 85%;
+    margin-top: 1rem;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 85%;
+    max-width: 100%;
+    text-align: left;
+}
+
+th {
+    background-color: darkcyan;
+    padding: .7vw;
+}
+
+td {
+    padding: .7vw;
+}
+
+tr.even {
+    background-color: rgb(60, 60, 60);
+}
+
+tr.red-bg {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    position: relative;
+}
+
+footer div {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+footer div p {
+    margin-top: 3px;
+    margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+    #filters-container {
+        display: block;
+    }
+
+    .filter-box {
+        width: 80%;
+        margin: 4px;
+    }
+
+    .search-result {
+        display: block;
+        width: 96.5%;
+    }
+
+    th,
+    td {
+        font-size: 2.4vw;
+    }
+}
+
+@media (max-width: 512px) {
+    th {
+        position: sticky;
+    }
+
+    th,
+    td {
+        font-size: 3.6vw;
+        padding: 1vw;
+    }
+
+    td:first-child,
+    th:first-child {
+        padding-left: 5px;
+    }
+
+    .mobile-hidden {
+        display: none;
+    }
+}

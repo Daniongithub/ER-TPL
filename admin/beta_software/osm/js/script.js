@@ -69,7 +69,6 @@ function busIcon(item) {
     return L.divIcon({
         className: '',
         html: `<div class="bus-icon">${item.line}</div>`,
-        //html: '<div class="bus-icon">🚌</div>',
         iconSize: [34, 34],
         iconAnchor: [17, 17],
         popupAnchor: [0, -17]
@@ -137,7 +136,7 @@ function plotVehicles(data) {
 
     if (vehiclesFirstLoad && markersByVehicle.size > 0) {
         const group = L.featureGroup(Array.from(markersByVehicle.values()));
-        map.fitBounds(group.getBounds().pad(0.15));
+        map.fitBounds(group.getBounds().pad(0));
         vehiclesFirstLoad = false;
     }
 }

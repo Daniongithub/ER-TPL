@@ -4,27 +4,28 @@ async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
-    return cfg.url;
+    //return cfg.url;
+    return "https://startapi.serverissimo.com/rss/feed"
 }
 
 const params = new URLSearchParams(window.location.search);
 const link = params.get('link');
 const notiziaContainer = document.getElementById('notizia-container');
 
-notiziaContainer.innerHTML="<p>Caricamento notizia...</p>";
+notiziaContainer.innerHTML = "<p>Caricamento notizia...</p>";
 getApiUrl().then(url => {
-fetch(url + "/feed")
-    .then(response => {
-        if (!response.ok){
-            notiziaContainer.innerHTML="<p>Impossibile raggiungere l'API.</p>";
-            if(response.status=="404"){
-                notiziaContainer.innerHTML="<p>Errore HTTP 404 Not Found. Impossibile leggere la notizia.</p>";
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                notiziaContainer.innerHTML = "<p>Impossibile raggiungere l'API.</p>";
+                if (response.status == "404") {
+                    notiziaContainer.innerHTML = "<p>Errore HTTP 404 Not Found. Impossibile leggere la notizia.</p>";
+                }
+                throw new Error("Errore nel caricamento dei dati.");
             }
-            throw new Error("Errore nel caricamento dei dati.");
-        } 
-        return response.json();
-    })
-    .then(data => {
+            return response.json();
+        })
+        .then(data => {
             notiziaContainer.innerHTML = "";
 
             // Cerca la notizia con il link passato nella query string
