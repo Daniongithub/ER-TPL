@@ -10,65 +10,146 @@ async function getApiUrl() {
     return "https://startapi.serverissimo.com/busesinservice"
 }
 
-// Funzione per riempire il select dei modelli solo con i modelli che comunicano
+// Funzione per riempire il select dei modelli
+// I modelli disponibili dipendono SOLO da Bacino e Linea
 function fillModels() {
-    const modelSelect = document.getElementById('filter-modello')
+    const modelSelect = document.getElementById('filter-modello');
+    const table = document.getElementById('tabella');
 
-    const table = document.querySelector('table');
-    const rows = table.querySelectorAll('tr');
-    var models = new Map();
+    if (!table || !modelSelect) return;
 
-    rows.forEach(row => {
+    const currentModel = modelSelect.value;
+    const filterZona = document.getElementById('filter-zona').value.toLowerCase();
+    const filterLinea = document.getElementById('filter-linea').value.toLowerCase();
+
+    const models = new Set();
+
+    table.querySelectorAll('tbody tr').forEach(row => {
         const cells = row.getElementsByTagName('td');
-        models.set(cells[4].textContent, true);
-    })
 
-    //Sarebbe da ordinarli ma non ci riesco
+        if (cells.length <= 4) return;
 
-    models.forEach((model, idx) => {
-        if (idx != "Sconosciuto") {
-            const option = document.createElement('option');
-            option.value = idx;
-            option.textContent = idx;
-            modelSelect.appendChild(option)
+        // Considera SOLO Bacino e Linea
+        const zona = cells[0].textContent.trim().toLowerCase();
+        const linea = cells[1].textContent.trim().toLowerCase();
+
+        if (!zona.includes(filterZona)) return;
+        if (!linea.includes(filterLinea)) return;
+
+        // Il modello viene raccolto indipendentemente dal filtro modello
+        const model = cells[4].textContent.trim();
+
+        if (model && model !== "Sconosciuto") {
+            models.add(model);
         }
-    })
+    });
+
+    // Ricrea le option
+    modelSelect.options.length = 1;
+
+    [...models]
+        .sort((a, b) => a.localeCompare(b, 'it', {
+            sensitivity: 'base'
+        }))
+        .forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            modelSelect.appendChild(option);
+        });
+
+    // Mantieni il modello selezionato se è ancora compatibile
+    if (models.has(currentModel)) {
+        modelSelect.value = currentModel;
+    } else {
+        modelSelect.value = "";
+    }
 }
 
-// Funzione per applicare il filtro su ogni colonna
+
+// Funzione per applicare i filtri
 function applyFilter() {
     const filterZona = document.getElementById('filter-zona').value.toLowerCase();
     const filterLinea = document.getElementById('filter-linea').value.toLowerCase();
     const filterModello = document.getElementById('filter-modello').value.toLowerCase();
 
-    const table = document.querySelector('table');
-    const rows = table.querySelectorAll('tr');
+    const table = document.getElementById('tabella');
+    if (!table) return;
+
+    const rows = table.querySelectorAll('tbody tr');
     let i = 0;
 
-    rows.forEach((row, index) => {
+    rows.forEach(row => {
         const cells = row.getElementsByTagName('td');
         let match = true;
 
-        // Verifica ogni cella rispetto al filtro per la colonna
-        if (cells[0] && !cells[0].textContent.toLowerCase().includes(filterZona)) match = false;
-        if (cells[1] && !cells[1].textContent.toLowerCase().includes(filterLinea)) match = false;
-        if (cells[3] && !cells[4].textContent.toLowerCase().includes(filterModello)) match = false;
-
-        // Mostra o nascondi la riga in base al filtro
-        if (match == false) {
-            row.style.display = 'none';
-        } else {
-            row.style.display = '';
-            i++;
+        // BACINO
+        if (cells[0] &&
+            !cells[0].textContent.toLowerCase().includes(filterZona)) {
+            match = false;
         }
-        //Previene casino alla UI quando applichi un filtro
-        if (i % 2 == 0) {
-            row.className = "even";
-        } else {
-            row.className = "";
+
+        // LINEA
+        if (cells[1] &&
+            !cells[1].textContent.toLowerCase().includes(filterLinea)) {
+            match = false;
+        }
+
+        // MODELLO
+        if (cells[4] &&
+            !cells[4].textContent.toLowerCase().includes(filterModello)) {
+            match = false;
+        }
+
+        row.style.display = match ? '' : 'none';
+
+        if (match) {
+            i++;
+            row.className = i % 2 === 0 ? 'even' : '';
         }
     });
+
+    // Aggiorna i modelli disponibili usando SOLO Bacino + Linea
+    fillModels();
+
+    // Contenitore della tabella
+    const container = table.parentElement;
+
+    // Cerca un eventuale messaggio già presente
+    let noResults = container.querySelector('.no-results');
+
+    if (i === 0) {
+        // Nasconde la tabella, compresa la thead
+        table.style.display = 'none';
+
+        // Crea il messaggio se non esiste
+        if (!noResults) {
+            noResults = document.createElement('h3');
+            noResults.className = 'no-results';
+            noResults.style.cssText = `
+                text-align: center;
+                color: white;
+                padding: 20px;
+                margin: 0;
+            `;
+            container.appendChild(noResults);
+        }
+
+        noResults.textContent = 'Nessun mezzo corrisponde ai filtri selezionati.';
+        noResults.style.display = '';
+    } else {
+        // Ci sono risultati: mostra la tabella
+        table.style.display = '';
+
+        // Nasconde il messaggio
+        if (noResults) {
+            noResults.style.display = 'none';
+        }
+    }
+
+    numeromezzi();
 }
+
 
 function numeromezzi() {
     const table = document.getElementById('tabella');
@@ -185,8 +266,8 @@ function fetchData() {
                 table.id = "tabella";
                 // Preserva il filtro
                 applyFilter();
-                numeromezzi();
                 fillModels();
+                numeromezzi();
             })
             .catch(err => {
                 console.error(err)
@@ -217,9 +298,9 @@ function clearFilters() {
 setInterval(updateClock, 1000);
 updateClock();
 // Applica il filtro ogni volta che l'utente digita
-document.getElementById('filter-zona').addEventListener('input', applyFilter);
+document.getElementById('filter-zona').addEventListener('change', applyFilter);
 document.getElementById('filter-linea').addEventListener('input', applyFilter);
-document.getElementById('filter-modello').addEventListener('input', applyFilter);
-document.getElementById('filter-zona').addEventListener('input', numeromezzi);
+document.getElementById('filter-modello').addEventListener('change', applyFilter);
+document.getElementById('filter-zona').addEventListener('change', numeromezzi);
 document.getElementById('filter-linea').addEventListener('input', numeromezzi);
-document.getElementById('filter-modello').addEventListener('input', numeromezzi);
+document.getElementById('filter-modello').addEventListener('change', numeromezzi);
