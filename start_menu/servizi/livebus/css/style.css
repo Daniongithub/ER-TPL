@@ -51,7 +51,6 @@
 .filter-container select:focus {
     outline: none;
     border-color: darkcyan;
-    /*background-color: rgba(0, 139, 139, 0.1)*/
 }
 
 .filter-container button:active {
@@ -117,7 +116,7 @@ tr.even {
 
     th,
     td {
-        font-size: 2.2vw;
+        font-size: 2.4vw;
     }
 }
 
@@ -128,7 +127,7 @@ tr.even {
 
     th,
     td {
-        font-size: 3.3vw;
+        font-size: 3.6vw;
         padding: 1.2vw;
     }
 
