@@ -51,9 +51,14 @@ async function loadStops() {
 basinSelect.addEventListener('change', async function (event) {
     selectedBasin = basinSelect.value;
 
-    filtersContainer.style.display = '';
-    await loadStops();
-    //Default search by name moved to loadStops
+    if (selectedBasin == 'RA') {
+        filtersContainer.style.display = '';
+        await loadStops();
+    } else {
+        filtersContainer.style.display = 'none';
+        await loadStops();
+        //Default search by name moved to loadStops
+    }
 });
 
 function searchByName() {
@@ -111,25 +116,31 @@ function search(searchTerm) {
     let results = [];
 
     stops.forEach(stop => {
-        switch (searchMethod) {
-            case "name":
-                if (stop.stop_name.toLowerCase().includes(searchTerm)) {
-                    results.push(stop);
-                }
-                break;
+        if (selectedBasin == 'RA') {
+            switch (searchMethod) {
+                case "name":
+                    if (stop.stop_name.toLowerCase().includes(searchTerm)) {
+                        results.push(stop);
+                    }
+                    break;
 
-            case "longcode":
-                if (stop.stop_code == searchTerm) {
-                    results.push(stop);
-                }
-                break;
+                case "longcode":
+                    if (stop.stop_code == searchTerm) {
+                        results.push(stop);
+                    }
+                    break;
 
-            case "shortcode":
-                const longCode = getFermatadaBreve(searchTerm);
-                if (stop.stop_code == longCode) {
-                    results.push(stop);
-                }
-                break;
+                case "shortcode":
+                    const longCode = getFermatadaBreve(searchTerm);
+                    if (stop.stop_code == longCode) {
+                        results.push(stop);
+                    }
+                    break;
+            }
+        } else {
+            if (stop.stop_name.toLowerCase().includes(searchTerm)||stop.stop_code.toLowerCase().includes(searchTerm)) {
+                results.push(stop);
+            }
         }
     });
 
