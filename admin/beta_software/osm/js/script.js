@@ -76,8 +76,20 @@ function busIcon(item) {
 }
 
 function vehiclePopupHtml(item) {
+    let imgAlt = "Caricamento in corso..."
+    let divImgClass = "bus-image-container bgtransparent"
     if (item.vehicle_info.model == null) {
         item.vehicle_info.model = "Sconosciuto"
+    }
+    if (item.vehicle_info.plate_num == null) {
+        item.vehicle_info.plate_num = "Sconosciuto"
+    }
+    if (item.vehicle_info.basin == null) {
+        item.vehicle_info.basin = "Sconosciuto"
+    }
+    if (item.vehicle_info.bus_preview_path == null) {
+        imgAlt = "Anteprima non disponibile."
+        divImgClass = "bus-image-container"
     }
     return `
         <div class="popup-content">
@@ -86,13 +98,21 @@ function vehiclePopupHtml(item) {
                 <div class="dest-box">${item.destination}</div>
             </div>
             <div class="popup-base">
-                <h3>Veicolo: ${item.vehicle_info.number}</h3>
-                <table>
-                    <tr><td class="label">Trip ID:</td><td>${item.trip_id}</td></tr>
-                    <tr><td class="label">Shape ID:</td><td>${item.shape_id}</td></tr>
+                <table class="up">
                     <tr><td class="label">Bacino:</td><td>${item.basin}</td></tr>
-                    <tr><td class="label">Modello:</td><td>${item.vehicle_info.model}</td></tr>
+                    <tr><td class="label">Codice percorso:</td><td>${item.shape_id}</td></tr>
+                    <tr><td class="label">Codice corsa:</td><td>${item.trip_id}</td></tr>
                 </table>
+                <hr class="separator">
+                <h3>Veicolo: ${item.vehicle_info.number}</h3>
+                <table class="down">
+                    <tr><td class="label">Modello:</td><td>${item.vehicle_info.model}</td></tr>
+                    <tr><td class="label">Targa:</td><td>${item.vehicle_info.plate_num}</td></tr>
+                    <tr><td class="label">Bacino veicolo:</td><td>${item.vehicle_info.basin}</td></tr>
+                </table>
+                <div class="${divImgClass}">
+                    <img src="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}"alt="${imgAlt}">
+                </div>
             </div>
         </div>
     `;

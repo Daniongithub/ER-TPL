@@ -122,6 +122,33 @@ body {
 
 .popup-base {
     padding: 14px;
+    padding-top: 6px;
+    height: 230px;
+    overflow-y: scroll;
+}
+
+hr.separator {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    color: #d8d8d8;
+}
+
+.bus-image-container {
+    background-color: #e7e7e7;
+    border-radius: 10px;
+    text-align: center;
+    color: #666;
+}
+
+.bgtransparent {
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.bus-image-container img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .leaflet-container {
