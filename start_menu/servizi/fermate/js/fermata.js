@@ -64,7 +64,14 @@ function loadArrivals() {
     getApiUrl().then(url => {
         fetch(url + "/arrivals/" + code)
             .then(response => {
-                if (!response.ok) { tableContainer.textContent = "Errore nel caricamento lista fermate"; throw new Error("Errore nel caricamento lista fermate.") }
+                if (!response.ok) {
+                    if (response.status == 404) {
+                        tableContainer.textContent = "<strong>Nessuna corsa programmata nei prossimi 90 minuti.</strong>";
+                        return;
+                    }
+                    tableContainer.textContent = "Errore nel caricamento lista fermate";
+                    throw new Error("Errore nel caricamento lista fermate.");
+                }
                 return response.json()
             })
             .then(data => {
@@ -85,6 +92,11 @@ function loadArrivals() {
                 `;
 
                 table.appendChild(thead);
+                //Temporary fix for no arrivals planned (API doesn't have status codes yet)
+                if (data == null) {
+                    tableContainer.innerHTML = '<h3 style="margin:12px;">Nessuna corsa programmata nei prossimi 90 minuti.</h3>';
+                    return;
+                }
                 data.forEach((element, idx) => {
                     const tr = document.createElement('tr');
                     let formattedDelay = "";
