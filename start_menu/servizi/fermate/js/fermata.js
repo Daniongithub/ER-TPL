@@ -124,12 +124,13 @@ function loadArrivals() {
                     let vehicle = "";
                     if (element.vehicle != null) {
                         vehicle = `${element.vehicle}`
+                        vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&vehicle=${element.vehicle}`
                     }
                     tr.innerHTML = `
                         <td>${element.line}</td>
                         <td>${element.destination}</td>
                         <td>${element.arrival_time} ${formattedDelay}</td>
-                        <td>${vehicle}</td>
+                        <td onclick="window.location.href=${element.vehicle}">${vehicle}</td>
                         <td>${nextStopName}</td>
                     `;
                     if (idx % 2 != 0) {

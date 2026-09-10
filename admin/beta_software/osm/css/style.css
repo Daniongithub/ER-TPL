@@ -64,7 +64,13 @@ body {
     line-height: 1.5;
 }
 
-.popup-content h3 {
+.popup-head h3 {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+
+.popup-base h3 {
     margin: 0 0 6px 0;
     font-size: 16px;
     color: darkcyan;
@@ -87,10 +93,14 @@ body {
 .popup-head {
     background-color: darkcyan;
     color: white;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 4px;
+}
+
+.dispflex {
     display: flex;
     align-items: center;
-    padding: 4px;
 }
 
 .line-box {
@@ -120,10 +130,16 @@ body {
     margin-right: 8px !important;
 }
 
+.head-desc {
+    margin: 8px;
+    margin-top: 0;
+    color: white !important;
+}
+
 .popup-base {
     padding: 14px;
     padding-top: 6px;
-    height: 230px;
+    max-height: 230px;
     overflow-y: scroll;
 }
 
@@ -133,11 +149,19 @@ hr.separator {
     color: #d8d8d8;
 }
 
+hr.head-separator {
+    margin: 8px;
+    margin-top: 0;
+    border: 1px solid rgb(0, 161, 161);
+    border-radius: 5px;
+}
+
 .bus-image-container {
     background-color: #e7e7e7;
     border-radius: 10px;
     text-align: center;
     color: #666;
+    margin-top: 8px;
 }
 
 .bgtransparent {
@@ -157,6 +181,7 @@ hr.separator {
 
 .leaflet-popup-content {
     margin: 0;
+    width: 301px !important;
 }
 
 .leaflet-container a.leaflet-popup-close-button {

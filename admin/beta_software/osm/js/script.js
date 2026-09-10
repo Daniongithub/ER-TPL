@@ -11,6 +11,9 @@ const CONFIG = {
     // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
     SHAPE_ENDPOINT_TEMPLATE: "/shape/{shapeId}",
 
+    // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
+    SINGLE_VEHICLE_ENDPOINT: "/vehicleposition/{vehicle}",
+
     // Intervallo di refresh dati, in millisecondi. Usato solo in modalità "vehicles".
     REFRESH_INTERVAL_MS: 30000,
 
@@ -34,6 +37,7 @@ const SHAPE_IDS = (params.get('shapeId') || '')
     .split(',')
     .map(s => s.trim())
     .filter(Boolean);
+const VEHICLE_ID = params.get('vehicle')
 
 // ======================================================================
 // MAPPA
@@ -77,7 +81,8 @@ function busIcon(item) {
 
 function vehiclePopupHtml(item) {
     let imgAlt = "Caricamento in corso..."
-    let divImgClass = "bus-image-container bgtransparent"
+    let divImgClass = " bgtransparent"
+    let delayMess = "Ritardo:"
     if (item.vehicle_info.model == null) {
         item.vehicle_info.model = "Sconosciuto"
     }
@@ -89,13 +94,39 @@ function vehiclePopupHtml(item) {
     }
     if (item.vehicle_info.bus_preview_path == null) {
         imgAlt = "Anteprima non disponibile."
-        divImgClass = "bus-image-container"
+        divImgClass = ""
+    }
+    if (item.next_stop == null) {
+        item.next_stop = {
+            "stop_name": "Sconosciuto",
+            "stop_code": "Sconosciuto",
+            "arrival_time": "Sconosciuto",
+            "delay": "Sconosciuto",
+        }
+    }
+    if (item.next_stop.delay != "Sconosciuto") {
+        if (item.next_stop.delay < 0) {
+            delayMess = "Anticipo:";
+            item.next_stop.delay = Math.abs(item.next_stop.delay) + " MIN";
+        } else {
+            item.next_stop.delay = item.next_stop.delay + " MIN";
+        }
+    } else {
+        delayMess = ""
+        item.next_stop.delay = ""
     }
     return `
         <div class="popup-content">
             <div class="popup-head">
-                <div class="line-box">${item.line}</div>
-                <div class="dest-box">${item.destination}</div>
+                <div class="dispflex">
+                    <div class="line-box">${item.line}</div>
+                    <div class="dest-box">${item.destination}</div>
+                </div>
+                <hr class="head-separator">
+                <div class="head-desc dispflex">
+                    <h3 style="color:white;">${delayMess} ${item.next_stop.delay}</h3>
+                    <h3 style="display:flex; flex:1; justify-content:right;">Veicolo: ${item.vehicle_info.number}</h3>
+                </div>
             </div>
             <div class="popup-base">
                 <table class="up">
@@ -104,24 +135,35 @@ function vehiclePopupHtml(item) {
                     <tr><td class="label">Codice corsa:</td><td>${item.trip_id}</td></tr>
                 </table>
                 <hr class="separator">
-                <h3>Veicolo: ${item.vehicle_info.number}</h3>
                 <table class="down">
                     <tr><td class="label">Modello:</td><td>${item.vehicle_info.model}</td></tr>
                     <tr><td class="label">Targa:</td><td>${item.vehicle_info.plate_num}</td></tr>
                     <tr><td class="label">Bacino veicolo:</td><td>${item.vehicle_info.basin}</td></tr>
                 </table>
-                <div class="${divImgClass}">
-                    <img src="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}"alt="${imgAlt}">
+                <div class="bus-image-container${divImgClass}">
+                    <img src="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}&crop=true"alt="${imgAlt}">
                 </div>
+                <hr class="separator">
+                <table class="up">
+                    <tr><td class="label">Prossima fermata:</td><td>${item.next_stop.stop_name}</td></tr>
+                    <tr><td class="label">Codice fermata:</td><td>${item.next_stop.stop_code}</td></tr>
+                    <tr><td class="label">${delayMess}</td><td>${item.next_stop.delay}</td></tr>
+                    <tr><td class="label">ETA:</td><td>${item.next_stop.arrival_time}</td></tr>
+                </table>
             </div>
         </div>
     `;
 }
+/*
+<a href="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}">
+    <img src="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}&crop=true"alt="${imgAlt}">
+</a>
+*/
 
 const markersByVehicle = new Map();
 let vehiclesFirstLoad = true;
 
-function plotVehicles(data) {
+function plotVehicles(data, padd) {
     if (!Array.isArray(data) || data.length === 0) {
         showStatus('Nessun mezzo da mostrare.');
         return;
@@ -137,10 +179,10 @@ function plotVehicles(data) {
 
         const existing = markersByVehicle.get(key);
         if (existing) {
-            existing.setLatLng([item.lat, item.long]);
+            existing.setLatLng([item.vehicle_lat, item.vehicle_long]);
             existing.setPopupContent(vehiclePopupHtml(item));
         } else {
-            const marker = L.marker([item.lat, item.long], { icon: busIcon(item) })
+            const marker = L.marker([item.vehicle_lat, item.vehicle_long], { icon: busIcon(item) })
                 .bindPopup(vehiclePopupHtml(item));
             marker.addTo(map);
             markersByVehicle.set(key, marker);
@@ -156,7 +198,14 @@ function plotVehicles(data) {
 
     if (vehiclesFirstLoad && markersByVehicle.size > 0) {
         const group = L.featureGroup(Array.from(markersByVehicle.values()));
-        map.fitBounds(group.getBounds().pad(0));
+        //Nella modalità singola la mappa non viene mai zoomata, qua nel ramo true viene forzato lo zoom
+        var layers = group.getLayers();
+
+        if (layers.length === 1) {
+            map.setView(layers[0].getLatLng(), 17);
+        } else {
+            map.fitBounds(group.getBounds().pad(padd));
+        }
         vehiclesFirstLoad = false;
     }
 }
@@ -169,7 +218,7 @@ async function loadVehicles() {
     }
     try {
         const data = await fetchJson(url);
-        plotVehicles(data);
+        plotVehicles(data, 0);
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
         showStatus('Errore nel caricamento dati live: ' + err);
@@ -179,6 +228,32 @@ async function loadVehicles() {
 function initVehiclesMode() {
     loadVehicles();
     setInterval(loadVehicles, CONFIG.REFRESH_INTERVAL_MS);
+}
+
+// ======================================================================
+// MODALITÀ: SINGLE (riusa funzioni di VEHICLES)
+// ======================================================================
+
+async function loadSingle() {
+    const url = CONFIG.BASE_URL + CONFIG.SINGLE_VEHICLE_ENDPOINT.replace('{vehicle}', encodeURIComponent(VEHICLE_ID));
+    if (!url) {
+        showStatus('BASE_URL non impostato.');
+        return;
+    }
+    try {
+        const data = await fetchJson(url);
+        let dataArr = []
+        dataArr[0] = data
+        plotVehicles(dataArr, 13);
+    } catch (err) {
+        console.error('Errore nel fetch dei mezzi:', err);
+        showStatus('Errore nel caricamento dati live: ' + err);
+    }
+}
+
+function initSingleMode() {
+    loadSingle();
+    setInterval(loadSingle, CONFIG.REFRESH_INTERVAL_MS);
 }
 
 // ======================================================================
@@ -311,14 +386,20 @@ async function initShapesMode() {
     buildLegend(shapeIdToColor);
 
     const group = L.featureGroup(allPolylineLayers);
-    map.fitBounds(group.getBounds().pad(0.15));
+    map.fitBounds(group.getBounds().pad(0));
 }
 
 // ======================================================================
 // AVVIO IN BASE ALLA MODALITÀ
 // ======================================================================
-if (MODE === 'shapes') {
-    initShapesMode();
-} else {
-    initVehiclesMode();
+switch (MODE) {
+    case "shapes":
+        initShapesMode();
+        break;
+    case "single":
+        initSingleMode();
+        break;
+    default:
+        initVehiclesMode();
+        break;
 }
