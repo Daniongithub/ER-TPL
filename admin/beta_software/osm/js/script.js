@@ -108,6 +108,9 @@ function vehiclePopupHtml(item) {
         if (item.next_stop.delay < 0) {
             delayMess = "Anticipo:";
             item.next_stop.delay = Math.abs(item.next_stop.delay) + " MIN";
+        } else if (item.next_stop.delay == 0) {
+            delayMess = "In orario";
+            item.next_stop.delay = ""
         } else {
             item.next_stop.delay = item.next_stop.delay + " MIN";
         }
