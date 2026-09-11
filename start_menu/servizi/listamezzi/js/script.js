@@ -1,6 +1,4 @@
 // ER-TPL - Dani
-// *** BETA LISTA MEZZI! ***
-// Attenzione, tutto ciò qui sotto è in fase di sviluppo, né definitivo.
 
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/mezzi";
 

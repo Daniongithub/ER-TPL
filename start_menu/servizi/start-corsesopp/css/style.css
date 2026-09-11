@@ -119,23 +119,10 @@ input[type="date"] {
 }
 
 button {
-    background-color: var(--accent-color);
-    color: white;
+    background-color: darkcyan;
+    border: 0;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-button:hover {
-    background-color: #005fa3;
-    border-color: #005fa3;
-}
-
-button:active {
-    background-color: #00487b;
-    border-color: #00487b;
 }
 
 #message-container{
@@ -147,32 +134,27 @@ button:active {
 }
 
 table {
-    min-width: 85%;
-    max-width: 100%;
-    /*Tabella tonda*/
     border-collapse: separate;
     border-spacing: 0;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border-radius: 8px;
     overflow: hidden;
-}
-
-/*Linee verticali*/
-th:not(:last-child), td:not(:last-child) {
-    border-right: 1px solid rgb(100, 100, 100);
-}
-/*Linee orizzontali*/
-tr:not(:last-child) > th, tr:not(:last-child) > td {
-    border-bottom: 1px solid rgb(100, 100, 100);
-}
-
-th, td {
-    padding: .7vw;
+    min-width: 85%;
+    max-width: 100%;
     text-align: left;
+}
+
+thead {
+    position: sticky;
+    top: 0;
 }
 
 th {
     background-color: darkcyan;
+    padding: .7vw;
+}
+
+td {
+    padding: .7vw;
 }
 
 tr:nth-child(even) {
