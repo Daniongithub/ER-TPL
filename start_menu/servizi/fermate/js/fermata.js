@@ -140,7 +140,7 @@ function loadArrivals() {
                     tr.innerHTML += `
                         <td>${nextStopName}</td>
                     `;
-                    if (idx % 2 != 0) {
+                    if (idx % 2 != 0 && element.state != "canceled") {
                         tr.className = "even";
                     }
                     table.appendChild(tr);

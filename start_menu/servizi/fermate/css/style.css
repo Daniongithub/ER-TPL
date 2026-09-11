@@ -138,6 +138,11 @@ table {
     text-align: left;
 }
 
+thead {
+    position: sticky;
+    top: 0;
+}
+
 th {
     background-color: darkcyan;
     padding: .7vw;
