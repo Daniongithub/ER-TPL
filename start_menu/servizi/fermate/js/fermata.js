@@ -120,17 +120,24 @@ function loadArrivals() {
                         tr.className = "red-bg";
                         element.arrival_time = `<s>${element.arrival_time}</s>`;
                     }
-                    //Checks if vehicle is null
-                    let vehicle = "";
-                    if (element.vehicle != null) {
-                        vehicle = `${element.vehicle}`
-                        vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&vehicle=${element.vehicle}`
-                    }
                     tr.innerHTML = `
                         <td>${element.line}</td>
                         <td>${element.destination}</td>
                         <td>${element.arrival_time} ${formattedDelay}</td>
-                        <td onclick="window.location.href=${element.vehicle}">${vehicle}</td>
+                    `;
+                    //Checks if vehicle is null
+                    let vehicleOsm = "";
+                    if (element.vehicle != null) {
+                        vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&vehicle=${element.vehicle}`
+                        tr.innerHTML += `
+                            <td class="cursor-pointer" onclick='window.location.href="${vehicleOsm}";'>${element.vehicle}</td>
+                        `;
+                    } else {
+                        tr.innerHTML += `
+                            <td></td>
+                        `;
+                    }
+                    tr.innerHTML += `
                         <td>${nextStopName}</td>
                     `;
                     if (idx % 2 != 0) {

@@ -150,7 +150,6 @@ function vehiclePopupHtml(item) {
                 <table class="up">
                     <tr><td class="label">Prossima fermata:</td><td>${item.next_stop.stop_name}</td></tr>
                     <tr><td class="label">Codice fermata:</td><td>${item.next_stop.stop_code}</td></tr>
-                    <tr><td class="label">${delayMess}</td><td>${item.next_stop.delay}</td></tr>
                     <tr><td class="label">ETA:</td><td>${item.next_stop.arrival_time}</td></tr>
                 </table>
             </div>
