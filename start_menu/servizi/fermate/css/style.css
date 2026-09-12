@@ -216,4 +216,7 @@ footer div p {
     .mobile-hidden {
         display: none;
     }
+    table {
+        min-width: 100%;
+    }
 }

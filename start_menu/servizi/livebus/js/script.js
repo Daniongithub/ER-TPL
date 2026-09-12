@@ -252,7 +252,7 @@ function fetchData() {
                         <td>${bus.basin}</td>
                         <td>${bus.line}</td>
                         <td>${bus.destination}</td>
-                        <td>${bus.vehicle_info.number}</td>
+                        <td class="cursor-pointer" onclick="window.location.href='infoveicolo.html?id=${bus.vehicle_info.number}'">${bus.vehicle_info.number}</td>
                         <td>${bus.vehicle_info.model}</td>
                         <td>${bus.next_stop.stop_name}</td>
                         <td class="mobile-hidden">${bus.next_stop.stop_code}</td>

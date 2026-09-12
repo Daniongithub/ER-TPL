@@ -303,10 +303,6 @@ table.guida-linee th {
     border: 2px solid #343434;
 }
 
-td a {
-    text-decoration: none;
-}
-
 td.sott a {
     text-decoration: underline;
 }

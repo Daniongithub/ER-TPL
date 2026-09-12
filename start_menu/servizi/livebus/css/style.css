@@ -82,6 +82,10 @@ thead {
     top: 0;
 }
 
+thead.nosticky {
+    position: relative;
+}
+
 th {
     background-color: darkcyan;
     padding: .7vw;
@@ -93,6 +97,15 @@ td {
 
 tr.even {
     background-color: rgb(60, 60, 60);
+}
+
+td.uguale{
+    width: 50%;
+}
+
+td.fake-a {
+    color: orange;
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -144,6 +157,10 @@ tr.even {
     .mobile-hidden {
         display: none;
     }
+    
+    table {
+        min-width: 100%;
+    }
 }
 
 button {
@@ -184,4 +201,7 @@ img {
 
 footer {
     position: relative;
+    bottom: 0;
+	left: 0;
+    width: 100%;
 }

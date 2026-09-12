@@ -1,3 +1,5 @@
+//TODO apertura automatica percorso per VEHICLES e SINGLE
+
 // ======================================================================
 // CONFIGURAZIONE GENERALE (modificabile)
 // ======================================================================
@@ -126,9 +128,11 @@ function vehiclePopupHtml(item) {
                     <div class="dest-box">${item.destination}</div>
                 </div>
                 <hr class="head-separator">
-                <div class="head-desc dispflex">
-                    <h3 style="color:white;">${delayMess} ${item.next_stop.delay}</h3>
-                    <h3 style="display:flex; flex:1; justify-content:right;">Veicolo: ${item.vehicle_info.number}</h3>
+                <div class="head-desc">
+                    <div class="dispflex">
+                        <h3 style="color:white;">${delayMess} ${item.next_stop.delay}</h3>
+                        <h3 style="display:flex; flex:1; justify-content:right;">Veicolo: ${item.vehicle_info.number}</h3>
+                    </div>
                 </div>
             </div>
             <div class="popup-base">
@@ -137,6 +141,7 @@ function vehiclePopupHtml(item) {
                     <tr><td class="label">Codice percorso:</td><td>${item.shape_id}</td></tr>
                     <tr><td class="label">Codice corsa:</td><td>${item.trip_id}</td></tr>
                 </table>
+                <a class="button" href="?mode=singlemixed&vehicle=${item.vehicle_info.number}&shapeId=${item.shape_id}">Visualizza il percorso</a>
                 <hr class="separator">
                 <table class="down">
                     <tr><td class="label">Modello:</td><td>${item.vehicle_info.model}</td></tr>
@@ -174,8 +179,15 @@ function plotVehicles(data, padd) {
 
     const seenVehicles = new Set();
 
+    //Lost vehicle for a second
+    if (!vehiclesFirstLoad && data[0] == null) {
+        showStatus('Il mezzo ha smesso di comunicare la posizione.');
+        return;
+    } else {
+        hideStatus('');
+    }
     data.forEach(item => {
-        const key = item.vehicle ?? item.trip_id;
+        const key = item.trip_id;
         if (!key) return;
         seenVehicles.add(key);
 
@@ -259,24 +271,52 @@ function initSingleMode() {
 }
 
 // ======================================================================
+// MODALITÀ: SINGLEMIXED (SINGLE ma con anche il percorso)
+// ======================================================================
+
+async function loadSingleMixed() {
+    const url = CONFIG.BASE_URL + CONFIG.SINGLE_VEHICLE_ENDPOINT.replace('{vehicle}', encodeURIComponent(VEHICLE_ID));
+    if (!url) {
+        showStatus('BASE_URL non impostato.');
+        return;
+    }
+    try {
+        const data = await fetchJson(url);
+        let dataArr = [];
+        dataArr[0] = data;
+        plotVehicles(dataArr, 13);
+    } catch (err) {
+        console.error('Errore nel fetch dei mezzi:', err);
+        showStatus('Errore nel caricamento dati live: ' + err);
+    }
+}
+
+function initSingleMixedMode() {
+    loadSingleMixed();
+    initShapesMode();
+    setInterval(loadSingleMixed, CONFIG.REFRESH_INTERVAL_MS);
+}
+
+// ======================================================================
 // MODALITÀ: SHAPES
 // ======================================================================
 function shapePopupHtml(shapeId, points) {
     const basin = points[0]?.basin ?? '-';
-    return `
-				<div class="popup-content">
-					<h3>Tracciato ${shapeId}</h3>
-					<table>
-					<tr><td class="label">Bacino:</td><td>${basin}</td></tr>
-					<tr><td class="label">Punti:</td><td>${points.length}</td></tr>
-					</table>
-				</div>
-			`;
+    return `		
+        <div class="popup-content">
+            <h3>Tracciato ${shapeId}</h3>
+            <table>
+            <tr><td class="label">Bacino:</td><td>${basin}</td></tr>
+            <tr><td class="label">Punti:</td><td>${points.length}</td></tr>
+            </table>
+        </div>
+    `;
 }
 
 function shapeEndpointIcon(color, type) {
     // type: 'start' -> cerchio verde con ▶, 'end' -> quadrato rosso con ⏹
-    const symbol = type === 'start' ? '▶' : '⏹';
+    //const symbol = type === 'start' ? '▶' : '⏹';
+    const symbol = type === 'start' ? 'Inizio' : 'Fine';
     return L.divIcon({
         className: '',
         html: `<div class="shape-endpoint-icon ${type}" style="background:${color}">${symbol}</div>`,
@@ -289,13 +329,15 @@ function shapeEndpointIcon(color, type) {
 function shapeEndpointPopupHtml(shapeId, type) {
     const label = type === 'start' ? 'Inizio tracciato' : 'Fine tracciato';
     return `
-				<div class="popup-content">
-					<h3>${label}</h3>
-					<table>
-					<tr><td class="label">Shape ID:</td><td>${shapeId}</td></tr>
-					</table>
-				</div>
-			`;
+        <div class="popup-content">
+            <div class="popup-head shape-popup-head">
+                <h3>${label}</h3>
+            </div>
+            <div class="popup-base shape-popup-base">
+                Shape ID:${shapeId}
+            </div>
+        </div>
+    `;
 }
 
 function buildLegend(shapeIdToColor) {
@@ -381,8 +423,6 @@ async function initShapesMode() {
 
     if (anyError) {
         showStatus('Alcuni tracciati non sono stati caricati correttamente (vedi console).');
-    } else {
-        hideStatus();
     }
 
     buildLegend(shapeIdToColor);
@@ -400,6 +440,9 @@ switch (MODE) {
         break;
     case "single":
         initSingleMode();
+        break;
+    case "singlemixed":
+        initSingleMixedMode();
         break;
     default:
         initVehiclesMode();
