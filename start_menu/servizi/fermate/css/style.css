@@ -176,6 +176,11 @@ footer div p {
     margin-bottom: 4px;
 }
 
+select option {
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+
 @media (max-width: 768px) {
     #filters-container {
         display: block;

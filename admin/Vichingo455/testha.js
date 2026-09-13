@@ -2,12 +2,6 @@
 // ROBE
 // =========================
 
-/*async function fetchJson(url) {
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(res.status);
-  return res.json();
-}*/
-
 function tryParseJson(str) {
   try {
     return JSON.parse(str);
@@ -49,9 +43,8 @@ async function checkEndpoint(url, expectedContentType) {
 async function checkBrowser(services) {
   try {
     await checkEndpoint(services.cdn.url, "text/plain");
-    await checkEndpoint(services.startbus.url, "application/json");
+    await checkEndpoint(services.start.url, "text/plain");
     await checkEndpoint(services.startsopp.url, "application/json");
-    await checkEndpoint(services.startfermate.url, "text/plain");
     await checkEndpoint(services.startnews.url, "text/plain");
     await checkEndpoint(services.seta.url, "text/plain");
     await checkEndpoint(services.tper.url, "application/json");
@@ -86,13 +79,13 @@ async function getCdnServer() {
   }
 }
 
-async function getStartBusServer() {
+async function getStartServer() {
   try {
-    const info = await fetchJson("https://ertpl-api.vichingo455.com/startbus");
+    const info = await fetchJson("https://ertpl-api.vichingo455.com/start");
     return {
       ok: true,
       server: info.server,
-      url: info.url + "/versione"
+      url: info.url + "/health"
     };
   } catch {
     return { ok: false };
@@ -102,19 +95,6 @@ async function getStartBusServer() {
 async function getStartSoppServer() {
   try {
     const info = await fetchJson("https://ertpl-api.vichingo455.com/startsopp");
-    return {
-      ok: true,
-      server: info.server,
-      url: info.url + "/versione"
-    };
-  } catch {
-    return { ok: false };
-  }
-}
-
-async function getStartFermateServer() {
-  try {
-    const info = await fetchJson("https://ertpl-api.vichingo455.com/startfermate");
     return {
       ok: true,
       server: info.server,
@@ -239,9 +219,8 @@ async function initTestHA() {
   const [
     api,
     cdn,
-    startbus,
+    start,
     startsopp,
-    startfermate,
     seta,
     tper,
     mezzi,
@@ -249,9 +228,8 @@ async function initTestHA() {
   ] = await Promise.all([
     getApiVersionHA(),
     getCdnServer(),
-    getStartBusServer(),
+    getStartServer(),
     getStartSoppServer(),
-    getStartFermateServer(),
     getSetaServer(),
     getTperServer(),
     getMezziServer(),
@@ -261,9 +239,8 @@ async function initTestHA() {
   // Render risultati singoli
   renderApiVersion(api);
   renderServer("apiCdnServer", "Server in uso (foto)", cdn);
-  renderServer("apiStartBusServer", "Server in uso (START Autobus in tempo reale)", startbus);
+  renderServer("apiStartServer", "Server in uso (START)", start);
   renderServer("apiStartSoppServer", "Server in uso (START Corse Soppresse)", startsopp);
-  renderServer("apiStartFermateServer", "Server in uso (START Fermate)", startfermate);
   renderServer("apiStartNewsServer", "Server in uso (START Notizie)", startnews);
   renderServer("apiSetaServer", "Server in uso (SETA)", seta);
   renderServer("apiTperServer", "Server in uso (TPER)", tper);
@@ -272,9 +249,8 @@ async function initTestHA() {
   const serverOk = [
     api,
     cdn,
-    startbus,
+    start,
     startsopp,
-    startfermate,
     seta,
     tper,
     mezzi,
@@ -283,9 +259,8 @@ async function initTestHA() {
 
   const clientOk = await checkBrowser({
     cdn,
-    startbus,
+    start,
     startsopp,
-    startfermate,
     seta,
     tper,
     mezzi,

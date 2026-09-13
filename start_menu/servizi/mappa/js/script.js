@@ -1,12 +1,20 @@
 //TODO apertura automatica percorso per VEHICLES e SINGLE
-
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 // ======================================================================
 // CONFIGURAZIONE GENERALE (modificabile)
 // ======================================================================
+async function getApiUrl() {
+    const res = await fetch(API_ENDPOINT, { cache: "no-store" });   
+    if (!res.ok) throw new Error('Registry HA non raggiungibile: ' + res.status);
+    const cfg = await res.json();
+    if (cfg.status !== "ok" || !cfg.url) return null;
+    return cfg.url;
+}
 const CONFIG = {
-    // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri.
-    BASE_URL: "https://startapi.serverissimo.com",
+    // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri. Non modificare a mano se si usa l'HA.
+    BASE_URL: null,
 
+    // URL del CDN per le immagini dei mezzi. Usato solo in modalità "vehicles".
     CDN_ENDPOINT: "https://ertpl-api.vichingo455.com/cdn",
 
     // Path per la modalità "vehicles", aggiunto a BASE_URL.
@@ -481,25 +489,42 @@ async function initShapesMode(shapeid) {
 // ======================================================================
 // AVVIO IN BASE ALLA MODALITÀ
 // ======================================================================
-switch (MODE) {
-    case "shapes":
-        initShapesMode();
-        break;
-    case "single":
-        initSingleMode();
-        break;
-    case "singlemixed":
-        initSingleMixedMode();
-        break;
-    case "stops":
-        initStopsMode();
-        break;
-    case "empty":
-        break;
-    default:
-        initVehiclesMode();
-        break;
+async function initApp() {
+    try {
+        CONFIG.BASE_URL = await getApiUrl();
+    } catch (err) {
+        console.error('Errore nel resolver HA:', err);
+        showStatus('Servizio mappa non raggiungibile al momento.');
+        return;
+    }
+
+    if (!CONFIG.BASE_URL && MODE !== "empty") {
+        showStatus('Servizio mappa non disponibile al momento.');
+        return;
+    }
+
+    switch (MODE) {
+        case "shapes":
+            initShapesMode();
+            break;
+        case "single":
+            initSingleMode();
+            break;
+        case "singlemixed":
+            initSingleMixedMode();
+            break;
+        case "stops":
+            initStopsMode();
+            break;
+        case "empty":
+            break;
+        default:
+            initVehiclesMode();
+            break;
+    }
 }
+
+initApp();
 
 function refreshVehiclePhotos() {
     if (window.ERTPLPhotos) {

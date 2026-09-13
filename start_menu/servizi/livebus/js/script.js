@@ -1,13 +1,13 @@
 // New fallback system (HA)
-const API_ENDPOINT = "https://ertpl-api.vichingo455.com/startbus";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 let manualLoad = true;
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
-    //return cfg.url;
-    return "https://startapi.serverissimo.com/busesinservice";
+    return cfg.url + "/busesinservice";
+    //return "https://startapi.serverissimo.com/busesinservice";
 }
 
 // Funzione per riempire il select dei modelli
