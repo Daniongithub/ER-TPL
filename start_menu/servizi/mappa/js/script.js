@@ -7,6 +7,8 @@ const CONFIG = {
     // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri.
     BASE_URL: "https://startapi.serverissimo.com",
 
+    CDN_ENDPOINT: "https://ertpl-api.vichingo455.com/cdn",
+
     // Path per la modalità "vehicles", aggiunto a BASE_URL.
     VEHICLES_ENDPOINT: "/vehiclepositions",
 
@@ -82,9 +84,8 @@ function busIcon(item) {
 }
 
 function vehiclePopupHtml(item) {
-    let imgAlt = "Caricamento in corso..."
-    let divImgClass = " bgtransparent"
     let delayMess = "Ritardo:"
+    let imgHtml = "";
     if (item.vehicle_info.model == null) {
         item.vehicle_info.model = "Sconosciuto"
     }
@@ -95,8 +96,17 @@ function vehiclePopupHtml(item) {
         item.vehicle_info.basin = "Sconosciuto"
     }
     if (item.vehicle_info.bus_preview_path == null) {
-        imgAlt = "Anteprima non disponibile."
-        divImgClass = ""
+        imgHtml = `
+            <div class="bus-image-container">
+                <span>Anteprima non disponibile.</span>
+            </div>
+        `;
+    } else {
+        imgHtml = `
+            <div class="bus-image-container bgtransparent">
+                <img data-path="${item.vehicle_info.bus_preview_path}" data-crop="true" alt="Caricamento in corso...">
+            </div>
+        `;
     }
     if (item.next_stop == null) {
         item.next_stop = {
@@ -148,9 +158,7 @@ function vehiclePopupHtml(item) {
                     <tr><td class="label">Targa:</td><td>${item.vehicle_info.plate_num}</td></tr>
                     <tr><td class="label">Bacino veicolo:</td><td>${item.vehicle_info.basin}</td></tr>
                 </table>
-                <div class="bus-image-container${divImgClass}">
-                    <img src="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}&crop=true"alt="${imgAlt}">
-                </div>
+                ${imgHtml}
                 <hr class="separator">
                 <table class="up">
                     <tr><td class="label">Prossima fermata:</td><td>${item.next_stop.stop_name}</td></tr>
@@ -181,7 +189,7 @@ function plotVehicles(data, padd) {
 
     //Lost vehicle for a second
     if (!vehiclesFirstLoad && data[0] == null) {
-        showStatus('Il mezzo ha smesso di comunicare la posizione.');
+        showStatus('Il mezzo ha smesso di comunicare la sua posizione.');
         return;
     } else {
         hideStatus('');
@@ -195,6 +203,10 @@ function plotVehicles(data, padd) {
         if (existing) {
             existing.setLatLng([item.vehicle_lat, item.vehicle_long]);
             existing.setPopupContent(vehiclePopupHtml(item));
+            // Caso 2: il popup era già aperto e il contenuto (quindi anche l'img) è stato appena sostituito
+            if (existing.isPopupOpen()) {
+                refreshVehiclePhotos();
+            }
         } else {
             const marker = L.marker([item.vehicle_lat, item.vehicle_long], { icon: busIcon(item) })
                 .bindPopup(vehiclePopupHtml(item));
@@ -448,3 +460,12 @@ switch (MODE) {
         initVehiclesMode();
         break;
 }
+
+function refreshVehiclePhotos() {
+    if (window.ERTPLPhotos) {
+        window.ERTPLPhotos.refresh();
+    }
+}
+
+// Caso 1: l'utente apre un popup nuovo
+map.on('popupopen', refreshVehiclePhotos);

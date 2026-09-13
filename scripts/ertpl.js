@@ -5,34 +5,29 @@
 
     async function getConfig() {
         if (photoConfig) return photoConfig;
-
         const res = await fetch(API_ENDPOINT);
         photoConfig = await res.json();
         return photoConfig;
     }
 
-    function buildPreviewUrl(cfg, path, isMenu = false, isLeo, original = false) {
-        if (isLeo) {
+    function buildPreviewUrl(cfg, path, isMenu = false, isLeo, original = false, forceCrop = false) {
+        if (isLeo || forceCrop) {
             return `${cfg.url}/img?path=${encodeURIComponent(path)}&crop=true`;
         }
-
         if (original) {
             return `${cfg.url}/img?path=${encodeURIComponent(path)}`;
         }
-
         return `${cfg.url}/img?path=${encodeURIComponent(path)}` + (isMenu ? "&crop=true" : "&crop=resize");
     }
 
     async function initPhotos() {
         try {
             const cfg = await getConfig();
-            let isOffline = false;
-            if (cfg.status !== "ok") isOffline = true;
+            let isOffline = cfg.status !== "ok";
 
             document.querySelectorAll("img[data-path]").forEach(img => {
                 img.addEventListener("error", () => { img.alt = "Errore nel caricamento delle foto."; });
-
-                img.loading = "lazy"; // Implementazione del lazy-loading
+                img.loading = "lazy";
 
                 if (isOffline) {
                     img.setAttribute("alt", "Server foto non raggiungibili.");
@@ -40,40 +35,41 @@
                 }
 
                 const path = img.dataset.path;
+                if (!path) return;
 
-                if (!path) {
-                    return;
-                }
-
-                let isLeo = false;
-                const pageUrl = document.location.href;
-                if (pageUrl.includes("/seta_modena/")) {
-                    isLeo = true;
-                }
-
+                let isLeo = document.location.href.includes("/seta_modena/");
                 const link = img.closest("a");
                 const isMenu = img.classList.contains("bus");
-                const imglink = buildPreviewUrl(cfg, path, isMenu, isLeo);
+                // NUOVO CASO D'USO: forza crop=true via attributo dichiarativo,
+                // indipendente dalla semantica "menu" (es. anteprime mezzi in tempo reale)
+                const forceCrop = img.dataset.crop === "true";
+
+                const imglink = buildPreviewUrl(cfg, path, isMenu, isLeo, false, forceCrop);
                 img.src = imglink;
 
                 const url = buildPreviewUrl(cfg, path, false, false, true);
-
-                // Aggiorna solo i link che NON finiscono con .html
                 if (link && !link.href.endsWith(".html")) {
                     link.href = url;
                 }
 
-                // Pulisci il data-path
                 img.removeAttribute("data-path");
+                img.removeAttribute("data-crop");
             });
 
         } catch (e) {
             console.error("Photo init failed", e);
-            document.querySelectorAll("img[data-path]").forEach(img => {img.setAttribute("alt", "Server foto non raggiungibili.");});
+            document.querySelectorAll("img[data-path]").forEach(img => { img.setAttribute("alt", "Server foto non raggiungibili."); });
         }
     }
 
     document.addEventListener("DOMContentLoaded", initPhotos);
+
+    // Espone l'inizializzatore e la config cache per riusi esterni (es. popup dinamici Leaflet),
+    // evitando di duplicare fetch/caching della CDN in altri script.
+    window.ERTPLPhotos = {
+        refresh: initPhotos,
+        getConfig
+    };
 })();
 
 
