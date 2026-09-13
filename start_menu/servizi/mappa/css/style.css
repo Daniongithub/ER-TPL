@@ -177,7 +177,7 @@ hr.head-separator {
 }
 
 .shape-popup-head {
-    background-color: rgb(220, 0, 0);
+    background-color: #2b9c31;
     padding: 8px
 }
 
@@ -191,7 +191,8 @@ hr.head-separator {
 
 .leaflet-popup-content {
     margin: 0;
-    width: 301px !important;
+    min-width: 301px !important;
+    max-width: 401px !important;
 }
 
 .leaflet-container a.leaflet-popup-close-button {

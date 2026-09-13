@@ -27,7 +27,7 @@ const CONFIG = {
 };
 
 // Palette colori per distinguere più shape sulla stessa mappa
-const SHAPE_COLORS = ["#e53935", "#1e88e5", "#43a047", "#fb8c00", "#8e24aa", "#00897b", "#c0ca33", "#d81b60", "#3949ab", "#6d4c41"];
+const SHAPE_COLORS = ["#2b9c31", "#00897b", "#1e88e5", "#fb8c00", "#8e24aa", "#e53935", "#c0ca33", "#d81b60", "#3949ab", "#6d4c41"];
 
 // ======================================================================
 // QUERY PARAMS
@@ -76,7 +76,7 @@ async function fetchJson(url) {
 function busIcon(item) {
     return L.divIcon({
         className: '',
-        html: `<div class="bus-icon">${item.line}</div>`,
+        html: `<div class="bus-icon" onclick="spawnShape(${item.shape_id});">${item.line}</div>`,
         iconSize: [34, 34],
         iconAnchor: [17, 17],
         popupAnchor: [0, -17]
@@ -169,11 +169,6 @@ function vehiclePopupHtml(item) {
         </div>
     `;
 }
-/*
-<a href="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}">
-    <img src="https://ertpl-cdn.daninet.freeddns.org/img?path=${item.vehicle_info.bus_preview_path}&crop=true"alt="${imgAlt}">
-</a>
-*/
 
 const markersByVehicle = new Map();
 let vehiclesFirstLoad = true;
@@ -326,8 +321,6 @@ function shapePopupHtml(shapeId, points) {
 }
 
 function shapeEndpointIcon(color, type) {
-    // type: 'start' -> cerchio verde con ▶, 'end' -> quadrato rosso con ⏹
-    //const symbol = type === 'start' ? '▶' : '⏹';
     const symbol = type === 'start' ? 'Inizio' : 'Fine';
     return L.divIcon({
         className: '',
@@ -346,7 +339,7 @@ function shapeEndpointPopupHtml(shapeId, type) {
                 <h3>${label}</h3>
             </div>
             <div class="popup-base shape-popup-base">
-                Shape ID:${shapeId}
+                Shape ID: ${shapeId}
             </div>
         </div>
     `;
@@ -376,34 +369,75 @@ async function loadShapeData(shapeId) {
     return fetchJson(url);
 }
 
-async function initShapesMode() {
-    if (SHAPE_IDS.length === 0) {
-        showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&shapeId=8003_A (o una lista separata da virgole).');
-        return;
-    }
+//This stores all markers for start and end of shape
+let layerGroup = L.layerGroup().addTo(map);
 
+async function initShapesMode(shapeid) {
     const allPolylineLayers = [];
     const shapeIdToColor = {};
     let anyError = false;
 
-    for (let i = 0; i < SHAPE_IDS.length; i++) {
-        const shapeId = SHAPE_IDS[i];
-        const color = SHAPE_COLORS[i % SHAPE_COLORS.length];
-        shapeIdToColor[shapeId] = color;
+    if (shapeid == undefined) {
+        if (SHAPE_IDS.length === 0) {
+            showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&shapeId=8003_A (o una lista separata da virgole).');
+            return;
+        }
+        for (let i = 0; i < SHAPE_IDS.length; i++) {
+            const shapeId = SHAPE_IDS[i];
+            const color = SHAPE_COLORS[i % SHAPE_COLORS.length];
+            shapeIdToColor[shapeId] = color;
 
+            try {
+                let points = await loadShapeData(shapeId);
+                if (!Array.isArray(points) || points.length === 0) {
+                    console.warn('Nessun punto ricevuto per ' + shapeId);
+                    continue;
+                }
+                points = [...points].sort((a, b) => (a.shape_pt_sequence ?? 0) - (b.shape_pt_sequence ?? 0));
+
+                const latlngs = points
+                    .filter(p => typeof p.shape_pt_lat === 'number' && typeof p.shape_pt_lon === 'number')
+                    .map(p => [p.shape_pt_lat, p.shape_pt_lon]);
+
+                if (latlngs.length === 0) continue;
+
+                const polyline = L.polyline(latlngs, {
+                    color: color,
+                    weight: 5,
+                    opacity: 0.85
+                }).bindPopup(shapePopupHtml(shapeId, points));
+
+                polyline.addTo(map);
+                allPolylineLayers.push(polyline);
+
+                // Marker di inizio (▶) e fine (⏹) per capire il verso del tracciato
+                const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
+                    .bindPopup(shapeEndpointPopupHtml(shapeId, 'start'));
+                const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
+                    .bindPopup(shapeEndpointPopupHtml(shapeId, 'end'));
+                startMarker.addTo(map);
+                endMarker.addTo(map);
+                allPolylineLayers.push(startMarker, endMarker);
+            } catch (err) {
+                console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
+                anyError = true;
+            }
+        }
+    } else {
+        const shapeId = shapeid;
+        const color = SHAPE_COLORS[0];
+        shapeIdToColor[shapeId] = color;
+        
         try {
             let points = await loadShapeData(shapeId);
             if (!Array.isArray(points) || points.length === 0) {
                 console.warn('Nessun punto ricevuto per ' + shapeId);
-                continue;
             }
             points = [...points].sort((a, b) => (a.shape_pt_sequence ?? 0) - (b.shape_pt_sequence ?? 0));
 
             const latlngs = points
                 .filter(p => typeof p.shape_pt_lat === 'number' && typeof p.shape_pt_lon === 'number')
                 .map(p => [p.shape_pt_lat, p.shape_pt_lon]);
-
-            if (latlngs.length === 0) continue;
 
             const polyline = L.polyline(latlngs, {
                 color: color,
@@ -414,11 +448,10 @@ async function initShapesMode() {
             polyline.addTo(map);
             allPolylineLayers.push(polyline);
 
-            // Marker di inizio (▶) e fine (⏹) per capire il verso del tracciato
             const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
-                .bindPopup(shapeEndpointPopupHtml(shapeId, 'start'));
+                .bindPopup(shapeEndpointPopupHtml(shapeId, 'start')).addTo(layerGroup);
             const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
-                .bindPopup(shapeEndpointPopupHtml(shapeId, 'end'));
+                .bindPopup(shapeEndpointPopupHtml(shapeId, 'end')).addTo(layerGroup);
             startMarker.addTo(map);
             endMarker.addTo(map);
             allPolylineLayers.push(startMarker, endMarker);
@@ -440,7 +473,9 @@ async function initShapesMode() {
     buildLegend(shapeIdToColor);
 
     const group = L.featureGroup(allPolylineLayers);
-    map.fitBounds(group.getBounds().pad(0));
+    if (shapeid == undefined) {
+        map.fitBounds(group.getBounds().pad(0));
+    }
 }
 
 // ======================================================================
@@ -456,6 +491,11 @@ switch (MODE) {
     case "singlemixed":
         initSingleMixedMode();
         break;
+    case "stops":
+        initStopsMode();
+        break;
+    case "empty":
+        break;
     default:
         initVehiclesMode();
         break;
@@ -469,3 +509,25 @@ function refreshVehiclePhotos() {
 
 // Caso 1: l'utente apre un popup nuovo
 map.on('popupopen', refreshVehiclePhotos);
+map.on('popupclose', clearMap);
+
+function spawnShape(shapeid) {
+    //PULIRE DA TUTTE LE SHAPE
+    clearMap();
+
+    initShapesMode(shapeid);
+}
+
+function clearMap() {
+    for (i in map._layers) {
+        if (map._layers[i]._path != undefined) {
+            try {
+                map.removeLayer(map._layers[i]);
+            }
+            catch (e) {
+                console.log("problem with " + e + map._layers[i]);
+            }
+        }
+    }
+    layerGroup.clearLayers();
+}
