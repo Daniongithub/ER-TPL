@@ -4,8 +4,7 @@ async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
-    //return cfg.url;
-    return "https://startapi.serverissimo.com/rss/feed"
+    return cfg.url;
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -14,7 +13,7 @@ const notiziaContainer = document.getElementById('notizia-container');
 
 notiziaContainer.innerHTML = "<p>Caricamento notizia...</p>";
 getApiUrl().then(url => {
-    fetch(url)
+    fetch(url + "/feed")
         .then(response => {
             if (!response.ok) {
                 notiziaContainer.innerHTML = "<p>Impossibile raggiungere l'API.</p>";
