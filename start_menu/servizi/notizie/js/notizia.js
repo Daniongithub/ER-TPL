@@ -1,11 +1,11 @@
-const API_ENDPOINT = "https://ertpl-api.vichingo455.com/startnews";
+const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
-    //return cfg.url;
-    return "https://startapi.serverissimo.com/rss/feed"
+    return cfg.url;
+    //return "https://startapi.serverissimo.com/rss/feed"
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -14,7 +14,7 @@ const notiziaContainer = document.getElementById('notizia-container');
 
 notiziaContainer.innerHTML = "<p>Caricamento notizia...</p>";
 getApiUrl().then(url => {
-    fetch(url)
+    fetch(url + "/rss/feed")
         .then(response => {
             if (!response.ok) {
                 notiziaContainer.innerHTML = "<p>Impossibile raggiungere l'API.</p>";

@@ -45,7 +45,6 @@ async function checkBrowser(services) {
     await checkEndpoint(services.cdn.url, "text/plain");
     await checkEndpoint(services.start.url, "text/plain");
     await checkEndpoint(services.startsopp.url, "application/json");
-    await checkEndpoint(services.startnews.url, "text/plain");
     await checkEndpoint(services.seta.url, "text/plain");
     await checkEndpoint(services.tper.url, "application/json");
     return true;
@@ -144,19 +143,6 @@ async function getMezziServer() {
   }
 }
 
-async function getStartNewsServer() {
-  try {
-    const info = await fetchJson("https://ertpl-api.vichingo455.com/startnews");
-    return {
-      ok: true,
-      server: info.server,
-      url: info.url
-    };
-  } catch {
-    return { ok: false };
-  }
-}
-
 // =========================
 // FUNZIONI UI
 // =========================
@@ -224,7 +210,6 @@ async function initTestHA() {
     seta,
     tper,
     mezzi,
-    startnews
   ] = await Promise.all([
     getApiVersionHA(),
     getCdnServer(),
@@ -232,8 +217,7 @@ async function initTestHA() {
     getStartSoppServer(),
     getSetaServer(),
     getTperServer(),
-    getMezziServer(),
-    getStartNewsServer()
+    getMezziServer()
   ]);
 
   // Render risultati singoli
@@ -241,7 +225,6 @@ async function initTestHA() {
   renderServer("apiCdnServer", "Server in uso (foto)", cdn);
   renderServer("apiStartServer", "Server in uso (START)", start);
   renderServer("apiStartSoppServer", "Server in uso (START Corse Soppresse)", startsopp);
-  renderServer("apiStartNewsServer", "Server in uso (START Notizie)", startnews);
   renderServer("apiSetaServer", "Server in uso (SETA)", seta);
   renderServer("apiTperServer", "Server in uso (TPER)", tper);
   renderServer("apiMezziServer", "Server in uso (Liste Mezzi)", mezzi);
@@ -253,8 +236,7 @@ async function initTestHA() {
     startsopp,
     seta,
     tper,
-    mezzi,
-    startnews
+    mezzi
   ].every(r => r.ok);
 
   const clientOk = await checkBrowser({
@@ -263,8 +245,7 @@ async function initTestHA() {
     startsopp,
     seta,
     tper,
-    mezzi,
-    startnews
+    mezzi
   });
 
   renderBrowser(clientOk);
