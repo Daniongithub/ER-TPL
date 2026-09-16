@@ -1,10 +1,10 @@
 //TODO apertura automatica percorso per VEHICLES e SINGLE
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 // ======================================================================
-// CONFIGURAZIONE GENERALE (modificabile)
+// CONFIGURAZIONE GENERALE
 // ======================================================================
 async function getApiUrl() {
-    const res = await fetch(API_ENDPOINT, { cache: "no-store" });   
+    const res = await fetch(API_ENDPOINT, { cache: "no-store" });
     if (!res.ok) throw new Error('Registry HA non raggiungibile: ' + res.status);
     const cfg = await res.json();
     if (cfg.status !== "ok" || !cfg.url) return null;
@@ -23,8 +23,11 @@ const CONFIG = {
     // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
     SHAPE_ENDPOINT_TEMPLATE: "/shape/{shapeId}",
 
-    // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
     SINGLE_VEHICLE_ENDPOINT: "/vehicleposition/{vehicle}",
+
+    STOP_LIST_ENDPOINT: "/static/stops/{basin}",
+
+    STOP_INFO_ENDPOINT: "/stopsinfo/{basin}/{stopCode}",
 
     // Intervallo di refresh dati, in millisecondi. Usato solo in modalità "vehicles".
     REFRESH_INTERVAL_MS: 30000,
@@ -50,6 +53,7 @@ const SHAPE_IDS = (params.get('shapeId') || '')
     .map(s => s.trim())
     .filter(Boolean);
 const VEHICLE_ID = params.get('vehicle')
+const BASIN = params.get('basin')
 
 // ======================================================================
 // MAPPA
@@ -313,6 +317,134 @@ function initSingleMixedMode() {
 }
 
 // ======================================================================
+// MODALITÀ: STOPS (SINGLE ma con anche il percorso)
+// ======================================================================
+
+function stopIcon() {
+    return L.divIcon({
+        className: '',
+        html: `<div class="stop-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-bus-front" viewBox="0 0 16 16">
+                <path d="M16 7a1 1 0 0 1-1 1v3.5c0 .818-.393 1.544-1 2v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5V14H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2a2.5 2.5 0 0 1-1-2V8a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1V2.64C1 1.452 1.845.408 3.064.268A44 44 0 0 1 8 0c2.1 0 3.792.136 4.936.268C14.155.408 15 1.452 15 2.64V4a1 1 0 0 1 1 1zM3.552 3.22A43 43 0 0 1 8 3c1.837 0 3.353.107 4.448.22a.5.5 0 0 0 .104-.994A44 44 0 0 0 8 2c-1.876 0-3.426.109-4.552.226a.5.5 0 1 0 .104.994M8 4c-1.876 0-3.426.109-4.552.226A.5.5 0 0 0 3 4.723v3.554a.5.5 0 0 0 .448.497C4.574 8.891 6.124 9 8 9s3.426-.109 4.552-.226A.5.5 0 0 0 13 8.277V4.723a.5.5 0 0 0-.448-.497A44 44 0 0 0 8 4m-3 7a1 1 0 1 0-2 0 1 1 0 0 0 2 0m8 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m-7 0a1 1 0 0 0 1 1h2a1 1 0 1 0 0-2H7a1 1 0 0 0-1 1"/>
+            </svg></div>`,
+        iconSize: [34, 34],
+        iconAnchor: [17, 17],
+        popupAnchor: [0, -17]
+    });
+}
+
+function stopPopupHtml(item) {
+    return `
+        <div class="popup-content">
+            <div class="popup-head">
+                <div class="dispflex">
+                    <div class="stop-name-box">${item.stop_name}</div>
+                </div>
+                <hr class="head-separator">
+                <div class="head-desc">
+                    <div class="dispflex stop-code-box">
+                        Codice fermata: ${item.stop_code}
+                    </div>
+                </div>
+            </div>
+            <div class="popup-base">
+                <table class="up">
+                    
+                </table>
+                <a class="button" href="/start_menu/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
+                <hr class="separator">
+                <h3>Da questa fermata passa:</h3>
+                <div class="lines-container"></div>
+                <hr class="separator">
+                <table class="up">
+                    <tr><td class="label">Bacino:</td><td>${item.basin}</td></tr>
+                    <tr><td class="label">Stop ID:</td><td>${item.stop_id}</td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function plotStops(data) {
+    if (!Array.isArray(data) || data.length === 0) {
+        showStatus('Nessun mezzo da mostrare.');
+        return;
+    }
+    hideStatus();
+
+    const seenVehicles = new Set();
+
+    data.forEach(item => {
+        const key = item.stop_code;
+        if (!key) return;
+        seenVehicles.add(key);
+
+        const existing = markersByVehicle.get(key);
+        if (existing) {
+            existing.setLatLng([item.stop_lat, item.stop_lon]);
+            existing.setPopupContent(stopPopupHtml(item));
+            // Caso 2: il popup era già aperto e il contenuto (quindi anche l'img) è stato appena sostituito
+            if (existing.isPopupOpen()) {
+                refreshVehiclePhotos();
+            }
+        } else {
+            const marker = L.marker([item.stop_lat, item.stop_lon], { icon: stopIcon() })
+                .bindPopup(stopPopupHtml(item));
+
+            marker.on('popupopen', (e) => {
+                loadLines(item.stop_code, item.basin, e.popup);
+            });
+
+            marker.addTo(map);
+            markersByVehicle.set(key, marker);
+        }
+    });
+
+    for (const [key, marker] of markersByVehicle.entries()) {
+        if (!seenVehicles.has(key)) {
+            map.removeLayer(marker);
+            markersByVehicle.delete(key);
+        }
+    }
+
+    if (vehiclesFirstLoad && markersByVehicle.size > 0) {
+        const group = L.featureGroup(Array.from(markersByVehicle.values()));
+        //map.fitBounds(group.getBounds().pad(0));
+        switch (BASIN) {
+            case "RA":
+                //Ravenna
+                map.setView([44.413, 12.205], 14)
+                break;
+            case "FC":
+                map.setView([44.138, 12.245], 14)
+                break;
+            case "RN":
+                map.setView([44.058, 12.57], 14)
+                break;
+        }
+        vehiclesFirstLoad = false;
+    }
+}
+
+async function loadStops() {
+    const stopListUrl = CONFIG.BASE_URL + CONFIG.STOP_LIST_ENDPOINT.replace('{basin}', encodeURIComponent(BASIN));
+    if (!stopListUrl) {
+        showStatus('BASE_URL non impostato.');
+        return;
+    }
+    try {
+        const data = await fetchJson(stopListUrl);
+        plotStops(data);
+    } catch (err) {
+        console.error('Errore nel fetch dei mezzi:', err);
+        showStatus('Errore nel caricamento dati live: ' + err);
+    }
+}
+
+function initStopsMode() {
+    loadStops();
+}
+
+// ======================================================================
 // MODALITÀ: SHAPES
 // ======================================================================
 function shapePopupHtml(shapeId, points) {
@@ -435,7 +567,7 @@ async function initShapesMode(shapeid) {
         const shapeId = shapeid;
         const color = SHAPE_COLORS[0];
         shapeIdToColor[shapeId] = color;
-        
+
         try {
             let points = await loadShapeData(shapeId);
             if (!Array.isArray(points) || points.length === 0) {
@@ -541,6 +673,28 @@ function spawnShape(shapeid) {
     clearMap();
 
     initShapesMode(shapeid);
+}
+
+async function loadLines(stopCode, basin, popup) {
+    //Gets popup 
+    const popupElement = popup.getElement();
+    const linesContainer = popupElement.querySelector('.lines-container');
+    const url = CONFIG.BASE_URL + CONFIG.STOP_INFO_ENDPOINT.replace('{basin}', basin).replace('{stopCode}', stopCode);
+
+    try {
+        const data = await fetchJson(url);
+        data.lines.forEach(line => {
+            const div = document.createElement('div');
+            div.className = "passing-line-box";
+            div.innerHTML = `
+                ${line.line}
+            `;
+            linesContainer.appendChild(div);
+        })
+    } catch (err) {
+        console.error('Errore nel caricamento linee passanti:', err);
+        showStatus('Errore nel caricamento linee passanti: ' + err);
+    }
 }
 
 function clearMap() {
