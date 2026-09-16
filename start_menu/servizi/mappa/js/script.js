@@ -20,6 +20,8 @@ const CONFIG = {
     // Path per la modalità "vehicles", aggiunto a BASE_URL.
     VEHICLES_ENDPOINT: "/vehiclepositions",
 
+    VEHICLES_BASIN_ENDPOINT: "/vehiclepositions/{basin}",
+
     // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
     SHAPE_ENDPOINT_TEMPLATE: "/shape/{shapeId}",
 
@@ -86,13 +88,24 @@ async function fetchJson(url) {
 // MODALITÀ: VEHICLES
 // ======================================================================
 function busIcon(item) {
-    return L.divIcon({
-        className: '',
-        html: `<div class="bus-icon" onclick="spawnShape(${item.shape_id});">${item.line}</div>`,
-        iconSize: [34, 34],
-        iconAnchor: [17, 17],
-        popupAnchor: [0, -17]
-    });
+    if (item.line == "MetroMare") {
+        return L.divIcon({
+            className: '',
+            html: `<div class="bus-icon-large" onclick="spawnShape(${item.shape_id});">${item.line.split(" ")[0]}</div>`,
+            iconSize: [34, 34],
+            iconAnchor: [50, 17],
+            popupAnchor: [0, -17]
+        });
+    } else {
+        return L.divIcon({
+            className: '',
+            html: `<div class="bus-icon" onclick="spawnShape(${item.shape_id});">${item.line.split(" ")[0]}</div>`,
+            iconSize: [34, 34],
+            iconAnchor: [17, 17],
+            popupAnchor: [0, -17]
+        });
+    }
+
 }
 
 function vehiclePopupHtml(item) {
@@ -244,7 +257,12 @@ function plotVehicles(data, padd) {
 }
 
 async function loadVehicles() {
-    const url = CONFIG.BASE_URL ? (CONFIG.BASE_URL + CONFIG.VEHICLES_ENDPOINT) : "";
+    let url
+    if (BASIN != undefined) {
+        url = CONFIG.BASE_URL + CONFIG.VEHICLES_BASIN_ENDPOINT.replace('{basin}', encodeURIComponent(BASIN));
+    } else {
+        url = CONFIG.BASE_URL ? (CONFIG.BASE_URL + CONFIG.VEHICLES_ENDPOINT) : "";
+    }
     if (!url) {
         showStatus('BASE_URL non impostato.');
         return;
@@ -347,9 +365,6 @@ function stopPopupHtml(item) {
                 </div>
             </div>
             <div class="popup-base">
-                <table class="up">
-                    
-                </table>
                 <a class="button" href="/start_menu/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
                 <hr class="separator">
                 <h3>Da questa fermata passa:</h3>
