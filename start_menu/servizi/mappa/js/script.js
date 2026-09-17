@@ -14,16 +14,13 @@ const CONFIG = {
     // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri. Non modificare a mano se si usa l'HA.
     BASE_URL: null,
 
-    // URL del CDN per le immagini dei mezzi. Usato solo in modalità "vehicles".
-    CDN_ENDPOINT: "https://ertpl-api.vichingo455.com/cdn",
-
     // Path per la modalità "vehicles", aggiunto a BASE_URL.
     VEHICLES_ENDPOINT: "/vehiclepositions",
 
     VEHICLES_BASIN_ENDPOINT: "/vehiclepositions/{basin}",
 
     // Template per la modalità "shapes": {shapeId} viene sostituito col valore richiesto.
-    SHAPE_ENDPOINT_TEMPLATE: "/shape/{shapeId}",
+    SHAPE_ENDPOINT_TEMPLATE: "/shape/{basin}/{shapeId}",
 
     SINGLE_VEHICLE_ENDPOINT: "/vehicleposition/{vehicle}",
 
@@ -46,8 +43,8 @@ const SHAPE_COLORS = ["#2b9c31", "#00897b", "#1e88e5", "#fb8c00", "#8e24aa", "#e
 // QUERY PARAMS
 // ======================================================================
 // ?mode=vehicles              -> mostra i mezzi in tempo reale
-// ?mode=shapes&shapeId=8003_A -> mostra un singolo tracciato
-// ?mode=shapes&shapeId=8003_A,8003_B,8004_C -> più tracciati, colori diversi
+// ?mode=shapes&basin=FC&shapeId=8003_A -> mostra un singolo tracciato
+// ?mode=shapes&basin=FC&shapeId=8003_A,8003_B,8004_C -> più tracciati, colori diversi
 const params = new URLSearchParams(window.location.search);
 const MODE = (params.get('mode') || 'vehicles').toLowerCase();
 const SHAPE_IDS = (params.get('shapeId') || '')
@@ -91,7 +88,7 @@ function busIcon(item) {
     if (item.line == "MetroMare") {
         return L.divIcon({
             className: '',
-            html: `<div class="bus-icon-large" onclick="spawnShape(${item.shape_id});">${item.line.split(" ")[0]}</div>`,
+            html: `<div class="bus-icon-large" onclick="spawnShape('${item.basin}', '${item.shape_id}');">${item.line.split(" ")[0]}</div>`,
             iconSize: [34, 34],
             iconAnchor: [50, 17],
             popupAnchor: [0, -17]
@@ -99,7 +96,7 @@ function busIcon(item) {
     } else {
         return L.divIcon({
             className: '',
-            html: `<div class="bus-icon" onclick="spawnShape(${item.shape_id});">${item.line.split(" ")[0]}</div>`,
+            html: `<div class="bus-icon" onclick="spawnShape('${item.basin}', '${item.shape_id}');">${item.line.split(" ")[0]}</div>`,
             iconSize: [34, 34],
             iconAnchor: [17, 17],
             popupAnchor: [0, -17]
@@ -515,26 +512,25 @@ function buildLegend(shapeIdToColor) {
     legendEl.style.display = 'block';
 }
 
-async function loadShapeData(shapeId) {
+async function loadShapeData(basin, shapeId) {
     if (!CONFIG.BASE_URL) {
-        if (FALLBACK_SHAPES[shapeId]) return FALLBACK_SHAPES[shapeId];
-        throw new Error('BASE_URL non impostato e nessun fallback per ' + shapeId);
+        throw new Error('BASE_URL non impostato');
     }
-    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{shapeId}', encodeURIComponent(shapeId));
+    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', basin).replace('{shapeId}', shapeId);
     return fetchJson(url);
 }
 
 //This stores all markers for start and end of shape
 let layerGroup = L.layerGroup().addTo(map);
 
-async function initShapesMode(shapeid) {
+async function initShapesMode(basin, shapeid) {
     const allPolylineLayers = [];
     const shapeIdToColor = {};
     let anyError = false;
 
-    if (shapeid == undefined) {
+    if (shapeid == undefined && basin == undefined) {
         if (SHAPE_IDS.length === 0) {
-            showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&shapeId=8003_A (o una lista separata da virgole).');
+            showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&basin=FC&shapeId=8003_A (o una lista separata da virgole).');
             return;
         }
         for (let i = 0; i < SHAPE_IDS.length; i++) {
@@ -543,7 +539,7 @@ async function initShapesMode(shapeid) {
             shapeIdToColor[shapeId] = color;
 
             try {
-                let points = await loadShapeData(shapeId);
+                let points = await loadShapeData(BASIN, shapeId);
                 if (!Array.isArray(points) || points.length === 0) {
                     console.warn('Nessun punto ricevuto per ' + shapeId);
                     continue;
@@ -582,9 +578,8 @@ async function initShapesMode(shapeid) {
         const shapeId = shapeid;
         const color = SHAPE_COLORS[0];
         shapeIdToColor[shapeId] = color;
-
         try {
-            let points = await loadShapeData(shapeId);
+            let points = await loadShapeData(basin, shapeId);
             if (!Array.isArray(points) || points.length === 0) {
                 console.warn('Nessun punto ricevuto per ' + shapeId);
             }
@@ -683,11 +678,11 @@ function refreshVehiclePhotos() {
 map.on('popupopen', refreshVehiclePhotos);
 map.on('popupclose', clearMap);
 
-function spawnShape(shapeid) {
+function spawnShape(basin, shapeid) {
     //PULIRE DA TUTTE LE SHAPE
     clearMap();
-
-    initShapesMode(shapeid);
+    
+    initShapesMode(basin, shapeid);
 }
 
 async function loadLines(stopCode, basin, popup) {
