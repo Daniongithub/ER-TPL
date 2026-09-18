@@ -54,6 +54,9 @@ basinSelect.addEventListener('change', async function (event) {
 
     if (selectedBasin == 'RA') {
         filtersContainer.style.display = '';
+        nameButton.style.display = '';
+        longcodeButton.style.display = '';
+        shortcodeButton.style.display = '';
         await loadStops();
     } else {
         nameButton.style.display = 'none';
@@ -102,11 +105,6 @@ function searchByShortCode() {
 }
 
 function openMap() {
-    mapButton.classList.add("selected");
-    //Removes other buttons selection
-    nameButton.classList.remove("selected");
-    shortcodeButton.classList.remove("selected");
-    longcodeButton.classList.remove("selected");
     window.location.href = `/start_menu/servizi/mappa/index.html?mode=stops&basin=${selectedBasin}`;
 }
 
