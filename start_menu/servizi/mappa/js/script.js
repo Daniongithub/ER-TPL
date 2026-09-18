@@ -69,9 +69,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-if (window.screen.width >= 512) {
-    CONFIG.STOPS_MIN_ZOOM = 12;
-    CONFIG.STOPS_DEF_ZOOM = 12;
+if (window.screen.width <= 512) {
+    CONFIG.STOPS_MIN_ZOOM = 15;
+    CONFIG.STOPS_DEF_ZOOM = 15;
 }
 
 const statusEl = document.getElementById('status');

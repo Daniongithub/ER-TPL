@@ -15,6 +15,7 @@ const filtersContainer = document.getElementById('filters-container');
 const nameButton = document.getElementById('name-button');
 const longcodeButton = document.getElementById('longcode-button');
 const shortcodeButton = document.getElementById('shortcode-button');
+const mapButton = document.getElementById('map-button');
 const searchBar = document.getElementById('search-bar');
 const resultsContainer = document.getElementById('search-results');
 
@@ -34,7 +35,7 @@ async function loadStops() {
     const baseUrl = await getApiUrl();
     fetch(baseUrl + "/static/stops/" + selectedBasin)
         .then(response => {
-            if (!response.ok) { resultsContainer.textContent = "Errore nel caricamento lista fermate"; throw new Error("Errore nel caricamento lista fermate.") }
+            if (!response.ok) { resultsContainer.textContent = "Errore nel caricamento lista fermate."; throw new Error("Errore nel caricamento lista fermate.") }
             return response.json()
         })
         .then(data => {
@@ -55,7 +56,10 @@ basinSelect.addEventListener('change', async function (event) {
         filtersContainer.style.display = '';
         await loadStops();
     } else {
-        filtersContainer.style.display = 'none';
+        nameButton.style.display = 'none';
+        longcodeButton.style.display = 'none';
+        shortcodeButton.style.display = 'none';
+        filtersContainer.style.display = '';
         await loadStops();
         //Default search by name moved to loadStops
     }
@@ -95,6 +99,15 @@ function searchByShortCode() {
     nameButton.classList.remove("selected");
     longcodeButton.classList.remove("selected");
     searchBar.focus();
+}
+
+function openMap() {
+    mapButton.classList.add("selected");
+    //Removes other buttons selection
+    nameButton.classList.remove("selected");
+    shortcodeButton.classList.remove("selected");
+    longcodeButton.classList.remove("selected");
+    window.location.href = `/start_menu/servizi/mappa/index.html?mode=stops&basin=${selectedBasin}`;
 }
 
 searchBar.addEventListener('input', function (event) {

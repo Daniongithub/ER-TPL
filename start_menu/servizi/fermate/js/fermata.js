@@ -7,7 +7,6 @@ async function getApiUrl() {
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
     return cfg.url;
-    //return "https://startapi.serverissimo.com";
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -92,11 +91,7 @@ function loadArrivals() {
                 `;
 
                 table.appendChild(thead);
-                //Temporary fix for no arrivals planned (API doesn't have status codes yet)
-                if (data == null) {
-                    tableContainer.innerHTML = '<h3 style="margin:12px;">Nessuna corsa programmata nei prossimi 90 minuti.</h3>';
-                    return;
-                }
+
                 data.forEach((element, idx) => {
                     const tr = document.createElement('tr');
                     let formattedDelay = "";
