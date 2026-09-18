@@ -36,6 +36,7 @@ const CONFIG = {
     INITIAL_ZOOM: 11,
 
     STOPS_MIN_ZOOM: 14,      // sotto questo zoom le fermate vengono nascoste per performance
+    STOPS_DEF_ZOOM: 14,      
     GEOLOCATION_ZOOM: 16,    // zoom applicato quando la posizione GPS è disponibile
 };
 
@@ -67,6 +68,11 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
+
+if (window.screen.width >= 512) {
+    CONFIG.STOPS_MIN_ZOOM = 12;
+    CONFIG.STOPS_DEF_ZOOM = 12;
+}
 
 const statusEl = document.getElementById('status');
 const legendEl = document.getElementById('legend');
@@ -501,13 +507,13 @@ function plotStops(data) {
             //Se il GPS non è concesso utilizza zoom sulle città base
             switch (BASIN) {
                 case "RA":
-                    map.setView([44.413, 12.205], 14);
+                    map.setView([44.413, 12.205], CONFIG.STOPS_DEF_ZOOM);
                     break;
                 case "FC":
-                    map.setView([44.138, 12.245], 14);
+                    map.setView([44.138, 12.245], CONFIG.STOPS_DEF_ZOOM);
                     break;
                 case "RN":
-                    map.setView([44.058, 12.57], 14);
+                    map.setView([44.058, 12.57], CONFIG.STOPS_DEF_ZOOM);
                     break;
             }
         }
