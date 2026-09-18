@@ -50,6 +50,43 @@ body {
     overflow: hidden;
 }
 
+.bus-icon-transparent {
+    width: 40px;
+    height: 40px;
+    background: rgb(0, 164, 164);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+    overflow: hidden;
+    opacity: 50%;
+}
+
+.bus-icon-large-transparent {
+    width: 100px;
+    height: 32px;
+    background: rgb(0, 164, 164);
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
+    overflow: hidden;
+    opacity: 50%;
+}
+
 .stop-icon {
     width: 22px;
     height: 22px;
@@ -335,4 +372,56 @@ a.button {
     height: 4px;
     border-radius: 2px;
     flex-shrink: 0;
+}
+
+/* GPS */
+
+.user-location-marker {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+.user-location-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    background: #1e88e5;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.user-location-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    background: rgba(30, 136, 229, 0.35);
+    border-radius: 50%;
+    animation: user-location-pulse-anim 2s infinite;
+    z-index: 1;
+}
+
+@keyframes user-location-pulse-anim {
+    0% {
+        transform: scale(0.6);
+        opacity: 0.8;
+    }
+
+    70% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
 }

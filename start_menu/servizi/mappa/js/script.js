@@ -33,7 +33,10 @@ const CONFIG = {
 
     // Vista iniziale della mappa (usata finché non arrivano dati da adattare)
     INITIAL_CENTER: [44.42, 12.2],
-    INITIAL_ZOOM: 11
+    INITIAL_ZOOM: 11,
+
+    STOPS_MIN_ZOOM: 14,      // sotto questo zoom le fermate vengono nascoste per performance
+    GEOLOCATION_ZOOM: 16,    // zoom applicato quando la posizione GPS è disponibile
 };
 
 // Palette colori per distinguere più shape sulla stessa mappa
@@ -88,7 +91,7 @@ function busIcon(item) {
     if (item.line == "MetroMare") {
         return L.divIcon({
             className: '',
-            html: `<div class="bus-icon-large" onclick="spawnShape('${item.basin}', '${item.shape_id}');">${item.line.split(" ")[0]}</div>`,
+            html: `<div class="bus-icon-large">${item.line.split(" ")[0]}</div>`,
             iconSize: [34, 34],
             iconAnchor: [50, 17],
             popupAnchor: [0, -17]
@@ -96,7 +99,7 @@ function busIcon(item) {
     } else {
         return L.divIcon({
             className: '',
-            html: `<div class="bus-icon" onclick="spawnShape('${item.basin}', '${item.shape_id}');">${item.line.split(" ")[0]}</div>`,
+            html: `<div class="bus-icon">${item.line.split(" ")[0]}</div>`,
             iconSize: [34, 34],
             iconAnchor: [17, 17],
             popupAnchor: [0, -17]
@@ -173,7 +176,7 @@ function vehiclePopupHtml(item) {
                     <tr><td class="label">Codice percorso:</td><td>${item.shape_id}</td></tr>
                     <tr><td class="label">Codice corsa:</td><td>${item.trip_id}</td></tr>
                 </table>
-                <a class="button" href="?mode=singlemixed&vehicle=${item.vehicle_info.number}&shapeId=${item.shape_id}">Visualizza il percorso</a>
+                <a class="button" href="?mode=singlemixed&vehicle=${item.vehicle_info.number}&basin=${item.basin}&shapeId=${item.shape_id}">Visualizza il percorso</a>
                 <hr class="separator">
                 <table class="down">
                     <tr><td class="label">Modello:</td><td>${item.vehicle_info.model}</td></tr>
@@ -227,6 +230,14 @@ function plotVehicles(data, padd) {
         } else {
             const marker = L.marker([item.vehicle_lat, item.vehicle_long], { icon: busIcon(item) })
                 .bindPopup(vehiclePopupHtml(item));
+
+            //Se siamo nella modalità single mixed, questa funzione non deve partire
+            if (MODE != "singlemixed") {
+                marker.on('popupopen', () => {
+                    spawnShape(item.basin, item.shape_id, marker);
+                });
+            }
+
             marker.addTo(map);
             markersByVehicle.set(key, marker);
         }
@@ -332,8 +343,74 @@ function initSingleMixedMode() {
 }
 
 // ======================================================================
-// MODALITÀ: STOPS (SINGLE ma con anche il percorso)
+// MODALITÀ: STOPS (con GPS)
 // ======================================================================
+
+//GPS section
+
+let userLocationFound = false;
+let userLocationMarker = null;
+
+function userLocationIcon() {
+    return L.divIcon({
+        className: '',
+        html: `<div class="user-location-marker">
+                 <div class="user-location-pulse"></div>
+                 <div class="user-location-dot"></div>
+               </div>`,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10]
+    });
+}
+
+function showUserLocation(lat, lon) {
+    if (userLocationMarker) {
+        userLocationMarker.setLatLng([lat, lon]);
+    } else {
+        userLocationMarker = L.marker([lat, lon], {
+            icon: userLocationIcon(),
+            zIndexOffset: 1000,
+            interactive: false
+        }).addTo(map);
+    }
+}
+
+function locateUser() {
+    return new Promise((resolve) => {
+        if (!navigator.geolocation) {
+            resolve(null);
+            return;
+        }
+        navigator.geolocation.getCurrentPosition(
+            (pos) => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude }),
+            (err) => {
+                console.warn('Geolocalizzazione non disponibile:', err);
+                resolve(null);
+            },
+            { enableHighAccuracy: true, timeout: 8000, maximumAge: 30000 }
+        );
+    });
+}
+
+//END GPS section
+
+const stopsLayerGroup = L.layerGroup();
+
+//Per protezione dai 4 FPS se dezoomi troppo
+function updateStopsVisibility() {
+    const zoom = map.getZoom();
+    if (zoom < CONFIG.STOPS_MIN_ZOOM) {
+        if (map.hasLayer(stopsLayerGroup)) map.removeLayer(stopsLayerGroup);
+        showStatus('Troppe fermate da mostrare a questo livello di zoom, avvicinati per visualizzarle.');
+        return;
+    }
+    if (!map.hasLayer(stopsLayerGroup)) stopsLayerGroup.addTo(map);
+    if (!userLocationFound) {
+        showStatus('Posizione del dispositivo non disponibile.');
+    } else {
+        hideStatus();
+    }
+}
 
 function stopIcon() {
     return L.divIcon({
@@ -406,32 +483,32 @@ function plotStops(data) {
                 loadLines(item.stop_code, item.basin, e.popup);
             });
 
-            marker.addTo(map);
+            marker.addTo(stopsLayerGroup);
             markersByVehicle.set(key, marker);
         }
     });
 
     for (const [key, marker] of markersByVehicle.entries()) {
         if (!seenVehicles.has(key)) {
-            map.removeLayer(marker);
+            stopsLayerGroup.removeLayer(marker);
             markersByVehicle.delete(key);
         }
     }
 
     if (vehiclesFirstLoad && markersByVehicle.size > 0) {
-        const group = L.featureGroup(Array.from(markersByVehicle.values()));
-        //map.fitBounds(group.getBounds().pad(0));
-        switch (BASIN) {
-            case "RA":
-                //Ravenna
-                map.setView([44.413, 12.205], 14)
-                break;
-            case "FC":
-                map.setView([44.138, 12.245], 14)
-                break;
-            case "RN":
-                map.setView([44.058, 12.57], 14)
-                break;
+        if (!userLocationFound) {
+            //Se il GPS non è concesso utilizza zoom sulle città base
+            switch (BASIN) {
+                case "RA":
+                    map.setView([44.413, 12.205], 14);
+                    break;
+                case "FC":
+                    map.setView([44.138, 12.245], 14);
+                    break;
+                case "RN":
+                    map.setView([44.058, 12.57], 14);
+                    break;
+            }
         }
         vehiclesFirstLoad = false;
     }
@@ -441,19 +518,36 @@ async function loadStops() {
     const stopListUrl = CONFIG.BASE_URL + CONFIG.STOP_LIST_ENDPOINT.replace('{basin}', encodeURIComponent(BASIN));
     if (!stopListUrl) {
         showStatus('BASE_URL non impostato.');
-        return;
+        return false;
     }
     try {
         const data = await fetchJson(stopListUrl);
         plotStops(data);
+        return true;
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
         showStatus('Errore nel caricamento dati live: ' + err);
+        return false;
     }
 }
 
-function initStopsMode() {
-    loadStops();
+async function initStopsMode() {
+    const position = await locateUser();
+    userLocationFound = !!position; //userLocationFound: variabile globale
+
+    if (position) {
+        //Se il GPS è disponibile, setta zoom e posizione sull'utente
+        showUserLocation(position.lat, position.lon);
+        map.setView([position.lat, position.lon], CONFIG.GEOLOCATION_ZOOM);
+    }
+    //Se non è disponibile, lo zoom di default scatta dentro loadStops()
+
+    const success = await loadStops();
+    if (success) {
+        //A ogni zoom aggiorna la visibilità per protezione performance se dezoomi troppo
+        map.on('zoomend', updateStopsVisibility);
+        updateStopsVisibility();
+    }
 }
 
 // ======================================================================
@@ -561,7 +655,7 @@ async function initShapesMode(basin, shapeid) {
                 polyline.addTo(map);
                 allPolylineLayers.push(polyline);
 
-                // Marker di inizio (▶) e fine (⏹) per capire il verso del tracciato
+                // Marker di inizio e fine per capire il verso del tracciato
                 const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
                     .bindPopup(shapeEndpointPopupHtml(shapeId, 'start'));
                 const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
@@ -674,14 +768,43 @@ function refreshVehiclePhotos() {
     }
 }
 
-// Caso 1: l'utente apre un popup nuovo
 map.on('popupopen', refreshVehiclePhotos);
-map.on('popupclose', clearMap);
+map.on('popupclose', () => {
+    if (MODE != "singlemixed" && MODE != "shapes") {
+        clearMap();
+        const allTranspMarkers = document.querySelectorAll('.bus-icon-transparent');
+        allTranspMarkers.forEach(marker => {
+            marker.className = "bus-icon";
+        })
+        const allLargeTranspMarkers = document.querySelectorAll('.bus-icon-large-transparent');
+        allLargeTranspMarkers.forEach(marker => {
+            marker.className = "bus-icon-large";
+        })
+    }
+});
 
-function spawnShape(basin, shapeid) {
+function spawnShape(basin, shapeid, popup) {
     //PULIRE DA TUTTE LE SHAPE
     clearMap();
-    
+
+    //Rende tutti i marker eccetto questo meno opachi
+    const popupElement = popup.getElement();
+    const thisMarker = popupElement.querySelector('.bus-icon');
+    const thisLargeMarker = popupElement.querySelector('.bus-icon-large');
+    const allMarkers = document.querySelectorAll('.bus-icon');
+    const largeMarkers = document.querySelectorAll('.bus-icon-large');
+    allMarkers.forEach(marker => {
+        marker.className = "bus-icon-transparent";
+    })
+    largeMarkers.forEach(marker => {
+        marker.className = "bus-icon-large-transparent";
+    })
+    if (thisMarker != null) {
+        thisMarker.className = "bus-icon";
+    } else {
+        thisLargeMarker.className = "bus-icon-large";
+    }
+
     initShapesMode(basin, shapeid);
 }
 
