@@ -1,57 +1,84 @@
-/*Zona lista mezzi*/
+/* Lista mezzi */
 
-.lista-mezzi{
-    min-width: 80vw;
+table {
+    margin-top: 1rem;
     border-collapse: separate;
     border-spacing: 0;
-    margin: auto;
-    border: 2px solid gray;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 85%;
+    max-width: 100%;
+    text-align: left;
 }
-.lista-mezzi thead{
-    background-color: #282828;
+
+thead {
     position: sticky;
     top: 0;
 }
-.lista-mezzi th, .lista-mezzi td{
-    padding: 10px;
-    text-align: center;
-    border: 1px solid gray;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
+
+th {
+    background-color: darkcyan;
+    padding: .7vw;
 }
-.lista-mezzi thead th{
-    position: sticky;
+
+td {
+    padding: .7vw;
 }
-.lista-mezzi tbody{
-    overflow-y: auto;
+
+tr.even {
+    background-color: rgb(60, 60, 60);
 }
-.lista-mezzi tbody tr.demolito{
+
+/* Colori sfondo in base allo stato*/
+
+tbody tr.demolito,
+p.demolito {
     background-color: darkred;
 }
-.lista-mezzi tbody tr.sconosciuto{
+
+tbody tr.sconosciuto,
+p.sconosciuto {
     background-color: purple;
 }
-.lista-mezzi tbody tr.fermo{
+
+tbody tr.fermo,
+p.fermo {
     background-color: yellow;
     color: black;
 }
-.lista-mezzi tbody tr.fermo a{
+
+tbody tr.fermo a,
+p.fermo {
     background-color: yellow;
     color: black;
 }
-.lista-mezzi tbody tr.dismesso{
+
+tbody tr.dismesso,
+p.dismesso {
     background-color: orangered;
 }
-.lista-mezzi a{
-    text-decoration: underline;
-}
-.lista-mezzi td:nth-child(4){
+
+/* Larghezza e format testo celle specifiche */
+
+th:nth-child(1),
+td:nth-child(1) {
+    text-align: center;
     width: 5%;
 }
-.lista-mezzi th:nth-child(4){
+
+th:nth-child(2),
+td:nth-child(2) {
+    text-align: center;
+    width: 10%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    text-align: center;
     width: 5%;
 }
+
+/* Legenda stati */
 
 div.legenda {
     display: flex;
@@ -62,45 +89,30 @@ div.legenda p {
     border-radius: 4px;
     padding-left: 5px;
     padding-right: 5px;
-    margin:2px;
+    margin: 2px;
     height: fit-content;
 }
 
-tr.sconosciuto,p.sconosciuto {
-    background-color: purple;
-}
-tr.fermo,p.fermo {
-    background-color: yellow;
-    color: black;
-}
-tr.fermo td a {
-    color: black;
-}
-tr.dismesso,p.dismesso {
-    background-color: orangered;
-}
-tr.demolito,p.demolito {
-    background-color: rgb(100, 0, 0);
+a {
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {
-    .lista-mezzi td:nth-child(4){
-        display: none;
+    th:nth-child(1), td:nth-child(1) {
+        text-align: center;
+        width: 5%;
     }
-    .lista-mezzi th:nth-child(4){
-        display: none;
+
+    th:nth-child(2), td:nth-child(2) {
+        text-align: center;
+        width: 25%;
     }
-    .lista-mezzi{
+
+    table {
         margin: 0px;
-        max-width: 1000%;
     }
-    .of-x-media{
-        overflow-x: scroll;
-    }
-    #contenitore {
-        overflow-x: scroll;
-    }
-    table.guida-linee{
-        width: 250%;
+
+    td {
+        padding: 1vw;
     }
 }
