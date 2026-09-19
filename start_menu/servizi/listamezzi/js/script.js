@@ -24,7 +24,6 @@ function loadMezzi() {
 
         // Crea la tabella
         const table = document.createElement('table');
-        table.classList.add("lista-mezzi");
 
         // Aggiungi l'intestazione della tabella
         let th = document.createElement('th');
@@ -46,10 +45,12 @@ function loadMezzi() {
         thead.appendChild(rowh);
         table.appendChild(thead);
 
-        data.forEach(row => {
+        data.forEach((row, idx) => {
             const rowt = document.createElement('tr');
             if(row.stato) {
                 rowt.classList.add(row.stato);
+            } else if (idx % 2 === 0) {
+                rowt.classList.add("even");
             }
 
             const matr = document.createElement('td');

@@ -1,0 +1,10 @@
+@media (max-width: 768px) {
+    img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+b b, h3 b {
+    font-weight: inherit;
+}
