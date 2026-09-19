@@ -65,11 +65,12 @@ function loadArrivals() {
             .then(response => {
                 if (!response.ok) {
                     if (response.status == 404) {
-                        tableContainer.textContent = "<strong>Nessuna corsa programmata nei prossimi 90 minuti.</strong>";
-                        return;
+                        tableContainer.innerHTML = "<strong>Nessuna corsa programmata nei prossimi 90 minuti.</strong>";
+                        throw new Error("NO ARRIVALS");
+                    } else {
+                        tableContainer.textContent = "Errore nel caricamento degli arrivi.";
+                        throw new Error("Errore nel caricamento lista fermate.");
                     }
-                    tableContainer.textContent = "Errore nel caricamento lista fermate";
-                    throw new Error("Errore nel caricamento lista fermate.");
                 }
                 return response.json()
             })

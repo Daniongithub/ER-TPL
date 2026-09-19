@@ -2,7 +2,6 @@
 
 table {
     margin-top: 1rem;
-    border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
     overflow: hidden;
@@ -21,41 +20,54 @@ th {
     padding: .7vw;
 }
 
-td {
-    padding: .7vw;
+tbody tr {
+    background-color: rgb(49, 49, 49);
 }
 
-tr.even {
-    background-color: rgb(60, 60, 60);
+td {
+    padding: .7vw;
+    background-color: inherit; /* prende il colore dal tr */
+}
+
+/*Linee verticali*/
+/*
+th:not(:last-child), td:not(:last-child) {
+    border-right: 1px solid rgb(100, 100, 100);
+}*/
+/*Linee orizzontali*/
+
+tr:not(:last-child)>th,
+tr:not(:last-child)>td {
+    border-bottom: 1px solid rgb(70, 70, 70);
 }
 
 /* Colori sfondo in base allo stato*/
 
 tbody tr.demolito,
 p.demolito {
-    background-color: darkred;
+    background-color: darkred !important;
 }
 
 tbody tr.sconosciuto,
 p.sconosciuto {
-    background-color: purple;
+    background-color: purple !important;
 }
 
 tbody tr.fermo,
 p.fermo {
-    background-color: yellow;
+    background-color: yellow !important;
     color: black;
 }
 
 tbody tr.fermo a,
 p.fermo {
-    background-color: yellow;
+    background-color: yellow !important;
     color: black;
 }
 
 tbody tr.dismesso,
 p.dismesso {
-    background-color: orangered;
+    background-color: orangered !important;
 }
 
 /* Larghezza e format testo celle specifiche */
@@ -63,19 +75,16 @@ p.dismesso {
 th:nth-child(1),
 td:nth-child(1) {
     text-align: center;
-    width: 5%;
 }
 
 th:nth-child(2),
 td:nth-child(2) {
     text-align: center;
-    width: 10%;
 }
 
 th:nth-child(4),
 td:nth-child(4) {
     text-align: center;
-    width: 5%;
 }
 
 /* Legenda stati */
@@ -98,12 +107,15 @@ a {
 }
 
 @media (max-width: 768px) {
-    th:nth-child(1), td:nth-child(1) {
+
+    th:nth-child(1),
+    td:nth-child(1) {
         text-align: center;
         width: 5%;
     }
 
-    th:nth-child(2), td:nth-child(2) {
+    th:nth-child(2),
+    td:nth-child(2) {
         text-align: center;
         width: 25%;
     }
@@ -114,5 +126,15 @@ a {
 
     td {
         padding: 1vw;
+    }
+
+    td:first-child,
+    th:first-child {
+        padding-left: 5px;
+    }
+
+    td:last-child,
+    th:last-child {
+        padding-right: 5px;
     }
 }

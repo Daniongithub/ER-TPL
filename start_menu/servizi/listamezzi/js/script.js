@@ -9,78 +9,74 @@ async function getApiUrl() {
     return cfg.url;
 }
 
-
-//const API_URL = getApiUrl() + "/start/mezzi";
-
 loadMezzi();
 
 function loadMezzi() {
     const container = document.getElementById('contenitore');
     getApiUrl().then(url => {
-    fetch(url + "/start/mezzi")
-    .then(response => response.json())
-    .then(data => {
-        container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
+        fetch(url + "/start/mezzi")
+            .then(response => response.json())
+            .then(data => {
+                container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
 
-        // Crea la tabella
-        const table = document.createElement('table');
+                // Crea la tabella
+                const table = document.createElement('table');
 
-        // Aggiungi l'intestazione della tabella
-        let th = document.createElement('th');
-        const thead = document.createElement('thead');
-        const tbody = document.createElement('tbody');
-        const rowh = document.createElement('tr');
+                // Aggiungi l'intestazione della tabella
+                let th = document.createElement('th');
+                const thead = document.createElement('thead');
+                const tbody = document.createElement('tbody');
+                const rowh = document.createElement('tr');
 
-        th.innerHTML='Matricola';
-        rowh.appendChild(th);
-        th = document.createElement('th');
-        th.innerHTML='Targa';
-        rowh.appendChild(th);
-        th = document.createElement('th');
-        th.innerHTML='Mezzo';
-        rowh.appendChild(th);
-        th = document.createElement('th');
-        th.innerHTML='Bacino';
-        rowh.appendChild(th);
-        thead.appendChild(rowh);
-        table.appendChild(thead);
+                th.innerHTML = 'Matricola';
+                rowh.appendChild(th);
+                th = document.createElement('th');
+                th.innerHTML = 'Targa';
+                rowh.appendChild(th);
+                th = document.createElement('th');
+                th.innerHTML = 'Mezzo';
+                rowh.appendChild(th);
+                th = document.createElement('th');
+                th.innerHTML = 'Bacino';
+                rowh.appendChild(th);
+                thead.appendChild(rowh);
+                table.appendChild(thead);
 
-        data.forEach((row, idx) => {
-            const rowt = document.createElement('tr');
-            if(row.stato) {
-                rowt.classList.add(row.stato);
-            } else if (idx % 2 === 0) {
-                rowt.classList.add("even");
-            }
+                data.forEach((row, idx) => {
+                    const rowt = document.createElement('tr');
+                    //Se stato è vuoto va in errore js (The empty string is not a valid token)
+                    if (row.stato) {
+                        rowt.classList.add(row.stato);
+                    }
 
-            const matr = document.createElement('td');
-            const link = document.createElement('a');
-            link.textContent = row.matricola;
-            link.href = row.link;
-            matr.appendChild(link);
-            rowt.appendChild(matr);
+                    const matr = document.createElement('td');
+                    const link = document.createElement('a');
+                    link.textContent = row.matricola;
+                    link.href = row.link;
+                    matr.appendChild(link);
+                    rowt.appendChild(matr);
 
-            const targa = document.createElement('td');
-            targa.textContent = row.targa;
-            rowt.appendChild(targa);
+                    const targa = document.createElement('td');
+                    targa.textContent = row.targa;
+                    rowt.appendChild(targa);
 
-            const mezzo = document.createElement('td');
-            mezzo.textContent = row.modello;
-            rowt.appendChild(mezzo);
+                    const mezzo = document.createElement('td');
+                    mezzo.textContent = row.modello;
+                    rowt.appendChild(mezzo);
 
-            const bacino = document.createElement('td');
-            bacino.textContent = row.provincia;
-            rowt.appendChild(bacino);
+                    const bacino = document.createElement('td');
+                    bacino.textContent = row.provincia;
+                    rowt.appendChild(bacino);
 
-            tbody.appendChild(rowt);
-        });
-        table.appendChild(tbody);
+                    tbody.appendChild(rowt);
+                });
+                table.appendChild(tbody);
 
-        container.appendChild(table);
-    })
-    .catch(err => {
-      container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="loadMezzi();">riprova adesso</a> o riprova più tardi.</p>`;
-    });
-
+                container.appendChild(table);
+            })
+            .catch(err => {
+                console.error(err);
+                container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="loadMezzi();">riprova adesso</a> o riprova più tardi.</p>`;
+            });
     });
 }

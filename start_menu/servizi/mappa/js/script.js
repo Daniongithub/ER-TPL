@@ -10,6 +10,7 @@ async function getApiUrl() {
     if (cfg.status !== "ok" || !cfg.url) return null;
     return cfg.url;
 }
+
 const CONFIG = {
     // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri. Non modificare a mano se si usa l'HA.
     BASE_URL: null,
@@ -36,7 +37,7 @@ const CONFIG = {
     INITIAL_ZOOM: 11,
 
     STOPS_MIN_ZOOM: 14,      // sotto questo zoom le fermate vengono nascoste per performance
-    STOPS_DEF_ZOOM: 14,      
+    STOPS_DEF_ZOOM: 14,
     GEOLOCATION_ZOOM: 16,    // zoom applicato quando la posizione GPS è disponibile
 };
 
@@ -61,9 +62,15 @@ const BASIN = params.get('basin')
 // ======================================================================
 // MAPPA
 // ======================================================================
-const map = L.map('map', {
-    //markerZoomAnimation: false   //Riduzione lag 
-}).setView(CONFIG.INITIAL_CENTER, CONFIG.INITIAL_ZOOM);
+let map
+if (MODE == "stops") {
+    map = L.map('map', {
+        markerZoomAnimation: false   //Riduzione lag modalità stops
+    }).setView(CONFIG.INITIAL_CENTER, CONFIG.INITIAL_ZOOM);
+} else {
+    map = L.map('map', {}).setView(CONFIG.INITIAL_CENTER, CONFIG.INITIAL_ZOOM);
+}
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
