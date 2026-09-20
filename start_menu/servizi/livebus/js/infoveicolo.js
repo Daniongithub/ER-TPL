@@ -68,13 +68,13 @@ getApiUrl().then(url => {
             table.appendChild(tr);
 
             //Refactors delay (+ if positive)
-            if (data.next_stop.delay > 0) {
+            if (data.next_stop?.delay > 0) {
                 data.next_stop.delay = "+" + data.next_stop.delay;
             }
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Ritardo/Anticipo: (+/-)</td>
-                <td>${data.next_stop.delay}</td>
+                <td>${data.next_stop?.delay ?? 'Sconosciuto'}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -156,7 +156,7 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice percorso:</td>
-                <td class="cursor-pointer" onclick="window.location.href='/start_menu/servizi/mappa/index.html?mode=shapes&shapeId=${data.shape_id}'">${data.shape_id}</td>
+                <td class="fake-a cursor-pointer" onclick="window.open('/start_menu/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}', '_blank')">${data.shape_id}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -174,7 +174,7 @@ getApiUrl().then(url => {
                 tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>Posizione:</td>
-                    <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/mappa/index.html?mode=single&vehicle=${data.vehicle_info.number}';">GPS</td>
+                    <td class="fake-a cursor-pointer" onclick="window.open('/start_menu/servizi/mappa/index.html?mode=single&vehicle=${data.vehicle_info.number}', '_blank');">GPS</td>
                 `;
                 tr.className = 'even';
                 nextClass = ""
