@@ -456,7 +456,7 @@ function stopPopupHtml(item) {
                 <a class="button" href="/start_menu/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
                 <hr class="separator">
                 <h3>Da questa fermata passa:</h3>
-                <div class="lines-container"></div>
+                <div class="lines-container" style="display: none;"></div>
                 <hr class="separator">
                 <table class="up">
                     <tr><td class="label">Bacino:</td><td>${item.basin}</td></tr>
@@ -836,6 +836,7 @@ async function loadLines(stopCode, basin, popup) {
             div.innerHTML = `
                 ${line.line}
             `;
+            linesContainer.style.display = '';
             linesContainer.appendChild(div);
         })
     } catch (err) {
