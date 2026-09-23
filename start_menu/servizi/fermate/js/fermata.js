@@ -124,7 +124,7 @@ function loadArrivals() {
                     //Checks if vehicle is null
                     let vehicleOsm = "";
                     if (element.vehicle != null) {
-                        vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&vehicle=${element.vehicle}`
+                        vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&basin=${element.basin}&vehicle=${element.vehicle}`
                         tr.innerHTML += `
                             <td class="cursor-pointer" onclick='window.location.href="${vehicleOsm}";'>${element.vehicle}</td>
                         `;

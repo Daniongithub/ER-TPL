@@ -174,7 +174,7 @@ getApiUrl().then(url => {
                 tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>Posizione:</td>
-                    <td class="fake-a cursor-pointer" onclick="window.open('/start_menu/servizi/mappa/index.html?mode=single&vehicle=${data.vehicle_info.number}', '_blank');">GPS</td>
+                    <td class="fake-a cursor-pointer" onclick="window.open('/start_menu/servizi/mappa/index.html?mode=single&basin=${data.basin}&vehicle=${data.vehicle_info.number}', '_blank');">GPS</td>
                 `;
                 tr.className = 'even';
                 nextClass = ""

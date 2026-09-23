@@ -248,7 +248,7 @@ function plotVehicles(data, padd) {
             //Se siamo nella modalità single mixed, questa funzione non deve partire
             if (MODE != "singlemixed") {
                 marker.on('popupopen', () => {
-                    spawnShape(item.basin, item.shape_id, marker);
+                    spawnShape(item.shape_id, marker);
                 });
             }
 
@@ -620,23 +620,24 @@ function buildLegend(shapeIdToColor) {
     legendEl.style.display = 'block';
 }
 
-async function loadShapeData(basin, shapeId) {
+async function loadShapeData(shapeId) {
     if (!CONFIG.BASE_URL) {
         throw new Error('BASE_URL non impostato');
     }
-    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', basin).replace('{shapeId}', shapeId);
+
+    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', BASIN).replace('{shapeId}', shapeId);
     return fetchJson(url);
 }
 
 //This stores all markers for start and end of shape
 let layerGroup = L.layerGroup().addTo(map);
 
-async function initShapesMode(basin, shapeid) {
+async function initShapesMode(shapeid) {
     const allPolylineLayers = [];
     const shapeIdToColor = {};
     let anyError = false;
 
-    if (shapeid == undefined && basin == undefined) {
+    if (shapeid == undefined) {
         if (SHAPE_IDS.length === 0) {
             showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&basin=FC&shapeId=8003_A (o una lista separata da virgole).');
             return;
@@ -647,7 +648,8 @@ async function initShapesMode(basin, shapeid) {
             shapeIdToColor[shapeId] = color;
 
             try {
-                let points = await loadShapeData(BASIN, shapeId);
+                const data = await loadShapeData(shapeId);
+                let points = data?.points ?? [];
                 if (!Array.isArray(points) || points.length === 0) {
                     console.warn('Nessun punto ricevuto per ' + shapeId);
                     continue;
@@ -687,7 +689,8 @@ async function initShapesMode(basin, shapeid) {
         const color = SHAPE_COLORS[0];
         shapeIdToColor[shapeId] = color;
         try {
-            let points = await loadShapeData(basin, shapeId);
+            const data = await loadShapeData(shapeId);
+            let points = data?.points ?? [];
             if (!Array.isArray(points) || points.length === 0) {
                 console.warn('Nessun punto ricevuto per ' + shapeId);
             }
@@ -797,7 +800,7 @@ map.on('popupclose', () => {
     }
 });
 
-function spawnShape(basin, shapeid, popup) {
+function spawnShape(shapeid, popup) {
     //PULIRE DA TUTTE LE SHAPE
     clearMap();
 
@@ -819,7 +822,7 @@ function spawnShape(basin, shapeid, popup) {
         thisLargeMarker.className = "bus-icon-large";
     }
 
-    initShapesMode(basin, shapeid);
+    initShapesMode(shapeid);
 }
 
 async function loadLines(stopCode, basin, popup) {
