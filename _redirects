@@ -10,3 +10,4 @@
 /seta_modena/servizi/deviazioni/* /service/serviceupdate.html
 
 /map /start_menu/servizi/mappa/index.html
+/seta_modena/servizi/* /service/servicenotavailable.html
