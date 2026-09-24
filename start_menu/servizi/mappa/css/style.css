@@ -357,7 +357,6 @@ a.button {
     border-radius: 8px;
     font-size: 13px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    display: none;
     max-height: 40%;
     overflow-y: auto;
 }

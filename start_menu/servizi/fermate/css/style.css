@@ -1,5 +1,5 @@
 a {
-    color: orange;
+    color: rgb(0, 215, 215);
 }
 
 nav#corsie-nav ul {
@@ -221,7 +221,13 @@ select option {
     .mobile-hidden {
         display: none;
     }
+
     table {
         min-width: 100%;
     }
+}
+
+img.table-help {
+    border: 2px solid white;
+    width: 90%;
 }

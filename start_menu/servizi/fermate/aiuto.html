@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>START Romagna - Informazioni sul servizio</title>
+    <title>START Romagna - Aiuto cerca fermate</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.ico">
@@ -22,9 +22,37 @@
             </ul>
         </nav>
     </header>
-    <h1>Note e informazioni sul visualizzatore fermate</h1>
-    <h4><a class="colore" href="#codiceFermata">Vai alla sezione "codice fermata"</a> oppure <a class="colore" href="#noteVarie">vai alla sezione "note varie"</a>.</h4>
-    <h3 id="codiceFermata">Come leggere il codice fermata e inserirlo sul sito:</h3>
+    <h1>Aiuto visualizzatore fermate</h1>
+    <h4><a href="#codiceFermata">Vai alla sezione "codice fermata"</a></h4>
+    <h3>Come utilizzare il visualizzatore</h3>
+    <p>Sulla pagina principale:</p>
+    <p>
+        <ol style="text-align: left;">
+            <li>Selezionare il bacino desiderato.</li>
+            <li>Attendere il caricamento della lista fermate. Il sito posizionerà il fuoco automaticamente sulla barra di ricerca quando il caricamento sarà completato.</li>
+            <li>Inserire il nome o il codice della fermata desiderata (lungo o corto per Ravenna, vedi <a href="#codiceFermata">sotto</a>).</li>
+            <li>Selezionare la fermata desiderata dai riquadri che compariranno sotto.</li>
+        </ol>
+    </p>
+    <p>Una volta aperta la fermata, il sito caricherà una tabella con gli arrivi così visualizzata:</p>
+    <img class="table-help" src="img/tabella fermate.png" alt="Immagine tabella fermate">
+    <p style="display: grid; grid-template-columns: 150px auto; width: fit-content; margin: auto; text-align: left;">
+        <strong>Linea:</strong> Il numero linea (se conosciuta anche la variante) <br>
+        <strong>Direzione:</strong> Il nome della direzione (generalmente ciò che viene riportato sul display) <br>
+        <strong>Orario:</strong> L'orario di arrivo, in tempo reale se presente la notazione del ritardo/anticipo nelle parentesi, altrimenti previsto. <br>
+        <strong>Veicolo:</strong> Matricola che effettua la corsa <br>
+        <strong>Prossima fermata:</strong> La prossima fermata a cui arriverà l'autobus <br>
+    </p>
+    <p>Premendo il tasto "Fermata opposta" sopra alla tabella (se esiste una fermata opposta con lo stesso nome) è possibile vedere gli arrivi alla fermata opposta (dall'altra parte della strada).</p>
+    <h3>Stato delle corse (corrisponde all'immagine):</h3>
+    <p style="display: grid; grid-template-columns: 60px auto; width: fit-content; margin: auto; text-align: left;">
+        <strong>Caso 1:</strong> Se compare il ritardo/anticipo tra parentesi allora la corsa è in tempo reale e l'orario di arrivo è quello in tempo reale (previsto + ritardo). E' possibile cliccare sul numero del mezzo per vedere la posizione GPS sulla mappa.<br>
+        <strong>Caso 2:</strong> Il bus è in orario. E' possibile cliccare sul numero del mezzo per vedere la posizione GPS sulla mappa.<br>
+        <strong>Caso 3:</strong> La corsa è prevista, l'orario è quello previsto e il mezzo con cui verrà effettuata la corsa non è disponibile.<br>
+        <strong>Caso 4:</strong> L'orario di arrivo è previsto, ma è conosciuto il mezzo con cui verrà effettuata (ad esempio il bus deve ancora arrivare al capolinea e tornare indietro). Anche qui è possibile cliccare sul numero del mezzo per aprire la mappa.<br>
+    </p>
+    <hr class="solid">
+    <h3 id="codiceFermata">[RAVENNA] Come leggere il codice fermata e inserirlo:</h3>
     <p><em>Clicca sulle foto per visualizzarle interamente se sono troppo piccole.</em></p>
     <p>Analizziamo i diversi tipi di fermate autobus presenti nel territorio, esistono diversi formati, dove si possono trovari dati in maniera differente.</p>
     <h3>Paline ATM</h3>

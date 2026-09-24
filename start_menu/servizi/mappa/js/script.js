@@ -469,7 +469,7 @@ function stopPopupHtml(item) {
 
 function plotStops(data) {
     if (!Array.isArray(data) || data.length === 0) {
-        showStatus('Nessun mezzo da mostrare.');
+        showStatus('Nessuna fermata da mostrare.');
         return;
     }
     hideStatus();
@@ -481,25 +481,15 @@ function plotStops(data) {
         if (!key) return;
         seenVehicles.add(key);
 
-        const existing = markersByVehicle.get(key);
-        if (existing) {
-            existing.setLatLng([item.stop_lat, item.stop_lon]);
-            existing.setPopupContent(stopPopupHtml(item));
-            // Caso 2: il popup era già aperto e il contenuto (quindi anche l'img) è stato appena sostituito
-            if (existing.isPopupOpen()) {
-                refreshVehiclePhotos();
-            }
-        } else {
-            const marker = L.marker([item.stop_lat, item.stop_lon], { icon: stopIcon() })
-                .bindPopup(stopPopupHtml(item));
+        const marker = L.marker([item.stop_lat, item.stop_lon], { icon: stopIcon() })
+            .bindPopup(stopPopupHtml(item));
 
-            marker.on('popupopen', (e) => {
-                loadLines(item.stop_code, item.basin, e.popup);
-            });
+        marker.on('popupopen', (e) => {
+            loadLines(item.stop_code, item.basin, e.popup);
+        });
 
-            marker.addTo(stopsLayerGroup);
-            markersByVehicle.set(key, marker);
-        }
+        marker.addTo(stopsLayerGroup);
+        markersByVehicle.set(key, marker);
     });
 
     for (const [key, marker] of markersByVehicle.entries()) {
@@ -509,7 +499,7 @@ function plotStops(data) {
         }
     }
 
-    if (vehiclesFirstLoad && markersByVehicle.size > 0) {
+    if (markersByVehicle.size > 0 && MODE == "stops") {
         if (!userLocationFound) {
             //Se il GPS non è concesso utilizza zoom sulle città base
             switch (BASIN) {
@@ -524,7 +514,12 @@ function plotStops(data) {
                     break;
             }
         }
-        vehiclesFirstLoad = false;
+    }
+
+    //SOLO SHAPES MODE
+    //Aggiunge alla mappa le fermate, altrimenti non verrebbero spawnate le fermate (non serve stop visibility)
+    if (!map.hasLayer(stopsLayerGroup) && MODE == "shapes") {
+        stopsLayerGroup.addTo(map);
     }
 }
 
@@ -605,21 +600,6 @@ function shapeEndpointPopupHtml(shapeId, type) {
     `;
 }
 
-function buildLegend(shapeIdToColor) {
-    const entries = Object.entries(shapeIdToColor);
-    if (entries.length <= 1) {
-        legendEl.style.display = 'none';
-        return;
-    }
-    legendEl.innerHTML = entries.map(([id, color]) => `
-				<div class="legend-item">
-					<span class="legend-swatch" style="background:${color}"></span>
-					<span>${id}</span>
-				</div>
-    		`).join('');
-    legendEl.style.display = 'block';
-}
-
 async function loadShapeData(shapeId) {
     if (!CONFIG.BASE_URL) {
         throw new Error('BASE_URL non impostato');
@@ -679,6 +659,9 @@ async function initShapesMode(shapeid) {
                 startMarker.addTo(map);
                 endMarker.addTo(map);
                 allPolylineLayers.push(startMarker, endMarker);
+
+                //Spawna le fermate interessate sullo shape (tutti i trip_id con quella shape)
+                plotStops(data.stops)
             } catch (err) {
                 console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
                 anyError = true;
@@ -716,6 +699,9 @@ async function initShapesMode(shapeid) {
             startMarker.addTo(map);
             endMarker.addTo(map);
             allPolylineLayers.push(startMarker, endMarker);
+
+            //Spawna le fermate interessate sullo shape (tutti i trip_id con quella shape)
+            plotStops(data.stops)
         } catch (err) {
             console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
             anyError = true;
@@ -730,8 +716,6 @@ async function initShapesMode(shapeid) {
     if (anyError) {
         showStatus('Alcuni tracciati non sono stati caricati correttamente (vedi console).');
     }
-
-    buildLegend(shapeIdToColor);
 
     const group = L.featureGroup(allPolylineLayers);
     if (shapeid == undefined) {
