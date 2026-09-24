@@ -5,7 +5,6 @@
 }
 
 .filter-container {
-    display: flex;
     justify-content: space-evenly;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -19,8 +18,9 @@
     row-gap: 4px;
 }
 
-.filter-container>*:not(:last-child) {
-    margin-right: 10px;
+.filter-top {
+    display: flex;
+    margin-bottom: 16px;
 }
 
 .filter-container button {
@@ -29,7 +29,15 @@
     border: 0;
     border-radius: 8px;
     margin-right: 15px;
-    margin-left: 32px;
+    margin-left: 15px;
+}
+
+#map-link-container {
+    margin-top: 12px;
+}
+
+.map-button {
+    width: 14%;
 }
 
 .filter-container input,
@@ -99,24 +107,30 @@ tr.even {
     background-color: rgb(60, 60, 60);
 }
 
-td.uguale{
+td.uguale {
     width: 50%;
 }
 
 td.fake-a {
-    color: orange;
+    color: rgb(0, 215, 215);
     text-decoration: underline;
+}
+
+hr.solid {
+    width: auto;
 }
 
 @media (max-width: 768px) {
     .filter-container {
-        flex-direction: column;
         padding: 12px;
-        row-gap: 8px;
-        box-sizing: border-box;
         width: calc(100% - 30px);
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .filter-top {
+        row-gap: 8px;
+        flex-direction: column;
     }
 
     .filter-container input,
@@ -157,7 +171,7 @@ td.fake-a {
     .mobile-hidden {
         display: none;
     }
-    
+
     table {
         min-width: 100%;
     }
@@ -181,7 +195,7 @@ button:disabled {
 }
 
 a {
-    color: orange;
+    color: rgb(0, 215, 215);
 }
 
 input::placeholder {
@@ -202,6 +216,6 @@ img {
 footer {
     position: relative;
     bottom: 0;
-	left: 0;
+    left: 0;
     width: 100%;
 }

@@ -80,10 +80,17 @@ getApiUrl().then(url => {
             table.appendChild(tr);
 
             tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>Numero mezzo:</td>
-                <td>${data.vehicle_info.number}</td>
-            `;
+            if (data.vehicle_info.bus_page_path != null) {
+                tr.innerHTML = `
+                    <td>Numero mezzo:</td>
+                    <td class="fake-a cursor-pointer" onclick="window.location.href='${data.vehicle_info.bus_page_path}'" target="_blank">${data.vehicle_info.number}</td>
+                `;
+            } else {
+                tr.innerHTML = `
+                    <td>Numero mezzo:</td>
+                    <td>${data.vehicle_info.number}</td>
+                `;
+            }
             table.appendChild(tr);
 
             //Checks if model is null (unknown vehicle)
@@ -91,10 +98,17 @@ getApiUrl().then(url => {
                 data.vehicle_info.model = "Sconosciuto";
             }
             tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>Modello:</td>
-                <td>${data.vehicle_info.model}</td>
-            `;
+            if (data.vehicle_info.bus_page_path != null) {
+                tr.innerHTML = `
+                    <td>Modello:</td>
+                    <td class="fake-a cursor-pointer" onclick="window.location.href='${data.vehicle_info.bus_page_path}'" target="_blank">${data.vehicle_info.model}</td>
+                `;
+            } else {
+                tr.innerHTML = `
+                    <td>Modello:</td>
+                    <td>${data.vehicle_info.model}</td>
+                `;
+            }
             tr.className = 'even';
             table.appendChild(tr);
 
@@ -133,14 +147,14 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Prossima fermata:</td>
-                <td>${data.next_stop.stop_name}</td>
+                <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}'" target="_blank">${data.next_stop.stop_name}</td>
             `;
             table.appendChild(tr);
 
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice fermata:</td>
-                <td>${data.next_stop.stop_code}</td>
+                <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}'" target="_blank">${data.next_stop.stop_code}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -156,7 +170,7 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice percorso:</td>
-                <td class="fake-a cursor-pointer" onclick="window.open('/start_menu/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}', '_blank')">${data.shape_id}</td>
+                <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}'" target="_blank">${data.shape_id}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);

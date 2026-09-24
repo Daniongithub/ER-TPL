@@ -88,6 +88,7 @@ function showStatus(msg) {
     statusEl.textContent = msg;
     statusEl.style.display = 'block';
 }
+
 function hideStatus() {
     statusEl.style.display = 'none';
 }
@@ -210,6 +211,7 @@ function vehiclePopupHtml(item) {
 }
 
 const markersByVehicle = new Map();
+const markersByStop = new Map();
 let vehiclesFirstLoad = true;
 
 function plotVehicles(data, padd) {
@@ -248,7 +250,7 @@ function plotVehicles(data, padd) {
             //Se siamo nella modalità single mixed, questa funzione non deve partire
             if (MODE != "singlemixed") {
                 marker.on('popupopen', () => {
-                    spawnShape(item.shape_id, marker);
+                    spawnShape(item.basin, item.shape_id, marker);
                 });
             }
 
@@ -489,17 +491,17 @@ function plotStops(data) {
         });
 
         marker.addTo(stopsLayerGroup);
-        markersByVehicle.set(key, marker);
+        markersByStop.set(key, marker);
     });
 
-    for (const [key, marker] of markersByVehicle.entries()) {
+    for (const [key, marker] of markersByStop.entries()) {
         if (!seenVehicles.has(key)) {
             stopsLayerGroup.removeLayer(marker);
-            markersByVehicle.delete(key);
+            markersByStop.delete(key);
         }
     }
 
-    if (markersByVehicle.size > 0 && MODE == "stops") {
+    if (markersByStop.size > 0 && MODE == "stops") {
         if (!userLocationFound) {
             //Se il GPS non è concesso utilizza zoom sulle città base
             switch (BASIN) {
@@ -518,7 +520,7 @@ function plotStops(data) {
 
     //SOLO SHAPES MODE
     //Aggiunge alla mappa le fermate, altrimenti non verrebbero spawnate le fermate (non serve stop visibility)
-    if (!map.hasLayer(stopsLayerGroup) && MODE == "shapes") {
+    if (!map.hasLayer(stopsLayerGroup) && MODE != "stops") {
         stopsLayerGroup.addTo(map);
     }
 }
@@ -600,19 +602,24 @@ function shapeEndpointPopupHtml(shapeId, type) {
     `;
 }
 
-async function loadShapeData(shapeId) {
+async function loadShapeData(shapeId, basin) {
     if (!CONFIG.BASE_URL) {
         throw new Error('BASE_URL non impostato');
     }
 
-    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', BASIN).replace('{shapeId}', shapeId);
+    let url
+    if (BASIN == undefined) {
+        url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', basin).replace('{shapeId}', shapeId);
+    } else {
+        url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', BASIN).replace('{shapeId}', shapeId);
+    }
     return fetchJson(url);
 }
 
 //This stores all markers for start and end of shape
 let layerGroup = L.layerGroup().addTo(map);
 
-async function initShapesMode(shapeid) {
+async function initShapesMode(shapeid, basin) {
     const allPolylineLayers = [];
     const shapeIdToColor = {};
     let anyError = false;
@@ -668,11 +675,10 @@ async function initShapesMode(shapeid) {
             }
         }
     } else {
-        const shapeId = shapeid;
         const color = SHAPE_COLORS[0];
-        shapeIdToColor[shapeId] = color;
+        shapeIdToColor[shapeid] = color;
         try {
-            const data = await loadShapeData(shapeId);
+            const data = await loadShapeData(shapeid, basin);
             let points = data?.points ?? [];
             if (!Array.isArray(points) || points.length === 0) {
                 console.warn('Nessun punto ricevuto per ' + shapeId);
@@ -687,15 +693,15 @@ async function initShapesMode(shapeid) {
                 color: color,
                 weight: 5,
                 opacity: 0.85
-            }).bindPopup(shapePopupHtml(shapeId, points));
+            }).bindPopup(shapePopupHtml(shapeid, points));
 
             polyline.addTo(map);
             allPolylineLayers.push(polyline);
 
             const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
-                .bindPopup(shapeEndpointPopupHtml(shapeId, 'start')).addTo(layerGroup);
+                .bindPopup(shapeEndpointPopupHtml(shapeid, 'start')).addTo(layerGroup);
             const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
-                .bindPopup(shapeEndpointPopupHtml(shapeId, 'end')).addTo(layerGroup);
+                .bindPopup(shapeEndpointPopupHtml(shapeid, 'end')).addTo(layerGroup);
             startMarker.addTo(map);
             endMarker.addTo(map);
             allPolylineLayers.push(startMarker, endMarker);
@@ -703,7 +709,7 @@ async function initShapesMode(shapeid) {
             //Spawna le fermate interessate sullo shape (tutti i trip_id con quella shape)
             plotStops(data.stops)
         } catch (err) {
-            console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
+            console.error('Errore nel caricamento dello shape ' + shapeid + ':', err);
             anyError = true;
         }
     }
@@ -718,7 +724,7 @@ async function initShapesMode(shapeid) {
     }
 
     const group = L.featureGroup(allPolylineLayers);
-    if (shapeid == undefined) {
+    if (MODE == "shapes") {
         map.fitBounds(group.getBounds().pad(0));
     }
 }
@@ -784,7 +790,7 @@ map.on('popupclose', () => {
     }
 });
 
-function spawnShape(shapeid, popup) {
+function spawnShape(basin, shapeid, popup) {
     //PULIRE DA TUTTE LE SHAPE
     clearMap();
 
@@ -806,7 +812,7 @@ function spawnShape(shapeid, popup) {
         thisLargeMarker.className = "bus-icon-large";
     }
 
-    initShapesMode(shapeid);
+    initShapesMode(shapeid, basin);
 }
 
 async function loadLines(stopCode, basin, popup) {
@@ -844,4 +850,5 @@ function clearMap() {
         }
     }
     layerGroup.clearLayers();
+    stopsLayerGroup.clearLayers();
 }

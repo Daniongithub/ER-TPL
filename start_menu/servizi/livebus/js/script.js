@@ -72,7 +72,6 @@ function applyFilter() {
     const filterZona = document.getElementById('filter-zona').value.toLowerCase();
     const filterLinea = document.getElementById('filter-linea').value.toLowerCase();
     const filterModello = document.getElementById('filter-modello').value.toLowerCase();
-
     const table = document.getElementById('tabella');
     if (!table) return;
 
@@ -147,9 +146,22 @@ function applyFilter() {
         }
     }
 
+    updateMapLink();
+
     numeromezzi();
 }
 
+function updateMapLink() {
+    const filterZona = document.getElementById('filter-zona').value;
+    const mapLinkContainer = document.getElementById("map-link-container");
+    if (filterZona == "") {
+        //Mappa globale
+        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/start_menu/servizi/mappa/index.html'">Apri la mappa</button>`;
+    } else {
+        //Mappa per bacino
+        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/start_menu/servizi/mappa/index.html?basin=${filterZona}'">Apri la mappa (${filterZona})</button>`;
+    }
+}
 
 function numeromezzi() {
     const table = document.getElementById('tabella');
@@ -301,6 +313,3 @@ updateClock();
 document.getElementById('filter-zona').addEventListener('change', applyFilter);
 document.getElementById('filter-linea').addEventListener('input', applyFilter);
 document.getElementById('filter-modello').addEventListener('change', applyFilter);
-document.getElementById('filter-zona').addEventListener('change', numeromezzi);
-document.getElementById('filter-linea').addEventListener('input', numeromezzi);
-document.getElementById('filter-modello').addEventListener('change', numeromezzi);

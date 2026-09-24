@@ -349,7 +349,7 @@ a.button {
 
 #legend {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     left: 10px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.92);
@@ -357,8 +357,9 @@ a.button {
     border-radius: 8px;
     font-size: 13px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    max-height: 40%;
+    max-height: 26px;
     overflow-y: auto;
+    margin-right: 10px;
 }
 
 #legend .legend-item {
@@ -408,6 +409,12 @@ a.button {
     border-radius: 50%;
     animation: user-location-pulse-anim 2s infinite;
     z-index: 1;
+}
+
+@media (max-width: 1200px) {
+    #legend {
+        bottom: 20px;
+    }
 }
 
 @keyframes user-location-pulse-anim {

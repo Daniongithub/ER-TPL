@@ -20,7 +20,7 @@ getApiUrl().then(url => {
         .then(response => {
             if (!response.ok) {
                 newsContainer.innerHTML = "<p>Impossibile raggiungere l'API.</p>";
-                throw new Error("Errore nel caricamento dei dati.");
+                throw new Error("Errore nel caricamento dei dati.", response.status);
             }
             return response.json();
         }).then(data => {

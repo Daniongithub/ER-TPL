@@ -23,17 +23,21 @@
     <h1>Autobus in tempo reale</h1>
     <h3 id="clock">00:00:00</h3>
     <div class="filter-container">
-        <select id="filter-zona" name="zona">
-            <option value="" selected>Tutti i bacini</option>
-            <option value="RA">Ravenna</option>
-            <option value="FC">Forlì-Cesena</option>
-            <option value="RN">Rimini</option>
-        </select>
-        <input type="text" id="filter-linea" placeholder="Filtra per linea">
-        <select id="filter-modello" name="model">
-            <option value="" selected>Filtra per modello</option>
-        </select>
-        <button type="button" id="resetFilters" onclick="clearFilters()">Reset</button>
+        <div class="filter-top">
+            <select id="filter-zona" name="zona">
+                <option value="" selected>Tutti i bacini</option>
+                <option value="RA">Ravenna</option>
+                <option value="FC">Forlì-Cesena</option>
+                <option value="RN">Rimini</option>
+            </select>
+            <input type="text" id="filter-linea" placeholder="Filtra per linea">
+            <select id="filter-modello" name="model">
+                <option value="" selected>Filtra per modello</option>
+            </select>
+            <button type="button" id="resetFilters" onclick="clearFilters()">Reset</button>
+        </div>
+        <hr class="solid">
+        <div id="map-link-container"></div>
     </div>
     <div class="num">
         <p>Numero mezzi: <span id="nummezzi"></span></p>
