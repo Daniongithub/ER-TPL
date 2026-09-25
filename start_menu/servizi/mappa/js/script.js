@@ -765,7 +765,7 @@ function refreshVehiclePhotos() {
 
 map.on('popupopen', refreshVehiclePhotos);
 map.on('popupclose', () => {
-    if (MODE != "singlemixed" && MODE != "shapes" && MODE != "stops") {
+    if (MODE != "singlemixed" && MODE != "single" && MODE != "shapes" && MODE != "stops") {
         clearMap();
         const allTranspMarkers = document.querySelectorAll('.bus-icon-transparent');
         allTranspMarkers.forEach(marker => {
