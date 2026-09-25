@@ -564,18 +564,6 @@ async function initStopsMode() {
 // ======================================================================
 // MODALITÀ: SHAPES
 // ======================================================================
-function shapePopupHtml(shapeId, points) {
-    const basin = points[0]?.basin ?? '-';
-    return `		
-        <div class="popup-content">
-            <h3>Tracciato ${shapeId}</h3>
-            <table>
-            <tr><td class="label">Bacino:</td><td>${basin}</td></tr>
-            <tr><td class="label">Punti:</td><td>${points.length}</td></tr>
-            </table>
-        </div>
-    `;
-}
 
 function shapeEndpointIcon(color, type) {
     const symbol = type === 'start' ? 'Inizio' : 'Fine';
@@ -653,7 +641,7 @@ async function initShapesMode(shapeid, basin) {
                     color: color,
                     weight: 5,
                     opacity: 0.85
-                }).bindPopup(shapePopupHtml(shapeId, points));
+                })
 
                 polyline.addTo(map);
                 allPolylineLayers.push(polyline);
@@ -693,7 +681,7 @@ async function initShapesMode(shapeid, basin) {
                 color: color,
                 weight: 5,
                 opacity: 0.85
-            }).bindPopup(shapePopupHtml(shapeid, points));
+            })
 
             polyline.addTo(map);
             allPolylineLayers.push(polyline);
@@ -777,7 +765,7 @@ function refreshVehiclePhotos() {
 
 map.on('popupopen', refreshVehiclePhotos);
 map.on('popupclose', () => {
-    if (MODE != "singlemixed" && MODE != "shapes") {
+    if (MODE != "singlemixed" && MODE != "shapes" && MODE != "stops") {
         clearMap();
         const allTranspMarkers = document.querySelectorAll('.bus-icon-transparent');
         allTranspMarkers.forEach(marker => {
