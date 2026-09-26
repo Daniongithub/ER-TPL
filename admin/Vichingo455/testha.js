@@ -43,7 +43,7 @@ async function checkEndpoint(url, expectedContentType) {
 async function checkBrowser(services) {
   try {
     await checkEndpoint(services.cdn.url, "text/plain");
-    await checkEndpoint(services.start.url, "text/plain");
+    await checkEndpoint(services.start.url, "application/json");
     await checkEndpoint(services.startsopp.url, "application/json");
     await checkEndpoint(services.seta.url, "text/plain");
     await checkEndpoint(services.tper.url, "application/json");
