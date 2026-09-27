@@ -763,7 +763,8 @@ function refreshVehiclePhotos() {
     }
 }
 
-map.on('popupopen', refreshVehiclePhotos);
+let isStop
+map.on('popupopen', () => refreshVehiclePhotos);
 map.on('popupclose', () => {
     if (MODE != "singlemixed" && MODE != "shapes" && MODE != "stops") {
         clearMap();

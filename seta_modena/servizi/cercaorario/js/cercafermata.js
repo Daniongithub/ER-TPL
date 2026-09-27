@@ -34,14 +34,14 @@ getApiUrl().then(url => {
 })
 
 getApiUrl().then(url => {
-    fetch(url + "/stopsinfo")
+    fetch(url + "/updates")
         .then(response => {
             if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
             return response.json();
         })
         .then(data => {
             //Sets last update
-            aggiornamentoP.innerHTML = "Ultimo aggiornamento fermate il " + data.updated_at_date + " alle " + data.updated_at_time;
+            aggiornamentoP.innerHTML = "Ultimo aggiornamento fermate il " + data[0].updated_at;
         })
         .catch(error => console.error('Errore nel caricamento dei dati:', error));
 })
