@@ -146,7 +146,8 @@ function renderTable(start, dest){
                         1 MARINUZZI <br>
                         1A MODENA EST <br>
                         4 VACIGLIO NORD <br>
-                        7 GRAMSCI <br>
+                        7 FS-GRAMSCI <br>
+                        7F FS-GRAMSCI <br>
                         9 GOTTARDI <br>
                         10 ALBARETO <br>
                         10A LA ROCCA <br>
@@ -162,7 +163,8 @@ function renderTable(start, dest){
                         2 SAN DAMASO <br>
                         2A SAN DONNINO <br>
                         4 VACIGLIO NORD <br>
-                        7 POLICLINICO GOTTARDI <br>
+                        7 POLICLINICO-GOTTARDI <br>
+                        7F POLICLINICO-GOTTARDI <br>
                         <div style="height:24px;"></div>
                         <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
@@ -184,7 +186,8 @@ function renderTable(start, dest){
                         1 ARIETE <br>
                         1A POLO LEONARDO <br>
                         4 GALILEI <br>
-                        7 POLICLINICO GOTTARDI <br>
+                        7 POLICLINICO-GOTTARDI <br>
+                        7F POLICLINICO-GOTTARDI <br>
                         9A MARZAGLIA NUOVA <br>
                         9B VIRGILIO <br>
                         9C RUBIERA <br>
@@ -201,8 +204,8 @@ function renderTable(start, dest){
                         3A VACIGLIO <br>
                         3B RAGAZZI DEL 99 <br>
                         4 VACIGLIO NORD <br>
-                        7 POLICLINICO GOTTARDI <br>
-                        7A GOTTARDI
+                        7 POLICLINICO-GOTTARDI <br>
+                        7F POLICLINICO-GOTTARDI
                         <div style="height:24px;"></div>
                         <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
@@ -225,7 +228,8 @@ function renderTable(start, dest){
                     resultsContainer.innerHTML = `
                         2 SANT'ANNA <br>
                         4 GALILEI <br>
-                        7 GRAMSCI
+                        7 FS-GRAMSCI <br>
+                        7F FS-GRAMSCI
                         <div style="height:24px;"></div>
                         <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>
@@ -237,8 +241,8 @@ function renderTable(start, dest){
                         3A MONTEFIORINO <br>
                         3B NONANTOLANA 1010 <br>
                         4 GALILEI <br>
-                        7 GRAMSCI <br>
-                        7A GRAMSCI
+                        7 FS-GRAMSCI <br>
+                        7F FS-GRAMSCI
                         <div style="height:24px;"></div>
                         <a class="green button" href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Vai alla fermata di partenza</a>
                         <a class="red button" onclick="goBack();">Torna indietro</a>

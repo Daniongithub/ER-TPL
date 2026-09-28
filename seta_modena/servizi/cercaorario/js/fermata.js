@@ -128,10 +128,10 @@ function caricadati() {
                 const tbody = document.createElement('tbody');
                 item.services.forEach(item => {
                     const tr = document.createElement('tr');
-                    if (item.state == "planned") {
-                        var stato = "Prevista";
-                    } else {
+                    if (item.state == "realtime") {
                         var stato = "Tempo reale";
+                    } else {
+                        var stato = "Prevista";
                     } if (item.next_stop == null) {
                         var posizione = "";
                     } else {
@@ -176,6 +176,11 @@ function caricadati() {
                     } else if (item.delay != null) {
                         tr.innerHTML += `
                             <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
+                            <td>${posizione}</td>
+                        `;
+                    } else if (item.vehicle != null) {
+                        tr.innerHTML += `
+                            <td class="planned-vehicle">${item.vehicle}</a></td>
                             <td>${posizione}</td>
                         `;
                     } else {

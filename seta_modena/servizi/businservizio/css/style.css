@@ -1,121 +1,186 @@
-h3{
+h3 {
     font-size: 20px;
 }
 
 table {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     border-radius: 8px;
+    overflow: hidden;
     min-width: 85%;
     max-width: 100%;
-    margin: auto;
+    text-align: left;
     margin-top: 18px;
-}
-
-td.uguale{
-    width: 50%;
+    margin-top: 1rem;
 }
 
 th {
     background-color: rgb(204, 132, 0);
 }
 
-th,td {
-    border: 2px solid #444;
-    padding: .7vw;
+td.uguale {
+    width: 50%;
+}
+
+th,
+td {
+    padding: .6vw;
     padding-top: .6vw;
     padding-bottom: .6vw;
     text-align: left;
 }
 
+tr.even {
+    background-color: rgb(60, 60, 60);
+}
+
 .bus-card-red {
-    background-color: rgb(55,14,14) !important;
+    background-color: rgb(55, 14, 14) !important;
 }
+
+tr.even .bus-card-red {
+    background-color: rgb(75, 14, 14) !important;
+}
+
 .bus-card-yellow {
-    background-color: rgb(65, 65, 0) !important;
+    background-color: rgb(55, 55, 0) !important;
 }
+
+tr.even .bus-card-yellow {
+    background-color: rgb(75, 75, 0) !important;
+}
+
 .bus-card-green {
-    background-color: rgb(14, 65, 14) !important;
+    background-color: rgb(14, 55, 14) !important;
+}
+
+tr.even .bus-card-green {
+    background-color: rgb(14, 75, 14) !important;
 }
 
 a {
     color: orange;
 }
 
-div.content-background {
-    background-color: #333;
+#filter-container {
+    justify-content: space-evenly;
+    margin-top: 5px;
+    margin-bottom: 5px;
     max-width: 85%;
     margin: auto;
-    border-radius: 8px;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 12px;
 }
 
-div.content-background h3{
+#filter-container h3 {
     margin-top: 0;
     margin-bottom: 16px;
 }
+
+#filter-container select {
+    flex: 1;
+    width: 100%;
+    margin-left: 4px;
+    margin-right: 4px;
+    outline: none;
+    font-size: 16px;
+}
+
+#filter-container select:focus {
+    border-color: rgb(204, 132, 0);
+}
+
+#filter-container button {
+    background-color: rgb(204, 132, 0);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-right: 15px;
+    margin-left: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 div.select-container {
     display: flex;
     justify-content: center;
-    gap: 4px;
-    padding-left: 32px;
-    padding-right: 32px;
+    row-gap: 8px;
 }
 
-div.content-background select {
-    flex: 1 1 0;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-}
-
-select,input{
-    height: 50px;
+select,
+input {
+    padding: 10px 15px;
     width: auto;
     background-color: #333;
     color: white;
     border-radius: 8px;
     border: 2px solid rgb(100, 100, 100);
-    padding-left: 8px;
-    padding-right: 0px;
-    padding-top: 0px;
-    padding-bottom: 0px;
 }
 
 @media (max-width: 768px) {
-    p.scaled{
+    p.scaled {
         font-size: 2vw;
     }
+
     table {
         margin-top: 10px;
         min-width: 100%;
     }
+
     div.content-background {
         max-width: 100%;
     }
-    th,td {
+
+    th,
+    td {
         font-size: 2vw;
     }
-    nav#corsie-nav ul li a{
-        font-size: 90%;
-        margin: 0;
-    }
+
     table {
         width: 100%;
         max-width: 100% !important;
     }
+
+    .select-container {
+        flex-direction: column;
+    }
+
+    #filter-container select {
+        margin: 0;
+    }
+
+    #filter-container input,
+    #filter-container select,
+    #filter-container button {
+        flex: unset;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+    }
 }
 
 @media (max-width: 512px) {
-    p.scaled{
+    p.scaled {
         font-size: 3.2vw;
     }
-    th,td {
+
+    th,
+    td {
         font-size: 3.2vw;
     }
-    table{
-        margin-top:10px;
+
+    td:first-child,
+    th:first-child {
+        padding-left: 5px;
     }
+
+    table {
+        margin-top: 0;
+    }
+
     #tabella-container {
         overflow-x: scroll;
     }
@@ -124,6 +189,6 @@ select,input{
 footer {
     position: relative;
     bottom: 0;
-	left: 0;
+    left: 0;
     width: 100%;
 }

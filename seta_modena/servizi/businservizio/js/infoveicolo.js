@@ -64,6 +64,7 @@ function caricadati(){
                 <td>${item.destination}</td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         tr = document.createElement('tr');
         tr.innerHTML = `
@@ -84,6 +85,7 @@ function caricadati(){
                 <td>${item.delay}</td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         tr = document.createElement('tr');
         if(item.has_AEP){
@@ -109,6 +111,7 @@ function caricadati(){
                 <td>${item.model}</td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         tr = document.createElement('tr');
         tr.innerHTML = `
@@ -131,6 +134,7 @@ function caricadati(){
                 <td>${item.ramp}</td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         tr = document.createElement('tr');
         tr.innerHTML = `
@@ -147,6 +151,7 @@ function caricadati(){
                 <td>${item.vehicle_table}</td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         tr = document.createElement('tr');
         tr.innerHTML = `
@@ -163,6 +168,7 @@ function caricadati(){
                 <td><a href="/seta_modena/servizi/percorsi/prossimefermate.html?journeycode=${item.journey_code}" class="bianco">${item.journey_code}</a></td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         //Colore sfondo conta passeggeri (NON FUNZIONA LATO SETA)
         /*
@@ -199,8 +205,8 @@ function caricadati(){
                 </tr>
             `;
         }
-        */
         tbody.appendChild(tr);
+        */
         tr = document.createElement('tr');
         tr.innerHTML = `
             <tr>
@@ -216,6 +222,7 @@ function caricadati(){
                 <td><a href="https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}">GPS</a></td>
             </tr>
         `;
+        tr.className = "even"
         tbody.appendChild(tr);
         //ERRORS
         if(item==undefined){

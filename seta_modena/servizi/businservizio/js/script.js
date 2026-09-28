@@ -9,7 +9,7 @@ async function getApiUrl() {
 
 const lineaSelect = document.getElementById('linea');
 const modelloSelect = document.getElementById('modello');
-const contentBackground = document.getElementById('content-background');
+const filterContainer = document.getElementById('filter-container');
 const container = document.getElementById('tabella-container');
 
 var allresults = [];
@@ -124,8 +124,8 @@ function renderTable(item,selectedOption){
 
             // Corpo tabella
             const tbody = document.createElement('tbody');
-            item.forEach(item => {
-                renderElement(tbody, item);
+            item.forEach((item, idx) => {
+                renderElement(tbody, item, idx);
             });
             table.appendChild(tbody);
 
@@ -141,17 +141,17 @@ function renderTH(table){
     const thead = document.createElement('thead');
     thead.innerHTML = `
             <tr>
-                <th class="linea">Linea</th>
-                <th class="direzione">Direzione</th>
-                <th class="orario">Veicolo</th>
-                <th class="stato">Modello veicolo</th>
-                <th class="veicolo">Ora si trova a</th>
+                <th>Linea</th>
+                <th>Direzione</th>
+                <th>Veicolo</th>
+                <th>Modello</th>
+                <th>Ora si trova a</th>
             </tr>
         `;
     table.appendChild(thead);
 }
 
-function renderElement(tbody, element){
+function renderElement(tbody, element, idx){
     const tr = document.createElement('tr');
     if(element.next_stop==null){
         var posizione="";
@@ -197,6 +197,9 @@ function renderElement(tbody, element){
         <td>${element.model}</td>
         <td>${posizione}</td>
     `;
+    if (idx % 2 != 0) {
+        tr.className = "even";
+    }
     tbody.appendChild(tr);
 }
 
@@ -210,16 +213,16 @@ lineaSelect.addEventListener('change', function(event) {
     }
     const selectedOption = event.target.value;
     caricaFiltratiLinea(selectedOption);
-    intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiLinea(selectedOption);}, 60000);
+    intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiLinea(selectedOption);}, 30000);
     clearInterval(refreshGeneraleID);
     if(document.getElementById("reimposta-filtro")==undefined){
         const reimpostaFiltro = document.createElement('p');
-        reimpostaFiltro.setAttribute("style","margin-bottom: 0; font-size: 14px;");
+        reimpostaFiltro.setAttribute("style","margin-bottom: 0; font-size: 20px;");
         reimpostaFiltro.setAttribute("id","reimposta-filtro");
         reimpostaFiltro.innerHTML = `
-                <a href="" class="biancosott">Reimposta il filtro</a>
+                <button onclick="window.location.reload()">Reimposta il filtro</a>
             `;
-        contentBackground.appendChild(reimpostaFiltro);
+        filterContainer.appendChild(reimpostaFiltro);
     }
 });
 
@@ -231,24 +234,24 @@ modelloSelect.addEventListener('change', function(event) {
     }
     const selectedOption = event.target.value;
     caricaFiltratiModello(selectedOption);
-    intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiModello(selectedOption);}, 60000);
+    intervalFiltrati = setInterval(function dummyFunc(){caricaFiltratiModello(selectedOption);}, 30000);
     clearInterval(refreshGeneraleID);
     if(document.getElementById("reimposta-filtro")==undefined){
         const reimpostaFiltro = document.createElement('p');
         reimpostaFiltro.setAttribute("style","margin-bottom: 0; font-size: 14px;");
         reimpostaFiltro.setAttribute("id","reimposta-filtro");
         reimpostaFiltro.innerHTML = `
-                <a href="" class="biancosott">Reimposta il filtro</a>
+                <button onclick="window.location.reload()">Reimposta il filtro</a>
             `;
-        contentBackground.appendChild(reimpostaFiltro);
+        filterContainer.appendChild(reimpostaFiltro);
     }
 });
 
-function reloadFiltratiLinea(){
+function reloadFiltratiLinea() {
     caricaFiltratiLinea(lineaSelect.value);
 }
 
-function caricaFiltratiLinea(selectedOption){
+function caricaFiltratiLinea(selectedOption) {
     container.innerHTML = 'Caricamento dati...';
     fetch(urlList)
     .then(response => {
@@ -277,14 +280,16 @@ function caricaFiltratiLinea(selectedOption){
         }
         //Fill table
         renderTH(table);
+        const tbody = document.createElement('tbody');
+        var i = 0;
         data.buses.forEach(element => {
             if(element.official_line==selectedOption){
-                const tbody = document.createElement('tbody');
-                renderElement(tbody, element);
+                renderElement(tbody, element, i);
                 table.appendChild(tbody);
 
                 container.appendChild(table);
-            }           
+                i++;
+            }
         });
         //Controllo se c'è qualche elemento altrimenti errore
         if(table.childElementCount==1){
@@ -322,13 +327,15 @@ function caricaFiltratiModello(selectedOption){
         }
         // Intestazione
         renderTH(table);
+        const tbody = document.createElement('tbody');
+        var i = 0;
         data.buses.forEach(element => {
             if(element.model==selectedOption){
-                const tbody = document.createElement('tbody');
-                renderElement(tbody, element);
+                renderElement(tbody, element, i);
                 table.appendChild(tbody);
 
                 container.appendChild(table);
+                i++;
             }
         });
         //Controllo se c'è qualche elemento altrimenti errore
