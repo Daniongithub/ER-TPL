@@ -8,7 +8,7 @@ body {
 
 #map {
     position: absolute;
-    top: 0;
+    top: 48px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -151,6 +151,7 @@ body {
 
 .popup-content table {
     border-collapse: collapse;
+    margin: 0;
 }
 
 .popup-content td {
@@ -304,6 +305,15 @@ hr.head-separator {
 
 .leaflet-container {
     font-family: Titillium Web !important;
+    text-align: left;
+}
+
+.leaflet-bar a {
+    color: black !important;
+}
+
+.leaflet-control-attribution a {
+    color: #0078A8 !important;
 }
 
 .leaflet-popup-content {
@@ -323,6 +333,9 @@ hr.head-separator {
 a.button {
     width: 100%;
     height: 28px;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
     text-align: center;
     background-color: rgb(0, 161, 161);
     color: white;
@@ -335,10 +348,11 @@ a.button {
 
 #status {
     position: absolute;
-    top: 10px;
+    top: 58px;
     left: 50px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.9);
+    color: #333;
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 13px;
@@ -353,6 +367,7 @@ a.button {
     left: 10px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.92);
+    color: #333;
     padding: 8px 12px;
     border-radius: 8px;
     font-size: 13px;

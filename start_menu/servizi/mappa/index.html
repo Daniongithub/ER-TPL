@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Mappa autobus</title>
+	<link rel="stylesheet" href="/style.css">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +13,15 @@
     <link rel="shortcut icon" href="/start_menu/servizi/livebus/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+				<li><a href="/start_menu/start.html"><h1 style="font-size: 100%;font-weight: 500;">START Romagna</h1></a></li>
+				<li id="mappabuslink"></li>
+			</ul>
+		</nav>
+	</header>
 	<div id="map"></div>
 	<div id="status"></div>
 	<div id="legend">Non tutti i veicoli sono qui visibili. Le informazioni qui presenti potrebbero non coincidere con la realtà. Questi strumenti forniscono un aiuto, ma è sempre possibile che i dati non siano completamente corretti.</div>
