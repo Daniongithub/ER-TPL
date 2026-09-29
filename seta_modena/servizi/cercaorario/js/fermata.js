@@ -176,14 +176,14 @@ function caricadati() {
                             `;
                         } else {
                             tr.innerHTML += `
-                                <td class=" cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
+                                <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
                                 <td>${posizione}</td>
                             `;
                         }
                     } else if (item.state == "planned known vehicle") {
                         if (item.has_AEP == true) {
                             tr.innerHTML += `
-                                <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
+                                <td class="bus-card-green cursor-pointer">${item.vehicle}</a></td>
                                 <td>${posizione}</td>
                             `;
                         } else {
