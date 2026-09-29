@@ -30,7 +30,7 @@ fetch(url + "/linelist")
                 if(element.includes("(")){
                     result.setAttribute("class","rosso");
                 }
-                result.setAttribute("href","rcodes.html?routenum="+element);
+                result.setAttribute("href","listapercorsi.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;
@@ -41,7 +41,7 @@ fetch(url + "/linelist")
                 if(element.includes("(")){
                     result.setAttribute("class","rosso");
                 }
-                result.setAttribute("href","rcodes.html?routenum="+element);
+                result.setAttribute("href","listapercorsi.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;
@@ -52,7 +52,7 @@ fetch(url + "/linelist")
                 if(element.includes("(")){
                     result.setAttribute("class","rosso");
                 }
-                result.setAttribute("href","rcodes.html?routenum="+element);
+                result.setAttribute("href","listapercorsi.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;
@@ -63,7 +63,7 @@ fetch(url + "/linelist")
                 if(element.includes("(")){
                     result.setAttribute("class","rosso");
                 }
-                result.setAttribute("href","rcodes.html?routenum="+element);
+                result.setAttribute("href","listapercorsi.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;
@@ -74,7 +74,7 @@ fetch(url + "/linelist")
                 if(element.includes("(")){
                     result.setAttribute("class","rosso");
                 }
-                result.setAttribute("href","rcodes.html?routenum="+element);
+                result.setAttribute("href","listapercorsi.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;
@@ -85,7 +85,7 @@ fetch(url + "/linelist")
                 if(element.includes("(")){
                     result.setAttribute("class","rosso");
                 }
-                result.setAttribute("href","rcodes.html?routenum="+element);
+                result.setAttribute("href","listapercorsi.html?routenum="+element);
                 result.innerHTML = `
                     <div class="search-result"><h3>${element}</h3>
                 `;

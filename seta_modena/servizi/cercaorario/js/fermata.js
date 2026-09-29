@@ -105,8 +105,6 @@ function caricadati() {
             })
             .then(data => {
                 item = data.arrivals;
-            })
-            .then(data => {
                 // Creo tabella
                 const table = document.createElement('table');
 
@@ -117,88 +115,80 @@ function caricadati() {
                         <th class="linea">Linea</th>
                         <th class="direzione">Direzione</th>
                         <th class="orario">Orario (Rit/Ant)</th>
-                        <th class="stato">Stato corsa</th>
                         <th class="veicolo">Veicolo</th>
-                        <th class="location">Ora si trova a</th>
+                        <th class="location">Prossima fermata</th>
                     </tr>
                 `;
                 table.appendChild(thead);
 
                 // Corpo tabella
                 const tbody = document.createElement('tbody');
-                item.services.forEach(item => {
+                item.services.forEach((arrival, idx) => {
                     const tr = document.createElement('tr');
-                    if (item.state == "realtime") {
-                        var stato = "Tempo reale";
-                    } else {
-                        var stato = "Prevista";
-                    } if (item.next_stop == null) {
+                    if (arrival.next_stop == null) {
                         var posizione = "";
                     } else {
-                        var posizione = item.next_stop;
+                        var posizione = arrival.next_stop;
                     }
-                    if (item.has_problems == true) {
+                    if (arrival.has_problems == true) {
                         tr.innerHTML = `
-                            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.line}</td>
-                            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${item.official_line}'">${item.destination}</td>
+                            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${arrival.official_line}'">${arrival.line}</td>
+                            <td class="bus-card-red cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/notizielinea.html?routenum=${arrival.official_line}'">${arrival.destination}</td>
                         `;
                     } else {
                         tr.innerHTML = `
-                            <td>${item.line}</td>
-                            <td>${item.destination}</td>
+                            <td>${arrival.line}</td>
+                            <td>${arrival.destination}</td>
                         `;
                     }
 
                     //Delay
-                    if (item.delay > 0) {
-                        tr.innerHTML += `
-                            <td>${item.arrival_time} (+${item.delay})</td>
-                            <td>${stato}</td>
-                        `;
-                    } else if (item.delay <= 0 && item.delay != null) {
-                        tr.innerHTML += `
-                            <td>${item.arrival_time} (${item.delay})</td>
-                            <td>${stato}</td>
-                        `;
+                    if (arrival.delay > 0) {
+                        arrival.delay = " (+" + arrival.delay + ")";
+                    } else if (arrival.delay <= 0 && arrival.delay != null) {
+                        arrival.delay = " (" + arrival.delay + ")";
+                    } else {
+                        arrival.delay = "";
+                    }
+                    tr.innerHTML += `
+                        <td>${arrival.arrival_time}${arrival.delay}</td>
+                    `;
+
+                    //AEP specification
+                    if (arrival.state == "realtime") {
+                        if (arrival.has_AEP == true) {
+                            tr.innerHTML += `
+                                <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${arrival.vehicle}'">${arrival.vehicle}</a></td>
+                                <td>${posizione}</td>
+                            `;
+                        } else {
+                            tr.innerHTML += `
+                                <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${arrival.vehicle}'">${arrival.vehicle}</a></td>
+                                <td>${posizione}</td>
+                            `;
+                        }
+                    } else if (arrival.state == "planned known vehicle") {
+                        if (arrival.has_AEP == true) {
+                            tr.innerHTML += `
+                                <td class="bus-card-green cursor-pointer">${arrival.vehicle}</a></td>
+                                <td></td>
+                            `;
+                        } else {
+                            tr.innerHTML += `
+                                <td>${arrival.vehicle}</a></td>
+                                <td></td>
+                            `;
+                        }
                     } else {
                         tr.innerHTML += `
-                            <td>${item.arrival_time}</td>
-                            <td>${stato}</td>
+                            <td></td>
+                            <td></td>
                         `;
                     }
 
-                    //AEP specification
-                    if (item.state == "realtime") {
-                        if (item.has_AEP == true) {
-                            tr.innerHTML += `
-                                <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
-                                <td>${posizione}</td>
-                            `;
-                        } else {
-                            tr.innerHTML += `
-                                <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${item.vehicle}'">${item.vehicle}</a></td>
-                                <td>${posizione}</td>
-                            `;
-                        }
-                    } else if (item.state == "planned known vehicle") {
-                        if (item.has_AEP == true) {
-                            tr.innerHTML += `
-                                <td class="bus-card-green cursor-pointer">${item.vehicle}</a></td>
-                                <td>${posizione}</td>
-                            `;
-                        } else {
-                            tr.innerHTML += `
-                                <td>${item.vehicle}</a></td>
-                                <td>${posizione}</td>
-                            `;
-                        }
-                    } else {
-                        tr.innerHTML += `
-                            <td></td>
-                            <td></td>
-                        `;
+                    if (idx % 2 != 0) {
+                        tr.className = "even";
                     }
-                    
                     tbody.appendChild(tr);
                 });
                 table.appendChild(tbody);

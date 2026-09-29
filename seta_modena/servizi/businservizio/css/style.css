@@ -101,7 +101,15 @@ a {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+#filter-container button:hover {
+    background-color: rgb(184, 119, 0);
+}
+
+#filter-container button:active {
+    background-color: rgb(165, 107, 0);
 }
 
 div.select-container {
@@ -169,7 +177,7 @@ input {
 
     th,
     td {
-        font-size: 3.2vw;
+        font-size: 3.5vw;
     }
 
     td:first-child,

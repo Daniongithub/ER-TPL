@@ -28,7 +28,6 @@ getApiUrl()
 .then(url => {
     urlList = url + "/busesinservice";
     urlRoutes = url + "/linelist";
-    urlModels = url + "/modelslist";
     fillSelect();
     caricadati();
 })
@@ -50,33 +49,46 @@ function fillSelect(){
             });
         })
         .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
-    fetch(urlModels)
-        .then(response => {
-            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-            return response.json();
-        })
-        .then(data => {
-            allresults = data;
-            allresults.forEach(model => {
-                const option = document.createElement('option');
-                if(
-                    model!="CAM New Busotto"&&
-                    model!="Iveco Cityclass CNG"&&
-                    model!="Irisbus Cityclass CNG ex Pavia"&&
-                    model!="Mercedes Integro O550 (Giallo)"&&
-                    model!="Mercedes Citaro O530N Diesel"&&
-                    model!="Mercedes Citaro O530Ü"
-                ){
-                    option.value = model;
-                    option.textContent = model;
-                    modelloSelect.appendChild(option);
-                }
-            });
-        })
-        .catch(error => {console.error('Errore nel caricamento dei dati:', error)});
 }
 
 var refreshGeneraleID=setInterval(caricadati, 30000);
+
+function fillModels() {
+    const table = document.querySelector('#tabella-container table');
+    console.log(table)
+
+    if (!table || !modelloSelect) return;
+
+    const currentModel = modelloSelect.value;
+    const models = new Set();
+
+    table.querySelectorAll('tbody tr').forEach(row => {
+        const cells = row.getElementsByTagName('td');
+
+        if (cells.length <= 4) return;
+
+        // Il modello viene raccolto indipendentemente dal filtro modello
+        const model = cells[3].textContent.trim();
+
+        if (model && model !== "Sconosciuto") {
+            models.add(model);
+        }
+    });
+
+    // Ricrea le option
+    modelloSelect.options.length = 1;
+
+    [...models]
+        .sort((a, b) => a.localeCompare(b, 'it', {
+            sensitivity: 'base'
+        }))
+        .forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            modelloSelect.appendChild(option);
+        });
+}
 
 function caricadati(){
     //Catalogare errore di connessione HA
@@ -130,6 +142,7 @@ function renderTable(item,selectedOption){
             table.appendChild(tbody);
 
             container.appendChild(table);
+            fillModels();
         }
     }catch(err){
         console.error('Errore nel caricamento dati:', err);
@@ -145,7 +158,7 @@ function renderTH(table){
                 <th>Direzione</th>
                 <th>Veicolo</th>
                 <th>Modello</th>
-                <th>Ora si trova a</th>
+                <th>Prossima fermata</th>
             </tr>
         `;
     table.appendChild(thead);

@@ -1,5 +1,134 @@
+#tabella-container {
+    margin-top: 16px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 85%;
+    max-width: 100%;
+    text-align: left;
+    margin-top: 18px;
+    margin-top: 1rem;
+}
+
+th {
+    background-color: rgb(204, 132, 0);
+}
+
+td.uguale {
+    width: 50%;
+}
+
+th,
+td {
+    padding: .7vw;
+    padding-top: .6vw;
+    padding-bottom: .6vw;
+    text-align: left;
+}
+
+tr.even {
+    background-color: rgb(60, 60, 60);
+}
+
+.bus-card-red {
+    background-color: rgb(55, 14, 14) !important;
+}
+
+tr.even .bus-card-red {
+    background-color: rgb(75, 14, 14) !important;
+}
+
+.bus-card-yellow {
+    background-color: rgb(55, 55, 0) !important;
+}
+
+tr.even .bus-card-yellow {
+    background-color: rgb(75, 75, 0) !important;
+}
+
+.bus-card-green {
+    background-color: rgb(14, 55, 14) !important;
+}
+
+tr.even .bus-card-green {
+    background-color: rgb(14, 75, 14) !important;
+}
+
+hr {
+    margin-top: 19px;
+}
+
+a {
+    color: orange;
+}
+
+a.rossosott {
+    color: red;
+    text-decoration: underline;
+}
+
+h2 {
+    margin-bottom: 12px;
+}
+
+h2.noreduction {
+    margin-bottom: 16px;
+}
+
+nav#corsie-nav ul {
+    justify-content: center;
+}
+
+nav#corsie-nav ul li a {
+    background-color: rgb(204, 132, 0);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+nav#corsie-nav ul li a:hover {
+    background-color: rgb(184, 119, 0);
+}
+
+nav#corsie-nav ul li a:active {
+    background-color: rgb(165, 107, 0);
+}
+
+nav#corsie-nav ul li {
+    margin-left: 8px;
+    margin-right: 7px;
+}
+
+#search-bar,
+#stop-code-bar {
+    background-color: transparent;
+    color: white;
+    border: 2px #5e5e5e solid;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    width: 280px;
+    margin: 0;
+    transition: border-color 0.3s;
+}
+
+#search-bar:focus,
+#stop-code-bar:focus {
+    outline: none;
+    border-color: rgb(204, 132, 0);
+}
+
 .search-result {
-    border: 2px solid white;
+    border: 2px solid #5e5e5e;
     border-radius: 8px;
     width: 20vw;
     margin: auto;
@@ -8,112 +137,34 @@
     margin-top: 10px;
     cursor: pointer;
     display: inline-block;
+    transition: border-color 0.1s;
 }
 
-.search-result.desc h3{
+.search-result:hover , .search-result:active {
+    border-color: rgb(204, 132, 0);
+}
+
+.search-result.desc h3 {
     margin-top: 16px;
     margin-bottom: 12px;
 }
-.search-result.desc p{
-    margin-top:0px;
+
+.search-result.desc p {
+    margin-top: 0px;
     font-size: 15px;
-}
-
-#tabella-container{
-    margin-top: 16px;
-}
-
-table {
-    border-collapse: collapse;
-    border-radius: 8px;
-    min-width: 85%;
-    max-width: 100%;
-}
-
-th {
-    background-color: rgb(204, 132, 0);
-}
-
-th,td {
-    border: 2px solid #444;
-    padding: .7vw;
-    padding-top: .6vw;
-    padding-bottom: .6vw;
-    text-align: left;
-}
-
-.bus-card-red {
-    background-color: rgb(55,14,14) !important;
-}
-.bus-card-yellow {
-    background-color: rgb(65, 65, 0) !important;
-}
-.bus-card-green {
-    background-color: rgb(14, 65, 14) !important;
-}
-
-hr{
-    margin-top:19px;
-}
-
-a {
-    color: orange;
-}
-
-a.rossosott{
-    color: red;
-    text-decoration: underline;
-}
-
-h2{
-    margin-bottom: 12px;
-}
-
-h2.noreduction{
-    margin-bottom: 16px;
-}
-
-nav#corsie-nav ul{
-    justify-content: center;
-}
-
-nav#corsie-nav ul li a{
-    color: white;
-    text-decoration: underline;
-}
-
-nav#corsie-nav ul li{
-    margin-left: 8px;
-    margin-right: 7px;
-}
-
-#search-bar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 0;
-    width: 280px;
-    margin: 0;
-}
-#stop-code-bar {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 0;
-    width: 280px;
 }
 
 div#results-container {
     margin-top: 16px;
 }
 
-img{
-    height:300px;
+img {
+    height: 300px;
 }
 
 /*Notizie cercaorario*/
 
-#notizie-container{
+#notizie-container {
     display: flex;
     justify-content: center;
 }
@@ -123,45 +174,63 @@ img{
         display: block;
         width: 96.5%;
     }
-    th,td {
-        font-size: 2vw;
+
+    th,
+    td {
+        font-size: 2.5vw;
     }
-    nav#corsie-nav ul li a{
+
+    nav#corsie-nav ul li a {
         font-size: 95%;
         margin: 0;
     }
+
     table {
         width: 100%;
     }
+
     #search-bar {
         width: 80%;
     }
+
     #stop-code-bar {
         width: 80%;
     }
-    hr{
-        margin-bottom:19px;
+
+    hr {
+        margin-bottom: 19px;
     }
-    img{
+
+    img {
         width: 98%;
         height: auto;
     }
+
     nav ul:last-child li {
         margin-right: 20px;
     }
+
     nav ul li {
         margin-right: 8px;
     }
-    #notizie-container{
+
+    #notizie-container {
         display: block;
     }
 }
 
 @media (max-width: 512px) {
-    th,td {
-        font-size: 3.2vw;
+    th,
+    td {
+        font-size: 3.5vw;
     }
-    table{
+
+    td:first-child,
+    th:first-child {
+        padding-left: 5px;
+    }
+
+    table {
         margin-top: 10px;
     }
 }
@@ -169,7 +238,7 @@ img{
 footer {
     position: relative;
     bottom: 0;
-	left: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -177,9 +246,14 @@ footer div p {
     margin-top: 0;
 }
 
-div.search-result div{
+div.search-result div {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#aggiornamento-p {
+    font-weight: bold;
+    color: rgb(255, 205, 0);
 }
 
 .bold {

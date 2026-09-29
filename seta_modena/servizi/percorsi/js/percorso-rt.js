@@ -67,6 +67,7 @@ function caricadati(){
                     <td class="uguale">${element.realarrival}</td>
                 </tr>
             `;
+            tr.className = "even";
             tbody.appendChild(tr);
             var tr = document.createElement('tr');
             tr.innerHTML = `
