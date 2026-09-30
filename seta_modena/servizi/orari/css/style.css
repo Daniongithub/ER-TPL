@@ -49,6 +49,7 @@ td:first-child {
     position: sticky;
     left: 0;
     text-align: left;
+    width: 200px;
 }
 
 tr.even {
@@ -89,6 +90,43 @@ a.biancosott {
 #as-di-container {
     display: flex;
     justify-content: center;
+}
+
+button {
+    background-color: rgb(204, 132, 0);
+    border: 0;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 8px 8px;
+    margin-bottom: 0;
+    transition: background-color 0.1s ease;
+}
+
+select {
+    flex: 1;
+    width: 100%;
+    margin-left: 4px;
+    margin-right: 4px;
+    outline: none;
+    font-size: 16px;
+}
+
+select:focus {
+    border-color: rgb(204, 132, 0);
+}
+
+select {
+    padding: 10px 15px;
+    margin-top: 8px;
+    width: auto;
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid rgb(100, 100, 100);
 }
 
 #table-container {
@@ -172,10 +210,6 @@ div#map-container iframe {
         padding-left: 5px;
     }
 
-    table {
-        margin-top: 10px;
-    }
-
     div#map-container iframe {
         width: 99%;
     }
@@ -189,6 +223,9 @@ div#map-container iframe {
         align-items: center;
     }
     #as-di-container button {
+        width: 90%;
+    }
+    select, button {
         width: 90%;
     }
 }

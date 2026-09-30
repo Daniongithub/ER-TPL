@@ -29,6 +29,13 @@
         <button id="as-button" onclick="javascript:setAs()">Andata</button>
         <button id="di-button" onclick="javascript:setDi()">Ritorno</button>
     </div>
+    <div id="filter-container" style="display:none;">
+        <select name="filter" id="filter-select" autocomplete="off">
+            <option value="" disabled selected hidden>Filtra per destinazione:</option>
+        </select>
+        <button onclick="window.location.href=''">Reimposta il filtro</button>
+    </div>
+    
     <div id="table-container"></div>
     <div id="info-container"></div>
     <p>E' possibile cliccare sul nome linea per vedere la lista fermate completa di quel percorso.</p>

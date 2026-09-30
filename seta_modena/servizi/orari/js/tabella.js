@@ -14,6 +14,8 @@ const lineaSpan = document.getElementById('linea-span');
 const asDiContainer = document.getElementById('as-di-container');
 const asButton = document.getElementById('as-button');
 const diButton = document.getElementById('di-button');
+const filterContainer = document.getElementById('filter-container');
+const filterSelect = document.getElementById('filter-select');
 const tableContainer = document.getElementById('table-container');
 const infoContainer = document.getElementById('info-container');
 
@@ -38,6 +40,7 @@ function fetchData(verse) {
 
                 renderTH(table, data.journeys);
                 renderTable(table, data.journeys, data.stops);
+                fillSelect(data.journeys);
 
                 tableContainer.appendChild(table);
                 renderCount(data.journeys);
@@ -59,9 +62,9 @@ function renderTH(table, journeys) {
         const th = document.createElement('th');
         //Display info th row
         if (element.display_line != null) {
-            th.innerHTML = `${element.display_line} <br>`;
+            th.innerHTML = `${element.display_line}<br>`;
             if (element.display_destination != null) {
-                th.innerHTML += `${element.display_destination} <br> (${element.route_code.split("-")[2]})`;
+                th.innerHTML += `${element.display_destination}<br>(${element.route_code.split("-")[2]})`;
             } else {
                 th.innerHTML += `(${element.route_code.split("-")[2]})`;
             }
@@ -112,9 +115,27 @@ function renderCount(journeys) {
     infoContainer.appendChild(p);
 }
 
+function fillSelect(journeys) {
+    var allRoutes = [];
+    journeys.forEach((journey, idx) => {
+        if (journey.display_line != null && journey.display_destination != null) {
+            allRoutes[idx] = journey.display_line + " - " + journey.display_destination;
+            filterContainer.style.display = '';
+        }
+    })
+    var uniqueRoutes = allRoutes.filter(onlyUnique);
+    uniqueRoutes.forEach(element => {
+        const option = document.createElement('option');
+        option.value = element;
+        option.innerHTML = element;
+        filterSelect.appendChild(option);
+    })
+}
+
 function setAs() {
     tableContainer.innerHTML = 'Caricamento in corso...';
     infoContainer.innerHTML = '';
+    filterSelect.innerHTML = '<option value="" disabled selected hidden>Filtra per destinazione:</option>';
     asButton.className = "selected";
     diButton.className = "";
     var verse = "As";
@@ -124,6 +145,7 @@ function setAs() {
 function setDi() {
     tableContainer.innerHTML = 'Caricamento in corso...';
     infoContainer.innerHTML = '';
+    filterSelect.innerHTML = '<option value="" disabled selected hidden>Filtra per destinazione:</option>';
     diButton.className = "selected";
     asButton.className = "";
     var verse = "Di";
@@ -133,8 +155,58 @@ function setDi() {
 //At page startup we choose going trip to be displayed
 setAs();
 
+filterSelect.addEventListener('change', function (event) {
+    const table = document.querySelector('#table-container table');
+    const rows = table.querySelectorAll('tr');
+    var option = event.target.value;
+
+    //Check what matches the filter in the first row
+    const ths = document.querySelectorAll('#table-container table thead th')
+    var invalidCols = []
+    var i = 0
+    ths.forEach((th, idx) => {
+        if (th.innerHTML.split("<br>")[0] + " - " + th.innerHTML.split("<br>")[1] != option && idx != 0) {
+            invalidCols[i] = idx
+            i++;
+        }
+    })
+
+    var i = 0;
+    rows.forEach((row, idx) => {
+        row.style.display = '';
+        const cells = row.querySelectorAll('td, th');
+
+        var empty = true;
+        cells.forEach((cell, jdx) => {
+            cell.style.display = "";
+            if (invalidCols.includes(jdx)) {
+                cell.style.display = "none";
+            }
+            if (idx == 0 || (cell.style.display != "none" && cell.innerHTML != "" && cell.innerHTML != "|" && jdx != 0)) {
+                empty = false;
+            }
+        })
+        //Removes empty lines
+        if (empty) {
+            row.style.display = "none";
+        } else {
+            i++;
+        }
+        if (i % 2 != 0) {
+            row.className = "even";
+        } else {
+            row.className = "";
+        }
+    });
+})
+
+//utils
 function toMinutes(time_str) {
     var parts = time_str.split(':');
     return parts[0] * 60 + // an hour has 60 mintues
         parts[1];          // mintues
+}
+
+function onlyUnique(value, index, array) {
+    return array.indexOf(value) === index;
 }
