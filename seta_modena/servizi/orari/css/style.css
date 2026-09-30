@@ -92,23 +92,9 @@ a.biancosott {
 }
 
 #table-container {
-    overflow-x: auto;
+    overflow-x: scroll;
     margin-top: 12px;
     position: relative;
-}
-
-th:first-child,
-td:first-child {
-    background-color: rgb(204, 132, 0);
-    font-weight: bold;
-    position: sticky;
-    left: 0;
-    text-align: left;
-    z-index: 2;
-}
-
-th:first-child {
-    z-index: 3;
 }
 
 #info-container p {
