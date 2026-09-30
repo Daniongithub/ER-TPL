@@ -35,6 +35,7 @@ td {
     padding-top: .6vw;
     padding-bottom: .6vw;
     text-align: center;
+    min-width: 135px;
 }
 
 th:first-child,
@@ -87,8 +88,23 @@ a.biancosott {
 }
 
 #table-container {
-    overflow-x: scroll;
+    overflow-x: auto;
     margin-top: 12px;
+    position: relative;
+}
+
+th:first-child,
+td:first-child {
+    background-color: rgb(204, 132, 0);
+    font-weight: bold;
+    position: sticky;
+    left: 0;
+    text-align: left;
+    z-index: 2;
+}
+
+th:first-child {
+    z-index: 3;
 }
 
 #info-container p {
@@ -153,7 +169,8 @@ div#map-container iframe {
 @media (max-width: 512px) {
     th,
     td {
-        font-size: 3.5vw;
+        font-size: 3.6vw;
+        min-width: 110px;
     }
 
     td:first-child,
