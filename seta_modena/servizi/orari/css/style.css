@@ -35,6 +35,10 @@ td {
     padding-top: .6vw;
     padding-bottom: .6vw;
     text-align: center;
+}
+
+th:not(:first-child),
+td:not(:first-child) {
     min-width: 135px;
 }
 
@@ -170,6 +174,10 @@ div#map-container iframe {
     th,
     td {
         font-size: 3.6vw;
+    }
+    
+    th:not(:first-child),
+    td:not(:first-child) {
         min-width: 110px;
     }
 
