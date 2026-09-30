@@ -13,7 +13,7 @@ const seContainer = document.getElementById('subextra-container');
 const othContainer = document.getElementById('altri-container');
 const schContainer = document.getElementById('scuola-container');
 
-//Elenco linee urbano
+//Elenco linee
 getApiUrl().then(url => {
     fetch(url + "/linelist")
         .then(response => {
@@ -24,16 +24,16 @@ getApiUrl().then(url => {
             allresults = data;
             allresults.forEach(element => {
                 //Ordina le linee in categorie
-                if (element < 100) {
+                if (element < 390) {
                     const result = document.createElement('a');
                     result.setAttribute("class", "bianco");
                     if (element.includes("(")) {
                         result.setAttribute("class", "rosso");
                     }
-                    result.setAttribute("href", "listapercorsi.html?routenum=" + element);
+                    result.setAttribute("href", "tabella.html?routenum=" + element);
                     result.innerHTML = `
-                    <div class="search-result"><h3>${element}</h3>
-                `;
+                        <div class="search-result"><h3>${element}</h3>
+                    `;
                     uContainer.appendChild(result);
                 } else if (element > 390 && element < 400) {
                     const result = document.createElement('a');
@@ -41,10 +41,10 @@ getApiUrl().then(url => {
                     if (element.includes("(")) {
                         result.setAttribute("class", "rosso");
                     }
-                    result.setAttribute("href", "listapercorsi.html?routenum=" + element);
+                    result.setAttribute("href", "tabella.html?routenum=" + element);
                     result.innerHTML = `
-                    <div class="search-result"><h3>${element}</h3>
-                `;
+                        <div class="search-result"><h3>${element}</h3>
+                    `;
                     schContainer.appendChild(result);
                 } else if (element == "5taxi" || element == "10tax") {
                     const result = document.createElement('a');
@@ -52,10 +52,10 @@ getApiUrl().then(url => {
                     if (element.includes("(")) {
                         result.setAttribute("class", "rosso");
                     }
-                    result.setAttribute("href", "listapercorsi.html?routenum=" + element);
+                    result.setAttribute("href", "tabella.html?routenum=" + element);
                     result.innerHTML = `
-                    <div class="search-result"><h3>${element}</h3>
-                `;
+                        <div class="search-result"><h3>${element}</h3>
+                    `;
                     sContainer.appendChild(result);
                 } else if (/^[^A-Z].*[A-Z]/i.test(element) || element.includes("(")) {
                     const result = document.createElement('a');
@@ -63,10 +63,10 @@ getApiUrl().then(url => {
                     if (element.includes("(")) {
                         result.setAttribute("class", "rosso");
                     }
-                    result.setAttribute("href", "listapercorsi.html?routenum=" + element);
+                    result.setAttribute("href", "tabella.html?routenum=" + element);
                     result.innerHTML = `
-                    <div class="search-result"><h3>${element}</h3>
-                `;
+                        <div class="search-result"><h3>${element}</h3>
+                    `;
                     uContainer.appendChild(result);
                 } else if (!/^[A-Z]/i.test(element)) {
                     const result = document.createElement('a');
@@ -74,10 +74,10 @@ getApiUrl().then(url => {
                     if (element.includes("(")) {
                         result.setAttribute("class", "rosso");
                     }
-                    result.setAttribute("href", "listapercorsi.html?routenum=" + element);
+                    result.setAttribute("href", "tabella.html?routenum=" + element);
                     result.innerHTML = `
-                    <div class="search-result"><h3>${element}</h3>
-                `;
+                        <div class="search-result"><h3>${element}</h3>
+                    `;
                     seContainer.appendChild(result);
                 } else {
                     const result = document.createElement('a');
@@ -85,10 +85,10 @@ getApiUrl().then(url => {
                     if (element.includes("(")) {
                         result.setAttribute("class", "rosso");
                     }
-                    result.setAttribute("href", "listapercorsi.html?routenum=" + element);
+                    result.setAttribute("href", "tabella.html?routenum=" + element);
                     result.innerHTML = `
-                    <div class="search-result"><h3>${element}</h3>
-                `;
+                        <div class="search-result"><h3>${element}</h3>
+                    `;
                     othContainer.appendChild(result);
                 }
             });

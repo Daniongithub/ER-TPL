@@ -12,7 +12,6 @@ const id = params.get('routecode');
 const num = params.get('routenum');
 const codiceSpan = document.getElementById('codice-span');
 const destSpan = document.getElementById('destinazione-span');
-const pNav = document.getElementById('percorso-nav');
 const existP = document.getElementById('esiste-p');
 const mapContainer = document.getElementById('map-container');
 
@@ -21,14 +20,6 @@ const shortId = id.split('-')[2];
 
 //Displays route code
 codiceSpan.textContent = id;
-//Nav per tornare indietro
-pNav.innerHTML = `            
-        <ul>
-            <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-            <li><a href="/seta_modena/servizi/percorsi/index.html"><h1 style="font-size: 100%;font-weight: 500;">Selettore linea</h1></a></li>
-            <li><a href="/seta_modena/servizi/percorsi/listapercorsi.html?routenum=${num}"><h1 style="font-size: 100%;font-weight: 500;">Selettore percorso</h1></a></li>
-        </ul>
-    `;
 
 function caricadati() {
     var item = [];
