@@ -8,7 +8,7 @@ function getValidToken() {
     return token;
 }
 
-redirectToLogin()
+//redirectToLogin()
 
 //Actual page script
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/seta";
