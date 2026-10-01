@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="ER-TPL Team">
+    <title>SetaAPI - Pannello di amministrazione</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body data-bs-theme="dark">
+    <div id="loading-container" class="d-none">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="spinner-border m-5" role="status"></div>
+        </div>
+    </div>
+    <div id="page-container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <h3 class="navbar-brand fs-3" href="#">SetaAPI</h3>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li><a class="nav-link active" href="/seta_modena/servizi/cercaorario/index.html">Cerca orario</a></li>
+                        <li><a class="nav-link active" href="/seta_modena/servizi/cercaorario/index.html">Bus in servizio</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="d-flex justify-content-end m-2">
+            <button class="btn btn-primary fw-bold mx-2">
+                <i class="bi bi-plus-square-fill me-1"></i>
+                Aggiungi assegnazione
+            </button>
+            <button class="btn btn-danger fw-bold">
+                <i class="bi bi-trash3-fill me-1"></i>
+                Rimuovi assegnazione
+            </button>
+        </div>
+        <div class="d-flex justify-content-center border border-secondary mx-2">
+            <table class="mx-2 fs-5 w-100">
+                <tr>
+                    <th>Colonna</th>
+                    <th>Colonna</th>
+                    <th>Colonna</th>
+                    <th>Colonna</th>
+                    <th>Colonna</th>
+                    <th>Colonna</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
