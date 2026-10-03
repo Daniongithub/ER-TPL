@@ -9,6 +9,3 @@
 
 /map /start_menu/servizi/mappa/index.html
 /assign /admin/setaapi/assegnazioni/index.html
-
-/admin/setaapi/assegnazioni/callback.html /service/smf.html
-/admin/setaapi/assegnazioni/callback /service/smf.html
