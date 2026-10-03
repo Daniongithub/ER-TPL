@@ -140,7 +140,7 @@ nav#corsie-nav ul li {
     transition: border-color 0.1s;
 }
 
-.search-result:hover , .search-result:active {
+.search-result:hover, .search-result:active {
     border-color: rgb(204, 132, 0);
 }
 

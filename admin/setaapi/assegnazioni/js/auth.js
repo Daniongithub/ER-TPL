@@ -1,7 +1,8 @@
 //OAuth and backend config
-const OIDC_ISSUER = "https://sso.serverissimo.com/application/o/";
+const OIDC_ISSUER = "https://sso.serverissimo.com/application/o/ertpl-assegnazioni/";
 const OIDC_CLIENT_ID = "vSjbxDWymiuVv4McKBDvq3FMesREl1dkeW7ExX5N";
-const REDIRECT_URI = "https://ertpl.pages.dev/admin/setaapi/assegnazioni/callback.html";
+//const REDIRECT_URI = "https://ertpl.pages.dev/admin/setaapi/assegnazioni/callback.html";
+const REDIRECT_URI = "http://127.0.0.1:5500/admin/setaapi/assegnazioni/callback.html";
 const API_BASE_URL = "https://setaapi.serverissimo.com";
 
 function generateCodeVerifier() {
@@ -26,7 +27,17 @@ function base64UrlEncode(bytes) {
         .replace(/=+$/, ""); // PKCE richiede base64url SENZA padding
 }
 
+let discoveryCache = null;
+
+async function getDiscovery() {
+    if (discoveryCache) return discoveryCache;
+    const response = await fetch(`${OIDC_ISSUER}.well-known/openid-configuration`);
+    discoveryCache = await response.json();
+    return discoveryCache;
+}
+
 async function redirectToLogin() {
+    const discovery = await getDiscovery();
     const verifier = generateCodeVerifier();
     const challenge = await generateCodeChallenge(verifier);
     const state = generateCodeVerifier(); // riuso la stessa funzione, mi serve solo una stringa casuale
@@ -44,5 +55,91 @@ async function redirectToLogin() {
         state: state,
     });
 
-    window.location.href = `${OIDC_ISSUER}authorize/?${params.toString()}`;
+    window.location.href = `${discovery.authorization_endpoint}?${params.toString()}`;
+}
+
+async function logoutUser() {
+    const idToken = sessionStorage.getItem("id_token");
+
+    sessionStorage.removeItem("access_token");
+    sessionStorage.removeItem("id_token");
+    sessionStorage.removeItem("token_expiry");
+
+    const discovery = await getDiscovery();
+
+    if (discovery.end_session_endpoint && idToken) {
+        const params = new URLSearchParams({
+            id_token_hint: idToken,
+            post_logout_redirect_uri: window.location.origin + window.location.pathname.replace("index.html", "") + "index.html",
+        });
+        window.location.href = `${discovery.end_session_endpoint}?${params.toString()}`;
+    } else {
+        // Fallback: nessun end_session_endpoint disponibile o id_token mancante
+        // (es. sessione già scaduta) — logout solo locale, poi torna alla pagina
+        window.location.href = "index.html";
+    }
+}
+
+//callback.html
+async function handleCallback() {
+    const statusEl = document.getElementById("status");
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+    const returnedState = params.get("state");
+
+    if (!code) {
+        statusEl.textContent = "Richiesta non valida: parametro mancante.";
+        cleanupPkceStorage();
+        return;
+    }
+
+    const savedState = sessionStorage.getItem("oauth_state");
+    const verifier = sessionStorage.getItem("pkce_verifier");
+
+    if (!savedState || !verifier || returnedState !== savedState) {
+        statusEl.textContent = "Sessione di accesso non valida. Riprova il login.";
+        cleanupPkceStorage();
+        setTimeout(() => { window.location.href = "/"; }, 2000);
+        return;
+    }
+
+    try {
+        const discovery = await getDiscovery();
+
+        const body = new URLSearchParams({
+            grant_type: "authorization_code",
+            client_id: OIDC_CLIENT_ID,
+            redirect_uri: REDIRECT_URI,
+            code: code,
+            code_verifier: verifier,
+        });
+
+        const response = await fetch(discovery.token_endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: body.toString(),
+        });
+
+        if (!response.ok) {
+            statusEl.innerHTML = `Impossibile completare l'accesso. <a href="index.html">Riprova</a>. Errore: ` + err;
+            cleanupPkceStorage();
+            return;
+        }
+
+        const tokens = await response.json();
+        sessionStorage.setItem("access_token", tokens.access_token);
+        sessionStorage.setItem("id_token", tokens.id_token);
+        sessionStorage.setItem("token_expiry", Date.now() + tokens.expires_in * 1000);
+        cleanupPkceStorage();
+        window.location.href = "index.html";
+    } catch (err) {
+        statusEl.textContent = "Errore di connessione durante l'accesso. Riprova.";
+        cleanupPkceStorage();
+    }
+}
+
+function cleanupPkceStorage() {
+    sessionStorage.removeItem("pkce_verifier");
+    sessionStorage.removeItem("oauth_state");
 }
