@@ -111,11 +111,6 @@ td.uguale {
     width: 50%;
 }
 
-td.fake-a {
-    color: rgb(0, 215, 215);
-    text-decoration: underline;
-}
-
 hr.solid {
     width: auto;
 }
@@ -196,6 +191,11 @@ button:disabled {
 
 a {
     color: rgb(0, 215, 215);
+}
+
+a.no-decoration {
+    text-decoration: none;
+    color: inherit;
 }
 
 input::placeholder {
