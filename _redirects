@@ -8,7 +8,7 @@
 /seta_modena/servizi/deviazioni/* /service/serviceupdate.html
 
 /map /start_menu/servizi/mappa/index.html
-/setass /admin/setaapi/assegnazioni/indexnoauth.html
+/assign /admin/setaapi/assegnazioni/index.html
 
 /admin/setaapi/assegnazioni/callback.html /service/smf.html
 /admin/setaapi/assegnazioni/callback /service/smf.html
