@@ -37,7 +37,9 @@ getApiUrl().then(url => {
             }
             //Sets stop name
             const stopSpan = document.getElementById('fermata-span');
-            stopSpan.textContent = nome + " (" + code + ")";
+            const fermataStr = nome + " (" + code + ")";
+            stopSpan.textContent = fermataStr;
+            document.title = "Fermata: " + fermataStr;
 
             //Pulsante dall'altra parte
             if (altraParteSearch(nome)) {
@@ -123,10 +125,15 @@ function loadArrivals() {
                     `;
                     //Checks if vehicle is null
                     let vehicleOsm = "";
-                    if (element.vehicle != null) {
+                    const meteRegex = /^19/;
+                    if (meteRegex.test(element.vehicle)) {
+                        tr.innerHTML += `
+                            <td>${element.vehicle}</td>
+                        `;
+                    } else if (element.vehicle != null) {
                         vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&basin=${element.basin}&vehicle=${element.vehicle}`
                         tr.innerHTML += `
-                            <td class="cursor-pointer" onclick='window.location.href="${vehicleOsm}";'>${element.vehicle}</td>
+                            <td><a href="${vehicleOsm}">${element.vehicle}</a></td>
                         `;
                     } else {
                         tr.innerHTML += `

@@ -319,6 +319,10 @@ async function loadSingle() {
         const data = await fetchJson(url);
         let dataArr = []
         dataArr[0] = data
+        if(!data) {
+            showStatus("GPS veicolo non disponibile.");
+            return;
+        }
         plotVehicles(dataArr, 13);
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
@@ -457,7 +461,7 @@ function stopPopupHtml(item) {
             <div class="popup-base">
                 <a class="button" href="/start_menu/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
                 <hr class="separator">
-                <h3>Da questa fermata passa:</h3>
+                <h3 style="text-align: center;">Che cosa passa?</h3>
                 <div class="lines-container" style="display: none;"></div>
                 <hr class="separator">
                 <table class="up">
@@ -809,18 +813,52 @@ async function loadLines(stopCode, basin, popup) {
     const popupElement = popup.getElement();
     const linesContainer = popupElement.querySelector('.lines-container');
     const url = CONFIG.BASE_URL + CONFIG.STOP_INFO_ENDPOINT.replace('{basin}', basin).replace('{stopCode}', stopCode);
+    const extra = /^1\d{2}$/;
 
     try {
         const data = await fetchJson(url);
+        const normalDiv = document.createElement('div');
+        normalDiv.className = 'passing-lines-group';
+
+        const normalTitle = document.createElement('h3');
+        normalTitle.textContent = 'Linee urbane e suburbane:';
+        normalDiv.appendChild(normalTitle);
+
+        const extraLines = data.lines.filter(line =>
+            extra.test(String(line.line))
+        );
+
         data.lines.forEach(line => {
+            if (extra.test(String(line.line))) return;
+
             const div = document.createElement('div');
-            div.className = "passing-line-box";
-            div.innerHTML = `
-                ${line.line}
-            `;
-            linesContainer.style.display = '';
-            linesContainer.appendChild(div);
-        })
+            div.className = 'passing-line-box';
+            div.textContent = line.line;
+
+            normalDiv.appendChild(div);
+        });
+
+        linesContainer.style.display = '';
+        linesContainer.appendChild(normalDiv);
+
+        if (extraLines.length > 0) {
+            const extraDiv = document.createElement('div');
+            extraDiv.className = 'passing-lines-group';
+
+            const extraTitle = document.createElement('h3');
+            extraTitle.textContent = 'Linee extraurbane:';
+            extraDiv.appendChild(extraTitle);
+
+            extraLines.forEach(line => {
+                const div = document.createElement('div');
+                div.className = 'passing-line-box';
+                div.textContent = line.line;
+
+                extraDiv.appendChild(div);
+            });
+
+            linesContainer.appendChild(extraDiv);
+        }
     } catch (err) {
         console.error('Errore nel caricamento linee passanti:', err);
         showStatus('Errore nel caricamento linee passanti: ' + err);
