@@ -226,6 +226,17 @@ body {
     margin-top: 6px;
 }
 
+.passing-lines-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.passing-lines-group h3 {
+    width: 100%;
+    margin: 4px 0;
+}
+
 .passing-line-box {
     padding: 8px;
     background-color: rgb(0, 161, 161);

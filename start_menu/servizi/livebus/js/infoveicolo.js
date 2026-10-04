@@ -83,7 +83,7 @@ getApiUrl().then(url => {
             if (data.vehicle_info.bus_page_path != null) {
                 tr.innerHTML = `
                     <td>Numero mezzo:</td>
-                    <td class="fake-a cursor-pointer" onclick="window.location.href='${data.vehicle_info.bus_page_path}'" target="_blank">${data.vehicle_info.number}</td>
+                    <td><a href="${data.vehicle_info.bus_page_path}" target="_blank">${data.vehicle_info.number}</a></td>
                 `;
             } else {
                 tr.innerHTML = `
@@ -101,7 +101,7 @@ getApiUrl().then(url => {
             if (data.vehicle_info.bus_page_path != null) {
                 tr.innerHTML = `
                     <td>Modello:</td>
-                    <td class="fake-a cursor-pointer" onclick="window.location.href='${data.vehicle_info.bus_page_path}'" target="_blank">${data.vehicle_info.model}</td>
+                    <td><a href="${data.vehicle_info.bus_page_path}" target="_blank">${data.vehicle_info.model}</a></td>
                 `;
             } else {
                 tr.innerHTML = `
@@ -147,14 +147,14 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Prossima fermata:</td>
-                <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}'" target="_blank">${data.next_stop.stop_name}</td>
+                <td><a href="/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_name}</a></td>
             `;
             table.appendChild(tr);
 
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice fermata:</td>
-                <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}'" target="_blank">${data.next_stop.stop_code}</td>
+                <td><a href="/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_code}</a></td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -166,11 +166,10 @@ getApiUrl().then(url => {
             `;
             table.appendChild(tr);
 
-            //Per ora lo metto così, ma va fatto il servizio percorsi e questo punterà alla lista fermate!
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice percorso:</td>
-                <td class="fake-a cursor-pointer" onclick="window.location.href='/start_menu/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}'" target="_blank">${data.shape_id}</td>
+                <td><a href="/start_menu/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}" target="_blank">${data.shape_id}</a></td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -188,7 +187,7 @@ getApiUrl().then(url => {
                 tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>Posizione:</td>
-                    <td class="fake-a cursor-pointer" onclick="window.open('/start_menu/servizi/mappa/index.html?mode=single&basin=${data.basin}&vehicle=${data.vehicle_info.number}', '_blank');">GPS</td>
+                    <td><a href="/start_menu/servizi/mappa/index.html?mode=single&basin=${data.basin}&vehicle=${data.vehicle_info.number}" target="_blank">GPS</a></td>
                 `;
                 tr.className = 'even';
                 nextClass = ""
