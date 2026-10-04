@@ -38,15 +38,15 @@
             </div>
         </nav>
         <div class="d-flex justify-content-end m-2" id="operation-buttons-container">
-            <button class="btn btn-primary fw-bold m-1" onclick="openAddForm();">
+            <button class="btn btn-primary fw-bold m-1" data-bs-toggle="modal" data-bs-target="#add-form-div">
                 <i class="bi bi-plus-square-fill m-1"></i>
                 Aggiungi assegnazione
             </button>
-            <button class="btn btn-danger fw-bold m-1" onclick="openRemoveForm();">
+            <button class="btn btn-danger fw-bold m-1">
                 <i class="bi bi-trash3-fill m-1"></i>
                 Rimuovi assegnazione
             </button>
-            <button class="btn btn btn-outline-primary fw-bold m-1" onclick="openUpdateForm();">
+            <button class="btn btn btn-outline-primary fw-bold m-1">
                 <i class="bi bi-arrow-repeat m-1"></i>
                 Cambio mezzo
             </button>
@@ -73,7 +73,53 @@
             <div class="w-100 overflow-x-scroll" id="table-container"></div>
         </div>
     </div>
+    <div id="forms-container">
+        <div class="modal fade" id="add-form-div" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Aggiungi assegnazione</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetForms();"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fw-bold mb-2 mt-0">Tabella oraria:</p>
+                        <input type="text" class="form-control" id="vehicle-table-input" autocomplete="off">
+                        <div id="add-table-message-div"></div>
+                        <p class="fw-bold my-2">Veicolo:</p>
+                        <input type="text" class="form-control" id="vehicle-input" autocomplete="off">
+                        <div id="add-vehicle-message-div"></div>
+                        <div id="error-message-div"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary" onclick="submitAddForm();">Aggiungi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="remove-form-div" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Aggiungi assegnazione</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="resetForms();"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fw-bold mb-2 mt-0">Tabella oraria:</p>
+                        <input type="text" class="form-control" id="vehicle-table-input" autocomplete="off">
+                        <div id="remove-table-message-div"></div>
+                        <div id="error-message-div"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary" onclick="submitRemoveForm();">Aggiungi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="js/auth.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/forms.js"></script>
 </body>
 </html>

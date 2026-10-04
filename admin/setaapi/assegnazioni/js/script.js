@@ -224,6 +224,11 @@ function renderListElement(tbody, element, idx) {
         <td>${element.vehicle_table}</td>
         <td>${element.vehicle}</td>
         <td>${element.is_GPS}</td>
+        <td style="width:36px;">
+            <button class="btn btn-danger fw-bold" onclick="openRemoveFormPrecTable();">
+                <i class="bi bi-trash3-fill"></i>
+            </button>
+        </td>
     `;
     if (idx % 2 != 0) {
         tr.className = "even";

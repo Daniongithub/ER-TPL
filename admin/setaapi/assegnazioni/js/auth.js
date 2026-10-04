@@ -1,8 +1,8 @@
 //OAuth and backend config
 const OIDC_ISSUER = "https://sso.serverissimo.com/application/o/ertpl-assegnazioni/";
 const OIDC_CLIENT_ID = "vSjbxDWymiuVv4McKBDvq3FMesREl1dkeW7ExX5N";
-const REDIRECT_URI = "https://ertpl.pages.dev/admin/setaapi/assegnazioni/callback.html";
-//const REDIRECT_URI = "http://127.0.0.1:5500/admin/setaapi/assegnazioni/callback.html";
+//const REDIRECT_URI = "https://ertpl.pages.dev/admin/setaapi/assegnazioni/callback.html";
+const REDIRECT_URI = "http://127.0.0.1:5500/admin/setaapi/assegnazioni/callback.html";
 const API_BASE_URL = "https://setaapi.serverissimo.com";
 
 function generateCodeVerifier() {
