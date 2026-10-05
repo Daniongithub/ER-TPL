@@ -208,6 +208,8 @@ function renderListTH(table) {
                 <th>Tabella oraria</th>
                 <th>Mezzo</th>
                 <th>Posizione?</th>
+                <th></th>
+                <th></th>
             </tr>
         `;
     table.appendChild(thead);
@@ -224,6 +226,11 @@ function renderListElement(tbody, element, idx) {
         <td>${element.vehicle_table}</td>
         <td>${element.vehicle}</td>
         <td>${element.is_GPS}</td>
+        <td style="width:36px;">
+            <button class="btn btn-outline-primary fw-bold" onclick="openChangeFormPrecTable();">
+                <i class="bi bi-arrow-repeat"></i>
+            </button>
+        </td>
         <td style="width:36px;">
             <button class="btn btn-danger fw-bold" onclick="openRemoveFormPrecTable();">
                 <i class="bi bi-trash3-fill"></i>
@@ -288,36 +295,24 @@ function renderArrTable(item, nome, code) {
                     }
                     //Set corsie per stazione o autostazione
                     if (nome.includes("STAZIONE FS")) {
-                        button.innerHTML = `
-                            <ul>
-                                <li>
-                                    <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS">Altre corsie</a>
-                                </li>
-                            </ul>`;
+                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
+                        button.setAttribute("onclick", `renderCorsie("STAZIONE FS")`)
+                        button.textContent = `Altre corsie`;
                     }
                     if (nome.includes("MODENA AUTOSTAZIONE")) {
-                        button.innerHTML = `
-                            <ul>
-                                <li>
-                                    <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE">Altre corsie</a>
-                                </li>
-                            </ul>`;
+                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
+                        button.setAttribute("onclick", `renderCorsie("MODENA AUTOSTAZIONE")`)
+                        button.textContent = `Altre corsie`;
                     }
                     if (nome.includes("GARIBALDI")) {
-                        button.innerHTML = `
-                            <ul>
-                                <li>
-                                    <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI">Altre corsie</a>
-                                </li>
-                            </ul>`;
+                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
+                        button.setAttribute("onclick", `renderCorsie("GARIBALDI")`)
+                        button.textContent = `Altre corsie`;
                     }
                     if (nome.includes("POLO LEONARDO")) {
-                        button.innerHTML = `
-                            <ul>
-                                <li>
-                                    <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=POLO LEONARDO">Altre corsie</a>
-                                </li>
-                            </ul>`;
+                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
+                        button.setAttribute("onclick", `renderCorsie("POLO LEONARDO")`)
+                        button.textContent = `Altre corsie`;
                     }
                     navButtonsContainer.appendChild(button)
                 })
@@ -356,6 +351,7 @@ function renderArrTH(table) {
                 <th>Orario (Rit/Ant):</th>
                 <th>Mezzo</th>
                 <th></th>
+                <th></th>
             </tr>
         `;
     table.appendChild(thead);
@@ -372,17 +368,31 @@ function renderArrElement(tbody, element, idx) {
     } else {
         element.delay = "";
     }
+    var addBtn
+    if(element.vehicle == "") {
+        addBtn = `
+            <td style="width:36px;">
+                <button class="btn btn-primary fw-bold" onclick="openAddFormPrecTable();">
+                    <i class="bi bi-plus-square-fill"></i>
+                </button>
+            </td>
+        `;
+    } else {
+        addBtn = `
+            <td style="width:36px;">
+                <button class="btn btn-outline-primary fw-bold" onclick="openChangeFormPrecTable();">
+                    <i class="bi bi-arrow-repeat"></i>
+                </button>
+            </td>
+        `;
+    }
     tr.innerHTML = `
         <td>${element.line}</td>
         <td>${element.destination}</td>
         <td>${element.vehicle_table}</td>
         <td>${element.arrival_time}${element.delay}</td>
         <td>${element.vehicle}</td>
-        <td style="width:36px;">
-            <button class="btn btn-primary fw-bold" onclick="openAddFormPrecTable();">
-                <i class="bi bi-plus-square-fill"></i>
-            </button>
-        </td>
+        ${addBtn}
     `;
     if (idx % 2 != 0) {
         tr.className = "even";
