@@ -30,6 +30,10 @@ div.search-result div {
     margin-right: 10px;
 }
 
+a.bianco {
+    text-decoration: none;
+}
+
 @media (max-width: 512px) {
     #operation-buttons-container {
         flex-direction: column;

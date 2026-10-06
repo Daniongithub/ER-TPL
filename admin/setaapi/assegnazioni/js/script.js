@@ -1,6 +1,7 @@
 function getValidToken() {
     const token = sessionStorage.getItem("access_token");
     const expiry = sessionStorage.getItem("token_expiry");
+    console.log(new Date, expiry)
 
     if (!token || !expiry || Date.now() > Number(expiry)) {
         return null; // assente o scaduto
@@ -9,7 +10,7 @@ function getValidToken() {
 }
 
 //Checks initial authentication
-checkAuth()
+checkAuth();
 
 function checkAuth() {
     if (!getValidToken()) {
@@ -46,6 +47,8 @@ function switchView(mode, element) {
     })
     //Except clicked one
     element.classList.add("active");
+    //Hides nav buttons
+    navButtonsContainer.classList.add("d-none");
     switch (mode) {
         case "list":
             initList();
@@ -76,20 +79,28 @@ function initList() {
         }));
 }
 
+var allresults = [];
 function initSearchVehicleTable() {
     tableTitle.textContent = "Cerca tabella oraria:";
     searchBarContainer.classList.remove("d-none");
     searchBar.placeholder = "Caricamento in corso...";
     tableContainer.innerHTML = `
         <div id="results-container" class="text-center"></div>
+        <div id="quick-container" class="text-center">
+            <hr>
+            <h3 class="my-2">Fermate rapide:</h3>
+            <a onclick="renderCorsie('MODENA AUTOSTAZIONE')" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
+            <a onclick="renderCorsie('STAZIONE FS')" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
+            <a onclick="renderCorsie('GARIBALDI')" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
+        </div>
     `;
+    const quickContainer = document.getElementById('quick-container');
+    const resultsContainer = document.getElementById('results-container');
+    tableContainer.classList.add("d-none");
     tableContainer.classList.remove("border", "border-secondary");
     navButtonsContainer.classList.add("d-none");
-    const resultsContainer = document.getElementById('results-container');
-    //const quickContainer = document.getElementById('quick-container');
     var searching = false;
     var oldTerm;
-    var allresults = [];
 
     getApiUrl().then(url => {
         fetch(url + "/stops")
@@ -103,8 +114,12 @@ function initSearchVehicleTable() {
                     search(oldTerm);
                 }
                 searchBar.placeholder = "Cerca una fermata...";
+                tableContainer.classList.remove("d-none");
             })
-            .catch(error => console.error('Errore nel caricamento dei dati:', error));
+            .catch(error => {
+                console.error('Errore nel caricamento dei dati:', error);
+                searchBar.placeholder = "Errore nel caricamento lista fermate."
+            });
     })
 
     if (searchBar.value != '') {
@@ -115,7 +130,7 @@ function initSearchVehicleTable() {
     searchBar.addEventListener('input', () => {
         if (searchBar.value == '') {
             resultsContainer.innerHTML = '';
-            //quickContainer.style.display = '';
+            quickContainer.style.display = '';
         } else {
             const searchTerm = searchBar.value.trim().toLowerCase();
             search(searchTerm);
@@ -207,7 +222,7 @@ function renderListTH(table) {
             <tr>
                 <th>Tabella oraria</th>
                 <th>Mezzo</th>
-                <th>Posizione?</th>
+                <th>GPS?</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -227,12 +242,12 @@ function renderListElement(tbody, element, idx) {
         <td>${element.vehicle}</td>
         <td>${element.is_GPS}</td>
         <td style="width:36px;">
-            <button class="btn btn-outline-primary fw-bold" onclick="openChangeFormPrecTable();">
+            <button class="btn btn-outline-primary fw-bold" onclick="openChangeFormPrecTable(${element.vehicle});">
                 <i class="bi bi-arrow-repeat"></i>
             </button>
         </td>
         <td style="width:36px;">
-            <button class="btn btn-danger fw-bold" onclick="openRemoveFormPrecTable();">
+            <button class="btn btn-danger fw-bold" onclick="openRemoveFormPrecTable(${element.vehicle_table});">
                 <i class="bi bi-trash3-fill"></i>
             </button>
         </td>
@@ -264,8 +279,8 @@ function renderArrivals(code, name) {
 
 function renderArrTable(item, nome, code) {
     try {
-        searchBarContainer.classList.add("d-none")
-        navButtonsContainer.classList.remove("d-none")
+        searchBarContainer.classList.add("d-none");
+        navButtonsContainer.classList.remove("d-none");
         tableContainer.innerHTML = '';
 
         tableContainer.classList.add("border", "border-secondary");
@@ -282,6 +297,7 @@ function renderArrTable(item, nome, code) {
                 .then(data => {
                     allresults = data;
                     const button = document.createElement('button');
+                    button.className = "btn btn btn-secondary fw-bold m-1 fermopp";
                     if (altraParteSearch(nome)) {
                         const codes = altraParteSearch(nome);
                         if (code == codes[0]) {
@@ -289,32 +305,32 @@ function renderArrTable(item, nome, code) {
                         } else {
                             altroCodice = codes[0];
                         }
-                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
-                        button.setAttribute("onclick", `renderArrivals("${altroCodice}", "${nome}")`)
+                        button.setAttribute("onclick", `renderArrivals("${altroCodice}", "${nome}")`);
                         button.textContent = `Fermata opposta`;
+                        //Moved here because otherwise empty buttons would be appended
+                        navButtonsContainer.appendChild(button);
                     }
                     //Set corsie per stazione o autostazione
                     if (nome.includes("STAZIONE FS")) {
-                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
-                        button.setAttribute("onclick", `renderCorsie("STAZIONE FS")`)
+                        button.setAttribute("onclick", `renderCorsie("STAZIONE FS")`);
                         button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
                     }
                     if (nome.includes("MODENA AUTOSTAZIONE")) {
-                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
-                        button.setAttribute("onclick", `renderCorsie("MODENA AUTOSTAZIONE")`)
+                        button.setAttribute("onclick", `renderCorsie("MODENA AUTOSTAZIONE")`);
                         button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
                     }
                     if (nome.includes("GARIBALDI")) {
-                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
-                        button.setAttribute("onclick", `renderCorsie("GARIBALDI")`)
+                        button.setAttribute("onclick", `renderCorsie("GARIBALDI")`);
                         button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
                     }
                     if (nome.includes("POLO LEONARDO")) {
-                        button.className = "btn btn btn-secondary fw-bold m-1 fermopp"
-                        button.setAttribute("onclick", `renderCorsie("POLO LEONARDO")`)
+                        button.setAttribute("onclick", `renderCorsie("POLO LEONARDO")`);
                         button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
                     }
-                    navButtonsContainer.appendChild(button)
                 })
                 .catch(error => console.error('Errore nel caricamento dei dati:', error));
         })
@@ -348,9 +364,8 @@ function renderArrTH(table) {
                 <th>Linea</th>
                 <th>Destinazione</th>
                 <th>Tabella oraria</th>
-                <th>Orario (Rit/Ant):</th>
+                <th>Orario</th>
                 <th>Mezzo</th>
-                <th></th>
                 <th></th>
             </tr>
         `;
@@ -361,18 +376,18 @@ function renderArrElement(tbody, element, idx) {
     const tr = document.createElement('tr');
     if (element.delay != null) {
         if (element.delay > 0) {
-            element.delay = " (+" + element.delay + ")"
+            element.delay = " (+" + element.delay + ")";
         } else {
-            element.delay = " (" + element.delay + ")"
+            element.delay = " (" + element.delay + ")";
         }
     } else {
         element.delay = "";
     }
     var addBtn
-    if(element.vehicle == "") {
+    if (element.vehicle == "") {
         addBtn = `
             <td style="width:36px;">
-                <button class="btn btn-primary fw-bold" onclick="openAddFormPrecTable();">
+                <button class="btn btn-primary fw-bold" onclick="openAddFormPrecTable(${element.vehicle_table});">
                     <i class="bi bi-plus-square-fill"></i>
                 </button>
             </td>
@@ -380,7 +395,7 @@ function renderArrElement(tbody, element, idx) {
     } else {
         addBtn = `
             <td style="width:36px;">
-                <button class="btn btn-outline-primary fw-bold" onclick="openChangeFormPrecTable();">
+                <button class="btn btn-outline-primary fw-bold" onclick="openChangeFormPrecTable(${element.vehicle});">
                     <i class="bi bi-arrow-repeat"></i>
                 </button>
             </td>
@@ -400,6 +415,111 @@ function renderArrElement(tbody, element, idx) {
     tbody.appendChild(tr);
 }
 
+function renderCorsie(location) {
+    tableContainer.innerHTML = `
+        <div id="results-container" class="text-center"></div>
+    `;
+    tableContainer.classList.remove("border", "border-secondary");
+    const resultsContainer = document.getElementById('results-container');
+    if (location == "STAZIONE FS") {
+        resultsContainer.innerHTML = `
+            <a onclick="renderArrivals('MO6132', '${findStopName(allresults, "MO6132")}');" class="bianco">
+                <div class="search-result desc"><h3>Corsia 1</h3><p>Linee: 7</p></div>
+            </a>
+            <a onclick="renderArrivals('MO6133', '${findStopName(allresults, "MO6133")}');" class="bianco">
+                <div class="search-result desc"><h3>Corsia 2</h3><p>Linee: 1, 4, 9, 13</p></div>
+            </a>
+            <a onclick="renderArrivals('MO6134', '${findStopName(allresults, "MO6134")}');" class="bianco">
+                <div class="search-result desc"><h3>Corsia 3</h3><p>Linee: 1, 3, 4, 9</p></div>
+            </a>
+            <a onclick="renderArrivals('MO6119', '${findStopName(allresults, "MO6119")}');" class="bianco">
+                <div class="search-result desc"><h3>Corsia 4</h3><p>Linee: 3, 11, 13</p></div>
+            </a>
+        `;
+    }
+    if (location == "MODENA AUTOSTAZIONE") {
+        resultsContainer.innerHTML = `
+            <a onclick="renderArrivals('MO6121', '${findStopName(allresults, "MO6121")}');" class="bianco">
+                <div class="search-result desc"><h3>Direzione Centro</h3><p>Linee: 1, 2, 4, 5, 6, 7, 13</p></div>
+            </a>
+            <a onclick="renderArrivals('MO5003', '${findStopName(allresults, "MO5003")}');" class="bianco">
+                <div class="search-result desc"><h3>Lato Novi Park</h3><p>Linee: 1, 2, 4, 5, 7, 13</p></div>
+            </a>
+            <div></div>
+            <a onclick="renderArrivals('MO6600', '${findStopName(allresults, "MO6600")}');" class="bianco">
+                <div class="search-result desc"><h3>Davanti Biglietteria</h3><p>Linee: 6</p></div>
+            </a>
+            <a onclick="renderArrivals('MO10', '${findStopName(allresults, "MO10")}');" class="bianco">
+                <div class="search-result desc"><h3>Fianco Biglietteria</h3><p>Linee: 9, 10</p></div>
+            </a>
+            <a onclick="renderArrivals('MO6120', '${findStopName(allresults, "MO6120")}');" class="bianco">
+                <div class="search-result desc"><h3>Fianco Biglietteria lato Novi Park</h3><p>Linee: 9, 10</p></div>
+            </a>
+            <hr class="solid">
+            <a onclick="renderArrivals('MO3', '${findStopName(allresults, "MO3")}');" class="bianco">
+                <div class="search-result"><h3>Corriere corsia 1</h3></div>
+            </a>
+            <a onclick="renderArrivals('MO303', '${findStopName(allresults, "MO303")}');" class="bianco">
+                <div class="search-result"><h3>Corriere corsia 2</h3></div>
+            </a>
+            <a onclick="renderArrivals('MO342', '${findStopName(allresults, "MO342")}');" class="bianco">
+                <div class="search-result"><h3>Corriere corsia 3</h3></div>
+            </a>
+            <a onclick="renderArrivals('MO344', '${findStopName(allresults, "MO344")}');" class="bianco">
+                <div class="search-result"><h3>Corriere corsia 4</h3></div>
+            </a>
+            <a onclick="renderArrivals('MO350', '${findStopName(allresults, "MO350")}');" class="bianco">
+                <div class="search-result"><h3>Corriere corsia 5</h3></div>
+            </a>
+            <a onclick="renderArrivals('MO346', '${findStopName(allresults, "MO346")}');" class="bianco">
+                <div class="search-result"><h3>Corriere corsia 6</h3></div>
+            </a>
+        `;
+    }
+    if (location == "GARIBALDI") {
+        resultsContainer.innerHTML = `
+            <a onclick="renderArrivals('MO5900', '${findStopName(allresults, "MO5900")}');" class="bianco">
+                <div class="search-result desc"><h3>Direzione Centro</h3><p>Linee: 4, 7, 8</p></div>
+            </a>
+            <a onclick="renderArrivals('MO30', '${findStopName(allresults, "MO30")}');" class="bianco">
+                <div class="search-result desc"><h3>Direzione Trento Trieste</h3><p>Linee: 4, 7, 8</p></div>
+            </a>
+            <a onclick="renderArrivals('MO9', '${findStopName(allresults, "MO9")}');" class="bianco">
+                <div class="search-result desc"><h3>Lato Caduti in Guerra</h3><p>Linee: 3, 12</p></div>
+            </a>
+            <a onclick="renderArrivals('MO5111', '${findStopName(allresults, "MO5111")}');" class="bianco">
+                <div class="search-result desc"><h3>Storchi direzione Trento Trieste</h3><p>Linee: 2, 3, 12</p></div>
+            </a>
+            <a onclick="renderArrivals('MO5112', '${findStopName(allresults, "MO5112")}');" class="bianco">
+                <div class="search-result desc"><h3>Storchi direzione Centro</h3><p>Linee: 2</p></div>
+            </a>
+        `;
+    }
+    if (location == "POLO LEONARDO") {
+        resultsContainer.innerHTML = `
+            <a onclick="renderArrivals('MO6783', '${findStopName(allresults, "MO6783")}');" class="bianco">
+                <div class="search-result"><h3>POLO LEONARDO (Strada)</h3><p>Linee: 1A, 4, 10, 12</p></div>
+            </a>
+            <a onclick="renderArrivals('MO2928', '${findStopName(allresults, "MO2928")}');" class="bianco">
+                <div class="search-result"><h3>POLO LEONARDO 1</h3><p>Linee: 1A, 4, 10, 12</p></div>
+            </a>
+            <hr class="solid">
+            <a onclick="renderArrivals('MO218', '${findStopName(allresults, "MO218")}');" class="bianco">
+                <div class="search-result"><h3>Corsia 1</h3><p>Linee: 12, 391</p></div>
+            </a>
+            <a onclick="renderArrivals('MO228', '${findStopName(allresults, "MO228")}');" class="bianco">
+                <div class="search-result"><h3>Corsia 2</h3><p>Linee: 731, 740</p></div>
+            </a>
+            <a onclick="renderArrivals('MO224', '${findStopName(allresults, "MO224")}');" class="bianco">
+                <div class="search-result"><h3>Corsia 3</h3><p>Linee: 815, 820</p></div>
+            </a>
+            <a onclick="renderArrivals('MO217', '${findStopName(allresults, "MO217")}');" class="bianco">
+                <div class="search-result"><h3>Corsie 5, 6, 7</h3><p>Linee: 392, 393</p></div>
+            </a>
+        `;
+    }
+}
+
 function altraParteSearch(searchTerm) {
     var dupedCodes = [];
     var i = 0;
@@ -414,4 +534,9 @@ function altraParteSearch(searchTerm) {
     } else if (dupedCodes.length == 1) {
         return undefined;
     }
+}
+
+function findStopName(item, code) {
+    const found = item.find(element => element.code == code);
+    return found ? found.name : false;
 }

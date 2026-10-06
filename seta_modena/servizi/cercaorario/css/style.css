@@ -108,6 +108,25 @@ nav#corsie-nav ul li {
     margin-right: 7px;
 }
 
+.assign {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid rgb(204, 132, 0);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    justify-content: center;
+    margin-bottom: 12px;
+    transition: background-color 0.1s ease;
+}
+
+.assign:hover,
+.assign:active {
+    background-color: rgb(204, 132, 0);
+}
+
 #search-bar,
 #stop-code-bar {
     background-color: transparent;

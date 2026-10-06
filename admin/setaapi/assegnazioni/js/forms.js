@@ -39,6 +39,15 @@ function resetForms() {
     removeVehicleTableInput.value = '';
     changeVehicleFromInput.value = '';
     changeVehicleToInput.value = '';
+    resetMessages();
+}
+
+//Detects modal closure
+addFormContainer.addEventListener('hidden.bs.modal', resetForms);
+changeFormContainer.addEventListener('hidden.bs.modal', resetForms);
+removeFormContainer.addEventListener('hidden.bs.modal', resetForms);
+
+function resetMessages() {
     removeFormTableMessage.innerHTML = '';
     changeVehicleFromMessage.innerHTML = '';
     changeVehicleToMessage.innerHTML = '';
@@ -46,7 +55,33 @@ function resetForms() {
     addFormVehicleMessage.innerHTML = '';
 }
 
-async function submitAddForm() {
+vehicleTableInput.addEventListener('input', function (event) {
+    const vehicleTable = vehicleTableInput.value;
+    resetMessages();
+    if (vehicle = searchVehicle(currentAssignments, vehicleTable)) {
+        //It's normal that's only applied to add form
+        addFormTableMessage.innerHTML = `
+            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questa tabella è già occupata da ${vehicle}</p>
+        `;
+    } else {
+        addFormTableMessage.innerHTML = ``;
+    }
+});
+
+vehicleInput.addEventListener('input', function (event) {
+    const vehicle = vehicleInput.value;
+    resetMessages();
+    if (table = searchTable(currentAssignments, vehicle)) {
+        //It's normal that's only applied to add form
+        addFormVehicleMessage.innerHTML = `
+            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questo veicolo è già sulla tabella ${table}</p>
+        `;
+    } else {
+        addFormVehicleMessage.innerHTML = ``;
+    }
+});
+
+function submitAddForm() {
     const vehicleTable = vehicleTableInput.value;
     const vehicle = vehicleInput.value;
     if (vehicleTable == "" || vehicleTable == "0" || !isInteger(vehicleTable)) {
@@ -105,28 +140,6 @@ async function submitAddForm() {
     });
 }
 
-vehicleTableInput.addEventListener('input', function (event) {
-    const vehicleTable = vehicleTableInput.value;
-    if (vehicle = searchVehicle(currentAssignments, vehicleTable)) {
-        addFormTableMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questa tabella è già occupata da ${vehicle}</p>
-        `;
-    } else {
-        addFormTableMessage.innerHTML = ``;
-    }
-});
-
-vehicleInput.addEventListener('input', function (event) {
-    const vehicle = vehicleInput.value;
-    if (table = searchTable(currentAssignments, vehicle)) {
-        addFormVehicleMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questo veicolo è già sulla tabella ${table}</p>
-        `;
-    } else {
-        addFormVehicleMessage.innerHTML = ``;
-    }
-});
-
 function submitRemoveForm() {
     const vehicleTable = removeVehicleTableInput.value;
     if (vehicleTable == "" || vehicleTable == "0" || !isInteger(vehicleTable)) {
@@ -135,7 +148,7 @@ function submitRemoveForm() {
         `;
         return;
     }
-    if(!searchVehicle(currentAssignments, vehicleTable)) {
+    if (!searchVehicle(currentAssignments, vehicleTable)) {
         removeFormTableMessage.innerHTML = `
             <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questa tabella non è registrata.</p>
         `;
@@ -202,7 +215,7 @@ function submitChangeForm() {
     }
     //Take corresponding table
     var vehicleTable
-    if(table = searchTable(currentAssignments, vehicleFrom)) {
+    if (table = searchTable(currentAssignments, vehicleFrom)) {
         vehicleTable = table;
     } else {
         changeVehicleFromMessage.innerHTML = `
@@ -252,6 +265,21 @@ function submitChangeForm() {
                 `;
             });
     });
+}
+
+function openAddFormPrecTable(vt) {
+    vehicleTableInput.value = vt;
+    bootstrap.Modal.getOrCreateInstance(addFormContainer).show();
+}
+
+function openChangeFormPrecTable(v) {
+    changeVehicleFromInput.value = v;
+    bootstrap.Modal.getOrCreateInstance(changeFormContainer).show();
+}
+
+function openRemoveFormPrecTable(vt) {
+    removeVehicleTableInput.value = vt;
+    bootstrap.Modal.getOrCreateInstance(removeFormContainer).show();
 }
 
 function searchVehicle(assignments, term) {
