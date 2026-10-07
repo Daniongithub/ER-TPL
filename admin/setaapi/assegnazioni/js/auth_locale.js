@@ -42,8 +42,8 @@ async function redirectToLogin() {
     const challenge = await generateCodeChallenge(verifier);
     const state = generateCodeVerifier(); // riuso la stessa funzione, mi serve solo una stringa casuale
 
-    sessionStorage.setItem("pkce_verifier", verifier);
-    sessionStorage.setItem("oauth_state", state);
+    localStorage.setItem("pkce_verifier", verifier);
+    localStorage.setItem("oauth_state", state);
 
     const params = new URLSearchParams({
         client_id: OIDC_CLIENT_ID,
@@ -59,11 +59,11 @@ async function redirectToLogin() {
 }
 
 async function logoutUser() {
-    const idToken = sessionStorage.getItem("id_token");
+    const idToken = localStorage.getItem("id_token");
 
-    sessionStorage.removeItem("access_token");
-    sessionStorage.removeItem("id_token");
-    sessionStorage.removeItem("token_expiry");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("token_expiry");
 
     const discovery = await getDiscovery();
 
@@ -94,8 +94,8 @@ async function handleCallback() {
         return;
     }
 
-    const savedState = sessionStorage.getItem("oauth_state");
-    const verifier = sessionStorage.getItem("pkce_verifier");
+    const savedState = localStorage.getItem("oauth_state");
+    const verifier = localStorage.getItem("pkce_verifier");
 
     if (!savedState || !verifier || returnedState !== savedState) {
         statusEl.textContent = "Sessione di accesso non valida. Riprova il login.";
@@ -128,9 +128,9 @@ async function handleCallback() {
         }
 
         const tokens = await response.json();
-        sessionStorage.setItem("access_token", tokens.access_token);
-        sessionStorage.setItem("id_token", tokens.id_token);
-        sessionStorage.setItem("token_expiry", Date.now() + tokens.expires_in * 1000);
+        localStorage.setItem("access_token", tokens.access_token);
+        localStorage.setItem("id_token", tokens.id_token);
+        localStorage.setItem("token_expiry", Date.now() + tokens.expires_in * 1000);
         cleanupPkceStorage();
         window.location.href = "index.html";
     } catch (err) {
@@ -140,6 +140,6 @@ async function handleCallback() {
 }
 
 function cleanupPkceStorage() {
-    sessionStorage.removeItem("pkce_verifier");
-    sessionStorage.removeItem("oauth_state");
+    localStorage.removeItem("pkce_verifier");
+    localStorage.removeItem("oauth_state");
 }

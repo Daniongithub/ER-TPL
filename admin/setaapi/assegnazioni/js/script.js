@@ -1,7 +1,6 @@
 function getValidToken() {
-    const token = sessionStorage.getItem("access_token");
-    const expiry = sessionStorage.getItem("token_expiry");
-    console.log(new Date, expiry)
+    const token = localStorage.getItem("access_token");
+    const expiry = localStorage.getItem("token_expiry");
 
     if (!token || !expiry || Date.now() > Number(expiry)) {
         return null; // assente o scaduto
@@ -417,6 +416,10 @@ function renderArrElement(tbody, element, idx) {
 }
 
 function renderCorsie(location) {
+    searchBarContainer.classList.add("d-none");
+    navButtonsContainer.classList.remove("d-none");
+    const fermOppButton = document.querySelector('button.fermopp');
+    if (fermOppButton) navButtonsContainer.removeChild(fermOppButton);
     tableContainer.innerHTML = `
         <div id="results-container" class="text-center"></div>
     `;

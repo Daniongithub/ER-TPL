@@ -119,12 +119,12 @@ nav#corsie-nav ul li {
     cursor: pointer;
     justify-content: center;
     margin-bottom: 12px;
-    transition: background-color 0.1s ease;
+    transition: border-color 0.1s ease;
 }
 
 .assign:hover,
 .assign:active {
-    background-color: rgb(204, 132, 0);
+    border-color: rgb(204, 132, 0);
 }
 
 #search-bar,

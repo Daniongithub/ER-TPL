@@ -113,8 +113,8 @@ function submitAddForm() {
         })
             .then(response => {
                 if (response.status === 401) {
-                    sessionStorage.removeItem("access_token");
-                    sessionStorage.removeItem("token_expiry");
+                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token_expiry");
                     redirectToLogin();
                     throw new Error("Sessione scaduta, reindirizzamento al login...");
                 }
@@ -171,8 +171,8 @@ function submitRemoveForm() {
         })
             .then(response => {
                 if (response.status === 401) {
-                    sessionStorage.removeItem("access_token");
-                    sessionStorage.removeItem("token_expiry");
+                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token_expiry");
                     redirectToLogin();
                     throw new Error("Sessione scaduta, reindirizzamento al login...");
                 }
@@ -240,8 +240,8 @@ function submitChangeForm() {
         })
             .then(response => {
                 if (response.status === 401) {
-                    sessionStorage.removeItem("access_token");
-                    sessionStorage.removeItem("token_expiry");
+                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token_expiry");
                     redirectToLogin();
                     throw new Error("Sessione scaduta, reindirizzamento al login...");
                 }
