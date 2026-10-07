@@ -72,6 +72,7 @@ function initList() {
         })
         .then(data => {
             renderListTable(data);
+            currentAssignments = data;
         })
         .catch(err => {
             console.error('Errore nel caricamento dati:', err);
