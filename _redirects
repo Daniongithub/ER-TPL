@@ -4,8 +4,3 @@
 /extra_bus/eventi/eventi.html /service/comingsoon.html
 /extra_bus/eventi/ibede2025.html /service/comingsoon.html
 /extra_bus/italia/ligura/atclaspezia.html /service/comingsoon.html
-
-/seta_modena/servizi/deviazioni/* /service/serviceupdate.html
-
-/map /start_menu/servizi/mappa/index.html
-/assign /admin/setaapi/assegnazioni/index.html
