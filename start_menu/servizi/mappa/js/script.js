@@ -809,59 +809,77 @@ function spawnShape(basin, shapeid, popup) {
 }
 
 async function loadLines(stopCode, basin, popup) {
-    //Gets popup 
     const popupElement = popup.getElement();
     const linesContainer = popupElement.querySelector('.lines-container');
     const url = CONFIG.BASE_URL + CONFIG.STOP_INFO_ENDPOINT.replace('{basin}', basin).replace('{stopCode}', stopCode);
-    const extra = /^1\d{2}$/;
+    const noLinesMessage = 'Nessuna linea passa per questa fermata.';
+
+    // Svuota il contenitore per evitare duplicati
+    linesContainer.innerHTML = '';
+    linesContainer.style.display = '';
 
     try {
         const data = await fetchJson(url);
-        const normalDiv = document.createElement('div');
-        normalDiv.className = 'passing-lines-group';
+        const groups = [
+            {
+                key: 'urban',
+                title: basin === 'RA' ? 'Linee urbane e suburbane:' : 'Linee urbane:'
+            },
+            {
+                key: 'suburban',
+                title: 'Linee suburbane:'
+            },
+            {
+                key: 'exurban',
+                title: 'Linee extraurbane:'
+            },
+            {
+                key: 'school',
+                title: 'Linee scolastiche:'
+            },
+            {
+                key: 'shuttle',
+                title: 'Linee navetto:'
+            }
+        ];
 
-        const normalTitle = document.createElement('h3');
-        normalTitle.textContent = 'Linee urbane e suburbane:';
-        normalDiv.appendChild(normalTitle);
+        let hasLines = false;
 
-        const extraLines = data.lines.filter(line =>
-            extra.test(String(line.line))
-        );
+        groups.forEach(group => {
+            const lines = data[group.key];
 
-        data.lines.forEach(line => {
-            if (extra.test(String(line.line))) return;
+            // Non mostrare le categorie assenti o vuote
+            if (!Array.isArray(lines) || lines.length === 0) {
+                return;
+            }
 
-            const div = document.createElement('div');
-            div.className = 'passing-line-box';
-            div.textContent = line.line;
+            hasLines = true;
 
-            normalDiv.appendChild(div);
-        });
+            const groupDiv = document.createElement('div');
+            groupDiv.className = 'passing-lines-group';
 
-        linesContainer.style.display = '';
-        linesContainer.appendChild(normalDiv);
+            const title = document.createElement('h3');
+            title.textContent = group.title;
+            groupDiv.appendChild(title);
 
-        if (extraLines.length > 0) {
-            const extraDiv = document.createElement('div');
-            extraDiv.className = 'passing-lines-group';
+            lines.forEach(line => {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'passing-line-box';
+                lineDiv.textContent = line.line;
 
-            const extraTitle = document.createElement('h3');
-            extraTitle.textContent = 'Linee extraurbane:';
-            extraDiv.appendChild(extraTitle);
-
-            extraLines.forEach(line => {
-                const div = document.createElement('div');
-                div.className = 'passing-line-box';
-                div.textContent = line.line;
-
-                extraDiv.appendChild(div);
+                groupDiv.appendChild(lineDiv);
             });
 
-            linesContainer.appendChild(extraDiv);
+            linesContainer.appendChild(groupDiv);
+        });
+
+        if (!hasLines) {
+            linesContainer.textContent = noLinesMessage;
         }
     } catch (err) {
         console.error('Errore nel caricamento linee passanti:', err);
-        showStatus('Errore nel caricamento linee passanti: ' + err);
+        linesContainer.innerHTML = '';
+        linesContainer.textContent = noLinesMessage;
     }
 }
 
