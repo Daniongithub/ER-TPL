@@ -69,7 +69,7 @@ function renderTH(table, journeys) {
                 th.innerHTML += `(${element.route_code.split("-")[2]})`;
             }
         } else {
-            th.innerHTML = `${linea} <br> (${element.route_code.split("-")[2]})`;
+            th.innerHTML = `${linea}<br>(${element.route_code.split("-")[2]})`;
         }
         th.className = 'cursor-pointer';
         th.setAttribute("onclick", `window.location.href="/seta_modena/servizi/percorsi/percorso.html?routecode=${element.route_code}&routenum=${linea}"`);
@@ -121,6 +121,9 @@ function fillSelect(journeys) {
         if (journey.display_line != null && journey.display_destination != null) {
             allRoutes[idx] = journey.display_line + " - " + journey.display_destination;
             filterContainer.style.display = '';
+        } else {
+            allRoutes[idx] = linea + " - " + journey.route_code.split("-")[2];
+            filterContainer.style.display = '';
         }
     })
     var uniqueRoutes = allRoutes.filter(onlyUnique);
@@ -165,7 +168,8 @@ filterSelect.addEventListener('change', function (event) {
     var invalidCols = []
     var i = 0
     ths.forEach((th, idx) => {
-        if (th.innerHTML.split("<br>")[0] + " - " + th.innerHTML.split("<br>")[1] != option && idx != 0) {
+        var cleanedContent = th.innerHTML.replace(/[\])}[{(]/g, ''); 
+        if (cleanedContent.split("<br>")[0] + " - " + cleanedContent.split("<br>")[1] != option && idx != 0) {
             invalidCols[i] = idx
             i++;
         }
