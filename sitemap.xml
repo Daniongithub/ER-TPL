@@ -11,11 +11,6 @@
 		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/404.html</loc>
-		<priority>0.80</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
 		<loc>https://ertpl.pages.dev/tper_menu/tperurb.html</loc>
 		<priority>0.60</priority>
 		<lastmod>2026-06-01</lastmod>
@@ -47,11 +42,6 @@
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/tper_menu/articoli.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/tper_bus/template.html</loc>
 		<priority>0.60</priority>
 		<lastmod>2026-06-01</lastmod>
 	</url>
@@ -111,16 +101,6 @@
 		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/start_bus/template.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/start_bus/listamezzi.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-22</lastmod>
-	</url>
-	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/menu</loc>
 		<priority>0.60</priority>
 		<lastmod>2026-09-30</lastmod>
@@ -129,71 +109,6 @@
 		<loc>https://ertpl.pages.dev/seta_modena/documentistorici</loc>
 		<priority>0.60</priority>
 		<lastmod>2026-08-18</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/update.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/smf.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/serviceupdate.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-08-12</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/servicenotavailable.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/pastebin-errori.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-08-15</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/pagenotavailable.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/newui.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/maintenance.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/isp.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/comingsoon.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/busnotlisted.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-08-26</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/backend.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-08-12</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/service/avmseta.html</loc>
-		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/ravenna_privatibus/zaganelli.html</loc>
@@ -731,11 +646,6 @@
 		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/ravenna_menu/articoli/template.html</loc>
-		<priority>0.40</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
 		<loc>https://ertpl.pages.dev/ravenna_menu/articoli/portediravenna.html</loc>
 		<priority>0.40</priority>
 		<lastmod>2026-09-08</lastmod>
@@ -804,31 +714,6 @@
 		<loc>https://ertpl.pages.dev/extra_bus/austria/austria.html</loc>
 		<priority>0.40</priority>
 		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/tper_menu/servizi/notizie/notizia.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-08-10</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/notizie/notizia.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-09-22</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/livebus/infoveicolo.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-09-29</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/fermate/fermata.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-09-29</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/start_menu/servizi/fermate/aiuto.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-09-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/servizi/percorsi/prossimefermate.html</loc>
