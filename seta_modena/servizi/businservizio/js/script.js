@@ -231,7 +231,7 @@ function renderAssignTH(table) {
     const thead = document.createElement('thead');
     thead.innerHTML = `
             <tr>
-                <th>Linea (probabile)</th>
+                <th>Linea</th>
                 <th>Veicolo</th>
                 <th>Numero tabella</th>
             </tr>
@@ -242,12 +242,19 @@ function renderAssignTH(table) {
 function renderAssignElement(tbody, element, idx) {
     const tr = document.createElement('tr');
     if (element.vehicle_table.substring(1, element.vehicle_table.length - 1).length > 2) {
-        probableLine = "-";
+        line = "-";
     } else {
-        probableLine = element.vehicle_table.substring(1, element.vehicle_table.length - 1);
+        line = element.vehicle_table.substring(1, element.vehicle_table.length - 1);
+    }
+    if (line >= 20 && line < 40) {
+        //Sabato
+        line -= 20;
+    } else if (line >= 40 && line < 60) {
+        //Domenica
+        line -= 40;
     }
     tr.innerHTML = `
-        <td>${probableLine}</td>
+        <td>${line}</td>
         <td>${element.vehicle}</td>
         <td>${element.vehicle_table}</td>
     `;

@@ -3,7 +3,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-11</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/chisiamo.html</loc>
@@ -153,11 +153,6 @@
 	<url>
 		<loc>https://ertpl.pages.dev/extra_menu/altri.html</loc>
 		<priority>0.60</priority>
-		<lastmod>2026-06-01</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/tper_menu/articoli/template.html</loc>
-		<priority>0.40</priority>
 		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>

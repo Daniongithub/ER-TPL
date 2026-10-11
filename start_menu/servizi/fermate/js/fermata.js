@@ -130,10 +130,14 @@ function loadArrivals() {
                         tr.innerHTML += `
                             <td>${element.vehicle}</td>
                         `;
-                    } else if (element.vehicle != null) {
+                    } else if (element.is_GPS) {
                         vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&basin=${element.basin}&vehicle=${element.vehicle}`
                         tr.innerHTML += `
                             <td><a href="${vehicleOsm}">${element.vehicle}</a></td>
+                        `;
+                    } else if (element.vehicle != null) {
+                        tr.innerHTML += `
+                            <td>${element.vehicle}</td>
                         `;
                     } else {
                         tr.innerHTML += `
