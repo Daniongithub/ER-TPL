@@ -268,8 +268,16 @@ function renderArrivals(code, name) {
     getApiUrl().then(url => {
         fetch(url + "/arrivals/" + code)
             .then(response => {
-                if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-                return response.json();
+                if (!response.ok) {
+                    if (response.status != 400) {
+                        throw new Error("Errore nel caricamento dei dati. HTTP: " + response.status);
+                    } else {
+                        tableContainer.innerHTML = "Nessuna corsa programmata nei prossimi 90 minuti."
+                        throw new Error("NO ARRIVALS")
+                    }
+                } else {
+                    return response.json();
+                }
             })
             .then(data => {
                 renderArrTable(data, name, code)
