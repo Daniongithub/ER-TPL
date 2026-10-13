@@ -85,6 +85,7 @@ function initSearchVehicleTable() {
     searchBarContainer.classList.remove("d-none");
     searchBar.placeholder = "Caricamento in corso...";
     tableContainer.innerHTML = `
+        <div id="results-container" class="text-center"></div>
         <div id="quick-container" class="text-center my-2">
             <hr>
             <h3 class="fw-bold mb-3">Fermate rapide:</h3>
