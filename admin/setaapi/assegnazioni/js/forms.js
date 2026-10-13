@@ -261,8 +261,8 @@ function submitChangeForm() {
             .catch(err => {
                 console.error('Errore nel caricamento dati:', err);
                 changeErrorMessage.innerHTML = `
-                    <p class="my-2 text-danger"><i class="bi bi-exclamation-triangle-fill m-2"></i>${err}</p>
-                `;
+                <p class="my-2 text-danger"><i class="bi bi-exclamation-triangle-fill m-2"></i>${err}</p>
+            `;
             });
     });
 }

@@ -85,13 +85,12 @@ function initSearchVehicleTable() {
     searchBarContainer.classList.remove("d-none");
     searchBar.placeholder = "Caricamento in corso...";
     tableContainer.innerHTML = `
-        <div id="results-container" class="text-center"></div>
-        <div id="quick-container" class="text-center">
+        <div id="quick-container" class="text-center my-2">
             <hr>
-            <h3 class="my-2">Fermate rapide:</h3>
-            <a onclick="renderCorsie('MODENA AUTOSTAZIONE')" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
-            <a onclick="renderCorsie('STAZIONE FS')" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
-            <a onclick="renderCorsie('GARIBALDI')" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
+            <h3 class="fw-bold mb-3">Fermate rapide:</h3>
+            <a onclick="renderCorsie('MODENA AUTOSTAZIONE')" class="bianco"><div class="search-result"><h4>Autostazione</h4></div></a>
+            <a onclick="renderCorsie('STAZIONE FS')" class="bianco"><div class="search-result"><h4>Stazione FS</h4></div></a>
+            <a onclick="renderCorsie('GARIBALDI')" class="bianco"><div class="search-result"><h4>Largo Garibaldi</h4></div></a>
         </div>
     `;
     const quickContainer = document.getElementById('quick-container');
@@ -156,7 +155,7 @@ function initSearchVehicleTable() {
             div.className = 'search-result';
             div.innerHTML = `
                 <div>
-                    <h3>${item.name}</h3>
+                    <h4>${item.name}</h4>
                     <p>Codice fermata: ${item.code}</p>
                 </div>
             `;
@@ -258,13 +257,14 @@ function renderListElement(tbody, element, idx) {
     tbody.appendChild(tr);
 }
 
-// --------------------------
-// - search-vtable arrivals -
-// --------------------------
+// -------------------------
+// - search-table arrivals -
+// -------------------------
 
 function renderArrivals(code, name) {
     tableContainer.classList.add("text-center");
     tableContainer.innerHTML = 'Caricamento in corso...';
+    tableContainer.classList.remove("border", "border-secondary");
     getApiUrl().then(url => {
         fetch(url + "/arrivals/" + code)
             .then(response => {
@@ -273,6 +273,10 @@ function renderArrivals(code, name) {
                         throw new Error("Errore nel caricamento dei dati. HTTP: " + response.status);
                     } else {
                         tableContainer.innerHTML = "Nessuna corsa programmata nei prossimi 90 minuti."
+                        searchBarContainer.classList.add("d-none");
+                        navButtonsContainer.classList.remove("d-none");
+                        const fermOppButton = document.querySelector('button.fermopp');
+                        if (fermOppButton) navButtonsContainer.removeChild(fermOppButton);
                         throw new Error("NO ARRIVALS")
                     }
                 } else {
@@ -371,9 +375,10 @@ function renderArrTH(table) {
             <tr>
                 <th>Linea</th>
                 <th>Destinazione</th>
-                <th>Tabella oraria</th>
+                <th>Tabella</th>
                 <th>Orario</th>
                 <th>Mezzo</th>
+                <th class="mobile-hidden">Prossima fermata</th>
                 <th></th>
             </tr>
         `;
@@ -391,6 +396,7 @@ function renderArrElement(tbody, element, idx) {
     } else {
         element.delay = "";
     }
+
     var addBtn
     if (element.vehicle == "") {
         addBtn = `
@@ -409,17 +415,45 @@ function renderArrElement(tbody, element, idx) {
             </td>
         `;
     }
+
+    if (!element.next_stop) {
+        element.next_stop = "";
+    }
     tr.innerHTML = `
         <td>${element.line}</td>
         <td>${element.destination}</td>
         <td>${element.vehicle_table}</td>
         <td>${element.arrival_time}${element.delay}</td>
-        <td>${element.vehicle}</td>
+    `;
+    if (element.has_AEP) {
+        if (element.state == "realtime") {
+            tr.innerHTML += `
+                <td class="bus-card-green cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${element.vehicle}'">${element.vehicle}</td>
+                
+            `;
+        } else {
+            tr.innerHTML += `
+                <td class="bus-card-green">${element.vehicle}</td>
+            `;
+        }
+    } else {
+        if (element.state == "realtime") {
+            tr.innerHTML += `
+                <td class="cursor-pointer" onclick="window.location.href='https://wimb.setaweb.it/qm/index.html?id=${element.vehicle}'">${element.vehicle}</td>
+                
+            `;
+        } else {
+            tr.innerHTML += `
+                <td>${element.vehicle}</td>
+            `;
+        }
+    }
+
+    tr.innerHTML += `
+        <td class="mobile-hidden">${element.next_stop}</td>
         ${addBtn}
     `;
-    if (idx % 2 != 0) {
-        tr.className = "even";
-    }
+
     tbody.appendChild(tr);
 }
 
@@ -436,97 +470,97 @@ function renderCorsie(location) {
     if (location == "STAZIONE FS") {
         resultsContainer.innerHTML = `
             <a onclick="renderArrivals('MO6132', '${findStopName(allresults, "MO6132")}');" class="bianco">
-                <div class="search-result desc"><h3>Corsia 1</h3><p>Linee: 7</p></div>
+                <div class="search-result desc"><h4>Corsia 1</h4><p>Linee: 7</p></div>
             </a>
             <a onclick="renderArrivals('MO6133', '${findStopName(allresults, "MO6133")}');" class="bianco">
-                <div class="search-result desc"><h3>Corsia 2</h3><p>Linee: 1, 4, 9, 13</p></div>
+                <div class="search-result desc"><h4>Corsia 2</h4><p>Linee: 1, 4, 9, 13</p></div>
             </a>
             <a onclick="renderArrivals('MO6134', '${findStopName(allresults, "MO6134")}');" class="bianco">
-                <div class="search-result desc"><h3>Corsia 3</h3><p>Linee: 1, 3, 4, 9</p></div>
+                <div class="search-result desc"><h4>Corsia 3</h4><p>Linee: 1, 3, 4, 9</p></div>
             </a>
             <a onclick="renderArrivals('MO6119', '${findStopName(allresults, "MO6119")}');" class="bianco">
-                <div class="search-result desc"><h3>Corsia 4</h3><p>Linee: 3, 11, 13</p></div>
+                <div class="search-result desc"><h4>Corsia 4</h4><p>Linee: 3, 11, 13</p></div>
             </a>
         `;
     }
     if (location == "MODENA AUTOSTAZIONE") {
         resultsContainer.innerHTML = `
             <a onclick="renderArrivals('MO6121', '${findStopName(allresults, "MO6121")}');" class="bianco">
-                <div class="search-result desc"><h3>Direzione Centro</h3><p>Linee: 1, 2, 4, 5, 6, 7, 13</p></div>
+                <div class="search-result desc"><h4>Direzione Centro</h4><p>Linee: 1, 2, 4, 5, 6, 7, 13</p></div>
             </a>
             <a onclick="renderArrivals('MO5003', '${findStopName(allresults, "MO5003")}');" class="bianco">
-                <div class="search-result desc"><h3>Lato Novi Park</h3><p>Linee: 1, 2, 4, 5, 7, 13</p></div>
+                <div class="search-result desc"><h4>Lato Novi Park</h4><p>Linee: 1, 2, 4, 5, 7, 13</p></div>
             </a>
             <div></div>
             <a onclick="renderArrivals('MO6600', '${findStopName(allresults, "MO6600")}');" class="bianco">
-                <div class="search-result desc"><h3>Davanti Biglietteria</h3><p>Linee: 6</p></div>
+                <div class="search-result desc"><h4>Davanti Biglietteria</h4><p>Linee: 6</p></div>
             </a>
             <a onclick="renderArrivals('MO10', '${findStopName(allresults, "MO10")}');" class="bianco">
-                <div class="search-result desc"><h3>Fianco Biglietteria</h3><p>Linee: 9, 10</p></div>
+                <div class="search-result desc"><h4>Fianco Biglietteria</h4><p>Linee: 9, 10</p></div>
             </a>
             <a onclick="renderArrivals('MO6120', '${findStopName(allresults, "MO6120")}');" class="bianco">
-                <div class="search-result desc"><h3>Fianco Biglietteria lato Novi Park</h3><p>Linee: 9, 10</p></div>
+                <div class="search-result desc"><h4>Fianco Biglietteria lato Novi Park</h4><p>Linee: 9, 10</p></div>
             </a>
             <hr class="solid">
             <a onclick="renderArrivals('MO3', '${findStopName(allresults, "MO3")}');" class="bianco">
-                <div class="search-result"><h3>Corriere corsia 1</h3></div>
+                <div class="search-result"><h4>Corriere corsia 1</h4></div>
             </a>
             <a onclick="renderArrivals('MO303', '${findStopName(allresults, "MO303")}');" class="bianco">
-                <div class="search-result"><h3>Corriere corsia 2</h3></div>
+                <div class="search-result"><h4>Corriere corsia 2</h4></div>
             </a>
             <a onclick="renderArrivals('MO342', '${findStopName(allresults, "MO342")}');" class="bianco">
-                <div class="search-result"><h3>Corriere corsia 3</h3></div>
+                <div class="search-result"><h4>Corriere corsia 3</h4></div>
             </a>
             <a onclick="renderArrivals('MO344', '${findStopName(allresults, "MO344")}');" class="bianco">
-                <div class="search-result"><h3>Corriere corsia 4</h3></div>
+                <div class="search-result"><h4>Corriere corsia 4</h4></div>
             </a>
             <a onclick="renderArrivals('MO350', '${findStopName(allresults, "MO350")}');" class="bianco">
-                <div class="search-result"><h3>Corriere corsia 5</h3></div>
+                <div class="search-result"><h4>Corriere corsia 5</h4></div>
             </a>
             <a onclick="renderArrivals('MO346', '${findStopName(allresults, "MO346")}');" class="bianco">
-                <div class="search-result"><h3>Corriere corsia 6</h3></div>
+                <div class="search-result"><h4>Corriere corsia 6</h4></div>
             </a>
         `;
     }
     if (location == "GARIBALDI") {
         resultsContainer.innerHTML = `
             <a onclick="renderArrivals('MO5900', '${findStopName(allresults, "MO5900")}');" class="bianco">
-                <div class="search-result desc"><h3>Direzione Centro</h3><p>Linee: 4, 7, 8</p></div>
+                <div class="search-result desc"><h4>Direzione Centro</h4><p>Linee: 4, 7, 8</p></div>
             </a>
             <a onclick="renderArrivals('MO30', '${findStopName(allresults, "MO30")}');" class="bianco">
-                <div class="search-result desc"><h3>Direzione Trento Trieste</h3><p>Linee: 4, 7, 8</p></div>
+                <div class="search-result desc"><h4>Direzione Trento Trieste</h4><p>Linee: 4, 7, 8</p></div>
             </a>
             <a onclick="renderArrivals('MO9', '${findStopName(allresults, "MO9")}');" class="bianco">
-                <div class="search-result desc"><h3>Lato Caduti in Guerra</h3><p>Linee: 3, 12</p></div>
+                <div class="search-result desc"><h4>Lato Caduti in Guerra</h4><p>Linee: 3, 12</p></div>
             </a>
             <a onclick="renderArrivals('MO5111', '${findStopName(allresults, "MO5111")}');" class="bianco">
-                <div class="search-result desc"><h3>Storchi direzione Trento Trieste</h3><p>Linee: 2, 3, 12</p></div>
+                <div class="search-result desc"><h4>Storchi direzione Trento Trieste</h4><p>Linee: 2, 3, 12</p></div>
             </a>
             <a onclick="renderArrivals('MO5112', '${findStopName(allresults, "MO5112")}');" class="bianco">
-                <div class="search-result desc"><h3>Storchi direzione Centro</h3><p>Linee: 2</p></div>
+                <div class="search-result desc"><h4>Storchi direzione Centro</h4><p>Linee: 2</p></div>
             </a>
         `;
     }
     if (location == "POLO LEONARDO") {
         resultsContainer.innerHTML = `
             <a onclick="renderArrivals('MO6783', '${findStopName(allresults, "MO6783")}');" class="bianco">
-                <div class="search-result"><h3>POLO LEONARDO (Strada)</h3><p>Linee: 1A, 4, 10, 12</p></div>
+                <div class="search-result"><h4>POLO LEONARDO (Strada)</h4><p>Linee: 1A, 4, 10, 12</p></div>
             </a>
             <a onclick="renderArrivals('MO2928', '${findStopName(allresults, "MO2928")}');" class="bianco">
-                <div class="search-result"><h3>POLO LEONARDO 1</h3><p>Linee: 1A, 4, 10, 12</p></div>
+                <div class="search-result"><h4>POLO LEONARDO 1</h4><p>Linee: 1A, 4, 10, 12</p></div>
             </a>
             <hr class="solid">
             <a onclick="renderArrivals('MO218', '${findStopName(allresults, "MO218")}');" class="bianco">
-                <div class="search-result"><h3>Corsia 1</h3><p>Linee: 12, 391</p></div>
+                <div class="search-result"><h4>Corsia 1</h4><p>Linee: 12, 391</p></div>
             </a>
             <a onclick="renderArrivals('MO228', '${findStopName(allresults, "MO228")}');" class="bianco">
-                <div class="search-result"><h3>Corsia 2</h3><p>Linee: 731, 740</p></div>
+                <div class="search-result"><h4>Corsia 2</h4><p>Linee: 731, 740</p></div>
             </a>
             <a onclick="renderArrivals('MO224', '${findStopName(allresults, "MO224")}');" class="bianco">
-                <div class="search-result"><h3>Corsia 3</h3><p>Linee: 815, 820</p></div>
+                <div class="search-result"><h4>Corsia 3</h4><p>Linee: 815, 820</p></div>
             </a>
             <a onclick="renderArrivals('MO217', '${findStopName(allresults, "MO217")}');" class="bianco">
-                <div class="search-result"><h3>Corsie 5, 6, 7</h3><p>Linee: 392, 393</p></div>
+                <div class="search-result"><h4>Corsie 5, 6, 7</h4><p>Linee: 392, 393</p></div>
             </a>
         `;
     }

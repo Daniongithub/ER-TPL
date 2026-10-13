@@ -11,8 +11,16 @@
     transition: border-color 0.1s;
 }
 
-.search-result h3 {
-    margin-top: 16px;
+.search-result h4 {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.search-result.desc h4 {
+    margin-top: 18px;
     margin-bottom: 12px;
     font-size: 20px;
     font-weight: bold;
@@ -34,18 +42,50 @@ a.bianco {
     text-decoration: none;
 }
 
+.bus-card-green {
+    background-color: rgb(14, 55, 14) !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .search-result {
+        display: block;
+        width: unset;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #results-container a {
+        text-decoration: none;
+    }
+
+    #search-bar {
+        width: 100% !important;
+    }
+}
+
 @media (max-width: 512px) {
     #operation-buttons-container {
         flex-direction: column;
     }
+
     .search-result {
         display: block;
-        width: 96.5%;
+        width: unset;
     }
+
     #results-container a {
         text-decoration: none;
     }
+
     #search-bar {
         width: 100% !important;
+    }
+    
+    .mobile-hidden {
+        display: none;
     }
 }

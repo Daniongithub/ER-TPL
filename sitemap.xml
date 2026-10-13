@@ -3,7 +3,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2026-10-11</lastmod>
+		<lastmod>2026-10-13</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/chisiamo.html</loc>
@@ -573,7 +573,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/servizi/cercaorario</loc>
 		<priority>0.40</priority>
-		<lastmod>2026-10-07</lastmod>
+		<lastmod>2026-10-13</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/servizi/businservizio</loc>
@@ -588,7 +588,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/menu/suburbano.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2026-09-19</lastmod>
+		<lastmod>2026-10-13</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/menu/notizia.html</loc>
@@ -709,6 +709,11 @@
 		<loc>https://ertpl.pages.dev/extra_bus/austria/austria.html</loc>
 		<priority>0.40</priority>
 		<lastmod>2026-06-01</lastmod>
+	</url>
+	<url>
+		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/man18geh.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-10-13</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/servizi/percorsi/prossimefermate.html</loc>
@@ -864,11 +869,6 @@
 		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/setra2p.html</loc>
 		<priority>0.20</priority>
 		<lastmod>2026-06-02</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/newman.html</loc>
-		<priority>0.20</priority>
-		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/manl.html</loc>
@@ -1079,5 +1079,10 @@
 		<loc>https://ertpl.pages.dev/extra_bus/italia/liguria/atclaspezia.html</loc>
 		<priority>0.20</priority>
 		<lastmod>2026-06-01</lastmod>
+	</url>
+	<url>
+		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/man19g.html</loc>
+		<priority>0.20</priority>
+		<lastmod>2026-10-13</lastmod>
 	</url>
 </urlset>

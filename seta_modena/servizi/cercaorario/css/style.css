@@ -191,7 +191,7 @@ img {
 @media (max-width: 768px) {
     .search-result {
         display: block;
-        width: 96.5%;
+        width: unset;
     }
 
     th,
