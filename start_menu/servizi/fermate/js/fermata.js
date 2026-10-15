@@ -1,7 +1,5 @@
 // API source code: https://github.com/Daniongithub/startfermate-api
-
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
-
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
@@ -17,6 +15,12 @@ let nome = "";
 const tableContainer = document.getElementById('tabella-container');
 const stopSpan = document.getElementById('fermata-span');
 const corsieNav = document.getElementById('corsie-nav');
+
+//SSE
+const backend = new EventSource("https://startapi.serverissimo.com/events");
+backend.addEventListener('vehicle_positions', function (event) {
+    loadArrivals();
+});
 
 //Fermata opposta button
 getApiUrl().then(url => {
@@ -174,7 +178,3 @@ function altraParteSearch(searchTerm) {
 }
 
 loadArrivals();
-
-timer = setInterval(() => {
-    loadArrivals();
-}, 30000);

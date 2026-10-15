@@ -7,8 +7,15 @@ nav#corsie-nav ul {
 }
 
 nav#corsie-nav ul li a {
+    background-color: darkcyan;
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
 }
 
 nav#corsie-nav ul li {

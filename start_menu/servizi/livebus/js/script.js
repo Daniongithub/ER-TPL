@@ -6,12 +6,16 @@ async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
-    return cfg.url + "/busesinservice";
-    //return "https://startapi.serverissimo.com/busesinservice";
+    return cfg.url;
 }
 
+//SSE
+const backend = new EventSource("https://startapi.serverissimo.com/events");
+backend.addEventListener('vehicle_positions', function (event) {
+    fetchData();
+});
+
 // Funzione per riempire il select dei modelli
-// I modelli disponibili dipendono SOLO da Bacino e Linea
 function fillModels() {
     const modelSelect = document.getElementById('filter-modello');
     const table = document.getElementById('tabella');
@@ -175,10 +179,6 @@ function numeromezzi() {
 // Primo fetch
 fetchData();
 
-timer = setInterval(() => {
-    fetchData();
-}, 30000);
-
 // Fetch dei dati e creazione della tabella
 function fetchData() {
     const container = document.getElementById('data-container');
@@ -186,7 +186,7 @@ function fetchData() {
         container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>';
     }
     getApiUrl().then(url => {
-        fetch(url)
+        fetch(url + "/busesinservice")
             .then(response => response.json())
             .then(data => {
                 manualLoad = false;
@@ -290,6 +290,7 @@ function fetchData() {
         container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
     });
 }
+
 function updateClock() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -297,6 +298,7 @@ function updateClock() {
     const seconds = String(now.getSeconds()).padStart(2, '0');
     document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 }
+
 function clearFilters() {
     // Pulisci tutti i filtri
     document.getElementById("filter-zona").value = "";
@@ -313,3 +315,24 @@ updateClock();
 document.getElementById('filter-zona').addEventListener('change', applyFilter);
 document.getElementById('filter-linea').addEventListener('input', applyFilter);
 document.getElementById('filter-modello').addEventListener('change', applyFilter);
+
+const announcementsContainer = document.getElementById('announcements-container')
+
+function loadAnnouncements() {
+    getApiUrl().then(url => {
+        fetch(url + "/announcements")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Errore nel caricamento annunci.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    announcementsContainer.innerHTML += data[0].message;
+                }
+            })
+    })
+}
+
+loadAnnouncements()
