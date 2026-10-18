@@ -168,6 +168,7 @@ div#map-container iframe {
 }
 
 @media (max-width: 512px) {
+
     th,
     td {
         font-size: 3.5vw;

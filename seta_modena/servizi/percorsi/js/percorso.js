@@ -80,8 +80,8 @@ function caricadati() {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <tr>
-                            <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}" class="bianco">${item.name}</a></td>
-                            <td class="uguale"><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}" class="bianco">${item.code}</a></td>
+                            <td class="uguale cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}'">${item.name}</td>
+                            <td class="uguale cursor-pointer" onclick="window.location.href='/seta_modena/servizi/cercaorario/fermata.html?code=${item.code}'">${item.code}</td>
                         </tr>
                     `;
                     if (idx % 2 != 0) {
@@ -96,7 +96,7 @@ function caricadati() {
                 container.appendChild(table);
             })
             .catch(err => {
-                if (item.error == "Percorso non trovato") {
+                if (item.stops == null) {
                     document.getElementById('tabella-container').textContent = "Percorso non trovato.";
                 } else {
                     console.error('Errore nel caricamento dati:', err);
