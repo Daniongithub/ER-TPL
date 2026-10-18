@@ -106,8 +106,8 @@ function caricadati() {
                     container.innerHTML = "<strong>Nessun bus in è servizio al momento.</strong>";
                 } else {
                     renderTable(item);
-                    renderAssignTable(data.other_detected);
                 }
+                renderAssignTable(data.other_detected);
             })
             .catch(err => {
                 console.error('Errore nel caricamento dati:', err);
@@ -272,9 +272,6 @@ lineaSelect.addEventListener('change', function (event) {
         clearInterval(intervalFiltrati);
         modelloSelect.value = "ph";
     }
-    const selectedOption = event.target.value;
-    //caricaFiltratiLinea(selectedOption);
-    //intervalFiltrati = setInterval(function dummyFunc() { caricaFiltratiLinea(selectedOption); }, 30000);
     clearInterval(refreshGeneraleID);
     applyFilter();
     if (document.getElementById("reimposta-filtro") == undefined) {
@@ -294,9 +291,6 @@ modelloSelect.addEventListener('change', function (event) {
         clearInterval(intervalFiltrati);
         lineaSelect.value = "ph";
     }
-    const selectedOption = event.target.value;
-    //caricaFiltratiModello(selectedOption);
-    //intervalFiltrati = setInterval(function dummyFunc() { caricaFiltratiModello(selectedOption); }, 30000);
     clearInterval(refreshGeneraleID);
     applyFilter();
     if (document.getElementById("reimposta-filtro") == undefined) {
@@ -362,7 +356,7 @@ function applyFilter() {
         }
     });
 
-    // Aggiorna i modelli disponibili usando SOLO Bacino + Linea
+    // Aggiorna i modelli disponibili usando linea
     fillModels();
 
     // Contenitore della tabella
