@@ -68,7 +68,7 @@ function fillModels() {
         if (cells.length <= 4) return;
 
         // Il modello viene raccolto indipendentemente dal filtro modello
-        const model = cells[3].textContent.trim();
+        const model = cells[4].textContent.trim();
 
         if (model && model !== "Sconosciuto") {
             models.add(model);
