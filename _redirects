@@ -4,3 +4,6 @@
 /extra_bus/eventi/eventi.html /service/comingsoon.html
 /extra_bus/eventi/ibede2025.html /service/comingsoon.html
 /extra_bus/italia/ligura/atclaspezia.html /service/comingsoon.html
+
+/start_menu/servizi/livebus/* /service/servicenotavailable.html
+/start_menu/servizi/mappa/* /service/servicenotavailable.html
