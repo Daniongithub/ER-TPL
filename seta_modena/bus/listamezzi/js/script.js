@@ -1,5 +1,3 @@
-const tableContainer = document.getElementById('table-container');
-
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/mezzi";
 
 async function getApiUrl() {
@@ -9,9 +7,7 @@ async function getApiUrl() {
     return cfg.url;
 }
 
-//URL (new remote DB)
-//const url = "/seta_modena/menu/js/setabus.json";
-//const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
+const tableContainer = document.getElementById('table-container');
 
 //Create table
 const table = document.createElement('table');
@@ -26,32 +22,31 @@ thead.innerHTML = `
 table.appendChild(thead);
 
 getApiUrl().then(url => {
-fetch(url + "/seta/mezzi")
-.then(response => {
-    if (!response.ok) {
-        throw new Error("Errore nel caricamento dei dati.");
-        tableContainer.innerHTML="<strong>Errore nella lettura dell'elenco mezzi.</strong>";
-    }
-    return response.json();
-})
-.then(data => {
-    //Remove loading
-    tableContainer.innerHTML='';
+    fetch(url + "/list/SETA")
+        .then(response => {
+            if (!response.ok) {
+                tableContainer.innerHTML = "<strong>Errore nella lettura dell'elenco mezzi.</strong>";
+                throw new Error("Errore nel caricamento dei dati.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            //Remove loading
+            tableContainer.innerHTML = '';
 
-    //Fill the table
-    data.forEach(bus => {
-        const tr = document.createElement('tr');
+            //Fill the table
+            data.forEach(bus => {
+                const tr = document.createElement('tr');
 
-        tr.className = bus.stato;
+                tr.className = bus.status;
+                tr.innerHTML = `
+                    <td class="cursor-pointer" onclick="window.location.href='${bus.page_link}'">${bus.number}</td>
+                    <td>${bus.model}</td>
+                    <td>${bus.sector}</td>
+                `;
 
-        tr.innerHTML = `
-            <td class="cursor-pointer" onclick="window.location.href='${bus.link}'">${bus.matricola}</td>
-            <td>${bus.modello}</td>
-            <td>${bus.settore}</td>
-        `;
-
-        table.appendChild(tr)
-    });
-    tableContainer.appendChild(table);
-})
+                table.appendChild(tr)
+            });
+            tableContainer.appendChild(table);
+        })
 });
