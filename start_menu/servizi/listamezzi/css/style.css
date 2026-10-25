@@ -87,6 +87,11 @@ td:nth-child(4) {
     text-align: center;
 }
 
+th:nth-child(5),
+td:nth-child(5) {
+    text-align: center;
+}
+
 /* Legenda stati */
 
 div.legenda {
@@ -135,6 +140,7 @@ a {
 
     td:last-child,
     th:last-child {
+        display: none;
         padding-right: 5px;
     }
 }

@@ -35,6 +35,9 @@ getApiUrl().then(url => {
             th = document.createElement('th');
             th.innerHTML = 'Bacino';
             rowh.appendChild(th);
+            th = document.createElement('th');
+            th.innerHTML = 'Rilevato il';
+            rowh.appendChild(th);
             thead.appendChild(rowh);
             table.appendChild(thead);
 
@@ -63,6 +66,19 @@ getApiUrl().then(url => {
                 bacino.textContent = row.basin;
                 rowt.appendChild(bacino);
 
+                const rilevato = document.createElement('td');
+                let ISOdate = new Date(row.last_seen);
+                    const rilevamento =
+                        ISOdate.toLocaleDateString("it-IT", {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                        })
+
+                if(row.last_seen) {
+                    rilevato.textContent = rilevamento
+                }
+                rowt.appendChild(rilevato);
+                
                 tbody.appendChild(rowt);
             });
             table.appendChild(tbody);
