@@ -18,6 +18,8 @@ thead.innerHTML = `
     <th>Matricola</th>
     <th>Mezzo</th>
     <th>Tipo</th>
+    <!--<th>Targa</th>-->
+    <th>Ultimo servizio</th>
 `;
 table.appendChild(thead);
 
@@ -35,15 +37,26 @@ getApiUrl().then(url => {
             tableContainer.innerHTML = '';
 
             //Fill the table
-            data.forEach(bus => {
+            data.forEach((bus, idx) => {
                 const tr = document.createElement('tr');
 
+                if (!bus.last_seen_date) {
+                    bus.last_seen_date = "-";
+                }
+                if (!bus.plate_num) {
+                    bus.plate_num = "-";
+                }
                 tr.className = bus.status;
                 tr.innerHTML = `
                     <td class="cursor-pointer" onclick="window.location.href='${bus.page_link}'">${bus.number}</td>
                     <td>${bus.model}</td>
                     <td>${bus.sector}</td>
+                    <!--<td>${bus.plate_num}</td>-->
+                    <td>${bus.last_seen_date}</td>
                 `;
+                if (idx % 2 != 0) {
+                    tr.classList.add("even");
+                }
 
                 table.appendChild(tr)
             });
