@@ -356,14 +356,10 @@ function applyFilter() {
         }
     });
 
-    // Aggiorna i modelli disponibili usando linea
-    fillModels();
-
-    // Contenitore della tabella
     const container = table.parentElement;
 
     // Cerca un eventuale messaggio già presente
-    let noResults = container.querySelector('.no-results');
+    var noResults = container.querySelector('.no-results');
 
     if (i === 0) {
         // Nasconde la tabella, compresa la thead
