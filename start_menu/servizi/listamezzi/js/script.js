@@ -7,70 +7,60 @@ async function getApiUrl() {
     return cfg.url;
 }
 
-const container = document.getElementById('contenitore');
+const tableContainer = document.getElementById('table-container');
+
+//Create table
+const table = document.createElement('table');
+
+//Spawn table head
+const thead = document.createElement('thead');
+thead.innerHTML = `
+    <th>Matricola</th>
+    <th>Targa</th>
+    <th>Mezzo</th>
+    <th>Bacino</th>
+    <th>Ultimo servizio</th>
+`;
+table.appendChild(thead);
 
 getApiUrl().then(url => {
     fetch(url + "/list/START")
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                tableContainer.innerHTML = "<strong>Errore nella lettura dell'elenco mezzi.</strong>";
+                throw new Error("Errore nel caricamento dei dati.");
+            }
+            return response.json();
+        })
         .then(data => {
-            container.innerHTML = '';
+            //Remove loading
+            tableContainer.innerHTML = '';
 
-            // Crea la tabella
-            const table = document.createElement('table');
+            //Fill the table
+            data.forEach((bus, idx) => {
+                const tr = document.createElement('tr');
 
-            // Aggiungi l'intestazione della tabella
-            let th = document.createElement('th');
-            const thead = document.createElement('thead');
-            const tbody = document.createElement('tbody');
-            const rowh = document.createElement('tr');
-
-            th.innerHTML = 'Matricola';
-            rowh.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Targa';
-            rowh.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Mezzo';
-            rowh.appendChild(th);
-            th = document.createElement('th');
-            th.innerHTML = 'Bacino';
-            rowh.appendChild(th);
-            thead.appendChild(rowh);
-            table.appendChild(thead);
-
-            data.forEach((row, idx) => {
-                const rowt = document.createElement('tr');
-                if (row.status) {
-                    rowt.classList.add(row.status);
+                if (!bus.last_seen_datetime) {
+                    bus.last_seen_datetime = "-";
+                }
+                if (!bus.plate_num) {
+                    bus.plate_num = "-";
+                }
+                tr.className = bus.status;
+                tr.innerHTML = `
+                    <td class="cursor-pointer" onclick="window.location.href='${bus.page_link}'">${bus.number}</td>
+                    <td>${bus.plate_num}</td>
+                    <td>${bus.model}</td>
+                    <td>${bus.basin}</td>
+                    <td>${bus.last_seen_datetime}</td>
+                `;
+                if (idx % 2 != 0) {
+                    tr.classList.add("even");
                 }
 
-                const matr = document.createElement('td');
-                const link = document.createElement('a');
-                link.textContent = row.number;
-                link.href = row.link;
-                matr.appendChild(link);
-                rowt.appendChild(matr);
-
-                const targa = document.createElement('td');
-                targa.textContent = row.plate_num;
-                rowt.appendChild(targa);
-
-                const mezzo = document.createElement('td');
-                mezzo.textContent = row.model;
-                rowt.appendChild(mezzo);
-
-                const bacino = document.createElement('td');
-                bacino.textContent = row.basin;
-                rowt.appendChild(bacino);
-
-                tbody.appendChild(rowt);
+                table.appendChild(tr)
             });
-            table.appendChild(tbody);
 
-            container.appendChild(table);
+            tableContainer.appendChild(table);
         })
-        .catch(err => {
-            console.error(err);
-            container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="loadMezzi();">riprova adesso</a> o riprova più tardi.</p>`;
-        });
 });

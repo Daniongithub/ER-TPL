@@ -1,13 +1,12 @@
-/* Lista mezzi */
-
 table {
-    margin-top: 1rem;
+    border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
     overflow: hidden;
     min-width: 85%;
     max-width: 100%;
     text-align: left;
+    margin-top: 0;
 }
 
 thead {
@@ -17,77 +16,71 @@ thead {
 
 th {
     background-color: darkcyan;
-    padding: .7vw;
 }
 
-tbody tr {
-    background-color: rgb(49, 49, 49);
-}
-
+th,
 td {
     padding: .7vw;
-    background-color: inherit; /* prende il colore dal tr */
-}
-
-/*Linee verticali*/
-/*
-th:not(:last-child), td:not(:last-child) {
-    border-right: 1px solid rgb(100, 100, 100);
-}*/
-/*Linee orizzontali*/
-
-tr:not(:last-child)>th,
-tr:not(:last-child)>td {
-    border-bottom: 1px solid rgb(70, 70, 70);
-}
-
-/* Colori sfondo in base allo stato*/
-
-tbody tr.demolito,
-p.demolito {
-    background-color: darkred !important;
-}
-
-tbody tr.sconosciuto,
-p.sconosciuto {
-    background-color: purple !important;
-}
-
-tbody tr.fermo,
-p.fermo {
-    background-color: yellow !important;
-    color: black;
-}
-
-tbody tr.fermo a,
-p.fermo {
-    background-color: yellow !important;
-    color: black;
-}
-
-tbody tr.dismesso,
-p.dismesso {
-    background-color: orangered !important;
-}
-
-/* Larghezza e format testo celle specifiche */
-
-th:nth-child(1),
-td:nth-child(1) {
+    padding-top: .6vw;
+    padding-bottom: .6vw;
     text-align: center;
 }
 
-th:nth-child(2),
 td:nth-child(2) {
-    text-align: center;
+    min-width: 80px;
 }
 
-th:nth-child(4),
-td:nth-child(4) {
-    text-align: center;
+tr.even {
+    background-color: rgb(60, 60, 60);
 }
 
-/* Legenda stati */
+hr {
+    border: 3px solid #3d3d3d;
+    border-radius: 5px;
+    width: 99.55%;
+}
+
+/* Colori righe tabella */
+tr.sconosciuto,
+p.sconosciuto {
+    background-color: purple;
+}
+
+tr.even.sconosciuto {
+    background-color: rgb(150, 0, 150);
+}
+
+tr.fermo,
+p.fermo {
+    background-color: rgb(230, 230, 0);
+    color: black;
+}
+
+tr.even.fermo {
+    background-color: rgb(255, 255, 0);
+}
+
+tr.dismesso,
+p.dismesso {
+    background-color: rgb(215, 58, 0);
+}
+
+tr.even.dismesso {
+    background-color: rgb(255, 68, 0);
+}
+
+tr.demolito,
+p.demolito {
+    background-color: rgb(100, 0, 0);
+}
+
+tr.even.demolito {
+    background-color: rgb(135, 0, 0);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
 
 div.legenda {
     display: flex;
@@ -102,39 +95,28 @@ div.legenda p {
     height: fit-content;
 }
 
-a {
-    text-decoration: none;
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    th,
+    td {
+        font-size: 2.5vw;
+    }
 }
 
-@media (max-width: 768px) {
-
-    th:nth-child(1),
-    td:nth-child(1) {
-        text-align: center;
-        width: 5%;
-    }
-
-    th:nth-child(2),
-    td:nth-child(2) {
-        text-align: center;
-        width: 25%;
-    }
-
+@media (max-width: 512px) {
     table {
-        margin: 0px;
+        margin-top: 10px;
     }
 
+    th,
     td {
-        padding: 1vw;
+        font-size: 3.5vw;
     }
 
-    td:first-child,
     th:first-child {
         padding-left: 5px;
-    }
-
-    td:last-child,
-    th:last-child {
-        padding-right: 5px;
     }
 }
