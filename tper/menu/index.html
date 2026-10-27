@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER-TPL - TPER</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="servizi/notizie/css/style-news.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/tablogo.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+          </ul>
+        </nav>
+    </header>
+    <h1>TPER (Trasporto Passeggeri Emilia-Romagna)</h1>
+    <p>L'azienda è nata il 1° febbraio 2012 dalla fusione della divisione trasporti di ATC, che ai tempi svolgeva l'attività nei bacini di Bologna e Ferrara, con la divisione Trasporti di Ferrovie Emilia Romagna (FER).</p>
+    <p>La società TPER, con sede a Bologna, attualmente gestisce due bacini: Bologna e Ferrara.</p>
+    <div>
+      <input type="text" id="searchBar" placeholder="Cerca una matricola...">
+      <div id="bus-container"></div>
+    </div>
+    <br>
+    <h4>Questa sezione del sito è redatta da Il Dani, foto di A. Fogli, ErikMontagne, @SMF, Vichingo455.</h4>
+    <div id="buttons">
+      <div>
+        <a href="/tper/menu/urbano.html" class="blue button">Urbano</a>
+        <a href="/tper/menu/suburbano.html" class="blue button">Suburbano</a>
+        <a href="/tper/menu/extraurbano.html" class="blue button">Extraurbano</a>
+        <a href="/tper/menu/indexfilo.html" class="blue button">Filobus</a>
+      </div>
+      <div>
+        <a href="/tper/tpb_privati/menu/index.html" class="green button">Privati TPB</a>
+        <a href="/tper/menu/articoli.html" class="green button">Articoli</a>
+      </div>
+      <hr class="solid">
+      <h2>News TPER:</h2>
+      <div id="categories">
+        <div>
+            <label for="principali">Notizie Principali</label>
+            <input type="radio" name="category" id="principali" autocomplete="off" value="principali" checked>
+        </div>
+        <div>
+            <label for="bologna">Bologna</label>
+            <input type="radio" name="category" id="bologna" autocomplete="off" value="bologna">
+        </div>
+        <div>
+            <label for="ferrara">Ferrara</label>
+            <input type="radio" name="category" id="ferrara" autocomplete="off" value="ferrara">
+        </div>
+        <div>
+            <label for="ferrovie">Ferrovie</label>
+            <input type="radio" name="category" id="ferrovie" autocomplete="off" value="ferrovie">
+        </div>
+      </div>
+      <div id="news-container"></div>
+      <h1 class="spazio"></h1>
+    </div>
+    <script src="/scripts/tpersearch.js"></script>
+    <script src="servizi/notizie/js/notizie.js"></script>
+</body>
+</html>

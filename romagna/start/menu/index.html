@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER-TPL - START Romagna</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/tablogo.png" type="image/x-icon">
+</head>
+<body class="ridotto">
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>START Romagna</h1>
+    <div id="cercamatricole">
+        <input type="text" id="searchBar" placeholder="Cerca una matricola...">
+        <div id="bus-container"></div>
+    </div>
+    <br>
+    <div id="buttons">
+        <div>
+            <a href="/romagna/start/menu/urbano.html" class="blue button">Urbano</a>
+            <a href="/romagna/start/menu/suburbano.html" class="blue button">Suburbano</a>
+            <a href="/romagna/start/menu/extraurbano.html" class="blue button">Extraurbano</a>
+        </div>
+        <div>
+            <a href="/romagna/start/bus/traghetto.html" class="blue button">Traghetti</a>
+            <a href="/romagna/ravenna_privati/menu/index.html" class="blue button">(RA) Privati METE S.p.A.</a>
+            <a href="/romagna/ravenna_privati/menu/articoli.html" class="green button">Articoli</a>
+        </div>
+        <div style="height: 8px;"></div>
+        <hr class="solid">
+        <h2>Notizie (feed RSS):</h2>
+        <div id="news-container"></div>
+        <hr class="solid">
+        <h2>Servizi START Romagna</h2>
+        <span id="errori"></span>
+        <div class="bottel">
+            <!--<h3 class="yellow-warning">ATTENZIONE! I servizi realtime sono in manutenzione, il rilevamento non funziona.</h3>-->
+            <a class="green button" id="fermate" href="/start_menu/servizi/fermate/">Visualizzatore fermate</a>
+            <a class="green button" id="live" href="/start_menu/servizi/livebus/">Autobus in tempo reale</a>
+            <a class="green button" id="sopp" href="/start_menu/servizi/start-corsesopp/">Corse non garantite</a>
+            <a class="green button" id="mezzi" href="/start_menu/servizi/listamezzi/index.html">Lista mezzi</a>
+            <a class="green button" href="/romagna/start/bus/zonetariffarie.html">Zone tariffarie</a>
+        </div>
+        <hr class="solid">
+        <h4>Sezione redatta da "Il Dani", foto di A. Fogli/ravennabuses, @Autobus_94ita, Edoggus, ErikMontagne, Luca1066, @matti9477_, Vichingo455.</h4>
+    </div>
+    <script src="/romagna/start/servizi/notizie/js/notizie.js"></script>
+    <script src="js/startsearch.js"></script>
+</body>
+</html>

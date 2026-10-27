@@ -39,6 +39,8 @@ const searchBar = document.getElementById('search-bar');
 const navButtonsContainer = document.getElementById('nav-buttons-container');
 const tableContainer = document.getElementById('table-container');
 
+var currentTab;
+
 function switchView(mode, element) {
     //Deactivates all tabs
     viewButtons.forEach(button => {
@@ -62,8 +64,11 @@ function switchView(mode, element) {
 switchView("list", document.getElementById('list-button'))
 
 function initList() {
+    currentTab = 0;
+    tableContainer.classList.add("border", "border-secondary");
     searchBarContainer.classList.add("d-none");
     tableTitle.textContent = "Assegnazioni:";
+    tableContainer.innerHTML = '';
     getApiUrl().then(url => fetch(url + "/assignments")
         .then(response => {
             if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
@@ -81,6 +86,7 @@ function initList() {
 
 var allresults = [];
 function initSearchVehicleTable() {
+    currentTab = 1;
     tableTitle.textContent = "Cerca tabella oraria:";
     searchBarContainer.classList.remove("d-none");
     searchBar.placeholder = "Caricamento in corso...";
@@ -311,6 +317,31 @@ function renderArrTable(item, nome, code) {
                     allresults = data;
                     const button = document.createElement('button');
                     button.className = "btn btn btn-secondary fw-bold m-1 fermopp";
+                    //Altre corsie
+                    if (nome.includes("STAZIONE FS")) {
+                        button.setAttribute("onclick", `renderCorsie("STAZIONE FS")`);
+                        button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
+                        return;
+                    }
+                    if (nome.includes("MODENA AUTOSTAZIONE")) {
+                        button.setAttribute("onclick", `renderCorsie("MODENA AUTOSTAZIONE")`);
+                        button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
+                        return;
+                    }
+                    if (nome.includes("GARIBALDI")) {
+                        button.setAttribute("onclick", `renderCorsie("GARIBALDI")`);
+                        button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
+                        return;
+                    }
+                    if (nome.includes("POLO LEONARDO")) {
+                        button.setAttribute("onclick", `renderCorsie("POLO LEONARDO")`);
+                        button.textContent = `Altre corsie`;
+                        navButtonsContainer.appendChild(button);
+                        return;
+                    }
                     if (altraParteSearch(nome)) {
                         const codes = altraParteSearch(nome);
                         if (code == codes[0]) {
@@ -322,27 +353,7 @@ function renderArrTable(item, nome, code) {
                         button.textContent = `Fermata opposta`;
                         //Moved here because otherwise empty buttons would be appended
                         navButtonsContainer.appendChild(button);
-                    }
-                    //Set corsie per stazione o autostazione
-                    if (nome.includes("STAZIONE FS")) {
-                        button.setAttribute("onclick", `renderCorsie("STAZIONE FS")`);
-                        button.textContent = `Altre corsie`;
-                        navButtonsContainer.appendChild(button);
-                    }
-                    if (nome.includes("MODENA AUTOSTAZIONE")) {
-                        button.setAttribute("onclick", `renderCorsie("MODENA AUTOSTAZIONE")`);
-                        button.textContent = `Altre corsie`;
-                        navButtonsContainer.appendChild(button);
-                    }
-                    if (nome.includes("GARIBALDI")) {
-                        button.setAttribute("onclick", `renderCorsie("GARIBALDI")`);
-                        button.textContent = `Altre corsie`;
-                        navButtonsContainer.appendChild(button);
-                    }
-                    if (nome.includes("POLO LEONARDO")) {
-                        button.setAttribute("onclick", `renderCorsie("POLO LEONARDO")`);
-                        button.textContent = `Altre corsie`;
-                        navButtonsContainer.appendChild(button);
+                        return;
                     }
                 })
                 .catch(error => console.error('Errore nel caricamento dei dati:', error));

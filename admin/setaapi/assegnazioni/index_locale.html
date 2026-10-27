@@ -50,6 +50,10 @@
                 <i class="bi bi-arrow-repeat m-1"></i>
                 Cambio mezzo
             </button>
+            <button class="btn btn-outline-primary fw-bold m-1" data-bs-toggle="modal" data-bs-target="#many-vtfound-form-div">
+                <i class="bi bi-arrow-repeat m-1"></i>
+                dupe
+            </button>
         </div>
         <ul class="nav nav-tabs mb-3" id="view-tabs-ul">
             <li class="nav-item">
@@ -132,6 +136,26 @@
                         <input type="text" class="form-control" id="change-vehicleto-input" autocomplete="off">
                         <div id="change-vehicleto-message-div"></div>
                         <div id="change-error-message-div"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-primary" onclick="submitChangeForm();">Cambia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="many-vtfound-form-div" tabindex="-1" aria-labelledby="remove" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Cambio mezzo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="fw-bold mb-2 mt-0">Il veicolo è memorizzato su due tabelle diverse! Quale vuoi cambiare?</p>
+                        <table id="many-vtfound-table">
+                            <tr></tr>
+                        </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>

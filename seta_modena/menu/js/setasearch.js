@@ -12,37 +12,36 @@ const productsContainer = document.getElementById('bus-container');
 const buttons = document.getElementById('buttons');
 
 let allProducts = [];
-window.onbeforeunload=searchBar.value="";
+window.onbeforeunload = searchBar.value = "";
 
-//const url = "https://dbiface.serverissimo.com/api/seta/mezzi";
 getApiUrl().then(url => {
-fetch(url + "/seta/mezzi")
-    .then(response => {
-        if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-        return response.json();
-    })
-    .then(data => {
-        allProducts = data;
-    })
-    .catch(error => console.error('Errore nel caricamento dei dati:', error));
+    fetch(url + "/list/SETA")
+        .then(response => {
+            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+            return response.json();
+        })
+        .then(data => {
+            allProducts = data;
+        })
+        .catch(error => console.error('Errore nel caricamento dei dati:', error));
 });
 
 searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {
         productsContainer.innerHTML = '';
-        buttons.style.display="";
+        buttons.style.display = "";
         return;
     }
-    buttons.style.display="none";
+    buttons.style.display = "none";
     const searchTerm = searchBar.value.toLowerCase();
     const filtered = allProducts.filter(bus => bus.matricola.toLowerCase().includes(searchTerm))
-    .sort((a, b) => {
-        const aStartsWith = a.matricola.toLowerCase().startsWith(searchTerm);
-        const bStartsWith = b.matricola.toLowerCase().startsWith(searchTerm);
-        if (aStartsWith && !bStartsWith) return -1;
-        if (!aStartsWith && bStartsWith) return 1;
-        return 0; // keep original order if both or neither match at start
-    });
+        .sort((a, b) => {
+            const aStartsWith = a.matricola.toLowerCase().startsWith(searchTerm);
+            const bStartsWith = b.matricola.toLowerCase().startsWith(searchTerm);
+            if (aStartsWith && !bStartsWith) return -1;
+            if (!aStartsWith && bStartsWith) return 1;
+            return 0; // keep original order if both or neither match at start
+        });
     renderProducts(filtered);
 });
 
@@ -52,10 +51,10 @@ function renderProducts(products) {
         const div = document.createElement('div');
         div.className = 'product-card';
         div.innerHTML = `
-            <a href="${bus.link}">
-                <h3>${bus.matricola}</h3>
-                <p>${bus.modello}</p>
-                <p>${bus.settore}</p>
+            <a href="${bus.page_link}">
+                <h3>${bus.number}</h3>
+                <p>${bus.model}</p>
+                <p>${bus.sector}</p>
             </a>
         `;
         productsContainer.appendChild(div);

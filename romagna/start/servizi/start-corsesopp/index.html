@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>START Romagna - Monitor corse non garantite</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+                <li><a href="/romagna/start/menu/index.html"><h1 style="font-size: 100%;font-weight: 500;">START Romagna</h1></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Monitor corse non garantite</h1>
+    <div class="controls-container">
+        <div class="control-group">
+            <label for="stazione">Bacino:</label>
+            <select id="stazione" name="stazione">
+                <option value="Ravenna">Ravenna</option>
+                <option value="Rimini">Rimini</option>
+                <option value="Forli-Cesena">Forlì-Cesena</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data">
+        </div>
+        <div class="control-group">
+            <label class="label-spacer">&nbsp;</label>
+            <button onclick="buttonPress();">Carica</button>
+        </div>
+    </div>
+    <div id="message-container"></div>
+    <div id="tabella-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Linea</th>
+                    <th>Inizio</th>
+                    <th>Ora di Inizio</th>
+                    <th>Fine</th>
+                    <th>Ora di Fine</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <p>Versione API: <span id="version"></span><br> <br>
+    Copyright &copy; 2025-2026 ER-TPL Team - <a href="https://ertpl.pages.dev" target="_blank">ertpl.pages.dev</a> - code by EmmeV (Vichingo455) - <a href="https://git.vichingo455.com/emmev-code/start-corsesopp" target="_blank">Codice Sorgente</a><br>
+    Start Romagna, Start e il logo Start Romagna sono marchi registrati e protetti da copyright da Start Romagna SpA. Vengono usati in questa pagina solo per riferimento.</p>
+    <script src="js/script.js"></script>
+</body>
+</html>

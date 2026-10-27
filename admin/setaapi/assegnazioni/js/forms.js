@@ -1,12 +1,11 @@
-const vehicleTableInput = document.getElementById('vehicle-table-input');
-const vehicleInput = document.getElementById('vehicle-input');
-const removeVehicleTableInput = document.getElementById('remove-vehicle-table-input');
-
 const addFormContainer = document.getElementById('add-form-div');
+const vehicleTableInput = document.getElementById('vehicle-table-input');
 const addFormTableMessage = document.getElementById('add-table-message-div');
+const vehicleInput = document.getElementById('vehicle-input');
 const addFormVehicleMessage = document.getElementById('add-vehicle-message-div');
 
 const removeFormContainer = document.getElementById('remove-form-div');
+const removeVehicleTableInput = document.getElementById('remove-vehicle-table-input');
 const removeFormTableMessage = document.getElementById('remove-table-message-div');
 
 const changeFormContainer = document.getElementById('change-form-div');
@@ -14,6 +13,8 @@ const changeVehicleFromInput = document.getElementById('change-vehiclefrom-input
 const changeVehicleToInput = document.getElementById('change-vehicleto-input');
 const changeVehicleFromMessage = document.getElementById('change-vehiclefrom-message-div');
 const changeVehicleToMessage = document.getElementById('change-vehicleto-message-div');
+
+const manyVTFoundFormContainer = document.getElementById('many-vtfound-form-div');
 
 const errorMessage = document.getElementById('error-message-div');
 const removeErrorMessage = document.getElementById('remove-error-message-div');
@@ -122,14 +123,7 @@ function submitAddForm() {
                 return response.json();
             })
             .then(data => {
-                //Closes modal if completed correctly
-                resetForms();
-                const modalInstance = bootstrap.Modal.getInstance(addFormContainer);
-                if (modalInstance) {
-                    modalInstance.hide();
-                }
-                //Reload table
-                switchView("list", document.getElementById('list-button'))
+                closeModal(addFormContainer)
             })
             .catch(err => {
                 console.error('Errore nel caricamento dati:', err);
@@ -180,14 +174,7 @@ function submitRemoveForm() {
                 return response.json();
             })
             .then(data => {
-                //Closes modal if completed correctly
-                resetForms();
-                const modalInstance = bootstrap.Modal.getInstance(removeFormContainer);
-                if (modalInstance) {
-                    modalInstance.hide();
-                }
-                //Reload table
-                switchView("list", document.getElementById('list-button'))
+                closeModal(removeFormContainer)
             })
             .catch(err => {
                 console.error('Errore nel caricamento dati:', err);
@@ -215,8 +202,11 @@ function submitChangeForm() {
     }
     //Take corresponding table
     var vehicleTable
-    if (table = searchTable(currentAssignments, vehicleFrom)) {
-        vehicleTable = table;
+    if ((table = searchTable(currentAssignments, vehicleFrom)).size == 1) {
+        vehicleTable = table.entries().next().value;
+    } else if (table.size > 1) {
+        openModal(manyVTFoundFormContainer);
+        closeModal(changeFormContainer);
     } else {
         changeVehicleFromMessage.innerHTML = `
             <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Il bus non è registrato su nessuna tabella.</p>
@@ -249,14 +239,7 @@ function submitChangeForm() {
                 return response.json();
             })
             .then(data => {
-                //Closes modal if completed correctly
-                resetForms();
-                const modalInstance = bootstrap.Modal.getInstance(changeFormContainer);
-                if (modalInstance) {
-                    modalInstance.hide();
-                }
-                //Reload table
-                switchView("list", document.getElementById('list-button'))
+                closeModal(changeFormContainer)
             })
             .catch(err => {
                 console.error('Errore nel caricamento dati:', err);
@@ -265,6 +248,27 @@ function submitChangeForm() {
             `;
             });
     });
+}
+
+function openModal(modalContainer) {
+    resetForms();
+    const modalInstance = bootstrap.Modal.getInstance(modalContainer);
+    if (modalInstance) {
+        modalInstance.show();
+    }
+}
+
+function closeModal(modalContainer) {
+    //Closes modal if completed correctly
+    resetForms();
+    const modalInstance = bootstrap.Modal.getInstance(modalContainer);
+    if (modalInstance) {
+        modalInstance.hide();
+    }
+    //Reload table
+    if (currentTab == 0) {
+        switchView("list", document.getElementById('list-button'));
+    }
 }
 
 function openAddFormPrecTable(vt) {
@@ -288,8 +292,14 @@ function searchVehicle(assignments, term) {
 }
 
 function searchTable(assignments, term) {
-    const found = assignments.find(element => element.vehicle == term);
-    return found ? found.vehicle_table : false;
+    const counts = new Map();
+
+    for (const num of assignments) {
+        if (num.vehicle == term) {
+            counts.set(num.vehicle_table, num.vehicle);
+        }
+    }
+    return counts;
 }
 
 function isInteger(value) {
