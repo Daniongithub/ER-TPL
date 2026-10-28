@@ -57,7 +57,7 @@ getApiUrl().then(url => {
                 corsieNav.innerHTML = `
                 <ul>
                     <li>
-                        <a href="/start_menu/servizi/fermate/fermata.html?code=${altroCodice}&basin=${basin}">Fermata opposta</a>
+                        <a href="/romagna/start/servizi/fermate/fermata.html?code=${altroCodice}&basin=${basin}">Fermata opposta</a>
                     </li>
                 </ul>`;
             }
@@ -135,7 +135,7 @@ function loadArrivals() {
                             <td>${element.vehicle}</td>
                         `;
                     } else if (element.is_GPS) {
-                        vehicleOsm = `/start_menu/servizi/mappa/index.html?mode=single&basin=${element.basin}&vehicle=${element.vehicle}`
+                        vehicleOsm = `/romagna/start/servizi/mappa/index.html?mode=single&basin=${element.basin}&vehicle=${element.vehicle}`
                         tr.innerHTML += `
                             <td><a href="${vehicleOsm}">${element.vehicle}</a></td>
                         `;

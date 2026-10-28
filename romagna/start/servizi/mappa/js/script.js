@@ -459,7 +459,7 @@ function stopPopupHtml(item) {
                 </div>
             </div>
             <div class="popup-base">
-                <a class="button" href="/start_menu/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
+                <a class="button" href="/romagna/start/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
                 <hr class="separator">
                 <h3 style="text-align: center;">Che cosa passa oggi?</h3>
                 <div class="lines-container" style="display: none;"></div>

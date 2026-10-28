@@ -160,10 +160,10 @@ function updateMapLink() {
     const mapLinkContainer = document.getElementById("map-link-container");
     if (filterZona == "") {
         //Mappa globale
-        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/start_menu/servizi/mappa/index.html'">Apri la mappa</button>`;
+        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/romagna/start/servizi/mappa/index.html'">Apri la mappa</button>`;
     } else {
         //Mappa per bacino
-        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/start_menu/servizi/mappa/index.html?basin=${filterZona}'">Apri la mappa (${filterZona})</button>`;
+        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/romagna/start/servizi/mappa/index.html?basin=${filterZona}'">Apri la mappa (${filterZona})</button>`;
     }
 }
 

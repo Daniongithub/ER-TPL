@@ -105,7 +105,7 @@ function searchByShortCode() {
 }
 
 function openMap() {
-    window.location.href = `/start_menu/servizi/mappa/index.html?mode=stops&basin=${selectedBasin}`;
+    window.location.href = `/romagna/start/servizi/mappa/index.html?mode=stops&basin=${selectedBasin}`;
 }
 
 searchBar.addEventListener('input', function (event) {

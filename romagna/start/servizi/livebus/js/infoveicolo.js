@@ -147,14 +147,14 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Prossima fermata:</td>
-                <td><a href="/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_name}</a></td>
+                <td><a href="/romagna/start/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_name}</a></td>
             `;
             table.appendChild(tr);
 
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice fermata:</td>
-                <td><a href="/start_menu/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_code}</a></td>
+                <td><a href="/romagna/start/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_code}</a></td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -169,7 +169,7 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice percorso:</td>
-                <td><a href="/start_menu/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}" target="_blank">${data.shape_id}</a></td>
+                <td><a href="/romagna/start/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}" target="_blank">${data.shape_id}</a></td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -187,7 +187,7 @@ getApiUrl().then(url => {
                 tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>Posizione:</td>
-                    <td><a href="/start_menu/servizi/mappa/index.html?mode=single&basin=${data.basin}&vehicle=${data.vehicle_info.number}" target="_blank">GPS</a></td>
+                    <td><a href="/romagna/start/servizi/mappa/index.html?mode=single&basin=${data.basin}&vehicle=${data.vehicle_info.number}" target="_blank">GPS</a></td>
                 `;
                 tr.className = 'even';
                 nextClass = ""

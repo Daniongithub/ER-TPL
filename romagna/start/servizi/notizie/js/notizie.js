@@ -46,7 +46,7 @@ getApiUrl().then(url => {
                 h3.textContent = trimmedTitle;
 
                 //Link creation
-                const link = "/start_menu/servizi/notizie/notizia.html?link=" + encodeURIComponent(element.link);
+                const link = "/romagna/start/servizi/notizie/notizia.html?link=" + encodeURIComponent(element.link);
                 a.setAttribute("href", link);
                 a.appendChild(p);
                 a.appendChild(h3);
