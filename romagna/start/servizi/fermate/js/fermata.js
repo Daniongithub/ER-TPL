@@ -1,4 +1,3 @@
-// API source code: https://github.com/Daniongithub/startfermate-api
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);

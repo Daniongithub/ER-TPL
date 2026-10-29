@@ -1,8 +1,4 @@
-//TODO apertura automatica percorso per VEHICLES e SINGLE
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
-// ======================================================================
-// CONFIGURAZIONE GENERALE
-// ======================================================================
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT, { cache: "no-store" });
     if (!res.ok) throw new Error('Registry HA non raggiungibile: ' + res.status);
@@ -10,6 +6,10 @@ async function getApiUrl() {
     if (cfg.status !== "ok" || !cfg.url) return null;
     return cfg.url;
 }
+
+// ======================================================================
+// CONFIGURAZIONE GENERALE
+// ======================================================================
 
 const CONFIG = {
     // URL base dell'API. Ogni modalità aggiunge il proprio path/parametri. Non modificare a mano se si usa l'HA.

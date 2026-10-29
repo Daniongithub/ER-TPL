@@ -1,7 +1,5 @@
-// New fallback system (HA)
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 let manualLoad = true;
-
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
@@ -12,6 +10,7 @@ async function getApiUrl() {
 //SSE
 const backend = new EventSource("https://startapi.serverissimo.com/events");
 backend.addEventListener('vehicle_positions', function (event) {
+    console.log("non ho capito")
     fetchData();
 });
 

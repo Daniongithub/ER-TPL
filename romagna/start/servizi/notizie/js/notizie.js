@@ -1,11 +1,9 @@
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
-
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
     const cfg = await res.json();
     if (cfg.status !== "ok") return null;
     return cfg.url;
-    //return "https://startapi.serverissimo.com/rss/feed"
 }
 
 const newsContainer = document.getElementById('news-container');
