@@ -10,7 +10,6 @@ async function getApiUrl() {
 //SSE
 const backend = new EventSource("https://startapi.serverissimo.com/events");
 backend.addEventListener('vehicle_positions', function (event) {
-    console.log("non ho capito")
     fetchData();
 });
 
