@@ -46,6 +46,9 @@ getApiUrl().then(url => {
                 if (!bus.plate_num) {
                     bus.plate_num = "-";
                 }
+                if (!bus.basin) {
+                    bus.basin = "-";
+                }
                 tr.className = bus.status;
                 tr.innerHTML = `
                     <td class="cursor-pointer" onclick="window.location.href='${bus.page_link}'">${bus.number}</td>

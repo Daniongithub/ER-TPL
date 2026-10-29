@@ -72,7 +72,7 @@ vehicleTableInput.addEventListener('input', function (event) {
 vehicleInput.addEventListener('input', function (event) {
     const vehicle = vehicleInput.value;
     resetMessages();
-    if (table = searchTable(currentAssignments, vehicle)) {
+    if ((table = searchTable(currentAssignments, vehicle)).size == 1) {
         //It's normal that's only applied to add form
         addFormVehicleMessage.innerHTML = `
             <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questo veicolo è già sulla tabella ${table}</p>
@@ -265,9 +265,13 @@ function closeModal(modalContainer) {
     if (modalInstance) {
         modalInstance.hide();
     }
-    //Reload table
+    //Reload assign table
     if (currentTab == 0) {
         switchView("list", document.getElementById('list-button'));
+    }
+    //Reload cerca orario table
+    if (currentTab == 1) {
+        
     }
 }
 
