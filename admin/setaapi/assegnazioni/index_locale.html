@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="ER-TPL Team">
@@ -16,20 +16,20 @@
 <body data-bs-theme="dark">
     <div id="loading-container">
         <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="spinner-border m-5" role="status"></div>
+            <div class="spinner-border m-5" role="status"><span class="visually-hidden">Caricamento...</span></div>
         </div>
     </div>
     <div id="page-container" class="d-none">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <h3 class="navbar-brand fs-3 mb-0" href="#">SetaAPI</h3>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <h3 class="navbar-brand fs-3 mb-0">SetaAPI</h3>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Apri navigazione">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li><a class="nav-link active" href="/seta_modena/servizi/cercaorario/index.html">Cerca orario</a></li>
-                        <li><a class="nav-link active" href="/seta_modena/servizi/cercaorario/index.html">Bus in servizio</a></li>
+                        <li><a class="nav-link active" href="/seta_modena/servizi/businservizio/index.html">Bus in servizio</a></li>
                     </ul>
                     <ul class="navbar-nav ms-auto text-end fw-bold">
                         <li><a class="nav-link" href="#" onclick="logoutUser();"><i class="bi bi-box-arrow-right me-1"></i>Logout</a></li>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </nav>
-        <div class="d-flex justify-content-end m-2" id="operation-buttons-container">
+        <div class="d-flex flex-column flex-sm-row flex-wrap justify-content-end m-2" id="operation-buttons-container">
             <button class="btn btn-primary fw-bold m-1" data-bs-toggle="modal" data-bs-target="#add-form-div">
                 <i class="bi bi-plus-square-fill m-1"></i>
                 Aggiungi assegnazione
@@ -50,14 +50,10 @@
                 <i class="bi bi-arrow-repeat m-1"></i>
                 Cambio mezzo
             </button>
-            <button class="btn btn-outline-primary fw-bold m-1" data-bs-toggle="modal" data-bs-target="#many-vtfound-form-div">
-                <i class="bi bi-arrow-repeat m-1"></i>
-                dupe
-            </button>
         </div>
-        <ul class="nav nav-tabs mb-3" id="view-tabs-ul">
+        <ul class="nav nav-tabs mb-3" id="view-tabs-ul" aria-label="Viste assegnazioni">
             <li class="nav-item">
-                <button class="nav-link active" id="list-button" onclick="switchView('list', this);">Assegnazioni</button>
+                <button class="nav-link active" id="list-button" aria-current="page" onclick="switchView('list', this);">Assegnazioni</button>
             </li>
             <li class="nav-item">
                 <button class="nav-link" id="search-table-button" onclick="switchView('search-vtable', this);">Cerca tabella oraria</button>
@@ -69,99 +65,84 @@
         </div>
         <div class="mx-2">
             <div class="d-flex justify-content-center d-none" id="search-bar-container">
-                <input type="text" id="search-bar" class="w-25 form-control rounded my-1" placeholder="Cerca una fermata..." autocomplete="off">
+                <input type="text" id="search-bar" aria-label="Cerca una fermata" class="w-25 form-control rounded my-1" placeholder="Cerca una fermata..." autocomplete="off">
             </div>
             <div class="d-flex justify-content-center mx-2 d-none" id="nav-buttons-container">
-                <button class="btn btn btn-secondary fw-bold m-1" onclick="switchView('search-vtable', document.getElementById('search-table-button'));">Torna indietro</button>
+                <button class="btn btn-secondary fw-bold m-1" onclick="switchView('search-vtable', document.getElementById('search-table-button'));">Torna indietro</button>
             </div>
-            <div class="w-100 overflow-x-scroll border border-secondary" id="table-container"></div>
+            <div class="table-responsive border border-secondary" id="table-container"></div>
         </div>
     </div>
     <div id="forms-container">
-        <div class="modal fade" id="add-form-div" tabindex="-1" aria-labelledby="add" aria-hidden="true">
+        <div class="modal fade" id="add-form-div" tabindex="-1" aria-labelledby="add-form-title" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <form class="modal-content" id="add-form" novalidate>
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Aggiungi assegnazione</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title fs-5" id="add-form-title">Aggiungi assegnazione</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="fw-bold mb-2 mt-0">Tabella oraria:</p>
-                        <input type="text" class="form-control" id="vehicle-table-input" autocomplete="off">
-                        <div id="add-table-message-div"></div>
-                        <p class="fw-bold my-2">Veicolo:</p>
-                        <input type="text" class="form-control" id="vehicle-input" autocomplete="off">
-                        <div id="add-vehicle-message-div"></div>
-                        <div id="error-message-div"></div>
+                        <label for="vehicle-table-input" class="form-label fw-bold mb-2 mt-0">Tabella oraria:</label>
+                        <input type="text" class="form-control" id="vehicle-table-input" autocomplete="off" inputmode="numeric" aria-describedby="add-table-message-div" required>
+                        <div id="add-table-message-div" aria-live="polite"></div>
+                        <label for="vehicle-input" class="form-label fw-bold my-2">Veicolo:</label>
+                        <input type="text" class="form-control" id="vehicle-input" autocomplete="off" inputmode="numeric" aria-describedby="add-vehicle-message-div" required>
+                        <div id="add-vehicle-message-div" aria-live="polite"></div>
+                        <div id="error-message-div" aria-live="polite"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                        <button type="button" class="btn btn-primary" onclick="submitAddForm();">Aggiungi</button>
+                        <button type="submit" class="btn btn-primary">Aggiungi</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-        <div class="modal fade" id="remove-form-div" tabindex="-1" aria-labelledby="remove" aria-hidden="true">
+        <div class="modal fade" id="remove-form-div" tabindex="-1" aria-labelledby="remove-form-title" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <form class="modal-content" id="remove-form" novalidate>
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Rimuovi assegnazione</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title fs-5" id="remove-form-title">Rimuovi assegnazione</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="fw-bold mb-2 mt-0">Tabella oraria:</p>
-                        <input type="text" class="form-control" id="remove-vehicle-table-input" autocomplete="off">
-                        <div id="remove-table-message-div"></div>
-                        <div id="remove-error-message-div"></div>
+                        <label for="remove-vehicle-table-input" class="form-label fw-bold mb-2 mt-0">Tabella oraria:</label>
+                        <input type="text" class="form-control" id="remove-vehicle-table-input" autocomplete="off" inputmode="numeric" aria-describedby="remove-table-message-div" required>
+                        <div id="remove-table-message-div" aria-live="polite"></div>
+                        <div id="remove-error-message-div" aria-live="polite"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                        <button type="button" class="btn btn-primary" onclick="submitRemoveForm();">Rimuovi</button>
+                        <button type="submit" class="btn btn-danger">Rimuovi</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-        <div class="modal fade" id="change-form-div" tabindex="-1" aria-labelledby="remove" aria-hidden="true">
+        <div class="modal fade" id="change-form-div" tabindex="-1" aria-labelledby="change-form-title" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <form class="modal-content" id="change-form" novalidate>
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5">Cambio mezzo</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title fs-5" id="change-form-title">Cambio mezzo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="fw-bold mb-2 mt-0">Il veicolo:</p>
-                        <input type="text" class="form-control" id="change-vehiclefrom-input" autocomplete="off">
-                        <div id="change-vehiclefrom-message-div"></div>
-                        <p class="fw-bold mb-2 my-2">Viene sostituito da:</p>
-                        <input type="text" class="form-control" id="change-vehicleto-input" autocomplete="off">
-                        <div id="change-vehicleto-message-div"></div>
-                        <div id="change-error-message-div"></div>
+                        <label for="change-vehiclefrom-input" class="form-label fw-bold mb-2 mt-0">Il veicolo:</label>
+                        <input type="text" class="form-control" id="change-vehiclefrom-input" autocomplete="off" inputmode="numeric" aria-describedby="change-vehiclefrom-message-div" required>
+                        <div id="change-vehiclefrom-message-div" aria-live="polite"></div>
+                        <label for="change-vehicleto-input" class="form-label fw-bold mb-2 my-2">Viene sostituito da:</label>
+                        <input type="text" class="form-control" id="change-vehicleto-input" autocomplete="off" inputmode="numeric" aria-describedby="change-vehicleto-message-div" required>
+                        <div id="change-vehicleto-message-div" aria-live="polite"></div>
+                        <div id="change-table-container" class="mt-2 d-none">
+                            <label for="change-table-select" class="form-label fw-bold">Tabella oraria da modificare:</label>
+                            <select id="change-table-select" class="form-select" aria-describedby="change-table-message-div"></select>
+                            <div id="change-table-message-div" aria-live="polite"></div>
+                        </div>
+                        <div id="change-error-message-div" aria-live="polite"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                        <button type="button" class="btn btn-primary" onclick="submitChangeForm();">Cambia</button>
+                        <button type="submit" class="btn btn-primary">Cambia</button>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="many-vtfound-form-div" tabindex="-1" aria-labelledby="remove" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5">Cambio mezzo</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="fw-bold mb-2 mt-0">Il veicolo è memorizzato su due tabelle diverse! Quale vuoi cambiare?</p>
-                        <table id="many-vtfound-table">
-                            <tr></tr>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                        <button type="button" class="btn btn-primary" onclick="submitChangeForm();">Cambia</button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

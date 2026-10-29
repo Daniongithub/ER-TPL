@@ -1,311 +1,382 @@
 const addFormContainer = document.getElementById('add-form-div');
-const vehicleTableInput = document.getElementById('vehicle-table-input');
-const addFormTableMessage = document.getElementById('add-table-message-div');
-const vehicleInput = document.getElementById('vehicle-input');
-const addFormVehicleMessage = document.getElementById('add-vehicle-message-div');
-
 const removeFormContainer = document.getElementById('remove-form-div');
-const removeVehicleTableInput = document.getElementById('remove-vehicle-table-input');
-const removeFormTableMessage = document.getElementById('remove-table-message-div');
-
 const changeFormContainer = document.getElementById('change-form-div');
+
+const vehicleTableInput = document.getElementById('vehicle-table-input');
+const vehicleInput = document.getElementById('vehicle-input');
+const removeVehicleTableInput = document.getElementById('remove-vehicle-table-input');
+
 const changeVehicleFromInput = document.getElementById('change-vehiclefrom-input');
 const changeVehicleToInput = document.getElementById('change-vehicleto-input');
-const changeVehicleFromMessage = document.getElementById('change-vehiclefrom-message-div');
-const changeVehicleToMessage = document.getElementById('change-vehicleto-message-div');
+const changeTableContainer = document.getElementById('change-table-container');
+const changeTableSelect = document.getElementById('change-table-select');
 
-const manyVTFoundFormContainer = document.getElementById('many-vtfound-form-div');
+const busyForms = new Set();
+let preferredChangeTable = '';
 
-const errorMessage = document.getElementById('error-message-div');
-const removeErrorMessage = document.getElementById('remove-error-message-div');
-const changeErrorMessage = document.getElementById('change-error-message-div');
-
-getApiUrl().then(url => {
-    fetch(url + "/assignments")
-        .then(response => {
-            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-            return response.json();
-        })
-        .then(data => {
-            currentAssignments = data;
-        })
-        .catch(err => {
-            console.error('Errore nel caricamento dati:', err);
-        })
-});
-
-function resetForms() {
-    vehicleTableInput.value = '';
-    vehicleInput.value = '';
-    removeVehicleTableInput.value = '';
-    changeVehicleFromInput.value = '';
-    changeVehicleToInput.value = '';
-    resetMessages();
+function showFieldMessage(input, message, invalid) {
+    const container = document.getElementById(input.getAttribute('aria-describedby'));
+    container.replaceChildren();
+    input.classList.toggle('is-invalid', invalid);
+    input.setAttribute('aria-invalid', String(invalid));
+    if (message) {
+        const paragraph = document.createElement('p');
+        paragraph.className = 'my-2 text-warning';
+        const icon = document.createElement('i');
+        icon.className = 'bi bi-exclamation-triangle-fill me-2';
+        icon.setAttribute('aria-hidden', 'true');
+        paragraph.appendChild(icon);
+        paragraph.appendChild(document.createTextNode(message));
+        container.appendChild(paragraph);
+    }
 }
 
-//Detects modal closure
-addFormContainer.addEventListener('hidden.bs.modal', resetForms);
-changeFormContainer.addEventListener('hidden.bs.modal', resetForms);
-removeFormContainer.addEventListener('hidden.bs.modal', resetForms);
-
-function resetMessages() {
-    removeFormTableMessage.innerHTML = '';
-    changeVehicleFromMessage.innerHTML = '';
-    changeVehicleToMessage.innerHTML = '';
-    addFormTableMessage.innerHTML = '';
-    addFormVehicleMessage.innerHTML = '';
+function clearFormError(form) {
+    form.querySelector('[id$="error-message-div"]').replaceChildren();
 }
 
-vehicleTableInput.addEventListener('input', function (event) {
-    const vehicleTable = vehicleTableInput.value;
-    resetMessages();
-    if (vehicle = searchVehicle(currentAssignments, vehicleTable)) {
-        //It's normal that's only applied to add form
-        addFormTableMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questa tabella è già occupata da ${vehicle}</p>
-        `;
-    } else {
-        addFormTableMessage.innerHTML = ``;
+function showFormError(form, error) {
+    const container = form.querySelector('[id$="error-message-div"]');
+    const message = document.createElement('p');
+    message.className = 'my-2 text-danger';
+    message.setAttribute('role', 'alert');
+    message.textContent = error.message;
+    container.replaceChildren(message);
+}
+
+function isPositiveInteger(value) {
+    return /^\d+$/.test(value) && Number.isSafeInteger(Number(value)) && Number(value) > 0;
+}
+
+function matchingAssignments(field, value) {
+    const term = value.trim();
+    return currentAssignments.filter(function (assignment) {
+        const assignedValue = String(assignment[field]);
+        if (field === 'vehicle' && isPositiveInteger(term) && isPositiveInteger(assignedValue)) {
+            return Number(assignedValue) === Number(term);
+        }
+        return assignedValue === term;
+    });
+}
+
+function validateNumber(input) {
+    if (!isPositiveInteger(input.value.trim())) {
+        showFieldMessage(input, 'Inserisci un numero maggiore di 0.', true);
+        return false;
     }
+    return true;
+}
+
+function validateTable(input) {
+    const value = input.value.trim();
+    // I codici già restituiti dall'API possono essere anche non numerici.
+    if (value && matchingAssignments('vehicle_table', value).length > 0) {
+        return true;
+    }
+    return validateNumber(input);
+}
+
+function updateAddWarnings() {
+    const assignments = matchingAssignments('vehicle_table', vehicleTableInput.value);
+    let tableMessage = '';
+    if (assignments.length > 0) {
+        tableMessage = 'Questa tabella è già occupata da ' + assignments[0].vehicle + '. L’assegnazione verrà aggiornata.';
+    }
+    showFieldMessage(vehicleTableInput, tableMessage, false);
+    const tables = matchingAssignments('vehicle', vehicleInput.value).map(function (assignment) {
+        return assignment.vehicle_table;
+    });
+    let vehicleMessage = '';
+    if (tables.length > 0) {
+        vehicleMessage = 'Questo veicolo è già sulla tabella: ' + tables.join(', ') + '. Puoi comunque inserirlo.';
+    } else if (tables.length > 1) {
+        vehicleMessage = 'Questo veicolo è già sulle tabelle: ' + tables.join(', ') + '. Puoi comunque inserirlo.';
+    }
+    showFieldMessage(vehicleInput, vehicleMessage, false);
+}
+
+function updateChangeTables() {
+    const assignments = matchingAssignments('vehicle', changeVehicleFromInput.value);
+    let selected = changeTableSelect.value;
+    if (preferredChangeTable) {
+        selected = preferredChangeTable;
+    }
+    changeTableSelect.replaceChildren();
+    if (assignments.length > 1) {
+        changeTableSelect.add(new Option('Seleziona una tabella...', ''));
+    }
+    for (const assignment of assignments) {
+        const value = String(assignment.vehicle_table);
+        changeTableSelect.add(new Option(value, value));
+    }
+    if (assignments.length > 1) {
+        changeTableSelect.value = selected;
+    }
+    changeTableContainer.classList.toggle('d-none', assignments.length <= 1);
+    showFieldMessage(changeTableSelect, '', false);
+}
+
+function updateChangeWarnings() {
+    const tables = matchingAssignments('vehicle', changeVehicleToInput.value).map(function (assignment) {
+        return assignment.vehicle_table;
+    });
+    let message = '';
+    if (tables.length > 0) {
+        message = 'Questo veicolo è già sulla tabella: ' + tables.join(', ') + '. Puoi comunque assegnarlo.';
+    } else if (tables.length > 1) {
+        message = 'Questo veicolo è già sulle tabelle: ' + tables.join(', ') + '. Puoi comunque assegnarlo.';
+    }
+    if (isPositiveInteger(changeVehicleToInput.value.trim()) && Number(changeVehicleFromInput.value) === Number(changeVehicleToInput.value)) {
+        message = 'Il mezzo coincide con quello da sostituire: l’assegnazione resterà identica. Puoi comunque confermare.';
+    }
+    showFieldMessage(changeVehicleToInput, message, false);
+}
+
+for (const input of [vehicleTableInput, vehicleInput]) {
+    input.addEventListener('input', function () {
+        clearFormError(document.getElementById('add-form'));
+        updateAddWarnings();
+    });
+}
+removeVehicleTableInput.addEventListener('input', function () {
+    clearFormError(document.getElementById('remove-form'));
+    showFieldMessage(removeVehicleTableInput, '', false);
+});
+changeVehicleFromInput.addEventListener('input', function () {
+    preferredChangeTable = '';
+    clearFormError(document.getElementById('change-form'));
+    showFieldMessage(changeVehicleFromInput, '', false);
+    updateChangeTables();
+    updateChangeWarnings();
+});
+changeVehicleToInput.addEventListener('input', function () {
+    clearFormError(document.getElementById('change-form'));
+    updateChangeWarnings();
+});
+changeTableSelect.addEventListener('change', function () {
+    preferredChangeTable = changeTableSelect.value;
+    showFieldMessage(changeTableSelect, '', false);
 });
 
-vehicleInput.addEventListener('input', function (event) {
-    const vehicle = vehicleInput.value;
-    resetMessages();
-    if ((table = searchTable(currentAssignments, vehicle)).size == 1) {
-        //It's normal that's only applied to add form
-        addFormVehicleMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questo veicolo è già sulla tabella ${table}</p>
-        `;
-    } else {
-        addFormVehicleMessage.innerHTML = ``;
-    }
-});
+for (const container of [addFormContainer, removeFormContainer, changeFormContainer]) {
+    const form = container.querySelector('form');
+    container.addEventListener('show.bs.modal', async function () {
+        clearFormError(form);
+        try {
+            await loadAssignments();
+            if (!container.classList.contains('show') || busyForms.has(form)) {
+                return;
+            }
+            if (container === addFormContainer) {
+                updateAddWarnings();
+            } else if (container === changeFormContainer) {
+                updateChangeTables();
+                updateChangeWarnings();
+            }
+        } catch (error) {
+            if (container.classList.contains('show')) {
+                showFormError(form, new Error('Impossibile aggiornare le assegnazioni. Riprova l’operazione.'));
+            }
+        }
+    });
+    container.addEventListener('shown.bs.modal', function () {
+        form.querySelector('input').focus();
+    });
+    container.addEventListener('hide.bs.modal', function (event) {
+        if (busyForms.has(form)) {
+            event.preventDefault();
+        }
+    });
+    container.addEventListener('hidden.bs.modal', function () {
+        form.reset();
+        clearFormError(form);
+        for (const input of form.querySelectorAll('input, select')) {
+            showFieldMessage(input, '', false);
+        }
+        if (container === changeFormContainer) {
+            preferredChangeTable = '';
+            changeTableSelect.replaceChildren();
+            changeTableContainer.classList.add('d-none');
+        }
+    });
+}
 
-function submitAddForm() {
-    const vehicleTable = vehicleTableInput.value;
-    const vehicle = vehicleInput.value;
-    if (vehicleTable == "" || vehicleTable == "0" || !isInteger(vehicleTable)) {
-        addFormTableMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Valore non valido.</p>
-        `;
+async function sendAssignmentRequest(path, method, body) {
+    const token = getValidToken();
+    if (!token) {
+        redirectToLogin();
+        throw new Error('Sessione scaduta, reindirizzamento al login...');
+    }
+    const url = await getApiUrl();
+    const response = await fetch(url + path, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(body)
+    });
+    if (response.status === 401) {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('token_expiry');
+        redirectToLogin();
+        throw new Error('Sessione scaduta, reindirizzamento al login...');
+    }
+    if (!response.ok) {
+        throw new Error('Errore nella richiesta, stato HTTP: ' + response.status);
+    }
+    const text = await response.text();
+    if (text) {
+        const result = JSON.parse(text);
+        if (result && typeof result === 'object' && !Array.isArray(result)) {
+            if (result.error) {
+                throw new Error(String(result.error));
+            }
+            // Il backend può restituire un errore SQL con stato HTTP 200.
+            throw new Error('Il server non ha completato l’operazione. Riprova.');
+        }
+    }
+}
+
+async function submitAssignmentForm(container, path, method, validate) {
+    const form = container.querySelector('form');
+    if (busyForms.has(form)) {
         return;
     }
-    if (vehicle == "" || vehicle == "0" || !isInteger(vehicle)) {
-        addFormVehicleMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Valore non valido.</p>
-        `;
-        return;
+    busyForms.add(form);
+    const controls = Array.from(form.querySelectorAll('button, input, select'));
+    const previousDisabled = controls.map(function (control) {
+        return control.disabled;
+    });
+    for (const control of controls) {
+        control.disabled = true;
     }
-    //Submit to backend
-    getApiUrl().then(url => {
-        const token = getValidToken();
-        if (!token) {
-            redirectToLogin();
+    form.setAttribute('aria-busy', 'true');
+    clearFormError(form);
+    let completed = false;
+    try {
+        if (!assignmentsLoaded || assignmentsPromise) {
+            await loadAssignments();
+        }
+        const body = validate();
+        if (!body) {
             return;
         }
-        fetch(url + "/assignments/add", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-            },
-            body: JSON.stringify({ vehicle_table: vehicleTable, vehicle: Number(vehicle) }),
-        })
-            .then(response => {
-                if (response.status === 401) {
-                    localStorage.removeItem("access_token");
-                    localStorage.removeItem("token_expiry");
-                    redirectToLogin();
-                    throw new Error("Sessione scaduta, reindirizzamento al login...");
-                }
-                if (!response.ok) throw new Error("Errore nella richiesta, stato HTTP: " + response.status);
-                return response.json();
-            })
-            .then(data => {
-                closeModal(addFormContainer)
-            })
-            .catch(err => {
-                console.error('Errore nel caricamento dati:', err);
-                errorMessage.innerHTML = `
-                    <p class="my-2 text-danger"><i class="bi bi-exclamation-triangle-fill m-2"></i>${err}</p>
-                `;
-            });
+        await sendAssignmentRequest(path, method, body);
+        completed = true;
+    } catch (error) {
+        showFormError(form, error);
+    } finally {
+        busyForms.delete(form);
+        controls.forEach(function (control, index) {
+            control.disabled = previousDisabled[index];
+        });
+        form.removeAttribute('aria-busy');
+    }
+    if (completed) {
+        bootstrap.Modal.getOrCreateInstance(container).hide();
+        // Aggiorna anche la cache usata dai form quando si opera dalla ricerca.
+        assignmentsLoaded = false;
+        if (currentTab === 'list') {
+            await initList();
+        } else {
+            try {
+                await loadAssignments();
+            } catch (error) {
+                assignmentsLoaded = false;
+            }
+            if (currentTab === 'arrivals' && activeArrival) {
+                await renderArrivals(activeArrival.code, activeArrival.name);
+            }
+        }
+    }
+}
+
+function submitAddForm() {
+    return submitAssignmentForm(addFormContainer, '/assignments/add', 'POST', function () {
+        updateAddWarnings();
+        const tableValid = validateTable(vehicleTableInput);
+        const vehicleValid = validateNumber(vehicleInput);
+        if (!tableValid || !vehicleValid) {
+            return null;
+        }
+        return {
+            vehicle_table: vehicleTableInput.value.trim(),
+            vehicle: Number(vehicleInput.value.trim())
+        };
     });
 }
 
 function submitRemoveForm() {
-    const vehicleTable = removeVehicleTableInput.value;
-    if (vehicleTable == "" || vehicleTable == "0" || !isInteger(vehicleTable)) {
-        removeFormTableMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Valore non valido.</p>
-        `;
-        return;
-    }
-    if (!searchVehicle(currentAssignments, vehicleTable)) {
-        removeFormTableMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Questa tabella non è registrata.</p>
-        `;
-        return;
-    }
-    //Submit to backend
-    getApiUrl().then(url => {
-        const token = getValidToken();
-        if (!token) {
-            redirectToLogin();
-            return;
+    return submitAssignmentForm(removeFormContainer, '/assignments/remove', 'DELETE', function () {
+        showFieldMessage(removeVehicleTableInput, '', false);
+        if (!validateTable(removeVehicleTableInput)) {
+            return null;
         }
-        fetch(url + "/assignments/remove", {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-            },
-            body: JSON.stringify({ vehicle_table: vehicleTable }),
-        })
-            .then(response => {
-                if (response.status === 401) {
-                    localStorage.removeItem("access_token");
-                    localStorage.removeItem("token_expiry");
-                    redirectToLogin();
-                    throw new Error("Sessione scaduta, reindirizzamento al login...");
-                }
-                if (!response.ok) throw new Error("Errore nella richiesta, stato HTTP: " + response.status);
-                return response.json();
-            })
-            .then(data => {
-                closeModal(removeFormContainer)
-            })
-            .catch(err => {
-                console.error('Errore nel caricamento dati:', err);
-                removeErrorMessage.innerHTML = `
-                    <p class="my-2 text-danger"><i class="bi bi-exclamation-triangle-fill m-2"></i>${err}</p>
-                `;
-            });
+        if (matchingAssignments('vehicle_table', removeVehicleTableInput.value).length === 0) {
+            showFieldMessage(removeVehicleTableInput, 'Questa tabella non è registrata.', true);
+            return null;
+        }
+        return {
+            vehicle_table: removeVehicleTableInput.value.trim()
+        };
     });
 }
 
 function submitChangeForm() {
-    const vehicleFrom = changeVehicleFromInput.value;
-    const vehicleTo = changeVehicleToInput.value;
-    if (vehicleFrom == "" || vehicleFrom == "0" || !isInteger(vehicleFrom)) {
-        changeVehicleFromMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Valore non valido.</p>
-        `;
-        return;
-    }
-    if (vehicleTo == "" || vehicleTo == "0" || !isInteger(vehicleTo)) {
-        changeVehicleToMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Valore non valido.</p>
-        `;
-        return;
-    }
-    //Take corresponding table
-    var vehicleTable
-    if ((table = searchTable(currentAssignments, vehicleFrom)).size == 1) {
-        vehicleTable = table.entries().next().value;
-    } else if (table.size > 1) {
-        openModal(manyVTFoundFormContainer);
-        closeModal(changeFormContainer);
-    } else {
-        changeVehicleFromMessage.innerHTML = `
-            <p class="my-2 text-warning"><i class="bi bi-exclamation-triangle-fill m-2"></i>Il bus non è registrato su nessuna tabella.</p>
-        `;
-        return;
-    }
-    //Submit to backend
-    getApiUrl().then(url => {
-        const token = getValidToken();
-        if (!token) {
-            redirectToLogin();
-            return;
+    return submitAssignmentForm(changeFormContainer, '/assignments/changevehicle', 'PUT', function () {
+        showFieldMessage(changeVehicleFromInput, '', false);
+        updateChangeWarnings();
+        const fromValid = validateNumber(changeVehicleFromInput);
+        const toValid = validateNumber(changeVehicleToInput);
+        if (!fromValid || !toValid) {
+            return null;
         }
-        fetch(url + "/assignments/changevehicle", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-            },
-            body: JSON.stringify({ vehicle_table: vehicleTable, vehicle: Number(vehicleTo) }),
-        })
-            .then(response => {
-                if (response.status === 401) {
-                    localStorage.removeItem("access_token");
-                    localStorage.removeItem("token_expiry");
-                    redirectToLogin();
-                    throw new Error("Sessione scaduta, reindirizzamento al login...");
-                }
-                if (!response.ok) throw new Error("Errore nella richiesta, stato HTTP: " + response.status);
-                return response.json();
-            })
-            .then(data => {
-                closeModal(changeFormContainer)
-            })
-            .catch(err => {
-                console.error('Errore nel caricamento dati:', err);
-                changeErrorMessage.innerHTML = `
-                <p class="my-2 text-danger"><i class="bi bi-exclamation-triangle-fill m-2"></i>${err}</p>
-            `;
-            });
+        const assignments = matchingAssignments('vehicle', changeVehicleFromInput.value);
+        if (assignments.length === 0) {
+            showFieldMessage(changeVehicleFromInput, 'Il bus non è registrato su nessuna tabella.', true);
+            return null;
+        }
+        updateChangeTables();
+        const selected = assignments.find(function (assignment) {
+            return String(assignment.vehicle_table) === changeTableSelect.value;
+        });
+        if (!selected) {
+            showFieldMessage(changeTableSelect, 'Seleziona la tabella da modificare.', true);
+            return null;
+        }
+        return {
+            vehicle_table: String(selected.vehicle_table),
+            vehicle: Number(changeVehicleToInput.value.trim())
+        };
     });
 }
 
-function openModal(modalContainer) {
-    resetForms();
-    const modalInstance = bootstrap.Modal.getInstance(modalContainer);
-    if (modalInstance) {
-        modalInstance.show();
-    }
-}
-
-function closeModal(modalContainer) {
-    //Closes modal if completed correctly
-    resetForms();
-    const modalInstance = bootstrap.Modal.getInstance(modalContainer);
-    if (modalInstance) {
-        modalInstance.hide();
-    }
-    //Reload assign table
-    if (currentTab == 0) {
-        switchView("list", document.getElementById('list-button'));
-    }
-    //Reload cerca orario table
-    if (currentTab == 1) {
-        
-    }
-}
-
-function openAddFormPrecTable(vt) {
-    vehicleTableInput.value = vt;
+function openAddFormPrecTable(vehicleTable) {
+    vehicleTableInput.value = vehicleTable;
+    updateAddWarnings();
     bootstrap.Modal.getOrCreateInstance(addFormContainer).show();
 }
 
-function openChangeFormPrecTable(v) {
-    changeVehicleFromInput.value = v;
+function openChangeFormPrecTable(vehicle, vehicleTable) {
+    changeVehicleFromInput.value = vehicle;
+    preferredChangeTable = String(vehicleTable);
+    updateChangeTables();
     bootstrap.Modal.getOrCreateInstance(changeFormContainer).show();
 }
 
-function openRemoveFormPrecTable(vt) {
-    removeVehicleTableInput.value = vt;
+function openRemoveFormPrecTable(vehicleTable) {
+    removeVehicleTableInput.value = vehicleTable;
     bootstrap.Modal.getOrCreateInstance(removeFormContainer).show();
 }
 
-function searchVehicle(assignments, term) {
-    const found = assignments.find(element => element.vehicle_table == term);
-    return found ? found.vehicle : false;
-}
-
-function searchTable(assignments, term) {
-    const counts = new Map();
-
-    for (const num of assignments) {
-        if (num.vehicle == term) {
-            counts.set(num.vehicle_table, num.vehicle);
-        }
-    }
-    return counts;
-}
-
-function isInteger(value) {
-    return /^\d+$/.test(value);
+for (const entry of [
+    { id: 'add-form', submit: submitAddForm },
+    { id: 'remove-form', submit: submitRemoveForm },
+    { id: 'change-form', submit: submitChangeForm }
+]) {
+    document.getElementById(entry.id).addEventListener('submit', function (event) {
+        event.preventDefault();
+        entry.submit();
+    });
 }
