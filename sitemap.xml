@@ -3,7 +3,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev</loc>
 		<priority>1.00</priority>
-		<lastmod>2026-10-27</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/chisiamo.html</loc>
@@ -588,7 +588,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/menu/urbano.html</loc>
 		<priority>0.40</priority>
-		<lastmod>2026-09-19</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/menu/suburbano.html</loc>
@@ -711,6 +711,11 @@
 		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
+		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/citelis10.html</loc>
+		<priority>0.33</priority>
+		<lastmod>2026-10-29</lastmod>
+	</url>
+	<url>
 		<loc>https://ertpl.pages.dev/tper/tpb_privati/bus/saca.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2026-10-27</lastmod>
@@ -793,7 +798,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/urbanway.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-08-17</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/surbinocng.html</loc>
@@ -803,17 +808,17 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/solarisidrogeno.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-08-14</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/menarinolng.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-06-01</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/menarinocng.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-08-17</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/cwlecity.html</loc>
@@ -823,27 +828,27 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/cityclasspavia.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-07-13</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/cityclassatcm.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-10-16</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/citelis.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-09-19</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/citarodiesel.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-07-13</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/citarocng.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-09-19</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/urbinostart.html</loc>
@@ -878,7 +883,7 @@
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/mang4p.html</loc>
 		<priority>0.20</priority>
-		<lastmod>2026-10-16</lastmod>
+		<lastmod>2026-10-29</lastmod>
 	</url>
 	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/mang3p.html</loc>
