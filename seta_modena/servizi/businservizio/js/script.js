@@ -96,7 +96,7 @@ function caricadati() {
         fetch(urlList)
             .then(response => {
                 httpcode = response.status;
-                if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+                if (!response.ok) throw new Error("Errore nel caricamento dei dati. HTTP " + httpcode);
                 return response.json();
             })
             .then(data => {
@@ -119,7 +119,7 @@ function caricadati() {
                     container.textContent = "Impossibile raggiungere l'API.";
                     return;
                 }
-                container.textContent = 'Errore nel caricamento dati.';
+                container.textContent = 'Errore nel caricamento dati. (HTTP '+ httpcode + ")";
             });
     }
 }
