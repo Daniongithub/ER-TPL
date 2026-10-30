@@ -1,0 +1,15 @@
+.bus-card-green {
+    --bs-table-bg: rgb(14, 55, 14);
+    --bs-table-striped-bg: rgb(14, 55, 14);
+}
+
+.action-cell {
+    width: 1%;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    #search-bar {
+        width: 100% !important;
+    }
+}
