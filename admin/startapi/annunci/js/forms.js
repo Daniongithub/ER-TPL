@@ -4,6 +4,7 @@ const errorP = document.getElementById('error-p');
 async function submitMessage() {
     var newMessage = messageInput.value;
 
+    const token = getValidToken();
     const url = await getApiUrl();
     const response = await fetch(url + "/announcements/add", {
         method: "PUT",
