@@ -338,7 +338,7 @@ function applyFilter() {
         }
     });
 
-    i = 0;
+    var j = 0;
     rowsAss.forEach(row => {
         const cells = row.getElementsByTagName('td');
         let match = true;
@@ -351,8 +351,8 @@ function applyFilter() {
         row.style.display = match ? '' : 'none';
 
         if (match) {
-            i++;
-            row.className = i % 2 === 0 ? 'even' : '';
+            j++;
+            row.className = j % 2 === 0 ? 'even' : '';
         }
     });
 
