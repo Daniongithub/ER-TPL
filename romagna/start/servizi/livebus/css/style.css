@@ -115,6 +115,10 @@ hr.solid {
     width: auto;
 }
 
+.fw-bold {
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .filter-container {
         padding: 12px;

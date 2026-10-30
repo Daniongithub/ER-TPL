@@ -42,6 +42,7 @@ async function getMessages() {
 
 async function displayMessage() {
     var response = await getMessages();
+    console.log(response)
     if (!response) {
         currentMessageSpan.innerHTML = '<i class="opacity-50">Nessun messaggio impostato</i>';
         return;
@@ -49,7 +50,7 @@ async function displayMessage() {
     currentMessageSpan.innerHTML = '';
 
     response.forEach(message => {
-        currentMessageSpan.innerHTML = message;
+        currentMessageSpan.innerHTML = message.message;
     });
 }
 
