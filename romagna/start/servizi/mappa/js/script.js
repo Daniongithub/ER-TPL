@@ -56,8 +56,8 @@ const SHAPE_IDS = (params.get('shapeId') || '')
     .split(',')
     .map(s => s.trim())
     .filter(Boolean);
-const VEHICLE_ID = params.get('vehicle')
-const BASIN = params.get('basin')
+const VEHICLE_ID = params.get('vehicle')?.trim();
+const BASIN = params.get('basin')?.trim();
 
 // ======================================================================
 // MAPPA
@@ -99,14 +99,28 @@ async function fetchJson(url) {
     return res.json();
 }
 
+function escapeHtml(value) {
+    return String(value ?? 'Sconosciuto').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+}
+
+function validCoordinates(lat, lon) {
+    const isNumeric = value => (typeof value === 'number' ||
+        (typeof value === 'string' && value.trim() !== '')) && Number.isFinite(Number(value));
+    return isNumeric(lat) && isNumeric(lon) &&
+        Math.abs(Number(lat)) <= 90 && Math.abs(Number(lon)) <= 180;
+}
+
 // ======================================================================
 // MODALITÀ: VEHICLES
 // ======================================================================
 function busIcon(item) {
+    const line = String(item.line ?? '?');
     if (item.line == "MetroMare") {
         return L.divIcon({
             className: '',
-            html: `<div class="bus-icon-large">${item.line.split(" ")[0]}</div>`,
+            html: `<div class="bus-icon-large">${escapeHtml(line.split(" ")[0])}</div>`,
             iconSize: [34, 34],
             iconAnchor: [50, 17],
             popupAnchor: [0, -17]
@@ -114,7 +128,7 @@ function busIcon(item) {
     } else {
         return L.divIcon({
             className: '',
-            html: `<div class="bus-icon">${item.line.split(" ")[0]}</div>`,
+            html: `<div class="bus-icon">${escapeHtml(line.split(" ")[0])}</div>`,
             iconSize: [34, 34],
             iconAnchor: [17, 17],
             popupAnchor: [0, -17]
@@ -124,18 +138,12 @@ function busIcon(item) {
 }
 
 function vehiclePopupHtml(item) {
-    let delayMess = "Ritardo:"
+    const vehicleInfo = item.vehicle_info ?? {};
+    const nextStop = item.next_stop ?? {};
+    let delayMess = "";
+    let delay = "";
     let imgHtml = "";
-    if (item.vehicle_info.model == null) {
-        item.vehicle_info.model = "Sconosciuto"
-    }
-    if (item.vehicle_info.plate_num == null) {
-        item.vehicle_info.plate_num = "Sconosciuto"
-    }
-    if (item.vehicle_info.basin == null) {
-        item.vehicle_info.basin = "Sconosciuto"
-    }
-    if (item.vehicle_info.bus_preview_path == null) {
+    if (vehicleInfo.bus_preview_path == null) {
         imgHtml = `
             <div class="bus-image-container">
                 <span>Anteprima non disponibile.</span>
@@ -144,66 +152,59 @@ function vehiclePopupHtml(item) {
     } else {
         imgHtml = `
             <div class="bus-image-container bgtransparent">
-                <img data-path="${item.vehicle_info.bus_preview_path}" data-crop="true" alt="Caricamento in corso...">
+                <img data-path="${escapeHtml(vehicleInfo.bus_preview_path)}" data-crop="true" alt="Caricamento in corso...">
             </div>
         `;
     }
-    if (item.next_stop == null) {
-        item.next_stop = {
-            "stop_name": "Sconosciuto",
-            "stop_code": "Sconosciuto",
-            "arrival_time": "Sconosciuto",
-            "delay": "Sconosciuto",
-        }
-    }
-    if (item.next_stop.delay != "Sconosciuto") {
-        if (item.next_stop.delay < 0) {
+    if (nextStop.delay != null && nextStop.delay !== '' && Number.isFinite(Number(nextStop.delay))) {
+        if (Number(nextStop.delay) < 0) {
             delayMess = "Anticipo:";
-            item.next_stop.delay = Math.abs(item.next_stop.delay) + " MIN";
-        } else if (item.next_stop.delay == 0) {
+            delay = Math.abs(Number(nextStop.delay)) + " MIN";
+        } else if (Number(nextStop.delay) === 0) {
             delayMess = "In orario";
-            item.next_stop.delay = ""
         } else {
-            item.next_stop.delay = item.next_stop.delay + " MIN";
+            delayMess = "Ritardo:";
+            delay = Number(nextStop.delay) + " MIN";
         }
-    } else {
-        delayMess = ""
-        item.next_stop.delay = ""
     }
+    const routeParams = new URLSearchParams({
+        mode: 'singlemixed', vehicle: vehicleInfo.number ?? '',
+        basin: item.basin ?? '', shapeId: item.shape_id ?? ''
+    });
     return `
         <div class="popup-content">
             <div class="popup-head">
                 <div class="dispflex">
-                    <div class="line-box">${item.line}</div>
-                    <div class="dest-box">${item.destination}</div>
+                    <div class="line-box">${escapeHtml(item.line)}</div>
+                    <div class="dest-box">${escapeHtml(item.destination)}</div>
                 </div>
                 <hr class="head-separator">
                 <div class="head-desc">
                     <div class="dispflex">
-                        <h3 style="color:white;">${delayMess} ${item.next_stop.delay}</h3>
-                        <h3 style="display:flex; flex:1; justify-content:right;">Veicolo: ${item.vehicle_info.number}</h3>
+                        <h3 style="color:white;">${delayMess} ${delay}</h3>
+                        <h3 style="display:flex; flex:1; justify-content:right;">Veicolo: ${escapeHtml(vehicleInfo.number)}</h3>
                     </div>
                 </div>
             </div>
             <div class="popup-base">
                 <table class="up">
-                    <tr><td class="label">Bacino:</td><td>${item.basin}</td></tr>
-                    <tr><td class="label">Codice percorso:</td><td>${item.shape_id}</td></tr>
-                    <tr><td class="label">Codice corsa:</td><td>${item.trip_id}</td></tr>
+                    <tr><td class="label">Bacino:</td><td>${escapeHtml(item.basin)}</td></tr>
+                    <tr><td class="label">Codice percorso:</td><td>${escapeHtml(item.shape_id)}</td></tr>
+                    <tr><td class="label">Codice corsa:</td><td>${escapeHtml(item.trip_id)}</td></tr>
                 </table>
-                <a class="button" href="?mode=singlemixed&vehicle=${item.vehicle_info.number}&basin=${item.basin}&shapeId=${item.shape_id}">Visualizza il percorso</a>
+                <a class="button" href="?${escapeHtml(routeParams)}">Visualizza il percorso</a>
                 <hr class="separator">
                 <table class="down">
-                    <tr><td class="label">Modello:</td><td>${item.vehicle_info.model}</td></tr>
-                    <tr><td class="label">Targa:</td><td>${item.vehicle_info.plate_num}</td></tr>
-                    <tr><td class="label">Bacino veicolo:</td><td>${item.vehicle_info.basin}</td></tr>
+                    <tr><td class="label">Modello:</td><td>${escapeHtml(vehicleInfo.model)}</td></tr>
+                    <tr><td class="label">Targa:</td><td>${escapeHtml(vehicleInfo.plate_num)}</td></tr>
+                    <tr><td class="label">Bacino veicolo:</td><td>${escapeHtml(vehicleInfo.basin)}</td></tr>
                 </table>
                 ${imgHtml}
                 <hr class="separator">
                 <table class="up">
-                    <tr><td class="label">Prossima fermata:</td><td>${item.next_stop.stop_name}</td></tr>
-                    <tr><td class="label">Codice fermata:</td><td>${item.next_stop.stop_code}</td></tr>
-                    <tr><td class="label">ETA:</td><td>${item.next_stop.arrival_time}</td></tr>
+                    <tr><td class="label">Prossima fermata:</td><td>${escapeHtml(nextStop.stop_name)}</td></tr>
+                    <tr><td class="label">Codice fermata:</td><td>${escapeHtml(nextStop.stop_code)}</td></tr>
+                    <tr><td class="label">ETA:</td><td>${escapeHtml(nextStop.arrival_time)}</td></tr>
                 </table>
             </div>
         </div>
@@ -213,44 +214,67 @@ function vehiclePopupHtml(item) {
 const markersByVehicle = new Map();
 const markersByStop = new Map();
 let vehiclesFirstLoad = true;
+let vehiclesLoading = false;
+let singleLoading = false;
+let activeShapeMarker = null;
+
+function updateVehicleOpacity() {
+    for (const marker of markersByVehicle.values()) {
+        marker.setOpacity(activeShapeMarker && marker !== activeShapeMarker ? 0.5 : 1);
+    }
+}
 
 function plotVehicles(data, padd) {
-    if (!Array.isArray(data) || data.length === 0) {
-        showStatus('Nessun mezzo da mostrare.');
+    if (!Array.isArray(data)) {
+        showStatus('Dati dei mezzi non validi.');
         return;
     }
-    hideStatus();
 
     const seenVehicles = new Set();
 
-    //Lost vehicle for a second
-    if (!vehiclesFirstLoad && data[0] == null) {
-        showStatus('Il mezzo ha smesso di comunicare la sua posizione.');
-        return;
-    } else {
-        hideStatus('');
-    }
     data.forEach(item => {
-        const key = item.trip_id;
-        if (!key) return;
+        if (!item || !validCoordinates(item.vehicle_lat, item.vehicle_long)) return;
+        const number = item.vehicle_info?.number;
+        if (number == null && !item.trip_id) return;
+        const key = number != null ? `vehicle:${number}` : `trip:${item.basin}:${item.trip_id}`;
         seenVehicles.add(key);
 
         const existing = markersByVehicle.get(key);
         if (existing) {
+            const previous = existing.options.vehicleData;
+            existing.options.vehicleData = item;
             existing.setLatLng([item.vehicle_lat, item.vehicle_long]);
+            existing.setIcon(busIcon(item));
             existing.setPopupContent(vehiclePopupHtml(item));
+            if (existing === activeShapeMarker &&
+                (previous.shape_id !== item.shape_id || previous.basin !== item.basin)) {
+                spawnShape(item.basin, item.shape_id, existing);
+            }
             // Caso 2: il popup era già aperto e il contenuto (quindi anche l'img) è stato appena sostituito
             if (existing.isPopupOpen()) {
                 refreshVehiclePhotos();
             }
         } else {
-            const marker = L.marker([item.vehicle_lat, item.vehicle_long], { icon: busIcon(item) })
-                .bindPopup(vehiclePopupHtml(item));
+            const marker = L.marker([item.vehicle_lat, item.vehicle_long], {
+                icon: busIcon(item), vehicleData: item
+            }).bindPopup(vehiclePopupHtml(item), {
+                // Il bus resta aperto mentre si consultano le fermate del suo percorso.
+                autoClose: MODE === 'singlemixed',
+                closeOnClick: MODE === 'singlemixed'
+            });
 
             //Se siamo nella modalità single mixed, questa funzione non deve partire
             if (MODE != "singlemixed") {
                 marker.on('popupopen', () => {
-                    spawnShape(item.basin, item.shape_id, marker);
+                    const current = marker.options.vehicleData;
+                    spawnShape(current.basin, current.shape_id, marker);
+                });
+                marker.on('popupclose', () => {
+                    if (activeShapeMarker === marker) {
+                        activeShapeMarker = null;
+                        clearMap();
+                        updateVehicleOpacity();
+                    }
                 });
             }
 
@@ -265,6 +289,12 @@ function plotVehicles(data, padd) {
             markersByVehicle.delete(key);
         }
     }
+    updateVehicleOpacity();
+    if (markersByVehicle.size === 0) {
+        showStatus('Nessun mezzo con posizione disponibile.');
+        return;
+    }
+    hideStatus();
 
     if (vehiclesFirstLoad && markersByVehicle.size > 0) {
         const group = L.featureGroup(Array.from(markersByVehicle.values()));
@@ -281,8 +311,13 @@ function plotVehicles(data, padd) {
 }
 
 async function loadVehicles() {
+    if (vehiclesLoading) return;
+    if (!CONFIG.BASE_URL) {
+        showStatus('BASE_URL non impostato.');
+        return;
+    }
     let url
-    if (BASIN != undefined) {
+    if (BASIN) {
         url = CONFIG.BASE_URL + CONFIG.VEHICLES_BASIN_ENDPOINT.replace('{basin}', encodeURIComponent(BASIN));
     } else {
         url = CONFIG.BASE_URL ? (CONFIG.BASE_URL + CONFIG.VEHICLES_ENDPOINT) : "";
@@ -291,12 +326,15 @@ async function loadVehicles() {
         showStatus('BASE_URL non impostato.');
         return;
     }
+    vehiclesLoading = true;
     try {
         const data = await fetchJson(url);
         plotVehicles(data, 0);
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
         showStatus('Errore nel caricamento dati live: ' + err);
+    } finally {
+        vehiclesLoading = false;
     }
 }
 
@@ -310,23 +348,28 @@ function initVehiclesMode() {
 // ======================================================================
 
 async function loadSingle() {
-    const url = CONFIG.BASE_URL + CONFIG.SINGLE_VEHICLE_ENDPOINT.replace('{vehicle}', encodeURIComponent(VEHICLE_ID));
-    if (!url) {
+    if (singleLoading) return;
+    if (!CONFIG.BASE_URL) {
         showStatus('BASE_URL non impostato.');
         return;
     }
+    if (!VEHICLE_ID) {
+        showStatus('Nessun veicolo specificato. Usa il parametro vehicle.');
+        return;
+    }
+    const url = CONFIG.BASE_URL + CONFIG.SINGLE_VEHICLE_ENDPOINT.replace('{vehicle}', encodeURIComponent(VEHICLE_ID));
+    singleLoading = true;
     try {
         const data = await fetchJson(url);
-        let dataArr = []
-        dataArr[0] = data
-        if(!data) {
+        plotVehicles(data ? [data] : [], 13);
+        if (!data || !validCoordinates(data.vehicle_lat, data.vehicle_long)) {
             showStatus("GPS veicolo non disponibile.");
-            return;
         }
-        plotVehicles(dataArr, 13);
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
         showStatus('Errore nel caricamento dati live: ' + err);
+    } finally {
+        singleLoading = false;
     }
 }
 
@@ -340,20 +383,7 @@ function initSingleMode() {
 // ======================================================================
 
 async function loadSingleMixed() {
-    const url = CONFIG.BASE_URL + CONFIG.SINGLE_VEHICLE_ENDPOINT.replace('{vehicle}', encodeURIComponent(VEHICLE_ID));
-    if (!url) {
-        showStatus('BASE_URL non impostato.');
-        return;
-    }
-    try {
-        const data = await fetchJson(url);
-        let dataArr = [];
-        dataArr[0] = data;
-        plotVehicles(dataArr, 13);
-    } catch (err) {
-        console.error('Errore nel fetch dei mezzi:', err);
-        showStatus('Errore nel caricamento dati live: ' + err);
-    }
+    return loadSingle();
 }
 
 function initSingleMixedMode() {
@@ -445,53 +475,63 @@ function stopIcon() {
 }
 
 function stopPopupHtml(item) {
+    const stopParams = new URLSearchParams({ code: item.stop_code ?? '', basin: item.basin ?? '' });
     return `
         <div class="popup-content">
             <div class="popup-head">
                 <div class="dispflex">
-                    <div class="stop-name-box">${item.stop_name}</div>
+                    <div class="stop-name-box">${escapeHtml(item.stop_name)}</div>
                 </div>
                 <hr class="head-separator">
                 <div class="head-desc">
                     <div class="dispflex stop-code-box">
-                        Codice fermata: ${item.stop_code}
+                        Codice fermata: ${escapeHtml(item.stop_code)}
                     </div>
                 </div>
             </div>
             <div class="popup-base">
-                <a class="button" href="/romagna/start/servizi/fermate/fermata.html?code=${item.stop_code}&basin=${item.basin}" target="_blank">Visualizza gli arrivi</a>
+                <a class="button" href="/romagna/start/servizi/fermate/fermata.html?${escapeHtml(stopParams)}" target="_blank">Visualizza gli arrivi</a>
                 <hr class="separator">
                 <h3 style="text-align: center;">Che cosa passa oggi?</h3>
                 <div class="lines-container" style="display: none;"></div>
                 <hr class="separator">
                 <table class="up">
-                    <tr><td class="label">Bacino:</td><td>${item.basin}</td></tr>
-                    <tr><td class="label">Stop ID:</td><td>${item.stop_id}</td></tr>
+                    <tr><td class="label">Bacino:</td><td>${escapeHtml(item.basin)}</td></tr>
+                    <tr><td class="label">Stop ID:</td><td>${escapeHtml(item.stop_id)}</td></tr>
                 </table>
             </div>
         </div>
     `;
 }
 
-function plotStops(data) {
-    if (!Array.isArray(data) || data.length === 0) {
-        showStatus('Nessuna fermata da mostrare.');
+function plotStops(data, replace = true) {
+    if (!Array.isArray(data)) {
+        showStatus('Dati delle fermate non validi.');
         return;
     }
-    hideStatus();
 
-    const seenVehicles = new Set();
+    const seenStops = new Set();
 
     data.forEach(item => {
-        const key = item.stop_code;
-        if (!key) return;
-        seenVehicles.add(key);
+        if (!item || item.stop_code == null || !validCoordinates(item.stop_lat, item.stop_lon)) return;
+        const key = `${item.basin}:${item.stop_code}`;
+        seenStops.add(key);
 
-        const marker = L.marker([item.stop_lat, item.stop_lon], { icon: stopIcon() })
+        const existing = markersByStop.get(key);
+        if (existing) {
+            existing.options.stopData = item;
+            existing.setLatLng([item.stop_lat, item.stop_lon]);
+            existing.setPopupContent(stopPopupHtml(item));
+            if (existing.isPopupOpen()) loadLines(item.stop_code, item.basin, existing.getPopup());
+            return;
+        }
+
+        const marker = L.marker([item.stop_lat, item.stop_lon], { icon: stopIcon(), stopData: item })
             .bindPopup(stopPopupHtml(item));
 
         marker.on('popupopen', (e) => {
-            loadLines(item.stop_code, item.basin, e.popup);
+            const current = marker.options.stopData;
+            loadLines(current.stop_code, current.basin, e.popup);
         });
 
         marker.addTo(stopsLayerGroup);
@@ -499,10 +539,14 @@ function plotStops(data) {
     });
 
     for (const [key, marker] of markersByStop.entries()) {
-        if (!seenVehicles.has(key)) {
+        if (replace && !seenStops.has(key)) {
             stopsLayerGroup.removeLayer(marker);
             markersByStop.delete(key);
         }
+    }
+    if (MODE === 'stops') {
+        if (markersByStop.size === 0) showStatus('Nessuna fermata da mostrare.');
+        else hideStatus();
     }
 
     if (markersByStop.size > 0 && MODE == "stops") {
@@ -530,18 +574,18 @@ function plotStops(data) {
 }
 
 async function loadStops() {
-    const stopListUrl = CONFIG.BASE_URL + CONFIG.STOP_LIST_ENDPOINT.replace('{basin}', encodeURIComponent(BASIN));
-    if (!stopListUrl) {
+    if (!CONFIG.BASE_URL) {
         showStatus('BASE_URL non impostato.');
         return false;
     }
+    const stopListUrl = CONFIG.BASE_URL + CONFIG.STOP_LIST_ENDPOINT.replace('{basin}', encodeURIComponent(BASIN));
     try {
         const data = await fetchJson(stopListUrl);
         plotStops(data);
-        return true;
+        return Array.isArray(data) && markersByStop.size > 0;
     } catch (err) {
-        console.error('Errore nel fetch dei mezzi:', err);
-        showStatus('Errore nel caricamento dati live: ' + err);
+        console.error('Errore nel fetch delle fermate:', err);
+        showStatus('Errore nel caricamento delle fermate: ' + err);
         return false;
     }
 }
@@ -588,7 +632,7 @@ function shapeEndpointPopupHtml(shapeId, type) {
                 <h3>${label}</h3>
             </div>
             <div class="popup-base shape-popup-base">
-                Shape ID: ${shapeId}
+                Shape ID: ${escapeHtml(shapeId)}
             </div>
         </div>
     `;
@@ -599,109 +643,70 @@ async function loadShapeData(shapeId, basin) {
         throw new Error('BASE_URL non impostato');
     }
 
-    let url
-    if (BASIN == undefined) {
-        url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', basin).replace('{shapeId}', shapeId);
-    } else {
-        url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE.replace('{basin}', BASIN).replace('{shapeId}', shapeId);
-    }
+    const shapeBasin = basin || BASIN;
+    if (!shapeBasin || !shapeId) throw new Error('Bacino o shapeId non specificato');
+    const url = CONFIG.BASE_URL + CONFIG.SHAPE_ENDPOINT_TEMPLATE
+        .replace('{basin}', encodeURIComponent(shapeBasin))
+        .replace('{shapeId}', encodeURIComponent(shapeId));
     return fetchJson(url);
 }
 
-//This stores all markers for start and end of shape
-let layerGroup = L.layerGroup().addTo(map);
+// Tracciati e capolinea: la pulizia agisce solo sui layer gestiti da queste funzioni.
+const layerGroup = L.layerGroup().addTo(map);
+let shapeRequestId = 0;
 
 async function initShapesMode(shapeid, basin) {
     const allPolylineLayers = [];
-    const shapeIdToColor = {};
+    const shapeIds = shapeid == undefined ? SHAPE_IDS : [shapeid];
+    const requestId = shapeRequestId;
     let anyError = false;
 
-    if (shapeid == undefined) {
-        if (SHAPE_IDS.length === 0) {
-            showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&basin=FC&shapeId=8003_A (o una lista separata da virgole).');
-            return;
-        }
-        for (let i = 0; i < SHAPE_IDS.length; i++) {
-            const shapeId = SHAPE_IDS[i];
-            const color = SHAPE_COLORS[i % SHAPE_COLORS.length];
-            shapeIdToColor[shapeId] = color;
-
-            try {
-                const data = await loadShapeData(shapeId);
-                let points = data?.points ?? [];
-                if (!Array.isArray(points) || points.length === 0) {
-                    console.warn('Nessun punto ricevuto per ' + shapeId);
-                    continue;
-                }
-                points = [...points].sort((a, b) => (a.shape_pt_sequence ?? 0) - (b.shape_pt_sequence ?? 0));
-
-                const latlngs = points
-                    .filter(p => typeof p.shape_pt_lat === 'number' && typeof p.shape_pt_lon === 'number')
-                    .map(p => [p.shape_pt_lat, p.shape_pt_lon]);
-
-                if (latlngs.length === 0) continue;
-
-                const polyline = L.polyline(latlngs, {
-                    color: color,
-                    weight: 5,
-                    opacity: 0.85
-                })
-
-                polyline.addTo(map);
-                allPolylineLayers.push(polyline);
-
-                // Marker di inizio e fine per capire il verso del tracciato
-                const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
-                    .bindPopup(shapeEndpointPopupHtml(shapeId, 'start'));
-                const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
-                    .bindPopup(shapeEndpointPopupHtml(shapeId, 'end'));
-                startMarker.addTo(map);
-                endMarker.addTo(map);
-                allPolylineLayers.push(startMarker, endMarker);
-
-                //Spawna le fermate interessate sullo shape (tutti i trip_id con quella shape)
-                plotStops(data.stops)
-            } catch (err) {
-                console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
-                anyError = true;
-            }
-        }
-    } else {
-        const color = SHAPE_COLORS[0];
-        shapeIdToColor[shapeid] = color;
+    if (shapeIds.length === 0) {
+        showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&basin=FC&shapeId=8003_A (o una lista separata da virgole).');
+        return;
+    }
+    for (let i = 0; i < shapeIds.length; i++) {
+        const shapeId = shapeIds[i];
+        const color = SHAPE_COLORS[i % SHAPE_COLORS.length];
         try {
-            const data = await loadShapeData(shapeid, basin);
+            const data = await loadShapeData(shapeId, basin);
+            // Una chiusura o un cambio bus invalida i caricamenti precedenti.
+            if (requestId !== shapeRequestId) return;
             let points = data?.points ?? [];
             if (!Array.isArray(points) || points.length === 0) {
                 console.warn('Nessun punto ricevuto per ' + shapeId);
+                anyError = true;
+                continue;
             }
-            points = [...points].sort((a, b) => (a.shape_pt_sequence ?? 0) - (b.shape_pt_sequence ?? 0));
+            points = points.filter(p => p && validCoordinates(p.shape_pt_lat, p.shape_pt_lon))
+                .sort((a, b) => (a.shape_pt_sequence ?? 0) - (b.shape_pt_sequence ?? 0));
 
-            const latlngs = points
-                .filter(p => typeof p.shape_pt_lat === 'number' && typeof p.shape_pt_lon === 'number')
-                .map(p => [p.shape_pt_lat, p.shape_pt_lon]);
+            const latlngs = points.map(p => [p.shape_pt_lat, p.shape_pt_lon]);
+            if (latlngs.length === 0) {
+                anyError = true;
+                continue;
+            }
 
             const polyline = L.polyline(latlngs, {
                 color: color,
                 weight: 5,
                 opacity: 0.85
-            })
-
-            polyline.addTo(map);
+            }).addTo(layerGroup);
             allPolylineLayers.push(polyline);
 
+            // Marker di inizio e fine per capire il verso del tracciato.
             const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
-                .bindPopup(shapeEndpointPopupHtml(shapeid, 'start')).addTo(layerGroup);
+                .bindPopup(shapeEndpointPopupHtml(shapeId, 'start')).addTo(layerGroup);
             const endMarker = L.marker(latlngs[latlngs.length - 1], { icon: shapeEndpointIcon(color, 'end') })
-                .bindPopup(shapeEndpointPopupHtml(shapeid, 'end')).addTo(layerGroup);
-            startMarker.addTo(map);
-            endMarker.addTo(map);
+                .bindPopup(shapeEndpointPopupHtml(shapeId, 'end')).addTo(layerGroup);
             allPolylineLayers.push(startMarker, endMarker);
 
-            //Spawna le fermate interessate sullo shape (tutti i trip_id con quella shape)
-            plotStops(data.stops)
+            // Accumula le fermate di tutti i percorsi senza duplicare quelle condivise.
+            const stops = Array.isArray(data.stops) ? data.stops : [];
+            plotStops(stops.map(stop => stop && ({ ...stop, basin: stop.basin ?? basin ?? BASIN })), false);
         } catch (err) {
-            console.error('Errore nel caricamento dello shape ' + shapeid + ':', err);
+            if (requestId !== shapeRequestId) return;
+            console.error('Errore nel caricamento dello shape ' + shapeId + ':', err);
             anyError = true;
         }
     }
@@ -713,6 +718,8 @@ async function initShapesMode(shapeid, basin) {
 
     if (anyError) {
         showStatus('Alcuni tracciati non sono stati caricati correttamente (vedi console).');
+    } else {
+        hideStatus();
     }
 
     const group = L.featureGroup(allPolylineLayers);
@@ -725,6 +732,15 @@ async function initShapesMode(shapeid, basin) {
 // AVVIO IN BASE ALLA MODALITÀ
 // ======================================================================
 async function initApp() {
+    if (MODE === 'empty') return;
+    if ((MODE === 'single' || MODE === 'singlemixed') && !VEHICLE_ID) {
+        showStatus('Nessun veicolo specificato. Usa il parametro vehicle.');
+        return;
+    }
+    if (['stops', 'shapes', 'singlemixed'].includes(MODE) && !BASIN) {
+        showStatus('Nessun bacino specificato. Usa il parametro basin.');
+        return;
+    }
     try {
         CONFIG.BASE_URL = await getApiUrl();
     } catch (err) {
@@ -733,7 +749,7 @@ async function initApp() {
         return;
     }
 
-    if (!CONFIG.BASE_URL && MODE !== "empty") {
+    if (!CONFIG.BASE_URL) {
         showStatus('Servizio mappa non disponibile al momento.');
         return;
     }
@@ -767,51 +783,32 @@ function refreshVehiclePhotos() {
     }
 }
 
-let isStop
 map.on('popupopen', () => refreshVehiclePhotos());
-map.on('popupclose', () => {
-    if (MODE != "singlemixed" && MODE != "shapes" && MODE != "stops") {
-        clearMap();
-        const allTranspMarkers = document.querySelectorAll('.bus-icon-transparent');
-        allTranspMarkers.forEach(marker => {
-            marker.className = "bus-icon";
-        })
-        const allLargeTranspMarkers = document.querySelectorAll('.bus-icon-large-transparent');
-        allLargeTranspMarkers.forEach(marker => {
-            marker.className = "bus-icon-large";
-        })
-    }
+// I click sui marker sono gestiti dai loro popup; un click sulla mappa chiude il bus.
+map.on('click', () => {
+    if (activeShapeMarker) activeShapeMarker.closePopup();
 });
 
-function spawnShape(basin, shapeid, popup) {
-    //PULIRE DA TUTTE LE SHAPE
-    clearMap();
-
-    //Rende tutti i marker eccetto questo meno opachi
-    const popupElement = popup.getElement();
-    const thisMarker = popupElement.querySelector('.bus-icon');
-    const thisLargeMarker = popupElement.querySelector('.bus-icon-large');
-    const allMarkers = document.querySelectorAll('.bus-icon');
-    const largeMarkers = document.querySelectorAll('.bus-icon-large');
-    allMarkers.forEach(marker => {
-        marker.className = "bus-icon-transparent";
-    })
-    largeMarkers.forEach(marker => {
-        marker.className = "bus-icon-large-transparent";
-    })
-    if (thisMarker != null) {
-        thisMarker.className = "bus-icon";
-    } else {
-        thisLargeMarker.className = "bus-icon-large";
+function spawnShape(basin, shapeid, marker) {
+    if (activeShapeMarker && activeShapeMarker !== marker) {
+        activeShapeMarker.closePopup();
     }
-
+    clearMap();
+    activeShapeMarker = marker;
+    updateVehicleOpacity();
+    if (!shapeid || !(basin || BASIN)) {
+        showStatus('Percorso del veicolo non disponibile.');
+        return;
+    }
     initShapesMode(shapeid, basin);
 }
 
 async function loadLines(stopCode, basin, popup) {
     const popupElement = popup.getElement();
-    const linesContainer = popupElement.querySelector('.lines-container');
-    const url = CONFIG.BASE_URL + CONFIG.STOP_INFO_ENDPOINT.replace('{basin}', basin).replace('{stopCode}', stopCode);
+    const linesContainer = popupElement?.querySelector('.lines-container');
+    if (!linesContainer) return;
+    const url = CONFIG.BASE_URL + CONFIG.STOP_INFO_ENDPOINT
+        .replace('{basin}', encodeURIComponent(basin)).replace('{stopCode}', encodeURIComponent(stopCode));
     const noLinesMessage = 'Nessuna linea passa per questa fermata.';
 
     // Svuota il contenitore per evitare duplicati
@@ -839,14 +836,14 @@ async function loadLines(stopCode, basin, popup) {
             },
             {
                 key: 'shuttle',
-                title: 'Linee navetto:'
+                title: 'Linee navetta:'
             }
         ];
 
         let hasLines = false;
 
         groups.forEach(group => {
-            const lines = data[group.key];
+            const lines = data?.[group.key];
 
             // Non mostrare le categorie assenti o vuote
             if (!Array.isArray(lines) || lines.length === 0) {
@@ -879,21 +876,14 @@ async function loadLines(stopCode, basin, popup) {
     } catch (err) {
         console.error('Errore nel caricamento linee passanti:', err);
         linesContainer.innerHTML = '';
-        linesContainer.textContent = noLinesMessage;
+        linesContainer.textContent = 'Impossibile caricare le linee di questa fermata.';
     }
+    if (popup.isOpen()) popup.update();
 }
 
 function clearMap() {
-    for (i in map._layers) {
-        if (map._layers[i]._path != undefined) {
-            try {
-                map.removeLayer(map._layers[i]);
-            }
-            catch (e) {
-                console.log("problem with " + e + map._layers[i]);
-            }
-        }
-    }
+    shapeRequestId++;
     layerGroup.clearLayers();
     stopsLayerGroup.clearLayers();
+    markersByStop.clear();
 }
