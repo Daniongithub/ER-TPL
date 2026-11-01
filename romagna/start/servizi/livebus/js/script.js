@@ -1,17 +1,33 @@
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 let manualLoad = true;
+let loading = false;
+let refreshPending = false;
+let backend = null;
 async function getApiUrl() {
-    const res = await fetch(API_ENDPOINT);
+    const res = await fetch(API_ENDPOINT, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Registry API non raggiungibile');
     const cfg = await res.json();
-    if (cfg.status !== "ok") return null;
-    return cfg.url;
+    if (cfg.status !== "ok" || !cfg.url) throw new Error('API non disponibile');
+    return cfg.url.replace(/\/$/, '');
 }
 
 //SSE
-const backend = new EventSource("https://startapi.serverissimo.com/events");
-backend.addEventListener('vehicle_positions', function (event) {
-    fetchData();
-});
+function connectBackend(url) {
+    if (typeof EventSource === 'undefined') return;
+    const eventsUrl = url + '/events';
+    if (backend?.url === eventsUrl) return;
+    backend?.close();
+    backend = new EventSource(eventsUrl);
+    backend.addEventListener('vehicle_positions', fetchData);
+    backend.addEventListener('trip_updates', fetchData);
+    backend.addEventListener('open', fetchData);
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+}
 
 // Funzione per riempire il select dei modelli
 function fillModels() {
@@ -71,6 +87,9 @@ function fillModels() {
 
 // Funzione per applicare i filtri
 function applyFilter() {
+    // Aggiorna prima le opzioni: il modello selezionato potrebbe non essere più disponibile.
+    fillModels();
+    updateMapLink();
     const filterZona = document.getElementById('filter-zona').value.toLowerCase();
     const filterLinea = document.getElementById('filter-linea').value.toLowerCase();
     const filterModello = document.getElementById('filter-modello').value.toLowerCase();
@@ -98,7 +117,7 @@ function applyFilter() {
 
         // MODELLO
         if (cells[4] &&
-            !cells[4].textContent.toLowerCase().includes(filterModello)) {
+            filterModello && cells[4].textContent.trim().toLowerCase() !== filterModello) {
             match = false;
         }
 
@@ -109,9 +128,6 @@ function applyFilter() {
             row.className = i % 2 === 0 ? 'even' : '';
         }
     });
-
-    // Aggiorna i modelli disponibili usando SOLO Bacino + Linea
-    fillModels();
 
     // Contenitore della tabella
     const container = table.parentElement;
@@ -136,7 +152,7 @@ function applyFilter() {
             container.appendChild(noResults);
         }
 
-        noResults.textContent = 'Nessun mezzo corrisponde ai filtri selezionati.';
+        noResults.textContent = rows.length === 0 ? 'Nessun mezzo in servizio.' : 'Nessun mezzo corrisponde ai filtri selezionati.';
         noResults.style.display = '';
     } else {
         // Ci sono risultati: mostra la tabella
@@ -148,8 +164,6 @@ function applyFilter() {
         }
     }
 
-    updateMapLink();
-
     numeromezzi();
 }
 
@@ -158,15 +172,16 @@ function updateMapLink() {
     const mapLinkContainer = document.getElementById("map-link-container");
     if (filterZona == "") {
         //Mappa globale
-        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/romagna/start/servizi/mappa/index.html'">Apri la mappa</button>`;
+        mapLinkContainer.innerHTML = `<a class="livebus-button map-button" target="_blank" href="/romagna/start/servizi/mappa/index.html">Apri la mappa</a>`;
     } else {
         //Mappa per bacino
-        mapLinkContainer.innerHTML = `<button class="map-button" onclick="window.location.href='/romagna/start/servizi/mappa/index.html?basin=${filterZona}'">Apri la mappa (${filterZona})</button>`;
+        mapLinkContainer.innerHTML = `<a class="livebus-button map-button" target="_blank" href="/romagna/start/servizi/mappa/index.html?basin=${encodeURIComponent(filterZona)}">Apri la mappa (${escapeHtml(filterZona)})</a>`;
     }
 }
 
 function numeromezzi() {
     const table = document.getElementById('tabella');
+    if (!table) return;
     //let nummezzi = table.tBodies[0].rows.length;
     const rows = table.querySelectorAll('tbody tr');
     const visibili = Array.from(rows).filter(row => {
@@ -179,16 +194,26 @@ fetchData();
 
 // Fetch dei dati e creazione della tabella
 function fetchData() {
+    if (loading) {
+        refreshPending = true;
+        return;
+    }
+    loading = true;
     const container = document.getElementById('data-container');
     if (manualLoad) {
         container.innerHTML = '<p style="text-align: center; color: white;">Caricamento in corso, attendere prego...</p>';
     }
-    getApiUrl().then(url => {
-        fetch(url + "/busesinservice")
-            .then(response => response.json())
+    return getApiUrl().then(url => {
+        connectBackend(url);
+        return fetch(url + "/busesinservice", { cache: 'no-store' })
+            .then(response => {
+                if (response.status === 404) return [];
+                if (!response.ok) throw new Error('Errore nel caricamento dei mezzi');
+                return response.json();
+            })
             .then(data => {
+                if (!Array.isArray(data)) throw new Error('Lista mezzi non valida');
                 manualLoad = false;
-                container.innerHTML = '';
 
                 //Table and thead creation
                 const table = document.createElement('table');
@@ -233,7 +258,9 @@ function fetchData() {
 
                 // Aggiungi i dati alla tabella
                 data.forEach(bus => {
+                    if (!bus) return;
                     const tr = document.createElement('tr');
+                    bus.vehicle_info ??= {};
                     if (bus.vehicle_info.model == null) {
                         bus.vehicle_info.model = "Sconosciuto";
                     }
@@ -259,33 +286,46 @@ function fetchData() {
                         });
 
                     tr.innerHTML = `
-                        <td>${bus.basin}</td>
-                        <td>${bus.line}</td>
-                        <td>${bus.destination}</td>
-                        <td><a class="no-decoration" href="infoveicolo.html?id=${bus.vehicle_info.number}">${bus.vehicle_info.number}</a></td>
-                        <td>${bus.vehicle_info.model}</td>
-                        <td>${bus.next_stop.stop_name}</td>
-                        <td class="mobile-hidden">${bus.next_stop.stop_code}</td>
+                        <td>${escapeHtml(bus.basin)}</td>
+                        <td>${escapeHtml(bus.line)}</td>
+                        <td>${escapeHtml(bus.destination)}</td>
+                        <td>${bus.vehicle_info.number != null ? `<a class="no-decoration" href="infoveicolo.html?id=${encodeURIComponent(bus.vehicle_info.number)}">${escapeHtml(bus.vehicle_info.number)}</a>` : 'Sconosciuto'}</td>
+                        <td>${escapeHtml(bus.vehicle_info.model)}</td>
+                        <td>${escapeHtml(bus.next_stop.stop_name)}</td>
+                        <td class="mobile-hidden">${escapeHtml(bus.next_stop.stop_code)}</td>
                         <td class="mobile-hidden">${aggiornamento}</td>
                     `;
                     tbody.appendChild(tr);
                 });
                 table.appendChild(tbody);
                 // Aggiungi la tabella alla pagina
+                container.innerHTML = '';
                 container.appendChild(table);
                 table.id = "tabella";
                 // Preserva il filtro
                 applyFilter();
-                fillModels();
-                numeromezzi();
-            })
-            .catch(err => {
-                console.error(err);
-                container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
             });
     }).catch(err => {
         console.error(err);
-        container.innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="manualLoad = true; fetchData();">riprova adesso</a> o riprova più tardi.</p>`;
+        let error = container.querySelector('.load-error');
+        if (!error) {
+            if (!document.getElementById('tabella')) container.innerHTML = '';
+            error = document.createElement('p');
+            error.className = 'load-error';
+            container.appendChild(error);
+        }
+        error.innerHTML = `Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="index.html" id="retry-load">riprova adesso</a> o riprova più tardi.`;
+        error.querySelector('#retry-load').addEventListener('click', event => {
+            event.preventDefault();
+            fetchData();
+        });
+        if (!document.getElementById('tabella')) document.getElementById('nummezzi').textContent = '—';
+    }).finally(() => {
+        loading = false;
+        if (refreshPending) {
+            refreshPending = false;
+            fetchData();
+        }
     });
 }
 
@@ -313,12 +353,20 @@ updateClock();
 document.getElementById('filter-zona').addEventListener('change', applyFilter);
 document.getElementById('filter-linea').addEventListener('input', applyFilter);
 document.getElementById('filter-modello').addEventListener('change', applyFilter);
+document.getElementById('resetFilters').addEventListener('click', event => {
+    event.preventDefault();
+    clearFilters();
+});
+
+// Recupera anche eventi persi durante disconnessioni o cambi del backend HA.
+setInterval(fetchData, 30000);
+updateMapLink();
 
 const announcementsContainer = document.getElementById('announcements-container')
 
 function loadAnnouncements() {
-    getApiUrl().then(url => {
-        fetch(url + "/announcements")
+    return getApiUrl().then(url => {
+        return fetch(url + "/announcements", { cache: 'no-store' })
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Errore nel caricamento annunci.");
@@ -326,11 +374,9 @@ function loadAnnouncements() {
                 return response.json();
             })
             .then(data => {
-                if (data) {
-                    announcementsContainer.innerHTML += data[0].message;
-                }
-            })
-    })
+                announcementsContainer.innerHTML = Array.isArray(data) ? (data[0]?.message ?? '') : '';
+            });
+    }).catch(err => console.error('Errore nel caricamento annunci:', err));
 }
 
-loadAnnouncements()
+loadAnnouncements();

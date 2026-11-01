@@ -716,11 +716,6 @@
 		<lastmod>2026-06-01</lastmod>
 	</url>
 	<url>
-		<loc>https://ertpl.pages.dev/admin/startapi/annunci</loc>
-		<priority>0.33</priority>
-		<lastmod>2026-10-30</lastmod>
-	</url>
-	<url>
 		<loc>https://ertpl.pages.dev/seta_modena/bus/urbano/citelis10.html</loc>
 		<priority>0.33</priority>
 		<lastmod>2026-10-29</lastmod>
@@ -1094,10 +1089,5 @@
 		<loc>https://ertpl.pages.dev/seta_modena/bus/suburbano/man19g.html</loc>
 		<priority>0.20</priority>
 		<lastmod>2026-10-16</lastmod>
-	</url>
-	<url>
-		<loc>https://ertpl.pages.dev/romagna/start/servizi/orari/tabella.html</loc>
-		<priority>0.17</priority>
-		<lastmod>2026-11-01</lastmod>
 	</url>
 </urlset>

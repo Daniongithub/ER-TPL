@@ -23,7 +23,7 @@
     margin-bottom: 16px;
 }
 
-.filter-container button {
+.filter-container .livebus-button {
     flex: 1 1 10px;
     background-color: darkcyan;
     border: 0;
@@ -61,7 +61,7 @@
     border-color: darkcyan;
 }
 
-.filter-container button:active {
+.filter-container .livebus-button:active {
     background-color: rgba(0, 139, 139, 0.5);
 }
 
@@ -134,7 +134,7 @@ hr.solid {
 
     .filter-container input,
     .filter-container select,
-    .filter-container button {
+    .filter-container .livebus-button {
         flex: unset;
         width: 100%;
         box-sizing: border-box;
@@ -176,7 +176,13 @@ hr.solid {
     }
 }
 
-button {
+a.livebus-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    line-height: normal;
     background-color: rgb(60, 60, 60);
     color: white;
     border: none;
@@ -187,10 +193,6 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button:disabled {
-    cursor: not-allowed;
 }
 
 a {
