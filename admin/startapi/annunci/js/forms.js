@@ -34,6 +34,6 @@ async function emptyMessage() {
     });
     
     if (!response.ok) {
-        errorP.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Impossibile svuotare il messaggio. HTTP ' + response.status;
+        errorP.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Impossibile svuotare il messaggio. HTTP ' + response.status + " body: "+ await response.text();
     }
 }

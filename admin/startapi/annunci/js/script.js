@@ -42,7 +42,6 @@ async function getMessages() {
 
 async function displayMessage() {
     var response = await getMessages();
-    console.log(response)
     if (!response) {
         currentMessageSpan.innerHTML = '<i class="opacity-50">Nessun messaggio impostato</i>';
         return;

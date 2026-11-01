@@ -1,0 +1,255 @@
+.search-result {
+    border: 2px solid #444444;
+    border-radius: 8px;
+    width: 20vw;
+    margin: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: inline-block;
+    transition: border-color 0.1s;
+}
+
+.search-result:hover,
+.search-result:active {
+    border-color: darkcyan;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 85%;
+    max-width: 100%;
+}
+
+th {
+    background-color: darkcyan;
+}
+
+th,
+td {
+    padding: .7vw;
+    padding-top: .6vw;
+    padding-bottom: .6vw;
+    text-align: center;
+}
+
+th:not(:first-child),
+td:not(:first-child) {
+    min-width: 135px;
+}
+
+th:first-child,
+td:first-child {
+    background-color: darkcyan;
+    font-weight: bold;
+    position: sticky;
+    left: 0;
+    text-align: left;
+    width: 200px;
+}
+
+tr.even {
+    background-color: rgb(60, 60, 60);
+}
+
+a {
+    color: rgb(0, 215, 215);
+}
+
+a.bianco {
+    color: white;
+    text-decoration: none;
+}
+
+a.biancosott {
+    color: white;
+}
+
+#as-di-container button {
+    background-color: transparent;
+    border: 3px solid darkcyan;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 4px 8px;
+    width: 40%;
+    transition: background-color 0.1s ease;
+}
+
+#as-di-container button.selected {
+    background-color: darkcyan;
+}
+
+#as-di-container {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background-color: darkcyan;
+    border: 0;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 8px 8px;
+    margin-bottom: 0;
+    transition: background-color 0.1s ease;
+}
+
+select {
+    flex: 1;
+    width: 100%;
+    margin-left: 4px;
+    margin-right: 4px;
+    outline: none;
+    font-size: 16px;
+}
+
+select:focus {
+    border-color: darkcyan;
+}
+
+select {
+    padding: 10px 15px;
+    margin-top: 8px;
+    width: auto;
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid rgba(0, 139, 139, 0.5);
+    transition: border-color 0.3s ease;
+}
+
+#basin-select:focus {
+    outline: none;
+    border-color: darkcyan;
+}
+
+
+#table-container {
+    overflow-x: scroll;
+    margin-top: 12px;
+    position: relative;
+}
+
+#info-container p {
+    margin-bottom: 0;
+}
+
+div#map-container {
+    margin: 24px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div#map-container a {
+    background-color: darkcyan;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.1s ease;
+}
+
+div#map-container iframe {
+    width: 60%;
+    border: 0px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .search-result {
+        display: block;
+        width: 96.5%;
+    }
+
+    th,
+    td {
+        font-size: 2.5vw;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    nav#rcodes-nav ul:last-child li {
+        margin-right: 20px;
+    }
+
+    nav#rcodes-nav ul li:last-child {
+        margin-right: 20px;
+    }
+
+    div#map-container iframe {
+        width: 80%;
+    }
+}
+
+@media (max-width: 512px) {
+
+    th,
+    td {
+        font-size: 3.6vw;
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+        min-width: 110px;
+    }
+
+    td:first-child,
+    th:first-child {
+        padding-left: 5px;
+    }
+
+    div#map-container iframe {
+        width: 99%;
+    }
+
+    div#map-container {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    #as-di-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #as-di-container button {
+        width: 90%;
+    }
+
+    select,
+    button {
+        width: 90%;
+    }
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+div.search-result div {
+    margin-left: 10px;
+    margin-right: 10px;
+}

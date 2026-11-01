@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Visualizza i percorsi di SETA a Modena.">
+    <meta name="keywords" content="seta, modena, seta-modena, orari, in, tempo, reale, autobus, fermate, orario, palina">
+    <meta name="author" content="ER-TPL Team">
+    <title>SETA Modena - Orario</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.setaweb.it/images/favicon/android-icon-192x192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+                <li><a href="/romagna/start/menu/index.html"><h1 style="font-size: 100%;font-weight: 500;">START Romagna</h1></a></li>
+                <li><a href="/romagna/start/servizi/orari/index.html"><h1 style="font-size: 100%;font-weight: 500;">Selettore linea</h1></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h2>Orari linea <span id="linea-span"></span></h2>
+    <div id="as-di-container">
+        <button id="as-button" onclick="javascript:setAs()">Andata</button>
+        <button id="di-button" onclick="javascript:setDi()">Ritorno</button>
+    </div>
+    <div id="filter-container" style="display:none;">
+        <select name="filter" id="filter-select" autocomplete="off">
+            <option value="" disabled selected hidden>Filtra per destinazione:</option>
+        </select>
+        <button onclick="window.location.href=''">Reimposta il filtro</button>
+    </div>
+    
+    <div id="table-container"></div>
+    <div id="info-container"></div>
+    <p>E' possibile cliccare sul nome linea per vedere la lista fermate completa di quel percorso.</p>
+    <footer>
+        <div>
+			<p>Copyright (C) 2025-2026 ER-TPL Team - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Daniongithub/StartRomagnaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione e riferimento.</p>
+		</div>
+    </footer>
+    <script src="js/tabella.js"></script>
+</body>
+</html>

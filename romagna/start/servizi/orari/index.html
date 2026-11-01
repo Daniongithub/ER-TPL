@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Visualizza gli orari di SETA a Modena.">
+    <meta name="keywords" content="seta, modena, seta-modena, orari, previsti, linee, destinazioni autobus, fermate, orario">
+    <meta name="author" content="ER-TPL Team">
+    <title>SETA Modena - Orari linee</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, target-densitydpi=device-dpi">
+    <link rel="shortcut icon" href="https://www.setaweb.it/images/favicon/android-icon-192x192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
+                <li><a href="/seta_modena/menu/index.html"><h1 style="font-size: 100%;font-weight: 500;">SETA Modena</h1></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Orari linee START Romagna</h1>
+    <h2>Scegli un bacino:</h2>
+    <div class="basin-select-container">
+        <select name="basin" id="basin-select">
+            <option value="" disabled selected hidden>Seleziona il bacino:</option>
+            <option value="RA">Ravenna</option>
+            <option value="FC">Forlì-Cesena</option>
+            <option value="RN">Rimini</option>
+        </select>
+    </div>
+    <p id="message-p" style="display: none;"></p>
+    <div id="routes-container" style="display: none;">
+        <h2>Scegli una linea:</h2>
+        <h2>Urbano:</h2>
+        <div id="urbano-container"></div>
+        <hr class="solid">
+        <h2>Scolastiche:</h2>
+        <div id="scuola-container"></div>
+        <hr class="solid">
+        <h2>Suburbano e Extraurbano:</h2>
+        <div id="subextra-container"></div>
+        <hr class="solid">
+        <h2>Altre città:</h2>
+        <div id="altri-container"></div>
+    </div>
+    <footer>
+        <div>
+			<p>Copyright (C) 2025-2026 ER-TPL Team - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Daniongithub/StartRomagnaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione e riferimento.</p>
+		</div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
