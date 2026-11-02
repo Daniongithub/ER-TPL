@@ -9,12 +9,18 @@ async function getApiUrl() {
 
 const basinSelect = document.getElementById('basin-select');
 const messageP = document.getElementById('message-p');
+
 const routesContainer = document.getElementById('routes-container');
+const uTextContainer = document.getElementById('urbano-text-container');
+const subTextContainer = document.getElementById('sub-text-container');
+const extraTextContainer = document.getElementById('extra-text-container');
+const schTextContainer = document.getElementById('scuola-text-container');
+const shuttleTextContainer = document.getElementById('navette-text-container');
 const uContainer = document.getElementById('urbano-container');
-const sContainer = document.getElementById('speciali-container');
-const seContainer = document.getElementById('subextra-container');
-const othContainer = document.getElementById('altri-container');
+const subContainer = document.getElementById('sub-container');
+const extraContainer = document.getElementById('extra-container');
 const schContainer = document.getElementById('scuola-container');
+const shuttleContainer = document.getElementById('navette-container');
 
 var selectedBasin;
 
@@ -31,7 +37,6 @@ if (basinSelect.value != "") {
 
 //Elenco linee
 function loadRoutes() {
-    uContainer.innerHTML = '';
     messageP.style.display = '';
     messageP.textContent = 'Caricamento in corso...';
     getApiUrl().then(url => {
@@ -42,20 +47,69 @@ function loadRoutes() {
             })
             .then(data => {
                 routesContainer.style.display = '';
-                data.forEach(element => {
-                    //Ordina le linee in categorie
-                    //TODO
-                    const result = document.createElement('a');
-                    result.setAttribute("class", "bianco");
-                    result.setAttribute("href", "tabella.html?basin=" + selectedBasin + "&routecode=" + element.route_id);
-                    result.innerHTML = `
-                        <div class="search-result"><h3>${element.route_id}</h3>
-                    `;
-                    uContainer.appendChild(result);
-                });
+                //Urbano
+                if (data.urban) {
+                    uContainer.innerHTML = '';
+                    uTextContainer.style.display = '';
+                    data.urban.forEach(element => {
+                        appendRoute(element, uContainer)
+                    });
+                } else {
+                    uTextContainer.style.display = 'none';
+                }
+                //Suburbano
+                if (data.suburban) {
+                    subContainer.innerHTML = '';
+                    subTextContainer.style.display = '';
+                    data.suburban.forEach(element => {
+                        appendRoute(element, subContainer)
+                    });
+                } else {
+                    subTextContainer.style.display = 'none';
+                }
+                //Extraurbano
+                if (data.exurban) {
+                    extraContainer.innerHTML = '';
+                    extraTextContainer.style.display = '';
+                    data.exurban.forEach(element => {
+                        appendRoute(element, extraContainer)
+                    });
+                } else {
+                    extraTextContainer.style.display = 'none';
+                }
+                //Scolastico
+                if (data.school) {
+                    schContainer.innerHTML = '';
+                    schTextContainer.style.display = '';
+                    data.school.forEach(element => {
+                        appendRoute(element, schContainer)
+                    });
+                } else {
+                    schTextContainer.style.display = 'none';
+                }
+                //Navetta
+                if (data.shuttle) {
+                    shuttleContainer.innerHTML = '';
+                    shuttleTextContainer.style.display = '';
+                    data.shuttle.forEach(element => {
+                        appendRoute(element, shuttleContainer)
+                    });
+                } else {
+                    shuttleTextContainer.style.display = 'none';
+                }
                 messageP.innerHTML = '';
                 messageP.style.display = 'none';
             })
             .catch(error => console.error('Errore nel caricamento dei dati:', error));
     })
+}
+
+function appendRoute(element, container) {
+    const result = document.createElement('a');
+    result.setAttribute("class", "bianco");
+    result.setAttribute("href", "tabella.html?basin=" + selectedBasin + "&routecode=" + element.route_id);
+    result.innerHTML = `
+        <div class="search-result"><h3>${element.route_id}</h3>
+    `;
+    container.appendChild(result);
 }

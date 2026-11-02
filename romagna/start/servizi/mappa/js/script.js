@@ -232,6 +232,14 @@ function plotVehicles(data, padd) {
 
     const seenVehicles = new Set();
 
+    //Lost vehicle for a second
+    if (!vehiclesFirstLoad && data[0] == null) {
+        showStatus('Il mezzo ha smesso di comunicare la sua posizione.');
+        return;
+    } else {
+        hideStatus('');
+    }
+
     data.forEach(item => {
         if (!item || !validCoordinates(item.vehicle_lat, item.vehicle_long)) return;
         const number = item.vehicle_info?.number;
