@@ -21,7 +21,37 @@ const tableContainer = document.getElementById('table-container');
 const infoContainer = document.getElementById('info-container');
 
 //Fills line span
-lineaSpan.textContent = linea;
+function getDispLine() {
+    getApiUrl().then(url => {
+        fetch(url + "/static/routes/" + basin)
+            .then(response => {
+                if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
+                return response.json();
+            })
+            .then(data => {
+                const categorie = ["urban", "suburban", "exurban", "school", "shuttle"];
+                let found = null;
+
+                for (const cat of categorie) {
+                    if (data[cat]) {
+                        const match = data[cat].find(route => route.route_id == linea && route.disp_line);
+                        if (match) {
+                            found = match.disp_line;
+                            break;
+                        }
+                    }
+                }
+
+                lineaSpan.textContent = found !== null ? found : linea;
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento dei dati:', error)
+                tableContainer.innerHTML = "Impossibile caricare la lista linee."
+            });
+    })
+}
+getDispLine();
+
 //Checks if there is a routenum parameter and it's not empty
 if (!linea) {
     asDiContainer.style.display = "none";
@@ -72,8 +102,8 @@ function renderTH(table, trips) {
         } else {
             th.innerHTML = `${linea}<br>(${element.trip_info.shape_id})`;
         }
-        th.className = 'cursor-pointer';
-        th.setAttribute("onclick", `window.location.href="/romagna/servizi/percorsi/percorso.html?shapeid=${element.route_code}&routecode=${linea}"`);
+        //th.className = 'cursor-pointer';
+        //th.setAttribute("onclick", `window.location.href="/romagna/servizi/percorsi/percorso.html?shapeid=${element.route_code}&routecode=${linea}"`);
         tr.appendChild(th);
     });
     thead.appendChild(tr);
@@ -268,7 +298,6 @@ function buildStopOrder(trips) {
     }
 
     if (order.length !== stopNames.size) {
-        console.warn('Ordine fermate incoerente: probabili corse in direzioni opposte mescolate insieme.');
         stopNames.forEach(name => { if (!order.includes(name)) order.push(name); });
     }
 

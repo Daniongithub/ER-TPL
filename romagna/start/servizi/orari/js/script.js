@@ -108,8 +108,15 @@ function appendRoute(element, container) {
     const result = document.createElement('a');
     result.setAttribute("class", "bianco");
     result.setAttribute("href", "tabella.html?basin=" + selectedBasin + "&routecode=" + element.route_id);
-    result.innerHTML = `
-        <div class="search-result"><h3>${element.route_id}</h3>
-    `;
+    if (element.disp_line) {
+        result.innerHTML = `
+            <div class="search-result"><h3>${element.disp_line}</h3>
+        `;
+    } else {
+        result.innerHTML = `
+            <div class="search-result"><h3>${element.route_id}</h3>
+        `;
+    }
+    
     container.appendChild(result);
 }
