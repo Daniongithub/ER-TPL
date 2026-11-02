@@ -83,14 +83,21 @@ if (window.screen.width <= 512) {
 
 const statusEl = document.getElementById('status');
 const legendEl = document.getElementById('legend');
+const statusMessages = new Map();
 
-function showStatus(msg) {
-    statusEl.textContent = msg;
-    statusEl.style.display = 'block';
+function updateStatus() {
+    statusEl.textContent = Array.from(statusMessages.values()).join(' ');
+    statusEl.style.display = statusMessages.size > 0 ? 'block' : 'none';
 }
 
-function hideStatus() {
-    statusEl.style.display = 'none';
+function showStatus(msg, source = 'general') {
+    statusMessages.set(source, msg);
+    updateStatus();
+}
+
+function hideStatus(source = 'general') {
+    statusMessages.delete(source);
+    updateStatus();
 }
 
 async function fetchJson(url) {
@@ -213,6 +220,7 @@ function vehiclePopupHtml(item) {
 
 const markersByVehicle = new Map();
 const markersByStop = new Map();
+const lineRequestsByPopup = new WeakMap();
 let vehiclesFirstLoad = true;
 let vehiclesLoading = false;
 let singleLoading = false;
@@ -226,7 +234,12 @@ function updateVehicleOpacity() {
 
 function plotVehicles(data, padd) {
     if (!Array.isArray(data)) {
-        showStatus('Dati dei mezzi non validi.');
+        showStatus('Dati dei mezzi non validi.', 'vehicles');
+        return;
+    }
+    // Una risposta temporaneamente priva di posizioni non cancella l'ultima posizione nota.
+    if (!vehiclesFirstLoad && data.length > 0 && data.every(item => item == null)) {
+        showStatus('Il mezzo ha smesso di comunicare la sua posizione.', 'vehicles');
         return;
     }
 
@@ -283,18 +296,25 @@ function plotVehicles(data, padd) {
         }
     });
 
+    let selectedVehicleLost = false;
     for (const [key, marker] of markersByVehicle.entries()) {
         if (!seenVehicles.has(key)) {
+            if (marker === activeShapeMarker) selectedVehicleLost = true;
             map.removeLayer(marker);
             markersByVehicle.delete(key);
         }
     }
     updateVehicleOpacity();
+    if (selectedVehicleLost) {
+        showStatus('Il mezzo ha smesso di comunicare la sua posizione.', 'vehicles');
+    } else if (markersByVehicle.size === 0) {
+        showStatus('Nessun mezzo con posizione disponibile.', 'vehicles');
+    } else {
+        hideStatus('vehicles');
+    }
     if (markersByVehicle.size === 0) {
-        showStatus('Nessun mezzo con posizione disponibile.');
         return;
     }
-    hideStatus();
 
     if (vehiclesFirstLoad && markersByVehicle.size > 0) {
         const group = L.featureGroup(Array.from(markersByVehicle.values()));
@@ -313,7 +333,7 @@ function plotVehicles(data, padd) {
 async function loadVehicles() {
     if (vehiclesLoading) return;
     if (!CONFIG.BASE_URL) {
-        showStatus('BASE_URL non impostato.');
+        showStatus('BASE_URL non impostato.', 'vehicles');
         return;
     }
     let url
@@ -323,7 +343,7 @@ async function loadVehicles() {
         url = CONFIG.BASE_URL ? (CONFIG.BASE_URL + CONFIG.VEHICLES_ENDPOINT) : "";
     }
     if (!url) {
-        showStatus('BASE_URL non impostato.');
+        showStatus('BASE_URL non impostato.', 'vehicles');
         return;
     }
     vehiclesLoading = true;
@@ -332,7 +352,7 @@ async function loadVehicles() {
         plotVehicles(data, 0);
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
-        showStatus('Errore nel caricamento dati live: ' + err);
+        showStatus('Errore nel caricamento dati live: ' + err, 'vehicles');
     } finally {
         vehiclesLoading = false;
     }
@@ -350,24 +370,26 @@ function initVehiclesMode() {
 async function loadSingle() {
     if (singleLoading) return;
     if (!CONFIG.BASE_URL) {
-        showStatus('BASE_URL non impostato.');
+        showStatus('BASE_URL non impostato.', 'vehicles');
         return;
     }
     if (!VEHICLE_ID) {
-        showStatus('Nessun veicolo specificato. Usa il parametro vehicle.');
+        showStatus('Nessun veicolo specificato. Usa il parametro vehicle.', 'vehicles');
         return;
     }
     const url = CONFIG.BASE_URL + CONFIG.SINGLE_VEHICLE_ENDPOINT.replace('{vehicle}', encodeURIComponent(VEHICLE_ID));
     singleLoading = true;
     try {
         const data = await fetchJson(url);
-        plotVehicles(data ? [data] : [], 13);
         if (!data || !validCoordinates(data.vehicle_lat, data.vehicle_long)) {
-            showStatus("GPS veicolo non disponibile.");
+            showStatus(vehiclesFirstLoad ? 'GPS veicolo non disponibile.' :
+                'Il mezzo ha smesso di comunicare la sua posizione.', 'vehicles');
+            return;
         }
+        plotVehicles([data], 13);
     } catch (err) {
         console.error('Errore nel fetch dei mezzi:', err);
-        showStatus('Errore nel caricamento dati live: ' + err);
+        showStatus('Errore nel caricamento dati live: ' + err, 'vehicles');
     } finally {
         singleLoading = false;
     }
@@ -662,7 +684,7 @@ async function initShapesMode(shapeid, basin) {
     let anyError = false;
 
     if (shapeIds.length === 0) {
-        showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&basin=FC&shapeId=8003_A (o una lista separata da virgole).');
+        showStatus('Nessuno shapeId specificato. Usa ?mode=shapes&basin=FC&shapeId=8003_A (o una lista separata da virgole).', 'shapes');
         return;
     }
     for (let i = 0; i < shapeIds.length; i++) {
@@ -712,14 +734,14 @@ async function initShapesMode(shapeid, basin) {
     }
 
     if (allPolylineLayers.length === 0) {
-        showStatus('Impossibile caricare i tracciati richiesti.');
+        showStatus('Impossibile caricare i tracciati richiesti.', 'shapes');
         return;
     }
 
     if (anyError) {
-        showStatus('Alcuni tracciati non sono stati caricati correttamente (vedi console).');
+        showStatus('Alcuni tracciati non sono stati caricati correttamente (vedi console).', 'shapes');
     } else {
-        hideStatus();
+        hideStatus('shapes');
     }
 
     const group = L.featureGroup(allPolylineLayers);
@@ -797,7 +819,7 @@ function spawnShape(basin, shapeid, marker) {
     activeShapeMarker = marker;
     updateVehicleOpacity();
     if (!shapeid || !(basin || BASIN)) {
-        showStatus('Percorso del veicolo non disponibile.');
+        showStatus('Percorso del veicolo non disponibile.', 'shapes');
         return;
     }
     initShapesMode(shapeid, basin);
@@ -805,8 +827,15 @@ function spawnShape(basin, shapeid, marker) {
 
 async function loadLines(stopCode, basin, popup) {
     const popupElement = popup.getElement();
-    const linesContainer = popupElement?.querySelector('.lines-container');
+    const popupContent = popupElement?.querySelector('.popup-content');
+    const linesContainer = popupContent?.querySelector('.lines-container');
     if (!linesContainer) return;
+    // Con una stringa HTML, update() ricreerebbe il DOM cancellando le linee caricate.
+    // Conservare il nodo permette a Leaflet di aggiornare il layout senza perdere i dati.
+    popup.setContent(popupContent);
+    const request = {};
+    lineRequestsByPopup.set(popup, request);
+    const isCurrentRequest = () => lineRequestsByPopup.get(popup) === request && popup.getContent() === popupContent;
     const url = CONFIG.BASE_URL + CONFIG.STOP_INFO_ENDPOINT
         .replace('{basin}', encodeURIComponent(basin)).replace('{stopCode}', encodeURIComponent(stopCode));
     const noLinesMessage = 'Nessuna linea passa per questa fermata.';
@@ -817,6 +846,7 @@ async function loadLines(stopCode, basin, popup) {
 
     try {
         const data = await fetchJson(url);
+        if (!isCurrentRequest()) return;
         const groups = [
             {
                 key: 'urban',
@@ -874,6 +904,7 @@ async function loadLines(stopCode, basin, popup) {
             linesContainer.textContent = noLinesMessage;
         }
     } catch (err) {
+        if (!isCurrentRequest()) return;
         console.error('Errore nel caricamento linee passanti:', err);
         linesContainer.innerHTML = '';
         linesContainer.textContent = 'Impossibile caricare le linee di questa fermata.';
@@ -883,6 +914,7 @@ async function loadLines(stopCode, basin, popup) {
 
 function clearMap() {
     shapeRequestId++;
+    hideStatus('shapes');
     layerGroup.clearLayers();
     stopsLayerGroup.clearLayers();
     markersByStop.clear();
