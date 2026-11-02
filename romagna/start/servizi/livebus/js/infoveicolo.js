@@ -1,9 +1,45 @@
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 async function getApiUrl() {
-    const res = await fetch(API_ENDPOINT);
+    const res = await fetch(API_ENDPOINT, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Registry API non raggiungibile');
     const cfg = await res.json();
-    if (cfg.status !== "ok") return null;
-    return cfg.url + "/vehicleinfo";
+    if (cfg.status !== "ok" || !cfg.url) throw new Error('API non disponibile');
+    return cfg.url.replace(/\/$/, '');
+}
+
+let backend = null;
+let loading = false;
+let refreshPending = false;
+function connectBackend(url) {
+    if (typeof EventSource === 'undefined') return;
+    const eventsUrl = url + '/events';
+    if (backend?.url === eventsUrl) return;
+    backend?.close();
+    backend = new EventSource(eventsUrl);
+    backend.addEventListener('vehicle_positions', fetchVehicle);
+    backend.addEventListener('trip_updates', fetchVehicle);
+    backend.addEventListener('open', fetchVehicle);
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+}
+
+function isKnown(value) {
+    return value != null && String(value).trim() !== '' &&
+        String(value).trim().toLowerCase() !== 'sconosciuto';
+}
+
+function vehiclePageUrl(path) {
+    if (!path) return null;
+    try {
+        const url = new URL(path, window.location.href);
+        return ['https:', 'http:'].includes(url.protocol) ? url.href : null;
+    } catch {
+        return null;
+    }
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -15,19 +51,33 @@ const numberSpan = document.getElementById('numero-span');
 //Sets vehicle number on heading
 numberSpan.textContent = id;
 
-getApiUrl().then(url => {
-    fetch(url + "/" + id)
+function fetchVehicle() {
+    if (!id?.trim()) {
+        tableContainer.textContent = 'Specificare il numero del veicolo.';
+        return;
+    }
+    if (loading) {
+        refreshPending = true;
+        return;
+    }
+    loading = true;
+    return getApiUrl().then(url => {
+        connectBackend(url);
+        return fetch(url + "/vehicleinfo/" + encodeURIComponent(id), { cache: 'no-store' })
         .then(response => {
             if (!response.ok) {
                 if (response.status == 404) {
                     tableContainer.innerHTML = `<strong>Il veicolo non è operativo o non comunica dati.</strong>`;
-                    return;
+                    return null;
                 }
                 throw new Error("Errore nel caricamento dati");
             }
             return response.json();
         })
         .then(data => {
+            if (!data) return;
+            data.vehicle_info ??= {};
+            const busPageUrl = vehiclePageUrl(data.vehicle_info.bus_page_path);
             const table = document.createElement('table');
 
             //Create table head
@@ -45,14 +95,14 @@ getApiUrl().then(url => {
             let tr = document.createElement('tr');
             tr.innerHTML = `
                 <td class="uguale">Linea:</td>
-                <td class="uguale">${data.line}</td>
+                <td class="uguale">${escapeHtml(data.line)}</td>
             `;
             table.appendChild(tr);
 
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Direzione:</td>
-                <td>${data.destination}</td>
+                <td>${escapeHtml(data.destination)}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -60,32 +110,31 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Bacino linea:</td>
-                <td>${data.basin}</td>
+                <td>${escapeHtml(data.basin)}</td>
             `;
             table.appendChild(tr);
 
             //Refactors delay (+ if positive)
-            if (data.next_stop?.delay > 0) {
-                data.next_stop.delay = "+" + data.next_stop.delay;
-            }
+            const delay = data.next_stop?.delay;
+            const formattedDelay = delay > 0 ? '+' + delay : (delay ?? 'Sconosciuto');
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Ritardo/Anticipo: (+/-)</td>
-                <td>${data.next_stop?.delay ?? 'Sconosciuto'}</td>
+                <td>${escapeHtml(formattedDelay)}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
 
             tr = document.createElement('tr');
-            if (data.vehicle_info.bus_page_path != null) {
+            if (busPageUrl) {
                 tr.innerHTML = `
                     <td>Numero mezzo:</td>
-                    <td><a href="${data.vehicle_info.bus_page_path}" target="_blank">${data.vehicle_info.number}</a></td>
+                    <td><a href="${escapeHtml(busPageUrl)}" target="_blank">${escapeHtml(data.vehicle_info.number)}</a></td>
                 `;
             } else {
                 tr.innerHTML = `
                     <td>Numero mezzo:</td>
-                    <td>${data.vehicle_info.number}</td>
+                    <td>${escapeHtml(data.vehicle_info.number)}</td>
                 `;
             }
             table.appendChild(tr);
@@ -95,15 +144,15 @@ getApiUrl().then(url => {
                 data.vehicle_info.model = "Sconosciuto";
             }
             tr = document.createElement('tr');
-            if (data.vehicle_info.bus_page_path != null) {
+            if (busPageUrl) {
                 tr.innerHTML = `
                     <td>Modello:</td>
-                    <td><a href="${data.vehicle_info.bus_page_path}" target="_blank">${data.vehicle_info.model}</a></td>
+                    <td><a href="${escapeHtml(busPageUrl)}" target="_blank">${escapeHtml(data.vehicle_info.model)}</a></td>
                 `;
             } else {
                 tr.innerHTML = `
                     <td>Modello:</td>
-                    <td>${data.vehicle_info.model}</td>
+                    <td>${escapeHtml(data.vehicle_info.model)}</td>
                 `;
             }
             tr.className = 'even';
@@ -116,7 +165,7 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Targa:</td>
-                <td>${data.vehicle_info.plate_num}</td>
+                <td>${escapeHtml(data.vehicle_info.plate_num)}</td>
             `;
             table.appendChild(tr);
 
@@ -127,7 +176,7 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Bacino veicolo:</td>
-                <td>${data.vehicle_info.basin}</td>
+                <td>${escapeHtml(data.vehicle_info.basin)}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -141,17 +190,22 @@ getApiUrl().then(url => {
                     "delay": "Sconosciuto",
                 }
             }
+            const stopName = isKnown(data.next_stop.stop_name) ? escapeHtml(data.next_stop.stop_name) : 'Sconosciuto';
+            const stopCode = isKnown(data.next_stop.stop_code) ? escapeHtml(data.next_stop.stop_code) : 'Sconosciuto';
+            const stopUrl = isKnown(data.next_stop.stop_code) && isKnown(data.basin)
+                ? `/romagna/start/servizi/fermate/fermata.html?code=${encodeURIComponent(data.next_stop.stop_code)}&basin=${encodeURIComponent(data.basin)}`
+                : null;
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Prossima fermata:</td>
-                <td><a href="/romagna/start/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_name}</a></td>
+                <td>${stopUrl && isKnown(data.next_stop.stop_name) ? `<a href="${stopUrl}" target="_blank">${stopName}</a>` : stopName}</td>
             `;
             table.appendChild(tr);
 
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice fermata:</td>
-                <td><a href="/romagna/start/servizi/fermate/fermata.html?code=${data.next_stop.stop_code}&basin=${data.basin}" target="_blank">${data.next_stop.stop_code}</a></td>
+                <td>${stopUrl ? `<a href="${stopUrl}" target="_blank">${stopCode}</a>` : stopCode}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -159,14 +213,17 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice linea:</td>
-                <td>${data.route_id}</td>
+                <td>${escapeHtml(data.route_id)}</td>
             `;
             table.appendChild(tr);
 
             tr = document.createElement('tr');
+            const shapeUrl = isKnown(data.shape_id) && isKnown(data.basin)
+                ? `/romagna/start/servizi/mappa/index.html?mode=shapes&basin=${encodeURIComponent(data.basin)}&shapeId=${encodeURIComponent(data.shape_id)}`
+                : null;
             tr.innerHTML = `
                 <td>Codice percorso:</td>
-                <td><a href="/romagna/start/servizi/mappa/index.html?mode=shapes&basin=${data.basin}&shapeId=${data.shape_id}" target="_blank">${data.shape_id}</a></td>
+                <td>${shapeUrl ? `<a href="${shapeUrl}" target="_blank">${escapeHtml(data.shape_id)}</a>` : 'Sconosciuto'}</td>
             `;
             tr.className = 'even';
             table.appendChild(tr);
@@ -174,17 +231,17 @@ getApiUrl().then(url => {
             tr = document.createElement('tr');
             tr.innerHTML = `
                 <td>Codice corsa:</td>
-                <td>${data.trip_id}</td>
+                <td>${escapeHtml(data.trip_id)}</td>
             `;
             table.appendChild(tr);
 
             //Spawns position only if available
             let nextClass = "even"
-            if (data.vehicle_lat != null) {
+            if (data.vehicle_lat != null && data.vehicle_long != null && isKnown(data.basin) && isKnown(data.vehicle_info.number)) {
                 tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>Posizione:</td>
-                    <td><a href="/romagna/start/servizi/mappa/index.html?mode=single&basin=${data.basin}&vehicle=${data.vehicle_info.number}" target="_blank">GPS</a></td>
+                    <td><a href="/romagna/start/servizi/mappa/index.html?mode=single&basin=${encodeURIComponent(data.basin)}&vehicle=${encodeURIComponent(data.vehicle_info.number)}" target="_blank">GPS</a></td>
                 `;
                 tr.className = 'even';
                 nextClass = ""
@@ -215,5 +272,25 @@ getApiUrl().then(url => {
 
             tableContainer.innerHTML = '';
             tableContainer.appendChild(table);
-        })
-})
+        });
+    }).catch(err => {
+        console.error('Errore nel caricamento veicolo:', err);
+        let error = tableContainer.querySelector('.load-error');
+        if (!error) {
+            if (!tableContainer.querySelector('table')) tableContainer.innerHTML = '';
+            error = document.createElement('p');
+            error.className = 'load-error';
+            tableContainer.appendChild(error);
+        }
+        error.textContent = 'Errore nel caricamento dei dati. Riprova con Aggiorna o attendi il prossimo aggiornamento.';
+    }).finally(() => {
+        loading = false;
+        if (refreshPending) {
+            refreshPending = false;
+            fetchVehicle();
+        }
+    });
+}
+
+fetchVehicle();
+setInterval(fetchVehicle, 30000);
