@@ -194,6 +194,11 @@ body {
     overflow: hidden;
 }
 
+.line-box-padded {
+    padding: 8px 12px;
+    flex-shrink: 0;
+}
+
 .dest-box {
     display: flex;
     align-items: center;

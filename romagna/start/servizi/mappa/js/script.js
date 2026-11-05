@@ -178,11 +178,13 @@ function vehiclePopupHtml(item) {
         mode: 'singlemixed', vehicle: vehicleInfo.number ?? '',
         basin: item.basin ?? '', shapeId: item.shape_id ?? ''
     });
+    const lineBoxClass = item.line === 'MetroMare' && item.destination === 'CECCARINI RICCIONE STATION'
+        ? 'line-box line-box-padded' : 'line-box';
     return `
         <div class="popup-content">
             <div class="popup-head">
                 <div class="dispflex">
-                    <div class="line-box">${escapeHtml(item.line)}</div>
+                    <div class="${lineBoxClass}">${escapeHtml(item.line)}</div>
                     <div class="dest-box">${escapeHtml(item.destination)}</div>
                 </div>
                 <hr class="head-separator">
