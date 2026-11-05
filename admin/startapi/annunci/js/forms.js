@@ -6,7 +6,7 @@ async function submitMessage() {
 
     const token = getValidToken();
     const url = await getApiUrl();
-    const response = await fetch(url + "/announcements/add", {
+    const response = await fetch(url + "/announcements/update", {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
@@ -15,7 +15,18 @@ async function submitMessage() {
         body: JSON.stringify({
             message: newMessage
         })
+    }).then(response => {
+        displayMessage();
+        errorP.innerHTML = '';
+        return response;
+    }).catch(err => {
+        errorP.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Impossibile cambiare il messaggio. Errore di rete.';
+        throw new Error("Unable to change message: ", err)
     });
+    
+    if (!response.ok) {
+        errorP.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Impossibile cambiare il messaggio. HTTP ' + response.status + " body: "+ await response.text();
+    }
 }
 
 async function emptyMessage() {
@@ -28,6 +39,10 @@ async function emptyMessage() {
             'Authorization': 'Bearer ' + token
         },
         body: null
+    }).then(response => {
+        displayMessage();
+        errorP.innerHTML = '';
+        return response;
     }).catch(err => {
         errorP.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Impossibile svuotare il messaggio. Errore di rete.';
         throw new Error("Unable to empty message: ", err)
