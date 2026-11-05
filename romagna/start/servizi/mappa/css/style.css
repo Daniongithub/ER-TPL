@@ -195,7 +195,6 @@ body {
 }
 
 .line-box-padded {
-    padding: 8px 12px;
     flex-shrink: 0;
 }
 
@@ -285,7 +284,7 @@ hr.separator {
 
 hr.head-separator {
     margin: 8px;
-    margin-top: 0;
+    margin-top: 0px;
     border: 1px solid rgb(0, 161, 161);
     border-radius: 5px;
 }
