@@ -323,6 +323,11 @@ hr.head-separator {
     max-width: 401px !important;
 }
 
+/* Solo i veicoli possono superare il limite quando linea e destinazione non entrano. */
+.vehicle-popup .leaflet-popup-content {
+    max-width: none !important;
+}
+
 .leaflet-container a.leaflet-popup-close-button {
     color: white;
 }

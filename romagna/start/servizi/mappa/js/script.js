@@ -218,6 +218,64 @@ function vehiclePopupHtml(item) {
     `;
 }
 
+function resizeVehiclePopup(popup) {
+    if (popup.options.className !== 'vehicle-popup' || !popup.isOpen()) return false;
+    const element = popup.getElement();
+    const content = element.querySelector('.leaflet-popup-content');
+    const line = element.querySelector('.line-box');
+    const destination = element.querySelector('.dest-box');
+    if (!content || !line || !destination) return false;
+
+    const row = line.parentElement;
+    const text = document.createRange();
+    text.selectNodeContents(line);
+    const overflows = () => {
+        const box = line.getBoundingClientRect();
+        const label = text.getBoundingClientRect();
+        return label.left < box.left || label.right > box.right ||
+            destination.scrollWidth > destination.clientWidth;
+    };
+
+    // Misura sempre da 301 px, anche se prima il popup aveva una destinazione più lunga.
+    let width = 301;
+    content.style.width = width + 'px';
+    if (overflows()) {
+        const padding = content.getBoundingClientRect().width - row.getBoundingClientRect().width;
+        const oldWidth = row.style.width;
+        const oldWhiteSpace = row.style.whiteSpace;
+        row.style.width = 'max-content';
+        row.style.whiteSpace = 'nowrap';
+        let upper = Math.ceil(row.getBoundingClientRect().width + padding) + 1;
+        row.style.width = oldWidth;
+        row.style.whiteSpace = oldWhiteSpace;
+
+        // Cerca la larghezza minima che conserva tutte le lettere della linea.
+        while (upper - width > 1) {
+            const middle = Math.floor((width + upper) / 2);
+            content.style.width = middle + 'px';
+            if (overflows()) width = middle;
+            else upper = middle;
+        }
+        width = upper;
+    }
+    content.style.width = width + 'px';
+    // Leaflet aggiunge un pixel alla larghezza impostata nelle opzioni del popup.
+    if (popup.options.minWidth === width - 1 && popup.options.maxWidth === width - 1) return false;
+    popup.options.minWidth = popup.options.maxWidth = width - 1;
+    popup.update();
+    return true;
+}
+
+function refreshVehiclePopup(popup) {
+    resizeVehiclePopup(popup);
+    refreshVehiclePhotos();
+    if (popup.options.className === 'vehicle-popup' && document.fonts?.status === 'loading') {
+        document.fonts.ready.then(() => {
+            if (resizeVehiclePopup(popup)) refreshVehiclePhotos();
+        });
+    }
+}
+
 const markersByVehicle = new Map();
 const markersByStop = new Map();
 const lineRequestsByPopup = new WeakMap();
@@ -273,12 +331,15 @@ function plotVehicles(data, padd) {
             }
             // Caso 2: il popup era già aperto e il contenuto (quindi anche l'img) è stato appena sostituito
             if (existing.isPopupOpen()) {
-                refreshVehiclePhotos();
+                refreshVehiclePopup(existing.getPopup());
             }
         } else {
             const marker = L.marker([item.vehicle_lat, item.vehicle_long], {
                 icon: busIcon(item), vehicleData: item
             }).bindPopup(vehiclePopupHtml(item), {
+                className: 'vehicle-popup',
+                minWidth: 300,
+                maxWidth: 300,
                 // Il bus resta aperto mentre si consultano le fermate del suo percorso.
                 autoClose: MODE === 'singlemixed',
                 closeOnClick: MODE === 'singlemixed'
@@ -813,7 +874,7 @@ function refreshVehiclePhotos() {
     }
 }
 
-map.on('popupopen', () => refreshVehiclePhotos());
+map.on('popupopen', e => refreshVehiclePopup(e.popup));
 // I click sui marker sono gestiti dai loro popup; un click sulla mappa chiude il bus.
 map.on('click', () => {
     if (activeShapeMarker) activeShapeMarker.closePopup();
