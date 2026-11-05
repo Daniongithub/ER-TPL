@@ -207,6 +207,10 @@ body {
     margin-right: 8px !important;
 }
 
+.dest-box-padded {
+    margin-bottom: 3px;
+}
+
 .stop-name-box {
     margin: 8px !important;
     font-weight: bold;
