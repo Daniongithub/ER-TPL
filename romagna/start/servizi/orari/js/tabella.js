@@ -220,7 +220,7 @@ filterSelect.addEventListener('change', function (event) {
     var invalidCols = []
     var i = 0
     ths.forEach((th, idx) => {
-        var cleanedContent = th.innerHTML.replace(/[\])}[{(]/g, '');
+        var cleanedContent = th.innerHTML;
         if (cleanedContent.split("<br>")[0] + " - " + cleanedContent.split("<br>")[1] != option && idx != 0) {
             invalidCols[i] = idx
             i++;
