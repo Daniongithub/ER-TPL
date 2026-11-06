@@ -1,0 +1,56 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#search-input {
+    width: min(100%, 28rem);
+}
+
+.vehicles-table-container {
+    max-height: 65vh;
+}
+
+.vehicles-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.vehicles-table th,
+.vehicles-table td {
+    vertical-align: middle;
+    min-width: 8rem;
+    max-width: 24rem;
+    overflow-wrap: anywhere;
+}
+
+.vehicles-table .selection-cell {
+    min-width: 2.5rem;
+    width: 2.5rem;
+}
+
+.vehicles-table .action-cell {
+    min-width: 13rem;
+    white-space: nowrap;
+    position: sticky;
+    right: 0;
+}
+
+.vehicles-table .form-control,
+.vehicles-table .form-select {
+    min-width: 10rem;
+}
+
+.vehicles-table .date-control {
+    min-width: 13rem;
+}
+
+.request-error {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.number-list {
+    max-height: 12rem;
+    overflow: auto;
+}
