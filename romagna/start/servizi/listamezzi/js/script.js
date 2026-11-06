@@ -1,3 +1,4 @@
+// Non usare var: usare let/const. Per i link nelle tabelle usare <a href>, mai onclick sulle celle.
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/mezzi";
 
 async function getApiUrl() {
@@ -51,7 +52,7 @@ getApiUrl().then(url => {
                 }
                 tr.className = bus.status;
                 tr.innerHTML = `
-                    <td class="cursor-pointer" onclick="window.location.href='${bus.page_link}'">${bus.number}</td>
+                    <td><a class="no-decoration" href="${bus.page_link}">${bus.number}</a></td>
                     <td>${bus.plate_num}</td>
                     <td>${bus.model}</td>
                     <td>${bus.basin}</td>

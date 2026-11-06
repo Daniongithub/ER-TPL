@@ -1,3 +1,4 @@
+// Non usare var: usare let/const. Per i link nelle tabelle usare <a href>, mai onclick sulle celle.
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT, { cache: "no-store" });
@@ -392,7 +393,7 @@ function plotVehicles(data, padd) {
     if (vehiclesFirstLoad && markersByVehicle.size > 0) {
         const group = L.featureGroup(Array.from(markersByVehicle.values()));
         //Nella modalità singola la mappa non viene mai zoomata, qua nel ramo true viene forzato lo zoom
-        var layers = group.getLayers();
+        let layers = group.getLayers();
 
         if (layers.length === 1) {
             map.setView(layers[0].getLatLng(), 17);

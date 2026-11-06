@@ -1,3 +1,4 @@
+// Non usare var: usare let/const. Per i link nelle tabelle usare <a href>, mai onclick sulle celle.
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 
 async function getApiUrl() {
@@ -22,7 +23,7 @@ const extraContainer = document.getElementById('extra-container');
 const schContainer = document.getElementById('scuola-container');
 const shuttleContainer = document.getElementById('navette-container');
 
-var selectedBasin;
+let selectedBasin;
 
 basinSelect.addEventListener('change', (event) => {
     selectedBasin = event.target.value;

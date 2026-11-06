@@ -1,3 +1,4 @@
+// Non usare var: usare let/const. Per i link nelle tabelle usare <a href>, mai onclick sulle celle.
 const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
 
 async function getApiUrl() {
@@ -168,7 +169,7 @@ function renderCount(journeys) {
 }
 
 function fillSelect(trips) {
-    var allRoutes = [];
+    let allRoutes = [];
     trips.forEach((trip, idx) => {
         if (trip.trip_info.line != null && trip.trip_info.destination != null) {
             allRoutes[idx] = trip.trip_info.line + " - " + trip.trip_info.destination;
@@ -178,7 +179,7 @@ function fillSelect(trips) {
             filterContainer.style.display = '';
         }
     })
-    var uniqueRoutes = allRoutes.filter(onlyUnique);
+    let uniqueRoutes = allRoutes.filter(onlyUnique);
     uniqueRoutes.forEach(element => {
         const option = document.createElement('option');
         option.value = element;
@@ -193,7 +194,7 @@ function setAs() {
     filterSelect.innerHTML = '<option value="" disabled selected hidden>Filtra per destinazione:</option>';
     asButton.className = "selected";
     diButton.className = "";
-    var verse = "0";
+    let verse = "0";
     fetchData(verse);
 }
 
@@ -203,7 +204,7 @@ function setDi() {
     filterSelect.innerHTML = '<option value="" disabled selected hidden>Filtra per destinazione:</option>';
     diButton.className = "selected";
     asButton.className = "";
-    var verse = "1";
+    let verse = "1";
     fetchData(verse);
 }
 
@@ -213,26 +214,26 @@ setAs();
 filterSelect.addEventListener('change', function (event) {
     const table = document.querySelector('#table-container table');
     const rows = table.querySelectorAll('tr');
-    var option = event.target.value;
+    let option = event.target.value;
 
     //Check what matches the filter in the first row
     const ths = document.querySelectorAll('#table-container table thead th')
-    var invalidCols = []
-    var i = 0
+    let invalidCols = []
+    let i = 0
     ths.forEach((th, idx) => {
-        var cleanedContent = th.innerHTML;
+        let cleanedContent = th.innerHTML;
         if (cleanedContent.split("<br>")[0] + " - " + cleanedContent.split("<br>")[1] != option && idx != 0) {
             invalidCols[i] = idx
             i++;
         }
     })
 
-    var i = 0;
+    i = 0;
     rows.forEach((row, idx) => {
         row.style.display = '';
         const cells = row.querySelectorAll('td, th');
 
-        var empty = true;
+        let empty = true;
         cells.forEach((cell, jdx) => {
             cell.style.display = "";
             if (invalidCols.includes(jdx)) {

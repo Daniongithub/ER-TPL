@@ -82,6 +82,11 @@ tr.even.demolito {
     cursor: pointer;
 }
 
+a.no-decoration {
+    text-decoration: none;
+    color: inherit;
+}
+
 div.legenda {
     display: flex;
     justify-content: center;
