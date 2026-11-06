@@ -368,6 +368,8 @@ function loadAnnouncements() {
     return getApiUrl().then(url => {
         return fetch(url + "/announcements", { cache: 'no-store' })
             .then(response => {
+                // L'API restituisce 404 quando non ci sono annunci.
+                if (response.status === 404) return [];
                 if (!response.ok) {
                     throw new Error("Errore nel caricamento annunci.");
                 }
