@@ -73,5 +73,5 @@ window.MezziAPI = (() => {
         }
     }
 
-    return { companies, fields, columnKey, load, mutate };
+    return { companies, columnKey, load, mutate };
 })();

@@ -20,8 +20,13 @@
     min-width: 1.5rem;
 }
 
-.vehicles-table .action-cell {
-    white-space: nowrap;
+.vehicles-table .editable-cell {
+    cursor: text;
+}
+
+.vehicles-table .editable-cell:focus-visible {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: -2px;
 }
 
 .vehicles-table .form-control,
