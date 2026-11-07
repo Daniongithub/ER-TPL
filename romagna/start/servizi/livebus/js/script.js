@@ -361,24 +361,3 @@ document.getElementById('resetFilters').addEventListener('click', event => {
 // Recupera anche eventi persi durante disconnessioni o cambi del backend HA.
 setInterval(fetchData, 30000);
 updateMapLink();
-
-const announcementsContainer = document.getElementById('announcements-container')
-
-function loadAnnouncements() {
-    return getApiUrl().then(url => {
-        return fetch(url + "/announcements", { cache: 'no-store' })
-            .then(response => {
-                // L'API restituisce 404 quando non ci sono annunci.
-                if (response.status === 404) return [];
-                if (!response.ok) {
-                    throw new Error("Errore nel caricamento annunci.");
-                }
-                return response.json();
-            })
-            .then(data => {
-                announcementsContainer.innerHTML = Array.isArray(data) ? (data[0]?.message ?? '') : '';
-            });
-    }).catch(err => console.error('Errore nel caricamento annunci:', err));
-}
-
-loadAnnouncements();
