@@ -152,7 +152,7 @@ function updateToolbar() {
     document.getElementById('search-input').disabled = busy || !state.loaded;
     for (const tab of document.querySelectorAll('#company-tabs button')) tab.disabled = busy;
     const count = filteredRows(state).length;
-    document.getElementById('table-summary').textContent = state.loaded ? count + ' di ' + state.rows.length + ' mezzi · ' + state.selected.size + ' selezionati' : '';
+    document.getElementById('table-summary').textContent = state.loaded ? state.rows.length + ' mezzi · ' + state.selected.size + ' selezionati' : '';
 }
 
 function setBusy(value) {
