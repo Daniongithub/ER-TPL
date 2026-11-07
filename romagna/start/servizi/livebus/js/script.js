@@ -30,11 +30,13 @@ function escapeHtml(value) {
 }
 
 // Funzione per riempire il select dei modelli
-function fillModels() {
+function fillModels(force = false) {
     const modelSelect = document.getElementById('filter-modello');
     const table = document.getElementById('tabella');
 
     if (!table || !modelSelect) return;
+    // Non modificare le opzioni mentre l'utente usa il selettore nativo.
+    if (!force && document.activeElement === modelSelect) return;
 
     const currentModel = modelSelect.value;
     const filterZona = document.getElementById('filter-zona').value.toLowerCase();
@@ -62,19 +64,21 @@ function fillModels() {
         }
     });
 
-    // Ricrea le option
-    modelSelect.options.length = 1;
+    const sortedModels = [...models].sort((a, b) => a.localeCompare(b, 'it', {
+        sensitivity: 'base'
+    }));
+    const currentOptions = Array.from(modelSelect.options).slice(1);
+    if (currentOptions.length === sortedModels.length && currentOptions.every((option, index) =>
+        option.value === sortedModels[index] && option.textContent === sortedModels[index])) return;
 
-    [...models]
-        .sort((a, b) => a.localeCompare(b, 'it', {
-            sensitivity: 'base'
-        }))
-        .forEach(model => {
-            const option = document.createElement('option');
-            option.value = model;
-            option.textContent = model;
-            modelSelect.appendChild(option);
-        });
+    // Ricrea le opzioni soltanto se la lista dei modelli è cambiata.
+    modelSelect.options.length = 1;
+    sortedModels.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model;
+        option.textContent = model;
+        modelSelect.appendChild(option);
+    });
 
     // Mantieni il modello selezionato se è ancora compatibile
     if (models.has(currentModel)) {
@@ -353,6 +357,10 @@ updateClock();
 document.getElementById('filter-zona').addEventListener('change', applyFilter);
 document.getElementById('filter-linea').addEventListener('input', applyFilter);
 document.getElementById('filter-modello').addEventListener('change', applyFilter);
+document.getElementById('filter-modello').addEventListener('blur', () => {
+    fillModels(true);
+    applyFilter();
+});
 document.getElementById('resetFilters').addEventListener('click', event => {
     event.preventDefault();
     clearFilters();
