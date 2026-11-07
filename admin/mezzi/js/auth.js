@@ -1,6 +1,6 @@
 //OAuth and backend config
 const OIDC_ISSUER = "https://sso.serverissimo.com/application/o/ertpl-mezzi/";
-const OIDC_CLIENT_ID = "vSjbxDWymiuVv4McKBDvq3FMesREl1dkeW7ExX5N";
+const OIDC_CLIENT_ID = "LnXlJqHGayEG1VI3WZeFDiRq9xJ4RF38gF4ki3C8";
 const REDIRECT_URI = "https://ertpl.pages.dev/admin/mezzi/callback.html";
 //const REDIRECT_URI = "http://127.0.0.1:5500/admin/mezzi/callback.html";
 const API_BASE_URL = "https://setaapi.serverissimo.com";
