@@ -1,13 +1,5 @@
-body {
-    font-family: 'Titillium Web', sans-serif;
-}
-
 #search-input {
     width: min(100%, 28rem);
-}
-
-.vehicles-table-container {
-    max-height: 65vh;
 }
 
 .vehicles-table thead {
@@ -25,15 +17,11 @@ body {
 }
 
 .vehicles-table .selection-cell {
-    min-width: 2.5rem;
-    width: 2.5rem;
+    min-width: 1.5rem;
 }
 
 .vehicles-table .action-cell {
-    min-width: 13rem;
     white-space: nowrap;
-    position: sticky;
-    right: 0;
 }
 
 .vehicles-table .form-control,

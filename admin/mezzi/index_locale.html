@@ -12,15 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script defer src="js/config.js"></script>
-    <script defer src="js/api.js"></script>
-    <script defer src="js/script.js"></script>
 </head>
 <body data-bs-theme="dark">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <h1 class="navbar-brand fs-3 mb-0">ER-TPL Mezzi</h1>
-            <a class="nav-link" href="/admin/">Amministrazione</a>
         </div>
     </nav>
     <main class="container-fluid py-3">
@@ -46,17 +42,11 @@
             <button type="button" class="btn btn-secondary" id="reload-button">Aggiorna</button>
             <span class="text-body-secondary" id="table-summary" aria-live="polite"></span>
         </div>
-        <p class="small text-body-secondary">Seleziona i mezzi da rimuovere oppure premi Modifica sulla riga. Le modifiche vengono inviate solo premendo Salva.</p>
         <div class="tab-content" id="company-panels">
             <section class="tab-pane show active" id="panel-START" role="tabpanel" aria-labelledby="tab-START" tabindex="0"></section>
             <section class="tab-pane" id="panel-METE" role="tabpanel" aria-labelledby="tab-METE" tabindex="0"></section>
             <section class="tab-pane" id="panel-SETA" role="tabpanel" aria-labelledby="tab-SETA" tabindex="0"></section>
             <section class="tab-pane" id="panel-TPER" role="tabpanel" aria-labelledby="tab-TPER" tabindex="0"></section>
-        </div>
-        <div class="d-flex align-items-center justify-content-end gap-2 mt-2" aria-label="Paginazione">
-            <button type="button" class="btn btn-outline-secondary" id="previous-button" disabled>Precedente</button>
-            <span id="page-label" aria-live="polite"></span>
-            <button type="button" class="btn btn-outline-secondary" id="next-button" disabled>Successiva</button>
         </div>
     </main>
     <div class="modal fade" id="add-modal" tabindex="-1" aria-labelledby="add-title" aria-hidden="true">
@@ -101,5 +91,8 @@
             </form>
         </div>
     </div>
+    <script src="js/auth_locale.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

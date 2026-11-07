@@ -1,5 +1,3 @@
-'use strict';
-
 window.MezziAPI = (() => {
     // Nomi SQL -> nomi JSON. path_html è scrivibile; page_link è derivato dal backend.
     const fields = Object.freeze({
@@ -9,7 +7,6 @@ window.MezziAPI = (() => {
         pedana: 'ramp', has_aep: 'has_aep', updated_at: 'updated_at'
     });
     const companies = ['START', 'METE', 'SETA', 'TPER'];
-    let resolverPromise = null;
 
     async function request(url, options = {}) {
         const controller = new AbortController();
@@ -36,25 +33,6 @@ window.MezziAPI = (() => {
         }
     }
 
-    async function getApiUrl() {
-        const config = window.MEZZI_CONFIG;
-        if (config.apiBaseUrl) return config.apiBaseUrl.replace(/\/+$/, '');
-        // Condivide soltanto le risoluzioni simultanee: i caricamenti successivi rileggono HA.
-        if (!resolverPromise) {
-            resolverPromise = readJSON(config.apiEndpoint).then(result => {
-                if (!result || result.status !== 'ok' || typeof result.url !== 'string' || !/^https:\/\//i.test(result.url)) {
-                    throw new Error('Il resolver HA Mezzi non ha restituito un server disponibile.');
-                }
-                return result.url.replace(/\/+$/, '');
-            });
-        }
-        try {
-            return await resolverPromise;
-        } finally {
-            resolverPromise = null;
-        }
-    }
-
     function columnKey(column) {
         if (column.name === 'last_seen') {
             return /^date$/i.test(column.type) ? 'last_seen_date' : 'last_seen_datetime';
@@ -62,12 +40,7 @@ window.MezziAPI = (() => {
         return fields[column.name] || column.name;
     }
 
-    function validateCompany(company) {
-        if (!companies.includes(company)) throw new Error('Azienda non valida.');
-    }
-
     async function load(company) {
-        validateCompany(company);
         const url = await getApiUrl();
         const [columns, result] = await Promise.all([
             readJSON(url + '/listcols/' + company), readJSON(url + '/list/' + company)
@@ -83,14 +56,10 @@ window.MezziAPI = (() => {
     }
 
     async function mutate(company, operation, body) {
-        validateCompany(company);
         const methods = { add: 'POST', update: 'PUT', delete: 'DELETE' };
-        if (!methods[operation]) throw new Error('Operazione non valida.');
-        const getToken = window.MEZZI_CONFIG.getToken;
-        const token = typeof getToken === 'function' ? await getToken() : null;
-        if (!token) throw new Error('Autenticazione non configurata o token non disponibile.');
+        const token = await getValidToken();
+        if (!token) throw new Error('Errore di autenticazione, token non disponibile.');
         const url = await getApiUrl();
-        // Nessun retry automatico delle scritture: evita inserimenti o cancellazioni duplicati.
         const response = await request(url + '/' + operation + '/' + company, {
             method: methods[operation],
             headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
