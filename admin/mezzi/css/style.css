@@ -38,6 +38,10 @@
     min-width: 13rem;
 }
 
+.vehicles-table .path-value {
+    max-width: 22rem;
+}
+
 .request-error {
     white-space: pre-wrap;
     overflow-wrap: anywhere;

@@ -20,12 +20,14 @@ function dateInputValue(value, withTime) {
 
 function createControl(column, value, id, adding = false) {
     const type = column.type.toLowerCase();
+    const nullable = column.nullable === true;
     let control;
     if (type.startsWith('enum(') || /^tinyint\(1\)/.test(type)) {
         control = element('select', 'form-select form-select-sm');
         const options = type.startsWith('enum(')
-            ? [['__null__', '[NULL]'], ...enumValues(column.type).map(item => [item, item || '(vuoto)'])]
-            : [['__null__', '[NULL]'], ['true', 'Sì'], ['false', 'No']];
+            ? enumValues(column.type).map(item => [item, item || '(vuoto)'])
+            : [['true', 'Sì'], ['false', 'No']];
+        if (nullable) options.unshift(['__null__', '[NULL]']);
         for (const [key, label] of options) {
             const option = element('option', '', label);
             option.value = key;
@@ -60,11 +62,13 @@ function createControl(column, value, id, adding = false) {
     control.setAttribute('aria-label', column.name);
     control.title = column.name + ' · ' + column.type;
     control.dataset.column = column.name;
+    // La stringa vuota è un valore valido se dichiarato nell'enum, anche con NOT NULL.
+    control.required = !nullable && !(type.startsWith('enum(') && enumValues(column.type).includes(''));
     if (column.name === 'matricola') {
         control.required = true;
         control.min = '0';
         control.max = '2147483647';
-    } else control.placeholder = '[NULL]';
+    } else if (nullable) control.placeholder = '[NULL]';
     if (adding) control.classList.remove('form-control-sm', 'form-select-sm');
     return control;
 }
@@ -74,7 +78,10 @@ function readControl(column, control) {
     const raw = control.value;
     const type = column.type.toLowerCase();
     if (control.tagName === 'SELECT') {
-        if (raw === '__null__') return null;
+        if (raw === '__null__') {
+            if (column.nullable !== true) throw new Error('Il campo ' + column.name + ' non può essere null.');
+            return null;
+        }
         return /^tinyint\(1\)/.test(type) ? raw === 'true' : raw;
     }
     if (column.name === 'matricola') {
@@ -83,7 +90,7 @@ function readControl(column, control) {
         }
         return String(Number(raw));
     }
-    if (raw === '') return null;
+    if (raw === '') return column.nullable === true ? null : '';
     if (control.type === 'number') {
         const number = Number(raw);
         if (!Number.isFinite(number) || (control.step === '1' && !Number.isSafeInteger(number))) {

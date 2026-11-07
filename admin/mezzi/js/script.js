@@ -29,7 +29,7 @@ const api = window.MezziAPI;
 const collator = new Intl.Collator('it', { numeric: true, sensitivity: 'base' });
 const states = new Map(api.companies.map(company => [company, {
     company, columns: [], rows: [], loaded: false, loading: false, stale: false,
-    error: '', edits: new Map(), selected: new Set(), query: '',
+    error: '', edits: new Map(), selected: new Set(), query: '', hideDemolished: false,
     sort: 'number', direction: 1
 }]));
 
@@ -129,6 +129,7 @@ function finishCellEdit() {
 function filteredRows(state) {
     const query = state.query.trim().toLocaleLowerCase('it');
     const rows = state.rows.map(row => state.edits.has(String(row.number)) ? editedRecord(state, String(row.number)) : row)
+        .filter(row => !state.hideDemolished || row.status !== 'demolito')
         .filter(row => !query || Object.values(row).some(value => value != null && String(value).toLocaleLowerCase('it').includes(query)));
     rows.sort((a, b) => collator.compare(String(a[state.sort] ?? ''), String(b[state.sort] ?? '')) * state.direction);
     return rows;
@@ -150,8 +151,8 @@ function updateToolbar() {
     document.getElementById('reload-button').disabled = busy || state.loading;
     document.getElementById('reload-button').title = state.edits.size ? 'Aggiorna i dati dal server conservando le modifiche non salvate.' : '';
     document.getElementById('search-input').disabled = busy || !state.loaded;
+    document.getElementById('hide-demolished').disabled = busy || !state.loaded;
     for (const tab of document.querySelectorAll('#company-tabs button')) tab.disabled = busy;
-    const count = filteredRows(state).length;
     document.getElementById('table-summary').textContent = state.loaded ? state.rows.length + ' mezzi · ' + state.selected.size + ' selezionati' : '';
 }
 
@@ -169,6 +170,12 @@ function setBusy(value) {
 }
 
 function displayValue(cell, key, value) {
+    if (['photo_path', 'path_html'].includes(key) && value != null) {
+        const text = element('span', 'd-block text-truncate path-value');
+        text.title = String(value);
+        cell.appendChild(text);
+        cell = text;
+    }
     if (value == null) {
         cell.appendChild(element('span', 'text-body-secondary', '—'));
     } else if (typeof value === 'boolean') {
@@ -328,6 +335,7 @@ for (const company of api.companies) {
         currentCompany = company;
         const state = activeState();
         document.getElementById('search-input').value = state.query;
+        document.getElementById('hide-demolished').checked = state.hideDemolished;
         if (!state.loaded && !state.loading) loadCompany(state);
         else updateToolbar();
     });
@@ -348,6 +356,15 @@ document.getElementById('reload-button').addEventListener('click', () => loadCom
 document.getElementById('search-input').addEventListener('input', event => {
     const state = activeState();
     state.query = event.target.value;
+    render(state);
+});
+document.getElementById('hide-demolished').addEventListener('change', event => {
+    const state = activeState();
+    if (!finishCellEdit()) {
+        event.target.checked = state.hideDemolished;
+        return;
+    }
+    state.hideDemolished = event.target.checked;
     render(state);
 });
 
