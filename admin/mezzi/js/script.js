@@ -171,7 +171,7 @@ function setBusy(value) {
 
 function displayValue(cell, key, value) {
     if (['photo_path', 'path_html'].includes(key) && value != null) {
-        const text = element('span', 'd-block text-truncate path-value');
+        const text = element('span');
         text.title = String(value);
         cell.appendChild(text);
         cell = text;
@@ -202,7 +202,10 @@ function render(state) {
         loading.setAttribute('role', 'status');
         const spinner = element('span', 'spinner-border me-2');
         spinner.setAttribute('aria-hidden', 'true');
-        loading.append(spinner, document.createTextNode('Caricamento mezzi ' + state.company + '…'));
+        const message = document.createElement('p');
+        message.className = "m-2"
+        message.textContent = 'Caricamento mezzi ' + state.company + '…';
+        loading.append(spinner, message);
         panel.appendChild(loading);
     } else {
         if (state.error) {
