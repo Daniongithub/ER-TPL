@@ -34,10 +34,10 @@ searchBar.addEventListener('input', () => {
     }
     buttons.style.display = "none";
     const searchTerm = searchBar.value.toLowerCase();
-    const filtered = allProducts.filter(bus => bus.matricola.toLowerCase().includes(searchTerm))
+    const filtered = allProducts.filter(bus => bus.number.toLowerCase().includes(searchTerm))
         .sort((a, b) => {
-            const aStartsWith = a.matricola.toLowerCase().startsWith(searchTerm);
-            const bStartsWith = b.matricola.toLowerCase().startsWith(searchTerm);
+            const aStartsWith = a.number.toLowerCase().startsWith(searchTerm);
+            const bStartsWith = b.number.toLowerCase().startsWith(searchTerm);
             if (aStartsWith && !bStartsWith) return -1;
             if (!aStartsWith && bStartsWith) return 1;
             return 0; // keep original order if both or neither match at start
