@@ -41,7 +41,11 @@
             <p class="fw-bold my-2">Messaggio attuale:</p>
             <span id="current-message-span" class="bg-3"></span>
             <p class="fw-bold my-2">Modifica il messaggio: <span class="opacity-50 fw-normal">(Supporta HTML)</span></p>
-            <input type="text" id="message-input" class="w-100 form-control rounded my-1" placeholder="Nuovo messaggio...">
+            <input type="text" id="message-input" class="w-100 form-control rounded my-2 me-2" placeholder="Nuovo messaggio...">
+            <p class="my-2">Scadenza messaggio:</p>
+            <input type="date" id="expiry-date-input" class="w-100 form-control rounded my-2" placeholder="Data di scadenza...">
+            <p class="my-2">Ore:</p>
+            <input type="time" id="expiry-time-input" class="w-100 form-control rounded my-2" placeholder="Ora di scadenza...">
             <p id="error-p" class="text-danger my-2 fw-bold"></p>
             <button class="btn btn-primary my-2" onclick="submitMessage();">Conferma</button>
             <button class="btn btn-secondary my-2" onclick="window.location.reload();">Annulla</button>

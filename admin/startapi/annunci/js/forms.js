@@ -1,11 +1,21 @@
 const messageInput = document.getElementById('message-input');
+const expiryDateInput = document.getElementById('expiry-date-input');
+const expiryTimeInput = document.getElementById('expiry-time-input');
 const errorP = document.getElementById('error-p');
 
 async function submitMessage() {
     var newMessage = messageInput.value;
+    var expiryDate = expiryDateInput.value;
+    var expiryTime = expiryTimeInput.value;
+    //Checks correct fields
+    if (!newMessage || !expiryDate || expiryDate == 0 || !expiryTime || expiryTime == 0) {
+        errorP.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Dati incompleti.';
+        return
+    }
 
     const token = getValidToken();
     const url = await getApiUrl();
+    console.log(expiryDate, expiryTime)
     const response = await fetch(url + "/announcements/update", {
         method: "PUT",
         headers: {
@@ -13,7 +23,8 @@ async function submitMessage() {
             'Authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
-            message: newMessage
+            message: newMessage,
+            expiry: expiryDate+"T"+expiryTime+":00Z"
         })
     }).then(response => {
         displayMessage();
