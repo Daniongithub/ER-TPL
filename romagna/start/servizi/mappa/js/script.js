@@ -869,9 +869,52 @@ async function initApp() {
             initVehiclesMode();
             break;
     }
+    spawnDarkModeBtn();
+    if (localStorage.getItem("dark_mode") == "true") {
+        initDarkMode();
+    }
 }
 
 initApp();
+
+function spawnDarkModeBtn() {
+    const container = document.querySelector('.leaflet-top.leaflet-right');
+    const buttonContainer = document.createElement('div');
+    const button = document.createElement('a');
+    buttonContainer.className = "leaflet-bar leaflet-control";
+    button.innerHTML = 'DM';
+    button.className = 'cursor-pointer';
+    if (localStorage.getItem("dark_mode") == "true") {
+        button.setAttribute('onclick',`initLightMode();`);
+    } else {
+        button.setAttribute('onclick',`initDarkMode();`);
+    }
+    buttonContainer.appendChild(button)
+    container.appendChild(buttonContainer);
+}
+
+function initDarkMode() {
+    localStorage.removeItem('dark_mode');
+    localStorage.setItem('dark_mode', true);
+    const button = document.querySelector('.leaflet-top.leaflet-right div a');
+    const docHead = document.querySelector('head');
+    const link = document.createElement('link');
+    link.setAttribute('id','dark-mode-css');
+    link.setAttribute('rel','stylesheet');
+    link.setAttribute('href','css/darkmode.css');
+    docHead.appendChild(link);
+    button.setAttribute('onclick',`initLightMode();`);
+}
+
+function initLightMode() {
+    localStorage.removeItem('dark_mode');
+    localStorage.setItem('dark_mode', false);
+    const button = document.querySelector('.leaflet-top.leaflet-right div a');
+    const docHead = document.querySelector('head');
+    const link = document.getElementById('dark-mode-css');
+    docHead.removeChild(link);
+    button.setAttribute('onclick',`initDarkMode();`);
+}
 
 function refreshVehiclePhotos() {
     if (window.ERTPLPhotos) {

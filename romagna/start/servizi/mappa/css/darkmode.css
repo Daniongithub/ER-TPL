@@ -1,0 +1,49 @@
+/* Dark mode */
+
+#legend,
+.leaflet-layer,
+.leaflet-control a,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+    filter: invert(100%) hue-rotate(180deg) brightness(90%) contrast(95%) saturate(80%);
+}
+
+.leaflet-container {
+    background-color: black !important;
+}
+
+.popup-head {
+    background-color: rgb(0, 120, 120) !important;
+}
+
+.popup-base {
+    background-color: #333;
+}
+
+.popup-content td {
+    color: #aeaeae !important;
+    white-space: nowrap;
+}
+
+.popup-content td.label {
+    color: #ffffff !important;
+    white-space: nowrap;
+}
+
+.leaflet-popup-content-wrapper {
+    background-color: #333;
+}
+
+.bus-icon, .bus-icon-large {
+    background-color: rgb(0, 120, 120) !important;
+    border-color: #333 !important;
+}
+
+.stop-icon {
+    border-color: #333 !important;
+}
+
+.shape-endpoint-icon {
+    border-color: #333 !important;
+}

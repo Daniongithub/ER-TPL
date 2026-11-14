@@ -4,6 +4,11 @@ body {
     height: 100%;
     width: 100%;
     font-family: Titillium Web !important;
+    background-color: black;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 #map {
@@ -130,6 +135,7 @@ body {
 /* Popup styling */
 .leaflet-popup-content-wrapper {
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .popup-content {
@@ -166,8 +172,6 @@ body {
 .popup-head {
     background-color: darkcyan;
     color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     padding: 4px;
 }
 
@@ -278,6 +282,7 @@ body {
     padding-top: 6px;
     max-height: 230px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 hr.separator {
