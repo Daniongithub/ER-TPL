@@ -6,7 +6,7 @@
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
 .leaflet-control-attribution {
-    filter: invert(100%) hue-rotate(180deg) brightness(90%) contrast(95%) saturate(80%);
+    filter: invert(100%) hue-rotate(180deg) brightness(90%) contrast(100%) saturate(70%);
 }
 
 .leaflet-container {
@@ -18,12 +18,15 @@
 }
 
 .popup-base {
-    background-color: #333;
+    background-color: #333 !important;
+}
+
+.popup-base h3 {
+    color: #e4e4e4 !important;
 }
 
 .popup-content td {
     color: #aeaeae !important;
-    white-space: nowrap;
 }
 
 .popup-content td.label {
@@ -32,7 +35,11 @@
 }
 
 .leaflet-popup-content-wrapper {
-    background-color: #333;
+    background-color: #333 !important;
+}
+
+.leaflet-popup-tip {
+    background-color: #666 !important;
 }
 
 .bus-icon, .bus-icon-large {
@@ -46,4 +53,9 @@
 
 .shape-endpoint-icon {
     border-color: #333 !important;
+}
+
+.bus-image-container {
+    background-color: #464646;
+    color: #aeaeae;
 }
