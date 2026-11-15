@@ -1,5 +1,5 @@
 // Non usare var: usare let/const. Per i link nelle tabelle usare <a href>, mai onclick sulle celle.
-const API_ENDPOINT = "https://ertpl-api.vichingo455.com/mezzi";
+const API_ENDPOINT = "https://ertpl-ha.cfw.serverissimo.com/mezzi";
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);

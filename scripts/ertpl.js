@@ -1,6 +1,6 @@
 // New fallback system (HA)
 (() => {
-    const API_ENDPOINT = "https://ertpl-api.vichingo455.com/cdn";
+    const API_ENDPOINT = "https://ertpl-ha.cfw.serverissimo.com/cdn";
     let photoConfig = null;
 
     async function getConfig() {
@@ -117,7 +117,7 @@ function mostraemail() {
 
 // This function below is to display the version of the HA API and the current server
 function getApiVersionHA() {
-    fetch("https://ertpl-api.vichingo455.com/")
+    fetch("https://ertpl-ha.cfw.serverissimo.com/")
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.status);

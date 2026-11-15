@@ -1,5 +1,5 @@
 // Non usare var: usare let/const. Per i link nelle tabelle usare <a href>, mai onclick sulle celle.
-const API_ENDPOINT = "https://ertpl-api.vichingo455.com/start";
+const API_ENDPOINT = "https://ertpl-ha.cfw.serverissimo.com/start";
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT, { cache: "no-store" });
     if (!res.ok) throw new Error('Registry HA non raggiungibile: ' + res.status);

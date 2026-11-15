@@ -1,4 +1,4 @@
-const API_ENDPOINT = "https://ertpl-api.vichingo455.com/startsopp";
+const API_ENDPOINT = "https://ertpl-ha.cfw.serverissimo.com/startsopp";
 
 async function getApiUrl() {
     const res = await fetch(API_ENDPOINT);
