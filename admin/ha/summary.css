@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+}
+
+.ha-page {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+/* Riepilogo in cima */
+
+.ha-summary {
+    text-align: center;
+    margin: 20px 0 24px;
+}
+
+.ha-summary-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ha-summary-time {
+    margin-top: 4px;
+}
+
+/* Gruppi (start, mezzi, cdn, ...) */
+
+.ha-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ha-group {
+    border-radius: 8px;
+    background-color: #2c2c2c;
+    padding: 12px 14px;
+}
+
+/* L'header del gruppo è anche il <summary> dell'accordion */
+.ha-group-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    list-style: none;
+}
+
+.ha-chevron {
+    display: inline-block;
+    font-size: 18px;
+    color: #999;
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ha-group[open] .ha-chevron {
+    transform: rotate(90deg);
+    transform-origin: 55% 55%;
+}
+
+.ha-group .ha-chevron {
+    transform: rotate(0deg);
+    transform-origin: 55% 55%;
+}
+
+.ha-group-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Sommario breve mostrato solo quando il gruppo è chiuso */
+.ha-mini-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #999;
+    font-size: 13px;
+    flex-wrap: wrap;
+}
+
+.ha-mini-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.ha-dot-sm {
+    width: 8px;
+    height: 8px;
+}
+
+.ha-group-body {
+    margin-top: 10px;
+}
+
+.ha-group-server {
+    margin-bottom: 8px;
+    color: #999;
+}
+
+/* Nodi, impilati verticalmente dentro al gruppo */
+
+.ha-nodes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.ha-node {
+    border-radius: 6px;
+    background-color: rgb(55, 55, 55);
+    padding: 8px 10px;
+    flex: 1 1 260px;
+    min-width: 260px;
+}
+
+.ha-node-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.ha-priority {
+    margin-left: auto;
+    font-size: 14px;
+    color: #999;
+}
+
+/* Campi chiave/valore, una riga sotto l'altra */
+
+.ha-field {
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+    line-height: 1.4;
+}
+
+.ha-label {
+    color: #999;
+    font-size: 14px;
+}
+
+.ha-subobj,
+.ha-sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 2px;
+    padding-left: 10px;
+    border-left: 2px solid #3d3d3d;
+}
+
+/* Indicatori di stato */
+
+.ha-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ha-value {
+    margin-top: 4px;
+}
+
+.ha-badge {
+    display: inline-block;
+    margin-left: auto;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+.ha-dot.ha-green,  .ha-badge.ha-green  { background-color: rgb(0, 200, 0); }
+.ha-dot.ha-yellow, .ha-badge.ha-yellow { background-color: rgb(230, 195, 0); }
+.ha-dot.ha-red,    .ha-badge.ha-red    { background-color: rgb(230, 50, 50); }
+.ha-dot.ha-blue,   .ha-badge.ha-blue   { background-color: rgb(90, 130, 255); }
+
+.ha-badge.ha-green  { color: #0a2e0a; }
+.ha-badge.ha-yellow { color: #3a2f00; }
+.ha-badge.ha-red    { color: #fff; }
+.ha-badge.ha-blue   { color: #fff; }
+
+@media (max-width: 768px) {
+    .ha-nodes {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+        scroll-snap-type: x proximity;
+    }
+
+    .ha-node {
+        flex: 0 0 85vw;
+        max-width: 85vw;
+        min-width: 0;
+        scroll-snap-align: start;
+    }
+}

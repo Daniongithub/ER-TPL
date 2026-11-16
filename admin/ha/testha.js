@@ -56,18 +56,11 @@ async function checkBrowser(services) {
 // =========================
 // CHIAMATE
 // =========================
-async function getApiVersionHA() {
-	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/");
-		return { ok: true, version: info.version };
-	} catch {
-		return { ok: false };
-	}
-}
+const HA_BASE_URL = 'https://ertpl-ha.cfw.serverissimo.com';
 
 async function getCdnServer() {
 	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/cdn");
+		const info = await fetchJson(HA_BASE_URL + "/cdn");
 		return {
 			ok: true,
 			server: info.server,
@@ -80,7 +73,7 @@ async function getCdnServer() {
 
 async function getStartServer() {
 	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/start");
+		const info = await fetchJson(HA_BASE_URL + "/start");
 		return {
 			ok: true,
 			server: info.server,
@@ -93,7 +86,7 @@ async function getStartServer() {
 
 async function getStartSoppServer() {
 	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/startsopp");
+		const info = await fetchJson(HA_BASE_URL + "/startsopp");
 		return {
 			ok: true,
 			server: info.server,
@@ -106,7 +99,7 @@ async function getStartSoppServer() {
 
 async function getSetaServer() {
 	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/seta");
+		const info = await fetchJson(HA_BASE_URL + "/seta");
 		return {
 			ok: true,
 			server: info.server,
@@ -119,7 +112,7 @@ async function getSetaServer() {
 
 async function getTperServer() {
 	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/tper");
+		const info = await fetchJson(HA_BASE_URL + "/tper");
 		return {
 			ok: true,
 			server: info.server,
@@ -132,11 +125,11 @@ async function getTperServer() {
 
 async function getMezziServer() {
 	try {
-		const info = await fetchJson("https://ertpl-ha.cfw.serverissimo.com/mezzi");
+		const info = await fetchJson(HA_BASE_URL + "/mezzi");
 		return {
 			ok: true,
 			server: info.server,
-			url: info.url
+			url: info.url + "/health"
 		};
 	} catch {
 		return { ok: false };
@@ -146,12 +139,6 @@ async function getMezziServer() {
 // =========================
 // FUNZIONI UI
 // =========================
-function renderApiVersion(result) {
-	const el = document.getElementById("apiVersion");
-	el.innerHTML = result.ok
-		? `Versione API Alta Disponibilità: v${result.version} (<span class="green">TEST OK</span>)`
-		: `Versione API Alta Disponibilità: non raggiungibile. (<span class="red">TEST FALLITO</span>)`;
-}
 
 function renderServer(id, label, result) {
 	const el = document.getElementById(id);
@@ -171,20 +158,23 @@ function renderFinal(serverOk, clientOk) {
 	const el = document.getElementById("risultatoFinale");
 
 	if (serverOk && clientOk) {
-		el.innerHTML =
-			`<span style="font-weight:700;">Stato: </span>` +
-			`<span class="green">I servizi funzionano correttamente. Nessun problema riscontrato.</span>` +
-			` - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`;
+		el.innerHTML = `
+			<span style="font-weight:700;">Stato: </span>
+			<span class="green">I servizi funzionano correttamente. Nessun problema riscontrato.</span>
+			 - <a href="">Rifai il test</a>
+		`;
 	} else if (serverOk) {
-		el.innerHTML =
-			`<span style="font-weight:700;">Stato: </span>` +
-			`<span class="yellow">I servizi funzionano, ma la tua rete/browser potrebbe bloccare qualcosa.</span>` +
-			` - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`;
+		el.innerHTML = `
+			<span style="font-weight:700;">Stato: </span>
+			<span class="yellow">I servizi funzionano, ma la tua rete/browser potrebbe bloccare qualcosa.</span>
+			 - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>
+		`;
 	} else {
-		el.innerHTML =
-			`<span style="font-weight:700;">Stato: </span>` +
-			`<span class="red">Alcuni servizi hanno problemi. Riprova o contattaci.</span>` +
-			` - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>`;
+		el.innerHTML = `
+			<span style="font-weight:700;">Stato: </span>
+			<span class="red">Alcuni servizi hanno problemi. Riprova o contattaci.</span> +
+			 - <a href="#" onclick="hardReload(); return false;">Rifai il test</a>
+		`;
 	}
 }
 
@@ -203,7 +193,6 @@ async function initTestHA() {
 		`<span class="blue">Test in corso, attendere prego...</span>`;
 
 	const [
-		api,
 		cdn,
 		start,
 		startsopp,
@@ -211,7 +200,6 @@ async function initTestHA() {
 		tper,
 		mezzi,
 	] = await Promise.all([
-		getApiVersionHA(),
 		getCdnServer(),
 		getStartServer(),
 		getStartSoppServer(),
@@ -221,7 +209,6 @@ async function initTestHA() {
 	]);
 
 	// Render risultati singoli
-	renderApiVersion(api);
 	renderServer("apiCdnServer", "Server in uso (foto)", cdn);
 	renderServer("apiStartServer", "Server in uso (START)", start);
 	renderServer("apiStartSoppServer", "Server in uso (START Corse Soppresse)", startsopp);
@@ -230,7 +217,6 @@ async function initTestHA() {
 	renderServer("apiMezziServer", "Server in uso (Liste Mezzi)", mezzi);
 
 	const serverOk = [
-		api,
 		cdn,
 		start,
 		startsopp,

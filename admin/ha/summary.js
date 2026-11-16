@@ -54,7 +54,7 @@ function escapeHtml(str) {
 
 function renderDetails(value) {
     if (value === null || value === undefined) {
-        return `<span class="ha-muted">—</span>`;
+        return `—`;
     }
     if (typeof value === "boolean") {
         return statusBadge(value, value ? "sì" : "no");
@@ -63,12 +63,12 @@ function renderDetails(value) {
         return escapeHtml(value);
     }
     if (Array.isArray(value)) {
-        if (value.length === 0) return `<span class="ha-muted">—</span>`;
+        if (value.length === 0) return `—`;
         return `<div class="ha-sublist">${value.map(v => `<div class="ha-subitem">${renderDetails(v)}</div>`).join("")}</div>`;
     }
     if (typeof value === "object") {
         const entries = Object.entries(value);
-        if (entries.length === 0) return `<span class="ha-muted">—</span>`;
+        if (entries.length === 0) return `—`;
         return `<div class="ha-subobj">${entries.map(([k, v]) => `
             <div class="ha-field">
                 <span class="ha-label">${escapeHtml(k)}</span>
@@ -95,7 +95,7 @@ function nodeStatusClass(node) {
 }
 
 function nodesMiniSummary(nodes) {
-    if (!nodes.length) return `<span class="ha-muted">nessun nodo</span>`;
+    if (!nodes.length) return `Nessun nodo`;
     const counts = { "ha-green": 0, "ha-yellow": 0, "ha-red": 0 };
     nodes.forEach(n => counts[nodeStatusClass(n)]++);
     const parts = Object.entries(counts)
@@ -111,11 +111,11 @@ function renderNode(node) {
 
     const serverLink = node.server
         ? `<a class="link ha-break" href="${escapeHtml(node.server)}" target="_blank" rel="noopener">${escapeHtml(node.server)}</a>`
-        : `<span class="ha-muted">—</span>`;
+        : `—`;
 
     const healthLink = node.healthUrl
         ? `<a class="link ha-break" href="${escapeHtml(node.healthUrl)}" target="_blank" rel="noopener">${escapeHtml(node.healthUrl)}</a>`
-        : `<span class="ha-muted">—</span>`;
+        : `—`;
 
     return `
         <div class="ha-node">
@@ -129,8 +129,8 @@ function renderNode(node) {
                 ${field("Health URL", healthLink)}
                 ${field("Raggiungibile", statusBadge(!!node.reachable, node.reachable ? "sì" : "no"))}
                 ${field("Disponibile", statusBadge(!!node.available, node.available ? "sì" : "no"))}
-                ${field("HTTP status", node.httpStatus !== null && node.httpStatus !== undefined ? escapeHtml(node.httpStatus) : `<span class="ha-muted">—</span>`)}
-                ${field("Errore", node.error ? `<span class="ha-badge ha-red">${escapeHtml(node.error)}</span>` : `<span class="ha-muted">—</span>`)}
+                ${field("HTTP status", node.httpStatus !== null && node.httpStatus !== undefined ? escapeHtml(node.httpStatus) : `—`)}
+                ${field("Errore", node.error ? `<span class="ha-badge ha-red">${escapeHtml(node.error)}</span>` : `—`)}
                 ${field("Dettagli", renderDetails(node.details))}
             </div>
         </div>`;
@@ -152,7 +152,7 @@ function renderApiGroup(key, group) {
             <div class="ha-group-body">
                 ${group.server ? `<div class="ha-group-server"><a class="link ha-break" href="${escapeHtml(group.server)}" target="_blank" rel="noopener">${escapeHtml(group.server)}</a></div>` : ""}
                 <div class="ha-nodes">
-                    ${nodes.map(renderNode).join("") || `<span class="ha-muted">Nessun nodo</span>`}
+                    ${nodes.map(renderNode).join("") || `Nessun nodo`}
                 </div>
             </div>
         </details>`;
