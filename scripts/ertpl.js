@@ -40,8 +40,6 @@
                 let isLeo = document.location.href.includes("/seta_modena/");
                 const link = img.closest("a");
                 const isMenu = img.classList.contains("bus");
-                // NUOVO CASO D'USO: forza crop=true via attributo dichiarativo,
-                // indipendente dalla semantica "menu" (es. anteprime mezzi in tempo reale)
                 const forceCrop = img.dataset.crop === "true";
 
                 const imglink = buildPreviewUrl(cfg, path, isMenu, isLeo, false, forceCrop);
@@ -100,7 +98,6 @@ function updateTimer() {
 
 function chisiamoInizializza() {
     updateTimer();
-    getApiVersionHA();
     setInterval(updateTimer, 1000);
 }
 
@@ -113,20 +110,4 @@ function mostraemail() {
     link.setAttribute("class", "novita")
     link.innerHTML = newMail;
     link.setAttribute("href", "mailto:" + newMail);
-}
-
-// This function below is to display the version of the HA API and the current server
-function getApiVersionHA() {
-    fetch("https://ertpl-ha.cfw.serverissimo.com/")
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(res.status);
-            }
-            return res.json();
-        })
-        .then(info => {
-            document.getElementById("apiVersion").innerHTML =`Versione API Alta Disponibilità: v${info.version} (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`})
-        .catch(() => {
-            document.getElementById("apiVersion").innerHTML = `Versione API Alta Disponibilità: API Alta Disponibilità non raggiungibile al momento. (<a href="/admin/Vichingo455/testha.html">Controllo dettagliato</a>)`;
-        });
 }
