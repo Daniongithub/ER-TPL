@@ -59,3 +59,7 @@
     background-color: #464646;
     color: #aeaeae;
 }
+
+.passing-lines-group p {
+    color: #e4e4e4 !important;
+}

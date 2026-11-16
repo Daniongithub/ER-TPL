@@ -728,7 +728,12 @@ function shapeEndpointPopupHtml(shapeId, type) {
                 <h3>${label}</h3>
             </div>
             <div class="popup-base shape-popup-base">
-                Shape ID: ${escapeHtml(shapeId)}
+                <table>
+                    <tr>
+                        <td class="label">Shape ID:</td>
+                        <td>${escapeHtml(shapeId)}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     `;
@@ -1014,7 +1019,7 @@ async function loadLines(stopCode, basin, popup) {
             const groupDiv = document.createElement('div');
             groupDiv.className = 'passing-lines-group';
 
-            const title = document.createElement('h3');
+            const title = document.createElement('p');
             title.textContent = group.title;
             groupDiv.appendChild(title);
 

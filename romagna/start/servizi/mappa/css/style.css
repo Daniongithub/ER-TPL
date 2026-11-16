@@ -244,8 +244,11 @@ body {
     flex-wrap: wrap;
 }
 
-.passing-lines-group h3 {
+.passing-lines-group p {
     width: 100%;
+    font-size: 15px;
+    color: darkcyan;
+    font-weight: bold;
     margin: 4px 0;
 }
 
