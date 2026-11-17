@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .bus-card-green {
     --bs-table-bg: rgb(14, 55, 14);
     --bs-table-striped-bg: rgb(14, 55, 14);
