@@ -714,11 +714,11 @@ async function initStopsMode() {
 // ======================================================================
 
 function addShapeDirectionArrows(polyline) {
-    const spacing = 72;
+    const spacing = 64;
     const arrows = L.polygon([], {
-        color: '#263238',
+        color: '#979797',
         weight: 1,
-        fillColor: '#fff',
+        fillColor: '#ffffff',
         fillOpacity: 1,
         interactive: false,
         smoothFactor: 0
@@ -749,12 +749,12 @@ function addShapeDirectionArrows(polyline) {
             const visibleEnd = segmentStart + start.distanceTo(visible[1]);
             const firstIndex = Math.max(0, Math.ceil((visibleStart - firstArrow) / spacing));
             const direction = end.subtract(start).divideBy(length);
-            const wing = L.point(-direction.y, direction.x).multiplyBy(4.5);
+            const wing = L.point(-direction.y, direction.x).multiplyBy(6);
             for (let position = firstArrow + firstIndex * spacing; position < visibleEnd; position += spacing) {
                 const center = start.add(direction.multiplyBy(position - segmentStart));
-                const tip = center.add(direction.multiplyBy(5));
-                const base = center.subtract(direction.multiplyBy(5));
-                const notch = center.subtract(direction.multiplyBy(2));
+                const tip = center.add(direction.multiplyBy(6));
+                const base = center.subtract(direction.multiplyBy(6));
+                const notch = center.subtract(direction.multiplyBy(3));
                 const outline = [base.add(wing), tip, base.subtract(wing), notch];
                 arrowPaths.push([outline.map(point => map.unproject(point))]);
             }
