@@ -175,10 +175,14 @@ function vehiclePopupHtml(item) {
             delay = Number(nextStop.delay) + " MIN";
         }
     }
-    const routeParams = new URLSearchParams({
-        mode: 'singlemixed', vehicle: vehicleInfo.number ?? '',
-        basin: item.basin ?? '', shapeId: item.shape_id ?? ''
-    });
+    let routeLink = '';
+    if (MODE !== 'singlemixed') {
+        const routeParams = new URLSearchParams({
+            mode: 'singlemixed', vehicle: vehicleInfo.number ?? '',
+            basin: item.basin ?? '', shapeId: item.shape_id ?? ''
+        });
+        routeLink = `<a class="button" href="?${escapeHtml(routeParams)}">Visualizza il percorso</a>`;
+    }
     const lineBoxClass = item.line === 'MetroMare' && item.destination === 'CECCARINI RICCIONE STATION'
         ? 'line-box line-box-padded' : 'line-box';
     const destBoxClass = item.line === 'MetroMare' && item.destination === 'CECCARINI RICCIONE STATION'
@@ -204,7 +208,7 @@ function vehiclePopupHtml(item) {
                     <tr><td class="label">Codice percorso:</td><td>${escapeHtml(item.shape_id)}</td></tr>
                     <tr><td class="label">Codice corsa:</td><td>${escapeHtml(item.trip_id)}</td></tr>
                 </table>
-                <a class="button" href="?${escapeHtml(routeParams)}">Visualizza il percorso</a>
+                ${routeLink}
                 <hr class="separator">
                 <table class="down">
                     <tr><td class="label">Modello:</td><td>${escapeHtml(vehicleInfo.model)}</td></tr>
@@ -709,6 +713,61 @@ async function initStopsMode() {
 // MODALITÀ: SHAPES
 // ======================================================================
 
+function addShapeDirectionArrows(polyline) {
+    const spacing = 72;
+    const arrows = L.polygon([], {
+        color: '#263238',
+        weight: 1,
+        fillColor: '#fff',
+        fillOpacity: 1,
+        interactive: false,
+        smoothFactor: 0
+    }).addTo(layerGroup);
+
+    function updateArrows() {
+        const points = polyline.getLatLngs().map(latlng => map.project(latlng));
+        const lengths = points.slice(1).map((point, i) => point.distanceTo(points[i]));
+        const totalLength = lengths.reduce((sum, length) => sum + length, 0);
+        const pixelBounds = map.getPixelBounds();
+        const padding = L.point(spacing, spacing);
+        const visibleBounds = L.bounds(pixelBounds.min.subtract(padding), pixelBounds.max.add(padding));
+        const firstArrow = Math.min(spacing / 2, totalLength / 2);
+        let distance = 0;
+        const arrowPaths = [];
+
+        // Misura le distanze in pixel lungo il percorso per mantenere la spaziatura a ogni zoom.
+        lengths.forEach((length, i) => {
+            const start = points[i];
+            const end = points[i + 1];
+            const segmentStart = distance;
+            distance += length;
+            if (length === 0) return;
+            const visible = L.LineUtil.clipSegment(start, end, visibleBounds);
+            if (!visible) return;
+
+            const visibleStart = segmentStart + start.distanceTo(visible[0]);
+            const visibleEnd = segmentStart + start.distanceTo(visible[1]);
+            const firstIndex = Math.max(0, Math.ceil((visibleStart - firstArrow) / spacing));
+            const direction = end.subtract(start).divideBy(length);
+            const wing = L.point(-direction.y, direction.x).multiplyBy(4.5);
+            for (let position = firstArrow + firstIndex * spacing; position < visibleEnd; position += spacing) {
+                const center = start.add(direction.multiplyBy(position - segmentStart));
+                const tip = center.add(direction.multiplyBy(5));
+                const base = center.subtract(direction.multiplyBy(5));
+                const notch = center.subtract(direction.multiplyBy(2));
+                const outline = [base.add(wing), tip, base.subtract(wing), notch];
+                arrowPaths.push([outline.map(point => map.unproject(point))]);
+            }
+        });
+
+        arrows.setLatLngs(arrowPaths);
+    }
+
+    map.on('moveend', updateArrows);
+    arrows.once('remove', () => map.off('moveend', updateArrows));
+    updateArrows();
+}
+
 function shapeEndpointIcon(color, type) {
     const symbol = type === 'start' ? 'Inizio' : 'Fine';
     return L.divIcon({
@@ -794,6 +853,7 @@ async function initShapesMode(shapeid, basin) {
                 opacity: 0.85
             }).addTo(layerGroup);
             allPolylineLayers.push(polyline);
+            addShapeDirectionArrows(polyline);
 
             // Marker di inizio e fine per capire il verso del tracciato.
             const startMarker = L.marker(latlngs[0], { icon: shapeEndpointIcon(color, 'start') })
