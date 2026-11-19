@@ -75,7 +75,7 @@ function fetchData(verse) {
                 fillSelect(data);
 
                 tableContainer.appendChild(table);
-                renderCount(data);
+                renderCount(data.length);
             })
             .catch(error => {
                 console.error('Errore nel caricamento dei dati:', error)
@@ -162,9 +162,10 @@ function renderTable(table, trips) {
     table.appendChild(tbody);
 }
 
-function renderCount(journeys) {
+function renderCount(num) {
+    infoContainer.innerHTML = '';
     const p = document.createElement('p');
-    p.innerHTML = `Totale corse: ${journeys.length}`;
+    p.innerHTML = `Totale corse: ${num}`;
     infoContainer.appendChild(p);
 }
 
@@ -255,6 +256,7 @@ filterSelect.addEventListener('change', function (event) {
             row.className = "";
         }
     });
+    renderCount(ths.length - invalidCols.length - 1);
 })
 
 //utils

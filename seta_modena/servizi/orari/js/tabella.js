@@ -43,7 +43,7 @@ function fetchData(verse) {
                 fillSelect(data.journeys);
 
                 tableContainer.appendChild(table);
-                renderCount(data.journeys);
+                renderCount(data.journeys.length);
             })
             .catch(error => {
                 console.error('Errore nel caricamento dei dati:', error)
@@ -109,9 +109,10 @@ function renderTable(table, journeys, stops) {
     table.appendChild(tbody);
 }
 
-function renderCount(journeys) {
+function renderCount(num) {
+    infoContainer.innerHTML = '';
     const p = document.createElement('p');
-    p.innerHTML = `Totale corse: ${journeys.length}`;
+    p.innerHTML = `Totale corse: ${num}`;
     infoContainer.appendChild(p);
 }
 
@@ -168,7 +169,7 @@ filterSelect.addEventListener('change', function (event) {
     var invalidCols = []
     var i = 0
     ths.forEach((th, idx) => {
-        var cleanedContent = th.innerHTML.replace(/[\])}[{(]/g, ''); 
+        var cleanedContent = th.innerHTML.replace(/[\])}[{(]/g, '');
         if (cleanedContent.split("<br>")[0] + " - " + cleanedContent.split("<br>")[1] != option && idx != 0) {
             invalidCols[i] = idx
             i++;
@@ -202,6 +203,7 @@ filterSelect.addEventListener('change', function (event) {
             row.className = "";
         }
     });
+    renderCount(ths.length - invalidCols.length - 1);
 })
 
 //utils
