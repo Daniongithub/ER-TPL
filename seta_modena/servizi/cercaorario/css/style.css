@@ -218,6 +218,9 @@ img {
 }
 
 @media (max-width: 768px) {
+    #quick-stops-container {
+        flex-direction: column;
+    }
     .search-result {
         display: block;
         width: unset;
