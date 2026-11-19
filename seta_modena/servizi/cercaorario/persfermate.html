@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="ER-TPL Team">
+    <title>SETA Modena - Personalizza fermate rapide</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.setaweb.it/images/favicon/android-icon-192x192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="" onclick="window.close();"><h1 style="font-size: 100%;font-weight: 500;">Chiudi</h1></a></li>
+                <li><a href="" onclick="saveStops();"><h1 style="font-size: 100%;font-weight: 500;">Salva</h1></a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Personalizza le tue fermate rapide</h1>
+    <h3 style="margin: 0;">Fermate attuali: (clicca per rimuovere)</h3>
+    <div id="current-container"></div>
+    <h3 style="margin-top: 0; margin-bottom: 16px;">Aggiungi:</h3>
+    <input type="text" id="search-bar" placeholder="Cerca una fermata..." autocomplete="off">
+    <div id="results-container"></div>
+    <footer>
+        <div>
+			<p>Copyright (C) 2025-2026 ER-TPL Team - code by Il Dani & HardcodedNyxie (SMF) - <a href="https://github.com/Leocraft1/SetaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione e riferimento.</p>
+		</div>
+    </footer>
+    <script src="js/personalizza.js"></script>
+</body>
+</html>

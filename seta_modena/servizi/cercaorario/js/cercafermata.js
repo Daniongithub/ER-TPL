@@ -11,12 +11,51 @@ const searchBar = document.getElementById('search-bar');
 const stopCodeBar = document.getElementById('stop-code-bar');
 const resultsContainer = document.getElementById('results-container');
 const quickContainer = document.getElementById('quick-container');
+const quickStopsContainer = document.getElementById('quick-stops-container');
 const comeLeggere = document.getElementById('comeleggere-p');
 const aggiornamentoP = document.getElementById('aggiornamento-p')
 
 var searching = false;
 var oldTerm;
 var allresults = [];
+
+//Loads preferred quick stops
+const currentStopsStr = localStorage.getItem("quick_stops");
+var selectedStops = new Map();
+
+if (currentStopsStr != null) {
+    try {
+        selectedStops = new Map(JSON.parse(currentStopsStr));
+        if (selectedStops.size != 0) {
+            quickStopsContainer.innerHTML = '';
+        }
+        selectedStops.forEach((name, code) => {
+            const div = document.createElement('div');
+            div.className = 'search-result';
+            //Fermate dummy altre corsie
+            if (code.includes("a!")) {
+                div.innerHTML = `
+                    <div>
+                        <h3>${name}</h3>
+                        <p>Tutte le corsie</p>
+                    </div>
+                `;
+            } else {
+                div.innerHTML = `
+                    <div>
+                        <h3>${name}</h3>
+                        <p>Codice fermata: ${code}</p>
+                    </div>
+                `;
+            }
+
+            quickStopsContainer.appendChild(div);
+        });
+    } catch (e) {
+        console.error("Errore nel parsing delle fermate salvate:", e);
+        selectedStops = new Map();
+    }
+}
 
 getApiUrl().then(url => {
     fetch(url + "/stops")
@@ -32,20 +71,6 @@ getApiUrl().then(url => {
         })
         .catch(error => console.error('Errore nel caricamento dei dati:', error));
 })
-
-getApiUrl().then(url => {
-    fetch(url + "/updates")
-        .then(response => {
-            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-            return response.json();
-        })
-        .then(data => {
-            //Sets last update
-            aggiornamentoP.innerHTML = "Ultimo aggiornamento fermate il " + data[0].updated_at;
-        })
-        .catch(error => console.error('Errore nel caricamento dei dati:', error));
-})
-
 
 searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {

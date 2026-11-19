@@ -2,6 +2,10 @@
     margin-top: 16px;
 }
 
+button {
+    font-family: Titillium Web;
+}
+
 table {
     border-collapse: separate;
     border-spacing: 0;
@@ -83,7 +87,8 @@ nav#corsie-nav ul {
     justify-content: center;
 }
 
-nav#corsie-nav ul li a {
+nav#corsie-nav ul li a,
+button.styled {
     background-color: rgb(204, 132, 0);
     color: white;
     text-decoration: none;
@@ -95,12 +100,24 @@ nav#corsie-nav ul li a {
     transition: background-color 0.1s ease;
 }
 
-nav#corsie-nav ul li a:hover {
+nav#corsie-nav ul li a:hover,
+button.styled:hover {
     background-color: rgb(184, 119, 0);
 }
 
-nav#corsie-nav ul li a:active {
+nav#corsie-nav ul li a:active,
+button.styled:active {
     background-color: rgb(165, 107, 0);
+}
+
+#quick-container button.styled {
+    display: inline-block;
+    margin: 16px 0;
+}
+
+#quick-stops-container {
+    display: flex;
+    justify-content: center;
 }
 
 nav#corsie-nav ul li {
@@ -171,6 +188,18 @@ nav#corsie-nav ul li {
 .search-result.desc p {
     margin-top: 0px;
     font-size: 15px;
+}
+
+.search-result button {
+    margin-bottom: 12px;
+}
+
+.selected {
+    background-color: rgb(204, 132, 0);
+}
+
+.selected button.styled {
+    background-color: rgb(255, 196, 0);
 }
 
 div#results-container {
@@ -270,11 +299,10 @@ div.search-result div {
     margin-right: 10px;
 }
 
-#aggiornamento-p {
-    font-weight: bold;
-    color: rgb(255, 205, 0);
-}
-
 .bold {
     font-weight: bold;
+}
+
+#current-container {
+    margin-bottom: 16px;
 }
