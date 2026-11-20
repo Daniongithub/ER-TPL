@@ -27,19 +27,17 @@
     <h2>Orari linea <span id="linea-span"></span></h2>
     <div id="announcements-container" class="start-announcements" role="status" hidden></div>
     <div id="as-di-container">
-        <button id="as-button" onclick="javascript:setAs()">Andata</button>
-        <button id="di-button" onclick="javascript:setDi()">Ritorno</button>
+        <button type="button" data-direction="0" aria-pressed="false">Andata</button>
+        <button type="button" data-direction="1" aria-pressed="false">Ritorno</button>
     </div>
-    <div id="filter-container" style="display:none;">
-        <select name="filter" id="filter-select" autocomplete="off">
-            <option value="" disabled selected hidden>Filtra per destinazione:</option>
+    <div id="filter-container" hidden>
+        <select name="filter" id="filter-select" aria-label="Filtra per destinazione" autocomplete="off">
+            <option value="">Tutte le destinazioni</option>
         </select>
-        <button onclick="window.location.href=''">Reimposta il filtro</button>
     </div>
     
     <div id="table-container"></div>
     <div id="info-container"></div>
-    <p>E' possibile cliccare sul nome linea per vedere la lista fermate completa di quel percorso.</p>
     <footer>
         <div>
 			<p>Copyright (C) 2025-2026 ER-TPL Team - code by Il Dani & SetaModenaFanpage <a href="https://github.com/Daniongithub/StartRomagnaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione e riferimento.</p>
