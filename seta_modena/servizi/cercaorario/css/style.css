@@ -88,7 +88,7 @@ nav#corsie-nav ul {
 }
 
 nav#corsie-nav ul li a,
-button.styled {
+.styled {
     background-color: rgb(204, 132, 0);
     color: white;
     text-decoration: none;
@@ -101,12 +101,12 @@ button.styled {
 }
 
 nav#corsie-nav ul li a:hover,
-button.styled:hover {
+.styled:hover {
     background-color: rgb(184, 119, 0);
 }
 
 nav#corsie-nav ul li a:active,
-button.styled:active {
+.styled:active {
     background-color: rgb(165, 107, 0);
 }
 
@@ -117,7 +117,22 @@ button.styled:active {
 
 #quick-stops-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    overflow-wrap: anywhere;
+}
+
+.editor-nav-button {
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.editor-nav-button:hover {
+    text-decoration: underline;
 }
 
 nav#corsie-nav ul li {
@@ -190,16 +205,26 @@ nav#corsie-nav ul li {
     font-size: 15px;
 }
 
-.search-result button {
+.quick-stop-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 8px;
     margin-bottom: 12px;
 }
 
-.selected {
+.search-result.selected {
     background-color: rgb(204, 132, 0);
 }
 
-.selected button.styled {
+.search-result.selected .styled {
     background-color: rgb(255, 196, 0);
+    color: #282828;
+}
+
+#current-container .search-result:not(.editable-stop) {
+    cursor: default;
 }
 
 div#results-container {
@@ -297,7 +322,7 @@ footer div p {
     margin-top: 0;
 }
 
-div.search-result div {
+.search-result > div {
     margin-left: 10px;
     margin-right: 10px;
 }

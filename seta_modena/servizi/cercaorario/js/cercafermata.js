@@ -13,49 +13,31 @@ const resultsContainer = document.getElementById('results-container');
 const quickContainer = document.getElementById('quick-container');
 const quickStopsContainer = document.getElementById('quick-stops-container');
 const comeLeggere = document.getElementById('comeleggere-p');
-const aggiornamentoP = document.getElementById('aggiornamento-p')
 
 var searching = false;
 var oldTerm;
 var allresults = [];
 
-//Loads preferred quick stops
-const currentStopsStr = localStorage.getItem("quick_stops");
-var selectedStops = new Map();
+const defaultQuickStopLinks = Array.from(quickStopsContainer.children);
 
-if (currentStopsStr != null) {
-    try {
-        selectedStops = new Map(JSON.parse(currentStopsStr));
-        if (selectedStops.size != 0) {
-            quickStopsContainer.innerHTML = '';
-        }
-        selectedStops.forEach((name, code) => {
-            const div = document.createElement('div');
-            div.className = 'search-result';
-            //Fermate dummy altre corsie
-            if (code.includes("a!")) {
-                div.innerHTML = `
-                    <div>
-                        <h3>${name}</h3>
-                        <p>Tutte le corsie</p>
-                    </div>
-                `;
-            } else {
-                div.innerHTML = `
-                    <div>
-                        <h3>${name}</h3>
-                        <p>Codice fermata: ${code}</p>
-                    </div>
-                `;
-            }
-
-            quickStopsContainer.appendChild(div);
-        });
-    } catch (e) {
-        console.error("Errore nel parsing delle fermate salvate:", e);
-        selectedStops = new Map();
-    }
+function renderQuickStops() {
+    const selectedStops = loadQuickStops();
+    const links = Array.from(selectedStops, ([code, name]) => {
+        const link = document.createElement('a');
+        link.className = 'search-result bianco';
+        link.href = quickStopUrl(code);
+        link.append(createQuickStopDetails(code, name));
+        return link;
+    });
+    quickStopsContainer.replaceChildren(...(links.length > 0 ? links : defaultQuickStopLinks));
 }
+
+renderQuickStops();
+window.addEventListener('storage', event => {
+    if (event.key === QUICK_STOPS_KEY || event.key === null) {
+        renderQuickStops();
+    }
+});
 
 getApiUrl().then(url => {
     fetch(url + "/stops")

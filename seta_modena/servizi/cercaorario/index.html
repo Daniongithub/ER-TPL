@@ -32,11 +32,11 @@
     <div id="quick-container">
         <h3 style="margin-bottom:4px;">Fermate rapide:</h3>
         <div id="quick-stops-container">
-            <div class="search-result" onclick="window.location.href=`altrecorsie.html?location=MODENA AUTOSTAZIONE`"><div><h3>Autostazione</h3><p>Tutte le corsie</p></div></div>
-            <div class="search-result" onclick="window.location.href=`altrecorsie.html?location=STAZIONE FS`"><div><h3>Stazione FS</h3><p>Tutte le corsie</p></div></div>
-            <div class="search-result" onclick="window.location.href=`altrecorsie.html?location=GARIBALDI`"><div><h3>Largo Garibaldi</h3><p>Tutte le corsie</p></div></div>
+            <a class="search-result bianco" href="altrecorsie.html?location=MODENA%20AUTOSTAZIONE"><div><h3>Autostazione</h3><p>Tutte le corsie</p></div></a>
+            <a class="search-result bianco" href="altrecorsie.html?location=STAZIONE%20FS"><div><h3>Stazione FS</h3><p>Tutte le corsie</p></div></a>
+            <a class="search-result bianco" href="altrecorsie.html?location=GARIBALDI"><div><h3>Largo Garibaldi</h3><p>Tutte le corsie</p></div></a>
         </div>
-        <button onclick="window.open('persfermate.html', '_blank')" class="styled">Personalizza</a>
+        <button type="button" onclick="window.open('persfermate.html', '_blank')" class="styled">Personalizza</button>
     </div>
     <footer>
         <div>
@@ -44,6 +44,7 @@
 		</div>
     </footer>
     <button class="assign" onclick="window.location.href='/admin/setaapi/assegnazioni/index.html'">Assegnazioni</button>
+    <script src="js/fermaterapide.js"></script>
     <script src="js/cercafermata.js"></script>
 </body>
 </html>
