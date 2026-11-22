@@ -31,17 +31,20 @@
     <p id="comeleggere-p"><a href="comeleggere.html" style="color: white;">Come leggere il codice fermata.</a></p>
     <div id="quick-container">
         <h3 style="margin-bottom:4px;">Fermate rapide:</h3>
-        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=MODENA AUTOSTAZIONE" class="bianco"><div class="search-result"><h3>Autostazione</h3></div></a>
-        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=STAZIONE FS" class="bianco"><div class="search-result"><h3>Stazione FS</h3></div></a>
-        <a href="/seta_modena/servizi/cercaorario/altrecorsie.html?location=GARIBALDI" class="bianco"><div class="search-result"><h3>Largo Garibaldi</h3></div></a>
+        <div id="quick-stops-container">
+            <a class="search-result bianco" href="altrecorsie.html?location=MODENA%20AUTOSTAZIONE"><div><h3>Autostazione</h3><p>Tutte le corsie</p></div></a>
+            <a class="search-result bianco" href="altrecorsie.html?location=STAZIONE%20FS"><div><h3>Stazione FS</h3><p>Tutte le corsie</p></div></a>
+            <a class="search-result bianco" href="altrecorsie.html?location=GARIBALDI"><div><h3>Largo Garibaldi</h3><p>Tutte le corsie</p></div></a>
+        </div>
+        <button type="button" onclick="window.open('persfermate.html', '_blank')" class="styled">Personalizza</button>
     </div>
-    <p id="aggiornamento-p"></p>
     <footer>
         <div>
 			<p>Copyright (C) 2025-2026 ER-TPL Team - code by Il Dani & HardcodedNyxie (SMF) - <a href="https://github.com/Leocraft1/SetaAPI" target="_blank">Codice Sorgente</a> - I loghi SETA Spa sono marchi registrati e sono inseriti in questo sito solo a scopo di illustrazione e riferimento.</p>
 		</div>
     </footer>
     <button class="assign" onclick="window.location.href='/admin/setaapi/assegnazioni/index.html'">Assegnazioni</button>
+    <script src="js/fermaterapide.js"></script>
     <script src="js/cercafermata.js"></script>
 </body>
 </html>

@@ -11,12 +11,33 @@ const searchBar = document.getElementById('search-bar');
 const stopCodeBar = document.getElementById('stop-code-bar');
 const resultsContainer = document.getElementById('results-container');
 const quickContainer = document.getElementById('quick-container');
+const quickStopsContainer = document.getElementById('quick-stops-container');
 const comeLeggere = document.getElementById('comeleggere-p');
-const aggiornamentoP = document.getElementById('aggiornamento-p')
 
 var searching = false;
 var oldTerm;
 var allresults = [];
+
+const defaultQuickStopLinks = Array.from(quickStopsContainer.children);
+
+function renderQuickStops() {
+    const selectedStops = loadQuickStops();
+    const links = Array.from(selectedStops, ([code, name]) => {
+        const link = document.createElement('a');
+        link.className = 'search-result bianco';
+        link.href = quickStopUrl(code);
+        link.append(createQuickStopDetails(code, name));
+        return link;
+    });
+    quickStopsContainer.replaceChildren(...(links.length > 0 ? links : defaultQuickStopLinks));
+}
+
+renderQuickStops();
+window.addEventListener('storage', event => {
+    if (event.key === QUICK_STOPS_KEY || event.key === null) {
+        renderQuickStops();
+    }
+});
 
 getApiUrl().then(url => {
     fetch(url + "/stops")
@@ -32,20 +53,6 @@ getApiUrl().then(url => {
         })
         .catch(error => console.error('Errore nel caricamento dei dati:', error));
 })
-
-getApiUrl().then(url => {
-    fetch(url + "/updates")
-        .then(response => {
-            if (!response.ok) throw new Error("Errore nel caricamento dei dati.");
-            return response.json();
-        })
-        .then(data => {
-            //Sets last update
-            aggiornamentoP.innerHTML = "Ultimo aggiornamento fermate il " + data[0].updated_at;
-        })
-        .catch(error => console.error('Errore nel caricamento dei dati:', error));
-})
-
 
 searchBar.addEventListener('input', () => {
     if (searchBar.value == '') {

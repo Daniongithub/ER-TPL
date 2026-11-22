@@ -2,6 +2,10 @@
     margin-top: 16px;
 }
 
+button {
+    font-family: Titillium Web;
+}
+
 table {
     border-collapse: separate;
     border-spacing: 0;
@@ -83,7 +87,8 @@ nav#corsie-nav ul {
     justify-content: center;
 }
 
-nav#corsie-nav ul li a {
+nav#corsie-nav ul li a,
+.styled {
     background-color: rgb(204, 132, 0);
     color: white;
     text-decoration: none;
@@ -95,12 +100,39 @@ nav#corsie-nav ul li a {
     transition: background-color 0.1s ease;
 }
 
-nav#corsie-nav ul li a:hover {
+nav#corsie-nav ul li a:hover,
+.styled:hover {
     background-color: rgb(184, 119, 0);
 }
 
-nav#corsie-nav ul li a:active {
+nav#corsie-nav ul li a:active,
+.styled:active {
     background-color: rgb(165, 107, 0);
+}
+
+#quick-container button.styled {
+    display: inline-block;
+    margin: 16px 0;
+}
+
+#quick-stops-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-wrap: anywhere;
+}
+
+.editor-nav-button {
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.editor-nav-button:hover {
+    text-decoration: underline;
 }
 
 nav#corsie-nav ul li {
@@ -173,6 +205,28 @@ nav#corsie-nav ul li {
     font-size: 15px;
 }
 
+.quick-stop-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 8px;
+    margin-bottom: 12px;
+}
+
+.search-result.selected {
+    background-color: rgb(204, 132, 0);
+}
+
+.search-result.selected .styled {
+    background-color: rgb(255, 196, 0);
+    color: #282828;
+}
+
+#current-container .search-result:not(.editable-stop) {
+    cursor: default;
+}
+
 div#results-container {
     margin-top: 16px;
 }
@@ -189,6 +243,9 @@ img {
 }
 
 @media (max-width: 768px) {
+    #quick-stops-container {
+        flex-direction: column;
+    }
     .search-result {
         display: block;
         width: unset;
@@ -265,16 +322,15 @@ footer div p {
     margin-top: 0;
 }
 
-div.search-result div {
+.search-result > div {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-#aggiornamento-p {
-    font-weight: bold;
-    color: rgb(255, 205, 0);
-}
-
 .bold {
     font-weight: bold;
+}
+
+#current-container {
+    margin-bottom: 16px;
 }
