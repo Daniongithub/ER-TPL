@@ -1,6 +1,5 @@
 /* Dark mode */
 
-#announcements-container,
 #legend,
 .leaflet-layer,
 .leaflet-control a,
@@ -63,4 +62,8 @@
 
 .passing-lines-group p {
     color: #e4e4e4 !important;
+}
+
+#announcements-container {
+    background-color: black;
 }
