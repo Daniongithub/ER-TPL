@@ -114,9 +114,23 @@ function applyValue(record, column, value) {
     }
 }
 
+function vehiclePayload(record, columns, includeLastSeen) {
+    const { last_seen_date, last_seen_datetime, ...payload } = record;
+    for (const column of columns) {
+        const key = api.columnKey(column);
+        if (/^enum\(/i.test(column.type) && payload[key] === '') payload[key] = null;
+        if (column.name === 'last_seen' && includeLastSeen) {
+            const withTime = key === 'last_seen_datetime';
+            const value = withTime ? last_seen_datetime : last_seen_date;
+            payload.last_seen = value ? dateInputValue(value, withTime) : null;
+        }
+    }
+    return payload;
+}
+
 function editedRecord(state, number) {
     const edit = state.edits.get(number);
-    // Il PUT sostituisce l'intero veicolo: conserva anche i campi non esposti da listcols.
+    // Il PUT richiede tutti i campi modificabili del veicolo.
     const record = { ...edit.original };
     for (const column of state.columns) {
         if (!editable(column) || !edit.values.has(column.name)) continue;
@@ -126,7 +140,7 @@ function editedRecord(state, number) {
 }
 
 async function saveEdits(state) {
-    if (busy || state.stale || !finishCellEdit()) return;
+    if (busy || !state.loaded || state.loading || state.stale || !finishCellEdit()) return;
     const numbers = [...state.edits.keys()];
     if (!numbers.length) return;
     const records = numbers.map(number => editedRecord(state, number));
@@ -134,8 +148,9 @@ async function saveEdits(state) {
     let saved = 0;
     try {
         for (let index = 0; index < records.length; index++) {
-            await api.mutate(state.company, 'update', records[index]);
             const number = numbers[index];
+            const payload = vehiclePayload(records[index], state.columns, state.edits.get(number).values.has('last_seen'));
+            await api.mutate(state.company, 'update', payload);
             const rowIndex = state.rows.findIndex(row => String(row.number) === number);
             state.rows[rowIndex] = records[index];
             state.edits.delete(number);
@@ -230,7 +245,7 @@ function openDelete(state, numbers) {
         message('Le matricole da rimuovere devono essere interi validi.');
         return;
     }
-    deleteContext = { state, numbers: parsed };
+    deleteContext = { state, numbers };
     formError('delete-error');
     document.getElementById('delete-description').textContent = 'Confermi la rimozione di ' + numbers.length + ' mezzi di ' + state.company + '?';
     document.getElementById('delete-numbers').textContent = numbers.join(', ');
@@ -270,7 +285,7 @@ document.getElementById('add-form').addEventListener('submit', event => {
     event.preventDefault();
     if (busy || !addContext) return;
     try {
-        const records = newRecords(addContext);
+        const records = newRecords(addContext).map(record => vehiclePayload(record, addContext.state.columns, true));
         submitMutation(event.currentTarget, 'add-modal', 'add-error', addContext.state, 'add', records);
     } catch (error) {
         formError('add-error', error.message);
@@ -291,3 +306,9 @@ document.getElementById('add-button').addEventListener('click', () => openAdd(fa
 document.getElementById('batch-button').addEventListener('click', () => openAdd(true));
 document.getElementById('delete-button').addEventListener('click', () => openDelete(activeState(), [...activeState().selected]));
 document.getElementById('save-button').addEventListener('click', () => saveEdits(activeState()));
+document.addEventListener('keydown', event => {
+    if (!event.ctrlKey || event.altKey || event.metaKey || event.shiftKey || event.key.toLowerCase() !== 's') return;
+    event.preventDefault();
+    if (event.repeat || event.isComposing || document.querySelector('.modal.show')) return;
+    saveEdits(activeState());
+});
