@@ -28,9 +28,9 @@ function genera() {
         <header>
             <nav>
                 <ul>
-                    <li><a href="/index.html"><h1 style="font-size: 100%;font-weight: 500;">Home</h1></a></li>
-                    <li><a href="${linkAzienda.value}"><h1 style="font-size: 100%;font-weight: 500;">${azienda.value}</h1></a></li>
-                    <li><a href="${linkSezione.value}"><h1 style="font-size: 100%;font-weight: 500;">${sezione.value}</h1></a></li>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="${linkAzienda.value}">${azienda.value}</a></li>
+                    <li><a href="${linkSezione.value}">${sezione.value}</a></li>
                 </ul>
             </nav>
         </header>
