@@ -139,7 +139,7 @@ function caricadati(){
         tr = document.createElement('tr');
         tr.innerHTML = `
             <tr>
-                <td>Ora si trova a:</td>
+                <td>Prossima fermata:</td>
                 <td><a href="/seta_modena/servizi/cercaorario/fermata.html?code=${item.stop_code}" class="bianco">${item.next_stop}</a></td>
             </tr>
         `;
