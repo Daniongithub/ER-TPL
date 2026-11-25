@@ -252,6 +252,12 @@ div#map-container iframe {
     }
 }
 
+/* Questo pezzo qui fixa il dropdown su alcuni browser*/
+.basin-select-container select option {
+    background-color: rgb(60, 60, 60);
+    color: white;
+}
+
 footer {
     position: relative;
     bottom: 0;
