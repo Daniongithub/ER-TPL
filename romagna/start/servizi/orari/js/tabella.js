@@ -33,7 +33,6 @@ async function loadTimetable(direction) {
         button.setAttribute('aria-pressed', selected);
     }
 
-    filterContainer.hidden = true;
     filterSelect.selectedIndex = 0;
     infoContainer.replaceChildren();
     tableContainer.textContent = 'Caricamento in corso...';
@@ -44,6 +43,7 @@ async function loadTimetable(direction) {
 
         const path = [basin, routeCode, direction].map(encodeURIComponent).join('/');
         const data = await fetchJson(`${config.url.replace(/\/+$/, '')}/timetable/${path}`, signal);
+        lineLabel.textContent = data.line;
         if (signal.aborted) return;
         if (!Array.isArray(data.trips) || !Array.isArray(data.stops)) {
             throw new Error('Formato orario non valido');
@@ -67,7 +67,6 @@ async function loadTimetable(direction) {
             return;
         }
 
-        lineLabel.textContent = data.trips[0].trip_info.official_line || routeCode;
         rows = buildRows(data.stops, trips);
         fillFilter();
         renderTimetable();
@@ -145,7 +144,6 @@ function fillFilter() {
     for (const label of destinations) {
         filterSelect.add(new Option(label, label));
     }
-    filterContainer.hidden = destinations.size <= 1;
 }
 
 function renderTimetable() {
@@ -188,7 +186,6 @@ function renderTimetable() {
     infoContainer.replaceChildren(count);
 }
 
-lineLabel.textContent = routeCode ?? '';
 if (!['RA', 'FC', 'RN'].includes(basin) || !routeCode) {
     directionContainer.style.display = 'none';
     tableContainer.textContent = 'Seleziona un bacino e una linea.';

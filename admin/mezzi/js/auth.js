@@ -1,8 +1,7 @@
 //OAuth and backend config
 const OIDC_ISSUER = "https://sso.serverissimo.com/application/o/ertpl-mezzi/";
 const OIDC_CLIENT_ID = "LnXlJqHGayEG1VI3WZeFDiRq9xJ4RF38gF4ki3C8";
-const REDIRECT_URI = "https://ertpl.pages.dev/admin/mezzi/callback.html";
-//const REDIRECT_URI = "http://127.0.0.1:5500/admin/mezzi/callback.html";
+const REDIRECT_URI = new URL("/admin/mezzi/callback.html", window.location.origin).href;
 const API_BASE_URL = "https://setaapi.serverissimo.com";
 
 function generateCodeVerifier() {
@@ -122,7 +121,7 @@ async function handleCallback() {
         });
 
         if (!response.ok) {
-            statusEl.innerHTML = `Impossibile completare l'accesso. <a href="index.html">Riprova</a>. Errore: ` + err;
+            statusEl.innerHTML = `Impossibile completare l'accesso (HTTP ${response.status}). <a href="index.html">Riprova</a>.`;
             cleanupPkceStorage();
             return;
         }

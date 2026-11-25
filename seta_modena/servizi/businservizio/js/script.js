@@ -119,7 +119,7 @@ function caricadati() {
                     container.textContent = "Impossibile raggiungere l'API.";
                     return;
                 }
-                container.textContent = 'Errore nel caricamento dati. (HTTP '+ httpcode + ")";
+                container.textContent = 'Errore nel caricamento dati. (HTTP ' + httpcode + ")";
             });
     }
 }
